@@ -1,5 +1,6 @@
 import { APIRequestContext } from 'playwright';
 import { createDotApi, closeApi } from '../sdk/dotClient';
+import { buildBenefitsPayload, flattenClaimDetail } from '../util/buildPayloads';
 
 interface ExtractOptions {
   memberId?: string;
@@ -60,7 +61,7 @@ export class DotExtractor {
     return data;
   }
 
-  async getMemberBenefits(searchData: any, personId: string, relationship = 'Subscriber') {
+  async getMemberBenefits(searchData: any, personId: string, relationship: 'Subscriber' | 'Spouse' | 'Dependent' = 'Subscriber') {
     if (!this.api) throw new Error('API not initialized');
     
     console.log(`📋 Fetching benefits for ${relationship}...`);
@@ -72,7 +73,6 @@ export class DotExtractor {
     const clientInfo = subscriber.clientInformation;
     
     // Find the person's data
-    let memberPersonId = personId;
     let memberDob = subscriber.dateOfBirth;
     
     if (relationship !== 'Subscriber') {
@@ -86,16 +86,18 @@ export class DotExtractor {
     const [month, day, year] = memberDob.split('/');
     const isoDate = new Date(parseInt(year), parseInt(month) - 1, parseInt(day)).toISOString();
     
-    const benefitsPayload = {
-      clientSpecifiedId: clientInfo.clientSpecifiedId,
-      subClientSpecifiedId: clientInfo.subClientSpecifiedId,
-      memberPersonId: memberPersonId,
+    // Use actual clientId/subClientId from search response
+    // Note: benefitProgramOid might be in a different location or need a separate call
+    const benefitsPayload = buildBenefitsPayload({
+      clientId: clientInfo.clientId,  // Use actual clientId not clientSpecifiedId
+      subClientId: clientInfo.subClientId, // Use actual subClientId
+      benefitProgramOid: subscriber.benefitProgramOid || clientInfo.benefitProgramOid || '', 
+      memberPersonId: personId,
       subscriberPersonId: subscriber.personId,
-      memberDateOfBirth: isoDate,
-      memberPlanAcronym: clientInfo.planAbbrev || clientInfo.adminPlan,
-      relationshipToSubscriber: relationship
-      // Note: NOT sending memberBenefitType as it causes errors
-    };
+      memberDOBISO: isoDate,
+      planAcronym: clientInfo.planAbbrev || clientInfo.adminPlan || 'DDMN',
+      relationship: relationship
+    });
     
     try {
       const response = await this.api.post('/api/dot-gateway/v1/benefit/memberbenefits/search', {
@@ -191,17 +193,30 @@ export class DotExtractor {
       }
     }
     
-    // Fetch details for each claim to get CDT codes and amounts
+    // Fetch details concurrently with max 5 parallel requests
     console.log(`🔍 Fetching details for ${allClaims.length} claims...`);
-    for (let i = 0; i < allClaims.length; i++) {
-      const claim = allClaims[i];
-      if (claim.claimId) {
-        const detail = await this.getClaimDetail(claim.claimId);
-        if (detail) {
-          allClaims[i] = { ...claim, detail };
-          console.log(`  ✓ Claim ${i+1}/${allClaims.length}: ${detail.claimNumber || claim.claimNumber}`);
+    const BATCH_SIZE = 5;
+    
+    for (let i = 0; i < allClaims.length; i += BATCH_SIZE) {
+      const batch = allClaims.slice(i, Math.min(i + BATCH_SIZE, allClaims.length));
+      const detailPromises = batch.map(async (claim, idx) => {
+        if (claim.claimId) {
+          // Add small jitter to avoid rate limiting
+          await new Promise(resolve => setTimeout(resolve, (idx * 100) + Math.random() * 200));
+          const detail = await this.getClaimDetail(claim.claimId);
+          if (detail) {
+            const globalIdx = i + idx;
+            console.log(`  ✓ Claim ${globalIdx + 1}/${allClaims.length}: ${detail.claimNumber || claim.claimNumber}`);
+            return { ...claim, detail };
+          }
         }
-      }
+        return claim;
+      });
+      
+      const batchResults = await Promise.all(detailPromises);
+      batchResults.forEach((result, idx) => {
+        allClaims[i + idx] = result;
+      });
     }
     
     console.log(`✅ Total claims retrieved: ${allClaims.length}\n`);
