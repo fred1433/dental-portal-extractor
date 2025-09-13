@@ -1,6 +1,7 @@
 import { APIRequestContext } from 'playwright';
 import { createDotApi, closeApi } from '../sdk/dotClient';
 import { buildBenefitsPayload, flattenClaimDetail } from '../util/buildPayloads';
+import { getBenefitProgramOid } from '../util/getBenefitProgramOid';
 
 interface ExtractOptions {
   memberId?: string;
@@ -86,32 +87,62 @@ export class DotExtractor {
     const [month, day, year] = memberDob.split('/');
     const isoDate = new Date(parseInt(year), parseInt(month) - 1, parseInt(day)).toISOString();
     
-    // Use actual clientId/subClientId from search response
-    // Note: benefitProgramOid might be in a different location or need a separate call
-    const benefitsPayload = buildBenefitsPayload({
-      clientId: clientInfo.clientId,  // Use actual clientId not clientSpecifiedId
-      subClientId: clientInfo.subClientId, // Use actual subClientId
-      benefitProgramOid: subscriber.benefitProgramOid || clientInfo.benefitProgramOid || '', 
+    // Get benefitProgramOid - this is the KEY that was missing!
+    let benefitProgramOid = subscriber.benefitProgramOid || clientInfo.benefitProgramOid;
+    if (!benefitProgramOid) {
+      // Try to fetch it from client search
+      benefitProgramOid = await getBenefitProgramOid(
+        this.api,
+        clientInfo.planAbbrev || clientInfo.adminPlan || 'DDMN',
+        clientInfo.clientSpecifiedId,  // Note: client search uses specifiedId
+        clientInfo.subClientSpecifiedId || '0001'
+      );
+    }
+    
+    // Build payload with BOTH variants for retry logic
+    const { variantA, variantB } = buildBenefitsPayload({
+      clientId: clientInfo.clientId,  // Try with actual clientId first
+      subClientId: clientInfo.subClientId,
+      clientSpecifiedId: clientInfo.clientSpecifiedId,  // Fallback option
+      subClientSpecifiedId: clientInfo.subClientSpecifiedId || '0001',
+      benefitProgramOid: benefitProgramOid,  // This was missing!
       memberPersonId: personId,
       subscriberPersonId: subscriber.personId,
       memberDOBISO: isoDate,
       planAcronym: clientInfo.planAbbrev || clientInfo.adminPlan || 'DDMN',
-      relationship: relationship
+      relationship: relationship,
+      isEHBRequest: false,  // From successful captures
+      isStandardRequest: false
     });
     
     try {
-      const response = await this.api.post('/api/dot-gateway/v1/benefit/memberbenefits/search', {
-        data: benefitsPayload
-      });
+      // Try variant A first (with clientId/subClientId)
+      let response = variantA ? await this.api.post('/api/dot-gateway/v1/benefit/memberbenefits/search', {
+        data: variantA
+      }) : null;
       
-      if (!response.ok()) {
-        const text = await response.text();
+      // If variant A failed or didn't exist, try variant B
+      if (!response || response.status() === 400) {
+        if (response) {
+          const errorA = await response.text();
+          console.log(`⚠️  Variant A failed, trying variant B...`);
+        }
+        
+        if (variantB) {
+          response = await this.api.post('/api/dot-gateway/v1/benefit/memberbenefits/search', {
+            data: variantB
+          });
+        }
+      }
+      
+      if (!response || !response.ok()) {
+        const text = response ? await response.text() : 'No response';
         console.log(`⚠️  Benefits failed for ${relationship}: ${text}`);
         return null;
       }
       
       const data = await response.json();
-      console.log(`✅ Benefits retrieved for ${relationship}\n`);
+      console.log(`✅ Benefits retrieved for ${relationship}!`);
       return data;
     } catch (error) {
       console.log(`⚠️  Could not get benefits for ${relationship}: ${error}\n`);
