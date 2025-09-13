@@ -3,7 +3,7 @@
  */
 
 // Type definitions (inline for browser compatibility)
-type PortalType = 'DNOA' | 'DentaQuest' | 'MetLife' | 'Cigna' | 'Aetna' | 'UnitedHealthcare';
+type PortalType = 'DNOA' | 'DentaQuest' | 'MetLife' | 'Cigna' | 'DOT' | 'Aetna' | 'UnitedHealthcare';
 
 interface PortalTestData {
     firstName: string;
@@ -162,6 +162,12 @@ const testData: Record<PortalType, PortalTestData> = {
         lastName: 'WILLIAMS',
         subscriberId: 'U72997972',
         dateOfBirth: '11/14/2017'
+    },
+    'DOT': {
+        firstName: 'MAURICE',
+        lastName: 'BEREND',
+        subscriberId: '916797559',
+        dateOfBirth: '12/16/1978'
     },
     'Aetna': {
         firstName: '',
