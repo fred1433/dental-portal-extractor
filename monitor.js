@@ -223,13 +223,17 @@ async function testCigna() {
   } catch (error) {
     const duration = Date.now() - startTime;
     
-    if (error.message.includes('OTP')) {
-      console.log('⚠️ Cigna: Degraded (OTP required)');
+    // Check if it's an OTP requirement issue
+    if (error.message.includes('OTP') || 
+        error.message.includes('verification required') ||
+        error.message.includes('manual entry needed')) {
+      console.log('⚠️ Cigna: OTP Required (not a failure)');
       return {
         portal: 'Cigna',
-        status: 'degraded',
+        status: 'otp_required',
         duration_ms: duration,
-        details: 'OTP required - login flow working'
+        details: 'OTP verification required - manual entry needed',
+        error_message: 'Requires OTP - this is normal behavior'
       };
     }
     
@@ -404,7 +408,8 @@ async function runAllTests() {
   // Résumé
   console.log('\n📊 SUMMARY:');
   results.forEach(r => {
-    const icon = r.status === 'up' ? '✅' : r.status === 'degraded' ? '⚠️' : '❌';
+    const iconMap = { up: '✅', degraded: '⚠️', otp_required: '🔐', down: '❌' };
+    const icon = iconMap[r.status] || '❓';
     console.log(`  ${icon} ${r.portal}: ${r.status.toUpperCase()} (${r.duration_ms}ms)`);
   });
   

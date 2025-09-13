@@ -15,8 +15,8 @@ class CignaService {
     this.isLoggedIn = false;  // Track login status
 
     // Credentials from env
-    this.username = process.env.CIGNA_USERNAME || 'payoraccess1';
-    this.password = process.env.CIGNA_PASSWORD || 'Smiley@2025!!';
+    this.username = process.env.CIGNA_USERNAME;
+    this.password = process.env.CIGNA_PASSWORD;
   }
 
   // ---------- Lifecycle ----------
@@ -24,6 +24,7 @@ class CignaService {
   async initialize(headless = true, onLog = console.log, onOtpRequest = null) {
     this.onLog = onLog;
     this.onOtpRequest = onOtpRequest;
+    this.headless = headless;
 
     onLog('🚀 Initializing Cigna service...');
 
@@ -245,6 +246,13 @@ class CignaService {
 
     if (otpVisible) {
       onLog('🔔 OTP required');
+      
+      // In monitoring mode (headless without handler), fail fast instead of waiting 2 minutes
+      if (!this.onOtpRequest && this.headless) {
+        onLog('   (monitoring mode) Failing fast on OTP requirement');
+        throw new Error('Cigna requires OTP verification - manual entry needed');
+      }
+      
       const otp = await this.obtainOtp(onLog);
       
       // Si l'OTP a été entré manuellement, on ne remplit pas le champ
@@ -316,6 +324,14 @@ class CignaService {
       onLog('   ✓ Navigation menu found');
     } catch {
       const currentUrl = this.page.url();
+      
+      // Check if we're stuck on OTP page
+      const otpFieldVisible = await this.page.locator('[data-test="txt-verification-code"]').isVisible().catch(() => false);
+      if (otpFieldVisible) {
+        onLog('🔔 OTP verification required - manual entry needed');
+        throw new Error('Cigna requires OTP verification - manual entry needed');
+      }
+      
       const body = await this.page.textContent('body').catch(() => '');
       onLog(`⚠️ Post-login page did not show nav. URL: ${currentUrl}`);
       onLog(`   Body sample: ${String(body).slice(0, 300)}...`);
@@ -350,20 +366,25 @@ class CignaService {
     onLog('⏳ Please enter the OTP code manually in the browser...');
     onLog('   Waiting for you to submit the OTP form...');
     
-    // Attendre que l'utilisateur entre le code et soumette
-    // On va attendre que la page change ou que le formulaire OTP disparaisse
-    await this.page.waitForFunction(
-      () => {
-        // Si on n'est plus sur la page OTP, c'est qu'on a soumis
-        const otpField = document.querySelector('[data-test="txt-verification-code"]');
-        const submitButton = document.querySelector('[data-test="btn-submit"]');
-        return !otpField || !submitButton;
-      },
-      { timeout: 120000 } // 2 minutes pour entrer le code
-    );
-    
-    onLog('✅ OTP form submitted');
-    return 'manual'; // Retourner quelque chose pour ne pas bloquer
+    try {
+      // Attendre que l'utilisateur entre le code et soumette
+      // On va attendre que la page change ou que le formulaire OTP disparaisse
+      await this.page.waitForFunction(
+        () => {
+          // Si on n'est plus sur la page OTP, c'est qu'on a soumis
+          const otpField = document.querySelector('[data-test="txt-verification-code"]');
+          const submitButton = document.querySelector('[data-test="btn-submit"]');
+          return !otpField || !submitButton;
+        },
+        { timeout: 120000 } // 2 minutes pour entrer le code
+      );
+      
+      onLog('✅ OTP form submitted');
+      return 'manual'; // Retourner quelque chose pour ne pas bloquer
+    } catch (timeoutError) {
+      onLog('❌ OTP timeout - no handler configured and manual entry not completed');
+      throw new Error('Cigna requires OTP verification - manual entry needed');
+    }
   }
 
   // ---------- Popups ----------
