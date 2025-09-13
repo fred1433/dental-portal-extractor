@@ -17,8 +17,11 @@ COPY . .
 # Rebuild sqlite3 native bindings for Linux
 RUN npm rebuild sqlite3
 
-# Now run the TypeScript build
+# Build the main project TypeScript
 RUN npm run build
+
+# Build the dot-extractor TypeScript submodule
+RUN cd dot-extractor && npm install && npm run build
 
 # The browsers are already installed in the Playwright image
 # No need to run playwright install
