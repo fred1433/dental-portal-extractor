@@ -1,0 +1,14 @@
+node_modules/
+.env
+dot-storage.json
+out/
+*.log
+
+# Test data files
+all-api-calls.json
+claim-detail-endpoint.json
+member-search-response.json
+working-benefits-payload.json
+
+# Session files
+.dot-session/

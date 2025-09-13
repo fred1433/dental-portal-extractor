@@ -1,0 +1,21 @@
+{
+  "name": "dot-extractor",
+  "version": "1.0.0",
+  "description": "Dental Office Toolkit data extraction system",
+  "main": "dist/index.js",
+  "scripts": {
+    "login": "ts-node src/auth/login.ts",
+    "extract": "ts-node src/scripts/extract.ts",
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["dental", "dot", "extraction"],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "playwright": "^1.45.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  }
+}
