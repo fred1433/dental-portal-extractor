@@ -2,6 +2,7 @@ import { APIRequestContext } from 'playwright';
 import { createDotApi, closeApi } from '../sdk/dotClient';
 import { buildBenefitsPayload, flattenClaimDetail } from '../util/buildPayloads';
 import { getBenefitProgramOid } from '../util/getBenefitProgramOid';
+import { parseBenefits, generateBenefitsSummary } from '../util/benefitsParser';
 
 interface ExtractOptions {
   memberId?: string;
@@ -268,6 +269,7 @@ export class DotExtractor {
       subscriber: {
         info: subscriber,
         benefits: null,
+        benefitsParsed: null,
         claims: []
       },
       dependents: [],
@@ -280,6 +282,11 @@ export class DotExtractor {
       subscriber.personId, 
       'Subscriber'
     );
+    
+    // Parse benefits into structured format
+    if (results.subscriber.benefits) {
+      results.subscriber.benefitsParsed = parseBenefits(results.subscriber.benefits);
+    }
     
     // Get subscriber claims
     results.subscriber.claims = await this.getClaimsForPerson(
@@ -297,6 +304,7 @@ export class DotExtractor {
         const depData: any = {
           info: dependent,
           benefits: null,
+          benefitsParsed: null,
           claims: []
         };
         
@@ -307,6 +315,11 @@ export class DotExtractor {
           dependent.personId,
           relationship
         );
+        
+        // Parse benefits
+        if (depData.benefits) {
+          depData.benefitsParsed = parseBenefits(depData.benefits);
+        }
         
         // Get dependent claims
         depData.claims = await this.getClaimsForPerson(
@@ -330,7 +343,20 @@ export class DotExtractor {
     console.log(`✅ Member ID: ${subscriber.alternateId || subscriber.memberId}`);
     console.log(`✅ Family members: ${subscriber.dependents?.length || 0}`);
     console.log(`✅ Total claims: ${totalClaims}`);
-    console.log(`✅ Benefits: ${results.subscriber.benefits ? 'Retrieved' : 'Not available'}`);
+    console.log(`✅ Benefits: ${results.subscriber.benefits ? 'Retrieved & Parsed' : 'Not available'}`);
+    
+    // Show benefits summary if available
+    if (results.subscriber.benefitsParsed) {
+      console.log('\n📋 Benefits Summary:');
+      console.log('-------------------');
+      const parsed = results.subscriber.benefitsParsed;
+      console.log(`  • ${parsed.coverages.length} coverage categories`);
+      console.log(`  • ${parsed.maximumsAndDeductibles.length} maximums/deductibles`);
+      console.log(`  • ${parsed.networks.length} networks`);
+      if (parsed.ortho.lifetimeMax > 0) {
+        console.log(`  • Ortho lifetime max: $${parsed.ortho.lifetimeMax}`);
+      }
+    }
     
     return results;
   }
