@@ -370,11 +370,11 @@ export class DotExtractor {
 }
 
 // Export convenience function
-export async function extractDotData(options: ExtractOptions) {
+export async function extractDotData(options: ExtractOptions & { storagePath?: string }) {
   const extractor = new DotExtractor();
   
   try {
-    await extractor.initialize();
+    await extractor.initialize(options.storagePath || 'dot-storage.json');
     const data = await extractor.extractFullData(options);
     return data;
   } finally {

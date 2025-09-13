@@ -171,6 +171,25 @@ The extractor automatically handles rate limiting with:
 └─────────────┘
 ```
 
+## Production Deployment (Render)
+
+Since Render has ephemeral file storage, the session needs to be restored on each deployment:
+
+### Option 1: Environment Variable (Recommended)
+```bash
+# After login locally, encode the session:
+base64 dot-storage.json | pbcopy  # macOS
+base64 dot-storage.json | xclip   # Linux
+
+# Set in Render dashboard:
+DOT_SESSION_B64=<paste-encoded-session>
+```
+
+The session will be automatically restored from the environment variable on boot.
+
+### Option 2: Upload Session File
+Upload `dot-storage.json` to Render after each deployment.
+
 ## Development
 
 ### Project Structure

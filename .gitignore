@@ -4,6 +4,7 @@ node_modules/
 .dentaquest-session/
 .metlife-session/
 .cigna-session/
+.dot-session/
 *.log
 *.zip
 test-*.js
@@ -15,6 +16,14 @@ monitoring.db
 *.b64
 transfer-*.sh
 push-*.sh
+
+# DOT extractor
+dot-extractor/dot-storage.json
+dot-extractor/out/
+dot-extractor/dist/
+dot-extractor/*.json
+!dot-extractor/package.json
+!dot-extractor/tsconfig.json
 
 # TypeScript build artifacts
 dist/

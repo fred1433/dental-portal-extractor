@@ -16,12 +16,11 @@ export async function bootstrapBenefitsPayload(storage = 'dot-storage.json'): Pr
   page.on('requestfinished', async request => {
     const url = request.url();
     if (url.includes('/api/dot-gateway/v1/benefit/memberbenefits/search')) {
-      const req = request.request();
       const res = await request.response();
       
       if (res && res.ok()) {
         try {
-          const postData = req.postData();
+          const postData = request.postData();
           if (postData) {
             workingPayload = JSON.parse(postData);
             console.log('✅ Captured working Benefits payload');

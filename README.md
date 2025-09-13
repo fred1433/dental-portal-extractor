@@ -6,6 +6,8 @@ Multi-portal dental insurance data extraction service.
 - **DNOA** - Delta Dental
 - **DentaQuest** - DentaQuest/Sun Life  
 - **MetLife** - MetLife Dental
+- **Cigna** - Cigna Dental
+- **DOT** - Dental Office Toolkit (Delta Dental)
 
 ## Production URL
 - Service: https://dental-portal-extractor.onrender.com

@@ -5,6 +5,7 @@ const DentaQuestService = require('./dentaquest-service');
 const fs = require('fs');
 const MetLifeService = require('./metlife-service');
 const CignaService = require('./cigna-service');
+const DOTService = require('./dot-service');
 const monitor = require('./monitor');
 const cron = require('node-cron');
 const checkLocation = require('./check-location');
@@ -99,10 +100,12 @@ app.post('/api/extract', checkApiKey, async (req, res) => {
     service = new CignaService();
   } else if (portalLower === 'dnoa') {
     service = new DNOAService();
+  } else if (portalLower === 'dot') {
+    service = new DOTService();
   } else {
     return res.status(400).json({ 
       success: false, 
-      error: `Unknown portal: ${portal}. Valid options are: DentaQuest, MetLife, Cigna, DNOA` 
+      error: `Unknown portal: ${portal}. Valid options are: DentaQuest, MetLife, Cigna, DNOA, DOT` 
     });
   }
   
@@ -278,6 +281,52 @@ app.post('/api/submit-otp', (req, res) => {
 // Health check
 app.get('/health', (req, res) => {
   res.json({ status: 'healthy', timestamp: new Date().toISOString() });
+});
+
+// DOT health check
+app.get('/api/health/dot', checkApiKey, async (req, res) => {
+  try {
+    const service = new DOTService();
+    await service.initialize(true, () => {}); // Silent logging
+    
+    // Check if session exists and is valid
+    const isLoggedIn = await service.ensureLoggedIn(() => {});
+    
+    if (isLoggedIn) {
+      // Try to create API client to verify session works
+      try {
+        const { createDotApi, closeApi } = require('./dot-extractor/dist/sdk/dotClient');
+        const api = await createDotApi(path.join(__dirname, 'dot-extractor', 'dot-storage.json'));
+        await closeApi(api);
+        
+        res.json({ 
+          status: 'OK',
+          message: 'DOT session is valid',
+          timestamp: new Date().toISOString()
+        });
+      } catch (error) {
+        res.json({
+          status: 'NEED_LOGIN',
+          message: 'Session expired - Bearer token needs refresh',
+          timestamp: new Date().toISOString()
+        });
+      }
+    } else {
+      res.json({
+        status: 'NEED_LOGIN',
+        message: 'No session found - login required',
+        timestamp: new Date().toISOString()
+      });
+    }
+    
+    await service.close();
+  } catch (error) {
+    res.status(500).json({
+      status: 'ERROR',
+      message: error.message,
+      timestamp: new Date().toISOString()
+    });
+  }
 });
 
 // Location check endpoint
