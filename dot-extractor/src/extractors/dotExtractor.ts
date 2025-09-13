@@ -3,6 +3,7 @@ import { createDotApi, closeApi } from '../sdk/dotClient';
 import { buildBenefitsPayload, flattenClaimDetail } from '../util/buildPayloads';
 import { getBenefitProgramOid } from '../util/getBenefitProgramOid';
 import { parseBenefits, generateBenefitsSummary } from '../util/benefitsParser';
+import { ensureValidSession } from '../auth/autoLogin';
 
 interface ExtractOptions {
   memberId?: string;
@@ -24,14 +25,43 @@ interface Person {
 
 export class DotExtractor {
   private api: APIRequestContext | null = null;
+  private storagePath: string = 'dot-storage.json';
 
   async initialize(storagePath = 'dot-storage.json') {
+    this.storagePath = storagePath;
+    
+    // Ensure session is valid before initializing API
+    const sessionValid = await ensureValidSession(storagePath);
+    if (!sessionValid) {
+      throw new Error('Failed to establish valid DOT session');
+    }
+    
     console.log('🚀 Initializing DOT API client...');
     this.api = await createDotApi(storagePath);
     console.log('✅ API client ready\n');
   }
+  
+  private async reinitializeOnAuthError() {
+    console.log('🔄 Session expired - attempting to re-authenticate...');
+    
+    // Close existing API connection
+    if (this.api) {
+      await closeApi(this.api);
+      this.api = null;
+    }
+    
+    // Try to auto-login
+    const sessionValid = await ensureValidSession(this.storagePath);
+    if (!sessionValid) {
+      throw new Error('Failed to re-authenticate. Manual login required.');
+    }
+    
+    // Reinitialize API with new session
+    this.api = await createDotApi(this.storagePath);
+    console.log('✅ Re-authentication successful\n');
+  }
 
-  async searchMember(options: ExtractOptions) {
+  async searchMember(options: ExtractOptions, retryCount = 0): Promise<any> {
     if (!this.api) throw new Error('API not initialized');
     
     console.log('🔍 Searching for member...');
@@ -52,6 +82,17 @@ export class DotExtractor {
     const response = await this.api.post('/api/dot-gateway/v02/memberdetail/search', {
       data: searchPayload
     });
+    
+    // Handle authentication errors with retry
+    if (response.status() === 401 || response.status() === 403) {
+      if (retryCount === 0) {
+        console.log('⚠️  Authentication error detected - attempting to re-authenticate...');
+        await this.reinitializeOnAuthError();
+        return this.searchMember(options, 1); // Retry once
+      } else {
+        throw new Error(`Authentication failed after retry: ${response.status()}`);
+      }
+    }
     
     if (!response.ok()) {
       const errorText = await response.text();

@@ -7,7 +7,7 @@ const path = require('path');
 const fs = require('fs');
 
 // Import the compiled JavaScript from dot-extractor
-const { extractDotData } = require('./dot-extractor/dist');
+const { extractDotData, ensureValidSession } = require('./dot-extractor/dist');
 
 const SESSION_DIR = path.join(__dirname, '.dot-session');
 const STORAGE_STATE_FILE = path.join(SESSION_DIR, 'storageState.json');
@@ -61,25 +61,26 @@ class DOTService {
   async ensureLoggedIn(onLog = console.log) {
     onLog('🔐 Checking DOT login status...');
     
-    // Check if storage file exists
-    if (!fs.existsSync(DOT_STORAGE_FILE)) {
-      onLog('❌ No DOT session found');
-      onLog('📝 Please run manual login:');
-      onLog('   cd dot-extractor && npm run login');
-      onLog('   OR set DOT_SESSION_B64 environment variable');
+    try {
+      // Use the new ensureValidSession function that includes auto-login
+      const sessionValid = await ensureValidSession(DOT_STORAGE_FILE);
+      
+      if (sessionValid) {
+        onLog('✅ DOT session valid');
+        return true;
+      } else {
+        onLog('❌ No valid DOT session and auto-login not available');
+        onLog('📝 Please run one of these commands:');
+        onLog('   cd dot-extractor && npm run login:assist  (recommended - assisted login)');
+        onLog('   cd dot-extractor && npm run login:auto    (automated login)');
+        onLog('   cd dot-extractor && npm run login         (manual login)');
+        onLog('   OR set DOT_USERNAME and DOT_PASSWORD environment variables');
+        return false;
+      }
+    } catch (error) {
+      onLog(`⚠️ Session validation error: ${error.message}`);
       return false;
     }
-    
-    // Check if session is recent (optional - could validate expiry)
-    const stats = fs.statSync(DOT_STORAGE_FILE);
-    const ageInDays = (Date.now() - stats.mtime.getTime()) / (1000 * 60 * 60 * 24);
-    
-    if (ageInDays > 30) {
-      onLog(`⚠️ Session is ${Math.floor(ageInDays)} days old - may need refresh`);
-    }
-    
-    onLog('✅ DOT session present');
-    return true;
   }
 
   async extractPatientData(patient, onLog = console.log) {
@@ -95,12 +96,11 @@ class DOTService {
       logWrapper(`📋 Patient ID: ${patient.subscriberId}`);
       logWrapper(`🔐 Checking DOT session...`);
       
-      // Check session en arrière-plan
-      const sessionValid = await this.ensureLoggedIn(() => {});
+      // Check session and auto-login if needed
+      const sessionValid = await this.ensureLoggedIn(logWrapper);
       if (!sessionValid) {
         throw new Error('DOT session invalid - login required');
       }
-      logWrapper(`✅ Session valid`);
       
       // Map patient format to DOT extractor format
       const extractOptions = {
@@ -189,7 +189,11 @@ class DOTService {
       
       // Check if it's a session error
       if (error.message.includes('401') || error.message.includes('session') || error.message.includes('Bearer')) {
-        logWrapper('💡 Session may have expired. Please run: cd dot-extractor && npm run login');
+        logWrapper('💡 Session may have expired. Auto-login will be attempted on next run.');
+        logWrapper('   If auto-login fails, please run one of:');
+        logWrapper('   cd dot-extractor && npm run login:assist  (recommended)');
+        logWrapper('   cd dot-extractor && npm run login:auto    (automated)');
+        logWrapper('   cd dot-extractor && npm run login         (manual)');
       }
       
       throw error;
