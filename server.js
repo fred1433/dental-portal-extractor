@@ -453,14 +453,18 @@ app.listen(PORT, async () => {
   
   console.log('⏰ Monitoring scheduled to run every 6 hours (00:00, 06:00, 12:00, 18:00)');
   
-  // Run initial test on startup after a short delay
-  setTimeout(async () => {
-    console.log('\n🚀 Running initial monitoring test on startup...');
-    try {
-      await monitor.runAllTests();
-      console.log('✅ Initial monitoring test completed');
-    } catch (error) {
-      console.error('❌ Initial monitoring test failed:', error.message);
-    }
-  }, 5000); // Wait 5 seconds for server to be fully ready
+  // Run initial test on startup only in production
+  if (process.env.NODE_ENV === 'production') {
+    setTimeout(async () => {
+      console.log('\n🚀 Running initial monitoring test on startup...');
+      try {
+        await monitor.runAllTests();
+        console.log('✅ Initial monitoring test completed');
+      } catch (error) {
+        console.error('❌ Initial monitoring test failed:', error.message);
+      }
+    }, 5000); // Wait 5 seconds for server to be fully ready
+  } else {
+    console.log('📊 Monitoring startup test skipped (local development mode)');
+  }
 });
