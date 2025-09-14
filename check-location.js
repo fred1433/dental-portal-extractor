@@ -4,10 +4,10 @@ async function checkLocation() {
   
   if (isRender) {
     console.log('🚀 Running on Render platform');
-    return 'render';
+    return { isUS: true, platform: 'render' };
   } else {
     console.log('💻 Running locally');
-    return 'local';
+    return { isUS: true, platform: 'local' };
   }
 }
 

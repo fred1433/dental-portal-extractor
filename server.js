@@ -133,7 +133,7 @@ app.post('/api/extract', checkApiKey, async (req, res) => {
         
         // Wait for OTP from frontend
         const otp = await otpPromise;
-        broadcastLog(`📝 OTP received: ${otp}`);
+        broadcastLog('🔐 OTP received');
         return otp;
       });
     } else if (portalLower === 'cigna') {
@@ -156,7 +156,7 @@ app.post('/api/extract', checkApiKey, async (req, res) => {
         
         // Wait for OTP from frontend
         const otp = await otpPromise;
-        broadcastLog(`📝 OTP received: ${otp}`);
+        broadcastLog('🔐 OTP received');
         return otp;
       });
     } else {
@@ -257,8 +257,8 @@ app.post('/api/submit-otp', (req, res) => {
     return res.status(401).json({ error: 'Invalid API key' });
   }
   
-  if (!otp || otp.length !== 6) {
-    return res.status(400).json({ error: 'Invalid OTP format' });
+  if (!otp || !/^\d{6}$/.test(otp)) {
+    return res.status(400).json({ error: 'Invalid OTP format - must be 6 digits' });
   }
   
   // Find and resolve the OTP promise
@@ -434,9 +434,15 @@ app.get('/', (req, res) => {
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, async () => {
   console.log(`🚀 Server running on http://localhost:${PORT}`);
-  console.log(`📝 API Key: ${API_KEY}`);
-  console.log(`🔗 Access URL: http://localhost:${PORT}/?key=${API_KEY}`);
-  console.log(`📊 Monitor URL: http://localhost:${PORT}/monitor?key=${API_KEY}`);
+  
+  // Only show API key in development
+  if (process.env.NODE_ENV !== 'production') {
+    console.log(`📝 API Key: ${API_KEY}`);
+    console.log(`🔗 Access URL: http://localhost:${PORT}/?key=${API_KEY}`);
+    console.log(`📊 Monitor URL: http://localhost:${PORT}/monitor?key=${API_KEY}`);
+  } else {
+    console.log(`🔒 Server running in production mode`);
+  }
   
   // Check location for VPN warning
   await checkLocation();
