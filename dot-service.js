@@ -123,9 +123,9 @@ class DOTService {
         if (typeof message === 'string') {
           // Filtrer ou reformater certains messages
           if (message.includes('Bearer token captured')) {
-            logWrapper('✅ Authentication successful');
+            originalConsoleLog('  DOT: ✅ Authentication successful');
           } else if (message.includes('API client ready')) {
-            logWrapper('✅ API client ready');
+            originalConsoleLog('  DOT: ✅ API client ready');
           } else if (message.includes('Searching for member')) {
             // Ne pas dupliquer ce message
             return;
@@ -138,10 +138,12 @@ class DOTService {
           } else if (message.includes('person MTU')) {
             // Simplifier les IDs hashés
             const simplified = message.replace(/person MTU[A-Za-z0-9]+\.\.\./, 'this family member...');
-            logWrapper(simplified);
+            originalConsoleLog('  DOT: ' + simplified);
           } else if (!message.includes('Bearer token')) {
-            logWrapper(message);
+            originalConsoleLog('  DOT: ' + message);
           }
+        } else {
+          originalConsoleLog(message);
         }
       };
       
