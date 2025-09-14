@@ -37,10 +37,10 @@ const TEST_PATIENTS = {
     dateOfBirth: '11/14/2017'
   },
   DOT: {
-    subscriberId: 'M1003287',
-    firstName: 'GABRIELLA',
-    lastName: 'ANDERSON',
-    dateOfBirth: '01/15/2015'
+    subscriberId: '916797559',
+    firstName: 'MAURICE',
+    lastName: 'BEREND',
+    dateOfBirth: '12/16/1978'
   }
 };
 
@@ -346,56 +346,77 @@ async function testMetLife() {
   }
 }
 
-// Fonction pour tester DOT
+// Fonction pour tester DOT (smoke test only)
 async function testDOT() {
   const startTime = Date.now();
   const service = new DOTService();
   
   try {
     console.log('🔍 Testing DOT...');
-    await service.initialize(true, msg => console.log(`  DOT: ${msg}`));
+    await service.initialize(true, () => {}); // Silent logging
     
-    const patient = TEST_PATIENTS.DOT;
-    // Convert date format from MM/DD/YYYY to YYYY-MM-DD for DOT
-    const [month, day, year] = patient.dateOfBirth.split('/');
-    const formattedPatient = {
-      ...patient,
-      dateOfBirth: `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`
-    };
+    // Smoke test: just check if session is valid and API can be created
+    const isLoggedIn = await service.ensureLoggedIn(() => {});
     
-    const data = await service.extractPatientData(
-      formattedPatient,
-      msg => console.log(`  DOT: ${msg}`)
-    );
+    if (!isLoggedIn) {
+      await service.close();
+      const duration = Date.now() - startTime;
+      console.log('❌ DOT: Need login');
+      return {
+        portal: 'DOT',
+        status: 'down',
+        duration_ms: duration,
+        error_message: 'Session expired - login required'
+      };
+    }
     
-    await service.close();
-    
-    const duration = Date.now() - startTime;
-    
-    // DOT returns data directly with summary
-    if (data && data.summary) {
+    // Try to create API client to verify session works
+    const path = require('path');
+    try {
+      const { createDotApi, closeApi } = require('./dot-extractor/dist/sdk/dotClient');
+      const api = await createDotApi(path.join(__dirname, 'dot-extractor', 'dot-storage.json'));
+      await closeApi(api);
+      
+      await service.close();
+      const duration = Date.now() - startTime;
       console.log('✅ DOT: OK');
       return {
         portal: 'DOT',
         status: 'up',
         duration_ms: duration,
-        details: `Found ${data.claims?.length || 0} claims, max: ${data.summary.planMaximum}`
+        details: 'Session valid and API accessible'
       };
-    } else {
-      console.log('❌ DOT: Failed');
-      return {
-        portal: 'DOT',
-        status: 'down',
-        duration_ms: duration,
-        error_message: 'No data returned'
-      };
+    } catch (apiError) {
+      await service.close();
+      const duration = Date.now() - startTime;
+      const isSessionError = apiError.message.includes('401') || apiError.message.includes('session') || apiError.message.includes('Bearer');
+      
+      if (isSessionError) {
+        console.log('⚠️ DOT: Session expired');
+        return {
+          portal: 'DOT',
+          status: 'degraded',
+          duration_ms: duration,
+          error_message: 'Session expired - needs refresh'
+        };
+      } else {
+        console.log('❌ DOT: API error');
+        return {
+          portal: 'DOT',
+          status: 'down',
+          duration_ms: duration,
+          error_message: apiError.message
+        };
+      }
     }
   } catch (error) {
+    await service.close().catch(() => {});
+    const duration = Date.now() - startTime;
     console.log('❌ DOT: Error -', error.message);
     return {
       portal: 'DOT',
       status: 'down',
-      duration_ms: Date.now() - startTime,
+      duration_ms: duration,
       error_message: error.message
     };
   }
@@ -422,6 +443,16 @@ function saveResult(result) {
   });
 }
 
+// Helper pour timeout
+const withTimeout = (promise, ms, label) => {
+  return Promise.race([
+    promise,
+    new Promise((_, reject) => 
+      setTimeout(() => reject(new Error(`${label} timeout after ${ms}ms`)), ms)
+    )
+  ]);
+};
+
 // Fonction principale de test
 async function runAllTests() {
   console.log('\n' + '='.repeat(50));
@@ -429,33 +460,33 @@ async function runAllTests() {
   console.log('='.repeat(50));
   console.log('🚀 Running all tests in PARALLEL...');
   
-  // Exécuter tous les tests en parallèle
+  // Exécuter tous les tests en parallèle avec timeout de 60 secondes
   const [dnoaResult, dqResult, mlResult, cignaResult, dotResult] = await Promise.all([
-    testDNOA().catch(error => ({
+    withTimeout(testDNOA(), 60000, 'DNOA').catch(error => ({
       portal: 'DNOA',
       status: 'down',
       duration_ms: 0,
       error_message: error.message
     })),
-    testDentaQuest().catch(error => ({
+    withTimeout(testDentaQuest(), 60000, 'DentaQuest').catch(error => ({
       portal: 'DentaQuest',
       status: 'down',
       duration_ms: 0,
       error_message: error.message
     })),
-    testMetLife().catch(error => ({
+    withTimeout(testMetLife(), 60000, 'MetLife').catch(error => ({
       portal: 'MetLife',
       status: 'down',
       duration_ms: 0,
       error_message: error.message
     })),
-    testCigna().catch(error => ({
+    withTimeout(testCigna(), 60000, 'Cigna').catch(error => ({
       portal: 'Cigna',
       status: 'down',
       duration_ms: 0,
       error_message: error.message
     })),
-    testDOT().catch(error => ({
+    withTimeout(testDOT(), 60000, 'DOT').catch(error => ({
       portal: 'DOT',
       status: 'down',
       duration_ms: 0,

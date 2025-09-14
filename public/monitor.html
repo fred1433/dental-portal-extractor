@@ -135,6 +135,11 @@
             color: #991b1b;
         }
 
+        .status-otp_required {
+            background: #e0e7ff;
+            color: #3730a3;
+        }
+
         .status-unknown {
             background: #f3f4f6;
             color: #6b7280;
@@ -385,7 +390,7 @@
             });
             
             // Create cards for each portal
-            ['DNOA', 'DentaQuest', 'MetLife'].forEach(name => {
+            ['DNOA', 'DentaQuest', 'MetLife', 'Cigna', 'DOT'].forEach(name => {
                 const data = portalData[name] || {
                     portal: name,
                     status: 'unknown',

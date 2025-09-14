@@ -83,12 +83,14 @@ class DOTService {
     }
   }
 
-  async extractPatientData(patient, onLog = console.log) {
+  async extractPatientData(patient, onLog = console.log, options = {}) {
     const logWrapper = (message) => {
       if (typeof onLog === 'function') {
         onLog(message);
       }
     };
+    
+    const originalConsoleLog = console.log;
     
     try {
       // Afficher immédiatement les premiers logs
@@ -117,41 +119,39 @@ class DOTService {
       logWrapper(`🚀 Initializing DOT API client...`);
       logWrapper(`⏳ Capturing authentication token (this may take a few seconds)...`);
       
-      // Capture console.log from the TypeScript extractor
-      const originalConsoleLog = console.log;
-      console.log = (message) => {
-        if (typeof message === 'string') {
-          // Filtrer ou reformater certains messages
-          if (message.includes('Bearer token captured')) {
-            originalConsoleLog('  DOT: ✅ Authentication successful');
-          } else if (message.includes('API client ready')) {
-            originalConsoleLog('  DOT: ✅ API client ready');
-          } else if (message.includes('Searching for member')) {
-            // Ne pas dupliquer ce message
-            return;
-          } else if (message.includes('benefitProgramOid')) {
-            // Masquer les détails techniques
-            return;
-          } else if (message.includes('Variant A failed')) {
-            // Masquer les détails d'implémentation
-            return;
-          } else if (message.includes('person MTU')) {
-            // Simplifier les IDs hashés
-            const simplified = message.replace(/person MTU[A-Za-z0-9]+\.\.\./, 'this family member...');
-            originalConsoleLog('  DOT: ' + simplified);
-          } else if (!message.includes('Bearer token')) {
-            originalConsoleLog('  DOT: ' + message);
+      // Only hijack console.log if not in monitor mode
+      if (!options.monitorMode) {
+        console.log = (message) => {
+          if (typeof message === 'string') {
+            // Filtrer ou reformater certains messages
+            if (message.includes('Bearer token captured')) {
+              originalConsoleLog('  DOT: ✅ Authentication successful');
+            } else if (message.includes('API client ready')) {
+              originalConsoleLog('  DOT: ✅ API client ready');
+            } else if (message.includes('Searching for member')) {
+              // Ne pas dupliquer ce message
+              return;
+            } else if (message.includes('benefitProgramOid')) {
+              // Masquer les détails techniques
+              return;
+            } else if (message.includes('Variant A failed')) {
+              // Masquer les détails d'implémentation
+              return;
+            } else if (message.includes('person MTU')) {
+              // Simplifier les IDs hashés
+              const simplified = message.replace(/person MTU[A-Za-z0-9]+\.\.\./, 'this family member...');
+              originalConsoleLog('  DOT: ' + simplified);
+            } else if (!message.includes('Bearer token')) {
+              originalConsoleLog('  DOT: ' + message);
+            }
+          } else {
+            originalConsoleLog(message);
           }
-        } else {
-          originalConsoleLog(message);
-        }
-      };
+        };
+      }
       
       // Call the TypeScript extractor
       const data = await extractDotData(extractOptions);
-      
-      // Restore original console.log
-      console.log = originalConsoleLog;
       
       // Transform to match expected format
       const subscriberInfo = data.searchData?.subscribers?.[0];
@@ -199,6 +199,11 @@ class DOTService {
       }
       
       throw error;
+    } finally {
+      // Always restore console.log
+      if (!options.monitorMode) {
+        console.log = originalConsoleLog;
+      }
     }
   }
 
