@@ -1,0 +1,7 @@
+node_modules/
+dist/
+out/
+.env
+ddins-storage.json
+*.log
+.DS_Store
