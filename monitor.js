@@ -460,33 +460,33 @@ async function runAllTests() {
   console.log('='.repeat(50));
   console.log('🚀 Running all tests in PARALLEL...');
   
-  // Exécuter tous les tests en parallèle avec timeout de 60 secondes
+  // Exécuter tous les tests en parallèle avec timeout de 120 secondes (2 minutes)
   const [dnoaResult, dqResult, mlResult, cignaResult, dotResult] = await Promise.all([
-    withTimeout(testDNOA(), 60000, 'DNOA').catch(error => ({
+    withTimeout(testDNOA(), 120000, 'DNOA').catch(error => ({
       portal: 'DNOA',
       status: 'down',
       duration_ms: 0,
       error_message: error.message
     })),
-    withTimeout(testDentaQuest(), 60000, 'DentaQuest').catch(error => ({
+    withTimeout(testDentaQuest(), 120000, 'DentaQuest').catch(error => ({
       portal: 'DentaQuest',
       status: 'down',
       duration_ms: 0,
       error_message: error.message
     })),
-    withTimeout(testMetLife(), 60000, 'MetLife').catch(error => ({
+    withTimeout(testMetLife(), 120000, 'MetLife').catch(error => ({
       portal: 'MetLife',
       status: 'down',
       duration_ms: 0,
       error_message: error.message
     })),
-    withTimeout(testCigna(), 60000, 'Cigna').catch(error => ({
+    withTimeout(testCigna(), 120000, 'Cigna').catch(error => ({
       portal: 'Cigna',
       status: 'down',
       duration_ms: 0,
       error_message: error.message
     })),
-    withTimeout(testDOT(), 60000, 'DOT').catch(error => ({
+    withTimeout(testDOT(), 120000, 'DOT').catch(error => ({
       portal: 'DOT',
       status: 'down',
       duration_ms: 0,
