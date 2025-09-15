@@ -11,7 +11,8 @@
     "build:watch": "tsc --watch",
     "prebuild": "rm -rf dist",
     "postinstall": "npm run build && cd dot-extractor && npm install && npm run build",
-    "ddins:doctor": "node tools/ddins-doctor.js"
+    "ddins:login": "node ddins/login.js",
+    "ddins:doctor": "node ddins/doctor.js"
   },
   "dependencies": {
     "cors": "^2.8.5",

@@ -6,7 +6,7 @@ const fs = require('fs');
 const MetLifeService = require('./metlife-service');
 const CignaService = require('./cigna-service');
 const DOTService = require('./dot-service');
-const DDINSService = require('./ddins-service');
+const DDINSService = require('./ddins/service');
 const monitor = require('./monitor');
 const cron = require('node-cron');
 const checkLocation = require('./check-location');
@@ -454,7 +454,7 @@ app.get('/monitor', (req, res) => {
 // DDINS health check (session + pt-userid + ploc)
 app.get('/api/health/ddins', checkApiKey, async (req, res) => {
   try {
-    const DDINSService = require('./ddins-service');
+    const DDINSService = require('./ddins/service');
     const service = new DDINSService();
     const logs = [];
     const log = (m) => logs.push(m);

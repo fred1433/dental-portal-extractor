@@ -6,8 +6,8 @@ require('dotenv').config();
 
 class DDINSService {
     constructor() {
-        this.storageStatePath = process.env.DDINS_SESSION_PATH 
-            || path.join(__dirname, '.ddins-session', 'storageState.json');
+        this.storageStatePath = process.env.DDINS_SESSION_PATH
+            || path.join(__dirname, '..', '.ddins-session', 'storageState.json');
         this.baseURL = 'https://www.deltadentalins.com';
         this.ptUserId = process.env.DDINS_PT_USERID || null;
         this.plocId = process.env.DDINS_PLOC || null;
@@ -43,9 +43,9 @@ class DDINSService {
         onLog('   🔄 No session found, attempting auto-login...');
         
         return new Promise((resolve) => {
-            const loginScriptPath = path.join(__dirname, 'ddins-extractor', 'scripts', 'auto-login.js');
+            const loginScriptPath = path.join(__dirname, 'login.js');
             const child = spawn('node', [loginScriptPath], {
-                cwd: path.join(__dirname, 'ddins-extractor'),
+                cwd: __dirname,
                 env: { ...process.env },
                 stdio: ['inherit', 'pipe', 'pipe']
             });
@@ -112,7 +112,7 @@ class DDINSService {
             // Try auto-login
             const loginSuccess = await this.tryAutoLogin(onLog);
             if (!loginSuccess) {
-                throw new Error('No DDINS session. Auto-login failed. Please run manually: cd ddins-extractor && npm run login:interactive');
+                throw new Error('No DDINS session. Auto-login failed. Please run manually: node ddins/login.js');
             }
         }
         
@@ -154,7 +154,7 @@ class DDINSService {
                     return this.makeApiContext(onLog);
                 }
             }
-            throw new Error('No valid DDINS session (missing pt-userid). Add DDINS_PT_USERID to .env or run: cd ddins-extractor && npm run login:interactive');
+            throw new Error('No valid DDINS session (missing pt-userid). Add DDINS_PT_USERID to .env or run: node ddins/login.js');
         }
 
         return await request.newContext({
@@ -275,7 +275,7 @@ class DDINSService {
         } catch (e) {
             if (e && e.code === 'HTML_RESPONSE') {
                 onLog('   ⚠️ Session expired.');
-                throw new Error('DDINS session expired. Please run: cd ddins-extractor && npm run login:interactive');
+                throw new Error('DDINS session expired. Please run: node ddins/login.js');
             }
             onLog('   ⚠️ Session check failed, continuing anyway...');
         }
@@ -351,7 +351,7 @@ class DDINSService {
 
     // Simplified bulk extraction - just reads from patients.ndjson
     async extractBulkPatients(onLog = console.log, maxPatients = 10) {
-        const patientsFile = path.join(__dirname, 'ddins-extractor', 'out', 'patients.ndjson');
+        const patientsFile = path.join(__dirname, '..', 'data', 'ddins', 'patients.ndjson');
         
         if (!fs.existsSync(patientsFile)) {
             throw new Error('No patients file found. Please run DDINS extractor first.');

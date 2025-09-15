@@ -183,10 +183,10 @@ const testData: Record<PortalType, PortalTestData> = {
         dateOfBirth: ''
     },
     'DDINS': {
-        firstName: 'Roland',
+        firstName: 'Estelle',
         lastName: 'Mazet',
-        subscriberId: '002175461801',
-        dateOfBirth: '01/11/1984'
+        subscriberId: '002175461802',
+        dateOfBirth: '10/19/2011'
     }
 };
 

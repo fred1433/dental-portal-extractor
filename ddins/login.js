@@ -7,7 +7,7 @@ const path = require('path');
 require('dotenv').config({ path: path.join(__dirname, '..', '..', '.env') });
 
 const STORAGE_PATH = process.env.DDINS_SESSION_PATH
-  || path.join(process.cwd(), '..', '.ddins-session', 'storageState.json');
+  || path.join(__dirname, '..', '.ddins-session', 'storageState.json');
 const START_URL = 'https://www.deltadentalins.com/provider-tools/v2';
 
 // Ensure session directory exists
