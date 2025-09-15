@@ -40,10 +40,10 @@ class DDINSService {
     }
 
     async tryAutoLogin(onLog = console.log) {
-        onLog('   🔄 No session found, attempting auto-login...');
-        
+        onLog('   🔄 Session expired, attempting auto-login...');
+
         return new Promise((resolve) => {
-            const loginScriptPath = path.join(__dirname, 'login.js');
+            const loginScriptPath = path.join(__dirname, 'auto-login.js');
             const child = spawn('node', [loginScriptPath], {
                 cwd: __dirname,
                 env: { ...process.env },
@@ -246,7 +246,7 @@ class DDINSService {
         }
     }
 
-    async extractPatientData(patient, onLog = console.log) {
+    async extractPatientData(patient, onLog = console.log, retryCount = 0) {
         // Extract enrolleeId from patient object
         const enrolleeId = (patient && (
             patient.subscriberId || 
@@ -260,6 +260,15 @@ class DDINSService {
         }
 
         if (!fs.existsSync(this.storageStatePath)) {
+            // No session, try auto-login if first attempt
+            if (retryCount === 0) {
+                onLog('   📍 No session found, attempting auto-login...');
+                const loginSuccess = await this.tryAutoLogin(onLog);
+                if (loginSuccess) {
+                    onLog('   ✅ Auto-login successful!');
+                    return await this.extractPatientData(patient, onLog, retryCount + 1);
+                }
+            }
             throw new Error(`No session found at ${this.storageStatePath}. Please run login first.`);
         }
 
@@ -275,7 +284,20 @@ class DDINSService {
         } catch (e) {
             if (e && e.code === 'HTML_RESPONSE') {
                 onLog('   ⚠️ Session expired.');
-                throw new Error('DDINS session expired. Please run: node ddins/login.js');
+
+                // Auto-retry with fresh login if first attempt
+                if (retryCount === 0) {
+                    await api.dispose();
+                    onLog('   🔄 Attempting automatic re-login...');
+
+                    const loginSuccess = await this.tryAutoLogin(onLog);
+                    if (loginSuccess) {
+                        onLog('   ✅ Re-login successful, retrying extraction...');
+                        return await this.extractPatientData(patient, onLog, retryCount + 1);
+                    }
+                }
+
+                throw new Error('DDINS session expired. Please run: node ddins/auto-login.js');
             }
             onLog('   ⚠️ Session check failed, continuing anyway...');
         }
@@ -288,6 +310,17 @@ class DDINSService {
         } catch (e) {
             onLog(`   ⚠️ Eligibility failed: ${e.message}`);
             if (e && e.code === 'HTML_RESPONSE') {
+                // Auto-retry with fresh login if first attempt
+                if (retryCount === 0) {
+                    await api.dispose();
+                    onLog('   🔄 Session expired, attempting automatic re-login...');
+
+                    const loginSuccess = await this.tryAutoLogin(onLog);
+                    if (loginSuccess) {
+                        onLog('   ✅ Re-login successful, retrying extraction...');
+                        return await this.extractPatientData(patient, onLog, retryCount + 1);
+                    }
+                }
                 throw new Error('Session expired during eligibility fetch');
             }
         }
@@ -303,6 +336,17 @@ class DDINSService {
         } catch (e) {
             onLog(`   ⚠️ Claims failed: ${e.message}`);
             if (e.code === 'HTML_RESPONSE') {
+                // Auto-retry with fresh login if first attempt
+                if (retryCount === 0) {
+                    await api.dispose();
+                    onLog('   🔄 Session expired, attempting automatic re-login...');
+
+                    const loginSuccess = await this.tryAutoLogin(onLog);
+                    if (loginSuccess) {
+                        onLog('   ✅ Re-login successful, retrying extraction...');
+                        return await this.extractPatientData(patient, onLog, retryCount + 1);
+                    }
+                }
                 throw new Error('Session expired during claims fetch');
             }
         }
