@@ -29,3 +29,6 @@ dot-extractor/*.json
 dist/
 public/app.js
 dot-session-b64.txt
+
+# DDINS session files
+.ddins-session/
