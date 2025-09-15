@@ -9,6 +9,7 @@ const DentaQuestService = require('./dentaquest-service');
 const MetLifeService = require('./metlife-service');
 const CignaService = require('./cigna-service');
 const DOTService = require('./dot-service');
+const DDINSService = require('./ddins/service');
 
 // Patients de test (données réelles de l'interface)
 const TEST_PATIENTS = {
@@ -41,6 +42,12 @@ const TEST_PATIENTS = {
     firstName: 'MAURICE',
     lastName: 'BEREND',
     dateOfBirth: '12/16/1978'
+  },
+  DDINS: {
+    subscriberId: 'U72997972',
+    firstName: 'ESTELLE',
+    lastName: 'MAZET',
+    dateOfBirth: '11/15/1985'
   }
 };
 
@@ -422,6 +429,67 @@ async function testDOT() {
   }
 }
 
+// Fonction pour tester DDINS
+async function testDDINS() {
+  console.log('🔍 Testing DDINS...');
+  const startTime = Date.now();
+  const service = new DDINSService();
+
+  try {
+    await service.initialize(console.log.bind(null, '  DDINS:'));
+
+    // Test avec le patient de test
+    const testPatient = TEST_PATIENTS.DDINS;
+    const result = await service.extractPatientData(
+      testPatient,
+      console.log.bind(null, '  DDINS:')
+    );
+
+    await service.close();
+    const duration = Date.now() - startTime;
+
+    if (result.eligibility || result.benefits) {
+      const benefitCount = result.benefits ? result.benefits.length : 0;
+      console.log(`✅ DDINS: OK - Found ${benefitCount} benefits`);
+      return {
+        portal: 'DDINS',
+        status: 'up',
+        duration_ms: duration,
+        details: `Found ${benefitCount} benefits`
+      };
+    } else {
+      console.log('⚠️ DDINS: Partial data');
+      return {
+        portal: 'DDINS',
+        status: 'degraded',
+        duration_ms: duration,
+        details: 'Partial data retrieved'
+      };
+    }
+  } catch (error) {
+    await service.close().catch(() => {});
+    const duration = Date.now() - startTime;
+
+    if (error.message && error.message.includes('Session expired')) {
+      console.log('⚠️ DDINS: Session expired');
+      return {
+        portal: 'DDINS',
+        status: 'degraded',
+        duration_ms: duration,
+        error_message: 'Session expired - auto-login will retry'
+      };
+    } else {
+      console.log('❌ DDINS: Error -', error.message);
+      return {
+        portal: 'DDINS',
+        status: 'down',
+        duration_ms: duration,
+        error_message: error.message
+      };
+    }
+  }
+}
+
 // Sauvegarder les résultats dans la base
 function saveResult(result) {
   return new Promise((resolve, reject) => {
@@ -461,7 +529,7 @@ async function runAllTests() {
   console.log('🚀 Running all tests in PARALLEL...');
   
   // Exécuter tous les tests en parallèle avec timeout de 180 secondes (3 minutes)
-  const [dnoaResult, dqResult, mlResult, cignaResult, dotResult] = await Promise.all([
+  const [dnoaResult, dqResult, mlResult, cignaResult, dotResult, ddinsResult] = await Promise.all([
     withTimeout(testDNOA(), 180000, 'DNOA').catch(error => ({
       portal: 'DNOA',
       status: 'down',
@@ -491,6 +559,12 @@ async function runAllTests() {
       status: 'down',
       duration_ms: 0,
       error_message: error.message
+    })),
+    withTimeout(testDDINS(), 180000, 'DDINS').catch(error => ({
+      portal: 'DDINS',
+      status: 'down',
+      duration_ms: 0,
+      error_message: error.message
     }))
   ]);
   
@@ -500,10 +574,11 @@ async function runAllTests() {
     saveResult(dqResult),
     saveResult(mlResult),
     saveResult(cignaResult),
-    saveResult(dotResult)
+    saveResult(dotResult),
+    saveResult(ddinsResult)
   ]);
   
-  const results = [dnoaResult, dqResult, mlResult, cignaResult, dotResult];
+  const results = [dnoaResult, dqResult, mlResult, cignaResult, dotResult, ddinsResult];
   
   // Résumé
   console.log('\n📊 SUMMARY:');
