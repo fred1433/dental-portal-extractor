@@ -86,6 +86,16 @@ class DDINSService {
         });
     }
 
+    async initialize(onLog = console.log) {
+        onLog('🚀 Initializing DDINS service...');
+        // Check and refresh session if needed
+        const sessionValid = await this.makeApiContext(onLog);
+        if (sessionValid) {
+            onLog('✅ DDINS service initialized');
+        }
+        return sessionValid;
+    }
+
     async resolvePlocId(api, onLog = console.log) {
         if (this.plocId) return this.plocId;
         try {
@@ -458,6 +468,11 @@ class DDINSService {
             failureCount: results.filter(r => r.error).length,
             patients: results
         };
+    }
+    async close() {
+        // Method for compatibility with monitoring
+        // DDINS uses stateless API, nothing to close
+        return Promise.resolve();
     }
 }
 
