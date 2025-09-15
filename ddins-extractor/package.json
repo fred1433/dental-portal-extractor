@@ -6,8 +6,11 @@
   "scripts": {
     "build": "tsc",
     "start": "ts-node src/index.ts",
-    "login": "ts-node scripts/login.ts",
+    "login": "node scripts/auto-login.js",
+    "login:auto": "node scripts/auto-login.js",
+    "login:interactive": "node scripts/interactive-login.js",
     "extract": "ts-node src/index.ts",
+    "auto": "node scripts/auto-extract.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

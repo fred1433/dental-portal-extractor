@@ -10,7 +10,8 @@
     "build": "tsc && cp dist/public/app.js public/app.js",
     "build:watch": "tsc --watch",
     "prebuild": "rm -rf dist",
-    "postinstall": "npm run build && cd dot-extractor && npm install && npm run build"
+    "postinstall": "npm run build && cd dot-extractor && npm install && npm run build",
+    "ddins:doctor": "node tools/ddins-doctor.js"
   },
   "dependencies": {
     "cors": "^2.8.5",

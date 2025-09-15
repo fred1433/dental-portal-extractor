@@ -450,12 +450,28 @@
                     <div class="form-group full-width">
                         <label for="portal">Select Portal</label>
                         <select id="portal" name="portal" required>
+                            <option value="DDINS" selected>Delta Dental INS</option>
                             <option value="DNOA">DNOA</option>
+                            <option value="DOT">DOT (Dental Office Toolkit)</option>
                             <option value="DentaQuest">DentaQuest</option>
                             <option value="MetLife">MetLife</option>
                             <option value="Cigna">Cigna</option>
-                            <option value="DOT">DOT (Dental Office Toolkit)</option>
                         </select>
+                    </div>
+                    
+                    <!-- DDINS Extraction Mode Toggle -->
+                    <div class="form-group full-width" id="ddinsMode" style="display: block;">
+                        <label for="extractionMode">Extraction Mode</label>
+                        <div style="display: flex; gap: 20px; align-items: center;">
+                            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                                <input type="radio" name="extractionMode" value="single" checked>
+                                <span>Single Patient</span>
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 8px; cursor: not-allowed; opacity: 0.5;" title="Coming soon">
+                                <input type="radio" name="extractionMode" value="bulk" disabled>
+                                <span>🚀 Bulk Extraction (Coming Soon)</span>
+                            </label>
+                        </div>
                     </div>
                     
                     <div class="form-group">

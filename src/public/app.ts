@@ -3,7 +3,7 @@
  */
 
 // Type definitions (inline for browser compatibility)
-type PortalType = 'DNOA' | 'DentaQuest' | 'MetLife' | 'Cigna' | 'DOT' | 'Aetna' | 'UnitedHealthcare';
+type PortalType = 'DNOA' | 'DentaQuest' | 'MetLife' | 'Cigna' | 'DOT' | 'Aetna' | 'UnitedHealthcare' | 'DDINS';
 
 interface PortalTestData {
     firstName: string;
@@ -18,6 +18,7 @@ interface ExtractionRequest {
     dateOfBirth: string;
     firstName: string;
     lastName: string;
+    mode?: 'single' | 'bulk';
 }
 
 interface ExtractionResponse {
@@ -180,6 +181,12 @@ const testData: Record<PortalType, PortalTestData> = {
         lastName: '',
         subscriberId: '',
         dateOfBirth: ''
+    },
+    'DDINS': {
+        firstName: 'Roland',
+        lastName: 'Mazet',
+        subscriberId: '002175461801',
+        dateOfBirth: '01/11/1984'
     }
 };
 
@@ -218,6 +225,81 @@ function fillFormWithTestData(portal: PortalType): void {
         safeSetValue('lastName', data.lastName);
         safeSetValue('subscriberId', data.subscriberId);
         safeSetValue('dateOfBirth', data.dateOfBirth);
+    }
+    
+    // Show/hide DDINS mode toggle
+    const ddinsMode = safeGetElement<HTMLElement>('ddinsMode');
+    if (ddinsMode) {
+        if (portal === 'DDINS') {
+            ddinsMode.style.display = 'block';
+        } else {
+            ddinsMode.style.display = 'none';
+        }
+    }
+    
+    // Show/hide form fields based on portal and mode
+    updateFormFieldVisibility(portal);
+}
+
+function updateFormFieldVisibility(portal: PortalType): void {
+    const firstName = safeGetElement<HTMLElement>('firstName');
+    const lastName = safeGetElement<HTMLElement>('lastName');
+    const subscriberId = safeGetElement<HTMLElement>('subscriberId');
+    const dateOfBirth = safeGetElement<HTMLElement>('dateOfBirth');
+    
+    // Get their parent containers
+    const firstNameGroup = firstName?.parentElement;
+    const lastNameGroup = lastName?.parentElement;
+    const subscriberIdGroup = subscriberId?.parentElement;
+    const dateOfBirthGroup = dateOfBirth?.parentElement;
+    
+    if (portal === 'DDINS') {
+        const modeRadios = document.getElementsByName('extractionMode');
+        let selectedMode = 'single';
+        
+        Array.from(modeRadios).forEach(radio => {
+            if ((radio as HTMLInputElement).checked) {
+                selectedMode = (radio as HTMLInputElement).value;
+            }
+        })
+        
+        if (selectedMode === 'bulk') {
+            // Hide all patient fields for bulk mode
+            if (firstNameGroup) firstNameGroup.style.display = 'none';
+            if (lastNameGroup) lastNameGroup.style.display = 'none';
+            if (subscriberIdGroup) subscriberIdGroup.style.display = 'none';
+            if (dateOfBirthGroup) dateOfBirthGroup.style.display = 'none';
+            
+            // Remove required attribute
+            if (firstName && isInputElement(firstName)) firstName.required = false;
+            if (lastName && isInputElement(lastName)) lastName.required = false;
+            if (subscriberId && isInputElement(subscriberId)) subscriberId.required = false;
+            if (dateOfBirth && isInputElement(dateOfBirth)) dateOfBirth.required = false;
+        } else {
+            // Show all fields for single mode
+            if (firstNameGroup) firstNameGroup.style.display = '';
+            if (lastNameGroup) lastNameGroup.style.display = '';
+            if (subscriberIdGroup) subscriberIdGroup.style.display = '';
+            if (dateOfBirthGroup) dateOfBirthGroup.style.display = '';
+            
+            // Add required attribute back
+            if (firstName && isInputElement(firstName)) firstName.required = true;
+            if (lastName && isInputElement(lastName)) lastName.required = true;
+            if (subscriberId && isInputElement(subscriberId)) subscriberId.required = true;
+            if (dateOfBirth && isInputElement(dateOfBirth)) dateOfBirth.required = true;
+        }
+    } else {
+        // Show all fields for other portals
+        if (firstNameGroup) firstNameGroup.style.display = '';
+        if (lastNameGroup) lastNameGroup.style.display = '';
+        if (subscriberIdGroup) subscriberIdGroup.style.display = '';
+        if (dateOfBirthGroup) dateOfBirthGroup.style.display = '';
+        
+        // Ensure required attributes are set
+        if (firstName && isInputElement(firstName)) firstName.required = true;
+        if (lastName && isInputElement(lastName)) lastName.required = true;
+        if (subscriberId && isInputElement(subscriberId)) subscriberId.required = true;
+        if (dateOfBirth && isInputElement(dateOfBirth)) dateOfBirth.required = true;
     }
 }
 
@@ -633,13 +715,32 @@ async function handleExtraction(event: Event): Promise<void> {
     }
     
     // Prepare request data
+    const portal = safeGetValue('portal') as PortalType;
     const requestData: ExtractionRequest = {
-        portal: safeGetValue('portal') as PortalType,
+        portal,
         firstName: safeGetValue('firstName'),
         lastName: safeGetValue('lastName'),
         subscriberId: safeGetValue('subscriberId'),
         dateOfBirth: safeGetValue('dateOfBirth')
     };
+    
+    // Add mode for DDINS portal
+    if (portal === 'DDINS') {
+        const modeRadios = document.getElementsByName('extractionMode');
+        Array.from(modeRadios).forEach(radio => {
+            if ((radio as HTMLInputElement).checked) {
+                requestData.mode = (radio as HTMLInputElement).value as 'single' | 'bulk';
+            }
+        })
+        
+        // For bulk mode, clear patient fields
+        if (requestData.mode === 'bulk') {
+            requestData.firstName = '';
+            requestData.lastName = '';
+            requestData.subscriberId = '';
+            requestData.dateOfBirth = '';
+        }
+    }
     
     // Close existing SSE connection
     if (eventSource) {
@@ -733,9 +834,41 @@ function initializeEventListeners(): void {
         portalSelect.addEventListener('change', (e: Event) => {
             const target = e.target as HTMLSelectElement;
             const portal = target.value as PortalType;
+            
+            // Clear logs and previous results when switching portals
+            safeSetHTML('logsContainer', '');
+            
+            // Hide and clear results section
+            const resultsSection = safeGetElement<HTMLElement>('resultsSection');
+            if (resultsSection) {
+                resultsSection.classList.remove('active');
+            }
+            
+            // Clear summary grid and CDT codes
+            const summaryGrid = safeGetElement<HTMLElement>('summaryGrid');
+            const cdtCodesSection = safeGetElement<HTMLElement>('cdtCodesSection');
+            if (summaryGrid) summaryGrid.innerHTML = '';
+            if (cdtCodesSection) cdtCodesSection.innerHTML = '';
+            
+            // Clear any error messages
+            safeHide('errorMessage');
+            safeSetHTML('errorMessage', '');
+            
+            // Fill form with test data for the new portal
             fillFormWithTestData(portal);
         });
     }
+    
+    // DDINS mode change listener
+    const modeRadios = document.getElementsByName('extractionMode');
+    Array.from(modeRadios).forEach(radio => {
+        radio.addEventListener('change', () => {
+            const portal = safeGetValue('portal') as PortalType;
+            if (portal === 'DDINS') {
+                updateFormFieldVisibility(portal);
+            }
+        });
+    })
     
     // Form submission
     const form = safeGetElement<HTMLFormElement>('extractForm');
@@ -768,7 +901,7 @@ function initialize(): void {
     // Then fill default values (after DOM is guaranteed to be ready)
     const portalSelect = safeGetElement<HTMLSelectElement>('portal');
     if (portalSelect && isSelectElement(portalSelect)) {
-        const portal = portalSelect.value as PortalType || 'DNOA';
+        const portal = portalSelect.value as PortalType || 'DDINS';
         fillFormWithTestData(portal);
     }
     

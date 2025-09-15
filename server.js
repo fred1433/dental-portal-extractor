@@ -6,6 +6,7 @@ const fs = require('fs');
 const MetLifeService = require('./metlife-service');
 const CignaService = require('./cigna-service');
 const DOTService = require('./dot-service');
+const DDINSService = require('./ddins-service');
 const monitor = require('./monitor');
 const cron = require('node-cron');
 const checkLocation = require('./check-location');
@@ -63,30 +64,39 @@ function broadcastLog(message) {
 
 // Main extraction endpoint
 app.post('/api/extract', checkApiKey, async (req, res) => {
-  const { subscriberId, dateOfBirth, firstName, lastName, portal = 'DNOA' } = req.body;
+  const { subscriberId, dateOfBirth, firstName, lastName, portal = 'DNOA', mode } = req.body;
   
-  // Validation
-  if (!subscriberId || !dateOfBirth || !firstName || !lastName) {
+  // Skip validation for DDINS bulk mode
+  const isDDINSBulk = portal?.toLowerCase() === 'ddins' && mode === 'bulk';
+  
+  // Validation (except for DDINS bulk mode)
+  if (!isDDINSBulk && (!subscriberId || !dateOfBirth || !firstName || !lastName)) {
     return res.status(400).json({ 
       error: 'Missing required fields: subscriberId, dateOfBirth, firstName, lastName' 
     });
   }
   
-  // Format date if needed (MM/DD/YYYY to YYYY-MM-DD)
-  let formattedDob = dateOfBirth;
-  if (dateOfBirth.includes('/')) {
-    const [month, day, year] = dateOfBirth.split('/');
-    formattedDob = `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`;
+  // Skip patient object creation for DDINS bulk mode
+  let patient = null;
+  if (!isDDINSBulk) {
+    // Format date if needed (MM/DD/YYYY to YYYY-MM-DD)
+    let formattedDob = dateOfBirth;
+    if (dateOfBirth && dateOfBirth.includes('/')) {
+      const [month, day, year] = dateOfBirth.split('/');
+      formattedDob = `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`;
+    }
+    
+    patient = {
+      subscriberId: subscriberId.trim(),
+      dateOfBirth: formattedDob,
+      firstName: firstName.trim().toUpperCase(),
+      lastName: lastName.trim().toUpperCase()
+    };
+    
+    broadcastLog(`🚀 Starting ${portal} extraction for ${patient.firstName} ${patient.lastName}`);
+  } else {
+    broadcastLog(`🚀 Starting ${portal} bulk extraction`);
   }
-  
-  const patient = {
-    subscriberId: subscriberId.trim(),
-    dateOfBirth: formattedDob,
-    firstName: firstName.trim().toUpperCase(),
-    lastName: lastName.trim().toUpperCase()
-  };
-  
-  broadcastLog(`🚀 Starting ${portal} extraction for ${patient.firstName} ${patient.lastName}`);
   
   // Select service based on portal (case-insensitive)
   let service;
@@ -102,10 +112,12 @@ app.post('/api/extract', checkApiKey, async (req, res) => {
     service = new DNOAService();
   } else if (portalLower === 'dot') {
     service = new DOTService();
+  } else if (portalLower === 'ddins' || portalLower === 'deltadentalins') {
+    service = new DDINSService();
   } else {
     return res.status(400).json({ 
       success: false, 
-      error: `Unknown portal: ${portal}. Valid options are: DentaQuest, MetLife, Cigna, DNOA, DOT` 
+      error: `Unknown portal: ${portal}. Valid options are: DentaQuest, MetLife, Cigna, DNOA, DOT, DDINS (DeltaDentalINS)` 
     });
   }
   
@@ -159,7 +171,8 @@ app.post('/api/extract', checkApiKey, async (req, res) => {
         broadcastLog('🔐 OTP received');
         return otp;
       });
-    } else {
+    } else if (portalLower !== 'ddins') {
+      // Skip initialize for DDINS (uses API context instead)
       await service.initialize(isHeadless, broadcastLog);
     }
     
@@ -198,6 +211,11 @@ app.post('/api/extract', checkApiKey, async (req, res) => {
     } else if (portalLower === 'cigna') {
       // Cigna retourne directement le format avec summary
       data = await service.extractPatientData(patient, broadcastLog);
+    // Bulk mode temporarily disabled
+    // } else if (portalLower === 'ddins' && req.body.mode === 'bulk') {
+    //   // DDINS bulk extraction mode - limited to 10 for web interface
+    //   const maxPatients = Math.min(10, process.env.MAX_PATIENTS ? parseInt(process.env.MAX_PATIENTS) : 10);
+    //   data = await service.extractBulkPatients(broadcastLog, maxPatients);
     } else {
       data = await service.extractPatientData(patient, broadcastLog);
     }
@@ -227,7 +245,11 @@ app.post('/api/extract', checkApiKey, async (req, res) => {
       client.write(`event: error\ndata: {"error": "${error.message}"}\n\n`);
     }
     
-    res.status(500).json({
+    // Return 401 for DDINS session errors
+    const isSessionError = /session expired|No valid DDINS session|HTML_RESPONSE/i.test(error.message || '');
+    const status = (portalLower === 'ddins' && isSessionError) ? 401 : 500;
+    
+    res.status(status).json({
       success: false,
       error: error.message,
       portal: portal,
@@ -235,7 +257,10 @@ app.post('/api/extract', checkApiKey, async (req, res) => {
     });
     
   } finally {
-    await service.close();
+    // DDINS doesn't use browser automation, so no close method
+    if (service.close) {
+      await service.close();
+    }
     
     // If MetLife and trace was recorded, include trace info in response
     if (portalLower === 'metlife' && service.getLastTraceFile) {
@@ -424,6 +449,38 @@ app.post('/api/monitor/test', checkApiKey, async (req, res) => {
 // Serve monitoring page (no API key check for HTML page itself)
 app.get('/monitor', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'monitor.html'));
+});
+
+// DDINS health check (session + pt-userid + ploc)
+app.get('/api/health/ddins', checkApiKey, async (req, res) => {
+  try {
+    const DDINSService = require('./ddins-service');
+    const service = new DDINSService();
+    const logs = [];
+    const log = (m) => logs.push(m);
+    const api = await service.makeApiContext(log);
+    try {
+      await service.checkSession(api, log);
+      await api.dispose();
+      res.json({
+        status: 'OK',
+        ptUserId: service.ptUserId || null,
+        plocId: service.plocId || null,
+        logs,
+        timestamp: new Date().toISOString()
+      });
+    } catch (e) {
+      await api.dispose();
+      res.status(500).json({
+        status: 'ERROR',
+        error: e.message,
+        logs,
+        timestamp: new Date().toISOString()
+      });
+    }
+  } catch (error) {
+    res.status(500).json({ status: 'ERROR', error: error.message });
+  }
 });
 
 // Serve the main page

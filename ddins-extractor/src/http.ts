@@ -1,6 +1,19 @@
 // src/http.ts
 import type { APIResponse, APIRequestContext } from '@playwright/test';
 
+// Custom error class for HTML responses (likely auth expired)
+export class HtmlResponseError extends Error {
+  status: number;
+  url: string;
+  code = 'HTML_RESPONSE';
+  
+  constructor(status: number, url: string, snippet: string) {
+    super(`HTML response from ${url} (status ${status}). Likely auth expired. Snippet: ${snippet}`);
+    this.status = status;
+    this.url = url;
+  }
+}
+
 export async function parseJsonSafe(res: APIResponse): Promise<any> {
   const status = res.status();
   if (status === 204) return null;
@@ -9,10 +22,15 @@ export async function parseJsonSafe(res: APIResponse): Promise<any> {
   const text = await res.text();
   if (!text || !text.trim()) return null;
 
+  // Guard: if it's HTML => raise a clear error (expired/unrecognized session)
+  if (ctype.includes('text/html') || /^<!doctype html/i.test(text) || /^<html/i.test(text)) {
+    throw new HtmlResponseError(status, res.url(), text.slice(0, 300));
+  }
+
   // Certaines réponses peuvent être du 'application/ion+json'
   const looksJson = ctype.includes('json') || ctype.includes('ion+json');
   if (!looksJson) {
-    // Renvoie le texte brut si le serveur n'envoie pas un vrai JSON MIME
+    // Try to parse as JSON anyway
     try { return JSON.parse(text); } catch { return text; }
   }
 
