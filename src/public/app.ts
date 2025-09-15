@@ -429,39 +429,103 @@ function displayResults(data: ExtractionResult): void {
                 ` : ''}
             `;
         } else {
-            // Other portals (Cigna, DentaQuest, MetLife) - have claims data
-            summaryGrid.innerHTML = `
-                <div class="summary-card">
-                    <h4>Patient</h4>
-                    <div class="value">${summary.patientName}</div>
-                    <div class="subtitle">ID: ${summary.memberId}</div>
-                </div>
-                <div class="summary-card">
-                    <h4>💰 Total Billed</h4>
-                    <div class="value">$${formatAmount(calculateTotalBilled(data.claims))}</div>
-                    <div class="subtitle">Submitted charges</div>
-                </div>
-                <div class="summary-card">
-                    <h4>✅ Insurance Paid</h4>
-                    <div class="value">$${formatAmount(calculateTotalPaid(data.claims))}</div>
-                    <div class="subtitle">Approved amount</div>
-                </div>
-                <div class="summary-card">
-                    <h4>Patient Balance</h4>
-                    <div class="value">$${formatAmount(calculatePatientBalance(data.claims))}</div>
-                    <div class="subtitle">Amount due</div>
-                </div>
-                <div class="summary-card">
-                    <h4>📋 Claims Processed</h4>
-                    <div class="value">${data.claims?.length || 0}</div>
-                    <div class="subtitle">Historical claims</div>
-                </div>
-                <div class="summary-card">
-                    <h4>Deductible</h4>
-                    <div class="value">$${formatAmount(summary.deductibleRemaining || summary.deductible?.remaining || summary.deductible || 0)}</div>
-                    <div class="subtitle">Remaining of $${formatAmount(summary.deductible?.amount || summary.deductible || 0)}</div>
-                </div>
-            `;
+            // Other portals (Cigna, DentaQuest, MetLife, DDINS) - show only cards with actual data
+            let cards = [];
+
+            // Always show patient card if we have a name or ID
+            if (summary.patientName || summary.memberId) {
+                cards.push(`
+                    <div class="summary-card">
+                        <h4>Patient</h4>
+                        <div class="value">${summary.patientName || 'N/A'}</div>
+                        ${summary.memberId ? `<div class="subtitle">ID: ${summary.memberId}</div>` : ''}
+                    </div>
+                `);
+            }
+
+            // Only show financial cards if we have claims data
+            const totalBilled = calculateTotalBilled(data.claims);
+            const totalPaid = calculateTotalPaid(data.claims);
+            const patientBalance = calculatePatientBalance(data.claims);
+
+            if (totalBilled > 0) {
+                cards.push(`
+                    <div class="summary-card">
+                        <h4>💰 Total Billed</h4>
+                        <div class="value">$${formatAmount(totalBilled)}</div>
+                        <div class="subtitle">Submitted charges</div>
+                    </div>
+                `);
+            }
+
+            if (totalPaid > 0) {
+                cards.push(`
+                    <div class="summary-card">
+                        <h4>✅ Insurance Paid</h4>
+                        <div class="value">$${formatAmount(totalPaid)}</div>
+                        <div class="subtitle">Approved amount</div>
+                    </div>
+                `);
+            }
+
+            if (patientBalance > 0) {
+                cards.push(`
+                    <div class="summary-card">
+                        <h4>Patient Balance</h4>
+                        <div class="value">$${formatAmount(patientBalance)}</div>
+                        <div class="subtitle">Amount due</div>
+                    </div>
+                `);
+            }
+
+            // Show claims count if we have claims
+            if (data.claims && data.claims.length > 0) {
+                cards.push(`
+                    <div class="summary-card">
+                        <h4>📋 Claims Processed</h4>
+                        <div class="value">${data.claims.length}</div>
+                        <div class="subtitle">Historical claims</div>
+                    </div>
+                `);
+            }
+
+            // Show deductible only if we have actual values
+            const deductibleRemaining = summary.deductibleRemaining || summary.deductible?.remaining || summary.deductible;
+            const deductibleAmount = summary.deductible?.amount || summary.deductible;
+
+            if (deductibleRemaining > 0 || deductibleAmount > 0) {
+                cards.push(`
+                    <div class="summary-card">
+                        <h4>Deductible</h4>
+                        <div class="value">$${formatAmount(deductibleRemaining || 0)}</div>
+                        ${deductibleAmount > 0 ? `<div class="subtitle">Remaining of $${formatAmount(deductibleAmount)}</div>` : '<div class="subtitle">Remaining</div>'}
+                    </div>
+                `);
+            }
+
+            // Show annual maximum if available
+            if (summary.planMaximum > 0 || summary.maximumRemaining > 0) {
+                cards.push(`
+                    <div class="summary-card">
+                        <h4>Annual Maximum</h4>
+                        <div class="value">$${formatAmount(summary.maximumRemaining || summary.planMaximum || 0)}</div>
+                        <div class="subtitle">Remaining</div>
+                    </div>
+                `);
+            }
+
+            // Show total claims from summary if different from claims array
+            if (summary.totalClaims > 0 && summary.totalClaims !== data.claims?.length) {
+                cards.push(`
+                    <div class="summary-card">
+                        <h4>Total Claims</h4>
+                        <div class="value">${summary.totalClaims}</div>
+                        <div class="subtitle">From summary</div>
+                    </div>
+                `);
+            }
+
+            summaryGrid.innerHTML = cards.join('');
         }
     }
     
