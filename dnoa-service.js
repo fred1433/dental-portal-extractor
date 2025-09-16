@@ -303,6 +303,10 @@ class DNOAService {
         patientId: patient.subscriberId || ''
       });
       onLog(`✅ Generated Normalized DA format data`);
+      console.log('DNOA Service - normalizedDA generated:', {
+        hasNormalizedDA: !!allData.normalizedDA,
+        keys: allData.normalizedDA ? Object.keys(allData.normalizedDA) : []
+      });
 
       // Create summary for display
       allData.summary = {

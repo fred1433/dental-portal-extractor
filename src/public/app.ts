@@ -865,6 +865,13 @@ async function handleExtraction(event: Event): Promise<void> {
         
         if (result.success && result.data) {
             extractedData = result.data;
+            // Debug log for normalized DA
+            const currentPortal = safeGetValue('portal');
+            console.log('Checking normalizedDA:', {
+                hasNormalizedDA: !!result.data.normalizedDA,
+                keys: Object.keys(result.data),
+                portal: currentPortal
+            });
             displayResults(result.data);
         } else {
             showError(result.error || 'Extraction failed');

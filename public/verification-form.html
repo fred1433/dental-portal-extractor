@@ -1538,13 +1538,13 @@
 
                 const data = await response.json();
 
-                if (!data.aneeqa) {
-                    console.log('No Aneeqa format data available');
+                if (!data.normalizedDA) {
+                    console.log('No Normalized DA format data available');
                     return;
                 }
 
-                // Fill the form with the Aneeqa data
-                fillFormWithNormalizedData(data.aneeqa);
+                // Fill the form with the Normalized DA data
+                fillFormWithNormalizedData(data.normalizedDA);
 
                 // Form populated successfully - no alert needed
 
@@ -1805,7 +1805,9 @@
             procedures.forEach(proc => {
                 const code = proc.code || proc.procedureCode || proc.serviceCode;
                 if (code) {
-                    const cleanCode = code.replace(/\D/g, ''); // Remove non-digits
+                    // Convert to string first in case it's a number
+                    const codeStr = String(code);
+                    const cleanCode = codeStr.replace(/\D/g, ''); // Remove non-digits
                     const dCode = cleanCode.length === 4 ? `D${cleanCode}` : cleanCode;
 
                     procedureMap[dCode] = {
