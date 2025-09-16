@@ -100,8 +100,8 @@ class DNOAService {
     if (needsLogin) {
       onLog('📝 Entering credentials...');
       
-      const username = process.env.DNOA_USERNAME || 'payorportalsdbmail';
-      const password = process.env.DNOA_PASSWORD || 'payoraccess1';
+      const username = process.env.DNOA_USERNAME;
+      const password = process.env.DNOA_PASSWORD;
       
       try {
         await this.page.getByRole('textbox', { name: 'User ID' }).fill(username);

@@ -7,9 +7,9 @@ services:
     branch: master
     envVars:
       - key: DNOA_USERNAME
-        value: payorportalsdbmail
+        sync: false  # Set in Render dashboard
       - key: DNOA_PASSWORD
-        value: payoraccess1
+        sync: false  # Set in Render dashboard
       - key: API_KEY
         value: demo2024secure
       - key: NODE_ENV

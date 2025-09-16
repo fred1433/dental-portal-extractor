@@ -89,8 +89,8 @@ class DentaQuestService {
     if (!isLoggedIn || currentUrl.includes('SSOProviderLogin')) {
       onLog('📝 Logging in...');
       
-      const username = process.env.DENTAQUEST_USERNAME || 'payoraccessSDB';
-      const password = process.env.DENTAQUEST_PASSWORD || 'Changeme2023!';
+      const username = process.env.DENTAQUEST_USERNAME;
+      const password = process.env.DENTAQUEST_PASSWORD;
       
       // Navigate to SSO login if not already there
       if (!currentUrl.includes('SSOProviderLogin')) {

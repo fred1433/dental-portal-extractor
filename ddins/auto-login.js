@@ -19,8 +19,13 @@ if (!fs.existsSync(sessionDir)) {
   fs.mkdirSync(sessionDir, { recursive: true });
 }
 
-const USERNAME = process.env.DDINS_USERNAME || 'Payorprocesso';
-const PASSWORD = process.env.DDINS_PASSWORD || 'Payoraccess1';
+const USERNAME = process.env.DDINS_USERNAME;
+const PASSWORD = process.env.DDINS_PASSWORD;
+
+if (!USERNAME || !PASSWORD) {
+  console.error('❌ DDINS_USERNAME and DDINS_PASSWORD environment variables are required');
+  process.exit(1);
+}
 
 async function autoLogin() {
   console.log('🦷 DDINS Auto-Login Starting...');

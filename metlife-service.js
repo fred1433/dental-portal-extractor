@@ -8,11 +8,11 @@ class MetLifeService {
     this.context = null;
     this.page = null;
     
-    // Configuration
+    // Configuration from environment variables
     this.credentials = {
-      username: 'payorportal4771',
-      password: 'Dental24!'
-    };
+      username: process.env.METLIFE_USERNAME,
+      password: process.env.METLIFE_PASSWORD
+    }
     
     this.urls = {
       home: 'https://dentalprovider.metlife.com/home',
