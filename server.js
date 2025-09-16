@@ -483,6 +483,7 @@ app.get('/api/health/ddins', checkApiKey, async (req, res) => {
   }
 });
 
+
 // Serve the main page
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));

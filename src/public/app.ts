@@ -35,6 +35,7 @@ interface ExtractionResult {
     patient?: any;
     error?: string;
     timestamp?: string;
+    normalizedDA?: any;
 }
 
 interface Claim {
@@ -394,40 +395,60 @@ function displayResults(data: ExtractionResult): void {
             const deductInfo = summary.deductible || {};
             const maxInfo = summary.annualMaximum || {};
             
-            summaryGrid.innerHTML = `
+            let dnoaCards = [];
+
+            // Always show patient card
+            dnoaCards.push(`
                 <div class="summary-card">
                     <h4>Patient</h4>
                     <div class="value">${summary.patientName}</div>
                     <div class="subtitle">ID: ${summary.memberId}</div>
                 </div>
+            `);
+
+            // Always show plan card
+            dnoaCards.push(`
                 <div class="summary-card">
                     <h4>Plan</h4>
                     <div class="value">${summary.status || 'Active'}</div>
                     <div class="subtitle">${summary.planName}</div>
                 </div>
-                <div class="summary-card">
-                    <h4>Deductible</h4>
-                    <div class="value">$${formatAmount(deductInfo.remaining || 0)}</div>
-                    <div class="subtitle">Remaining of $${formatAmount(deductInfo.amount || 0)}</div>
-                </div>
-                <div class="summary-card">
-                    <h4>Annual Maximum</h4>
-                    <div class="value">$${formatAmount(maxInfo.remaining || 0)}</div>
-                    <div class="subtitle">Remaining of $${formatAmount(maxInfo.amount || 0)}</div>
-                </div>
-                <div class="summary-card" style="background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%); border-color: #10b981; grid-column: span 2;">
-                    <h4 style="color: #065f46;">🦷 CDT PROCEDURE CODES</h4>
-                    <div class="value" style="color: #065f46; font-size: 32px;">${summary.totalCDTCodes || 0}</div>
-                    <div class="subtitle" style="color: #047857; font-weight: 600;">Dental procedures successfully extracted!</div>
-                </div>
-                ${summary.benefitCategories !== undefined ? `
-                <div class="summary-card">
-                    <h4>Benefits</h4>
-                    <div class="value">${summary.benefitCategories}</div>
-                    <div class="subtitle">Coverage categories</div>
-                </div>
-                ` : ''}
-            `;
+            `);
+
+            // Only show deductible if there's an actual deductible amount
+            if (deductInfo.amount && deductInfo.amount > 0) {
+                dnoaCards.push(`
+                    <div class="summary-card">
+                        <h4>Deductible</h4>
+                        <div class="value">$${formatAmount(deductInfo.remaining || 0)}</div>
+                        <div class="subtitle">Remaining of $${formatAmount(deductInfo.amount)}</div>
+                    </div>
+                `);
+            }
+
+            // Only show annual maximum if there's an actual maximum
+            if (maxInfo.amount && maxInfo.amount > 0) {
+                dnoaCards.push(`
+                    <div class="summary-card">
+                        <h4>Annual Maximum</h4>
+                        <div class="value">$${formatAmount(maxInfo.remaining || 0)}</div>
+                        <div class="subtitle">Remaining of $${formatAmount(maxInfo.amount)}</div>
+                    </div>
+                `);
+            }
+
+            // Only show benefits if we have categories
+            if (summary.benefitCategories !== undefined && summary.benefitCategories > 0) {
+                dnoaCards.push(`
+                    <div class="summary-card">
+                        <h4>Benefits</h4>
+                        <div class="value">${summary.benefitCategories}</div>
+                        <div class="subtitle">Coverage categories</div>
+                    </div>
+                `);
+            }
+
+            summaryGrid.innerHTML = dnoaCards.join('');
         } else {
             // Other portals (Cigna, DentaQuest, MetLife, DDINS) - show only cards with actual data
             let cards = [];
@@ -529,17 +550,7 @@ function displayResults(data: ExtractionResult): void {
         }
     }
     
-    // Display CDT codes if available
-    if (data.claims && data.claims.length > 0) {
-        displayCDTCodes(data.claims);
-    } else if ((summary as any).cdtCodes && (summary as any).cdtCodes.length > 0) {
-        // DNOA stores CDT codes in summary
-        console.log('Found CDT codes in summary:', (summary as any).cdtCodes.length);
-        displayCDTCodesFromArray((summary as any).cdtCodes);
-    } else if ((data as any).cdtCodes && (data as any).cdtCodes.length > 0) {
-        // Fallback: CDT codes at root level
-        displayCDTCodesFromArray((data as any).cdtCodes);
-    }
+    // CDT codes display removed - no longer needed
     
     // Show results section
     const resultsSection = safeGetElement<HTMLElement>('resultsSection');
@@ -555,77 +566,14 @@ function displayResults(data: ExtractionResult): void {
     }
 }
 
-function displayCDTCodesFromArray(cdtCodes: CDTCode[]): void {
-    if (cdtCodes.length === 0) {
-        return;
-    }
-    
-    const existingCdtSection = safeGetElement<HTMLElement>('cdtSection');
-    if (existingCdtSection) {
-        existingCdtSection.remove();
-    }
-    
-    const cdtSection = document.createElement('div');
-    cdtSection.id = 'cdtSection';
-    cdtSection.style.marginTop = '30px';
-    
-    // Limit to first 15 codes for display
-    const displayCodes = cdtCodes.slice(0, 15);
-    const hasMore = cdtCodes.length > 15;
-    
-    cdtSection.innerHTML = `
-        <h3 style="color: #065f46; margin-bottom: 15px;">
-            ✅ CDT Codes Successfully Extracted - ${cdtCodes.length} Dental Procedures
-        </h3>
-        <div style="background: #f0fdf4; border: 2px solid #10b981; border-radius: 10px; padding: 20px;">
-            <p style="color: #047857; margin-bottom: 15px; font-weight: 600;">
-                Complete dental procedure history for ${extractedData?.summary?.patientName || 'patient'}:
-            </p>
-            <table style="width: 100%; border-collapse: collapse;">
-                <thead>
-                    <tr style="background: #d1fae5;">
-                        <th style="padding: 10px; text-align: left; color: #065f46; border-bottom: 2px solid #10b981;">CDT Code</th>
-                        <th style="padding: 10px; text-align: left; color: #065f46; border-bottom: 2px solid #10b981;">Description</th>
-                        <th style="padding: 10px; text-align: left; color: #065f46; border-bottom: 2px solid #10b981;">Date</th>
-                        <th style="padding: 10px; text-align: left; color: #065f46; border-bottom: 2px solid #10b981;">Tooth</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    ${displayCodes.map((code, index) => `
-                        <tr style="background: ${index % 2 === 0 ? '#ffffff' : '#f9fafb'};">
-                            <td style="padding: 8px; color: #065f46; font-weight: 600;">${code.code || '-'}</td>
-                            <td style="padding: 8px; color: #374151;">${code.description || 'Dental Procedure'}</td>
-                            <td style="padding: 8px; color: #374151;">${code.serviceDate || code.date || '-'}</td>
-                            <td style="padding: 8px; color: #374151;">${code.toothNumber || code.tooth || '-'}</td>
-                        </tr>
-                    `).join('')}
-                </tbody>
-            </table>
-            ${hasMore ? `
-                <div style="padding: 10px; color: #047857; font-style: italic; text-align: center; border-top: 1px solid #d1fae5; margin-top: 10px;">
-                    ... and ${cdtCodes.length - 15} more procedures (download full JSON for complete list)
-                </div>
-            ` : ''}
-        </div>
-    `;
-    
-    const cdtCodesSection = safeGetElement<HTMLElement>('cdtCodesSection');
-    if (cdtCodesSection) {
-        cdtCodesSection.appendChild(cdtSection);
-    }
+function displayCDTCodesFromArray(_cdtCodes: CDTCode[]): void {
+    // CDT codes display removed - no longer needed
+    return;
 }
 
-function displayCDTCodes(claims: Claim[]): void {
-    const cdtCodes: CDTCode[] = [];
-    
-    // Extract all CDT codes from claims
-    claims.forEach(claim => {
-        if (claim.services && claim.services.length > 0) {
-            cdtCodes.push(...claim.services);
-        }
-    });
-    
-    displayCDTCodesFromArray(cdtCodes);
+function displayCDTCodes(_claims: Claim[]): void {
+    // CDT codes display removed - no longer needed
+    return;
 }
 
 // ============= Utility Functions =============
@@ -662,39 +610,56 @@ function calculatePatientBalance(claims?: Claim[]): number {
     return claims.reduce((sum, claim) => sum + (claim.patientPay || 0), 0);
 }
 
+function fillVerificationForm(): void {
+    if (!extractedData) {
+        showError('No data available to transfer');
+        return;
+    }
+
+    // Store the data in sessionStorage for transfer
+    sessionStorage.setItem('extractedPatientData', JSON.stringify(extractedData));
+
+    // Get the API key from URL params
+    const urlParams = new URLSearchParams(window.location.search);
+    const apiKey = urlParams.get('key') || 'demo2024secure';
+
+    // Navigate to the verification form
+    window.location.href = `/verification-form.html?key=${apiKey}&autoFill=true`;
+}
+
 function downloadJSON(): void {
     if (!extractedData) return;
-    
+
     const dataStr = JSON.stringify(extractedData, null, 2);
     const dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(dataStr);
-    
+
     const exportFileDefaultName = `dental-data-${new Date().toISOString().split('T')[0]}.json`;
-    
+
     const linkElement = document.createElement('a');
     linkElement.setAttribute('href', dataUri);
     linkElement.setAttribute('download', exportFileDefaultName);
     linkElement.click();
 }
 
-function viewJSON(): void {
+function viewJSONRaw(): void {
     if (!extractedData) return;
-    
+
     const jsonWindow = window.open('', '_blank');
     if (jsonWindow) {
         jsonWindow.document.write(`
             <html>
                 <head>
-                    <title>Extraction Data</title>
+                    <title>Raw API Data</title>
                     <style>
-                        body { 
-                            font-family: monospace; 
-                            padding: 20px; 
-                            background: #1e1e1e; 
+                        body {
+                            font-family: monospace;
+                            padding: 20px;
+                            background: #1e1e1e;
                             color: #d4d4d4;
                         }
-                        pre { 
-                            white-space: pre-wrap; 
-                            word-wrap: break-word; 
+                        pre {
+                            white-space: pre-wrap;
+                            word-wrap: break-word;
                         }
                     </style>
                 </head>
@@ -703,6 +668,45 @@ function viewJSON(): void {
                 </body>
             </html>
         `);
+        jsonWindow.document.close();
+    }
+}
+
+function viewJSONNormalized(): void {
+    if (!extractedData || !extractedData.normalizedDA) {
+        alert('Normalized DA format data not available');
+        return;
+    }
+
+    const jsonWindow = window.open('', '_blank');
+    if (jsonWindow) {
+        jsonWindow.document.write(`
+            <html>
+                <head>
+                    <title>Normalized DA Format</title>
+                    <style>
+                        body {
+                            font-family: monospace;
+                            padding: 20px;
+                            background: #1e1e1e;
+                            color: #d4d4d4;
+                        }
+                        pre {
+                            white-space: pre-wrap;
+                            word-wrap: break-word;
+                        }
+                        h2 {
+                            color: #98c379;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <h2>Normalized Data (DA Format)</h2>
+                    <pre>${JSON.stringify(extractedData.normalizedDA, null, 2)}</pre>
+                </body>
+            </html>
+        `);
+        jsonWindow.document.close();
     }
 }
 
@@ -980,5 +984,7 @@ document.addEventListener('DOMContentLoaded', initialize);
 
 // Make functions available globally for HTML onclick handlers
 (window as any).downloadJSON = downloadJSON;
-(window as any).viewJSON = viewJSON;
+(window as any).viewJSONRaw = viewJSONRaw;
+(window as any).viewJSONNormalized = viewJSONNormalized;
 (window as any).resetForm = resetForm;
+(window as any).fillVerificationForm = fillVerificationForm;

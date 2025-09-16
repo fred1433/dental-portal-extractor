@@ -1,0 +1,1839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dental Insurance Verification Form</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #86efac 0%, #22c55e 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #86efac 0%, #22c55e 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            opacity: 0.9;
+            font-size: 14px;
+        }
+
+        .form-content {
+            padding: 30px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .section-header {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 15px 20px;
+            font-weight: 600;
+            color: #333;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .section-header:hover {
+            background: linear-gradient(135deg, #e8ecf3 0%, #b5c2db 100%);
+        }
+
+        .section-header::after {
+            content: '▼';
+            font-size: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .section.collapsed .section-header::after {
+            transform: rotate(-90deg);
+        }
+
+        .section-content {
+            padding: 20px;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            overflow: hidden;
+        }
+
+        .section.collapsed .section-content {
+            max-height: 0;
+            padding: 0 20px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #22c55e;
+            box-shadow: 0 0 0 3px rgba(102,126,234,0.1);
+        }
+
+        .procedure-table {
+            overflow-x: auto;
+            margin-top: 15px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background: #f8f9fa;
+            padding: 12px;
+            text-align: left;
+            font-size: 13px;
+            font-weight: 600;
+            color: #555;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 13px;
+        }
+
+        tr:hover {
+            background: #fafbfc;
+        }
+
+        td input,
+        td select {
+            width: 100%;
+            padding: 6px;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            font-size: 13px;
+        }
+
+        .procedure-code {
+            font-weight: 600;
+            color: #22c55e;
+        }
+
+        .special-notes {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .special-notes .note-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .special-notes .note-item:last-child {
+            border-bottom: none;
+        }
+
+        .note-question {
+            flex: 1;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .note-answer {
+            display: flex;
+            gap: 15px;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 15px;
+        }
+
+        .radio-group label {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .radio-group input[type="radio"] {
+            cursor: pointer;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            padding: 30px;
+            background: #f8f9fa;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #86efac 0%, #22c55e 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102,126,234,0.3);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #22c55e;
+            border: 2px solid #22c55e;
+        }
+
+        .btn-secondary:hover {
+            background: #f0f3ff;
+        }
+
+        @media (max-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                border-radius: 0;
+            }
+
+            .procedure-table {
+                font-size: 12px;
+            }
+
+            th, td {
+                padding: 8px;
+            }
+        }
+
+        .date-input {
+            max-width: 150px;
+        }
+
+        .percent-input {
+            max-width: 80px;
+        }
+
+        .coverage-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .coverage-item {
+            display: flex;
+            flex-direction: column;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .coverage-item label {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .coverage-item input {
+            padding: 8px;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🦷 Dental Insurance Verification Form</h1>
+            <p>Complete patient insurance verification and benefit breakdown</p>
+        </div>
+
+        <div class="form-content">
+            <!-- Office Information -->
+            <div class="section">
+                <div class="section-header" onclick="toggleSection(this)">
+                    Office Information
+                </div>
+                <div class="section-content">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Practice Name</label>
+                            <input type="text" placeholder="Enter practice name">
+                        </div>
+                        <div class="form-group">
+                            <label>Provider Name</label>
+                            <input type="text" placeholder="Enter provider name">
+                        </div>
+                        <div class="form-group">
+                            <label>Appointment Date</label>
+                            <input type="date">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Patient & Subscriber Information -->
+            <div class="section">
+                <div class="section-header" onclick="toggleSection(this)">
+                    Patient & Subscriber Information
+                </div>
+                <div class="section-content">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Patient Name</label>
+                            <input type="text" placeholder="Enter patient name">
+                        </div>
+                        <div class="form-group">
+                            <label>Patient DOB</label>
+                            <input type="date">
+                        </div>
+                        <div class="form-group">
+                            <label>Subscriber/Policy Holder Name</label>
+                            <input type="text" placeholder="Enter subscriber name">
+                        </div>
+                        <div class="form-group">
+                            <label>Subscriber/Policy Holder DOB</label>
+                            <input type="date">
+                        </div>
+                        <div class="form-group">
+                            <label>Member ID</label>
+                            <input type="text" placeholder="Enter member ID">
+                        </div>
+                        <div class="form-group">
+                            <label>SSN</label>
+                            <input type="text" placeholder="XXX-XX-XXXX">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Insurance / Policy Information -->
+            <div class="section">
+                <div class="section-header" onclick="toggleSection(this)">
+                    Insurance / Policy Information
+                </div>
+                <div class="section-content">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Insurance Name</label>
+                            <input type="text" placeholder="Enter insurance name">
+                        </div>
+                        <div class="form-group">
+                            <label>Group Name / #</label>
+                            <input type="text" placeholder="Enter group name/number">
+                        </div>
+                        <div class="form-group">
+                            <label>COB Type</label>
+                            <select>
+                                <option>Primary</option>
+                                <option>Secondary</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input type="tel" placeholder="(XXX) XXX-XXXX">
+                        </div>
+                        <div class="form-group">
+                            <label>Payor ID</label>
+                            <input type="text" placeholder="Enter payor ID">
+                        </div>
+                        <div class="form-group">
+                            <label>Coordination of Benefits</label>
+                            <select>
+                                <option>Yes</option>
+                                <option>No</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Other Insurance on File?</label>
+                            <select>
+                                <option>No</option>
+                                <option>Yes - Primary</option>
+                                <option>Yes - Secondary</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Claims Mailing Address</label>
+                            <textarea rows="3" placeholder="Enter mailing address"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Benefit Breakdown -->
+            <div class="section">
+                <div class="section-header" onclick="toggleSection(this)">
+                    Benefit Breakdown
+                </div>
+                <div class="section-content">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Effective Date</label>
+                            <input type="date">
+                        </div>
+                        <div class="form-group">
+                            <label>Annual Maximum</label>
+                            <input type="text" placeholder="$0.00">
+                        </div>
+                        <div class="form-group">
+                            <label>Family Deductible</label>
+                            <input type="text" placeholder="$0.00">
+                        </div>
+                        <div class="form-group">
+                            <label>Benefit Year</label>
+                            <select>
+                                <option>Calendar Year</option>
+                                <option>Benefit Year</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Remaining Maximum</label>
+                            <input type="text" placeholder="$0.00">
+                        </div>
+                        <div class="form-group">
+                            <label>Lifetime Deductible</label>
+                            <input type="text" placeholder="$0.00">
+                        </div>
+                        <div class="form-group">
+                            <label>Coverage Start Date</label>
+                            <input type="date">
+                        </div>
+                        <div class="form-group">
+                            <label>Coverage End Date</label>
+                            <input type="date">
+                        </div>
+                        <div class="form-group">
+                            <label>Individual Deductible</label>
+                            <input type="text" placeholder="$0.00">
+                        </div>
+                        <div class="form-group">
+                            <label>Deductible Applies To</label>
+                            <input type="text" placeholder="Basic, Major, etc.">
+                        </div>
+                        <div class="form-group">
+                            <label>Co-Pay</label>
+                            <input type="text" placeholder="$0.00">
+                        </div>
+                        <div class="form-group">
+                            <label>Network Participation</label>
+                            <select>
+                                <option>In-Network</option>
+                                <option>Out-of-Network</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>If OON, Paid As</label>
+                            <select>
+                                <option>N/A</option>
+                                <option>UCR</option>
+                                <option>MAC</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Assignment of Benefits Accepted?</label>
+                            <select>
+                                <option>Yes</option>
+                                <option>No</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Fee Schedule Used</label>
+                            <input type="text" placeholder="Enter fee schedule">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Coverage by Category -->
+            <div class="section">
+                <div class="section-header" onclick="toggleSection(this)">
+                    Coverage by Category
+                </div>
+                <div class="section-content">
+                    <div class="coverage-grid">
+                        <div class="coverage-item">
+                            <label>Preventive / Diagnostic (% Covered)</label>
+                            <input type="text" placeholder="100%" class="percent-input">
+                        </div>
+                        <div class="coverage-item">
+                            <label>Basic Services (% Covered)</label>
+                            <input type="text" placeholder="80%" class="percent-input">
+                        </div>
+                        <div class="coverage-item">
+                            <label>Major Services (% Covered)</label>
+                            <input type="text" placeholder="50%" class="percent-input">
+                        </div>
+                        <div class="coverage-item">
+                            <label>Missing Tooth Clause</label>
+                            <select>
+                                <option>Yes</option>
+                                <option>No</option>
+                            </select>
+                        </div>
+                        <div class="coverage-item">
+                            <label>Preventive Wait Period</label>
+                            <input type="text" placeholder="None">
+                        </div>
+                        <div class="coverage-item">
+                            <label>Basic Wait Period</label>
+                            <input type="text" placeholder="6 months">
+                        </div>
+                        <div class="coverage-item">
+                            <label>Major Wait Period</label>
+                            <input type="text" placeholder="12 months">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Exams / Diagnostics -->
+            <div class="section">
+                <div class="section-header" onclick="toggleSection(this)">
+                    Exams / Diagnostics
+                </div>
+                <div class="section-content">
+                    <div class="procedure-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Procedure Code</th>
+                                    <th>Frequency</th>
+                                    <th>Limitations</th>
+                                    <th>Last DOS/History</th>
+                                    <th>Notes</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="procedure-code">D0120</span> – Periodic Oral Evaluation</td>
+                                    <td><input type="text" placeholder="2 per year"></td>
+                                    <td><input type="text" placeholder="6 month interval"></td>
+                                    <td><input type="date" class="date-input"></td>
+                                    <td><input type="text" placeholder="Notes"></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D0140</span> – Limited Oral Evaluation</td>
+                                    <td><input type="text" placeholder="As needed"></td>
+                                    <td><input type="text" placeholder="Problem focused"></td>
+                                    <td><input type="date" class="date-input"></td>
+                                    <td><input type="text" placeholder="Notes"></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D0145</span> – Oral Evaluation &lt;3 Years</td>
+                                    <td><input type="text" placeholder="2 per year"></td>
+                                    <td><input type="text" placeholder="Under 3 years"></td>
+                                    <td><input type="date" class="date-input"></td>
+                                    <td><input type="text" placeholder="Notes"></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D0150</span> – Comprehensive Oral Evaluation</td>
+                                    <td><input type="text" placeholder="1 per 3 years"></td>
+                                    <td><input type="text" placeholder="New patient"></td>
+                                    <td><input type="date" class="date-input"></td>
+                                    <td><input type="text" placeholder="Notes"></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D0180</span> – Comprehensive Periodontal Evaluation</td>
+                                    <td><input type="text" placeholder="1 per year"></td>
+                                    <td><input type="text" placeholder="Perio patient"></td>
+                                    <td><input type="date" class="date-input"></td>
+                                    <td><input type="text" placeholder="Notes"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Radiographs / Imaging -->
+            <div class="section">
+                <div class="section-header" onclick="toggleSection(this)">
+                    Radiographs / Imaging
+                </div>
+                <div class="section-content">
+                    <div class="procedure-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Procedure Code</th>
+                                    <th>Frequency</th>
+                                    <th>Limitations</th>
+                                    <th>Last DOS/History</th>
+                                    <th>Notes</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="procedure-code">D0210</span> – Intraoral Complete Series (FMX)</td>
+                                    <td><input type="text" placeholder="1 per 3 years"></td>
+                                    <td><input type="text" placeholder=""></td>
+                                    <td><input type="date" class="date-input"></td>
+                                    <td><input type="text" placeholder="Notes"></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D0220</span> – Intraoral Periapical First Film</td>
+                                    <td><input type="text" placeholder="As needed"></td>
+                                    <td><input type="text" placeholder=""></td>
+                                    <td><input type="date" class="date-input"></td>
+                                    <td><input type="text" placeholder="Notes"></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D0230</span> – Intraoral Periapical Each Additional</td>
+                                    <td><input type="text" placeholder="As needed"></td>
+                                    <td><input type="text" placeholder=""></td>
+                                    <td><input type="date" class="date-input"></td>
+                                    <td><input type="text" placeholder="Notes"></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D0272/D0274</span> – Bitewing – Two Films</td>
+                                    <td><input type="text" placeholder="2 per year"></td>
+                                    <td><input type="text" placeholder="6 month interval"></td>
+                                    <td><input type="date" class="date-input"></td>
+                                    <td><input type="text" placeholder="Notes"></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D0277</span> – Vertical Bitewings (7–8 films)</td>
+                                    <td><input type="text" placeholder="1 per year"></td>
+                                    <td><input type="text" placeholder=""></td>
+                                    <td><input type="date" class="date-input"></td>
+                                    <td><input type="text" placeholder="Notes"></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D0330</span> – Panoramic Radiograph</td>
+                                    <td><input type="text" placeholder="1 per 3 years"></td>
+                                    <td><input type="text" placeholder=""></td>
+                                    <td><input type="date" class="date-input"></td>
+                                    <td><input type="text" placeholder="Notes"></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D0365/D0367</span> – Cone Beam CT</td>
+                                    <td><input type="text" placeholder="As needed"></td>
+                                    <td><input type="text" placeholder="Medical necessity"></td>
+                                    <td><input type="date" class="date-input"></td>
+                                    <td><input type="text" placeholder="Notes"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Preventive -->
+            <div class="section">
+                <div class="section-header" onclick="toggleSection(this)">
+                    Preventive
+                </div>
+                <div class="section-content">
+                    <div class="procedure-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Procedure Code</th>
+                                    <th>Frequency</th>
+                                    <th>Limitations</th>
+                                    <th>Last DOS/History</th>
+                                    <th>Notes</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="procedure-code">D1110/D1120</span> – Prophylaxis</td>
+                                    <td><input type="text" placeholder="2 per year"></td>
+                                    <td><input type="text" placeholder="6 month interval"></td>
+                                    <td><input type="date" class="date-input"></td>
+                                    <td><input type="text" placeholder="Notes"></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D1206/D1208</span> – Fluoride Varnish</td>
+                                    <td><input type="text" placeholder="2 per year"></td>
+                                    <td><input type="text" placeholder="Under 18"></td>
+                                    <td><input type="date" class="date-input"></td>
+                                    <td><input type="text" placeholder="Notes"></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D1351</span> – Sealant – Per Tooth</td>
+                                    <td><input type="text" placeholder="1 per tooth"></td>
+                                    <td><input type="text" placeholder="Permanent molars"></td>
+                                    <td><input type="date" class="date-input"></td>
+                                    <td><input type="text" placeholder="Notes"></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D1352</span> – Preventive Resin Restoration</td>
+                                    <td><input type="text" placeholder="1 per tooth"></td>
+                                    <td><input type="text" placeholder=""></td>
+                                    <td><input type="date" class="date-input"></td>
+                                    <td><input type="text" placeholder="Notes"></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D1353</span> – Sealant Repair</td>
+                                    <td><input type="text" placeholder="As needed"></td>
+                                    <td><input type="text" placeholder=""></td>
+                                    <td><input type="date" class="date-input"></td>
+                                    <td><input type="text" placeholder="Notes"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Restorative (Fillings) -->
+            <div class="section">
+                <div class="section-header" onclick="toggleSection(this)">
+                    Restorative (Fillings)
+                </div>
+                <div class="section-content">
+                    <div class="procedure-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Procedure Code</th>
+                                    <th>Frequency</th>
+                                    <th>Limitations</th>
+                                    <th>Last DOS/History</th>
+                                    <th>Notes</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="procedure-code">D2140-D2161</span> – Amalgam</td>
+                                    <td><input type="text" placeholder="1 per 2 years"></td>
+                                    <td><input type="text" placeholder="Same surface"></td>
+                                    <td><input type="date" class="date-input"></td>
+                                    <td><input type="text" placeholder="Notes"></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D2330-D2335</span> – Resin Composite – Anterior</td>
+                                    <td><input type="text" placeholder="1 per 2 years"></td>
+                                    <td><input type="text" placeholder="Same surface"></td>
+                                    <td><input type="date" class="date-input"></td>
+                                    <td><input type="text" placeholder="Notes"></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D2391-D2394</span> – Resin Composite – Posterior</td>
+                                    <td><input type="text" placeholder="1 per 2 years"></td>
+                                    <td><input type="text" placeholder="Same surface"></td>
+                                    <td><input type="date" class="date-input"></td>
+                                    <td><input type="text" placeholder="Notes"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Endodontics -->
+            <div class="section">
+                <div class="section-header" onclick="toggleSection(this)">
+                    Endodontics (Root Canal Therapy)
+                </div>
+                <div class="section-content">
+                    <div class="procedure-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Procedure Code</th>
+                                    <th>Frequency</th>
+                                    <th>Limitations</th>
+                                    <th>Last DOS/History</th>
+                                    <th>Notes</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="procedure-code">D3310-D3330</span> – Root Canal</td>
+                                    <td><input type="text" placeholder="1 per lifetime"></td>
+                                    <td><input type="text" placeholder="Per tooth"></td>
+                                    <td><input type="date" class="date-input"></td>
+                                    <td><input type="text" placeholder="Notes"></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D3346-D3348</span> – Retreat</td>
+                                    <td><input type="text" placeholder="1 per lifetime"></td>
+                                    <td><input type="text" placeholder="After 2 years"></td>
+                                    <td><input type="date" class="date-input"></td>
+                                    <td><input type="text" placeholder="Notes"></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D3351-D3353</span> – Apexification/Recalcification</td>
+                                    <td><input type="text" placeholder="As needed"></td>
+                                    <td><input type="text" placeholder=""></td>
+                                    <td><input type="date" class="date-input"></td>
+                                    <td><input type="text" placeholder="Notes"></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D3410-D3425</span> – Apicoectomy</td>
+                                    <td><input type="text" placeholder="1 per lifetime"></td>
+                                    <td><input type="text" placeholder="Per tooth"></td>
+                                    <td><input type="date" class="date-input"></td>
+                                    <td><input type="text" placeholder="Notes"></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D3220</span> – Pulpotomy Primary Teeth</td>
+                                    <td><input type="text" placeholder="1 per tooth"></td>
+                                    <td><input type="text" placeholder="Primary teeth"></td>
+                                    <td><input type="date" class="date-input"></td>
+                                    <td><input type="text" placeholder="Notes"></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D3221</span> – Pulpal Debridement</td>
+                                    <td><input type="text" placeholder="1 per tooth"></td>
+                                    <td><input type="text" placeholder=""></td>
+                                    <td><input type="date" class="date-input"></td>
+                                    <td><input type="text" placeholder="Notes"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Periodontics -->
+            <div class="section">
+                <div class="section-header" onclick="toggleSection(this)">
+                    Periodontics
+                </div>
+                <div class="section-content">
+                    <div class="procedure-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Procedure Code</th>
+                                    <th>Frequency</th>
+                                    <th>Limitations</th>
+                                    <th>Last DOS/History</th>
+                                    <th>Notes</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="procedure-code">D4341</span> – SRP – Four or More Teeth, Per Quad</td>
+                                    <td><input type="text" placeholder="1 per 24 months"></td>
+                                    <td><input type="text" placeholder="Per quadrant"></td>
+                                    <td><input type="date" class="date-input"></td>
+                                    <td><input type="text" placeholder="Notes"></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D4342</span> – SRP – One to Three Teeth, Per Quad</td>
+                                    <td><input type="text" placeholder="1 per 24 months"></td>
+                                    <td><input type="text" placeholder="Limited teeth"></td>
+                                    <td><input type="date" class="date-input"></td>
+                                    <td><input type="text" placeholder="Notes"></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D4346</span> – Scaling in Presence of Gingival Inflammation</td>
+                                    <td><input type="text" placeholder="1 per 6 months"></td>
+                                    <td><input type="text" placeholder=""></td>
+                                    <td><input type="date" class="date-input"></td>
+                                    <td><input type="text" placeholder="Notes"></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D4266/D4267</span> – Tissue Regeneration</td>
+                                    <td><input type="text" placeholder="1 per site"></td>
+                                    <td><input type="text" placeholder=""></td>
+                                    <td><input type="date" class="date-input"></td>
+                                    <td><input type="text" placeholder="Notes"></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D4355</span> – Full Mouth Debridement</td>
+                                    <td><input type="text" placeholder="1 per lifetime"></td>
+                                    <td><input type="text" placeholder=""></td>
+                                    <td><input type="date" class="date-input"></td>
+                                    <td><input type="text" placeholder="Notes"></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D4910</span> – Periodontal Maintenance</td>
+                                    <td><input type="text" placeholder="4 per year"></td>
+                                    <td><input type="text" placeholder="After SRP"></td>
+                                    <td><input type="date" class="date-input"></td>
+                                    <td><input type="text" placeholder="Notes"></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D4381</span> – Localized Delivery of Antimicrobials</td>
+                                    <td><input type="text" placeholder="As needed"></td>
+                                    <td><input type="text" placeholder="Per site"></td>
+                                    <td><input type="date" class="date-input"></td>
+                                    <td><input type="text" placeholder="Notes"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Prosthodontics – Crowns -->
+            <div class="section">
+                <div class="section-header" onclick="toggleSection(this)">
+                    Prosthodontics – Crowns
+                </div>
+                <div class="section-content">
+                    <div class="procedure-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Procedure Code</th>
+                                    <th>Frequency</th>
+                                    <th>Limitations</th>
+                                    <th>Last DOS/History</th>
+                                    <th>Notes</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="procedure-code">D2740</span> – Crown – Porcelain/Ceramic</td>
+                                    <td><input type="text" placeholder="1 per 5 years"></td>
+                                    <td><input type="text" placeholder="Per tooth"></td>
+                                    <td><input type="date" class="date-input"></td>
+                                    <td><input type="text" placeholder="Notes"></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D2750-D2752</span> – Crown – PFM</td>
+                                    <td><input type="text" placeholder="1 per 5 years"></td>
+                                    <td><input type="text" placeholder="Per tooth"></td>
+                                    <td><input type="date" class="date-input"></td>
+                                    <td><input type="text" placeholder="Notes"></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D2790-D2792</span> – Crown – Full Cast</td>
+                                    <td><input type="text" placeholder="1 per 5 years"></td>
+                                    <td><input type="text" placeholder="Per tooth"></td>
+                                    <td><input type="date" class="date-input"></td>
+                                    <td><input type="text" placeholder="Notes"></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D2950</span> – Core Buildup Including Pins</td>
+                                    <td><input type="text" placeholder="1 per 5 years"></td>
+                                    <td><input type="text" placeholder="With crown"></td>
+                                    <td><input type="date" class="date-input"></td>
+                                    <td><input type="text" placeholder="Notes"></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D2952</span> – Post & Core in Addition to Crown</td>
+                                    <td><input type="text" placeholder="1 per 5 years"></td>
+                                    <td><input type="text" placeholder="With crown"></td>
+                                    <td><input type="date" class="date-input"></td>
+                                    <td><input type="text" placeholder="Notes"></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D2954</span> – Prefabricated Post & Core</td>
+                                    <td><input type="text" placeholder="1 per 5 years"></td>
+                                    <td><input type="text" placeholder="With crown"></td>
+                                    <td><input type="date" class="date-input"></td>
+                                    <td><input type="text" placeholder="Notes"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Removable Dentures -->
+            <div class="section">
+                <div class="section-header" onclick="toggleSection(this)">
+                    Removable Dentures
+                </div>
+                <div class="section-content">
+                    <div class="procedure-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Procedure Code</th>
+                                    <th>Frequency</th>
+                                    <th>Limitations</th>
+                                    <th>Last DOS/History</th>
+                                    <th>Notes</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="procedure-code">D5110</span> – Complete Denture – Maxillary</td>
+                                    <td><input type="text" placeholder="1 per 5 years"></td>
+                                    <td><input type="text" placeholder=""></td>
+                                    <td><input type="date" class="date-input"></td>
+                                    <td><input type="text" placeholder="Notes"></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D5213</span> – Maxillary Partial Denture – Cast Metal</td>
+                                    <td><input type="text" placeholder="1 per 5 years"></td>
+                                    <td><input type="text" placeholder=""></td>
+                                    <td><input type="date" class="date-input"></td>
+                                    <td><input type="text" placeholder="Notes"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Extractions / Oral Surgery -->
+            <div class="section">
+                <div class="section-header" onclick="toggleSection(this)">
+                    Extractions / Oral Surgery
+                </div>
+                <div class="section-content">
+                    <div class="procedure-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Procedure Code</th>
+                                    <th>Frequency</th>
+                                    <th>Limitations</th>
+                                    <th>Last DOS/History</th>
+                                    <th>Notes</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="procedure-code">D7140</span> – Simple Extraction</td>
+                                    <td><input type="text" placeholder="As needed"></td>
+                                    <td><input type="text" placeholder=""></td>
+                                    <td><input type="date" class="date-input"></td>
+                                    <td><input type="text" placeholder="Notes"></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D7210</span> – Surgical Removal of Erupted Tooth</td>
+                                    <td><input type="text" placeholder="As needed"></td>
+                                    <td><input type="text" placeholder=""></td>
+                                    <td><input type="date" class="date-input"></td>
+                                    <td><input type="text" placeholder="Notes"></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D7220-D7250</span> – Removal of Impacted Tooth</td>
+                                    <td><input type="text" placeholder="As needed"></td>
+                                    <td><input type="text" placeholder=""></td>
+                                    <td><input type="date" class="date-input"></td>
+                                    <td><input type="text" placeholder="Notes"></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D7953</span> – Bone Graft</td>
+                                    <td><input type="text" placeholder="1 per site"></td>
+                                    <td><input type="text" placeholder="With extraction"></td>
+                                    <td><input type="date" class="date-input"></td>
+                                    <td><input type="text" placeholder="Notes"></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D7250</span> – Surgical Removal of Residual Root</td>
+                                    <td><input type="text" placeholder="As needed"></td>
+                                    <td><input type="text" placeholder=""></td>
+                                    <td><input type="date" class="date-input"></td>
+                                    <td><input type="text" placeholder="Notes"></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D7285/D7286</span> – Biopsy</td>
+                                    <td><input type="text" placeholder="As needed"></td>
+                                    <td><input type="text" placeholder="Medical necessity"></td>
+                                    <td><input type="date" class="date-input"></td>
+                                    <td><input type="text" placeholder="Notes"></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D7310-D7321</span> – Alveoloplasty</td>
+                                    <td><input type="text" placeholder="As needed"></td>
+                                    <td><input type="text" placeholder=""></td>
+                                    <td><input type="date" class="date-input"></td>
+                                    <td><input type="text" placeholder="Notes"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Orthodontics -->
+            <div class="section">
+                <div class="section-header" onclick="toggleSection(this)">
+                    Orthodontics
+                </div>
+                <div class="section-content">
+                    <div class="procedure-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Procedure Code</th>
+                                    <th>Frequency</th>
+                                    <th>Limitations</th>
+                                    <th>Last DOS/History</th>
+                                    <th>Notes</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="procedure-code">D8080/D8090</span> – Comprehensive Ortho</td>
+                                    <td><input type="text" placeholder="Lifetime max"></td>
+                                    <td><input type="text" placeholder="Under 19"></td>
+                                    <td><input type="date" class="date-input"></td>
+                                    <td><input type="text" placeholder="Notes"></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D8680</span> – Orthodontic Retention (Retainer)</td>
+                                    <td><input type="text" placeholder="1 per lifetime"></td>
+                                    <td><input type="text" placeholder="After treatment"></td>
+                                    <td><input type="date" class="date-input"></td>
+                                    <td><input type="text" placeholder="Notes"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Occlusal Guard -->
+            <div class="section">
+                <div class="section-header" onclick="toggleSection(this)">
+                    Occlusal Guard
+                </div>
+                <div class="section-content">
+                    <div class="procedure-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Procedure Code</th>
+                                    <th>Frequency</th>
+                                    <th>Limitations</th>
+                                    <th>Last DOS/History</th>
+                                    <th>Notes</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="procedure-code">D9944-D9946</span> – Occlusal Guard, Hard Appliance</td>
+                                    <td><input type="text" placeholder="1 per 3 years"></td>
+                                    <td><input type="text" placeholder="Bruxism"></td>
+                                    <td><input type="date" class="date-input"></td>
+                                    <td><input type="text" placeholder="Notes"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Implants -->
+            <div class="section">
+                <div class="section-header" onclick="toggleSection(this)">
+                    Implants
+                </div>
+                <div class="section-content">
+                    <div class="procedure-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Procedure Code</th>
+                                    <th>Frequency</th>
+                                    <th>Limitations</th>
+                                    <th>Last DOS/History</th>
+                                    <th>Notes</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="procedure-code">D6010</span> – Surgical Placement of Endosteal Implant</td>
+                                    <td><input type="text" placeholder="1 per tooth"></td>
+                                    <td><input type="text" placeholder=""></td>
+                                    <td><input type="date" class="date-input"></td>
+                                    <td><input type="text" placeholder="Notes"></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D6012</span> – Surgical Placement of Interim Implant</td>
+                                    <td><input type="text" placeholder="As needed"></td>
+                                    <td><input type="text" placeholder=""></td>
+                                    <td><input type="date" class="date-input"></td>
+                                    <td><input type="text" placeholder="Notes"></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D6056-D6058</span> – Abutment</td>
+                                    <td><input type="text" placeholder="1 per implant"></td>
+                                    <td><input type="text" placeholder=""></td>
+                                    <td><input type="date" class="date-input"></td>
+                                    <td><input type="text" placeholder="Notes"></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D6065-D6067</span> – Implant Supported Crown</td>
+                                    <td><input type="text" placeholder="1 per 5 years"></td>
+                                    <td><input type="text" placeholder=""></td>
+                                    <td><input type="date" class="date-input"></td>
+                                    <td><input type="text" placeholder="Notes"></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D6085</span> – Interim Implant-Supported Crown</td>
+                                    <td><input type="text" placeholder="As needed"></td>
+                                    <td><input type="text" placeholder="Temporary"></td>
+                                    <td><input type="date" class="date-input"></td>
+                                    <td><input type="text" placeholder="Notes"></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D6118/D6119</span> – Interim Implant-Supported Dentures</td>
+                                    <td><input type="text" placeholder="As needed"></td>
+                                    <td><input type="text" placeholder=""></td>
+                                    <td><input type="date" class="date-input"></td>
+                                    <td><input type="text" placeholder="Notes"></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D6240</span> – Bridges</td>
+                                    <td><input type="text" placeholder="1 per 5 years"></td>
+                                    <td><input type="text" placeholder=""></td>
+                                    <td><input type="date" class="date-input"></td>
+                                    <td><input type="text" placeholder="Notes"></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D6245/D6740</span> – Pontics</td>
+                                    <td><input type="text" placeholder="1 per 5 years"></td>
+                                    <td><input type="text" placeholder="Part of bridge"></td>
+                                    <td><input type="date" class="date-input"></td>
+                                    <td><input type="text" placeholder="Notes"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Special Notes -->
+            <div class="section">
+                <div class="section-header" onclick="toggleSection(this)">
+                    Special Notes
+                </div>
+                <div class="section-content">
+                    <div class="special-notes">
+                        <div class="note-item">
+                            <span class="note-question">Is there a Waiting Period?</span>
+                            <div class="radio-group">
+                                <label><input type="radio" name="waiting-period" value="yes"> Yes</label>
+                                <label><input type="radio" name="waiting-period" value="no"> No</label>
+                            </div>
+                        </div>
+                        <div class="note-item">
+                            <span class="note-question">Missing Tooth Clause?</span>
+                            <div class="radio-group">
+                                <label><input type="radio" name="missing-tooth" value="yes"> Yes</label>
+                                <label><input type="radio" name="missing-tooth" value="no"> No</label>
+                            </div>
+                        </div>
+                        <div class="note-item">
+                            <span class="note-question">Work in Progress Covered?</span>
+                            <div class="radio-group">
+                                <label><input type="radio" name="work-progress" value="yes"> Yes</label>
+                                <label><input type="radio" name="work-progress" value="no"> No</label>
+                            </div>
+                        </div>
+                        <div class="note-item">
+                            <span class="note-question">Can Pano be taken on same day as FMX?</span>
+                            <div class="radio-group">
+                                <label><input type="radio" name="pano-fmx" value="yes"> Yes</label>
+                                <label><input type="radio" name="pano-fmx" value="no"> No</label>
+                            </div>
+                        </div>
+                        <div class="note-item">
+                            <span class="note-question">Is SRP covered under Basic or Major?</span>
+                            <div class="radio-group">
+                                <label><input type="radio" name="srp-category" value="basic"> Basic</label>
+                                <label><input type="radio" name="srp-category" value="major"> Major</label>
+                            </div>
+                        </div>
+                        <div class="note-item">
+                            <span class="note-question">Is Endo covered under Basic or Major?</span>
+                            <div class="radio-group">
+                                <label><input type="radio" name="endo-category" value="basic"> Basic</label>
+                                <label><input type="radio" name="endo-category" value="major"> Major</label>
+                            </div>
+                        </div>
+                        <div class="note-item">
+                            <span class="note-question">Is Ext covered under Basic or Major?</span>
+                            <div class="radio-group">
+                                <label><input type="radio" name="ext-category" value="basic"> Basic</label>
+                                <label><input type="radio" name="ext-category" value="major"> Major</label>
+                            </div>
+                        </div>
+                        <div class="note-item">
+                            <span class="note-question">Are D7210/D7953 Billed To Medical First?</span>
+                            <div class="radio-group">
+                                <label><input type="radio" name="medical-first" value="yes"> Yes</label>
+                                <label><input type="radio" name="medical-first" value="no"> No</label>
+                            </div>
+                        </div>
+                        <div class="note-item">
+                            <span class="note-question">Is D9232 covered?</span>
+                            <div class="radio-group">
+                                <label><input type="radio" name="d9232-covered" value="yes"> Yes</label>
+                                <label><input type="radio" name="d9232-covered" value="no"> No</label>
+                            </div>
+                        </div>
+                        <div class="note-item">
+                            <span class="note-question">Until what age are sealants D1351 covered?</span>
+                            <input type="text" placeholder="Enter age limit">
+                        </div>
+                        <div class="note-item">
+                            <span class="note-question">Does Limited share frequency with other exams?</span>
+                            <div class="radio-group">
+                                <label><input type="radio" name="limited-share" value="yes"> Yes</label>
+                                <label><input type="radio" name="limited-share" value="no"> No</label>
+                            </div>
+                        </div>
+                        <div class="note-item">
+                            <span class="note-question">Does Perio Maintenance share frequency with prophy?</span>
+                            <div class="radio-group">
+                                <label><input type="radio" name="perio-share" value="yes"> Yes</label>
+                                <label><input type="radio" name="perio-share" value="no"> No</label>
+                            </div>
+                        </div>
+                        <div class="note-item">
+                            <span class="note-question">Time between SRP and Perio Maintenance?</span>
+                            <input type="text" placeholder="Enter time period">
+                        </div>
+                        <div class="note-item">
+                            <span class="note-question">Is composite fillings downgraded to amalgam?</span>
+                            <div class="radio-group">
+                                <label><input type="radio" name="composite-downgrade" value="yes"> Yes</label>
+                                <label><input type="radio" name="composite-downgrade" value="no"> No</label>
+                            </div>
+                        </div>
+                        <div class="note-item">
+                            <span class="note-question">Is D0140 allowed on the same day?</span>
+                            <div class="radio-group">
+                                <label><input type="radio" name="d0140-same-day" value="yes"> Yes</label>
+                                <label><input type="radio" name="d0140-same-day" value="no"> No</label>
+                            </div>
+                        </div>
+                        <div class="note-item">
+                            <span class="note-question">Is there a waiting period after SRP?</span>
+                            <div class="radio-group">
+                                <label><input type="radio" name="srp-waiting" value="yes"> Yes</label>
+                                <label><input type="radio" name="srp-waiting" value="no"> No</label>
+                            </div>
+                        </div>
+                        <div class="note-item">
+                            <span class="note-question">Is core buildup paid on the day of crown prep?</span>
+                            <div class="radio-group">
+                                <label><input type="radio" name="core-buildup-day" value="yes"> Yes</label>
+                                <label><input type="radio" name="core-buildup-day" value="no"> No</label>
+                            </div>
+                        </div>
+                        <div class="note-item">
+                            <span class="note-question">Is Crown/Bridge paid on day of Prep or Seat?</span>
+                            <div class="radio-group">
+                                <label><input type="radio" name="crown-payment" value="prep"> Prep</label>
+                                <label><input type="radio" name="crown-payment" value="seat"> Seat</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // Include the mapper functions
+        function mapDAToForm(aneeqaData) {
+            const formData = {};
+
+            // Extract PatientVerification data (first element of array)
+            const pv = aneeqaData.PatientVerification?.[0] || {};
+
+            // Map all the fields
+            const fieldMappings = {
+                'Practice Name': '',  // Not in Aneeqa data
+                'Provider Name': '',  // Not in Aneeqa data
+                'Patient Name': pv.FamilyMemberName || '',
+                'Patient DOB': convertDateToInput(pv.FamilyMemberDateOfBirth),
+                'Subscriber/Policy Holder Name': pv.SubscriberName || '',
+                'Subscriber/Policy Holder DOB': convertDateToInput(pv.SubscriberDateOfBirth),
+                'Member ID': pv.SubscriberId || pv.FamilyMemberId || '',
+                'SSN': '',  // Not in Aneeqa data for privacy
+                'Insurance Name': pv.InsuranceName || pv.Payer || 'DNOA',
+                'Group Name / #': pv.GroupName && pv.GroupNumber ? `${pv.GroupName} / ${pv.GroupNumber}` : (pv.GroupName || pv.GroupNumber || ''),
+                'Phone Number': '',  // Not in data
+                'Payor ID': pv.ClaimPayerID || '',
+                'Claims Mailing Address': pv.ClaimMailingAddress || pv.ClaimsAddress || '',
+                'Effective Date': convertDateToInput(pv.SubscriberEffectiveDate),
+                'Annual Maximum': formatCurrency(pv.IndividualAnnualMaximumBenefits),
+                'Family Deductible': formatCurrency(pv.FamilyAnnualDeductible),
+                'Remaining Maximum': formatCurrency(pv.IndividualAnnualRemainingBenefit),
+                'Lifetime Deductible': formatCurrency(pv.IndividualLifetimeDeductible),
+                'Coverage Start Date': convertDateToInput(pv.FamilyMemberEffectiveDate),
+                'Coverage End Date': convertDateToInput(pv.FamilyMemberEndDate),
+                'Individual Deductible': formatCurrency(pv.IndividualAnnualDeductible),
+                'Deductible Applies To': '',  // Need to determine from benefits
+                'Co-Pay': '',  // Not typically in dental
+                'Fee Schedule Used': pv.InsuranceFeeScheduleUsed || ''
+            };
+
+            return fieldMappings;
+        }
+
+        function convertDateToInput(dateStr) {
+            if (!dateStr || dateStr === 'No History') return '';
+
+            // Handle MM/DD/YYYY format
+            if (dateStr.includes('/')) {
+                const [month, day, year] = dateStr.split('/');
+                if (year && month && day) {
+                    return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`;
+                }
+            }
+
+            // Handle YYYY-MM-DD format (already correct)
+            if (dateStr.match(/^\d{4}-\d{2}-\d{2}$/)) {
+                return dateStr;
+            }
+
+            return '';
+        }
+
+        function formatCurrency(value) {
+            if (!value) return '';
+            const num = parseFloat(String(value).replace(/[$,]/g, ''));
+            if (isNaN(num)) return '';
+            return `$${num.toFixed(2)}`;
+        }
+
+        function toggleSection(header) {
+            const section = header.parentElement;
+            section.classList.toggle('collapsed');
+        }
+
+        function saveForm() {
+            const formData = {};
+
+            // Collect all input values
+            const inputs = document.querySelectorAll('input, select, textarea');
+            inputs.forEach(input => {
+                if (input.type === 'radio') {
+                    if (input.checked) {
+                        formData[input.name] = input.value;
+                    }
+                } else {
+                    const label = input.closest('.form-group')?.querySelector('label')?.textContent ||
+                                input.closest('td')?.querySelector('.procedure-code')?.textContent ||
+                                input.name;
+                    if (label && input.value) {
+                        formData[label] = input.value;
+                    }
+                }
+            });
+
+            // Save to localStorage
+            localStorage.setItem('dentalVerificationForm', JSON.stringify(formData));
+
+            console.log('Form saved successfully');
+        }
+
+        function clearForm() {
+            if (confirm('Are you sure you want to clear all form data?')) {
+                document.querySelectorAll('input:not([type="radio"]), select, textarea').forEach(input => {
+                    input.value = '';
+                });
+                document.querySelectorAll('input[type="radio"]').forEach(radio => {
+                    radio.checked = false;
+                });
+            }
+        }
+
+        function exportForm() {
+            console.log('PDF export - coming soon');
+            // This would integrate with a PDF library like jsPDF
+        }
+
+        async function loadFromAneeqa() {
+            // Ask user for patient details
+            const firstName = prompt('Patient First Name:');
+            const lastName = prompt('Patient Last Name:');
+            const subscriberId = prompt('Member/Subscriber ID:');
+            const dateOfBirth = prompt('Date of Birth (YYYY-MM-DD):');
+
+            if (!firstName || !lastName || !subscriberId || !dateOfBirth) {
+                alert('All fields are required');
+                return;
+            }
+
+            try {
+                // Get API key from URL or use default
+                const urlParams = new URLSearchParams(window.location.search);
+                const apiKey = urlParams.get('key') || 'demo2024secure';
+
+                // Call the API to extract and transform data
+                const response = await fetch(`/api/extract?key=${apiKey}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        firstName: firstName.toUpperCase(),
+                        lastName: lastName.toUpperCase(),
+                        subscriberId,
+                        dateOfBirth,
+                        portal: 'DNOA'  // Currently only DNOA has Aneeqa format
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error('Failed to fetch data');
+                }
+
+                const data = await response.json();
+
+                if (!data.aneeqa) {
+                    console.log('No Aneeqa format data available');
+                    return;
+                }
+
+                // Fill the form with the Aneeqa data
+                fillFormWithNormalizedData(data.aneeqa);
+
+                // Form populated successfully - no alert needed
+
+            } catch (error) {
+                alert('Error loading data: ' + error.message);
+                console.error(error);
+            }
+        }
+
+        function fillFormWithNormalizedData(aneeqaData) {
+            const mappings = mapDAToForm(aneeqaData);
+
+            // Fill text inputs
+            Object.entries(mappings).forEach(([label, value]) => {
+                const inputs = document.querySelectorAll('.form-group');
+                inputs.forEach(group => {
+                    const labelEl = group.querySelector('label');
+                    const input = group.querySelector('input, textarea');
+                    if (labelEl && input && labelEl.textContent === label) {
+                        input.value = value;
+                    }
+                });
+            });
+
+            // Fill select dropdowns
+            const pv = aneeqaData.PatientVerification?.[0] || {};
+
+            // COB Type - Default to Primary since this is usually the main insurance
+            const cobSelects = document.querySelectorAll('select');
+            cobSelects.forEach(select => {
+                const label = select.previousElementSibling;
+                if (label && label.textContent === 'COB Type') {
+                    select.value = 'Primary'; // Default to Primary
+                }
+            });
+
+            // Benefit Year
+            const benefitYearSelects = document.querySelectorAll('select');
+            benefitYearSelects.forEach(select => {
+                const label = select.closest('.form-group')?.querySelector('label');
+                if (label?.textContent === 'Benefit Year' && pv.BenefitPeriod) {
+                    select.value = pv.BenefitPeriod === 'Calendar Year' ? 'Calendar Year' : 'Benefit Year';
+                }
+            });
+
+            // Fill procedure tables if we have benefits data
+            if (aneeqaData.EligibilityBenefits) {
+                fillProcedureTables(aneeqaData.EligibilityBenefits, aneeqaData.ServiceTreatmentHistory);
+            }
+
+            // Fill coverage percentages
+            fillCoveragePercentages(aneeqaData.EligibilityBenefits);
+
+            // Fill special notes (radio buttons)
+            fillSpecialNotes(pv);
+        }
+
+        function fillProcedureTables(benefits, history) {
+            // Create a map of procedure code to data
+            const procedureMap = {};
+
+            benefits.forEach(benefit => {
+                if (benefit.ProcedureCode) {
+                    procedureMap[benefit.ProcedureCode] = {
+                        frequency: benefit.limitation || '',
+                        coverage: benefit.Benefits || '',
+                        deductible: benefit.DeductibleApplies || 'No'
+                    };
+                }
+            });
+
+            // Add history data
+            if (history) {
+                history.forEach(item => {
+                    if (item.ProcedureCode && procedureMap[item.ProcedureCode]) {
+                        procedureMap[item.ProcedureCode].lastDOS = item.History || '';
+                        procedureMap[item.ProcedureCode].limitations = item.LimitationText || '';
+                    }
+                });
+            }
+
+            // Fill the table rows
+            const tables = document.querySelectorAll('table');
+            tables.forEach(table => {
+                const rows = table.querySelectorAll('tbody tr');
+                rows.forEach(row => {
+                    const codeSpan = row.querySelector('.procedure-code');
+                    if (codeSpan) {
+                        const code = codeSpan.textContent;
+                        const data = procedureMap[code];
+                        if (data) {
+                            const inputs = row.querySelectorAll('input');
+                            if (inputs[0]) inputs[0].value = data.frequency || '';
+                            if (inputs[1]) inputs[1].value = data.limitations || '';
+                            if (inputs[2] && data.lastDOS) {
+                                inputs[2].value = convertDateToInput(data.lastDOS);
+                            }
+                            if (inputs[3]) inputs[3].value = `${data.coverage} coverage${data.deductible === 'Yes' ? ', deductible applies' : ''}`;
+                        }
+                    }
+                });
+            });
+        }
+
+        function fillCoveragePercentages(benefits) {
+            if (!benefits) return;
+
+            // Find coverage percentages for each category
+            let preventive = 0, basic = 0, major = 0;
+
+            benefits.forEach(benefit => {
+                if (benefit.unit === 'Preventive' && benefit.Benefits) {
+                    preventive = Math.max(preventive, parseInt(benefit.Benefits) || 0);
+                } else if (benefit.unit === 'Basic' && benefit.Benefits) {
+                    basic = Math.max(basic, parseInt(benefit.Benefits) || 0);
+                } else if (benefit.unit === 'Major' && benefit.Benefits) {
+                    major = Math.max(major, parseInt(benefit.Benefits) || 0);
+                }
+            });
+
+            // Fill the coverage inputs
+            const coverageItems = document.querySelectorAll('.coverage-item');
+            coverageItems.forEach(item => {
+                const label = item.querySelector('label');
+                const input = item.querySelector('input');
+                if (label && input) {
+                    if (label.textContent.includes('Preventive')) {
+                        input.value = preventive ? `${preventive}%` : '100%';
+                    } else if (label.textContent.includes('Basic Services')) {
+                        input.value = basic ? `${basic}%` : '80%';
+                    } else if (label.textContent.includes('Major Services')) {
+                        input.value = major ? `${major}%` : '50%';
+                    }
+                }
+            });
+        }
+
+        function fillSpecialNotes(pv) {
+            // Missing tooth clause - Default to No if specified
+            const missingToothRadios = document.querySelectorAll('input[name="missing-tooth"]');
+            missingToothRadios.forEach(radio => {
+                if (radio.value === 'no') {
+                    radio.checked = true; // Sophie's plan has no missing tooth clause
+                }
+            });
+
+            // Waiting period
+            if (pv.FamilyMemberWaitingPeriod) {
+                const radios = document.querySelectorAll('input[name="waiting-period"]');
+                radios.forEach(radio => {
+                    if ((pv.FamilyMemberWaitingPeriod !== 'None' && radio.value === 'yes') ||
+                        (pv.FamilyMemberWaitingPeriod === 'None' && radio.value === 'no')) {
+                        radio.checked = true;
+                    }
+                });
+            }
+
+            // Work in progress
+            if (pv.TreatmentinProgressCoverage) {
+                const radios = document.querySelectorAll('input[name="work-progress"]');
+                radios.forEach(radio => {
+                    if ((pv.TreatmentinProgressCoverage === 'Yes' && radio.value === 'yes') ||
+                        (pv.TreatmentinProgressCoverage === 'No' && radio.value === 'no')) {
+                        radio.checked = true;
+                    }
+                });
+            }
+        }
+
+        // Load saved data on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            // Check if we should auto-fill from extraction
+            const urlParams = new URLSearchParams(window.location.search);
+            const autoFill = urlParams.get('autoFill') === 'true';
+
+            if (autoFill) {
+                // Get the data from sessionStorage
+                const extractedDataStr = sessionStorage.getItem('extractedPatientData');
+                if (extractedDataStr) {
+                    try {
+                        const extractedData = JSON.parse(extractedDataStr);
+
+                        // Check if data has Normalized DA format (DNOA portal)
+                        if (extractedData.normalizedDA) {
+                            // Use the Normalized DA data directly
+                            fillFormWithNormalizedData(extractedData.normalizedDA);
+                            // Form filled with extracted data - no alert needed
+                        } else {
+                            // For other portals, fill what we can from summary
+                            fillFormWithSummaryData(extractedData);
+                            // Form partially filled - no alert needed
+                        }
+
+                        // Clear the session storage after use
+                        sessionStorage.removeItem('extractedPatientData');
+                    } catch (error) {
+                        console.error('Error loading extracted data:', error);
+                        alert('Error loading data. Please try manual entry.');
+                    }
+                }
+            } else {
+                // Load from localStorage if saved
+                const savedData = localStorage.getItem('dentalVerificationForm');
+                if (savedData) {
+                    const formData = JSON.parse(savedData);
+                    // Populate form with saved data
+                    // (Implementation would match save logic in reverse)
+                }
+            }
+        });
+
+        function fillFormWithSummaryData(data) {
+            // Fill basic fields from summary data (for non-DNOA portals)
+            if (data.summary) {
+                // Patient info
+                const nameParts = (data.summary.patientName || '').split(' ');
+                setFieldValue('Patient Name', data.summary.patientName || '');
+                setFieldValue('Member ID', data.summary.memberId || data.summary.subscriberId || '');
+
+                // Plan info
+                setFieldValue('Insurance Name', data.portal || '');
+                setFieldValue('Group Name / #', data.summary.planName || '');
+
+                // Benefits
+                if (data.summary.annualMaximum) {
+                    setFieldValue('Annual Maximum', formatCurrency(data.summary.annualMaximum.amount));
+                    setFieldValue('Remaining Maximum', formatCurrency(data.summary.annualMaximum.remaining));
+                }
+
+                if (data.summary.deductible) {
+                    setFieldValue('Individual Deductible', formatCurrency(data.summary.deductible.amount));
+                    setFieldValue('Deductible Met', formatCurrency(data.summary.deductible.met));
+                }
+            }
+
+            // Try to fill procedure data if available
+            if (data.procedureHistory || data.claims) {
+                const procedures = data.procedureHistory || data.claims || [];
+                fillProcedureTablesFromRaw(procedures);
+            }
+        }
+
+        function setFieldValue(labelText, value) {
+            const inputs = document.querySelectorAll('.form-group');
+            inputs.forEach(group => {
+                const label = group.querySelector('label');
+                const input = group.querySelector('input, textarea, select');
+                if (label && input && label.textContent === labelText) {
+                    input.value = value || '';
+                }
+            });
+        }
+
+        function fillProcedureTablesFromRaw(procedures) {
+            // Map raw procedure data to table rows
+            const procedureMap = {};
+
+            procedures.forEach(proc => {
+                const code = proc.code || proc.procedureCode || proc.serviceCode;
+                if (code) {
+                    const cleanCode = code.replace(/\D/g, ''); // Remove non-digits
+                    const dCode = cleanCode.length === 4 ? `D${cleanCode}` : cleanCode;
+
+                    procedureMap[dCode] = {
+                        date: proc.serviceDate || proc.date || '',
+                        description: proc.description || proc.serviceName || ''
+                    };
+                }
+            });
+
+            // Fill the table rows
+            const tables = document.querySelectorAll('table');
+            tables.forEach(table => {
+                const rows = table.querySelectorAll('tbody tr');
+                rows.forEach(row => {
+                    const codeSpan = row.querySelector('.procedure-code');
+                    if (codeSpan) {
+                        const code = codeSpan.textContent;
+                        const data = procedureMap[code];
+                        if (data) {
+                            const dateInput = row.querySelector('input[type="date"]');
+                            if (dateInput && data.date) {
+                                dateInput.value = convertDateToInput(data.date);
+                            }
+                        }
+                    }
+                });
+            });
+        }
+    </script>
+</body>
+</html>

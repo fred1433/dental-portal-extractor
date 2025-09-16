@@ -1,6 +1,7 @@
 const { chromium } = require('playwright');
 const fs = require('fs');
 const path = require('path');
+const { toNormalizedDAFormat } = require('./normalized-da-mapper');
 
 const SESSION_DIR = path.join(process.cwd(), '.dnoa-session');
 const STORAGE_STATE_FILE = path.join(SESSION_DIR, 'storageState.json');
@@ -294,7 +295,15 @@ class DNOAService {
       }
       
       onLog(`✅ Found ${cdtCodes.length} CDT procedure codes`);
-      
+
+      // Transform to Normalized DA format
+      allData.normalizedDA = toNormalizedDAFormat(allData, {
+        clientId: process.env.CLIENT_ID || '',
+        eligibilityVerificationId: '', // Can be set if available
+        patientId: patient.subscriberId || ''
+      });
+      onLog(`✅ Generated Normalized DA format data`);
+
       // Create summary for display
       allData.summary = {
         patientName: `${patient.firstName} ${patient.lastName}`,
