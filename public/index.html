@@ -420,13 +420,71 @@
             letter-spacing: 5px;
         }
 
+        /* Bulk mode styles */
+        .bulk-fields {
+            display: none;
+            margin: 20px 0;
+        }
+
+        .bulk-fields.active {
+            display: block;
+        }
+
+        .bulk-row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            align-items: center;
+        }
+
+        .bulk-row .patient-num {
+            min-width: 80px;
+            color: #6b7280;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .bulk-row input {
+            flex: 1;
+            padding: 10px;
+        }
+
+        .bulk-header {
+            background: #f0fdf4;
+            border: 1px solid #86efac;
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 20px;
+        }
+
+        .bulk-header h4 {
+            color: #166534;
+            margin: 0 0 8px 0;
+            font-size: 16px;
+        }
+
+        .bulk-header p {
+            color: #15803d;
+            font-size: 14px;
+            margin: 0;
+        }
+
         @media (max-width: 640px) {
             .form-grid {
                 grid-template-columns: 1fr;
             }
-            
+
             .content {
                 padding: 20px;
+            }
+
+            .bulk-row {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .bulk-row .patient-num {
+                min-width: auto;
             }
         }
     </style>
@@ -459,6 +517,21 @@
                         </select>
                     </div>
                     
+                    <!-- DNOA Extraction Mode Toggle (only for DNOA) -->
+                    <div class="form-group full-width" id="dnoaMode" style="display: none;">
+                        <label for="extractionMode">Extraction Mode</label>
+                        <div style="display: flex; gap: 20px; align-items: center;">
+                            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                                <input type="radio" name="dnoaExtractionMode" value="single" checked>
+                                <span>Single Patient</span>
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                                <input type="radio" name="dnoaExtractionMode" value="bulk">
+                                <span>📋 Bulk Mode (5 patients)</span>
+                            </label>
+                        </div>
+                    </div>
+
                     <!-- DDINS Extraction Mode Toggle -->
                     <div class="form-group full-width" id="ddinsMode" style="display: block;">
                         <label for="extractionMode">Extraction Mode</label>
@@ -483,15 +556,53 @@
                         <label for="lastName">Last Name</label>
                         <input type="text" id="lastName" name="lastName" required>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="subscriberId" id="subscriberIdLabel">Subscriber ID</label>
                         <input type="text" id="subscriberId" name="subscriberId" required>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="dateOfBirth">Date of Birth</label>
                         <input type="text" id="dateOfBirth" name="dateOfBirth" required placeholder="MM/DD/YYYY">
+                    </div>
+
+                    <!-- Bulk mode fields (DNOA only) -->
+                    <div id="bulkFields" class="bulk-fields">
+                        <div class="bulk-header">
+                            <h4>📋 Bulk Extraction - Enter up to 5 patients</h4>
+                            <p>Enter Member ID and Date of Birth for each patient</p>
+                        </div>
+
+                        <div class="bulk-row">
+                            <span class="patient-num">Patient 1:</span>
+                            <input type="text" name="bulkMemberId1" placeholder="Member ID" />
+                            <input type="text" name="bulkDob1" placeholder="MM/DD/YYYY" />
+                        </div>
+
+                        <div class="bulk-row">
+                            <span class="patient-num">Patient 2:</span>
+                            <input type="text" name="bulkMemberId2" placeholder="Member ID" />
+                            <input type="text" name="bulkDob2" placeholder="MM/DD/YYYY" />
+                        </div>
+
+                        <div class="bulk-row">
+                            <span class="patient-num">Patient 3:</span>
+                            <input type="text" name="bulkMemberId3" placeholder="Member ID" />
+                            <input type="text" name="bulkDob3" placeholder="MM/DD/YYYY" />
+                        </div>
+
+                        <div class="bulk-row">
+                            <span class="patient-num">Patient 4:</span>
+                            <input type="text" name="bulkMemberId4" placeholder="Member ID" />
+                            <input type="text" name="bulkDob4" placeholder="MM/DD/YYYY" />
+                        </div>
+
+                        <div class="bulk-row">
+                            <span class="patient-num">Patient 5:</span>
+                            <input type="text" name="bulkMemberId5" placeholder="Member ID" />
+                            <input type="text" name="bulkDob5" placeholder="MM/DD/YYYY" />
+                        </div>
                     </div>
                 </div>
                 

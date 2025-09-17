@@ -64,43 +64,103 @@ function broadcastLog(message) {
 
 // Main extraction endpoint
 app.post('/api/extract', checkApiKey, async (req, res) => {
-  const { subscriberId, dateOfBirth, firstName, lastName, portal = 'DNOA', mode } = req.body;
+  const { subscriberId, dateOfBirth, firstName, lastName, portal = 'DNOA', mode, patients } = req.body;
   
-  // Skip validation for DDINS bulk mode
+  // Skip validation for bulk modes
   const isDDINSBulk = portal?.toLowerCase() === 'ddins' && mode === 'bulk';
-  
-  // Validation (except for DDINS bulk mode)
-  if (!isDDINSBulk && (!subscriberId || !dateOfBirth || !firstName || !lastName)) {
-    return res.status(400).json({ 
-      error: 'Missing required fields: subscriberId, dateOfBirth, firstName, lastName' 
+  const isDNOABulk = portal?.toLowerCase() === 'dnoa' && mode === 'bulk';
+  const isBulkMode = isDDINSBulk || isDNOABulk;
+  const portalLower = portal?.toLowerCase();
+
+  // DNOA and DOT don't require names (just Member ID + DOB)
+  const needsNames = !(portalLower === 'dnoa' || portalLower === 'dot');
+
+  // Validation for bulk mode
+  if (isDNOABulk) {
+    if (!patients || !Array.isArray(patients) || patients.length === 0) {
+      return res.status(400).json({
+        error: 'No patients provided for bulk extraction'
+      });
+    }
+  }
+  // Validation for single mode
+  else if (!isBulkMode && (!subscriberId || !dateOfBirth || (needsNames && (!firstName || !lastName)))) {
+    return res.status(400).json({
+      error: 'Missing required fields: subscriberId, dateOfBirth' + (needsNames ? ', firstName, lastName' : '')
     });
   }
   
+  // Handle DNOA bulk mode
+  if (isDNOABulk) {
+    broadcastLog(`🚀 Starting DNOA bulk extraction for ${patients.length} patients`);
+    const DNOABulkHandler = require('./dnoa-bulk-handler');
+    const bulkHandler = new DNOABulkHandler();
+
+    try {
+      // Format patients dates if needed
+      const formattedPatients = patients.map(p => {
+        let formattedDob = p.dateOfBirth;
+        if (p.dateOfBirth && p.dateOfBirth.includes('/')) {
+          const [month, day, year] = p.dateOfBirth.split('/');
+          formattedDob = `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`;
+        }
+        return {
+          subscriberId: p.subscriberId.trim(),
+          dateOfBirth: formattedDob,
+          firstName: '',
+          lastName: ''
+        };
+      });
+
+      const bulkResult = await bulkHandler.processBulk(formattedPatients, broadcastLog);
+
+      // Send complete event
+      for (const client of sseClients) {
+        client.write(`event: complete\ndata: {"message": "Bulk extraction complete"}\n\n`);
+      }
+
+      return res.json({
+        success: true,
+        mode: 'bulk',
+        data: bulkResult
+      });
+    } catch (error) {
+      broadcastLog(`❌ Bulk extraction error: ${error.message}`);
+      return res.status(500).json({
+        success: false,
+        error: error.message
+      });
+    }
+  }
+
   // Skip patient object creation for DDINS bulk mode
   let patient = null;
-  if (!isDDINSBulk) {
+  if (!isBulkMode) {
     // Format date if needed (MM/DD/YYYY to YYYY-MM-DD)
     let formattedDob = dateOfBirth;
     if (dateOfBirth && dateOfBirth.includes('/')) {
       const [month, day, year] = dateOfBirth.split('/');
       formattedDob = `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`;
     }
-    
+
     patient = {
       subscriberId: subscriberId.trim(),
       dateOfBirth: formattedDob,
-      firstName: firstName.trim().toUpperCase(),
-      lastName: lastName.trim().toUpperCase()
+      firstName: firstName ? firstName.trim().toUpperCase() : '',
+      lastName: lastName ? lastName.trim().toUpperCase() : ''
     };
-    
-    broadcastLog(`🚀 Starting ${portal} extraction for ${patient.firstName} ${patient.lastName}`);
-  } else {
+
+    // Display patient info appropriately based on available data
+    const patientDisplay = patient.firstName && patient.lastName
+      ? `${patient.firstName} ${patient.lastName}`
+      : `Member ID: ${patient.subscriberId}`;
+    broadcastLog(`🚀 Starting ${portal} extraction for ${patientDisplay}`);
+  } else if (isDDINSBulk) {
     broadcastLog(`🚀 Starting ${portal} bulk extraction`);
   }
   
   // Select service based on portal (case-insensitive)
   let service;
-  const portalLower = portal.toLowerCase();
   
   if (portalLower === 'dentaquest') {
     service = new DentaQuestService();
