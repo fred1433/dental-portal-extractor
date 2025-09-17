@@ -172,7 +172,10 @@ class DNOAService {
   async extractPatientData(patient, onLog = console.log) {
     const token = await this.ensureLoggedIn(onLog);
     
-    onLog(`🔍 Searching for patient: ${patient.firstName} ${patient.lastName}`);
+    const patientName = patient.firstName && patient.lastName
+      ? `${patient.firstName} ${patient.lastName}`
+      : `Member ID: ${patient.subscriberId}`;
+    onLog(`🔍 Searching for patient: ${patientName}`);
     
     const allData = {
       patient,
@@ -310,7 +313,9 @@ class DNOAService {
 
       // Create summary for display
       allData.summary = {
-        patientName: `${patient.firstName} ${patient.lastName}`,
+        patientName: patient.firstName && patient.lastName
+          ? `${patient.firstName} ${patient.lastName}`
+          : `Member ID: ${patient.subscriberId}`,
         memberId: patient.subscriberId,
         planName: members[0]?.policies?.[0]?.groupName || 'Unknown',
         status: members[0]?.policies?.[0]?.status || 'Unknown',
