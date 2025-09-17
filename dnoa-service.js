@@ -264,10 +264,46 @@ class DNOAService {
 
       // 7. Get claims history (financial details)
       onLog('📥 Fetching claims history...');
-      const claimsUrl = `https://www.dnoaconnect.com/members/${memberHash}/claims`;
-      const claimsResp = await this.page.request.get(claimsUrl, { headers });
+      const claimsUrl = `https://www.dnoaconnect.com/claims`;
+      const claimsBody = {
+        searchCriteria: {
+          member: {
+            referenceId: memberHash
+          },
+          type: "claim",
+          subscriberId: patient.subscriberId
+        },
+        member: members[0]
+      };
+      const claimsResp = await this.page.request.post(claimsUrl, {
+        headers: {
+          ...headers,
+          'content-type': 'application/json;charset=UTF-8'
+        },
+        data: claimsBody
+      });
       allData.claims = await claimsResp.json();
       onLog(`✅ Found ${allData.claims?.claims?.length || 0} claims with financial details`);
+
+      // 8. Get detailed line items for each claim
+      if (allData.claims?.claims && allData.claims.claims.length > 0) {
+        onLog(`📥 Fetching detailed line items for ${allData.claims.claims.length} claims...`);
+        for (let i = 0; i < allData.claims.claims.length; i++) {
+          const claim = allData.claims.claims[i];
+          try {
+            const claimLinesUrl = `https://www.dnoaconnect.com/claims/${claim.claimId}/claimLines`;
+            const claimLinesResp = await this.page.request.get(claimLinesUrl, { headers });
+            const claimLinesData = await claimLinesResp.json();
+
+            // Add line details to the claim
+            claim.lineDetails = claimLinesData.lineDetail || [];
+            onLog(`  ✓ Claim ${i + 1}/${allData.claims.claims.length}: ${claim.lineDetails.length} line items`);
+          } catch (err) {
+            onLog(`  ⚠️ Failed to get line details for claim ${i + 1}: ${err.message}`);
+            claim.lineDetails = [];
+          }
+        }
+      }
 
       onLog('✅ Extraction complete!');
       
