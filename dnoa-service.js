@@ -261,7 +261,14 @@ class DNOAService {
       const summaryUrl = `https://www.dnoaconnect.com/members/${memberHash}/planSummary?dateOfBirth=${patient.dateOfBirth}&subscriberId=${patient.subscriberId}`;
       const summaryResp = await this.page.request.get(summaryUrl, { headers });
       allData.planSummary = await summaryResp.json();
-      
+
+      // 7. Get claims history (financial details)
+      onLog('📥 Fetching claims history...');
+      const claimsUrl = `https://www.dnoaconnect.com/members/${memberHash}/claims`;
+      const claimsResp = await this.page.request.get(claimsUrl, { headers });
+      allData.claims = await claimsResp.json();
+      onLog(`✅ Found ${allData.claims?.claims?.length || 0} claims with financial details`);
+
       onLog('✅ Extraction complete!');
       
       // Extract CDT codes from procedure history
@@ -331,6 +338,9 @@ class DNOAService {
         } : null,
         benefitCategories: allData.benefits?.categories?.length || 0,
         procedureHistory: allData.procedureHistory?.data?.length || allData.procedureHistory?.length || 0,
+        claimsCount: allData.claims?.claims?.length || 0,
+        totalBilled: allData.claims?.claims?.reduce((sum, claim) => sum + (claim.billedAmount || 0), 0) || 0,
+        totalPaid: allData.claims?.claims?.reduce((sum, claim) => sum + (claim.paidAmount || 0), 0) || 0,
         cdtCodes: cdtCodes,
         totalCDTCodes: cdtCodes.length
       };
