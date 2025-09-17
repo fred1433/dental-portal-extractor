@@ -45,7 +45,7 @@ function mapDAToForm(normalizedDAData) {
     'benefit-year': pv.BenefitPeriod === 'Calendar Year' ? 'Calendar Year' : 'Benefit Year',
     'network-participation': pv.InNetworkOutNetwork ? 'In-Network' : 'Out-of-Network',
     'assignment-benefits': pv.AssignmentOfBenefits === 'Yes' ? 'Yes' : 'No',
-    'missing-tooth': pv.MissingToothProvision === 'Yes' ? 'yes' : 'no',
+    'missing-tooth': (pv.MissingToothClause && pv.MissingToothClause !== 'Missing tooth clause does not apply.') ? 'yes' : 'no',
     'waiting-period': pv.FamilyMemberWaitingPeriod && pv.FamilyMemberWaitingPeriod !== 'None' ? 'yes' : 'no'
   };
 

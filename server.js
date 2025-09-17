@@ -9,7 +9,7 @@ const DOTService = require('./dot-service');
 const DDINSService = require('./ddins/service');
 const monitor = require('./monitor');
 const cron = require('node-cron');
-const checkLocation = require('./check-location');
+const checkLocation = require('./us-location-checker');
 require('dotenv').config();
 
 const app = express();
