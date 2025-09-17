@@ -305,7 +305,7 @@ class DNOAService {
         }
       }
 
-      onLog('✅ Extraction complete!');
+      onLog('✅ API data collection complete!');
       
       // Extract CDT codes from procedure history
       const cdtCodes = [];
