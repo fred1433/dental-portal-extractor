@@ -556,26 +556,28 @@
                     </div>
 
                     <!-- Bulk mode fields (DNOA only) -->
-                    <div id="bulkFields" class="bulk-fields">
-                        <div class="bulk-header">
-                            <h4>🚀 Bulk Extraction - Unlimited patients!</h4>
-                            <p>Paste your patient list (CSV or Excel copy/paste)</p>
-                        </div>
+                    <div id="bulkFields" class="bulk-fields" style="grid-column: 1 / -1;">
+                        <div style="max-width: 100%; margin: 0 auto;">
+                            <div class="bulk-header">
+                                <h4>🚀 Bulk Extraction - Unlimited patients!</h4>
+                                <p>Paste your patient list (CSV or Excel copy/paste)</p>
+                            </div>
 
-                        <textarea
-                            id="bulkPatientsTextarea"
-                            name="bulkPatientsTextarea"
-                            placeholder="825978894,09/25/1994
+                            <textarea
+                                id="bulkPatientsTextarea"
+                                name="bulkPatientsTextarea"
+                                placeholder="825978894,09/25/1994
 820704358,01/15/1987
 812345678,03/22/1999
 809876543,05/10/1985
 ... paste as many as you need!"
-                            style="width: 100%; height: 250px; font-family: 'Courier New', monospace; padding: 12px; border: 2px solid #e5e7eb; border-radius: 10px; resize: vertical; font-size: 14px; line-height: 1.5;"
-                        ></textarea>
+                                style="width: 100%; height: 250px; font-family: 'Courier New', monospace; padding: 12px; border: 2px solid #e5e7eb; border-radius: 10px; resize: vertical; font-size: 14px; line-height: 1.5;"
+                            ></textarea>
 
-                        <div style="display: flex; justify-content: space-between; margin-top: 10px; color: #666; font-size: 13px;">
-                            <span>Format: MemberID,MM/DD/YYYY (one per line)</span>
-                            <span id="bulkPatientCount" style="font-weight: 600; color: #22c55e;">0 patients detected</span>
+                            <div style="display: flex; justify-content: space-between; margin-top: 10px; color: #666; font-size: 13px;">
+                                <span>Format: MemberID,MM/DD/YYYY (one per line)</span>
+                                <span id="bulkPatientCount" style="font-weight: 600; color: #22c55e;">0 patients detected</span>
+                            </div>
                         </div>
                     </div>
                 </div>
