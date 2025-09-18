@@ -12,6 +12,22 @@ interface PortalTestData {
     dateOfBirth: string;
 }
 
+type BulkPatient = {
+    subscriberId: string;
+    dateOfBirth: string;
+    firstName?: string;
+    lastName?: string;
+};
+
+interface BulkRunResult {
+    total: number;
+    successful: number;
+    failed: number;
+    results: Array<{ success: true; patient: BulkPatient; data: ExtractionResult }>;
+    errors: Array<{ patient: BulkPatient; error: string }>;
+    performance?: { durationSeconds: number; patientsPerMinute: number };
+}
+
 interface ExtractionRequest {
     portal: PortalType;
     subscriberId: string;
@@ -19,11 +35,14 @@ interface ExtractionRequest {
     firstName: string;
     lastName: string;
     mode?: 'single' | 'bulk';
+    patients?: BulkPatient[];  // Correct field name for server contract
+    bulkPatients?: BulkPatient[];  // Keep for backward compat
 }
 
 interface ExtractionResponse {
     success: boolean;
-    data?: ExtractionResult;
+    mode?: 'single' | 'bulk';
+    data?: ExtractionResult | BulkRunResult;
     error?: string;
 }
 
@@ -194,7 +213,7 @@ const testData: Record<PortalType, PortalTestData> = {
 // ============= Global State =============
 
 let eventSource: EventSource | null = null;
-let extractedData: ExtractionResult | null = null;
+let extractedData: any = null;  // Allow bulk or single data
 
 // ============= VPN Location Check =============
 
@@ -770,6 +789,119 @@ function viewJSONNormalized(): void {
     }
 }
 
+// ============= Bulk Results Display =============
+
+function displayBulkResults(data: BulkRunResult): void {
+    safeHide('errorMessage');
+
+    const summaryGrid = safeGetElement<HTMLElement>('summaryGrid');
+    if (summaryGrid) {
+        let html = `
+            <div style="width: 100%; margin: 20px 0;">
+                <h3 style="color: #22c55e; margin-bottom: 15px;">✅ Bulk Extraction Complete: ${data.successful}/${data.total} patients</h3>
+                <table style="width: 100%; border-collapse: collapse; background: white; border: 1px solid #e5e7eb;">
+                    <thead>
+                        <tr style="background: #f9fafb; border-bottom: 2px solid #e5e7eb;">
+                            <th style="padding: 12px; text-align: left;">Status</th>
+                            <th style="padding: 12px; text-align: left;">Member ID</th>
+                            <th style="padding: 12px; text-align: left;">Deductible</th>
+                            <th style="padding: 12px; text-align: left;">Maximum Remaining</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+        `;
+
+        if (Array.isArray(data.results)) {
+            for (const r of data.results) {
+                const s = r.data?.summary || {};
+                const deductible = s?.deductible;
+                const maxRemaining = s?.annualMaximum?.remaining;
+                html += `
+                    <tr style="border-bottom: 1px solid #e5e7eb;">
+                        <td style="padding: 12px;">✅</td>
+                        <td style="padding: 12px; font-family: monospace;">${r.patient.subscriberId}</td>
+                        <td style="padding: 12px;">$${deductible?.remaining || 0}/$${deductible?.amount || 0}</td>
+                        <td style="padding: 12px; font-weight: bold;">$${maxRemaining ?? 'N/A'}</td>
+                    </tr>`;
+            }
+        }
+
+        if (Array.isArray(data.errors)) {
+            for (const e of data.errors) {
+                html += `
+                    <tr style="border-bottom: 1px solid #e5e7eb; background: #fee2e2;">
+                        <td style="padding: 12px;">❌</td>
+                        <td style="padding: 12px; font-family: monospace;">${e.patient.subscriberId}</td>
+                        <td style="padding: 12px;" colspan="2">${e.error}</td>
+                    </tr>`;
+            }
+        }
+
+        html += `
+                    </tbody>
+                </table>
+                <div style="margin-top: 20px;">
+                    <button class="btn" onclick="downloadBulkJSON()" style="margin-right: 10px;">📥 Download JSON</button>
+                    <button class="btn" onclick="downloadBulkCSV()" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">📊 Download CSV</button>
+                </div>
+            </div>`;
+        summaryGrid.innerHTML = html;
+    }
+
+    const actionButtons = document.querySelector('.action-buttons') as HTMLElement | null;
+    if (actionButtons) actionButtons.style.display = 'none';
+
+    const resultsSection = safeGetElement<HTMLElement>('resultsSection');
+    if (resultsSection) resultsSection.classList.add('active');
+
+    const statusBadge = safeGetElement<HTMLElement>('statusBadge');
+    if (statusBadge) {
+        statusBadge.textContent = 'Success';
+        statusBadge.className = 'status-badge success';
+    }
+}
+
+// ============= Bulk Download Functions =============
+
+function downloadBulkJSON(): void {
+    if (!extractedData) return;
+    const dataStr = JSON.stringify(extractedData, null, 2);
+    const dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(dataStr);
+    const filename = `bulk-dnoa-${new Date().toISOString().split('T')[0]}.json`;
+    const a = document.createElement('a');
+    a.href = dataUri;
+    a.download = filename;
+    a.click();
+}
+
+function downloadBulkCSV(): void {
+    if (!extractedData) return;
+    const data = extractedData as BulkRunResult;
+    let csv = 'Status,MemberID,Deductible_Remaining,Deductible_Total,Maximum_Remaining\n';
+
+    if (Array.isArray(data.results)) {
+        for (const r of data.results) {
+            const s = r.data?.summary || {};
+            const d = s?.deductible || {};
+            const max = s?.annualMaximum?.remaining;
+            csv += `Success,${r.patient.subscriberId},${d.remaining || 0},${d.amount || 0},${max ?? 'N/A'}\n`;
+        }
+    }
+
+    if (Array.isArray(data.errors)) {
+        for (const e of data.errors) {
+            csv += `Failed,${e.patient.subscriberId},ERROR,ERROR,ERROR\n`;
+        }
+    }
+
+    const dataUri = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csv);
+    const filename = `bulk-dnoa-${new Date().toISOString().split('T')[0]}.csv`;
+    const a = document.createElement('a');
+    a.href = dataUri;
+    a.download = filename;
+    a.click();
+}
+
 // ============= OTP Handling =============
 
 async function submitOTP(): Promise<void> {
@@ -852,15 +984,61 @@ async function handleExtraction(event: Event): Promise<void> {
         dateOfBirth: safeGetValue('dateOfBirth')
     };
     
+    // Handle DNOA bulk mode
+    if (portal === 'DNOA') {
+        const modeSelect = document.getElementById('extractionMode') as HTMLSelectElement;
+        let selectedMode = modeSelect ? modeSelect.value : 'single';
+
+        if (selectedMode === 'bulk') {
+            // Parse textarea content
+            const bulkTextarea = document.getElementById('bulkPatientsTextarea') as HTMLTextAreaElement;
+            const bulkPatients: BulkPatient[] = [];
+
+            if (bulkTextarea && bulkTextarea.value) {
+                const lines = bulkTextarea.value.trim().split('\n');
+
+                for (const line of lines) {
+                    const trimmed = line.trim();
+                    if (!trimmed || trimmed.startsWith('...')) continue;
+
+                    // Support multiple delimiters: comma, tab, semicolon
+                    const parts = trimmed.split(/[,\t;]+/).map(p => p.trim());
+
+                    if (parts.length >= 2) {
+                        const [subscriberId, dateOfBirth] = parts;
+                        bulkPatients.push({ subscriberId, dateOfBirth, firstName: '', lastName: '' });
+                    }
+                }
+            }
+
+            if (bulkPatients.length === 0) {
+                showError('Please enter at least one patient (Member ID and Date of Birth)');
+                if (extractBtn) extractBtn.disabled = false;
+                if (btnText) btnText.textContent = 'Extract Data';
+                return;
+            }
+
+            // Use 'patients' field for server contract
+            requestData.mode = 'bulk';
+            requestData.patients = bulkPatients;  // CORRECT FIELD NAME
+            // Clear single patient fields
+            requestData.firstName = '';
+            requestData.lastName = '';
+            requestData.subscriberId = '';
+            requestData.dateOfBirth = '';
+
+            if (btnText) btnText.textContent = `Extracting ${bulkPatients.length} patients...`;
+        }
+    }
     // Add mode for DDINS portal
-    if (portal === 'DDINS') {
+    else if (portal === 'DDINS') {
         const modeRadios = document.getElementsByName('extractionMode');
         Array.from(modeRadios).forEach(radio => {
             if ((radio as HTMLInputElement).checked) {
                 requestData.mode = (radio as HTMLInputElement).value as 'single' | 'bulk';
             }
         })
-        
+
         // For bulk mode, clear patient fields
         if (requestData.mode === 'bulk') {
             requestData.firstName = '';
@@ -925,14 +1103,20 @@ async function handleExtraction(event: Event): Promise<void> {
         
         if (result.success && result.data) {
             extractedData = result.data;
-            // Debug log for normalized DA
-            const currentPortal = safeGetValue('portal');
-            console.log('Checking normalizedDA:', {
-                hasNormalizedDA: !!result.data.normalizedDA,
-                keys: Object.keys(result.data),
-                portal: currentPortal
-            });
-            displayResults(result.data);
+
+            // Check if it's bulk mode response
+            if (result.mode === 'bulk') {
+                displayBulkResults(result.data as BulkRunResult);
+            } else {
+                // Debug log for normalized DA
+                const currentPortal = safeGetValue('portal');
+                console.log('Checking normalizedDA:', {
+                    hasNormalizedDA: !!(result.data as ExtractionResult).normalizedDA,
+                    keys: Object.keys(result.data),
+                    portal: currentPortal
+                });
+                displayResults(result.data as ExtractionResult);
+            }
         } else {
             showError(result.error || 'Extraction failed');
             if (statusBadge) {
@@ -994,6 +1178,35 @@ function initializeEventListeners(): void {
         });
     }
     
+    // Bulk patient counter for DNOA
+    const bulkTextarea = document.getElementById('bulkPatientsTextarea') as HTMLTextAreaElement;
+    if (bulkTextarea) {
+        const updateCounter = () => {
+            const lines = bulkTextarea.value.trim().split('\n');
+            let validCount = 0;
+
+            for (const line of lines) {
+                const trimmed = line.trim();
+                if (!trimmed || trimmed.startsWith('...')) continue;
+
+                // Support multiple delimiters
+                const parts = trimmed.split(/[,\t;]+/).map(p => p.trim());
+                if (parts.length >= 2) {
+                    validCount++;
+                }
+            }
+
+            const counter = document.getElementById('bulkPatientCount');
+            if (counter) {
+                counter.textContent = `${validCount} patient${validCount !== 1 ? 's' : ''} detected`;
+                counter.style.color = validCount > 0 ? '#22c55e' : '#666';
+            }
+        };
+
+        bulkTextarea.addEventListener('input', updateCounter);
+        bulkTextarea.addEventListener('paste', () => setTimeout(updateCounter, 10));
+    }
+
     // DNOA mode toggle
     const modeSelect = document.getElementById('extractionMode') as HTMLSelectElement;
     if (modeSelect) {
@@ -1055,3 +1268,5 @@ document.addEventListener('DOMContentLoaded', initialize);
 (window as any).viewJSONNormalized = viewJSONNormalized;
 (window as any).resetForm = resetForm;
 (window as any).fillVerificationForm = fillVerificationForm;
+(window as any).downloadBulkJSON = downloadBulkJSON;
+(window as any).downloadBulkCSV = downloadBulkCSV;
