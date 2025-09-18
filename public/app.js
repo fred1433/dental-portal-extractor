@@ -131,10 +131,10 @@ function fillFormWithTestData(portal) {
     if (bulkOption && extractionModeSelect) {
         if (portal === 'DNOA') {
             bulkOption.disabled = false;
-            bulkOption.textContent = '📋 Bulk Mode (Unlimited)';
+            bulkOption.textContent = 'Bulk Mode (Unlimited)';
         } else {
             bulkOption.disabled = true;
-            bulkOption.textContent = '🚀 Bulk Mode (Coming Soon)';
+            bulkOption.textContent = 'Bulk Mode (Coming Soon)';
             // Reset to single mode if not DNOA
             extractionModeSelect.value = 'single';
         }
