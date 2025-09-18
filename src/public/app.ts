@@ -228,13 +228,19 @@ function fillFormWithTestData(portal: PortalType): void {
         safeSetValue('dateOfBirth', data.dateOfBirth);
     }
     
-    // Show/hide DDINS mode toggle
-    const ddinsMode = safeGetElement<HTMLElement>('ddinsMode');
-    if (ddinsMode) {
-        if (portal === 'DDINS') {
-            ddinsMode.style.display = 'block';
+    // Handle extraction mode availability
+    const bulkOption = document.getElementById('bulkOption') as HTMLOptionElement;
+    const extractionModeSelect = document.getElementById('extractionMode') as HTMLSelectElement;
+
+    if (bulkOption && extractionModeSelect) {
+        if (portal === 'DNOA') {
+            bulkOption.disabled = false;
+            bulkOption.textContent = 'Bulk Mode (Unlimited)';
         } else {
-            ddinsMode.style.display = 'none';
+            bulkOption.disabled = true;
+            bulkOption.textContent = 'Bulk Mode (Coming Soon)';
+            // Reset to single mode if not DNOA
+            extractionModeSelect.value = 'single';
         }
     }
     
@@ -246,31 +252,73 @@ function updateFormFieldVisibility(portal: PortalType): void {
     const firstName = safeGetElement<HTMLElement>('firstName');
     const lastName = safeGetElement<HTMLElement>('lastName');
     const subscriberId = safeGetElement<HTMLElement>('subscriberId');
+    const subscriberIdLabel = safeGetElement<HTMLElement>('subscriberIdLabel');
     const dateOfBirth = safeGetElement<HTMLElement>('dateOfBirth');
-    
-    // Get their parent containers
     const firstNameGroup = firstName?.parentElement;
     const lastNameGroup = lastName?.parentElement;
     const subscriberIdGroup = subscriberId?.parentElement;
     const dateOfBirthGroup = dateOfBirth?.parentElement;
-    
-    if (portal === 'DDINS') {
+    const bulkFields = safeGetElement<HTMLElement>('bulkFields');
+    const formGrid = document.querySelector('.form-grid') as HTMLElement;
+
+    // Add/remove dnoa-mode class for proper grid positioning
+    if (formGrid) {
+        if (portal === 'DNOA' || portal === 'DOT') {
+            formGrid.classList.add('dnoa-mode');
+        } else {
+            formGrid.classList.remove('dnoa-mode');
+        }
+    }
+
+    // Hide bulk fields by default
+    if (bulkFields) bulkFields.classList.remove('active');
+
+    // DNOA handling
+    if (portal === 'DNOA') {
+        const modeSelect = document.getElementById('extractionMode') as HTMLSelectElement;
+        let selectedMode = modeSelect ? modeSelect.value : 'single';
+
+        if (selectedMode === 'bulk') {
+            // Show bulk fields
+            if (bulkFields) bulkFields.classList.add('active');
+            // Hide single patient fields
+            if (firstNameGroup) firstNameGroup.style.display = 'none';
+            if (lastNameGroup) lastNameGroup.style.display = 'none';
+            if (subscriberIdGroup) subscriberIdGroup.style.display = 'none';
+            if (dateOfBirthGroup) dateOfBirthGroup.style.display = 'none';
+            // Make single fields not required
+            if (firstName && isInputElement(firstName)) firstName.required = false;
+            if (lastName && isInputElement(lastName)) lastName.required = false;
+            if (subscriberId && isInputElement(subscriberId)) subscriberId.required = false;
+            if (dateOfBirth && isInputElement(dateOfBirth)) dateOfBirth.required = false;
+        } else {
+            // Single mode - hide name fields for DNOA
+            if (firstNameGroup) firstNameGroup.style.display = 'none';
+            if (lastNameGroup) lastNameGroup.style.display = 'none';
+            if (firstName && isInputElement(firstName)) firstName.required = false;
+            if (lastName && isInputElement(lastName)) lastName.required = false;
+            if (subscriberIdLabel) subscriberIdLabel.textContent = 'Member ID or SSN';
+            if (subscriberIdGroup) subscriberIdGroup.style.display = '';
+            if (dateOfBirthGroup) dateOfBirthGroup.style.display = '';
+        }
+    }
+    else if (portal === 'DDINS') {
         const modeRadios = document.getElementsByName('extractionMode');
         let selectedMode = 'single';
-        
+
         Array.from(modeRadios).forEach(radio => {
             if ((radio as HTMLInputElement).checked) {
                 selectedMode = (radio as HTMLInputElement).value;
             }
         })
-        
+
         if (selectedMode === 'bulk') {
             // Hide all patient fields for bulk mode
             if (firstNameGroup) firstNameGroup.style.display = 'none';
             if (lastNameGroup) lastNameGroup.style.display = 'none';
             if (subscriberIdGroup) subscriberIdGroup.style.display = 'none';
             if (dateOfBirthGroup) dateOfBirthGroup.style.display = 'none';
-            
+
             // Remove required attribute
             if (firstName && isInputElement(firstName)) firstName.required = false;
             if (lastName && isInputElement(lastName)) lastName.required = false;
@@ -282,21 +330,33 @@ function updateFormFieldVisibility(portal: PortalType): void {
             if (lastNameGroup) lastNameGroup.style.display = '';
             if (subscriberIdGroup) subscriberIdGroup.style.display = '';
             if (dateOfBirthGroup) dateOfBirthGroup.style.display = '';
-            
+
             // Add required attribute back
             if (firstName && isInputElement(firstName)) firstName.required = true;
             if (lastName && isInputElement(lastName)) lastName.required = true;
             if (subscriberId && isInputElement(subscriberId)) subscriberId.required = true;
             if (dateOfBirth && isInputElement(dateOfBirth)) dateOfBirth.required = true;
         }
-    } else {
+    }
+    else if (portal === 'DOT') {
+        // Hide first and last name for DOT, keep other fields
+        if (firstNameGroup) firstNameGroup.style.display = 'none';
+        if (lastNameGroup) lastNameGroup.style.display = 'none';
+        if (firstName && isInputElement(firstName)) firstName.required = false;
+        if (lastName && isInputElement(lastName)) lastName.required = false;
+        if (subscriberIdLabel) subscriberIdLabel.textContent = 'Member ID';
+        if (subscriberIdGroup) subscriberIdGroup.style.display = '';
+        if (dateOfBirthGroup) dateOfBirthGroup.style.display = '';
+    }
+    else {
         // Show all fields for other portals
         if (firstNameGroup) firstNameGroup.style.display = '';
         if (lastNameGroup) lastNameGroup.style.display = '';
         if (subscriberIdGroup) subscriberIdGroup.style.display = '';
         if (dateOfBirthGroup) dateOfBirthGroup.style.display = '';
-        
-        // Ensure required attributes are set
+
+        // Reset label and required attributes for other portals
+        if (subscriberIdLabel) subscriberIdLabel.textContent = 'Subscriber ID';
         if (firstName && isInputElement(firstName)) firstName.required = true;
         if (lastName && isInputElement(lastName)) lastName.required = true;
         if (subscriberId && isInputElement(subscriberId)) subscriberId.required = true;
@@ -934,16 +994,16 @@ function initializeEventListeners(): void {
         });
     }
     
-    // DDINS mode change listener
-    const modeRadios = document.getElementsByName('extractionMode');
-    Array.from(modeRadios).forEach(radio => {
-        radio.addEventListener('change', () => {
+    // DNOA mode toggle
+    const modeSelect = document.getElementById('extractionMode') as HTMLSelectElement;
+    if (modeSelect) {
+        modeSelect.addEventListener('change', () => {
             const portal = safeGetValue('portal') as PortalType;
-            if (portal === 'DDINS') {
+            if (portal === 'DNOA') {
                 updateFormFieldVisibility(portal);
             }
         });
-    })
+    }
     
     // Form submission
     const form = safeGetElement<HTMLFormElement>('extractForm');
