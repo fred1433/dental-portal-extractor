@@ -527,7 +527,7 @@
                             </label>
                             <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
                                 <input type="radio" name="dnoaExtractionMode" value="bulk">
-                                <span>📋 Bulk Mode (5 patients)</span>
+                                <span>📋 Bulk Mode (Unlimited)</span>
                             </label>
                         </div>
                     </div>
@@ -570,38 +570,24 @@
                     <!-- Bulk mode fields (DNOA only) -->
                     <div id="bulkFields" class="bulk-fields">
                         <div class="bulk-header">
-                            <h4>📋 Bulk Extraction - Enter up to 5 patients</h4>
-                            <p>Enter Member ID and Date of Birth for each patient</p>
+                            <h4>🚀 Bulk Extraction - Unlimited patients!</h4>
+                            <p>Paste your patient list (CSV or Excel copy/paste)</p>
                         </div>
 
-                        <div class="bulk-row">
-                            <span class="patient-num">Patient 1:</span>
-                            <input type="text" name="bulkMemberId1" placeholder="Member ID" />
-                            <input type="text" name="bulkDob1" placeholder="MM/DD/YYYY" />
-                        </div>
+                        <textarea
+                            id="bulkPatientsTextarea"
+                            name="bulkPatientsTextarea"
+                            placeholder="825978894,09/25/1994
+820704358,01/15/1987
+812345678,03/22/1999
+809876543,05/10/1985
+... paste as many as you need!"
+                            style="width: 100%; height: 250px; font-family: 'Courier New', monospace; padding: 12px; border: 2px solid #e5e7eb; border-radius: 10px; resize: vertical; font-size: 14px; line-height: 1.5;"
+                        ></textarea>
 
-                        <div class="bulk-row">
-                            <span class="patient-num">Patient 2:</span>
-                            <input type="text" name="bulkMemberId2" placeholder="Member ID" />
-                            <input type="text" name="bulkDob2" placeholder="MM/DD/YYYY" />
-                        </div>
-
-                        <div class="bulk-row">
-                            <span class="patient-num">Patient 3:</span>
-                            <input type="text" name="bulkMemberId3" placeholder="Member ID" />
-                            <input type="text" name="bulkDob3" placeholder="MM/DD/YYYY" />
-                        </div>
-
-                        <div class="bulk-row">
-                            <span class="patient-num">Patient 4:</span>
-                            <input type="text" name="bulkMemberId4" placeholder="Member ID" />
-                            <input type="text" name="bulkDob4" placeholder="MM/DD/YYYY" />
-                        </div>
-
-                        <div class="bulk-row">
-                            <span class="patient-num">Patient 5:</span>
-                            <input type="text" name="bulkMemberId5" placeholder="Member ID" />
-                            <input type="text" name="bulkDob5" placeholder="MM/DD/YYYY" />
+                        <div style="display: flex; justify-content: space-between; margin-top: 10px; color: #666; font-size: 13px;">
+                            <span>Format: MemberID,MM/DD/YYYY (one per line)</span>
+                            <span id="bulkPatientCount" style="font-weight: 600; color: #22c55e;">0 patients detected</span>
                         </div>
                     </div>
                 </div>
