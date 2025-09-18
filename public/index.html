@@ -63,6 +63,11 @@
             flex-direction: column;
         }
 
+        /* When name fields are hidden, keep natural flow but hide gaps */
+        .form-grid.dnoa-mode .name-fields {
+            display: none !important;
+        }
+
         .form-group.full-width {
             grid-column: 1 / -1;
         }
@@ -504,8 +509,9 @@
         
         <div class="content">
             <form id="extractForm">
-                <div class="form-grid">
-                    <div class="form-group full-width">
+                <!-- Portal and Mode Selection Section -->
+                <div style="display: flex; flex-direction: column; gap: 20px; margin-bottom: 30px;">
+                    <div class="form-group">
                         <label for="portal">Select Portal</label>
                         <select id="portal" name="portal" required>
                             <option value="DDINS" selected>Delta Dental INS</option>
@@ -516,37 +522,19 @@
                             <option value="Cigna">Cigna</option>
                         </select>
                     </div>
-                    
-                    <!-- DNOA Extraction Mode Toggle (only for DNOA) -->
-                    <div class="form-group full-width" id="dnoaMode" style="display: none;">
-                        <label for="extractionMode">Extraction Mode</label>
-                        <div style="display: flex; gap: 20px; align-items: center;">
-                            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
-                                <input type="radio" name="dnoaExtractionMode" value="single" checked>
-                                <span>Single Patient</span>
-                            </label>
-                            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
-                                <input type="radio" name="dnoaExtractionMode" value="bulk">
-                                <span>📋 Bulk Mode (Unlimited)</span>
-                            </label>
-                        </div>
-                    </div>
 
-                    <!-- DDINS Extraction Mode Toggle -->
-                    <div class="form-group full-width" id="ddinsMode" style="display: block;">
+                    <!-- Extraction Mode for all portals -->
+                    <div class="form-group" id="extractionModeGroup">
                         <label for="extractionMode">Extraction Mode</label>
-                        <div style="display: flex; gap: 20px; align-items: center;">
-                            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
-                                <input type="radio" name="extractionMode" value="single" checked>
-                                <span>Single Patient</span>
-                            </label>
-                            <label style="display: flex; align-items: center; gap: 8px; cursor: not-allowed; opacity: 0.5;" title="Coming soon">
-                                <input type="radio" name="extractionMode" value="bulk" disabled>
-                                <span>🚀 Bulk Extraction (Coming Soon)</span>
-                            </label>
-                        </div>
+                        <select id="extractionMode" name="extractionMode">
+                            <option value="single" selected>Single Patient</option>
+                            <option value="bulk" id="bulkOption">📋 Bulk Mode (Unlimited)</option>
+                        </select>
                     </div>
-                    
+                </div>
+
+                <!-- Patient Information Section -->
+                <div class="form-grid">
                     <div class="form-group name-fields">
                         <label for="firstName">First Name</label>
                         <input type="text" id="firstName" name="firstName" required>
@@ -557,12 +545,12 @@
                         <input type="text" id="lastName" name="lastName" required>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group id-field">
                         <label for="subscriberId" id="subscriberIdLabel">Subscriber ID</label>
                         <input type="text" id="subscriberId" name="subscriberId" required>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group dob-field">
                         <label for="dateOfBirth">Date of Birth</label>
                         <input type="text" id="dateOfBirth" name="dateOfBirth" required placeholder="MM/DD/YYYY">
                     </div>

@@ -27,7 +27,6 @@ dot-extractor/*.json
 
 # TypeScript build artifacts
 dist/
-public/app.js
 dot-session-b64.txt
 
 # DDINS session files
