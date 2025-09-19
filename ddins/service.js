@@ -122,7 +122,7 @@ class DDINSService {
             // Try auto-login
             const loginSuccess = await this.tryAutoLogin(onLog);
             if (!loginSuccess) {
-                throw new Error('No DDINS session. Auto-login failed. Please run manually: node ddins/login.js');
+                throw new Error('No DDINS session. Auto-login failed. Please run manually: node ddins/auto-login.js');
             }
         }
         
@@ -164,7 +164,7 @@ class DDINSService {
                     return this.makeApiContext(onLog);
                 }
             }
-            throw new Error('No valid DDINS session (missing pt-userid). Add DDINS_PT_USERID to .env or run: node ddins/login.js');
+            throw new Error('No valid DDINS session (missing pt-userid). Add DDINS_PT_USERID to .env or run: node ddins/auto-login.js');
         }
 
         return await request.newContext({
@@ -181,26 +181,35 @@ class DDINSService {
     }
 
     async checkSession(api, onLog = console.log) {
-        // 1) Call that does NOT require PLOC (more stable)
+        // Quick session check - use the lightest possible endpoint
         try {
-            const res = await api.post('/provider-tools/v2/api/practice-location/locations', { data: {} });
-            const json = await this.parseJsonSafe(res);
-            if (!this.plocId) await this.resolvePlocId(api, onLog);
-            return json;
-        } catch (e) {
-            // 2) Fallback: roster if we have a PLOC
-            if (!this.plocId) throw e;
-            const response = await api.post('/provider-tools/v2/api/patient-mgnt/patient-roster', {
-                data: {
-                    mtvPlocId: this.plocId,
-                    pageNumber: 1,
-                    pageSize: 1,
-                    patientView: 'PATIENTVIEW',
-                    sortBy: 'MODIFIED_DATE',
-                    contractType: 'FFS'
-                }
+            // First try a simple GET that should be fast
+            const res = await api.get('/provider-tools/v2/api/eligibility/persons', {
+                timeout: 5000 // Quick timeout for session check
             });
-            return await this.parseJsonSafe(response);
+
+            // If we get JSON back, session is valid
+            const contentType = (res.headers()['content-type'] || '').toLowerCase();
+            if (contentType.includes('application/json')) {
+                return true; // Session valid
+            }
+
+            // HTML response = need to login
+            throw Object.assign(new Error('Session expired'), { code: 'HTML_RESPONSE' });
+
+        } catch (e) {
+            // Fallback to original method if needed
+            if (e.code === 'HTML_RESPONSE') throw e;
+
+            // Try the original locations endpoint as fallback
+            try {
+                const res = await api.post('/provider-tools/v2/api/practice-location/locations', { data: {} });
+                const json = await this.parseJsonSafe(res);
+                if (!this.plocId) await this.resolvePlocId(api, onLog);
+                return json;
+            } catch (fallbackError) {
+                throw fallbackError;
+            }
         }
     }
 
