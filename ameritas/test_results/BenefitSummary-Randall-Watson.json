@@ -1,0 +1,129 @@
+{
+  "plan_member": "WATSON,RANDALL TIMOTHY",
+  "plan_number": "0-62549-2",
+  "plan_sponsor": "ROYSE CITY ISD",
+  "effective_date": "2025-09-01",
+  "coverage_status": "Plan Member and Children",
+  "benefit_types": {
+    "type_1": {
+      "percentage": "100%",
+      "description": "Preventive"
+    },
+    "type_2": {
+      "percentage": "80%",
+      "description": "Basic"
+    },
+    "type_3": {
+      "percentage": "50%",
+      "description": "Major"
+    }
+  },
+  "deductible": {
+    "amount": 50.0,
+    "type": "Type 2, Type 3 Annual Combined",
+    "family_max": 150.0
+  },
+  "maximum_annual_benefit": 5000.0,
+  "carryover": {
+    "benefit_threshold": null,
+    "carryover_amount": null,
+    "ppo_bonus": null,
+    "max_accumulation": null
+  },
+  "orthodontics": {
+    "benefit_percentage": "50%",
+    "deductible": "There is no Ortho Deductible on this plan.",
+    "lifetime_maximum": 1000.0,
+    "age_restrictions": null
+  },
+  "procedures": [
+    {
+      "category": "Restorative",
+      "procedure_codes": "D1351, D1353, D1354, D1355",
+      "service_name": "Sealant",
+      "benefit_type": "Type 1 - Preventive",
+      "frequency": "1 in 3 years",
+      "additional_info": "To age 17. Benefits are considered on permanent molars only. Coverage is allowed on the occlusal surface only."
+    },
+    {
+      "category": "Restorative",
+      "procedure_codes": "D2140, D2150",
+      "service_name": "Amalgam",
+      "benefit_type": "Type 2 - Basic",
+      "frequency": "1 in 6 months",
+      "additional_info": "Up to 4 surface filling considered."
+    },
+    {
+      "category": "Restorative",
+      "procedure_codes": "D2160, D2161",
+      "service_name": "Composite",
+      "benefit_type": "Type 2 - Basic",
+      "frequency": "1 in 6 months",
+      "additional_info": "Up to 4 surface filling considered. Porcelain and resin benefits are considered for anterior and bicuspid teeth only."
+    },
+    {
+      "category": "Restorative",
+      "procedure_codes": "Various Procedures",
+      "service_name": "Crowns",
+      "benefit_type": "Type 3 - Major",
+      "frequency": "1 in 5 years",
+      "additional_info": "Porcelain and resin benefits are considered for anterior and bicuspid teeth only."
+    },
+    {
+      "category": "Restorative",
+      "procedure_codes": "Various Procedures",
+      "service_name": "Onlays",
+      "benefit_type": "Type 3 - Major",
+      "frequency": "1 in 5 years",
+      "additional_info": "Porcelain and resin benefits are considered for anterior and bicuspid teeth only."
+    },
+    {
+      "category": "Restorative",
+      "procedure_codes": "Various Procedures",
+      "service_name": "Inlays",
+      "benefit_type": "Type 3 - Major",
+      "frequency": "No Frequency",
+      "additional_info": "Inlays will be considered at an alternate benefit of an amalgam/composite restoration."
+    },
+    {
+      "category": "Endodontics",
+      "procedure_codes": "D3310, D3320",
+      "service_name": "Root Canals",
+      "benefit_type": "Type 2 - Basic",
+      "frequency": "No Frequency",
+      "additional_info": "Benefits are considered on permanent teeth only."
+    },
+    {
+      "category": "Endodontics",
+      "procedure_codes": "D3410, D3421",
+      "service_name": "Surgical Endodontics",
+      "benefit_type": "Type 2 - Basic",
+      "frequency": "No Frequency",
+      "additional_info": null
+    },
+    {
+      "category": "Periodontics",
+      "procedure_codes": "D4341, D4342",
+      "service_name": "Root Planing and Scaling",
+      "benefit_type": "Type 2 - Basic",
+      "frequency": "1 in 2 years",
+      "additional_info": "All four quadrants can be performed on the same day."
+    },
+    {
+      "category": "Oral Surgery",
+      "procedure_codes": "D7210, D7220",
+      "service_name": "Surgical Extractions",
+      "benefit_type": "Type 3 - Major",
+      "frequency": "No Frequency",
+      "additional_info": null
+    },
+    {
+      "category": "Prosthodontics",
+      "procedure_codes": "Various Procedures",
+      "service_name": "Removable Prosthodontics",
+      "benefit_type": "Type 3 - Major",
+      "frequency": "1 in 5 years",
+      "additional_info": "Frequency is waived for accidental injury."
+    }
+  ]
+}

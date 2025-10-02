@@ -1,0 +1,2 @@
+// For license information, see `https://assets.adobedtm.com/6279662c4fd9/3f3e114bb114/022193d9defc/RCb01d3b55411945ebbf43d2fd1d778ea8-source.js`.
+_satellite.__registerScript('https://assets.adobedtm.com/6279662c4fd9/3f3e114bb114/022193d9defc/RCb01d3b55411945ebbf43d2fd1d778ea8-source.min.js', "window.KAMPYLE_ONSITE_SDK&&\"function\"==typeof window.KAMPYLE_ONSITE_SDK.updatePageView&&window.KAMPYLE_ONSITE_SDK.updatePageView();");

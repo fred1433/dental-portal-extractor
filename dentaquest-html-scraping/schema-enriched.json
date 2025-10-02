@@ -1,0 +1,183 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "DentaQuest Enriched Data Schema",
+  "description": "Structure after enrichment with plan coverage details",
+  "type": "object",
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "$comment": "Inherits all properties from base schema.json"
+    }
+  ],
+  "properties": {
+    "intelligentExtraction": {
+      "type": "object",
+      "description": "Contains enrichment data added after extraction",
+      "properties": {
+        "enrichment": {
+          "type": "object",
+          "properties": {
+            "timestamp": {
+              "type": "string",
+              "format": "date-time",
+              "description": "When enrichment was performed"
+            },
+            "patientAge": {
+              "type": "integer",
+              "description": "Calculated age of patient"
+            },
+            "planLabel": {
+              "type": "string",
+              "description": "Original plan name from extraction"
+            },
+            "state": {
+              "type": "string",
+              "description": "State code (e.g., TX, CA, FL)"
+            },
+            "supported": {
+              "type": "boolean",
+              "description": "Whether this plan has full enrichment data"
+            },
+            "message": {
+              "type": "string",
+              "description": "User-friendly message about support status"
+            },
+            "availablePlans": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "List of currently supported plans"
+            },
+            "planMapping": {
+              "type": "object",
+              "description": "Plan metadata (only if supported)",
+              "properties": {
+                "state": { "type": "string" },
+                "payer": { "type": "string", "enum": ["Medicaid", "CHIP"] },
+                "program": { "type": "string" },
+                "variant": { "type": ["string", "null"] },
+                "attributes": {
+                  "type": "object",
+                  "properties": {
+                    "copay": { "type": "number" },
+                    "age_range": { "type": "string" },
+                    "description": { "type": "string" }
+                  }
+                }
+              }
+            },
+            "coverage": {
+              "type": "object",
+              "description": "Coverage details",
+              "properties": {
+                "annual_maximum": {
+                  "type": ["string", "number"],
+                  "description": "Annual benefit maximum (e.g., 'Unlimited', 564, 'Unknown')"
+                },
+                "deductible": {
+                  "type": "object",
+                  "properties": {
+                    "amount": { "type": ["number", "string"] },
+                    "applies_to": { "type": "array", "items": { "type": "string" } }
+                  }
+                },
+                "coverage_percentages": {
+                  "type": "object",
+                  "properties": {
+                    "preventive": { "type": ["number", "string"] },
+                    "basic": { "type": ["number", "string"] },
+                    "major": { "type": ["number", "string"] },
+                    "orthodontics": { "type": ["number", "string"] }
+                  }
+                },
+                "waiting_periods": {
+                  "type": "array",
+                  "description": "Waiting period requirements"
+                },
+                "missing_tooth_clause": {
+                  "type": "boolean"
+                },
+                "coordination_of_benefits": {
+                  "type": ["boolean", "object"]
+                }
+              }
+            },
+            "specialNotes": {
+              "type": "object",
+              "description": "Special coverage notes and exceptions",
+              "additionalProperties": { "type": "string" },
+              "examples": [
+                {
+                  "srp_category": "Basic",
+                  "endo_category": "Major",
+                  "extraction_category": "Basic",
+                  "sealant_age_limit": "Covered for children 6-15 years"
+                }
+              ]
+            },
+            "procedures": {
+              "type": "object",
+              "description": "Procedure-specific rules filtered by patient age",
+              "patternProperties": {
+                "^D\\d{4}$": {
+                  "type": "object",
+                  "properties": {
+                    "frequency": { "type": ["string", "null"] },
+                    "age_range": { "type": ["string", "null"] },
+                    "limitations": { "type": ["string", "null"] },
+                    "coverage": { "type": ["string", "null"] },
+                    "additional_requirements": { "type": ["string", "null"] },
+                    "source": { "type": "string" },
+                    "copay": { "type": "boolean" }
+                  }
+                }
+              }
+            },
+            "procedureCount": {
+              "type": "integer",
+              "description": "Number of procedures after age filtering"
+            }
+          },
+          "required": ["timestamp", "patientAge", "supported"],
+          "if": {
+            "properties": { "supported": { "const": true } }
+          },
+          "then": {
+            "required": ["planMapping", "coverage", "procedures", "procedureCount"]
+          },
+          "else": {
+            "required": ["message", "availablePlans"]
+          }
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "properties": {
+        "enrichmentWarning": {
+          "type": "string",
+          "description": "Warning message if plan is not supported"
+        },
+        "coveragePercentages": {
+          "type": "object",
+          "description": "Coverage percentages added during enrichment"
+        },
+        "annualMaximum": {
+          "type": ["string", "number"],
+          "description": "Annual maximum from enrichment"
+        },
+        "deductible": {
+          "type": "object",
+          "description": "Deductible details from enrichment"
+        },
+        "waitingPeriods": {
+          "type": "array",
+          "description": "Waiting periods from enrichment"
+        },
+        "missingToothClause": {
+          "type": "boolean",
+          "description": "Missing tooth clause from enrichment"
+        }
+      }
+    }
+  }
+}

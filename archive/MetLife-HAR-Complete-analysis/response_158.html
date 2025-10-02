@@ -1,0 +1,514 @@
+<!-- 
+File name:familylistplan
+
+Purpose:
+
+Change History:
+
+No.   Date        Purpose
+1.0   4/27/2009    Modified to make changes in Patient Eligibility page &minus; Safeguard Integration
+ -->
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+
+
+
+
+
+
+
+<html>
+
+<head>
+<title>Metlife Patient Eligibility</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+
+
+
+<link rel="stylesheet" href="/prov/jsp/prov/utility/css/globalnav.css" type="text/css">
+<script src="/prov/jsp/prov/utility/script/common.js"></script>
+<script src="/prov/jsp/prov/utility/script/topnav.js"></script>
+</head>
+
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" 
+	onLoad="MM_preloadImages('/prov/jsp/prov/images/p_t2_on.gif','/prov/jsp/prov/images/p_t3_on.gif','/prov/jsp/prov/images/p_t4_on.gif','/prov/jsp/prov/images/p_t5_on.gif','/prov/jsp/prov/images/p_signin_on.gif')">
+ 
+<div align="left">
+<!--  Added for Patient Eligibility page changes  on 5/8/2009 &minus; Starts-->
+
+  
+  
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+
+
+
+
+
+
+
+
+
+<link rel="StyleSheet"
+	href="/prov/jsp/prov/utility/css/globalnav.css"
+	type="text/css">
+<script type="text/javascript"
+	src="/prov/jsp/prov/utility/script/common.js"> </script>
+
+<!-- CIAM MIS changes Starts -->
+
+ <!-- CIAM MIS changes Ends -->
+
+
+<div id="header"><form name="TopNavForm" method="POST" action="/prov/execute/home">
+	<input type="hidden" name="pepText"
+		value='XnVwMzR%2BMF5edXAyMDB%2BWFhYWFhYWFhYXl51cDIwNX50cnVlXl51cDIwNn4zNzMwMl5edXAyMDd%2B%0AMzczMDJeXnVwNDA1flBFUFNJQ08gSU5DXl51cDQwNn5GQUxTRV5edXAyMDJ%2BMDgwMjg0OTMzXl51%0AcDQwMH5wbGFuXl51cDIwM35LRU5ORVRIIFIgVEVERk9SRF5edXA0MDF%2BODIxNTk0NzcxXl51cDQw%0AMn42MzE5NV5edXAyMDR%2BNzU0ODJeXnVwNTA2fmZhbHNlXl51cDI0fk5eXnVwMzEwflRlZGZvcmRe%0AXm1wMTEyfnRydWVeXnVwMzExfmZhbHNlXl5tcDExMX5mYWxzZV5ebXAxMTB%2BMV5edXA1MH5wYXlv%0AcnBvcnRhbDQ3NzFeXnVwMTR%2BODIxNTk0NzcxNjMxOTVeXnVwMTJ%2BNjMxOTVeXnVwMTN%2BMV5edXAx%0AMH5TQUlOVCBMT1VJU15edXAxMX5NT15edXAwN35Qcm92aWRlcl5edXAwOH5DSElMRFJFTlMgREVO%0AVEFMIEFUIFBSRVNUT04gVFJBSV5edXA3MDB%2BdHJ1ZV5edXAyMDl%2BMV5edXAwM35wYXlvcnBvcnRh%0AbEBzZGJtYWlsLmNvbV5ebnBpMDR%2BNjMxOTVeXnVwMDR%2BMDA4MjE1OTQ3NzFeXnVwMDF%2BQWNjZXNz%0AXl5ucGkwMX5ZXl51cDAyflBvcnRhbF5edXA0Nn5OXl5wcG8wM350cnVlXl5ucGkwN35BY2Nlc3Ne%0AXnVwMDB%2BUG9ydGFsIEFjY2Vzc15ebnBpMDh%2BTU9eXnBwbzAxfnRydWVeXnBwbzAyfmZhbHNlXl5u%0AcGkwNn5QXl51cDIxMX4yXl51cDIxM35QRVBTSUNPIElOQ15edXAyMTR%2BMV4%3D' />
+	<input type="hidden" name="parms" value="">
+	<input type="hidden" name="fwdName" value="" />
+	<input type="hidden" name="formName" value="" />
+	<input type="hidden" name="appPath" value="" />
+	<input type="hidden" name="mapParm" value="SignIn">
+</form> <!--for  ppoprovider and public provider--> 
+ 
+<!--  Added for DHMO Provider tab  on  4/25/2009 ? Starts-->
+
+	 
+		<div id="navDhmoHeader1"><img
+			src="/prov/jsp/prov/images/ml_logo.gif"
+			alt="MetLife" width="120" height="61" class="logo"> 
+			<!-- Commented for Intake 194 changes 
+			<img src="/prov/jsp/prov/images/ml_icon.gif"
+			width="60" height="61" class="icon">-->
+
+		<div id="navHeaderLinks">
+		<p>
+		 <a
+			href="javascript:submitForm('TopNavForm','help','false','','false');"
+			class="whitelinks2">Help</a> |   <a
+			href="javascript:submitForm('TopNavForm','ProfileEntry','false','','false');"
+			class="whitelinks2">Profile</a> |  <a href="javascript:linkSubmit4('rc_formLibrary','TopNavForm');"
+			class="whitelinks2">Forms</a> 
+		</p>
+		<p><a id="signout"
+			href="javascript:submitSmForm('TopNavForm','SignOut','false','','false');"><span>SIGN
+		OUT</span></a> <span class="nowrap"> <script type="text/javascript"
+			language="Javascript">
+	// Array of day names
+	var dayNames = new Array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday");
+	// Array of month Names
+	var monthNames = new Array(
+	"January","February","March","April","May","June","July","August","September","October","November","December");
+	// patched for y2k bug!
+	var now = new Date();
+	var year = now.getFullYear()
+	document.write(dayNames[now.getDay()] + ", " + monthNames[now.getMonth()] + " " + now.getDate() + ", " + year);
+	</script> </span></p>
+		</div>
+
+		<div id="mainNav" class="eligibility_active">
+		<ul>
+			
+			<li id="nav-home"><a
+				href="javascript:linkSubmit4('toHome', 'TopNavForm');"><span>Home</span></a></li>
+			
+			
+			<li id="nav-eligibility"><a
+				href="javascript:submitSmForm('TopNavForm','entryElig','false','','false');"><span>Eligibility
+			&amp; Plan Detail</span></a></li>
+
+			
+			
+		<li id="nav-viewClaims">
+			
+				
+			<a href="javascript:submitSmForm('TopNavForm','entryClaim','false','','false');"><span>View Claims</span></a>
+			
+		</li>
+		
+
+			<li id="nav-submitClaims"><a
+				href="javascript:submitSmForm('TopNavForm','entrySubmit','false','','false');"><span>Claims Submission</span></a></li>
+			
+
+			
+			<li id="nav-resources"><a
+				href="javascript:linkSubmit4('rc_index','TopNavForm');"><span>Resource
+			Center</span></a></li>
+			<li id="nav-continuingEd"><a
+				href="javascript:linkSubmit4('linktoconted','TopNavForm');"><span>Continuing
+			Education</span></a></li>
+			
+		</ul>
+		</div>
+				<div id="separator"></div></div>
+	
+	
+<!--  Added for DHMO Provider tab  on  4/25/2009 ? Starts-->
+</div>
+<!--  Modified for EFT 15.3 Release - Starts -->
+<div class="clearing" id="idClear">
+<!--  Modified for EFT 15.3 Release - Ends -->
+</div>
+<!--  Added for Overlay -->
+
+<!-- Added for Overlay -->
+  <script language="JavaScript" type="text/javascript">
+		function overlaySignUp(){
+			logeMetricsLinkClick('SignUp_EFT'); 
+		}
+		function overlayClose(){
+			logeMetricsLinkClick("SignUp_Later");
+			document.getElementById("EFT-containerTheme").style.display = "none";
+			document.getElementById("EFT-underlayTheme").style.display = "none";
+		}
+  </script>
+  <!-- CIAM changes for banner starts  -->
+		<div id="CIAMBanner">
+			<div class="blocker"></div>
+			<div class="ciam-popup-content modal" >
+				<div class="EFT-contentTheme" >
+					
+					<h1 class="header-small align-center">Important Password Update</h1>
+						
+					<p>We've recently improved our password requirements to ensure your security and protection.</p>
+					<p><strong>You may need to reset your password if you haven't already updated it this week.</strong> Continue to log in, click "Forgot Password," and change your password based on the new criteria.</p>
+				
+						<br>
+						<br>
+					<div class=" align-center">
+						<a href="javascript:void(0);" onclick="signInRedirection('https://www.metdental.metlife.com/prov/execute/PesSignIn?appPath=null&mapParm=SignIn')" class="ml-button-primary">OK</a>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	<!-- CIAM changes for banner ends  -->
+<div class="pagecolumn">
+   <div class="leftGutter">
+    <div class="mainContent2">
+
+	    <p class="pageHeaderblack">Patient Eligibility</p>
+
+      <div class="rightcolumn2">
+        <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+
+
+
+
+
+
+<html>
+<HEAD>
+<META name="GENERATOR" content="IBM WebSphere Studio">
+
+<link rel="stylesheet" href="/prov/jsp/prov/utility/css/globalnav.css" type="text/css">
+
+<!--Added for Ethical Hack -->
+<style> html{display : none ; } </style>
+
+<script> if( self == top ) {
+ document.documentElement.style.display = 'block' ; 
+} else { top.location = self.location ; }
+</script>
+
+</HEAD>
+<body>
+<script src="/prov/jsp/prov/ssnbox/script/SSNBoxScript.js"></script>
+<form name="FormName" method="post" onSubmit="return subForm()" action="SSNBox" AUTOCOMPLETE="off">
+
+  <div id="ssnBoxCallout">
+    <input type="hidden" name="pepText" value='XnVwMzR%2BMF5edXAyMDB%2BWFhYWFhYWFhYXl51cDIwNX50cnVlXl51cDIwNn4zNzMwMl5edXAyMDd%2B%0AMzczMDJeXnVwNDA1flBFUFNJQ08gSU5DXl51cDQwNn5GQUxTRV5edXAyMDJ%2BMDgwMjg0OTMzXl51%0AcDQwMH5wbGFuXl51cDIwM35LRU5ORVRIIFIgVEVERk9SRF5edXA0MDF%2BODIxNTk0NzcxXl51cDQw%0AMn42MzE5NV5edXAyMDR%2BNzU0ODJeXnVwNTA2fmZhbHNlXl51cDI0fk5eXnVwMzEwflRlZGZvcmRe%0AXm1wMTEyfnRydWVeXnVwMzExfmZhbHNlXl5tcDExMX5mYWxzZV5ebXAxMTB%2BMV5edXA1MH5wYXlv%0AcnBvcnRhbDQ3NzFeXnVwMTR%2BODIxNTk0NzcxNjMxOTVeXnVwMTJ%2BNjMxOTVeXnVwMTN%2BMV5edXAx%0AMH5TQUlOVCBMT1VJU15edXAxMX5NT15edXAwN35Qcm92aWRlcl5edXAwOH5DSElMRFJFTlMgREVO%0AVEFMIEFUIFBSRVNUT04gVFJBSV5edXA3MDB%2BdHJ1ZV5edXAyMDl%2BMV5edXAwM35wYXlvcnBvcnRh%0AbEBzZGJtYWlsLmNvbV5ebnBpMDR%2BNjMxOTVeXnVwMDR%2BMDA4MjE1OTQ3NzFeXnVwMDF%2BQWNjZXNz%0AXl5ucGkwMX5ZXl51cDAyflBvcnRhbF5edXA0Nn5OXl5wcG8wM350cnVlXl5ucGkwN35BY2Nlc3Ne%0AXnVwMDB%2BUG9ydGFsIEFjY2Vzc15ebnBpMDh%2BTU9eXnBwbzAxfnRydWVeXnBwbzAyfmZhbHNlXl5u%0AcGkwNn5QXl51cDIxMX4yXl51cDIxM35QRVBTSUNPIElOQ15edXAyMTR%2BMV4%3D'/>
+    <p class="title">Change Subscriber</p>
+    <div class="content">
+    <p>Please enter subscriber's SSN or Identification Number:<br />
+<!--    Modified for All providers-->
+<!--      <p>Please enter Employee's SSN or Identification Number:<br />-->
+        <input type="radio" id= "Eligibility" value="Eligibility" name="RbtOption" checked class="radio">Eligibility/Plan
+         
+        <input type="radio" id= "Claim" value="Claim" name="RbtOption" class="radio">Claims
+        
+        <br/><br/>&nbsp;
+        <input type="password" name="InputID" id="InputID" size="15" maxlength="11" style="width:205px; border:1px solid #56A5EC;" >
+        <a href="javascript:submitForm('FormName', 'SSNBox',  'false', '', 'false');"><img name="SubmitForm" src="/prov/jsp/prov/images/p_submit.gif" alt="Submit" border="0" align="top"></a>
+      </p>
+      
+      
+      
+    </div>
+  </div>
+  
+</form>
+<!-- end ssnbox  -->
+<script LANGUAGE="JavaScript">
+<!--
+   init();
+//-->
+</script>
+</body>
+</html>
+
+
+      </div>
+      <!-- for dual provider -->
+    <p><br/><br/></br/>
+	      <b>Subscriber Name: </b>KENNETH R TEDFORD
+	      <br>
+	      <b>SSN or Identification Number: </b>XXXXXXXXX
+	      <br>
+	      <b>Employer: </b>PEPSICO INC
+	      <br>
+	      <b>Group #: </b>37302
+	      <br>
+	      <!-- 
+	      	<b>Customer #: </b>38500
+	      	<br>
+	       -->
+	      	     
+	      
+	      
+	      <b>Network: </b>&nbsp;PDP PLUS
+	      
+	      	     	      
+	    </p>
+	
+        <p> 
+        
+          
+            
+            
+        </p>        
+	    <p>
+	      Final eligibility is determined at the time of processing.
+	    </p>
+	    <p>
+	      <b>Click on the Patient's Name below to proceed.</b>
+	    </p><br/>
+    </div>
+    <p>&nbsp;</p>
+    <div align="right"  style="clear: both;">
+      <p>
+       <table id="eligTbl" border="1" cellpadding="4" cellspacing="0" width="700" class="standardTable">
+        <tr>
+          <th height="23" width="170" class="standardTable">Name</th>
+          <th height="23" width="200" class="standardTable">Address</th>
+          <th height="23" width="150" class="standardTable">Patient Information</th>
+          <th height="23" width="180" class="standardTable">Eligibility Dates</th>
+        </tr>
+        
+        <tr>
+          <td align="left">
+          	<a href="javascript:submitForm('DentalActionCommonForm','MultipleProviders','true','XkVtcGxveWVyQnJhbmNoR3JvdXB+MDAwMV5eRW1wbG95ZXJTdWJkaXZpc2lvbkdyb3VwfjAwMDFe
+XlBsYW5EYXRlfjA5LTIzLTIwMjVeXlBhdGllbnROYW1lflNlbGZeXk1lbWJlckNvdmVyYWdlfjRe
+XkVtcGxveWVyR3JvdXB+MzczMDJeXlBwb0luZH4xXl5Db3ZUeXBlfjJeXlJlbGF0aW9uc2hpcENv
+ZGV+MF5eUmVsYXRpb25zaGlwRGVzY35TZWxmXl5EZXBlbmRlbnRTZXF1ZW5jZU51bWJlcn4xXl5F
+ZmZlY3RpdmVEYXRlfjAxLzAxLzIwMjRe','false');"> 
+		      KENNETH R TEDFORD
+         	</a><br>
+            <b>SSN or ID#:&nbsp;</b>XXXXXXXXX<br>
+            <b>Birth Date:&nbsp;</b>11/13/1989
+          </td>
+          <td align="center"><br>
+            124 PHYLLIS COURT<br>
+            SULPHUR SPRINGS,&nbsp;TX<br>
+            75482&nbsp;USA
+          </td>
+          <td align="left"><b>Relationship:&nbsp;</b>Self<br>
+            <b>Gender:&nbsp;</b>Male<br>
+            <b>Student/Handicap:&nbsp;</b>
+          </td>
+          <td align="left"><b>Effective Date:&nbsp;</b>01/01/2024<br>
+            <b>Cancellation Date:&nbsp;</b>
+            
+     	 </td>
+        </tr>
+        
+        <tr>
+          <td align="left">
+          	<a href="javascript:submitForm('DentalActionCommonForm','MultipleProviders','true','XkVtcGxveWVyQnJhbmNoR3JvdXB+MDAwMV5eRW1wbG95ZXJTdWJkaXZpc2lvbkdyb3VwfjAwMDFe
+XlBsYW5EYXRlfjA5LTIzLTIwMjVeXlBhdGllbnROYW1lfktBWUxFIE0gVEVERk9SRF5eTWVtYmVy
+Q292ZXJhZ2V+NF5eRW1wbG95ZXJHcm91cH4zNzMwMl5eUHBvSW5kfjFeXlJlbGF0aW9uc2hpcENv
+ZGV+MV5eUmVsYXRpb25zaGlwRGVzY35EZXBlbmRlbnReXkRlcGVuZGVudFNlcXVlbmNlTnVtYmVy
+fjFeXkVmZmVjdGl2ZURhdGV+MDEvMDEvMjAyNF4=','false');"> 
+		      KAYLE M TEDFORD
+         	</a><br>
+            <b>SSN or ID#:&nbsp;</b>XXXXXXXXX<br>
+            <b>Birth Date:&nbsp;</b>10/20/1991
+          </td>
+          <td align="center"><br>
+            124 PHYLLIS COURT<br>
+            SULPHUR SPRINGS,&nbsp;TX<br>
+            75482&nbsp;USA
+          </td>
+          <td align="left"><b>Relationship:&nbsp;</b>Dependent<br>
+            <b>Gender:&nbsp;</b>Female<br>
+            <b>Student/Handicap:&nbsp;</b>
+          </td>
+          <td align="left"><b>Effective Date:&nbsp;</b>01/01/2024<br>
+            <b>Cancellation Date:&nbsp;</b>
+            
+     	 </td>
+        </tr>
+        
+        <tr>
+          <td align="left">
+          	<a href="javascript:submitForm('DentalActionCommonForm','MultipleProviders','true','XkVtcGxveWVyQnJhbmNoR3JvdXB+MDAwMV5eRW1wbG95ZXJTdWJkaXZpc2lvbkdyb3VwfjAwMDFe
+XlBsYW5EYXRlfjA5LTIzLTIwMjVeXlBhdGllbnROYW1lfk1BWUJSRUUgSyBURURGT1JEXl5NZW1i
+ZXJDb3ZlcmFnZX40Xl5FbXBsb3llckdyb3VwfjM3MzAyXl5QcG9JbmR+MV5eUmVsYXRpb25zaGlw
+Q29kZX4yXl5SZWxhdGlvbnNoaXBEZXNjfkRlcGVuZGVudF5eRGVwZW5kZW50U2VxdWVuY2VOdW1i
+ZXJ+MV5eRWZmZWN0aXZlRGF0ZX4wMS8wMS8yMDI0Xg==','false');"> 
+		      MAYBREE K TEDFORD
+         	</a><br>
+            <b>SSN or ID#:&nbsp;</b>XXXXXXXXX<br>
+            <b>Birth Date:&nbsp;</b>01/28/2015
+          </td>
+          <td align="center"><br>
+            124 PHYLLIS COURT<br>
+            SULPHUR SPRINGS,&nbsp;TX<br>
+            75482&nbsp;USA
+          </td>
+          <td align="left"><b>Relationship:&nbsp;</b>Dependent<br>
+            <b>Gender:&nbsp;</b>Female<br>
+            <b>Student/Handicap:&nbsp;</b>
+          </td>
+          <td align="left"><b>Effective Date:&nbsp;</b>01/01/2024<br>
+            <b>Cancellation Date:&nbsp;</b>
+            
+     	 </td>
+        </tr>
+        
+        <tr>
+          <td align="left">
+          	<a href="javascript:submitForm('DentalActionCommonForm','MultipleProviders','true','XkVtcGxveWVyQnJhbmNoR3JvdXB+MDAwMV5eRW1wbG95ZXJTdWJkaXZpc2lvbkdyb3VwfjAwMDFe
+XlBsYW5EYXRlfjA5LTIzLTIwMjVeXlBhdGllbnROYW1lfk5JWE9OIEwgVEVERk9SRF5eTWVtYmVy
+Q292ZXJhZ2V+NF5eRW1wbG95ZXJHcm91cH4zNzMwMl5eUHBvSW5kfjFeXlJlbGF0aW9uc2hpcENv
+ZGV+Ml5eUmVsYXRpb25zaGlwRGVzY35EZXBlbmRlbnReXkRlcGVuZGVudFNlcXVlbmNlTnVtYmVy
+fjJeXkVmZmVjdGl2ZURhdGV+MDEvMDEvMjAyNF4=','false');"> 
+		      NIXON L TEDFORD
+         	</a><br>
+            <b>SSN or ID#:&nbsp;</b>XXXXXXXXX<br>
+            <b>Birth Date:&nbsp;</b>10/03/2016
+          </td>
+          <td align="center"><br>
+            124 PHYLLIS COURT<br>
+            SULPHUR SPRINGS,&nbsp;TX<br>
+            75482&nbsp;USA
+          </td>
+          <td align="left"><b>Relationship:&nbsp;</b>Dependent<br>
+            <b>Gender:&nbsp;</b>Male<br>
+            <b>Student/Handicap:&nbsp;</b>
+          </td>
+          <td align="left"><b>Effective Date:&nbsp;</b>01/01/2024<br>
+            <b>Cancellation Date:&nbsp;</b>
+            
+     	 </td>
+        </tr>
+        
+        <tr>
+          <td align="left">
+          	<a href="javascript:submitForm('DentalActionCommonForm','MultipleProviders','true','XkVtcGxveWVyQnJhbmNoR3JvdXB+MDAwMV5eRW1wbG95ZXJTdWJkaXZpc2lvbkdyb3VwfjAwMDFe
+XlBsYW5EYXRlfjA5LTIzLTIwMjVeXlBhdGllbnROYW1lfkFWRVJMWSBHIFRFREZPUkReXk1lbWJl
+ckNvdmVyYWdlfjReXkVtcGxveWVyR3JvdXB+MzczMDJeXlBwb0luZH4xXl5SZWxhdGlvbnNoaXBD
+b2RlfjJeXlJlbGF0aW9uc2hpcERlc2N+RGVwZW5kZW50Xl5EZXBlbmRlbnRTZXF1ZW5jZU51bWJl
+cn4zXl5FZmZlY3RpdmVEYXRlfjAxLzAxLzIwMjRe','false');"> 
+		      AVERLY G TEDFORD
+         	</a><br>
+            <b>SSN or ID#:&nbsp;</b>XXXXXXXXX<br>
+            <b>Birth Date:&nbsp;</b>05/03/2021
+          </td>
+          <td align="center"><br>
+            124 PHYLLIS COURT<br>
+            SULPHUR SPRINGS,&nbsp;TX<br>
+            75482&nbsp;USA
+          </td>
+          <td align="left"><b>Relationship:&nbsp;</b>Dependent<br>
+            <b>Gender:&nbsp;</b>Female<br>
+            <b>Student/Handicap:&nbsp;</b>
+          </td>
+          <td align="left"><b>Effective Date:&nbsp;</b>01/01/2024<br>
+            <b>Cancellation Date:&nbsp;</b>
+            
+     	 </td>
+        </tr>
+        
+      </table>
+ 
+    </div>
+  </div>
+</div>
+
+ 
+
+
+
+
+
+
+<!--  Added for Patient Eligibilty page changes  on 5/8/2009 &minus; Ends-->
+<form name="DentalActionCommonForm" method="POST" action="/prov/execute/home">
+ <input type="hidden" name="parms" value="">
+ <input type="hidden" name="fwdName" value="" />
+ <input type="hidden" name="formName" value="" />
+ <input type="hidden" name="appPath" value="" />
+ <input type="hidden" name="pepText" value='XnVwMzR%2BMF5edXAyMDB%2BWFhYWFhYWFhYXl51cDIwNX50cnVlXl51cDIwNn4zNzMwMl5edXAyMDd%2B%0AMzczMDJeXnVwNDA1flBFUFNJQ08gSU5DXl51cDQwNn5GQUxTRV5edXAyMDJ%2BMDgwMjg0OTMzXl51%0AcDQwMH5wbGFuXl51cDIwM35LRU5ORVRIIFIgVEVERk9SRF5edXA0MDF%2BODIxNTk0NzcxXl51cDQw%0AMn42MzE5NV5edXAyMDR%2BNzU0ODJeXnVwNTA2fmZhbHNlXl51cDI0fk5eXnVwMzEwflRlZGZvcmRe%0AXm1wMTEyfnRydWVeXnVwMzExfmZhbHNlXl5tcDExMX5mYWxzZV5ebXAxMTB%2BMV5edXA1MH5wYXlv%0AcnBvcnRhbDQ3NzFeXnVwMTR%2BODIxNTk0NzcxNjMxOTVeXnVwMTJ%2BNjMxOTVeXnVwMTN%2BMV5edXAx%0AMH5TQUlOVCBMT1VJU15edXAxMX5NT15edXAwN35Qcm92aWRlcl5edXAwOH5DSElMRFJFTlMgREVO%0AVEFMIEFUIFBSRVNUT04gVFJBSV5edXA3MDB%2BdHJ1ZV5edXAyMDl%2BMV5edXAwM35wYXlvcnBvcnRh%0AbEBzZGJtYWlsLmNvbV5ebnBpMDR%2BNjMxOTVeXnVwMDR%2BMDA4MjE1OTQ3NzFeXnVwMDF%2BQWNjZXNz%0AXl5ucGkwMX5ZXl51cDAyflBvcnRhbF5edXA0Nn5OXl5wcG8wM350cnVlXl5ucGkwN35BY2Nlc3Ne%0AXnVwMDB%2BUG9ydGFsIEFjY2Vzc15ebnBpMDh%2BTU9eXnBwbzAxfnRydWVeXnBwbzAyfmZhbHNlXl5u%0AcGkwNn5QXl51cDIxMX4yXl51cDIxM35QRVBTSUNPIElOQ15edXAyMTR%2BMV4%3D'/> 	
+</form>
+  <div id="footer">
+    
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+
+
+
+
+
+
+
+
+
+<HEAD>
+<META name="GENERATOR" content="IBM WebSphere Studio">
+
+
+<script type="text/javascript" src="/prov/jsp/prov/utility/script/common.js"> </script>
+<script type="text/javascript" src="/prov/jsp/prov/utility/script/home.js"> </script>
+<script type="text/javascript" src="/prov/jsp/prov/utility/script/cookie.js"></script>
+<link rel="stylesheet" type="text/css" href="/prov/jsp/prov/utility/css/globalnav.css" media="screen" />
+
+</head> 
+
+<form name="FooterActionCommonForm" method="POST" action="/prov/execute/Content">
+<input type="hidden" name="pepText" value='XnVwMzR%2BMF5edXAyMDB%2BWFhYWFhYWFhYXl51cDIwNX50cnVlXl51cDIwNn4zNzMwMl5edXAyMDd%2B%0AMzczMDJeXnVwNDA1flBFUFNJQ08gSU5DXl51cDQwNn5GQUxTRV5edXAyMDJ%2BMDgwMjg0OTMzXl51%0AcDQwMH5wbGFuXl51cDIwM35LRU5ORVRIIFIgVEVERk9SRF5edXA0MDF%2BODIxNTk0NzcxXl51cDQw%0AMn42MzE5NV5edXAyMDR%2BNzU0ODJeXnVwNTA2fmZhbHNlXl51cDI0fk5eXnVwMzEwflRlZGZvcmRe%0AXm1wMTEyfnRydWVeXnVwMzExfmZhbHNlXl5tcDExMX5mYWxzZV5ebXAxMTB%2BMV5edXA1MH5wYXlv%0AcnBvcnRhbDQ3NzFeXnVwMTR%2BODIxNTk0NzcxNjMxOTVeXnVwMTJ%2BNjMxOTVeXnVwMTN%2BMV5edXAx%0AMH5TQUlOVCBMT1VJU15edXAxMX5NT15edXAwN35Qcm92aWRlcl5edXAwOH5DSElMRFJFTlMgREVO%0AVEFMIEFUIFBSRVNUT04gVFJBSV5edXA3MDB%2BdHJ1ZV5edXAyMDl%2BMV5edXAwM35wYXlvcnBvcnRh%0AbEBzZGJtYWlsLmNvbV5ebnBpMDR%2BNjMxOTVeXnVwMDR%2BMDA4MjE1OTQ3NzFeXnVwMDF%2BQWNjZXNz%0AXl5ucGkwMX5ZXl51cDAyflBvcnRhbF5edXA0Nn5OXl5wcG8wM350cnVlXl5ucGkwN35BY2Nlc3Ne%0AXnVwMDB%2BUG9ydGFsIEFjY2Vzc15ebnBpMDh%2BTU9eXnBwbzAxfnRydWVeXnBwbzAyfmZhbHNlXl5u%0AcGkwNn5QXl51cDIxMX4yXl51cDIxM35QRVBTSUNPIElOQ15edXAyMTR%2BMV4%3D'/> 
+<input type="hidden" name="fwdName" value="" /> 
+
+
+<div class="ppoFooter">
+    <div class="footerContact">
+  
+       </div>
+   <div class="footerNotices footernew">
+      &copy;&nbsp;2025 MetLife Services and Solutions, LLC<br>
+        <a  href="javascript:linkSubmitTRIDION('termOfUseURL','FooterActionCommonForm');" class="footerlinknew">Terms of Use</a>&nbsp;&nbsp;<a target="_blank" href="https://www.metlife.com/about/privacy-policy/index.html" class="footerlinknew">Privacy/HIPAA
+        Notices</a>
+        
+        &nbsp;&nbsp;
+		<a target="_blank" href="BrowserSupport" class="footerlinknew">Browser Support</a>
+		<a href="javascript:submitForm2('DentalActionCommonForm','eFormsContent?eFormsOID=45718','false','','false','_blank');" class="footerlinknew">EDI Availability</a><br>
+		
+           <br>^To learn more about the MetLife family of companies providing Dental HMO/Managed Care plans and the states where they provide benefits, please 
+           <a href="javascript:submitForm2('FooterActionCommonForm','eFormsContent?eFormsOID=42407','false','','false', '_blank');" class="clickHereLink">Click Here</a>.
+  </div>
+</div>
+
+</form> 
+
+
+
+  </div>
+</div>
+</body>
+</html>

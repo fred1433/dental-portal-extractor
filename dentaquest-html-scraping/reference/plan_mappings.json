@@ -1,0 +1,46 @@
+{
+  "TX Medicaid Child (Under 21)": {
+    "state": "TX",
+    "payer": "Medicaid",
+    "program": "Medicaid_Child_U21",
+    "variant": null,
+    "attributes": {
+      "copay": 0,
+      "age_range": "0-20",
+      "description": "Texas Medicaid dental benefit for children under 21 (THSteps)."
+    }
+  },
+  "TX CHIP (Child Under 19) - $5 Copay": {
+    "state": "TX",
+    "payer": "CHIP",
+    "program": "CHIP_Child_U19",
+    "variant": "5_copay",
+    "attributes": {
+      "copay": 5,
+      "age_range": "0-18",
+      "description": "Texas CHIP dental benefit with $5 copay per visit."
+    }
+  },
+  "TX CHIP (Child Under 19) - $20 Co-pay": {
+    "state": "TX",
+    "payer": "CHIP",
+    "program": "CHIP_Child_U19",
+    "variant": "20_copay",
+    "attributes": {
+      "copay": 20,
+      "age_range": "0-18",
+      "description": "Texas CHIP dental benefit with $20 copay per visit."
+    }
+  },
+  "TX CHIP (Child Under 19) - $25 Copay": {
+    "state": "TX",
+    "payer": "CHIP",
+    "program": "CHIP_Child_U19",
+    "variant": "25_copay",
+    "attributes": {
+      "copay": 25,
+      "age_range": "0-18",
+      "description": "Texas CHIP dental benefit with $25 copay per visit."
+    }
+  }
+}

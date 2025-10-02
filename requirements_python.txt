@@ -1,0 +1,5 @@
+# Python dependencies for testing scripts only
+# Not part of the main Node.js app
+google-generativeai==0.8.3
+python-dotenv==1.0.1
+sqlite3  # built-in, no install needed

@@ -1,0 +1,21 @@
+# Ignore extracted patient data
+/data/*.json
+
+# Keep the data directory but ignore its contents
+!/data/.gitkeep
+
+# Ignore HAR files
+*.har
+*.har.json
+
+# Ignore Python cache
+__pycache__/
+*.py[cod]
+
+# Ignore test/debug scripts
+*test*.py
+*debug*.py
+
+# Session files
+.uhc-session/
+uhc_session.json

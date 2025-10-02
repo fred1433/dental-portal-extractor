@@ -1,0 +1,2053 @@
+{
+  "log": {
+    "version": "1.2",
+    "creator": {
+      "name": "WebInspector",
+      "version": "537.36"
+    },
+    "pages": [
+      {
+        "startedDateTime": "2025-09-30T19:42:48.412Z",
+        "id": "page_1",
+        "title": "https://www.ameritas.com/wps/myportal/s000/Home/provider/application/home/!ut/p/z1/04_Sj9CPykssy0xPLMnMz0vMAfIjo8ziTQ3dTTy8DQx93f2MzA0czT0NzAK9_I0MTAz0C7IdFQHDFnzR/?uri=nm:oid:Z6_51G4HK01MGN270A7I06QJO20K0",
+        "pageTimings": {
+          "onContentLoad": 8160.248000000138,
+          "onLoad": 11793.216000005486
+        }
+      },
+      {
+        "startedDateTime": "2025-09-30T19:43:10.393Z",
+        "id": "page_2",
+        "title": "https://www.ameritas.com/wps/myportal/s000/Home/provider/application/findamember/!ut/p/z1/04_Sj9CPykssy0xPLMnMz0vMAfIjo8ziTQ3dTTy8DQx93f2MzA0czT0NzAK9_I0MvA30w8EKDFCAo4FTkJGTsYGBu7-RfhTp-pFNIk4_HgVR-I3Hr9_fkDL7DYhwfxReJSAX4FUAsgKLJ1HjgFAoFOSGAkGEQaZnuiIAOzXSyA!!/dz/d5/L2dBISEvZ0FBIS9nQSEh/p0/IZ7_7Q16H940M04S30ANGCT3RE00U3=CZ6_51G4HK01MGN270A7I06QJO20K0=LA4OOQFBhEv248oNKGWAZq8JlJCmsnTJpSSBUtTD_XShFWQFB20g66w=Ejavax.servlet.include.path_info!QCPviewQCPGroup_ProviderMemberSearchPortletView.xhtml==/",
+        "pageTimings": {
+          "onContentLoad": 3775.4060000006575,
+          "onLoad": 10263.01299998886
+        }
+      }
+    ],
+    "entries": [
+      {
+        "_connectionId": "850730",
+        "_initiator": {
+          "type": "script",
+          "stack": {
+            "callFrames": [
+              {
+                "functionName": "send",
+                "scriptId": "15828",
+                "url": "https://www.ameritas.com/wps/contenthandler/s000/!ut/p/digest!Oz0DwGGQk5RSzfLavfzTxw/war/GroupTheme85S/themes/groupTheme85/external/js/jquery.min.js",
+                "lineNumber": 1,
+                "columnNumber": 81481
+              },
+              {
+                "functionName": "ajax",
+                "scriptId": "15828",
+                "url": "https://www.ameritas.com/wps/contenthandler/s000/!ut/p/digest!Oz0DwGGQk5RSzfLavfzTxw/war/GroupTheme85S/themes/groupTheme85/external/js/jquery.min.js",
+                "lineNumber": 1,
+                "columnNumber": 77300
+              },
+              {
+                "functionName": "k.fn.load",
+                "scriptId": "15828",
+                "url": "https://www.ameritas.com/wps/contenthandler/s000/!ut/p/digest!Oz0DwGGQk5RSzfLavfzTxw/war/GroupTheme85S/themes/groupTheme85/external/js/jquery.min.js",
+                "lineNumber": 1,
+                "columnNumber": 83821
+              },
+              {
+                "functionName": "",
+                "scriptId": "15857",
+                "url": "https://www.ameritas.com/wps/myportal/s000/Home/provider/application/findamember/!ut/p/z1/04_Sj9CPykssy0xPLMnMz0vMAfIjo8ziTQ3dTTy8DQx93f2MzA0czT0NzAK9_I0MvA30w8EKDFCAo4FTkJGTsYGBu7-RfhQe_SbY9SObRJx-PA6Mwm98uH4UXiv8DQkoMDCAKsAXBoRcUZAbGhphkOmZ7qioCAA-oMXA/dz/d5/L2dBISEvZ0FBIS9nQSEh/",
+                "lineNumber": 663,
+                "columnNumber": 6
+              },
+              {
+                "functionName": "e",
+                "scriptId": "15828",
+                "url": "https://www.ameritas.com/wps/contenthandler/s000/!ut/p/digest!Oz0DwGGQk5RSzfLavfzTxw/war/GroupTheme85S/themes/groupTheme85/external/js/jquery.min.js",
+                "lineNumber": 1,
+                "columnNumber": 29452
+              },
+              {
+                "functionName": "t",
+                "scriptId": "15828",
+                "url": "https://www.ameritas.com/wps/contenthandler/s000/!ut/p/digest!Oz0DwGGQk5RSzfLavfzTxw/war/GroupTheme85S/themes/groupTheme85/external/js/jquery.min.js",
+                "lineNumber": 1,
+                "columnNumber": 29754
+              }
+            ],
+            "parent": {
+              "description": "setTimeout",
+              "callFrames": [
+                {
+                  "functionName": "",
+                  "scriptId": "15828",
+                  "url": "https://www.ameritas.com/wps/contenthandler/s000/!ut/p/digest!Oz0DwGGQk5RSzfLavfzTxw/war/GroupTheme85S/themes/groupTheme85/external/js/jquery.min.js",
+                  "lineNumber": 1,
+                  "columnNumber": 29963
+                },
+                {
+                  "functionName": "c",
+                  "scriptId": "15828",
+                  "url": "https://www.ameritas.com/wps/contenthandler/s000/!ut/p/digest!Oz0DwGGQk5RSzfLavfzTxw/war/GroupTheme85S/themes/groupTheme85/external/js/jquery.min.js",
+                  "lineNumber": 1,
+                  "columnNumber": 27741
+                },
+                {
+                  "functionName": "fireWith",
+                  "scriptId": "15828",
+                  "url": "https://www.ameritas.com/wps/contenthandler/s000/!ut/p/digest!Oz0DwGGQk5RSzfLavfzTxw/war/GroupTheme85S/themes/groupTheme85/external/js/jquery.min.js",
+                  "lineNumber": 1,
+                  "columnNumber": 28486
+                },
+                {
+                  "functionName": "fire",
+                  "scriptId": "15828",
+                  "url": "https://www.ameritas.com/wps/contenthandler/s000/!ut/p/digest!Oz0DwGGQk5RSzfLavfzTxw/war/GroupTheme85S/themes/groupTheme85/external/js/jquery.min.js",
+                  "lineNumber": 1,
+                  "columnNumber": 28522
+                },
+                {
+                  "functionName": "c",
+                  "scriptId": "15828",
+                  "url": "https://www.ameritas.com/wps/contenthandler/s000/!ut/p/digest!Oz0DwGGQk5RSzfLavfzTxw/war/GroupTheme85S/themes/groupTheme85/external/js/jquery.min.js",
+                  "lineNumber": 1,
+                  "columnNumber": 27741
+                },
+                {
+                  "functionName": "fireWith",
+                  "scriptId": "15828",
+                  "url": "https://www.ameritas.com/wps/contenthandler/s000/!ut/p/digest!Oz0DwGGQk5RSzfLavfzTxw/war/GroupTheme85S/themes/groupTheme85/external/js/jquery.min.js",
+                  "lineNumber": 1,
+                  "columnNumber": 28486
+                },
+                {
+                  "functionName": "ready",
+                  "scriptId": "15828",
+                  "url": "https://www.ameritas.com/wps/contenthandler/s000/!ut/p/digest!Oz0DwGGQk5RSzfLavfzTxw/war/GroupTheme85S/themes/groupTheme85/external/js/jquery.min.js",
+                  "lineNumber": 1,
+                  "columnNumber": 31459
+                },
+                {
+                  "functionName": "B",
+                  "scriptId": "15828",
+                  "url": "https://www.ameritas.com/wps/contenthandler/s000/!ut/p/digest!Oz0DwGGQk5RSzfLavfzTxw/war/GroupTheme85S/themes/groupTheme85/external/js/jquery.min.js",
+                  "lineNumber": 1,
+                  "columnNumber": 31238
+                }
+              ]
+            }
+          }
+        },
+        "_priority": "High",
+        "_resourceType": "xhr",
+        "cache": {},
+        "connection": "443",
+        "pageref": "page_1",
+        "request": {
+          "method": "GET",
+          "url": "https://www.ameritas.com/wps/wcm/connect/utilities/globalitems/sa-social-media?srv=cmpnt&source=library&cmpntname=socmed-mpb-alic",
+          "httpVersion": "http/2.0",
+          "headers": [
+            {
+              "name": ":authority",
+              "value": "www.ameritas.com"
+            },
+            {
+              "name": ":method",
+              "value": "GET"
+            },
+            {
+              "name": ":path",
+              "value": "/wps/wcm/connect/utilities/globalitems/sa-social-media?srv=cmpnt&source=library&cmpntname=socmed-mpb-alic"
+            },
+            {
+              "name": ":scheme",
+              "value": "https"
+            },
+            {
+              "name": "accept",
+              "value": "text/html, */*; q=0.01"
+            },
+            {
+              "name": "accept-encoding",
+              "value": "gzip, deflate, br, zstd"
+            },
+            {
+              "name": "accept-language",
+              "value": "en,pt-BR;q=0.9,pt;q=0.8"
+            },
+            {
+              "name": "cache-control",
+              "value": "no-cache"
+            },
+            {
+              "name": "cookie",
+              "value": "DigestTracker=AAABmZwmI_4; X-Session-ID=02c7026aa6-989a-44J2Dvf_trtZYDfkOLJWP4PZEAgYag6N-RYGJjl7c_vpmcb1ai6VI6_GmxBshZzSF5GII; ASPSESSIONIDCUQSTBTQ=MAPJNFIBIIPMPIFAIHBCCDDG; ASP.NET_SessionId=2p5ihfmrawkidkdo5vwbkprf; ASPSESSIONIDCWTTSBTQ=PJMPIBNBCKLKDGONGGBILKHG; ASPSESSIONIDAURSTASR=OGAEKNPBPBEBJLLIMMMEDMLM; QSI_HistorySession=https%3A%2F%2Fwww.ameritas.com%2F~1759251514681; ASPSESSIONIDAUTTQASQ=MOBBNHBCBLBGHBNOILBKMPJI; TLTSID=4410FA6F413C69300CBD879B4FB5F197; MFA_DEST_URL=https://www.ameritas.com/wps/myportal/s000/Home/provider/application/findamember/rembenefits/!ut/p/z1/pZDJDoJAEES_xS_omkEYPWKURYIshsjMhXAiuCAmxu8XTEwEE3DpWyevqquLFKWkqvxWFvm1PFf5sdmlMjKd2VPHA_PtMFzCFK6fCGZwzDTa9YANFy0AI1oHHAEj9Y8e-EyPzphYxHyhAXbAf9G_On2b_w1Qw_Y7Ur0T3QY8jABtxYMAng5DJY3FlM2bIhMRM5z5FD6cuQVzYwpL4wnHSqMtSYfkQV3iuniUMkjXp6SZFKW71-vMndwB4LWX-w!!/?uri=nm:oid:Z6_51G4HK01MGN270A7I06QJO20K0; MFA_DEST_DIV=group; LtpaToken2=DLrpEyl81AY21w2iyljWeCKTtrnTO4w/DZjmztZgILRcvYhrwl0zZgGiPfgJYP2yWscwnLgZ9noomZTjHCMLF8rRiQdkktStVp+0Dn6LoxoBzxMut+FwIxB9Px4uj1Ro0WEl9TTNi48TbwfxP8g5X1Y5yI+ptkoTpuYW7974ENt5qrrZObFP4zE9FqRsoVk/kBgXwd1QV3HEDwt0sF8uOfNxEw1+tBDfYrjbrLmrDHRgIXsl6Tz9YUEKUviFTxOpV6La4CYJnJs8eh1wE9EzKlE7YBwBlj4oGu8UW1Ej73ebgHwbV3MB5PJsRHfk4bX87vF8I1EETbhWCQrGchdL9mTz7OOXZ9j4E/ZiaRcVLZYofHGFLVccz6QU9bYQmWgoa6tS0BD4816KCeDCZxldl0HENNsC1Icato6ju7xG20K89caUkIO1I7Apngfn/Zy7UDoUEDS6CzP/+9UtrMCXv+qPR/y0y2Uj5G58bf1IDVebb1MZhPRMVECANzbGxMLGdoMjNmS8UEYxoPZ2rJ1iQJ/Bf89Cle+BS79yuJc+c/7TzCZe7uCYqFuSfaLyoO670pIs1yuuqKImuToFQviV8EelJQeWCjdoFExQc6X8X7hCHaIIfqen/+DuxvZV1YF8RyA3xsL9C6R4lMYOrZ0X9gKaNCnk2loV6c/JRXf+w+s4EVgBAQnQSqNSiCgZHyKovbIS642x6vsPrKJE01sFO+4kNwM8uhZv4aoKbWQU07MGcFk3NSg9qp/Ub21hvJRLvzHAyFa0b+B9mSBFYcDiZg==; JSESSIONID=0001pa5L-eV8wNI5O-P3SiXqaNW:GQC8T60EI; _ga=GA1.2.506068042.1759261341; _gid=GA1.2.652491294.1759261341; _gat_subTracker=1; _gat_appTracker=1; _ga_KDLHTCZ605=GS2.2.s1759261341$o1$g1$t1759261355$j46$l0$h0; _ga_EV35VH219F=GS2.2.s1759261341$o1$g1$t1759261355$j46$l0$h0; ONTCred=N+xQJJsC9Iney0dmBxlL3iRHBx21BdYIO8qbnMnVd83XfJzUdVlT7MTlNuOkI/OO1zYbie5H16IlCQf3HOKhPKzjgQ0XYWNQkWhzPUZ9qvUWUwrEthmnlMQUhl8Rtk2H8VjZXcFpIuiUpUugk4DbrtF+UWD1iRdCr+BoYF+E3zkAAAAAAAAAAA=="
+            },
+            {
+              "name": "pragma",
+              "value": "no-cache"
+            },
+            {
+              "name": "priority",
+              "value": "u=1, i"
+            },
+            {
+              "name": "referer",
+              "value": "https://www.ameritas.com/wps/myportal/s000/Home/provider/application/findamember/!ut/p/z1/04_Sj9CPykssy0xPLMnMz0vMAfIjo8ziTQ3dTTy8DQx93f2MzA0czT0NzAK9_I0MvA30w8EKDFCAo4FTkJGTsYGBu7-RfhQe_SbY9SObRJx-PA6Mwm98uH4UXiv8DQkoMDCAKsAXBoRcUZAbGhphkOmZ7qioCAA-oMXA/dz/d5/L2dBISEvZ0FBIS9nQSEh/"
+            },
+            {
+              "name": "sec-ch-ua",
+              "value": "\"Chromium\";v=\"140\", \"Not=A?Brand\";v=\"24\", \"Google Chrome\";v=\"140\""
+            },
+            {
+              "name": "sec-ch-ua-mobile",
+              "value": "?0"
+            },
+            {
+              "name": "sec-ch-ua-platform",
+              "value": "\"macOS\""
+            },
+            {
+              "name": "sec-fetch-dest",
+              "value": "empty"
+            },
+            {
+              "name": "sec-fetch-mode",
+              "value": "cors"
+            },
+            {
+              "name": "sec-fetch-site",
+              "value": "same-origin"
+            },
+            {
+              "name": "user-agent",
+              "value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+            },
+            {
+              "name": "x-requested-with",
+              "value": "XMLHttpRequest"
+            }
+          ],
+          "queryString": [
+            {
+              "name": "srv",
+              "value": "cmpnt"
+            },
+            {
+              "name": "source",
+              "value": "library"
+            },
+            {
+              "name": "cmpntname",
+              "value": "socmed-mpb-alic"
+            }
+          ],
+          "cookies": [
+            {
+              "name": "DigestTracker",
+              "value": "AAABmZwmI_4",
+              "path": "/wps",
+              "domain": "www.ameritas.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": false,
+              "secure": true
+            },
+            {
+              "name": "X-Session-ID",
+              "value": "02c7026aa6-989a-44J2Dvf_trtZYDfkOLJWP4PZEAgYag6N-RYGJjl7c_vpmcb1ai6VI6_GmxBshZzSF5GII",
+              "path": "/",
+              "domain": "www.ameritas.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": false,
+              "secure": true,
+              "sameSite": "None"
+            },
+            {
+              "name": "ASPSESSIONIDCUQSTBTQ",
+              "value": "MAPJNFIBIIPMPIFAIHBCCDDG",
+              "path": "/",
+              "domain": "www.ameritas.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": false,
+              "secure": true
+            },
+            {
+              "name": "ASP.NET_SessionId",
+              "value": "2p5ihfmrawkidkdo5vwbkprf",
+              "path": "/",
+              "domain": "www.ameritas.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": true,
+              "secure": true,
+              "sameSite": "Lax"
+            },
+            {
+              "name": "ASPSESSIONIDCWTTSBTQ",
+              "value": "PJMPIBNBCKLKDGONGGBILKHG",
+              "path": "/",
+              "domain": "www.ameritas.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": false,
+              "secure": true
+            },
+            {
+              "name": "ASPSESSIONIDAURSTASR",
+              "value": "OGAEKNPBPBEBJLLIMMMEDMLM",
+              "path": "/",
+              "domain": "www.ameritas.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": false,
+              "secure": true
+            },
+            {
+              "name": "QSI_HistorySession",
+              "value": "https%3A%2F%2Fwww.ameritas.com%2F~1759251514681",
+              "path": "/",
+              "domain": "www.ameritas.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": false,
+              "secure": true
+            },
+            {
+              "name": "ASPSESSIONIDAUTTQASQ",
+              "value": "MOBBNHBCBLBGHBNOILBKMPJI",
+              "path": "/",
+              "domain": "www.ameritas.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": false,
+              "secure": true
+            },
+            {
+              "name": "TLTSID",
+              "value": "4410FA6F413C69300CBD879B4FB5F197",
+              "path": "/",
+              "domain": ".ameritas.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": false,
+              "secure": true
+            },
+            {
+              "name": "MFA_DEST_URL",
+              "value": "https://www.ameritas.com/wps/myportal/s000/Home/provider/application/findamember/rembenefits/!ut/p/z1/pZDJDoJAEES_xS_omkEYPWKURYIshsjMhXAiuCAmxu8XTEwEE3DpWyevqquLFKWkqvxWFvm1PFf5sdmlMjKd2VPHA_PtMFzCFK6fCGZwzDTa9YANFy0AI1oHHAEj9Y8e-EyPzphYxHyhAXbAf9G_On2b_w1Qw_Y7Ur0T3QY8jABtxYMAng5DJY3FlM2bIhMRM5z5FD6cuQVzYwpL4wnHSqMtSYfkQV3iuniUMkjXp6SZFKW71-vMndwB4LWX-w!!/?uri=nm:oid:Z6_51G4HK01MGN270A7I06QJO20K0",
+              "path": "/",
+              "domain": ".ameritas.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": false,
+              "secure": true
+            },
+            {
+              "name": "MFA_DEST_DIV",
+              "value": "group",
+              "path": "/",
+              "domain": ".ameritas.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": false,
+              "secure": true
+            },
+            {
+              "name": "LtpaToken2",
+              "value": "DLrpEyl81AY21w2iyljWeCKTtrnTO4w/DZjmztZgILRcvYhrwl0zZgGiPfgJYP2yWscwnLgZ9noomZTjHCMLF8rRiQdkktStVp+0Dn6LoxoBzxMut+FwIxB9Px4uj1Ro0WEl9TTNi48TbwfxP8g5X1Y5yI+ptkoTpuYW7974ENt5qrrZObFP4zE9FqRsoVk/kBgXwd1QV3HEDwt0sF8uOfNxEw1+tBDfYrjbrLmrDHRgIXsl6Tz9YUEKUviFTxOpV6La4CYJnJs8eh1wE9EzKlE7YBwBlj4oGu8UW1Ej73ebgHwbV3MB5PJsRHfk4bX87vF8I1EETbhWCQrGchdL9mTz7OOXZ9j4E/ZiaRcVLZYofHGFLVccz6QU9bYQmWgoa6tS0BD4816KCeDCZxldl0HENNsC1Icato6ju7xG20K89caUkIO1I7Apngfn/Zy7UDoUEDS6CzP/+9UtrMCXv+qPR/y0y2Uj5G58bf1IDVebb1MZhPRMVECANzbGxMLGdoMjNmS8UEYxoPZ2rJ1iQJ/Bf89Cle+BS79yuJc+c/7TzCZe7uCYqFuSfaLyoO670pIs1yuuqKImuToFQviV8EelJQeWCjdoFExQc6X8X7hCHaIIfqen/+DuxvZV1YF8RyA3xsL9C6R4lMYOrZ0X9gKaNCnk2loV6c/JRXf+w+s4EVgBAQnQSqNSiCgZHyKovbIS642x6vsPrKJE01sFO+4kNwM8uhZv4aoKbWQU07MGcFk3NSg9qp/Ub21hvJRLvzHAyFa0b+B9mSBFYcDiZg==",
+              "path": "/",
+              "domain": "www.ameritas.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": true,
+              "secure": true
+            },
+            {
+              "name": "JSESSIONID",
+              "value": "0001pa5L-eV8wNI5O-P3SiXqaNW:GQC8T60EI",
+              "path": "/",
+              "domain": "www.ameritas.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": true,
+              "secure": true
+            },
+            {
+              "name": "_ga",
+              "value": "GA1.2.506068042.1759261341",
+              "path": "/",
+              "domain": ".ameritas.com",
+              "expires": "2026-11-04T19:42:35.403Z",
+              "httpOnly": false,
+              "secure": false
+            },
+            {
+              "name": "_gid",
+              "value": "GA1.2.652491294.1759261341",
+              "path": "/",
+              "domain": ".ameritas.com",
+              "expires": "2025-10-01T19:42:35.000Z",
+              "httpOnly": false,
+              "secure": false
+            },
+            {
+              "name": "_gat_subTracker",
+              "value": "1",
+              "path": "/",
+              "domain": ".ameritas.com",
+              "expires": "2025-09-30T19:43:20.000Z",
+              "httpOnly": false,
+              "secure": false
+            },
+            {
+              "name": "_gat_appTracker",
+              "value": "1",
+              "path": "/",
+              "domain": ".ameritas.com",
+              "expires": "2025-09-30T19:43:20.000Z",
+              "httpOnly": false,
+              "secure": false
+            },
+            {
+              "name": "_ga_KDLHTCZ605",
+              "value": "GS2.2.s1759261341$o1$g1$t1759261355$j46$l0$h0",
+              "path": "/",
+              "domain": ".ameritas.com",
+              "expires": "2026-11-04T19:42:35.485Z",
+              "httpOnly": false,
+              "secure": false
+            },
+            {
+              "name": "_ga_EV35VH219F",
+              "value": "GS2.2.s1759261341$o1$g1$t1759261355$j46$l0$h0",
+              "path": "/",
+              "domain": ".ameritas.com",
+              "expires": "2026-11-04T19:42:35.491Z",
+              "httpOnly": false,
+              "secure": false
+            },
+            {
+              "name": "ONTCred",
+              "value": "N+xQJJsC9Iney0dmBxlL3iRHBx21BdYIO8qbnMnVd83XfJzUdVlT7MTlNuOkI/OO1zYbie5H16IlCQf3HOKhPKzjgQ0XYWNQkWhzPUZ9qvUWUwrEthmnlMQUhl8Rtk2H8VjZXcFpIuiUpUugk4DbrtF+UWD1iRdCr+BoYF+E3zkAAAAAAAAAAA==",
+              "path": "/",
+              "domain": ".ameritas.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": false,
+              "secure": true
+            }
+          ],
+          "headersSize": -1,
+          "bodySize": 0
+        },
+        "response": {
+          "status": 302,
+          "statusText": "",
+          "httpVersion": "http/2.0",
+          "headers": [
+            {
+              "name": "access-control-allow-headers",
+              "value": "\"Origin, X-Requested- With, Content-Type, Accept\""
+            },
+            {
+              "name": "access-control-allow-origin",
+              "value": "\"*.ameritas.com, *.employeebenefitservice.com, *.inbison.com, *.corporate.unificompanies.com\""
+            },
+            {
+              "name": "content-language",
+              "value": "en-US"
+            },
+            {
+              "name": "content-length",
+              "value": "0"
+            },
+            {
+              "name": "content-security-policy",
+              "value": "frame-ancestors 'self' *.ameritas.com *.employeebenefitservice.com *.inbison.com; script-src * 'unsafe-inline' 'unsafe-eval';"
+            },
+            {
+              "name": "content-type",
+              "value": "text/plain"
+            },
+            {
+              "name": "date",
+              "value": "Tue, 30 Sep 2025 19:42:57 GMT"
+            },
+            {
+              "name": "location",
+              "value": "https://www.ameritas.com/wps/wcm/myconnect/utilities/globalitems/sa-social-media?srv=cmpnt&cmpntname=socmed-mpb-alic&source=library"
+            },
+            {
+              "name": "permissions-policy",
+              "value": "geolocation=(),midi=(),microphone=(),camera=(),magnetometer=(),gyroscope=(),fullscreen=(self),payment=()"
+            },
+            {
+              "name": "referrer-policy",
+              "value": "no-referrer, strict-origin-when-cross-origin"
+            },
+            {
+              "name": "server",
+              "value": "Server"
+            },
+            {
+              "name": "strict-transport-security",
+              "value": "max-age=31536000; includeSubDomains"
+            },
+            {
+              "name": "x-content-type-options",
+              "value": "nosniff"
+            },
+            {
+              "name": "x-correlation-id",
+              "value": "2K7-7MZj-Lg6L"
+            },
+            {
+              "name": "x-frame-options",
+              "value": "SAMEORIGIN"
+            },
+            {
+              "name": "x-robots-tag",
+              "value": "noindex, nofollow"
+            },
+            {
+              "name": "x-xss-protection",
+              "value": "1;mode=block"
+            }
+          ],
+          "cookies": [],
+          "content": {
+            "size": 0,
+            "mimeType": "text/plain"
+          },
+          "redirectURL": "https://www.ameritas.com/wps/wcm/myconnect/utilities/globalitems/sa-social-media?srv=cmpnt&cmpntname=socmed-mpb-alic&source=library",
+          "headersSize": -1,
+          "bodySize": -1,
+          "_transferSize": 762,
+          "_error": null,
+          "_fetchedViaServiceWorker": false
+        },
+        "serverIPAddress": "69.12.28.22",
+        "startedDateTime": "2025-09-30T19:42:56.582Z",
+        "time": 3619.446999990032,
+        "timings": {
+          "blocked": 7.4219999912874774,
+          "dns": -1,
+          "ssl": -1,
+          "connect": -1,
+          "send": 0.2190000000000003,
+          "wait": 3610.4889999967263,
+          "receive": 1.317000002018176,
+          "_blocked_queueing": 2.1449999912874773,
+          "_workerStart": -1,
+          "_workerReady": -1,
+          "_workerFetchStart": -1,
+          "_workerRespondWithSettled": -1
+        }
+      },
+      {
+        "_connectionId": "850730",
+        "_initiator": {
+          "type": "script",
+          "stack": {
+            "callFrames": [
+              {
+                "functionName": "send",
+                "scriptId": "15828",
+                "url": "https://www.ameritas.com/wps/contenthandler/s000/!ut/p/digest!Oz0DwGGQk5RSzfLavfzTxw/war/GroupTheme85S/themes/groupTheme85/external/js/jquery.min.js",
+                "lineNumber": 1,
+                "columnNumber": 81481
+              },
+              {
+                "functionName": "ajax",
+                "scriptId": "15828",
+                "url": "https://www.ameritas.com/wps/contenthandler/s000/!ut/p/digest!Oz0DwGGQk5RSzfLavfzTxw/war/GroupTheme85S/themes/groupTheme85/external/js/jquery.min.js",
+                "lineNumber": 1,
+                "columnNumber": 77300
+              },
+              {
+                "functionName": "k.fn.load",
+                "scriptId": "15828",
+                "url": "https://www.ameritas.com/wps/contenthandler/s000/!ut/p/digest!Oz0DwGGQk5RSzfLavfzTxw/war/GroupTheme85S/themes/groupTheme85/external/js/jquery.min.js",
+                "lineNumber": 1,
+                "columnNumber": 83821
+              },
+              {
+                "functionName": "",
+                "scriptId": "15857",
+                "url": "https://www.ameritas.com/wps/myportal/s000/Home/provider/application/findamember/!ut/p/z1/04_Sj9CPykssy0xPLMnMz0vMAfIjo8ziTQ3dTTy8DQx93f2MzA0czT0NzAK9_I0MvA30w8EKDFCAo4FTkJGTsYGBu7-RfhQe_SbY9SObRJx-PA6Mwm98uH4UXiv8DQkoMDCAKsAXBoRcUZAbGhphkOmZ7qioCAA-oMXA/dz/d5/L2dBISEvZ0FBIS9nQSEh/",
+                "lineNumber": 663,
+                "columnNumber": 6
+              },
+              {
+                "functionName": "e",
+                "scriptId": "15828",
+                "url": "https://www.ameritas.com/wps/contenthandler/s000/!ut/p/digest!Oz0DwGGQk5RSzfLavfzTxw/war/GroupTheme85S/themes/groupTheme85/external/js/jquery.min.js",
+                "lineNumber": 1,
+                "columnNumber": 29452
+              },
+              {
+                "functionName": "t",
+                "scriptId": "15828",
+                "url": "https://www.ameritas.com/wps/contenthandler/s000/!ut/p/digest!Oz0DwGGQk5RSzfLavfzTxw/war/GroupTheme85S/themes/groupTheme85/external/js/jquery.min.js",
+                "lineNumber": 1,
+                "columnNumber": 29754
+              }
+            ],
+            "parent": {
+              "description": "setTimeout",
+              "callFrames": [
+                {
+                  "functionName": "",
+                  "scriptId": "15828",
+                  "url": "https://www.ameritas.com/wps/contenthandler/s000/!ut/p/digest!Oz0DwGGQk5RSzfLavfzTxw/war/GroupTheme85S/themes/groupTheme85/external/js/jquery.min.js",
+                  "lineNumber": 1,
+                  "columnNumber": 29963
+                },
+                {
+                  "functionName": "c",
+                  "scriptId": "15828",
+                  "url": "https://www.ameritas.com/wps/contenthandler/s000/!ut/p/digest!Oz0DwGGQk5RSzfLavfzTxw/war/GroupTheme85S/themes/groupTheme85/external/js/jquery.min.js",
+                  "lineNumber": 1,
+                  "columnNumber": 27741
+                },
+                {
+                  "functionName": "fireWith",
+                  "scriptId": "15828",
+                  "url": "https://www.ameritas.com/wps/contenthandler/s000/!ut/p/digest!Oz0DwGGQk5RSzfLavfzTxw/war/GroupTheme85S/themes/groupTheme85/external/js/jquery.min.js",
+                  "lineNumber": 1,
+                  "columnNumber": 28486
+                },
+                {
+                  "functionName": "fire",
+                  "scriptId": "15828",
+                  "url": "https://www.ameritas.com/wps/contenthandler/s000/!ut/p/digest!Oz0DwGGQk5RSzfLavfzTxw/war/GroupTheme85S/themes/groupTheme85/external/js/jquery.min.js",
+                  "lineNumber": 1,
+                  "columnNumber": 28522
+                },
+                {
+                  "functionName": "c",
+                  "scriptId": "15828",
+                  "url": "https://www.ameritas.com/wps/contenthandler/s000/!ut/p/digest!Oz0DwGGQk5RSzfLavfzTxw/war/GroupTheme85S/themes/groupTheme85/external/js/jquery.min.js",
+                  "lineNumber": 1,
+                  "columnNumber": 27741
+                },
+                {
+                  "functionName": "fireWith",
+                  "scriptId": "15828",
+                  "url": "https://www.ameritas.com/wps/contenthandler/s000/!ut/p/digest!Oz0DwGGQk5RSzfLavfzTxw/war/GroupTheme85S/themes/groupTheme85/external/js/jquery.min.js",
+                  "lineNumber": 1,
+                  "columnNumber": 28486
+                },
+                {
+                  "functionName": "ready",
+                  "scriptId": "15828",
+                  "url": "https://www.ameritas.com/wps/contenthandler/s000/!ut/p/digest!Oz0DwGGQk5RSzfLavfzTxw/war/GroupTheme85S/themes/groupTheme85/external/js/jquery.min.js",
+                  "lineNumber": 1,
+                  "columnNumber": 31459
+                },
+                {
+                  "functionName": "B",
+                  "scriptId": "15828",
+                  "url": "https://www.ameritas.com/wps/contenthandler/s000/!ut/p/digest!Oz0DwGGQk5RSzfLavfzTxw/war/GroupTheme85S/themes/groupTheme85/external/js/jquery.min.js",
+                  "lineNumber": 1,
+                  "columnNumber": 31238
+                }
+              ]
+            }
+          }
+        },
+        "_priority": "High",
+        "_resourceType": "xhr",
+        "cache": {},
+        "connection": "443",
+        "pageref": "page_1",
+        "request": {
+          "method": "GET",
+          "url": "https://www.ameritas.com/wps/wcm/myconnect/utilities/globalitems/sa-social-media?srv=cmpnt&cmpntname=socmed-mpb-alic&source=library",
+          "httpVersion": "http/2.0",
+          "headers": [
+            {
+              "name": ":authority",
+              "value": "www.ameritas.com"
+            },
+            {
+              "name": ":method",
+              "value": "GET"
+            },
+            {
+              "name": ":path",
+              "value": "/wps/wcm/myconnect/utilities/globalitems/sa-social-media?srv=cmpnt&cmpntname=socmed-mpb-alic&source=library"
+            },
+            {
+              "name": ":scheme",
+              "value": "https"
+            },
+            {
+              "name": "accept",
+              "value": "text/html, */*; q=0.01"
+            },
+            {
+              "name": "accept-encoding",
+              "value": "gzip, deflate, br, zstd"
+            },
+            {
+              "name": "accept-language",
+              "value": "en,pt-BR;q=0.9,pt;q=0.8"
+            },
+            {
+              "name": "cache-control",
+              "value": "no-cache"
+            },
+            {
+              "name": "cookie",
+              "value": "DigestTracker=AAABmZwmI_4; X-Session-ID=02c7026aa6-989a-44J2Dvf_trtZYDfkOLJWP4PZEAgYag6N-RYGJjl7c_vpmcb1ai6VI6_GmxBshZzSF5GII; ASPSESSIONIDCUQSTBTQ=MAPJNFIBIIPMPIFAIHBCCDDG; ASP.NET_SessionId=2p5ihfmrawkidkdo5vwbkprf; ASPSESSIONIDCWTTSBTQ=PJMPIBNBCKLKDGONGGBILKHG; ASPSESSIONIDAURSTASR=OGAEKNPBPBEBJLLIMMMEDMLM; QSI_HistorySession=https%3A%2F%2Fwww.ameritas.com%2F~1759251514681; ASPSESSIONIDAUTTQASQ=MOBBNHBCBLBGHBNOILBKMPJI; TLTSID=4410FA6F413C69300CBD879B4FB5F197; MFA_DEST_URL=https://www.ameritas.com/wps/myportal/s000/Home/provider/application/findamember/rembenefits/!ut/p/z1/pZDJDoJAEES_xS_omkEYPWKURYIshsjMhXAiuCAmxu8XTEwEE3DpWyevqquLFKWkqvxWFvm1PFf5sdmlMjKd2VPHA_PtMFzCFK6fCGZwzDTa9YANFy0AI1oHHAEj9Y8e-EyPzphYxHyhAXbAf9G_On2b_w1Qw_Y7Ur0T3QY8jABtxYMAng5DJY3FlM2bIhMRM5z5FD6cuQVzYwpL4wnHSqMtSYfkQV3iuniUMkjXp6SZFKW71-vMndwB4LWX-w!!/?uri=nm:oid:Z6_51G4HK01MGN270A7I06QJO20K0; MFA_DEST_DIV=group; LtpaToken2=DLrpEyl81AY21w2iyljWeCKTtrnTO4w/DZjmztZgILRcvYhrwl0zZgGiPfgJYP2yWscwnLgZ9noomZTjHCMLF8rRiQdkktStVp+0Dn6LoxoBzxMut+FwIxB9Px4uj1Ro0WEl9TTNi48TbwfxP8g5X1Y5yI+ptkoTpuYW7974ENt5qrrZObFP4zE9FqRsoVk/kBgXwd1QV3HEDwt0sF8uOfNxEw1+tBDfYrjbrLmrDHRgIXsl6Tz9YUEKUviFTxOpV6La4CYJnJs8eh1wE9EzKlE7YBwBlj4oGu8UW1Ej73ebgHwbV3MB5PJsRHfk4bX87vF8I1EETbhWCQrGchdL9mTz7OOXZ9j4E/ZiaRcVLZYofHGFLVccz6QU9bYQmWgoa6tS0BD4816KCeDCZxldl0HENNsC1Icato6ju7xG20K89caUkIO1I7Apngfn/Zy7UDoUEDS6CzP/+9UtrMCXv+qPR/y0y2Uj5G58bf1IDVebb1MZhPRMVECANzbGxMLGdoMjNmS8UEYxoPZ2rJ1iQJ/Bf89Cle+BS79yuJc+c/7TzCZe7uCYqFuSfaLyoO670pIs1yuuqKImuToFQviV8EelJQeWCjdoFExQc6X8X7hCHaIIfqen/+DuxvZV1YF8RyA3xsL9C6R4lMYOrZ0X9gKaNCnk2loV6c/JRXf+w+s4EVgBAQnQSqNSiCgZHyKovbIS642x6vsPrKJE01sFO+4kNwM8uhZv4aoKbWQU07MGcFk3NSg9qp/Ub21hvJRLvzHAyFa0b+B9mSBFYcDiZg==; JSESSIONID=0001pa5L-eV8wNI5O-P3SiXqaNW:GQC8T60EI; _ga=GA1.2.506068042.1759261341; _gid=GA1.2.652491294.1759261341; _gat_subTracker=1; _gat_appTracker=1; ONTCred=N+xQJJsC9Iney0dmBxlL3iRHBx21BdYIO8qbnMnVd83XfJzUdVlT7MTlNuOkI/OO1zYbie5H16IlCQf3HOKhPKzjgQ0XYWNQkWhzPUZ9qvUWUwrEthmnlMQUhl8Rtk2H8VjZXcFpIuiUpUugk4DbrtF+UWD1iRdCr+BoYF+E3zkAAAAAAAAAAA==; _ga_KDLHTCZ605=GS2.2.s1759261341$o1$g1$t1759261377$j24$l0$h0; _ga_EV35VH219F=GS2.2.s1759261341$o1$g1$t1759261377$j24$l0$h0"
+            },
+            {
+              "name": "pragma",
+              "value": "no-cache"
+            },
+            {
+              "name": "priority",
+              "value": "u=1, i"
+            },
+            {
+              "name": "referer",
+              "value": "https://www.ameritas.com/wps/myportal/s000/Home/provider/application/findamember/!ut/p/z1/04_Sj9CPykssy0xPLMnMz0vMAfIjo8ziTQ3dTTy8DQx93f2MzA0czT0NzAK9_I0MvA30w8EKDFCAo4FTkJGTsYGBu7-RfhQe_SbY9SObRJx-PA6Mwm98uH4UXiv8DQkoMDCAKsAXBoRcUZAbGhphkOmZ7qioCAA-oMXA/dz/d5/L2dBISEvZ0FBIS9nQSEh/"
+            },
+            {
+              "name": "sec-ch-ua",
+              "value": "\"Chromium\";v=\"140\", \"Not=A?Brand\";v=\"24\", \"Google Chrome\";v=\"140\""
+            },
+            {
+              "name": "sec-ch-ua-mobile",
+              "value": "?0"
+            },
+            {
+              "name": "sec-ch-ua-platform",
+              "value": "\"macOS\""
+            },
+            {
+              "name": "sec-fetch-dest",
+              "value": "empty"
+            },
+            {
+              "name": "sec-fetch-mode",
+              "value": "cors"
+            },
+            {
+              "name": "sec-fetch-site",
+              "value": "same-origin"
+            },
+            {
+              "name": "user-agent",
+              "value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+            },
+            {
+              "name": "x-requested-with",
+              "value": "XMLHttpRequest"
+            }
+          ],
+          "queryString": [
+            {
+              "name": "srv",
+              "value": "cmpnt"
+            },
+            {
+              "name": "cmpntname",
+              "value": "socmed-mpb-alic"
+            },
+            {
+              "name": "source",
+              "value": "library"
+            }
+          ],
+          "cookies": [
+            {
+              "name": "DigestTracker",
+              "value": "AAABmZwmI_4",
+              "path": "/wps",
+              "domain": "www.ameritas.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": false,
+              "secure": true
+            },
+            {
+              "name": "X-Session-ID",
+              "value": "02c7026aa6-989a-44J2Dvf_trtZYDfkOLJWP4PZEAgYag6N-RYGJjl7c_vpmcb1ai6VI6_GmxBshZzSF5GII",
+              "path": "/",
+              "domain": "www.ameritas.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": false,
+              "secure": true,
+              "sameSite": "None"
+            },
+            {
+              "name": "ASPSESSIONIDCUQSTBTQ",
+              "value": "MAPJNFIBIIPMPIFAIHBCCDDG",
+              "path": "/",
+              "domain": "www.ameritas.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": false,
+              "secure": true
+            },
+            {
+              "name": "ASP.NET_SessionId",
+              "value": "2p5ihfmrawkidkdo5vwbkprf",
+              "path": "/",
+              "domain": "www.ameritas.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": true,
+              "secure": true,
+              "sameSite": "Lax"
+            },
+            {
+              "name": "ASPSESSIONIDCWTTSBTQ",
+              "value": "PJMPIBNBCKLKDGONGGBILKHG",
+              "path": "/",
+              "domain": "www.ameritas.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": false,
+              "secure": true
+            },
+            {
+              "name": "ASPSESSIONIDAURSTASR",
+              "value": "OGAEKNPBPBEBJLLIMMMEDMLM",
+              "path": "/",
+              "domain": "www.ameritas.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": false,
+              "secure": true
+            },
+            {
+              "name": "QSI_HistorySession",
+              "value": "https%3A%2F%2Fwww.ameritas.com%2F~1759251514681",
+              "path": "/",
+              "domain": "www.ameritas.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": false,
+              "secure": true
+            },
+            {
+              "name": "ASPSESSIONIDAUTTQASQ",
+              "value": "MOBBNHBCBLBGHBNOILBKMPJI",
+              "path": "/",
+              "domain": "www.ameritas.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": false,
+              "secure": true
+            },
+            {
+              "name": "TLTSID",
+              "value": "4410FA6F413C69300CBD879B4FB5F197",
+              "path": "/",
+              "domain": ".ameritas.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": false,
+              "secure": true
+            },
+            {
+              "name": "MFA_DEST_URL",
+              "value": "https://www.ameritas.com/wps/myportal/s000/Home/provider/application/findamember/rembenefits/!ut/p/z1/pZDJDoJAEES_xS_omkEYPWKURYIshsjMhXAiuCAmxu8XTEwEE3DpWyevqquLFKWkqvxWFvm1PFf5sdmlMjKd2VPHA_PtMFzCFK6fCGZwzDTa9YANFy0AI1oHHAEj9Y8e-EyPzphYxHyhAXbAf9G_On2b_w1Qw_Y7Ur0T3QY8jABtxYMAng5DJY3FlM2bIhMRM5z5FD6cuQVzYwpL4wnHSqMtSYfkQV3iuniUMkjXp6SZFKW71-vMndwB4LWX-w!!/?uri=nm:oid:Z6_51G4HK01MGN270A7I06QJO20K0",
+              "path": "/",
+              "domain": ".ameritas.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": false,
+              "secure": true
+            },
+            {
+              "name": "MFA_DEST_DIV",
+              "value": "group",
+              "path": "/",
+              "domain": ".ameritas.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": false,
+              "secure": true
+            },
+            {
+              "name": "LtpaToken2",
+              "value": "DLrpEyl81AY21w2iyljWeCKTtrnTO4w/DZjmztZgILRcvYhrwl0zZgGiPfgJYP2yWscwnLgZ9noomZTjHCMLF8rRiQdkktStVp+0Dn6LoxoBzxMut+FwIxB9Px4uj1Ro0WEl9TTNi48TbwfxP8g5X1Y5yI+ptkoTpuYW7974ENt5qrrZObFP4zE9FqRsoVk/kBgXwd1QV3HEDwt0sF8uOfNxEw1+tBDfYrjbrLmrDHRgIXsl6Tz9YUEKUviFTxOpV6La4CYJnJs8eh1wE9EzKlE7YBwBlj4oGu8UW1Ej73ebgHwbV3MB5PJsRHfk4bX87vF8I1EETbhWCQrGchdL9mTz7OOXZ9j4E/ZiaRcVLZYofHGFLVccz6QU9bYQmWgoa6tS0BD4816KCeDCZxldl0HENNsC1Icato6ju7xG20K89caUkIO1I7Apngfn/Zy7UDoUEDS6CzP/+9UtrMCXv+qPR/y0y2Uj5G58bf1IDVebb1MZhPRMVECANzbGxMLGdoMjNmS8UEYxoPZ2rJ1iQJ/Bf89Cle+BS79yuJc+c/7TzCZe7uCYqFuSfaLyoO670pIs1yuuqKImuToFQviV8EelJQeWCjdoFExQc6X8X7hCHaIIfqen/+DuxvZV1YF8RyA3xsL9C6R4lMYOrZ0X9gKaNCnk2loV6c/JRXf+w+s4EVgBAQnQSqNSiCgZHyKovbIS642x6vsPrKJE01sFO+4kNwM8uhZv4aoKbWQU07MGcFk3NSg9qp/Ub21hvJRLvzHAyFa0b+B9mSBFYcDiZg==",
+              "path": "/",
+              "domain": "www.ameritas.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": true,
+              "secure": true
+            },
+            {
+              "name": "JSESSIONID",
+              "value": "0001pa5L-eV8wNI5O-P3SiXqaNW:GQC8T60EI",
+              "path": "/",
+              "domain": "www.ameritas.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": true,
+              "secure": true
+            },
+            {
+              "name": "_ga",
+              "value": "GA1.2.506068042.1759261341",
+              "path": "/",
+              "domain": ".ameritas.com",
+              "expires": "2026-11-04T19:42:56.702Z",
+              "httpOnly": false,
+              "secure": false
+            },
+            {
+              "name": "_gid",
+              "value": "GA1.2.652491294.1759261341",
+              "path": "/",
+              "domain": ".ameritas.com",
+              "expires": "2025-10-01T19:42:56.000Z",
+              "httpOnly": false,
+              "secure": false
+            },
+            {
+              "name": "_gat_subTracker",
+              "value": "1",
+              "path": "/",
+              "domain": ".ameritas.com",
+              "expires": "2025-09-30T19:43:20.000Z",
+              "httpOnly": false,
+              "secure": false
+            },
+            {
+              "name": "_gat_appTracker",
+              "value": "1",
+              "path": "/",
+              "domain": ".ameritas.com",
+              "expires": "2025-09-30T19:43:20.000Z",
+              "httpOnly": false,
+              "secure": false
+            },
+            {
+              "name": "ONTCred",
+              "value": "N+xQJJsC9Iney0dmBxlL3iRHBx21BdYIO8qbnMnVd83XfJzUdVlT7MTlNuOkI/OO1zYbie5H16IlCQf3HOKhPKzjgQ0XYWNQkWhzPUZ9qvUWUwrEthmnlMQUhl8Rtk2H8VjZXcFpIuiUpUugk4DbrtF+UWD1iRdCr+BoYF+E3zkAAAAAAAAAAA==",
+              "path": "/",
+              "domain": ".ameritas.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": false,
+              "secure": true
+            },
+            {
+              "name": "_ga_KDLHTCZ605",
+              "value": "GS2.2.s1759261341$o1$g1$t1759261377$j24$l0$h0",
+              "path": "/",
+              "domain": ".ameritas.com",
+              "expires": "2026-11-04T19:42:57.134Z",
+              "httpOnly": false,
+              "secure": false
+            },
+            {
+              "name": "_ga_EV35VH219F",
+              "value": "GS2.2.s1759261341$o1$g1$t1759261377$j24$l0$h0",
+              "path": "/",
+              "domain": ".ameritas.com",
+              "expires": "2026-11-04T19:42:57.158Z",
+              "httpOnly": false,
+              "secure": false
+            }
+          ],
+          "headersSize": -1,
+          "bodySize": 0
+        },
+        "response": {
+          "status": 200,
+          "statusText": "",
+          "httpVersion": "http/2.0",
+          "headers": [
+            {
+              "name": "access-control-allow-headers",
+              "value": "\"Origin, X-Requested- With, Content-Type, Accept\""
+            },
+            {
+              "name": "access-control-allow-origin",
+              "value": "\"*.ameritas.com, *.employeebenefitservice.com, *.inbison.com, *.corporate.unificompanies.com\""
+            },
+            {
+              "name": "content-encoding",
+              "value": "gzip"
+            },
+            {
+              "name": "content-language",
+              "value": "en-US"
+            },
+            {
+              "name": "content-security-policy",
+              "value": "frame-ancestors 'self' *.ameritas.com *.employeebenefitservice.com *.inbison.com; script-src * 'unsafe-inline' 'unsafe-eval';"
+            },
+            {
+              "name": "content-type",
+              "value": "text/html; charset=UTF-8"
+            },
+            {
+              "name": "date",
+              "value": "Tue, 30 Sep 2025 19:43:00 GMT"
+            },
+            {
+              "name": "etag",
+              "value": "\"1441388281\""
+            },
+            {
+              "name": "permissions-policy",
+              "value": "geolocation=(),midi=(),microphone=(),camera=(),magnetometer=(),gyroscope=(),fullscreen=(self),payment=()"
+            },
+            {
+              "name": "referrer-policy",
+              "value": "no-referrer, strict-origin-when-cross-origin"
+            },
+            {
+              "name": "server",
+              "value": "Server"
+            },
+            {
+              "name": "strict-transport-security",
+              "value": "max-age=31536000; includeSubDomains"
+            },
+            {
+              "name": "vary",
+              "value": "Accept-Encoding"
+            },
+            {
+              "name": "x-content-type-options",
+              "value": "nosniff"
+            },
+            {
+              "name": "x-correlation-id",
+              "value": "dtA-JAci-9ZJM"
+            },
+            {
+              "name": "x-frame-options",
+              "value": "SAMEORIGIN"
+            },
+            {
+              "name": "x-robots-tag",
+              "value": "noindex, nofollow"
+            },
+            {
+              "name": "x-xss-protection",
+              "value": "1;mode=block"
+            }
+          ],
+          "cookies": [],
+          "content": {
+            "size": 1820,
+            "mimeType": "text/html"
+          },
+          "redirectURL": "",
+          "headersSize": -1,
+          "bodySize": -1,
+          "_transferSize": 1423,
+          "_error": null,
+          "_fetchedViaServiceWorker": false
+        },
+        "serverIPAddress": "69.12.28.22",
+        "startedDateTime": "2025-09-30T19:43:00.201Z",
+        "time": 564.3610000115586,
+        "timings": {
+          "blocked": 10.975000005451962,
+          "dns": -1,
+          "ssl": -1,
+          "connect": -1,
+          "send": 0.28500000000000014,
+          "wait": 552.604999998264,
+          "receive": 0.4960000078426674,
+          "_blocked_queueing": 3.1540000054519624,
+          "_workerStart": -1,
+          "_workerReady": -1,
+          "_workerFetchStart": -1,
+          "_workerRespondWithSettled": -1
+        }
+      },
+      {
+        "_connectionId": "850730",
+        "_initiator": {
+          "type": "script",
+          "stack": {
+            "callFrames": [
+              {
+                "functionName": "send",
+                "scriptId": "15906",
+                "url": "https://www.ameritas.com/wps/contenthandler/s000/!ut/p/digest!Oz0DwGGQk5RSzfLavfzTxw/war/GroupTheme85S/themes/groupTheme85/external/js/jquery.min.js",
+                "lineNumber": 1,
+                "columnNumber": 81481
+              },
+              {
+                "functionName": "ajax",
+                "scriptId": "15906",
+                "url": "https://www.ameritas.com/wps/contenthandler/s000/!ut/p/digest!Oz0DwGGQk5RSzfLavfzTxw/war/GroupTheme85S/themes/groupTheme85/external/js/jquery.min.js",
+                "lineNumber": 1,
+                "columnNumber": 77300
+              },
+              {
+                "functionName": "k.fn.load",
+                "scriptId": "15906",
+                "url": "https://www.ameritas.com/wps/contenthandler/s000/!ut/p/digest!Oz0DwGGQk5RSzfLavfzTxw/war/GroupTheme85S/themes/groupTheme85/external/js/jquery.min.js",
+                "lineNumber": 1,
+                "columnNumber": 83821
+              },
+              {
+                "functionName": "",
+                "scriptId": "15934",
+                "url": "https://www.ameritas.com/wps/myportal/s000/Home/provider/application/findamember/!ut/p/z1/pZHBCoJAEIafpQeImd01F4-rxGqmoia5e5G9FEJZBwl6-9RTQmxGcxv4_n_mnwENNejOPNqz6dtbZy5Dr7TbbIh0whhJIlPKUfAI3XyXUYwRjhOAsxLoF9RniDKjoH_Xvzst01sAbbe36zPy33xcsL-2IuMGVmAc8SHk_AffrqCGFLzhOXFDz8EEnZKhSGVwYMUWsWJQggpA8d7bp_mU2Urfr9VQNbbR2pyeYvUCETTfcg!!/",
+                "lineNumber": 749,
+                "columnNumber": 6
+              },
+              {
+                "functionName": "e",
+                "scriptId": "15906",
+                "url": "https://www.ameritas.com/wps/contenthandler/s000/!ut/p/digest!Oz0DwGGQk5RSzfLavfzTxw/war/GroupTheme85S/themes/groupTheme85/external/js/jquery.min.js",
+                "lineNumber": 1,
+                "columnNumber": 29452
+              },
+              {
+                "functionName": "t",
+                "scriptId": "15906",
+                "url": "https://www.ameritas.com/wps/contenthandler/s000/!ut/p/digest!Oz0DwGGQk5RSzfLavfzTxw/war/GroupTheme85S/themes/groupTheme85/external/js/jquery.min.js",
+                "lineNumber": 1,
+                "columnNumber": 29754
+              }
+            ],
+            "parent": {
+              "description": "setTimeout",
+              "callFrames": [
+                {
+                  "functionName": "",
+                  "scriptId": "15906",
+                  "url": "https://www.ameritas.com/wps/contenthandler/s000/!ut/p/digest!Oz0DwGGQk5RSzfLavfzTxw/war/GroupTheme85S/themes/groupTheme85/external/js/jquery.min.js",
+                  "lineNumber": 1,
+                  "columnNumber": 29963
+                },
+                {
+                  "functionName": "c",
+                  "scriptId": "15906",
+                  "url": "https://www.ameritas.com/wps/contenthandler/s000/!ut/p/digest!Oz0DwGGQk5RSzfLavfzTxw/war/GroupTheme85S/themes/groupTheme85/external/js/jquery.min.js",
+                  "lineNumber": 1,
+                  "columnNumber": 27741
+                },
+                {
+                  "functionName": "fireWith",
+                  "scriptId": "15906",
+                  "url": "https://www.ameritas.com/wps/contenthandler/s000/!ut/p/digest!Oz0DwGGQk5RSzfLavfzTxw/war/GroupTheme85S/themes/groupTheme85/external/js/jquery.min.js",
+                  "lineNumber": 1,
+                  "columnNumber": 28486
+                },
+                {
+                  "functionName": "fire",
+                  "scriptId": "15906",
+                  "url": "https://www.ameritas.com/wps/contenthandler/s000/!ut/p/digest!Oz0DwGGQk5RSzfLavfzTxw/war/GroupTheme85S/themes/groupTheme85/external/js/jquery.min.js",
+                  "lineNumber": 1,
+                  "columnNumber": 28522
+                },
+                {
+                  "functionName": "c",
+                  "scriptId": "15906",
+                  "url": "https://www.ameritas.com/wps/contenthandler/s000/!ut/p/digest!Oz0DwGGQk5RSzfLavfzTxw/war/GroupTheme85S/themes/groupTheme85/external/js/jquery.min.js",
+                  "lineNumber": 1,
+                  "columnNumber": 27741
+                },
+                {
+                  "functionName": "fireWith",
+                  "scriptId": "15906",
+                  "url": "https://www.ameritas.com/wps/contenthandler/s000/!ut/p/digest!Oz0DwGGQk5RSzfLavfzTxw/war/GroupTheme85S/themes/groupTheme85/external/js/jquery.min.js",
+                  "lineNumber": 1,
+                  "columnNumber": 28486
+                },
+                {
+                  "functionName": "ready",
+                  "scriptId": "15906",
+                  "url": "https://www.ameritas.com/wps/contenthandler/s000/!ut/p/digest!Oz0DwGGQk5RSzfLavfzTxw/war/GroupTheme85S/themes/groupTheme85/external/js/jquery.min.js",
+                  "lineNumber": 1,
+                  "columnNumber": 31459
+                },
+                {
+                  "functionName": "B",
+                  "scriptId": "15906",
+                  "url": "https://www.ameritas.com/wps/contenthandler/s000/!ut/p/digest!Oz0DwGGQk5RSzfLavfzTxw/war/GroupTheme85S/themes/groupTheme85/external/js/jquery.min.js",
+                  "lineNumber": 1,
+                  "columnNumber": 31238
+                }
+              ]
+            }
+          }
+        },
+        "_priority": "High",
+        "_resourceType": "xhr",
+        "cache": {},
+        "connection": "443",
+        "pageref": "page_2",
+        "request": {
+          "method": "GET",
+          "url": "https://www.ameritas.com/wps/wcm/connect/utilities/globalitems/sa-social-media?srv=cmpnt&source=library&cmpntname=socmed-mpb-alic",
+          "httpVersion": "http/2.0",
+          "headers": [
+            {
+              "name": ":authority",
+              "value": "www.ameritas.com"
+            },
+            {
+              "name": ":method",
+              "value": "GET"
+            },
+            {
+              "name": ":path",
+              "value": "/wps/wcm/connect/utilities/globalitems/sa-social-media?srv=cmpnt&source=library&cmpntname=socmed-mpb-alic"
+            },
+            {
+              "name": ":scheme",
+              "value": "https"
+            },
+            {
+              "name": "accept",
+              "value": "text/html, */*; q=0.01"
+            },
+            {
+              "name": "accept-encoding",
+              "value": "gzip, deflate, br, zstd"
+            },
+            {
+              "name": "accept-language",
+              "value": "en,pt-BR;q=0.9,pt;q=0.8"
+            },
+            {
+              "name": "cache-control",
+              "value": "no-cache"
+            },
+            {
+              "name": "cookie",
+              "value": "DigestTracker=AAABmZwmebI; X-Session-ID=02c7026aa6-989a-44J2Dvf_trtZYDfkOLJWP4PZEAgYag6N-RYGJjl7c_vpmcb1ai6VI6_GmxBshZzSF5GII; ASPSESSIONIDCUQSTBTQ=MAPJNFIBIIPMPIFAIHBCCDDG; ASP.NET_SessionId=2p5ihfmrawkidkdo5vwbkprf; ASPSESSIONIDCWTTSBTQ=PJMPIBNBCKLKDGONGGBILKHG; ASPSESSIONIDAURSTASR=OGAEKNPBPBEBJLLIMMMEDMLM; QSI_HistorySession=https%3A%2F%2Fwww.ameritas.com%2F~1759251514681; ASPSESSIONIDAUTTQASQ=MOBBNHBCBLBGHBNOILBKMPJI; TLTSID=4410FA6F413C69300CBD879B4FB5F197; MFA_DEST_URL=https://www.ameritas.com/wps/myportal/s000/Home/provider/application/findamember/rembenefits/!ut/p/z1/pZDJDoJAEES_xS_omkEYPWKURYIshsjMhXAiuCAmxu8XTEwEE3DpWyevqquLFKWkqvxWFvm1PFf5sdmlMjKd2VPHA_PtMFzCFK6fCGZwzDTa9YANFy0AI1oHHAEj9Y8e-EyPzphYxHyhAXbAf9G_On2b_w1Qw_Y7Ur0T3QY8jABtxYMAng5DJY3FlM2bIhMRM5z5FD6cuQVzYwpL4wnHSqMtSYfkQV3iuniUMkjXp6SZFKW71-vMndwB4LWX-w!!/?uri=nm:oid:Z6_51G4HK01MGN270A7I06QJO20K0; MFA_DEST_DIV=group; LtpaToken2=DLrpEyl81AY21w2iyljWeCKTtrnTO4w/DZjmztZgILRcvYhrwl0zZgGiPfgJYP2yWscwnLgZ9noomZTjHCMLF8rRiQdkktStVp+0Dn6LoxoBzxMut+FwIxB9Px4uj1Ro0WEl9TTNi48TbwfxP8g5X1Y5yI+ptkoTpuYW7974ENt5qrrZObFP4zE9FqRsoVk/kBgXwd1QV3HEDwt0sF8uOfNxEw1+tBDfYrjbrLmrDHRgIXsl6Tz9YUEKUviFTxOpV6La4CYJnJs8eh1wE9EzKlE7YBwBlj4oGu8UW1Ej73ebgHwbV3MB5PJsRHfk4bX87vF8I1EETbhWCQrGchdL9mTz7OOXZ9j4E/ZiaRcVLZYofHGFLVccz6QU9bYQmWgoa6tS0BD4816KCeDCZxldl0HENNsC1Icato6ju7xG20K89caUkIO1I7Apngfn/Zy7UDoUEDS6CzP/+9UtrMCXv+qPR/y0y2Uj5G58bf1IDVebb1MZhPRMVECANzbGxMLGdoMjNmS8UEYxoPZ2rJ1iQJ/Bf89Cle+BS79yuJc+c/7TzCZe7uCYqFuSfaLyoO670pIs1yuuqKImuToFQviV8EelJQeWCjdoFExQc6X8X7hCHaIIfqen/+DuxvZV1YF8RyA3xsL9C6R4lMYOrZ0X9gKaNCnk2loV6c/JRXf+w+s4EVgBAQnQSqNSiCgZHyKovbIS642x6vsPrKJE01sFO+4kNwM8uhZv4aoKbWQU07MGcFk3NSg9qp/Ub21hvJRLvzHAyFa0b+B9mSBFYcDiZg==; JSESSIONID=0001pa5L-eV8wNI5O-P3SiXqaNW:GQC8T60EI; _ga=GA1.2.506068042.1759261341; _gid=GA1.2.652491294.1759261341; _gat_subTracker=1; _gat_appTracker=1; _ga_KDLHTCZ605=GS2.2.s1759261341$o1$g1$t1759261377$j24$l0$h0; _ga_EV35VH219F=GS2.2.s1759261341$o1$g1$t1759261377$j24$l0$h0; ONTCred=PfJxwARutVAMlHj3HvgoP1MBB5f7AnYNYx+TwVzayXxXdH667qC+p6oUejG4Y91zL0K8qV646QdOxOoOspDN2qifmgDgDKEr+JoPMonGkHX6icjQOsgr/Jjzp/nTEvRz9ltHcNvYbWmmipG8IhFBeSlYxG5ySooTVpKiY8U3bfIAAAAAAAAAAA=="
+            },
+            {
+              "name": "pragma",
+              "value": "no-cache"
+            },
+            {
+              "name": "priority",
+              "value": "u=1, i"
+            },
+            {
+              "name": "referer",
+              "value": "https://www.ameritas.com/wps/myportal/s000/Home/provider/application/findamember/!ut/p/z1/pZHBCoJAEIafpQeImd01F4-rxGqmoia5e5G9FEJZBwl6-9RTQmxGcxv4_n_mnwENNejOPNqz6dtbZy5Dr7TbbIh0whhJIlPKUfAI3XyXUYwRjhOAsxLoF9RniDKjoH_Xvzst01sAbbe36zPy33xcsL-2IuMGVmAc8SHk_AffrqCGFLzhOXFDz8EEnZKhSGVwYMUWsWJQggpA8d7bp_mU2Urfr9VQNbbR2pyeYvUCETTfcg!!/"
+            },
+            {
+              "name": "sec-ch-ua",
+              "value": "\"Chromium\";v=\"140\", \"Not=A?Brand\";v=\"24\", \"Google Chrome\";v=\"140\""
+            },
+            {
+              "name": "sec-ch-ua-mobile",
+              "value": "?0"
+            },
+            {
+              "name": "sec-ch-ua-platform",
+              "value": "\"macOS\""
+            },
+            {
+              "name": "sec-fetch-dest",
+              "value": "empty"
+            },
+            {
+              "name": "sec-fetch-mode",
+              "value": "cors"
+            },
+            {
+              "name": "sec-fetch-site",
+              "value": "same-origin"
+            },
+            {
+              "name": "user-agent",
+              "value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+            },
+            {
+              "name": "x-requested-with",
+              "value": "XMLHttpRequest"
+            }
+          ],
+          "queryString": [
+            {
+              "name": "srv",
+              "value": "cmpnt"
+            },
+            {
+              "name": "source",
+              "value": "library"
+            },
+            {
+              "name": "cmpntname",
+              "value": "socmed-mpb-alic"
+            }
+          ],
+          "cookies": [
+            {
+              "name": "DigestTracker",
+              "value": "AAABmZwmebI",
+              "path": "/wps",
+              "domain": "www.ameritas.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": false,
+              "secure": true
+            },
+            {
+              "name": "X-Session-ID",
+              "value": "02c7026aa6-989a-44J2Dvf_trtZYDfkOLJWP4PZEAgYag6N-RYGJjl7c_vpmcb1ai6VI6_GmxBshZzSF5GII",
+              "path": "/",
+              "domain": "www.ameritas.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": false,
+              "secure": true,
+              "sameSite": "None"
+            },
+            {
+              "name": "ASPSESSIONIDCUQSTBTQ",
+              "value": "MAPJNFIBIIPMPIFAIHBCCDDG",
+              "path": "/",
+              "domain": "www.ameritas.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": false,
+              "secure": true
+            },
+            {
+              "name": "ASP.NET_SessionId",
+              "value": "2p5ihfmrawkidkdo5vwbkprf",
+              "path": "/",
+              "domain": "www.ameritas.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": true,
+              "secure": true,
+              "sameSite": "Lax"
+            },
+            {
+              "name": "ASPSESSIONIDCWTTSBTQ",
+              "value": "PJMPIBNBCKLKDGONGGBILKHG",
+              "path": "/",
+              "domain": "www.ameritas.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": false,
+              "secure": true
+            },
+            {
+              "name": "ASPSESSIONIDAURSTASR",
+              "value": "OGAEKNPBPBEBJLLIMMMEDMLM",
+              "path": "/",
+              "domain": "www.ameritas.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": false,
+              "secure": true
+            },
+            {
+              "name": "QSI_HistorySession",
+              "value": "https%3A%2F%2Fwww.ameritas.com%2F~1759251514681",
+              "path": "/",
+              "domain": "www.ameritas.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": false,
+              "secure": true
+            },
+            {
+              "name": "ASPSESSIONIDAUTTQASQ",
+              "value": "MOBBNHBCBLBGHBNOILBKMPJI",
+              "path": "/",
+              "domain": "www.ameritas.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": false,
+              "secure": true
+            },
+            {
+              "name": "TLTSID",
+              "value": "4410FA6F413C69300CBD879B4FB5F197",
+              "path": "/",
+              "domain": ".ameritas.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": false,
+              "secure": true
+            },
+            {
+              "name": "MFA_DEST_URL",
+              "value": "https://www.ameritas.com/wps/myportal/s000/Home/provider/application/findamember/rembenefits/!ut/p/z1/pZDJDoJAEES_xS_omkEYPWKURYIshsjMhXAiuCAmxu8XTEwEE3DpWyevqquLFKWkqvxWFvm1PFf5sdmlMjKd2VPHA_PtMFzCFK6fCGZwzDTa9YANFy0AI1oHHAEj9Y8e-EyPzphYxHyhAXbAf9G_On2b_w1Qw_Y7Ur0T3QY8jABtxYMAng5DJY3FlM2bIhMRM5z5FD6cuQVzYwpL4wnHSqMtSYfkQV3iuniUMkjXp6SZFKW71-vMndwB4LWX-w!!/?uri=nm:oid:Z6_51G4HK01MGN270A7I06QJO20K0",
+              "path": "/",
+              "domain": ".ameritas.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": false,
+              "secure": true
+            },
+            {
+              "name": "MFA_DEST_DIV",
+              "value": "group",
+              "path": "/",
+              "domain": ".ameritas.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": false,
+              "secure": true
+            },
+            {
+              "name": "LtpaToken2",
+              "value": "DLrpEyl81AY21w2iyljWeCKTtrnTO4w/DZjmztZgILRcvYhrwl0zZgGiPfgJYP2yWscwnLgZ9noomZTjHCMLF8rRiQdkktStVp+0Dn6LoxoBzxMut+FwIxB9Px4uj1Ro0WEl9TTNi48TbwfxP8g5X1Y5yI+ptkoTpuYW7974ENt5qrrZObFP4zE9FqRsoVk/kBgXwd1QV3HEDwt0sF8uOfNxEw1+tBDfYrjbrLmrDHRgIXsl6Tz9YUEKUviFTxOpV6La4CYJnJs8eh1wE9EzKlE7YBwBlj4oGu8UW1Ej73ebgHwbV3MB5PJsRHfk4bX87vF8I1EETbhWCQrGchdL9mTz7OOXZ9j4E/ZiaRcVLZYofHGFLVccz6QU9bYQmWgoa6tS0BD4816KCeDCZxldl0HENNsC1Icato6ju7xG20K89caUkIO1I7Apngfn/Zy7UDoUEDS6CzP/+9UtrMCXv+qPR/y0y2Uj5G58bf1IDVebb1MZhPRMVECANzbGxMLGdoMjNmS8UEYxoPZ2rJ1iQJ/Bf89Cle+BS79yuJc+c/7TzCZe7uCYqFuSfaLyoO670pIs1yuuqKImuToFQviV8EelJQeWCjdoFExQc6X8X7hCHaIIfqen/+DuxvZV1YF8RyA3xsL9C6R4lMYOrZ0X9gKaNCnk2loV6c/JRXf+w+s4EVgBAQnQSqNSiCgZHyKovbIS642x6vsPrKJE01sFO+4kNwM8uhZv4aoKbWQU07MGcFk3NSg9qp/Ub21hvJRLvzHAyFa0b+B9mSBFYcDiZg==",
+              "path": "/",
+              "domain": "www.ameritas.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": true,
+              "secure": true
+            },
+            {
+              "name": "JSESSIONID",
+              "value": "0001pa5L-eV8wNI5O-P3SiXqaNW:GQC8T60EI",
+              "path": "/",
+              "domain": "www.ameritas.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": true,
+              "secure": true
+            },
+            {
+              "name": "_ga",
+              "value": "GA1.2.506068042.1759261341",
+              "path": "/",
+              "domain": ".ameritas.com",
+              "expires": "2026-11-04T19:42:56.702Z",
+              "httpOnly": false,
+              "secure": false
+            },
+            {
+              "name": "_gid",
+              "value": "GA1.2.652491294.1759261341",
+              "path": "/",
+              "domain": ".ameritas.com",
+              "expires": "2025-10-01T19:42:56.000Z",
+              "httpOnly": false,
+              "secure": false
+            },
+            {
+              "name": "_gat_subTracker",
+              "value": "1",
+              "path": "/",
+              "domain": ".ameritas.com",
+              "expires": "2025-09-30T19:43:20.000Z",
+              "httpOnly": false,
+              "secure": false
+            },
+            {
+              "name": "_gat_appTracker",
+              "value": "1",
+              "path": "/",
+              "domain": ".ameritas.com",
+              "expires": "2025-09-30T19:43:20.000Z",
+              "httpOnly": false,
+              "secure": false
+            },
+            {
+              "name": "_ga_KDLHTCZ605",
+              "value": "GS2.2.s1759261341$o1$g1$t1759261377$j24$l0$h0",
+              "path": "/",
+              "domain": ".ameritas.com",
+              "expires": "2026-11-04T19:42:57.134Z",
+              "httpOnly": false,
+              "secure": false
+            },
+            {
+              "name": "_ga_EV35VH219F",
+              "value": "GS2.2.s1759261341$o1$g1$t1759261377$j24$l0$h0",
+              "path": "/",
+              "domain": ".ameritas.com",
+              "expires": "2026-11-04T19:42:57.158Z",
+              "httpOnly": false,
+              "secure": false
+            },
+            {
+              "name": "ONTCred",
+              "value": "PfJxwARutVAMlHj3HvgoP1MBB5f7AnYNYx+TwVzayXxXdH667qC+p6oUejG4Y91zL0K8qV646QdOxOoOspDN2qifmgDgDKEr+JoPMonGkHX6icjQOsgr/Jjzp/nTEvRz9ltHcNvYbWmmipG8IhFBeSlYxG5ySooTVpKiY8U3bfIAAAAAAAAAAA==",
+              "path": "/",
+              "domain": ".ameritas.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": false,
+              "secure": true
+            }
+          ],
+          "headersSize": -1,
+          "bodySize": 0
+        },
+        "response": {
+          "status": 302,
+          "statusText": "",
+          "httpVersion": "http/2.0",
+          "headers": [
+            {
+              "name": "access-control-allow-headers",
+              "value": "\"Origin, X-Requested- With, Content-Type, Accept\""
+            },
+            {
+              "name": "access-control-allow-origin",
+              "value": "\"*.ameritas.com, *.employeebenefitservice.com, *.inbison.com, *.corporate.unificompanies.com\""
+            },
+            {
+              "name": "content-language",
+              "value": "en-US"
+            },
+            {
+              "name": "content-length",
+              "value": "0"
+            },
+            {
+              "name": "content-security-policy",
+              "value": "frame-ancestors 'self' *.ameritas.com *.employeebenefitservice.com *.inbison.com; script-src * 'unsafe-inline' 'unsafe-eval';"
+            },
+            {
+              "name": "content-type",
+              "value": "text/plain"
+            },
+            {
+              "name": "date",
+              "value": "Tue, 30 Sep 2025 19:43:14 GMT"
+            },
+            {
+              "name": "location",
+              "value": "https://www.ameritas.com/wps/wcm/myconnect/utilities/globalitems/sa-social-media?srv=cmpnt&cmpntname=socmed-mpb-alic&source=library"
+            },
+            {
+              "name": "permissions-policy",
+              "value": "geolocation=(),midi=(),microphone=(),camera=(),magnetometer=(),gyroscope=(),fullscreen=(self),payment=()"
+            },
+            {
+              "name": "referrer-policy",
+              "value": "no-referrer, strict-origin-when-cross-origin"
+            },
+            {
+              "name": "server",
+              "value": "Server"
+            },
+            {
+              "name": "strict-transport-security",
+              "value": "max-age=31536000; includeSubDomains"
+            },
+            {
+              "name": "x-content-type-options",
+              "value": "nosniff"
+            },
+            {
+              "name": "x-correlation-id",
+              "value": "730-WYeG-sc1b"
+            },
+            {
+              "name": "x-frame-options",
+              "value": "SAMEORIGIN"
+            },
+            {
+              "name": "x-robots-tag",
+              "value": "noindex, nofollow"
+            },
+            {
+              "name": "x-xss-protection",
+              "value": "1;mode=block"
+            }
+          ],
+          "cookies": [],
+          "content": {
+            "size": 0,
+            "mimeType": "text/plain"
+          },
+          "redirectURL": "https://www.ameritas.com/wps/wcm/myconnect/utilities/globalitems/sa-social-media?srv=cmpnt&cmpntname=socmed-mpb-alic&source=library",
+          "headersSize": -1,
+          "bodySize": -1,
+          "_transferSize": 761,
+          "_error": null,
+          "_fetchedViaServiceWorker": false
+        },
+        "serverIPAddress": "69.12.28.22",
+        "startedDateTime": "2025-09-30T19:43:14.180Z",
+        "time": 6229.055000003427,
+        "timings": {
+          "blocked": 1.3249999990407377,
+          "dns": -1,
+          "ssl": -1,
+          "connect": -1,
+          "send": 0.45199999999999996,
+          "wait": 6226.2619999951285,
+          "receive": 1.0160000092582777,
+          "_blocked_queueing": 0.46999999904073775,
+          "_workerStart": -1,
+          "_workerReady": -1,
+          "_workerFetchStart": -1,
+          "_workerRespondWithSettled": -1
+        }
+      },
+      {
+        "_connectionId": "850730",
+        "_initiator": {
+          "type": "script",
+          "stack": {
+            "callFrames": [
+              {
+                "functionName": "send",
+                "scriptId": "15906",
+                "url": "https://www.ameritas.com/wps/contenthandler/s000/!ut/p/digest!Oz0DwGGQk5RSzfLavfzTxw/war/GroupTheme85S/themes/groupTheme85/external/js/jquery.min.js",
+                "lineNumber": 1,
+                "columnNumber": 81481
+              },
+              {
+                "functionName": "ajax",
+                "scriptId": "15906",
+                "url": "https://www.ameritas.com/wps/contenthandler/s000/!ut/p/digest!Oz0DwGGQk5RSzfLavfzTxw/war/GroupTheme85S/themes/groupTheme85/external/js/jquery.min.js",
+                "lineNumber": 1,
+                "columnNumber": 77300
+              },
+              {
+                "functionName": "k.fn.load",
+                "scriptId": "15906",
+                "url": "https://www.ameritas.com/wps/contenthandler/s000/!ut/p/digest!Oz0DwGGQk5RSzfLavfzTxw/war/GroupTheme85S/themes/groupTheme85/external/js/jquery.min.js",
+                "lineNumber": 1,
+                "columnNumber": 83821
+              },
+              {
+                "functionName": "",
+                "scriptId": "15934",
+                "url": "https://www.ameritas.com/wps/myportal/s000/Home/provider/application/findamember/!ut/p/z1/pZHBCoJAEIafpQeImd01F4-rxGqmoia5e5G9FEJZBwl6-9RTQmxGcxv4_n_mnwENNejOPNqz6dtbZy5Dr7TbbIh0whhJIlPKUfAI3XyXUYwRjhOAsxLoF9RniDKjoH_Xvzst01sAbbe36zPy33xcsL-2IuMGVmAc8SHk_AffrqCGFLzhOXFDz8EEnZKhSGVwYMUWsWJQggpA8d7bp_mU2Urfr9VQNbbR2pyeYvUCETTfcg!!/",
+                "lineNumber": 749,
+                "columnNumber": 6
+              },
+              {
+                "functionName": "e",
+                "scriptId": "15906",
+                "url": "https://www.ameritas.com/wps/contenthandler/s000/!ut/p/digest!Oz0DwGGQk5RSzfLavfzTxw/war/GroupTheme85S/themes/groupTheme85/external/js/jquery.min.js",
+                "lineNumber": 1,
+                "columnNumber": 29452
+              },
+              {
+                "functionName": "t",
+                "scriptId": "15906",
+                "url": "https://www.ameritas.com/wps/contenthandler/s000/!ut/p/digest!Oz0DwGGQk5RSzfLavfzTxw/war/GroupTheme85S/themes/groupTheme85/external/js/jquery.min.js",
+                "lineNumber": 1,
+                "columnNumber": 29754
+              }
+            ],
+            "parent": {
+              "description": "setTimeout",
+              "callFrames": [
+                {
+                  "functionName": "",
+                  "scriptId": "15906",
+                  "url": "https://www.ameritas.com/wps/contenthandler/s000/!ut/p/digest!Oz0DwGGQk5RSzfLavfzTxw/war/GroupTheme85S/themes/groupTheme85/external/js/jquery.min.js",
+                  "lineNumber": 1,
+                  "columnNumber": 29963
+                },
+                {
+                  "functionName": "c",
+                  "scriptId": "15906",
+                  "url": "https://www.ameritas.com/wps/contenthandler/s000/!ut/p/digest!Oz0DwGGQk5RSzfLavfzTxw/war/GroupTheme85S/themes/groupTheme85/external/js/jquery.min.js",
+                  "lineNumber": 1,
+                  "columnNumber": 27741
+                },
+                {
+                  "functionName": "fireWith",
+                  "scriptId": "15906",
+                  "url": "https://www.ameritas.com/wps/contenthandler/s000/!ut/p/digest!Oz0DwGGQk5RSzfLavfzTxw/war/GroupTheme85S/themes/groupTheme85/external/js/jquery.min.js",
+                  "lineNumber": 1,
+                  "columnNumber": 28486
+                },
+                {
+                  "functionName": "fire",
+                  "scriptId": "15906",
+                  "url": "https://www.ameritas.com/wps/contenthandler/s000/!ut/p/digest!Oz0DwGGQk5RSzfLavfzTxw/war/GroupTheme85S/themes/groupTheme85/external/js/jquery.min.js",
+                  "lineNumber": 1,
+                  "columnNumber": 28522
+                },
+                {
+                  "functionName": "c",
+                  "scriptId": "15906",
+                  "url": "https://www.ameritas.com/wps/contenthandler/s000/!ut/p/digest!Oz0DwGGQk5RSzfLavfzTxw/war/GroupTheme85S/themes/groupTheme85/external/js/jquery.min.js",
+                  "lineNumber": 1,
+                  "columnNumber": 27741
+                },
+                {
+                  "functionName": "fireWith",
+                  "scriptId": "15906",
+                  "url": "https://www.ameritas.com/wps/contenthandler/s000/!ut/p/digest!Oz0DwGGQk5RSzfLavfzTxw/war/GroupTheme85S/themes/groupTheme85/external/js/jquery.min.js",
+                  "lineNumber": 1,
+                  "columnNumber": 28486
+                },
+                {
+                  "functionName": "ready",
+                  "scriptId": "15906",
+                  "url": "https://www.ameritas.com/wps/contenthandler/s000/!ut/p/digest!Oz0DwGGQk5RSzfLavfzTxw/war/GroupTheme85S/themes/groupTheme85/external/js/jquery.min.js",
+                  "lineNumber": 1,
+                  "columnNumber": 31459
+                },
+                {
+                  "functionName": "B",
+                  "scriptId": "15906",
+                  "url": "https://www.ameritas.com/wps/contenthandler/s000/!ut/p/digest!Oz0DwGGQk5RSzfLavfzTxw/war/GroupTheme85S/themes/groupTheme85/external/js/jquery.min.js",
+                  "lineNumber": 1,
+                  "columnNumber": 31238
+                }
+              ]
+            }
+          }
+        },
+        "_priority": "High",
+        "_resourceType": "xhr",
+        "cache": {},
+        "connection": "443",
+        "pageref": "page_2",
+        "request": {
+          "method": "GET",
+          "url": "https://www.ameritas.com/wps/wcm/myconnect/utilities/globalitems/sa-social-media?srv=cmpnt&cmpntname=socmed-mpb-alic&source=library",
+          "httpVersion": "http/2.0",
+          "headers": [
+            {
+              "name": ":authority",
+              "value": "www.ameritas.com"
+            },
+            {
+              "name": ":method",
+              "value": "GET"
+            },
+            {
+              "name": ":path",
+              "value": "/wps/wcm/myconnect/utilities/globalitems/sa-social-media?srv=cmpnt&cmpntname=socmed-mpb-alic&source=library"
+            },
+            {
+              "name": ":scheme",
+              "value": "https"
+            },
+            {
+              "name": "accept",
+              "value": "text/html, */*; q=0.01"
+            },
+            {
+              "name": "accept-encoding",
+              "value": "gzip, deflate, br, zstd"
+            },
+            {
+              "name": "accept-language",
+              "value": "en,pt-BR;q=0.9,pt;q=0.8"
+            },
+            {
+              "name": "cache-control",
+              "value": "no-cache"
+            },
+            {
+              "name": "cookie",
+              "value": "DigestTracker=AAABmZwmebI; X-Session-ID=02c7026aa6-989a-44J2Dvf_trtZYDfkOLJWP4PZEAgYag6N-RYGJjl7c_vpmcb1ai6VI6_GmxBshZzSF5GII; ASPSESSIONIDCUQSTBTQ=MAPJNFIBIIPMPIFAIHBCCDDG; ASP.NET_SessionId=2p5ihfmrawkidkdo5vwbkprf; ASPSESSIONIDCWTTSBTQ=PJMPIBNBCKLKDGONGGBILKHG; ASPSESSIONIDAURSTASR=OGAEKNPBPBEBJLLIMMMEDMLM; QSI_HistorySession=https%3A%2F%2Fwww.ameritas.com%2F~1759251514681; ASPSESSIONIDAUTTQASQ=MOBBNHBCBLBGHBNOILBKMPJI; TLTSID=4410FA6F413C69300CBD879B4FB5F197; MFA_DEST_URL=https://www.ameritas.com/wps/myportal/s000/Home/provider/application/findamember/rembenefits/!ut/p/z1/pZDJDoJAEES_xS_omkEYPWKURYIshsjMhXAiuCAmxu8XTEwEE3DpWyevqquLFKWkqvxWFvm1PFf5sdmlMjKd2VPHA_PtMFzCFK6fCGZwzDTa9YANFy0AI1oHHAEj9Y8e-EyPzphYxHyhAXbAf9G_On2b_w1Qw_Y7Ur0T3QY8jABtxYMAng5DJY3FlM2bIhMRM5z5FD6cuQVzYwpL4wnHSqMtSYfkQV3iuniUMkjXp6SZFKW71-vMndwB4LWX-w!!/?uri=nm:oid:Z6_51G4HK01MGN270A7I06QJO20K0; MFA_DEST_DIV=group; LtpaToken2=DLrpEyl81AY21w2iyljWeCKTtrnTO4w/DZjmztZgILRcvYhrwl0zZgGiPfgJYP2yWscwnLgZ9noomZTjHCMLF8rRiQdkktStVp+0Dn6LoxoBzxMut+FwIxB9Px4uj1Ro0WEl9TTNi48TbwfxP8g5X1Y5yI+ptkoTpuYW7974ENt5qrrZObFP4zE9FqRsoVk/kBgXwd1QV3HEDwt0sF8uOfNxEw1+tBDfYrjbrLmrDHRgIXsl6Tz9YUEKUviFTxOpV6La4CYJnJs8eh1wE9EzKlE7YBwBlj4oGu8UW1Ej73ebgHwbV3MB5PJsRHfk4bX87vF8I1EETbhWCQrGchdL9mTz7OOXZ9j4E/ZiaRcVLZYofHGFLVccz6QU9bYQmWgoa6tS0BD4816KCeDCZxldl0HENNsC1Icato6ju7xG20K89caUkIO1I7Apngfn/Zy7UDoUEDS6CzP/+9UtrMCXv+qPR/y0y2Uj5G58bf1IDVebb1MZhPRMVECANzbGxMLGdoMjNmS8UEYxoPZ2rJ1iQJ/Bf89Cle+BS79yuJc+c/7TzCZe7uCYqFuSfaLyoO670pIs1yuuqKImuToFQviV8EelJQeWCjdoFExQc6X8X7hCHaIIfqen/+DuxvZV1YF8RyA3xsL9C6R4lMYOrZ0X9gKaNCnk2loV6c/JRXf+w+s4EVgBAQnQSqNSiCgZHyKovbIS642x6vsPrKJE01sFO+4kNwM8uhZv4aoKbWQU07MGcFk3NSg9qp/Ub21hvJRLvzHAyFa0b+B9mSBFYcDiZg==; JSESSIONID=0001pa5L-eV8wNI5O-P3SiXqaNW:GQC8T60EI; _ga=GA1.2.506068042.1759261341; _gid=GA1.2.652491294.1759261341; ONTCred=PfJxwARutVAMlHj3HvgoP1MBB5f7AnYNYx+TwVzayXxXdH667qC+p6oUejG4Y91zL0K8qV646QdOxOoOspDN2qifmgDgDKEr+JoPMonGkHX6icjQOsgr/Jjzp/nTEvRz9ltHcNvYbWmmipG8IhFBeSlYxG5ySooTVpKiY8U3bfIAAAAAAAAAAA==; _ga_EV35VH219F=GS2.2.s1759261341$o1$g1$t1759261394$j7$l0$h0; _ga_KDLHTCZ605=GS2.2.s1759261341$o1$g1$t1759261394$j7$l0$h0"
+            },
+            {
+              "name": "pragma",
+              "value": "no-cache"
+            },
+            {
+              "name": "priority",
+              "value": "u=1, i"
+            },
+            {
+              "name": "referer",
+              "value": "https://www.ameritas.com/wps/myportal/s000/Home/provider/application/findamember/!ut/p/z1/pZHBCoJAEIafpQeImd01F4-rxGqmoia5e5G9FEJZBwl6-9RTQmxGcxv4_n_mnwENNejOPNqz6dtbZy5Dr7TbbIh0whhJIlPKUfAI3XyXUYwRjhOAsxLoF9RniDKjoH_Xvzst01sAbbe36zPy33xcsL-2IuMGVmAc8SHk_AffrqCGFLzhOXFDz8EEnZKhSGVwYMUWsWJQggpA8d7bp_mU2Urfr9VQNbbR2pyeYvUCETTfcg!!/"
+            },
+            {
+              "name": "sec-ch-ua",
+              "value": "\"Chromium\";v=\"140\", \"Not=A?Brand\";v=\"24\", \"Google Chrome\";v=\"140\""
+            },
+            {
+              "name": "sec-ch-ua-mobile",
+              "value": "?0"
+            },
+            {
+              "name": "sec-ch-ua-platform",
+              "value": "\"macOS\""
+            },
+            {
+              "name": "sec-fetch-dest",
+              "value": "empty"
+            },
+            {
+              "name": "sec-fetch-mode",
+              "value": "cors"
+            },
+            {
+              "name": "sec-fetch-site",
+              "value": "same-origin"
+            },
+            {
+              "name": "user-agent",
+              "value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+            },
+            {
+              "name": "x-requested-with",
+              "value": "XMLHttpRequest"
+            }
+          ],
+          "queryString": [
+            {
+              "name": "srv",
+              "value": "cmpnt"
+            },
+            {
+              "name": "cmpntname",
+              "value": "socmed-mpb-alic"
+            },
+            {
+              "name": "source",
+              "value": "library"
+            }
+          ],
+          "cookies": [
+            {
+              "name": "DigestTracker",
+              "value": "AAABmZwmebI",
+              "path": "/wps",
+              "domain": "www.ameritas.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": false,
+              "secure": true
+            },
+            {
+              "name": "X-Session-ID",
+              "value": "02c7026aa6-989a-44J2Dvf_trtZYDfkOLJWP4PZEAgYag6N-RYGJjl7c_vpmcb1ai6VI6_GmxBshZzSF5GII",
+              "path": "/",
+              "domain": "www.ameritas.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": false,
+              "secure": true,
+              "sameSite": "None"
+            },
+            {
+              "name": "ASPSESSIONIDCUQSTBTQ",
+              "value": "MAPJNFIBIIPMPIFAIHBCCDDG",
+              "path": "/",
+              "domain": "www.ameritas.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": false,
+              "secure": true
+            },
+            {
+              "name": "ASP.NET_SessionId",
+              "value": "2p5ihfmrawkidkdo5vwbkprf",
+              "path": "/",
+              "domain": "www.ameritas.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": true,
+              "secure": true,
+              "sameSite": "Lax"
+            },
+            {
+              "name": "ASPSESSIONIDCWTTSBTQ",
+              "value": "PJMPIBNBCKLKDGONGGBILKHG",
+              "path": "/",
+              "domain": "www.ameritas.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": false,
+              "secure": true
+            },
+            {
+              "name": "ASPSESSIONIDAURSTASR",
+              "value": "OGAEKNPBPBEBJLLIMMMEDMLM",
+              "path": "/",
+              "domain": "www.ameritas.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": false,
+              "secure": true
+            },
+            {
+              "name": "QSI_HistorySession",
+              "value": "https%3A%2F%2Fwww.ameritas.com%2F~1759251514681",
+              "path": "/",
+              "domain": "www.ameritas.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": false,
+              "secure": true
+            },
+            {
+              "name": "ASPSESSIONIDAUTTQASQ",
+              "value": "MOBBNHBCBLBGHBNOILBKMPJI",
+              "path": "/",
+              "domain": "www.ameritas.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": false,
+              "secure": true
+            },
+            {
+              "name": "TLTSID",
+              "value": "4410FA6F413C69300CBD879B4FB5F197",
+              "path": "/",
+              "domain": ".ameritas.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": false,
+              "secure": true
+            },
+            {
+              "name": "MFA_DEST_URL",
+              "value": "https://www.ameritas.com/wps/myportal/s000/Home/provider/application/findamember/rembenefits/!ut/p/z1/pZDJDoJAEES_xS_omkEYPWKURYIshsjMhXAiuCAmxu8XTEwEE3DpWyevqquLFKWkqvxWFvm1PFf5sdmlMjKd2VPHA_PtMFzCFK6fCGZwzDTa9YANFy0AI1oHHAEj9Y8e-EyPzphYxHyhAXbAf9G_On2b_w1Qw_Y7Ur0T3QY8jABtxYMAng5DJY3FlM2bIhMRM5z5FD6cuQVzYwpL4wnHSqMtSYfkQV3iuniUMkjXp6SZFKW71-vMndwB4LWX-w!!/?uri=nm:oid:Z6_51G4HK01MGN270A7I06QJO20K0",
+              "path": "/",
+              "domain": ".ameritas.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": false,
+              "secure": true
+            },
+            {
+              "name": "MFA_DEST_DIV",
+              "value": "group",
+              "path": "/",
+              "domain": ".ameritas.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": false,
+              "secure": true
+            },
+            {
+              "name": "LtpaToken2",
+              "value": "DLrpEyl81AY21w2iyljWeCKTtrnTO4w/DZjmztZgILRcvYhrwl0zZgGiPfgJYP2yWscwnLgZ9noomZTjHCMLF8rRiQdkktStVp+0Dn6LoxoBzxMut+FwIxB9Px4uj1Ro0WEl9TTNi48TbwfxP8g5X1Y5yI+ptkoTpuYW7974ENt5qrrZObFP4zE9FqRsoVk/kBgXwd1QV3HEDwt0sF8uOfNxEw1+tBDfYrjbrLmrDHRgIXsl6Tz9YUEKUviFTxOpV6La4CYJnJs8eh1wE9EzKlE7YBwBlj4oGu8UW1Ej73ebgHwbV3MB5PJsRHfk4bX87vF8I1EETbhWCQrGchdL9mTz7OOXZ9j4E/ZiaRcVLZYofHGFLVccz6QU9bYQmWgoa6tS0BD4816KCeDCZxldl0HENNsC1Icato6ju7xG20K89caUkIO1I7Apngfn/Zy7UDoUEDS6CzP/+9UtrMCXv+qPR/y0y2Uj5G58bf1IDVebb1MZhPRMVECANzbGxMLGdoMjNmS8UEYxoPZ2rJ1iQJ/Bf89Cle+BS79yuJc+c/7TzCZe7uCYqFuSfaLyoO670pIs1yuuqKImuToFQviV8EelJQeWCjdoFExQc6X8X7hCHaIIfqen/+DuxvZV1YF8RyA3xsL9C6R4lMYOrZ0X9gKaNCnk2loV6c/JRXf+w+s4EVgBAQnQSqNSiCgZHyKovbIS642x6vsPrKJE01sFO+4kNwM8uhZv4aoKbWQU07MGcFk3NSg9qp/Ub21hvJRLvzHAyFa0b+B9mSBFYcDiZg==",
+              "path": "/",
+              "domain": "www.ameritas.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": true,
+              "secure": true
+            },
+            {
+              "name": "JSESSIONID",
+              "value": "0001pa5L-eV8wNI5O-P3SiXqaNW:GQC8T60EI",
+              "path": "/",
+              "domain": "www.ameritas.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": true,
+              "secure": true
+            },
+            {
+              "name": "_ga",
+              "value": "GA1.2.506068042.1759261341",
+              "path": "/",
+              "domain": ".ameritas.com",
+              "expires": "2026-11-04T19:43:14.295Z",
+              "httpOnly": false,
+              "secure": false
+            },
+            {
+              "name": "_gid",
+              "value": "GA1.2.652491294.1759261341",
+              "path": "/",
+              "domain": ".ameritas.com",
+              "expires": "2025-10-01T19:43:14.000Z",
+              "httpOnly": false,
+              "secure": false
+            },
+            {
+              "name": "ONTCred",
+              "value": "PfJxwARutVAMlHj3HvgoP1MBB5f7AnYNYx+TwVzayXxXdH667qC+p6oUejG4Y91zL0K8qV646QdOxOoOspDN2qifmgDgDKEr+JoPMonGkHX6icjQOsgr/Jjzp/nTEvRz9ltHcNvYbWmmipG8IhFBeSlYxG5ySooTVpKiY8U3bfIAAAAAAAAAAA==",
+              "path": "/",
+              "domain": ".ameritas.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": false,
+              "secure": true
+            },
+            {
+              "name": "_ga_EV35VH219F",
+              "value": "GS2.2.s1759261341$o1$g1$t1759261394$j7$l0$h0",
+              "path": "/",
+              "domain": ".ameritas.com",
+              "expires": "2026-11-04T19:43:14.649Z",
+              "httpOnly": false,
+              "secure": false
+            },
+            {
+              "name": "_ga_KDLHTCZ605",
+              "value": "GS2.2.s1759261341$o1$g1$t1759261394$j7$l0$h0",
+              "path": "/",
+              "domain": ".ameritas.com",
+              "expires": "2026-11-04T19:43:14.668Z",
+              "httpOnly": false,
+              "secure": false
+            }
+          ],
+          "headersSize": -1,
+          "bodySize": 0
+        },
+        "response": {
+          "status": 200,
+          "statusText": "",
+          "httpVersion": "http/2.0",
+          "headers": [
+            {
+              "name": "access-control-allow-headers",
+              "value": "\"Origin, X-Requested- With, Content-Type, Accept\""
+            },
+            {
+              "name": "access-control-allow-origin",
+              "value": "\"*.ameritas.com, *.employeebenefitservice.com, *.inbison.com, *.corporate.unificompanies.com\""
+            },
+            {
+              "name": "content-encoding",
+              "value": "gzip"
+            },
+            {
+              "name": "content-language",
+              "value": "en-US"
+            },
+            {
+              "name": "content-security-policy",
+              "value": "frame-ancestors 'self' *.ameritas.com *.employeebenefitservice.com *.inbison.com; script-src * 'unsafe-inline' 'unsafe-eval';"
+            },
+            {
+              "name": "content-type",
+              "value": "text/html; charset=UTF-8"
+            },
+            {
+              "name": "date",
+              "value": "Tue, 30 Sep 2025 19:43:20 GMT"
+            },
+            {
+              "name": "etag",
+              "value": "\"1441388281\""
+            },
+            {
+              "name": "permissions-policy",
+              "value": "geolocation=(),midi=(),microphone=(),camera=(),magnetometer=(),gyroscope=(),fullscreen=(self),payment=()"
+            },
+            {
+              "name": "referrer-policy",
+              "value": "no-referrer, strict-origin-when-cross-origin"
+            },
+            {
+              "name": "server",
+              "value": "Server"
+            },
+            {
+              "name": "strict-transport-security",
+              "value": "max-age=31536000; includeSubDomains"
+            },
+            {
+              "name": "vary",
+              "value": "Accept-Encoding"
+            },
+            {
+              "name": "x-content-type-options",
+              "value": "nosniff"
+            },
+            {
+              "name": "x-correlation-id",
+              "value": "7Sj-iWNN-c5wh"
+            },
+            {
+              "name": "x-frame-options",
+              "value": "SAMEORIGIN"
+            },
+            {
+              "name": "x-robots-tag",
+              "value": "noindex, nofollow"
+            },
+            {
+              "name": "x-xss-protection",
+              "value": "1;mode=block"
+            }
+          ],
+          "cookies": [],
+          "content": {
+            "size": 1820,
+            "mimeType": "text/html"
+          },
+          "redirectURL": "",
+          "headersSize": -1,
+          "bodySize": -1,
+          "_transferSize": 1424,
+          "_error": null,
+          "_fetchedViaServiceWorker": false
+        },
+        "serverIPAddress": "69.12.28.22",
+        "startedDateTime": "2025-09-30T19:43:20.409Z",
+        "time": 1397.0509999926435,
+        "timings": {
+          "blocked": 0.9289999996973202,
+          "dns": -1,
+          "ssl": -1,
+          "connect": -1,
+          "send": 0.18100000000000005,
+          "wait": 1394.4060000044387,
+          "receive": 1.5349999885074794,
+          "_blocked_queueing": 0.29999999969732016,
+          "_workerStart": -1,
+          "_workerReady": -1,
+          "_workerFetchStart": -1,
+          "_workerRespondWithSettled": -1
+        }
+      }
+    ]
+  }
+}

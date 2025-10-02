@@ -1,0 +1,20 @@
+{
+  "firstName": "Portal",
+  "lastName": "Access",
+  "fullName": "Portal Access",
+  "metRefId": "24938080",
+  "phoneNumber": "",
+  "postalCode": "63195",
+  "state": "MO",
+  "taxId": "821594771",
+  "taxIdTypeCode": "SSN",
+  "userId": "payorportal4771",
+  "metaData": {
+    "serviceReferenceId": "a211d5fe-90f2-41cc-9bdb-cef89ad39049",
+    "outcome": {
+      "statusCode": 200,
+      "message": "SUCCESS",
+      "additionalDetails": []
+    }
+  }
+}

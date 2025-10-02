@@ -1,0 +1,491 @@
+{
+  "cookies": [
+    {
+      "name": "pt_session",
+      "value": "06b230356a834ccec524963b23087eea4a417fd6ba37cca0086a4bafe553adffa101c0b8aa104b84dd1e90c2aeb9f2b394e675b60c4ae0ece8974270f054ed4031113c76534442322c36e30757ca48d06c058df31b76d16b668239f2d98bc8c0fad198661b458199fa39286eb68c1f716894745be27e33bbcd40f921828be7f93d398eee63dcdf730fff1a29dbaadf98fed56930cd494048af064f9141fe8a88af745f3b910cdc816dc6386e4014f96913e7c820e6e1b70ba5a1b7796258762a8b521a7fc1c035ede6eef00fcf7e0632a6b634fc5c8035deb721e1d5a6d825e8375d0cab8d814fb08c698fdeb8501264d2c965c063cbb00b7e7e9cf8675f5ebfb71aa2b59b4d2c9c3f0dc3098685ec5e0e7d72a8fb05aacca0bb04a7029d14846ddb8bb646ee295c97613abf2e9d9064440f02214fa68ae359cb7ac944445106202c45dca4ec83ef0d812ff2b5d184893ccddc7dc69330fc72c016c5cd8b32206973324a3636270228eeddaa64394f73d81fd677a606535f640fe2578261c9a25287b74f3164290e918b6bee27aa927608171ead25facd79e1a5c2d22f4e952ae8a84afe693e3f36056b4ea71e0e3062711de517fd1c5c04f30bfe9b884a6eff83822b2fe36a2c68e74520e83cb8e22300026ea8fd790a5b9fc909de6a4e2c30c29e4ff2b3e96bc48f7593ca53bf9e1e98a442725126bedcf3727acde8fec89ed85fa83fc201424abfdb324b0bbfaa897793266142eae5c1c299ac5984a513b608bb6d2de6ee0835b80bb3d61afe76152672c2856ece305d987c387e6cba87feef371c22ad859592efd136fa02d286a33e70b6a4b570da33f022b0fc01060f5e6f27f0f62e6a2dea713063b6a9c932e13ab5a6f5e8e6425de4edafec8d67e6f2d344b6aa286f12fb4377c5eece1d7ee712db70960fa5e768432a2d31f33249e6ca15b48b7d928ab9784d6be8a39585bcd220c99e17e319b35a8de4a28fbe9a3cc1ebda89ab0648ab53b3ba3ea77fdbbca972b2692b8058e1c676769539aafff560f4f7f0d06f70c5ac48ea9a33df15bde84c30b6f9ef2f91b76358e16920bc7076a0044d0290d27c10f01c9e98957ad8d4cb3484c1b504d80cde87e6049f8a854b3c08e65499f19fef8676bb354449bd00687833a4a28982569e6d2a62c8fa898976170a6c23726bb1a0e9272f665740e2f9c842f8883bd038069fce7ba36556aaf2df78708e6d8d46b98c7235489178a1b8d6d2f4f17374d156825c6e3b1187f7b2a2d0c686cc930aaaa7d3806de02266cab02c731a64f25d744dd7f78afdb2e41e545ae71856c64a0fb7fcea4803d8a76090c4047bfe739ccad78295f5e9e5ba3a063ede968959b23fecbc08f60b556c093382dac7c353d349275679dfedb4a8c9ebf2c828b06317fb864a6efbe73d7c45839a054b22424f4834d2776e5860a4d7094b362583dce53aba2d0508e446356a7bb824d57e1be145de70fbed99377f0057e3b5f97fb5068c3432bc1ef99f19272da94451f9e1cd2b7e38437411349f66f8a94dc1a75f6c0aa2a7595bae54fa31b306a83634059a9b3eb214c7a05d8271450aaabf4a4fe577262e4b16c666d9e469ab0939cdfcde47293d17a14e4021bc31582488d6a91c1012e93c9a7afe0e23ab22af2107ddd27d5a786cc9c07b8f649ae357d5b07e60c3cdfea0f3fe0c97640156e9aaeddc16e34829ee04b0b43a8fdcbbd55276d34e4df8716054f75e8f7efa746879c6618aa038ac712ad129f0fc6392db8a89d268ee6d86b046db9c25cf65b888070b90f7c1a960e0fee503638e91701f4fe0dce66220cc6cfcb16c43e8e7e87e6965d1004b5888adab53b3bc9a86406013c502b8af08fe282d4fc1d0d2769459fc12bb99594a20161e36b8",
+      "domain": "www.deltadentalins.com",
+      "path": "/provider-tools/v2",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Strict"
+    },
+    {
+      "name": "TS018533d9",
+      "value": "015d287dd839cd072b3d362e1577737fd28cd7e2cbe152a0343a9c328f0ddf7d40fca12def5b42f87ea164e26b103d5189e224a897",
+      "domain": "www.deltadentalins.com",
+      "path": "/provider-tools/v2",
+      "expires": -1,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "i_session",
+      "value": "U2fwtKk3Y%2BW0V7p8icxYIB4meiikFnhMCQ%2BFppUJeIqFzuO5WnnSXNKJlV8cuWcU9%2BICg6%2FvzFtj8zfphCwBPG%2FbsxjbIWsYV5YEr%2BaJinJATZ7%2BMF%2F1XoP4ba3SjUiCQzDa3%2Fl6gTJALFRONhpcx7E%2FkqFHYbZzugS0CXZpxgKUI6Sxh4hgwMsYrwEkKcj4BRdVcJKmbZatdDIpe3N3ZuwzUapX4mbSqw3%2B2hJcuvfsmScOrIuMuWqZzKNBslnxgv1KEtpF1unVp7%2Bpqvpw4LniBJDA2Zg6nJQdggP%2FFuIkI6%2FsBV%2BAkh4g2H1uHoMT%2BytDMEhrReJwHUJCYK5t5g%2FfKQZYT1FUqTYRv6S%2BMCiP2Sh4uN2YJ8Na7vxYPE3CqdTfeSgs9nS1jBqefspl2gHHbkBlraBxuHylmWU48Wa%2FB%2FmtJoaN%2BOP3ybmb3zTeOV6OWGJU%2Bj9ODoeM0QqT9TfiOl1HtMd6iUakt8o3qUa%2BUPRibb7I62VrLVL4IeUokApCLr77wv83n025txYZDxhTiasdxCKaTnEKcKiWyA447gISV0P1zxWWH9kNve%2FRXXv%2BxzJ%2FEjjOJpNeym74PcJfucUR7QejalnCfbxcA2EX8uNYoAG4iKSNDgccTykoPXZIqpcCc9wW5Zhm01WyiAQ19mNrhUO29owhLQvHfs%2BWLsFlP7lGoc5141reLNPpGhvVSTs8PXwWdgIqV2kHu17QJdxhErtDslQeVmqSBe1euTiQtlGNW5Acp6ovJoCLZTA7ql%2FlIwXx1rWF54QJA0qlXXihZjkmdyHwxlbvXaA85klZgFoCWgetB9GUyBJUuApopBlTNG3OidkxorKbFk87upX%2Bzcydc%2FDADlt%2BVhe%2Bm0%2Fnjb9kH%2FFNGXfdtG3PV%2BYOrnr0I%2FBMQzDm6N%2FJm8w0YU%2B61spo4SN1kOkqhHTwPQZJWc2LIoM3bR4L6TArIXhMgidA0aB2L6dQ9qFybZ1QJR0t6mQcRRPPKHbBA%2BORJZX2BJ%2FFwcv9cEV%2Fet6rU0harXgiBqy8szanmMep%2F%2FAOGcW335ItixtU9T1zKJ3IbtP2iBmt0xJbj6j4%2BjqCzcuJmkiiLO%2FkI3K8mCPlhrCyO1%2FKOaQ2C1LuQQAJWGfIsUUwEBMRQt%2BWlwxRA7Wjy2xlY3eRJtCpu5z1akneHu%2B7O9sgwV4P7vpEe5YfM2RR1EhVWiZe0lpkFsKPSiKjHDObveK%2F7rAtlNdOloGlzGo%2Fk0iRb1oiHCwGnbAPgUDjNLkgpv4vM5%2FplI%2BI9ltpZ70c4hjvK7QjDSVNCDAAGLCLcQ9eWT4w%2BLhyWqu41qLN4cbkWc%2F1AG92jWhP4xrUabz6lruuIdrJ%2F5IBB%2Fd8T7VOiKPo%2FGZzsOnyVobt2nKqFLEjrLhNH7xdMO1%2BMsEUT9qdUdGoX8NCRh2Qybgfrl6vCI38innZg1F4%2FtErX2LpuVw9lo71RXfvfbXcmjP%2B7NtjSxLlk1og%2FAsJ%2F11Bz31nX52x0aGlIK%2FSe%2BXGTHmTpED%2FWgkgYpHyJkU17d6hUzQCaliciSMfb99iHmxIf7soJJHqgAmSIYrkEpoT5pgybgHiOj5FrUZvegMwfGHQx0RlK2LWy1XZQo2q9CpObnup1q99u%2F%2B0Q43vOamzKTinYvmCjMqMMSGscjIpD6C13hkXheCT0HSscxAvTRVbLJQ0NzF5GqEuIO9v0Pll",
+      "domain": "www.deltadentalins.com",
+      "path": "/ciam",
+      "expires": 1757988005.63319,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Strict"
+    },
+    {
+      "name": "a_session",
+      "value": "TOmYEbGOk%2FopD3tub43JoIpifWAnbOTz93KBbdjL8wxfZuxZDv28oApMhFCXJkir7OYTNAmDzRb65pUZDUecrJxJLxf2RnoIM%2BTfYQU1miY8sSwp%2FkwDVOn44h3TeBM%2Bo6hdixfkLHujH%2FXlgHTLq2hIxNVDFCmaLSSTy5vjv1DTDpv2hqTXDUeEFvzO98qeAO78NYwg7plVg7C6UVFLk9OmWcf%2Fpkk0B1RX75cn%2Baut%2BZsgl6W60o2VRNQoEn3aok%2F4%2F6DtuZxrdc2%2FfGsxrT4qpabHmtsg%2BWeM5IiOOtMEvRKCPAMgokkgF2Ci6JvNm25q%2FVwzSe9wDti0FDcbbhaRj4PS2hsM5k14e%2BNBtDseiAED9qSDOE12FHDEUlSAG2uBv9HlIxpPIvBF10CrDXBcZB5b%2F3BeI9aCGBxxFEJQr3S5qAzRKCgs7u68NZtoVB8LQPCSLPvovjUR0qIcl0Jxr%2Bg48G%2FqhXpYsWV7ljnYVaeZFEcT49Z6nZLCLBe8hKBFJDOxx5D9LwtguZPlmVrfSOj1ZFvT%2Fr60JvYLIYxW2kpqloMQ2XbaZNFFi8tgN%2FwPPAFWvJwPyCii89J5OdES%2BJvZvbOhDSiGsog6EkKgGR2532dsaKMmKDkP6LzCVTEZav3V1SMd3156jTUWyI3NneTZXJfl3%2B2RaPVW1J0DE7m%2BgWYiDm5mV3gjncehmj4M0IqMBK4KFQdEp7%2FCxwuhy3kMvrVw6D2fHQoCejkCABo7Ax17AcIHkTeDo2Z7%2BqEDLxXEWRLaUhdCxlAu7C4qDJ%2F5CzgQCzeU0cIZPorfoDUXp%2BnlHqaBumqz5pJSgMpvYUrIz7rlhMgx%2FVzxH%2BGuowTM5rCOKBKUyar14hxWwearcAbj7CB2CpGzpm6GGBgpnypTQg59Mdql8zqzPI9xZl1139uYE84d4TNSm0YIpl9cJMjDiGpNEtGoBl%2FSbPiC5lLph5fN1u4MIz9iLKd%2F9oxUsBV8N87UmxsHNNqJ%2FSjVx2JM%2F88LjX3sMXUPAKZg1Q2A5FGo0nuOh7CmbuqWNxku4YKv34%2FxgouXUTQ2wKX7mbtgeCFN9RrPRB2dTdN78PwuVvCMyP8nNe71mvk1Df4sY7CeWtN7oqYtXqDjY7yy8SvgMBxTWIQpv0nXF9O2Y6EKZHP8XrbiaIgmBhekyyKtiqbsvTPxGrNufe4%2F6kuvooaHurVTukGoODT7zzgnkPoTI5bmROc7UxDsgCCBsp3JKofpseR%2BJ%2BCrM9799f9LH5IOOPrGHJ2ysz%2BeWla4aRhSY%2FjRK%2FZ7OouvdrqpSbRzBJhGDabM1oXbhcLTS36MrMYlF5vu5R9bu%2BMfuCNJSusSYxgrJmAAPR4vj%2BaIdaPbGUdQ4zyHHfI%2BYpxUha%2FZ6F%2FaOVlBHkqGDtePvLKENSem%2F8CgEIp9Xy8G6aJjyGEy8hTpHCFesf5fgfcBFvYiaczH79MrHdJXRbynpmFBIuPh6J2Z1%2Bvrv3FwuWA7fA6M9ANxnd7ePRp%2BCLzeiBLlfDe2f1dcjizBQuZ6OsILHD%2FKV8bIe23jJQkpbOyDobjfdtTcSQaukgV0EI%2BFbfK94VQpeR63AlmOU%2F4KjQgSx%2Fc%3D",
+      "domain": "www.deltadentalins.com",
+      "path": "/ciam",
+      "expires": 1757988005.633328,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Strict"
+    },
+    {
+      "name": "r_session",
+      "value": "UCYoEJ8vn2RXf4K6BexZavL2NjNoVaHwPmC6lVP5Zmvys6UggXWlWeWJOBswJoUVKydynEGzknBsYWUh4hvjeJDxeSHYx%2Fo5xN3jICJhb85T3Hw%3D",
+      "domain": "www.deltadentalins.com",
+      "path": "/ciam",
+      "expires": 1757988005.633358,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Strict"
+    },
+    {
+      "name": "TS01416c9f",
+      "value": "015d287dd81aed7b283c7f2cf4d68bbe9c1c8f94e0f9cc96af8cc9edfc8ad1579e37db3cc52a27388d84f3d03586cbd77266761a4c32dbf72ba103964d195791681a7a4a211069596030bd493871aa506145cff7c30adfa0022ad10f5307023cd36f427d6f845d0eec67ff564ce57f1958f489b39c316c2d8a1bb6842b977b495cfaaca06899bfd9869fefc3007afbe4cc9eefa9af",
+      "domain": "www.deltadentalins.com",
+      "path": "/ciam",
+      "expires": -1,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "TS0147142b",
+      "value": "015d287dd839cd072b3d362e1577737fd28cd7e2cbe152a0343a9c328f0ddf7d40fca12def5b42f87ea164e26b103d5189e224a897",
+      "domain": "www.deltadentalins.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "ddins",
+      "value": "!wLWyKXY8KQ1IV1DZ/A6jscwgnGOI/3yE6UKDONpEV8BaWYnqrW2DRVALuSfbJ2Mt5PpXSdTKMNMumg==",
+      "domain": "www.deltadentalins.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "s_plt",
+      "value": "2.63",
+      "domain": ".deltadentalins.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "s_pltp",
+      "value": "undefined",
+      "domain": ".deltadentalins.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "demdex",
+      "value": "48712882847119609080583678270753310018",
+      "domain": ".demdex.net",
+      "path": "/",
+      "expires": 1773511179.857118,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "AMCVS_E9D70FA75B3A18E80A495C49%40AdobeOrg",
+      "value": "1",
+      "domain": ".deltadentalins.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_gcl_au",
+      "value": "1.1.1429080493.1757959180",
+      "domain": ".deltadentalins.com",
+      "path": "/",
+      "expires": 1765735180,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "AMCV_E9D70FA75B3A18E80A495C49%40AdobeOrg",
+      "value": "179643557%7CMCMID%7C48573621707996523300642677195524028900%7CMCAAMLH-1758563979%7C4%7CMCAAMB-1758563979%7C6G1ynYcLPuiQxYZrsz_pkqfLG9yMXBpb2zX5dvJdYQJzPXImdj0y%7CMCOPTOUT-1757966380s%7CNONE%7CMCAID%7CNONE%7CvVersion%7C5.5.0",
+      "domain": ".deltadentalins.com",
+      "path": "/",
+      "expires": 1792519180.41776,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_ga",
+      "value": "GA1.1.337780597.1757959181",
+      "domain": ".deltadentalins.com",
+      "path": "/",
+      "expires": 1792519210.103005,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "s_cc",
+      "value": "true",
+      "domain": ".deltadentalins.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "DT",
+      "value": "DI16kIVH5JZQP6EnV0ERAXY6w",
+      "domain": "auth.deltadentalins.com",
+      "path": "/",
+      "expires": 1792519185.268192,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "ln",
+      "value": "Payoraccess4771",
+      "domain": "www.deltadentalins.com",
+      "path": "/",
+      "expires": 1789495198,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "IDE",
+      "value": "AHWqTUn87DWamhUoZpEdjWtJe4UP5aBqiCQ2NVei9zs4ZZspFpoTQsyBLo1EBvet",
+      "domain": ".doubleclick.net",
+      "path": "/",
+      "expires": 1792519198.738031,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "luf_290607275",
+      "value": "eyJ6aXAiOiJERUYiLCJ2ZXIiOiIxIiwiYWxpYXMiOiJlbmNyeXB0aW9ua2V5Iiwib2lkIjoiMDBvMXMxcXhlZUtXQ3pQUkI0aDciLCJlbmMiOiJBMjU2R0NNIiwiYWxnIjoiZGlyIiwidGltZXN0YW1wIjoxNzU3OTU5MjA0MzAwfQ..iMK5GYOeGpGoNKQR.PsUiUi4AoB6lLRK3nSAK-iC67_JbPMMmYENTWXnCZlsItwUDREpNhl6JAOypGbMZYGbxwT8TLciQlA9byaB8uR64xcc3rGZd5SPVFnGEqplNvH7UHtxa0vgnsHLP5E4Jfs77Z3_ZsWjihECmY4V0bIDnK07-OdGzT3YQlSiY6mbfDMmbmbSTyCzPG4cDiLkF8JBjrEXi.KMr3PmuFNqEbyl1CAs57zA",
+      "domain": "auth.deltadentalins.com",
+      "path": "/",
+      "expires": 1760551204.539975,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "DDINS_AUTH_SESSION",
+      "value": "y2pVVs72%2FRx6ZxnWYfbrV81GE3ZypKW7%2FhXfZbvv578Gk70%2FY2SLlkD5ua%2BNXnE5Zj0KaVET7ZTaL3MBJjYeC%2BvCQu%2BhSMLE9oEztchFfg%3D%3D",
+      "domain": "www.deltadentalins.com",
+      "path": "/",
+      "expires": 1757988005.633375,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "TS01b65350",
+      "value": "015d287dd889f639bda797909c3b4f8bdd5bfcb14ff9cc96af8cc9edfc8ad1579e37db3cc52a27388d84f3d03586cbd77266761a4c32dbf72ba103964d195791681a7a4a210f03876d18b34cf44c0ca58e4d008de0c97c66a46f51915f931d2b788e2964e0bc7889d92bfb5f3f38fb3af402da24df",
+      "domain": "www.deltadentalins.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "JSESSIONID",
+      "value": "CE21550BF91EDC5E1E1D32A0F6803E7C",
+      "domain": "auth.deltadentalins.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "idx",
+      "value": "eyJ6aXAiOiJERUYiLCJ2ZXIiOiIxIiwiYWxpYXMiOiJlbmNyeXB0aW9ua2V5Iiwib2lkIjoiMDBvMXMxcXhlZUtXQ3pQUkI0aDciLCJlbmMiOiJBMjU2R0NNIiwiYWxnIjoiZGlyIiwieHNpZCI6ImlkeG96VUZkUlV4US1TbGZRS0UxUmN0amcifQ..FTEoN0XF83HdMYlE.gxLP9IPKhMBLbRcWkJ7f_B6f_-O_tUUz7HRTlqzkN-jBPAcPsTFLMw8VWDb1Ms_R_-i3DVWiAk8u3ITTPTie8kqZQ2OCpjOuCyJb35OgANbk6GlrvRDVd_a_Rj1oL1X_l5Jnqtb0xOra-zycq5YPDEyxmmOJI6hKbuprlRmNX4UweY_N6yrOgpkk7Tdc7MDg2mSBTYbqXzWygBLK3chVNH2fDi-TJ6RHkD4rY45rgIugU-zGgSswEYMSURl6GNsAX9JmAusgwuaOaoicNGicfyMMcQCrFPBLpTDcvmBx8Dgz_plX7IHZ2UgQeDqo2lNhptRKe0PBz5KAOOZgprh6zBqXoDq7oznC2QkGOazFlAc0rtKHv9TfzIve3WEiWyghCMeVstKglQ5t4Gsjwo6DhUrtxKMBRUNUmv0w8DmPWrsQYrAWV7jy_7vibZNzhkaWYnFxAmHNs7Y7YjL5GCqyE9mFBwqnrEE-xGKgt_SLSpV2_IqJhJiHxlZm-QN9jYYPwRxZDomf1drQf6yay0Y_wKz3Gz7AZVRyWIGv04-bG95_ayLGhzyxQi-871Xo84L7Xk0ajZ2abkVMnq-ICY_fUQG5KMUok9eo-TkzxzR0tz8BCKCF4iwdzEYIAk1hKx2B-usAUs-3MnUvuu7AjBNtJ2I8auUsRlIP4of8x_7IBBKkD8zoXTlT6tVpBR4lhz9udZGSO1IdX-T4Q6kYUP0dQbkZDijpDNvSeDRo_t1VY6eqBKEY1q-LGcxisYZRFVPRza_i1tzhkOVoSwR3W9u-YEwJNm_Oryp0OYOiQdfv-KVq5gPalahybq5Qh_oEwUPG_L15gZde-433GQ_R72DCONhuSbfrBkbL06jUOVKaqs7X_MOwGFJUG_7ikcWKFA8krsayDzqQCbR2F5OhZTqwIVyjAnwFagi6u7fCiTBLdnDgu-Mv8deh5pDgrNxUksV8aOFpF25SurdC.qrq3xXO5njI7WJ6A0C3wIw",
+      "domain": "auth.deltadentalins.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "proximity_fe0f92ed87dd9dc89e9180a3f4a1e04b",
+      "value": "eyJ6aXAiOiJERUYiLCJwMnMiOiJ4alpPZlNyVXI5S0Q4MU9FaVJwZ2NRIiwicDJjIjoxMDAwLCJ2ZXIiOiIxIiwiZW5jIjoiQTI1NkdDTSIsImFsZyI6IlBCRVMyLUhTNTEyK0EyNTZLVyJ9.HqeyVK3yJkl4dg3ROpEiMz22yhO6agdETErbCCJjFeTtaABLrSPltw.ZohrxYoMhzHvurNX.vzRUeDWekdsp52gSHNWNjE25S8vyTIrfqk4aj1w11Aai39mP91lcnZomx7c7q4XNvScOWwbD28ig2_oSV3RxvC-BT5jernY08f9RTKCRck4O_MRRHnSEU6XOanSB6O_oLGe2dRpwk8AUAfbKOtl-2zw8YWxJzJkSSu4tsf12sR2bPA.BLjMJTGwXK3F0h43LxAsHA",
+      "domain": "auth.deltadentalins.com",
+      "path": "/",
+      "expires": 1789495207.075662,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "spgwAMCookie",
+      "value": "svu6eo9pu64qm4udfojq8usnvf",
+      "domain": "www.deltadentalins.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "spgwAuthToken",
+      "value": "_e7b8ba538624c7b706549b834cc20dfe1c08325e9c",
+      "domain": "www.deltadentalins.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "ddins-oag",
+      "value": "329253130.47873.0000",
+      "domain": "www.deltadentalins.com",
+      "path": "/",
+      "expires": 1757966407.716052,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "TS01e3b33d",
+      "value": "015d287dd8a01ab229b0fbfdcd2c4235c6645049f1981f78dff6798fa458e2e54963119c91cfb09085dce1d5f9e4727f23ae43c515b480c392858ac55b39d8c7554fdae7310357710ff2a2fb4ea38a7c6b5271655198ee0f7880d850e3c860a6ba8385cecf43fbce467e78467b48b3b54b7f84ae6f",
+      "domain": ".www.deltadentalins.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "SessionCookieHFL16428SINFE71QMY4V",
+      "value": "22eabe5ad1d3477e813df13e494348fe",
+      "domain": "www.deltadentalins.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "OAG_LBe0lWqdO5k",
+      "value": "5846204d4510494daaadea4792ff0c24",
+      "domain": "www.deltadentalins.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "TiPMix",
+      "value": "14.134476573383402",
+      "domain": ".www.deltadentalins.com",
+      "path": "/",
+      "expires": 1757962809.92502,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "x-ms-routing-name",
+      "value": "self",
+      "domain": ".www.deltadentalins.com",
+      "path": "/",
+      "expires": 1757962809.925089,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "TS01896902",
+      "value": "015d287dd839cd072b3d362e1577737fd28cd7e2cbe152a0343a9c328f0ddf7d40fca12def5b42f87ea164e26b103d5189e224a897",
+      "domain": ".www.deltadentalins.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_ga_WJBES2X3MH",
+      "value": "GS2.1.s1757959180$o1$g1$t1757959210$j30$l0$h0",
+      "domain": ".deltadentalins.com",
+      "path": "/",
+      "expires": 1792519210.036697,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_ga_FCHY0PH01E",
+      "value": "GS2.1.s1757959180$o1$g1$t1757959210$j30$l0$h0",
+      "domain": ".deltadentalins.com",
+      "path": "/",
+      "expires": 1792519210.039919,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_ga_JE8GTNS72G",
+      "value": "GS2.1.s1757959180$o1$g1$t1757959210$j30$l0$h0",
+      "domain": ".deltadentalins.com",
+      "path": "/",
+      "expires": 1792519210.041782,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_ga_8TVVECFFYH",
+      "value": "GS2.1.s1757959183$o1$g1$t1757959210$j33$l0$h0",
+      "domain": ".deltadentalins.com",
+      "path": "/",
+      "expires": 1792519210.102518,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "QSI_HistorySession",
+      "value": "https%3A%2F%2Fwww.deltadentalins.com%2Fprovider-tools%2Fv2~1757959210457",
+      "domain": "www.deltadentalins.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_dd_s",
+      "value": "rum=2&id=fb9db25d-5996-4cf1-b642-7fde28f5c3cc&created=1757959182236&expire=1757960117848",
+      "domain": "www.deltadentalins.com",
+      "path": "/",
+      "expires": 1757960117,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Strict"
+    },
+    {
+      "name": "gpv_Page",
+      "value": "https%3A%2F%2Fwww.deltadentalins.com%2Fprovider-tools%2Fv2",
+      "domain": ".deltadentalins.com",
+      "path": "/",
+      "expires": 1757961017,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "s_nr30",
+      "value": "1757959217890-New",
+      "domain": ".deltadentalins.com",
+      "path": "/",
+      "expires": 1760551217,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "s_ips",
+      "value": "900",
+      "domain": ".deltadentalins.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "s_tp",
+      "value": "1696",
+      "domain": ".deltadentalins.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "s_sq",
+      "value": "%5B%5BB%5D%5D",
+      "domain": ".deltadentalins.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "s_ppv",
+      "value": "provider_tools%253Ahomepage%2C53%2C53%2C900%2C1%2C1",
+      "domain": ".deltadentalins.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    }
+  ],
+  "origins": [
+    {
+      "origin": "https://www.deltadentalins.com",
+      "localStorage": [
+        {
+          "name": "okta-cache-storage",
+          "value": "{\"https://auth.deltadentalins.com/oauth2/default/.well-known/openid-configuration\":{\"expiresAt\":1758045584,\"response\":{\"issuer\":\"https://auth.deltadentalins.com/oauth2/default\",\"authorization_endpoint\":\"https://auth.deltadentalins.com/oauth2/default/v1/authorize\",\"token_endpoint\":\"https://auth.deltadentalins.com/oauth2/default/v1/token\",\"userinfo_endpoint\":\"https://auth.deltadentalins.com/oauth2/default/v1/userinfo\",\"registration_endpoint\":\"https://auth.deltadentalins.com/oauth2/v1/clients\",\"jwks_uri\":\"https://auth.deltadentalins.com/oauth2/default/v1/keys\",\"response_types_supported\":[\"code\",\"id_token\",\"code id_token\",\"code token\",\"id_token token\",\"code id_token token\"],\"response_modes_supported\":[\"query\",\"fragment\",\"form_post\",\"okta_post_message\"],\"grant_types_supported\":[\"authorization_code\",\"implicit\",\"refresh_token\",\"password\",\"urn:ietf:params:oauth:grant-type:device_code\",\"urn:openid:params:grant-type:ciba\",\"urn:okta:params:oauth:grant-type:otp\",\"http://auth0.com/oauth/grant-type/mfa-otp\",\"urn:okta:params:oauth:grant-type:oob\",\"http://auth0.com/oauth/grant-type/mfa-oob\"],\"subject_types_supported\":[\"public\"],\"id_token_signing_alg_values_supported\":[\"RS256\"],\"scopes_supported\":[\"CIAM\",\"DDPA\",\"ESS\",\"okta.myAccount.appAuthenticator.maintenance.manage\",\"okta.myAccount.appAuthenticator.maintenance.read\",\"okta.myAccount.appAuthenticator.manage\",\"okta.myAccount.appAuthenticator.read\",\"okta.myAccount.authenticators.manage\",\"okta.myAccount.authenticators.read\",\"okta.myAccount.customAuthenticator.manage\",\"okta.myAccount.customAuthenticator.read\",\"okta.myAccount.email.manage\",\"okta.myAccount.email.read\",\"okta.myAccount.manage\",\"okta.myAccount.oktaApplications.read\",\"okta.myAccount.organization.read\",\"okta.myAccount.phone.manage\",\"okta.myAccount.phone.read\",\"okta.myAccount.profile.manage\",\"okta.myAccount.profile.read\",\"okta.myAccount.read\",\"openid\",\"profile\",\"email\",\"address\",\"phone\",\"offline_access\",\"device_sso\"],\"token_endpoint_auth_methods_supported\":[\"client_secret_basic\",\"client_secret_post\",\"client_secret_jwt\",\"private_key_jwt\",\"none\"],\"claims_supported\":[\"iss\",\"ver\",\"sub\",\"aud\",\"iat\",\"exp\",\"jti\",\"auth_time\",\"amr\",\"idp\",\"nonce\",\"name\",\"nickname\",\"preferred_username\",\"given_name\",\"middle_name\",\"family_name\",\"email\",\"email_verified\",\"profile\",\"zoneinfo\",\"locale\",\"address\",\"phone_number\",\"picture\",\"website\",\"gender\",\"birthdate\",\"updated_at\",\"at_hash\",\"c_hash\"],\"code_challenge_methods_supported\":[\"S256\"],\"introspection_endpoint\":\"https://auth.deltadentalins.com/oauth2/default/v1/introspect\",\"introspection_endpoint_auth_methods_supported\":[\"client_secret_basic\",\"client_secret_post\",\"client_secret_jwt\",\"private_key_jwt\",\"none\"],\"revocation_endpoint\":\"https://auth.deltadentalins.com/oauth2/default/v1/revoke\",\"revocation_endpoint_auth_methods_supported\":[\"client_secret_basic\",\"client_secret_post\",\"client_secret_jwt\",\"private_key_jwt\",\"none\"],\"end_session_endpoint\":\"https://auth.deltadentalins.com/oauth2/default/v1/logout\",\"request_parameter_supported\":true,\"request_object_signing_alg_values_supported\":[\"HS256\",\"HS384\",\"HS512\",\"RS256\",\"RS384\",\"RS512\",\"ES256\",\"ES384\",\"ES512\"],\"device_authorization_endpoint\":\"https://auth.deltadentalins.com/oauth2/default/v1/device/authorize\",\"pushed_authorization_request_endpoint\":\"https://auth.deltadentalins.com/oauth2/default/v1/par\",\"backchannel_token_delivery_modes_supported\":[\"poll\"],\"backchannel_authentication_request_signing_alg_values_supported\":[\"HS256\",\"HS384\",\"HS512\",\"RS256\",\"RS384\",\"RS512\",\"ES256\",\"ES384\",\"ES512\"],\"dpop_signing_alg_values_supported\":[\"RS256\",\"RS384\",\"RS512\",\"ES256\",\"ES384\",\"ES512\"],\"headers\":{\"cache-control\":\"max-age=86400, must-revalidate\",\"content-type\":\"application/json\",\"expires\":\"Tue, 16 Sep 2025 17:59:05 GMT\"}}},\"https://auth.deltadentalins.com/oauth2/default/v1/keys\":{\"expiresAt\":1758045605,\"response\":{\"keys\":[{\"kty\":\"RSA\",\"alg\":\"RS256\",\"kid\":\"nqUNain_aiU3ZvSK5Bx6iW5oxSnhfeTjtCvaatxPGbk\",\"use\":\"sig\",\"e\":\"AQAB\",\"n\":\"0vapEB1m1o9GKY_6S8NXvcmwd0peSCXK_ZOYGTyst_VLKpeCWZPIJGJ-PHQXaeVuB6RHSFXxkgi8_4qwfO20XzEzzGdMxyG6QDKXG4Neb2Z04t05-qNn3ZHirQsNmcjMR6NzviDLU6BN2Io_VwfpiUfiW9qtoAGJA-TCbvjX-tjMmMGXjGO9Xtao8KmTa1ktwzennqMTcfg4gECyzarK2g5odk65UgaZIPNvpK55i-1uu3UiswWMgxcC-uZPLKM_qSRCsVNoZftKOy41Zlxx5pBiPUF1_cxb6Egh46jtg8V0mahAvwqKeoxe3CkFljYvVnVJwZtAlCVc9q4E23Aq7w\"}],\"headers\":{\"cache-control\":\"max-age=2624462, must-revalidate\",\"content-type\":\"application/json\",\"expires\":\"Thu, 16 Oct 2025 03:00:47 GMT\"}}}}"
+        },
+        {
+          "name": "_gcl_ls",
+          "value": "{\"schema\":\"gcl\",\"version\":1,\"gcl_ctr\":{\"value\":{\"value\":0,\"timeouts\":0,\"creationTimeMs\":1757959180146},\"expires\":1765735180146}}"
+        },
+        {
+          "name": "QSI_ActionSetHistory",
+          "value": "{\"AS_45988915\":1757959210589}"
+        },
+        {
+          "name": "okta-shared-transaction-storage",
+          "value": "{}"
+        },
+        {
+          "name": "Q_INTER",
+          "value": "{\"SI_9GjBYbtViGLboq2\":1757959210.595}"
+        }
+      ]
+    }
+  ]
+}

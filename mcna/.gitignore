@@ -1,0 +1,34 @@
+# Archives de tests et tentatives
+archive_api_attempts/
+archive_premature_attempt/
+archive_tests/
+
+# Données extraites (sensibles)
+data/*.json
+!data/.gitkeep
+
+# Profil Chrome persistant
+/tmp/mcna_test_profile/
+
+# Screenshots d'erreurs et debug
+error_*.png
+debug_screenshots/
+*.png
+
+# Fichiers Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db

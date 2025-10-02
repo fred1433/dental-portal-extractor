@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dental Payor Extraction Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #f0f4f8;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            opacity: 0.9;
+            font-size: 1.1em;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 30px;
+            background: #f7f9fc;
+            border-bottom: 1px solid #e0e6ed;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .stat-card .value {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .stat-card .label {
+            color: #64748b;
+            margin-top: 5px;
+        }
+
+        .controls {
+            padding: 20px 30px;
+            background: white;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            align-items: center;
+            border-bottom: 1px solid #e0e6ed;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #5a67d8;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-success {
+            background: #10b981;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #059669;
+        }
+
+        .btn-warning {
+            background: #f59e0b;
+            color: white;
+        }
+
+        .btn-warning:hover {
+            background: #d97706;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 200px;
+            max-width: 400px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 10px 15px;
+            border: 2px solid #e0e6ed;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .table-container {
+            padding: 30px;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+
+        thead th {
+            background: #f8fafc;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            color: #475569;
+            border-bottom: 2px solid #e0e6ed;
+            position: sticky;
+            top: 0;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        thead th:hover {
+            background: #f1f5f9;
+        }
+
+        tbody tr {
+            transition: background 0.2s;
+        }
+
+        tbody tr:hover {
+            background: #f8fafc;
+        }
+
+        tbody td {
+            padding: 15px;
+            border-bottom: 1px solid #e0e6ed;
+        }
+
+        .editable {
+            cursor: text;
+            position: relative;
+        }
+
+        .editable:hover {
+            background: #fef3c7;
+            border-radius: 4px;
+        }
+
+        .editable:focus {
+            outline: 2px solid #667eea;
+            outline-offset: 2px;
+            background: white;
+        }
+
+        .status {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            display: inline-block;
+            white-space: nowrap;
+        }
+
+        .status.done {
+            background: #16a34a;
+            color: white;
+        }
+
+        .status.ready-html {
+            background: #38bdf8;
+            color: white;
+        }
+
+        .status.partial {
+            background: #f59e0b;
+            color: white;
+        }
+
+        .status.progress {
+            background: #3b82f6;
+            color: white;
+        }
+
+        .status.not-started {
+            background: #ef4444;
+            color: white;
+        }
+
+        .status.not-priority {
+            background: #fbbf24;
+            color: white;
+        }
+
+        .market-share {
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        .footer {
+            background: #f8fafc;
+            padding: 20px 30px;
+            text-align: center;
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .controls {
+                flex-direction: column;
+            }
+
+            .search-box {
+                max-width: 100%;
+            }
+
+            table {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🦷 Dental Payor Extraction Dashboard</h1>
+            <p>Real-time tracking of data extraction progress across dental insurance payors</p>
+        </div>
+
+        <div class="stats">
+            <div class="stat-card">
+                <div class="value" id="total-payors">21</div>
+                <div class="label">Total Payors</div>
+            </div>
+            <div class="stat-card">
+                <div class="value" id="completed">6</div>
+                <div class="label">Completed</div>
+            </div>
+            <div class="stat-card">
+                <div class="value" id="not-started">14</div>
+                <div class="label">Not Started</div>
+            </div>
+            <div class="stat-card">
+                <div class="value" id="market-coverage">54%</div>
+                <div class="label">Market Coverage</div>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <table id="payorTable">
+                <thead>
+                    <tr>
+                        <th onclick="sortTable(0)">Payor Name ↕️</th>
+                        <th onclick="sortTable(1)">Market Share ↕️</th>
+                        <th onclick="sortTable(2)">Status ↕️</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                    <!-- Table will be populated by JavaScript -->
+                </tbody>
+            </table>
+        </div>
+
+        <div class="footer">
+            <p>Last updated: <span id="lastUpdate"></span></p>
+        </div>
+    </div>
+
+    <script>
+        // Initial data sorted by market share
+        const initialData = [
+            { name: "Delta Dental Insurance", marketShare: "~29%", status: "READY WITH API", details: "Full API with patient list and complete data extraction" },
+            { name: "Delta Dental Office Toolkit", marketShare: "Part of Delta", status: "READY WITH API", details: "API automation implemented" },
+            { name: "DentaQuest", marketShare: "~12%", status: "READY WITH HTML SCRAPING", details: "Playwright POC development" },
+            { name: "MetLife", marketShare: "~7%", status: "READY WITH HTML SCRAPING", details: "Full patient list obtained, API automation in place" },
+            { name: "UHC (UnitedHealthcare)", marketShare: "~7-9%", status: "READY WITH API", details: "Full API reverse engineering completed with session persistence" },
+            { name: "Cigna", marketShare: "~6%", status: "READY WITH HTML SCRAPING", details: "Basic structure in place" },
+            { name: "Aetna", marketShare: "~6%", status: "READY WITH HTML SCRAPING", details: "Implementation started" },
+            { name: "United Concordia", marketShare: "~5%", status: "READY WITH HTML SCRAPING", details: "Complete network-based extraction with 831 procedures" },
+            { name: "Humana/CompBenefits", marketShare: "~3-4%", status: "NOT A PRIORITY? (NOT IN CLIENT LIST)", details: "Not a priority - not in our client list" },
+            { name: "Guardian", marketShare: "~3%", status: "READY WITH API", details: "Reverse engineered with working API automation" },
+            { name: "Ameritas", marketShare: "~2-3%", status: "READY WITH HTML SCRAPING", details: "PDF-based extraction with LLM parsing ($0.002/patient)" },
+            { name: "Liberty Dental", marketShare: "~2-3%", status: "NOT A PRIORITY? (NOT IN CLIENT LIST)", details: "Not a priority - not in our client list" },
+            { name: "MCNA Dental", marketShare: "~2-3%", status: "READY WITH HTML SCRAPING", details: "Playwright automation with OpenAI CAPTCHA solving (headless compatible)" },
+            { name: "DNOA", marketShare: "<1%", status: "READY WITH API", details: "Full extraction completed" },
+            { name: "BCBS of TX", marketShare: "<1%", status: "COVERED BY DNOA", details: "Uses DNOA Connect portal - already automated" },
+            { name: "GEHA", marketShare: "~0.60%", status: "NOT STARTED", details: "Pending implementation" },
+            { name: "Principal", marketShare: "~0.45%", status: "NOT STARTED", details: "Pending implementation" },
+            { name: "Unum", marketShare: "~0.30%", status: "NOT STARTED", details: "Pending implementation" },
+            { name: "Lincoln", marketShare: "~0.17%", status: "NOT STARTED", details: "Pending implementation" },
+            { name: "The Standard", marketShare: "~0.13%", status: "NOT STARTED", details: "Pending implementation" },
+            { name: "Beam Insurance", marketShare: "~0.12%", status: "NOT STARTED", details: "Pending implementation" },
+            { name: "Reliance", marketShare: "~0.08%", status: "NOT STARTED", details: "Pending implementation" },
+            { name: "Delta Dental CO", marketShare: "Part of Delta?", status: "NOT STARTED", details: "Pending implementation" },
+            { name: "Delta Dental IA", marketShare: "Part of Delta?", status: "NOT STARTED", details: "Pending implementation" },
+            { name: "Delta Dental IL", marketShare: "Part of Delta?", status: "NOT STARTED", details: "Pending implementation" },
+            { name: "Delta Dental MN", marketShare: "Part of Delta?", status: "NOT STARTED", details: "Pending implementation" },
+            { name: "Delta Dental MO", marketShare: "Part of Delta?", status: "NOT STARTED", details: "Pending implementation" },
+            { name: "Loomis Group", marketShare: "N/A", status: "NOT STARTED", details: "Pending implementation" }
+        ];
+
+        let payorData = [];
+
+        // Load data from localStorage or use initial data
+        function loadData() {
+            const stored = localStorage.getItem('payorData');
+            if (stored) {
+                payorData = JSON.parse(stored);
+            } else {
+                payorData = [...initialData];
+            }
+            renderTable();
+            updateStats();
+        }
+
+        // Render table
+        function renderTable() {
+            const tbody = document.getElementById('tableBody');
+            tbody.innerHTML = '';
+
+            payorData.forEach((payor, index) => {
+                const row = tbody.insertRow();
+
+                // Payor Name
+                const nameCell = row.insertCell();
+                nameCell.className = 'editable';
+                nameCell.contentEditable = true;
+                nameCell.textContent = payor.name;
+                nameCell.onblur = () => updateCell(index, 'name', nameCell.textContent);
+
+                // Market Share
+                const shareCell = row.insertCell();
+                shareCell.className = 'editable market-share';
+                shareCell.contentEditable = true;
+                shareCell.textContent = payor.marketShare;
+                shareCell.onblur = () => updateCell(index, 'marketShare', shareCell.textContent);
+
+                // Status
+                const statusCell = row.insertCell();
+                const statusSpan = document.createElement('span');
+                statusSpan.className = `status ${getStatusClass(payor.status)}`;
+                statusSpan.textContent = payor.status;
+                statusSpan.contentEditable = true;
+                statusSpan.onblur = () => updateCell(index, 'status', statusSpan.textContent);
+                statusCell.appendChild(statusSpan);
+
+            });
+
+            document.getElementById('lastUpdate').textContent = new Date().toLocaleString();
+        }
+
+        // Get status class for styling
+        function getStatusClass(status) {
+            const normalized = (status || '').toUpperCase();
+            if (normalized.includes('READY WITH API') || normalized.includes('DONE')) return 'done';
+            if (normalized.includes('COVERED BY')) return 'done';
+            if (normalized.includes('READY WITH HTML SCRAPING')) return 'ready-html';
+            if (normalized.includes('PARTIAL')) return 'partial';
+            if (normalized.includes('PROGRESS')) return 'progress';
+            if (normalized.includes('NOT A PRIORITY')) return 'not-priority';
+            return 'not-started';
+        }
+
+        // Update cell data
+        function updateCell(index, field, value) {
+            payorData[index][field] = value;
+            if (field === 'status') {
+                renderTable();
+            }
+            updateStats();
+        }
+
+        // Update statistics
+        function updateStats() {
+            const total = payorData.length;
+            const completed = payorData.filter(p => p.status === 'READY WITH API' || p.status === 'READY WITH HTML SCRAPING' || p.status === 'DONE' || p.status === 'COVERED BY DNOA').length;
+            const notStarted = payorData.filter(p => p.status === 'NOT STARTED' || p.status.includes('NOT A PRIORITY')).length;
+
+            document.getElementById('total-payors').textContent = total;
+            document.getElementById('completed').textContent = completed;
+            document.getElementById('not-started').textContent = notStarted;
+
+            // Calculate market coverage (READY WITH API, READY WITH HTML SCRAPING, DONE, and COVERED BY DNOA status)
+            let coverage = 0;
+            payorData.forEach(p => {
+                if (p.status === 'READY WITH API' || p.status === 'READY WITH HTML SCRAPING' || p.status === 'DONE' || p.status === 'COVERED BY DNOA') {
+                    const share = parseFloat(p.marketShare.replace(/[~<>%]/g, '').split('-')[0]) || 0;
+                    coverage += share;
+                }
+            });
+            document.getElementById('market-coverage').textContent = Math.round(coverage) + '%';
+        }
+
+        // Save data to localStorage
+        function saveData() {
+            localStorage.setItem('payorData', JSON.stringify(payorData));
+            alert('✅ Changes saved successfully!');
+        }
+
+        // Export to CSV
+        function exportCSV() {
+            let csv = 'Payor Name,Market Share,Status,Extraction Details\n';
+            payorData.forEach(payor => {
+                csv += `"${payor.name}","${payor.marketShare}","${payor.status}","${payor.details}"\n`;
+            });
+
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'payor_extraction_dashboard.csv';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+        }
+
+        // Reset to default data
+        function resetData() {
+            if (confirm('Are you sure you want to reset to default data? All changes will be lost.')) {
+                localStorage.removeItem('payorData');
+                loadData();
+            }
+        }
+
+        // Filter table
+        function filterTable() {
+            const searchValue = document.getElementById('search').value.toLowerCase();
+            const rows = document.getElementById('tableBody').getElementsByTagName('tr');
+
+            for (let i = 0; i < rows.length; i++) {
+                const row = rows[i];
+                const text = row.textContent.toLowerCase();
+                row.style.display = text.includes(searchValue) ? '' : 'none';
+            }
+        }
+
+        // Sort table
+        let sortDirection = {};
+        function sortTable(column) {
+            const dir = sortDirection[column] === 'asc' ? 'desc' : 'asc';
+            sortDirection[column] = dir;
+
+            const fields = ['name', 'marketShare', 'status'];
+            const field = fields[column];
+
+            payorData.sort((a, b) => {
+                let aVal = a[field] || '';
+                let bVal = b[field] || '';
+
+                if (column === 1) { // Market share - sort numerically
+                    aVal = parseFloat(aVal.replace(/[~<>%]/g, '').split('-')[0]) || 0;
+                    bVal = parseFloat(bVal.replace(/[~<>%]/g, '').split('-')[0]) || 0;
+                }
+
+                if (dir === 'asc') {
+                    return aVal > bVal ? 1 : -1;
+                } else {
+                    return aVal < bVal ? 1 : -1;
+                }
+            });
+
+            renderTable();
+        }
+
+        // Initialize
+        loadData();
+    </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+        if (navigator.appName == 'Netscape') 
+	   {
+			window.captureEvents(Event.KEYPRESS);
+			window.onKeyPress = netscapeKeyPress;
+ 	   }
+				
+	function netscapeKeyPress(e) 
+	  {
+	      if (e.which == 13) 
+		{
+		document.forms[0].SubmitForm.focus();
+		document.forms[0].SubmitForm.click();
+		}
+	  }
+		
+	function microsoftKeyPress() 
+	  {				
+               if (window.event.keyCode == 13) 
+		 {  
+		 document.forms[0].SubmitForm.click(); 
+	   	 return true;
+		 } 	 		
+	  }
+		 
+	function alert_submit_SSN() 
+	  {
+    		var regExp = new RegExp("#linkMarker");
+         	var linkNum;
+        	for (ctr=0; ctr<document.links.length; ctr++) {
+      		 if (regExp.test(document.links[ctr].href)) {
+      			linkNum = ctr - 1;
+      		 }
+        	}
+        	var hrefSplit = unescape(document.links[linkNum].href).split(/script:/);
+        	eval(hrefSplit[1]);
+	        return true;
+          }	
+	
+	function init()
+          {        
+               document.forms['FormName'].InputID.focus();
+          }  	 
+	
+	

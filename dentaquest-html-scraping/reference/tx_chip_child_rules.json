@@ -1,0 +1,237 @@
+{
+  "state": "TX",
+  "payer": "CHIP",
+  "program": "CHIP_Child_Under19",
+  "meta": {
+    "title": "DentaQuest TX HHSC Medicaid and CHIP Provider Manual",
+    "edition": "Version 9.4 – 1er mars 2025",
+    "section": "Exhibit B – Benefits Covered for TX CHIP (Child Under 19)",
+    "source_url": "https://www.dentaquest.com/texas",
+    "retrieved": "2025-10"
+  },
+  "coverage": {
+    "member_cost_share": {
+      "copay_levels": {
+        "Copay_5": {
+          "income_range": "≤151% FPL",
+          "office_visit": 5,
+          "notes": "Co-paiement de 5 $ par visite non préventive."
+        },
+        "Copay_20": {
+          "income_range": "151–186% FPL",
+          "office_visit": 20,
+          "notes": "Le plan applique 20 $ par visite non préventive."
+        },
+        "Copay_25": {
+          "income_range": "186–201% FPL",
+          "office_visit": 25,
+          "notes": "Le plan applique 25 $ par visite non préventive."
+        }
+      },
+      "coinsurance": 0,
+      "notes": "Le co-paiement est retenu sur le paiement du claim ; le cabinet doit percevoir le reste auprès du patient."
+    },
+    "annual_maximum": 564,
+    "annual_maximum_notes": "Limite annuelle de 564 $ pour les services couverts. Au-delà : seuls les actes diagnostiques/préventifs selon la périodicité AAPD 2009 et les actes jugés médicalement nécessaires via PA sont couverts.",
+    "deductible": 0,
+    "coverage_percentages": {
+      "preventive": 100,
+      "basic": 100,
+      "major": 100
+    },
+    "waiting_periods": {
+      "preventive": null,
+      "basic": null,
+      "major": null,
+      "notes": "Aucun délai de carence signalé."
+    },
+    "missing_tooth_clause": false,
+    "coordination_of_benefits": {
+      "required": true,
+      "notes": "Soumettre l’EOB du payeur primaire ; si le paiement primaire ≥ tarif CHIP, aucun complément n’est versé."
+    }
+  },
+  "special_notes": {
+    "annual_limit_exception": "Lorsque le plafond de 564 $ est atteint, seuls les actes préventifs périodiques et les traitements urgents approuvés via PA (douleur, infection, traumatismes, fonctions de base) restent couverts.",
+    "plan_termination": "Les soins en cours s’arrêtent à la date de désinscription."
+  },
+  "procedures": {
+    "D0120": {
+      "frequency": "1 tous les 6 mois par cabinet ou site",
+      "age_range": "0-18",
+      "limitations": "Refusé si facturé le même jour que D0120, D0140, D0145, D0150, D0160, D0170, D0180 par le même prestataire. Doit être accompagné d’un code de risque carieux D0601/D0602/D0603.",
+      "source": "Exhibit B, p.196"
+    },
+    "D0140": {
+      "frequency": "1 par jour par cabinet (max 2/jour tout prestataire)",
+      "age_range": "0-18",
+      "limitations": "Réservé aux urgences (douleur, infection, saignement, traumatisme). Non cumulable avec les actes de routine. Commentaire d’urgence requis.",
+      "source": "Exhibit B, p.197"
+    },
+    "D0145": {
+      "frequency": "max 10 actes à vie, espacement ≥60 jours",
+      "age_range": "0-2",
+      "limitations": "Prestataire certifié First Dental Home uniquement. Non facturable dans les 6 mois d’un D0120 ou D0150.",
+      "source": "Exhibit B, p.197"
+    },
+    "D0150": {
+      "frequency": "1 tous les 3 ans par cabinet",
+      "age_range": "0-18",
+      "limitations": "Partage la fenêtre de 6 mois avec D0120 ; nécessite D0601/D0602/D0603.",
+      "source": "Exhibit B, p.197"
+    },
+    "D0180": {
+      "frequency": "1 par jour",
+      "age_range": "13-20",
+      "limitations": "Documentation médicale exigée ; incompatible le même jour avec D0120/D0140/D0145/D0150/D0160/D0170.",
+      "source": "Exhibit B, p.197"
+    },
+    "D0210": {
+      "frequency": "1 tous les 3 ans (avec D0330)",
+      "age_range": "6-18",
+      "source": "Exhibit B, p.198"
+    },
+    "D0274": {
+      "frequency": "1 par jour (limite pratique 2/an)",
+      "age_range": "10-18",
+      "source": "Exhibit B, p.198"
+    },
+    "D0277": {
+      "frequency": "1 par jour",
+      "age_range": "2-20",
+      "source": "Exhibit B, p.198"
+    },
+    "D0330": {
+      "frequency": "1 tous les 5 ans (liés à D0210)",
+      "age_range": "6-18",
+      "source": "Exhibit B, p.198"
+    },
+    "D0367": {
+      "frequency": "max 3 scans/an",
+      "age_range": "0-20",
+      "limitations": "Autorisation et narration médicale requises.",
+      "source": "Exhibit B, p.198"
+    },
+    "D1110": {
+      "frequency": "1 tous les 6 mois",
+      "age_range": "13-18",
+      "limitations": "Non payable le même jour qu’un acte D4000 ; refusé si acte d’urgence facturé.",
+      "source": "Exhibit B, p.199"
+    },
+    "D1120": {
+      "frequency": "1 tous les 6 mois",
+      "age_range": "0-12",
+      "limitations": "Même règles que D1110. Version FDH 60 jours (si D0145).",
+      "source": "Exhibit B, p.199"
+    },
+    "D1206": {
+      "frequency": "1 tous les 6 mois",
+      "age_range": "0-20",
+      "limitations": "Refusé le même jour qu’un acte D4000.",
+      "source": "Exhibit B, p.199"
+    },
+    "D1208": {
+      "frequency": "1 tous les 6 mois",
+      "age_range": "0-20",
+      "limitations": "Non payable le même jour que D0145 ou un code D4000.",
+      "source": "Exhibit B, p.199"
+    },
+    "D1351": {
+      "frequency": "1 par dent à vie",
+      "age_range": "0-18",
+      "limitations": "Exclut les spécialités ortho/OMFS ; refusé le même jour qu’un acte D4000.",
+      "source": "Exhibit B, p.200"
+    },
+    "D1352": {
+      "frequency": "1 par dent à vie",
+      "age_range": "15-20",
+      "limitations": "Nécessite un risque carieux modéré/élevé (D0602/D0603 <180 jours). Rev. préalable.",
+      "source": "Exhibit B, p.200"
+    },
+    "D2140-D2161": {
+      "frequency": "1 restauration/ dent / an (codes amalgames et composites)",
+      "age_range": "0-18",
+      "source": "Exhibit B, p.201-204"
+    },
+    "D2330-D2335": {
+      "frequency": "1 restauration/ dent / an",
+      "age_range": "0-18",
+      "source": "Exhibit B, p.201-204"
+    },
+    "D2391-D2394": {
+      "frequency": "1 restauration/ dent / an",
+      "age_range": "0-18",
+      "source": "Exhibit B, p.201-204"
+    },
+    "D2950": {
+      "frequency": "1 par dent et par an",
+      "age_range": "4-18",
+      "limitations": "Déductible si couronne posée <6 mois ; non payable sur dent primaire.",
+      "source": "Exhibit B, p.205"
+    },
+    "D3310-D3330": {
+      "frequency": "1 traitement canalaire par dent",
+      "age_range": "6-18",
+      "limitations": "Radiographies et PA exigées selon le manuel.",
+      "source": "Exhibit B, p.205-206"
+    },
+    "D3346-D3348": {
+      "frequency": "1 retraitement par dent",
+      "age_range": "6-18",
+      "source": "Exhibit B, p.206"
+    },
+    "D3220": {
+      "frequency": "1 pulpotomie par dent",
+      "age_range": "0-18",
+      "source": "Exhibit B, p.205"
+    },
+    "D3221": {
+      "frequency": "1 débridement pulpaire par dent",
+      "age_range": "0-18",
+      "source": "Exhibit B, p.205"
+    },
+    "D3410-D3425": {
+      "frequency": "1 apicoectomie par racine (PA)",
+      "age_range": "6-18",
+      "source": "Exhibit B, p.207"
+    },
+    "D4341-D4342": {
+      "frequency": "Sur autorisation ; refus si autre acte D4000 le même jour",
+      "age_range": "13-20",
+      "source": "Exhibit B, p.207-208"
+    },
+    "D4910": {
+      "frequency": "2 actes/an (partage limite avec D1110)",
+      "age_range": "13-20",
+      "source": "Exhibit B, p.208"
+    },
+    "D7210": {
+      "frequency": "Selon besoin",
+      "age_range": "1-18",
+      "limitations": "PA avec radiographie et narration médicale.",
+      "source": "Exhibit B, p.210"
+    },
+    "D9230": {
+      "frequency": "1 par jour",
+      "age_range": "1-20",
+      "limitations": "Non cumulable avec D9222/D9223/D9239/D9243/D9248.",
+      "source": "Exhibit B, p.213"
+    },
+    "D9222-D9223": {
+      "frequency": "Bloc principal (1x par 6 mois) + incréments (limite 3 h/jour)",
+      "age_range": "13-20",
+      "source": "Exhibit B, p.213"
+    },
+    "D9239-D9243": {
+      "frequency": "IV sédation : 15 min initiaux + incréments (max 1h30/jour)",
+      "age_range": "13-20",
+      "source": "Exhibit B, p.213"
+    },
+    "D9248": {
+      "frequency": "2 actes/an",
+      "age_range": "13-20",
+      "limitations": "Autorisation requise ; incompatible avec D9222/D9223/D9230/D9239/D9243.",
+      "source": "Exhibit B, p.213"
+    }
+  }
+}

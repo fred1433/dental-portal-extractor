@@ -1,0 +1,97 @@
+{
+  "endpoint": "/api/dot-gateway/v1/benefit/memberbenefits/routineprocedures/search",
+  "method": "POST",
+  "payload": {
+    "clientId": "051054",
+    "benefitProgramOid": "MTE1MDkwOTI5ODRBRjc4Mjg3NDhGRTlBM0RDQUI3OTg0RjI1M0EzQzU4ODhBNA==",
+    "subClientId": "0001",
+    "memberBirthDate": "1978-12-16T00:12:00-03:00",
+    "memberPersonId": "MTU1Nzk3OTE5QTQ0RjYxQUVEOTBEMzc2RkI4NUE0ODAxQzA0NTBFQ0JENzk4MDU1",
+    "planAcronym": "DDMN",
+    "relationshipToSubscriber": "Subscriber",
+    "memberBenefitType": null,
+    "subscriberPersonId": "MTU1Nzk3OTE5QTQ0RjYxQUVEOTBEMzc2RkI4NUE0ODAxQzA0NTBFQ0JENzk4MDU1"
+  },
+  "response": [
+    {
+      "routineProcedures": [
+        {
+          "description": "Exam",
+          "procedureCode": "D0120",
+          "isCovered": true,
+          "serviceDates": [],
+          "benefitPercentage": 100,
+          "numberOfRemainingRadiographs": null
+        },
+        {
+          "description": "Adult Cleaning",
+          "procedureCode": "D1110",
+          "isCovered": false,
+          "serviceDates": [
+            "08/11/2025",
+            "03/31/2025"
+          ],
+          "benefitPercentage": 100,
+          "numberOfRemainingRadiographs": null
+        },
+        {
+          "description": "Child Cleaning",
+          "procedureCode": "D1120",
+          "isCovered": false,
+          "serviceDates": [
+            "08/11/2025",
+            "03/31/2025"
+          ],
+          "benefitPercentage": 100,
+          "numberOfRemainingRadiographs": null
+        },
+        {
+          "description": "Perio Maintenance Cleaning",
+          "procedureCode": "D4910",
+          "isCovered": true,
+          "serviceDates": [],
+          "benefitPercentage": 100,
+          "numberOfRemainingRadiographs": null
+        },
+        {
+          "description": "Bitewings",
+          "procedureCode": "D0272",
+          "isCovered": true,
+          "serviceDates": [],
+          "benefitPercentage": 100,
+          "numberOfRemainingRadiographs": null
+        },
+        {
+          "description": "Full Mouth X-rays",
+          "procedureCode": "D0210",
+          "isCovered": true,
+          "serviceDates": [],
+          "benefitPercentage": 100,
+          "numberOfRemainingRadiographs": null
+        },
+        {
+          "description": "Fluoride",
+          "procedureCode": "D1208",
+          "isCovered": false,
+          "serviceDates": [],
+          "benefitPercentage": 100,
+          "numberOfRemainingRadiographs": null
+        },
+        {
+          "description": "Occlusal Guard",
+          "procedureCode": "D9944",
+          "isCovered": true,
+          "serviceDates": [],
+          "benefitPercentage": 60,
+          "numberOfRemainingRadiographs": null
+        }
+      ],
+      "networks": [
+        "Wells Fargo OnSite Clinic",
+        "PPO Dentist",
+        "Premier Dentist",
+        "MN Non-NPF Non Par Dentist"
+      ]
+    }
+  ]
+}

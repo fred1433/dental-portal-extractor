@@ -1,0 +1,38 @@
+{
+  "name": "dental-portal-extractor",
+  "version": "1.0.0",
+  "description": "Web interface for dental portal data extraction (DNOA, DentaQuest, MetLife)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "API_KEY=demo2024secure nodemon server.js",
+    "dev:watch": "API_KEY=demo2024secure nodemon server.js",
+    "build": "tsc && cp dist/public/app.js public/app.js && if [ -d dist/public/mapping ]; then rm -rf public/mapping && cp -R dist/public/mapping public/; fi",
+    "build:watch": "tsc --watch",
+    "prebuild": "rm -rf dist",
+    "postinstall": "cd dot-extractor && npm install && npm run build",
+    "ddins:login": "node ddins/auto-login.js",
+    "ddins:doctor": "node ddins/doctor.js"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.24.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "node-cron": "^4.2.1",
+    "playwright": "^1.55.0",
+    "sqlite3": "^5.1.7",
+    "typescript": "^5.9.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.3",
+    "@types/node": "^24.3.2",
+    "jsdom": "^27.0.0",
+    "nodemon": "^3.1.10",
+    "ts-node": "^10.9.2"
+  }
+}

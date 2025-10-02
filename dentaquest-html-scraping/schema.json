@@ -1,0 +1,306 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "DentaQuest Patient Extraction Schema",
+  "description": "Structure complète des données retournées par l'extraction DentaQuest (Playwright).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "patient",
+    "extractionDate",
+    "portal"
+  ],
+  "properties": {
+    "patient": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["firstName", "lastName", "subscriberId", "dateOfBirth"],
+      "properties": {
+        "firstName": { "type": "string" },
+        "lastName": { "type": "string" },
+        "subscriberId": { "type": "string" },
+        "dateOfBirth": { "type": "string", "pattern": "^\\d{2}/\\d{2}/\\d{4}$" },
+        "name": { "type": "string" },
+        "relationship": { "type": "string" },
+        "dob": { "type": "string", "pattern": "^\\d{2}/\\d{2}/\\d{4}$" },
+        "gender": { "type": "string" },
+        "primaryAddress": { "type": "string" },
+        "workPhone": { "type": "string" },
+        "faxNumber": { "type": "string" },
+        "primaryHomePhone": { "type": "string" },
+        "plan": { "type": "string" },
+        "issuedId": { "type": "string" },
+        "eligibilityStatus": { "type": "string" }
+      }
+    },
+    "patientComplete": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "Name": { "type": "string" },
+        "Relationship": { "type": "string" },
+        "DOB": { "type": "string" },
+        "Gender": { "type": "string" },
+        "Primary Address": { "type": "string" },
+        "Work Phone": { "type": "string" },
+        "Fax Number": { "type": "string" },
+        "Primary Home Phone": { "type": "string" },
+        "Provider": { "type": "string" },
+        "Office": { "type": "string" },
+        "Service Location": { "type": "string" },
+        "Provider Effective Date": { "type": "string" },
+        "Provider Termination Date": { "type": "string" },
+        "eligibilityStatus": { "type": "string" },
+        "plan": { "type": "string" },
+        "issuedId": { "type": "string" },
+        "primaryCareProvider": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "Provider": { "type": "string" },
+            "Office": { "type": "string" },
+            "Service Location": { "type": "string" },
+            "Provider Effective Date": { "type": "string" },
+            "Provider Termination Date": { "type": "string" }
+          }
+        },
+        "otherCoverage": { "type": "string" }
+      }
+    },
+    "extractionDate": { "type": "string", "format": "date-time" },
+    "portal": { "type": "string", "const": "DentaQuest" },
+    "serviceHistory": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "date": { "type": "string" },
+          "code": { "type": "string", "pattern": "^D\\d{4}$" },
+          "description": { "type": "string" },
+          "toothSurface": { "type": "string" },
+          "placeOfService": { "type": "string" }
+        }
+      }
+    },
+    "eligibilityHistory": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "Benefit Plan": { "type": "string" },
+          "Member Number": { "type": "string" },
+          "Client Name": { "type": "string" },
+          "Client Number": { "type": "string" },
+          "Benefit Effective Date": { "type": "string" },
+          "Termination Date": { "type": "string" }
+        }
+      }
+    },
+    "claims": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "number": { "type": "string" },
+          "serviceDate": { "type": "string" },
+          "provider": { "type": "string" },
+          "location": { "type": "string" },
+          "status": { "type": "string" },
+          "billed": { "type": "number" },
+          "paid": { "type": "number" }
+        }
+      }
+    },
+    "claimsDetails": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "claimNumber": { "type": "string" },
+          "memberName": { "type": "string" },
+          "memberDOB": { "type": "string" },
+          "memberNumber": { "type": "string" },
+          "plan": { "type": "string" },
+          "provider": { "type": "string" },
+          "serviceLocation": { "type": "string" },
+          "business": { "type": "string" },
+          "placeOfService": { "type": "string" },
+          "officeReferenceNumber": { "type": "string" },
+          "referralNumber": { "type": ["string", "null"] },
+          "icdPrimary": { "type": ["string", "null"] },
+          "icdSecondary": { "type": ["string", "null"] },
+          "icdThird": { "type": ["string", "null"] },
+          "icdFourth": { "type": ["string", "null"] },
+          "totalBilled": { "type": "number" },
+          "totalPatientPay": { "type": "number" },
+          "payment": { "type": "number" },
+          "paymentDate": { "type": "string" },
+          "checkETFNumber": { "type": "string" },
+          "receivedDate": { "type": "string" },
+          "finalDecisionDate": { "type": "string" },
+          "notes": { "type": "string" },
+          "services": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "date": { "type": "string" },
+                "procedureCode": { "type": "string" },
+                "paidProcedureCode": { "type": "string" },
+                "tooth": { "type": "string" },
+                "quantity": { "type": "string" },
+                "status": { "type": "string" },
+                "processingPolicies": { "type": "string" },
+                "billed": { "type": "string" },
+                "patientPay": { "type": "string" },
+                "paid": { "type": "string" },
+                "icdCodes": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "overview": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "raw": { "type": "string" },
+        "structured": {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "Name": { "type": "string" },
+            "Relationship": { "type": "string" },
+            "DOB": { "type": "string" },
+            "Gender": { "type": "string" },
+            "Primary Address": { "type": "string" },
+            "Work Phone": { "type": "string" },
+            "Fax Number": { "type": "string" },
+            "Primary Home Phone": { "type": "string" },
+            "Provider": { "type": "string" },
+            "Office": { "type": "string" },
+            "Service Location": { "type": "string" },
+            "Provider Effective Date": { "type": "string" },
+            "Provider Termination Date": { "type": "string" },
+            "eligibilityStatus": { "type": "string" },
+            "plan": { "type": "string" },
+            "issuedId": { "type": "string" }
+          }
+        },
+        "primaryCareProvider": {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "Provider": { "type": "string" },
+            "Office": { "type": "string" },
+            "Service Location": { "type": "string" },
+            "Provider Effective Date": { "type": "string" },
+            "Provider Termination Date": { "type": "string" }
+          }
+        },
+        "otherCoverage": { "type": "string" },
+        "extractionMethod": { "type": "string" }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "totalBilled": { "type": "number" },
+        "totalPaid": { "type": "number" },
+        "patientResponsibility": { "type": ["number", "integer"] },
+        "isEligible": { "type": "boolean" },
+        "patientName": { "type": "string" },
+        "memberId": { "type": "string" },
+        "totalClaims": { "type": "integer" },
+        "totalServices": { "type": "integer" },
+        "cdtCodes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": true,
+            "properties": {
+              "code": { "type": "string" },
+              "description": { "type": "string" },
+              "date": { "type": "string" },
+              "provider": { "type": "string" },
+              "billed": { "type": "string" }
+            }
+          }
+        },
+        "totalCDTCodes": { "type": "integer" },
+        "coverageEndDate": { "type": "string" }
+      }
+    },
+    "htmlSamples": {
+      "type": "object",
+      "description": "Copies HTML des sections extraites.",
+      "additionalProperties": { "type": "string" }
+    },
+    "pageStructures": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "forms": {
+            "type": "array",
+            "items": { "type": "object", "additionalProperties": true }
+          },
+          "tables": {
+            "type": "array",
+            "items": { "type": "object", "additionalProperties": true }
+          },
+          "dataAttributes": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": true,
+              "properties": {
+                "tag": { "type": "string" },
+                "dataId": { "type": ["string", "null"] },
+                "dataKey": { "type": ["string", "null"] },
+                "dataLabel": { "type": ["string", "null"] },
+                "dataValue": { "type": ["string", "null"] },
+                "text": { "type": "string" }
+              }
+            }
+          },
+          "lightningComponents": {
+            "type": "array",
+            "items": { "type": "object", "additionalProperties": true }
+          },
+          "patterns": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": true,
+                "properties": {
+                  "tag": { "type": "string" },
+                  "className": { "type": "string" },
+                  "id": { "type": "string" },
+                  "text": { "type": "string" }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "extractionMethods": {
+      "type": "object",
+      "additionalProperties": { "type": ["string", "null"] }
+    },
+    "intelligentExtraction": {
+      "type": "object",
+      "description": "Résultats optionnels produits par l'extraction intelligente.",
+      "additionalProperties": true
+    }
+  }
+}

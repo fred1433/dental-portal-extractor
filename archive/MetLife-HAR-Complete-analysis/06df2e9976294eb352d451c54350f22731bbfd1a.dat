@@ -1,0 +1,59 @@
+var brow = (navigator.appName.indexOf('N') !== -1) ? 'N' : 'IE';
+
+    /*
+     * Method name - getDocObj()
+	 *
+     * This function returns the text string that points out the correct 
+     * document object of an element, depending on which browser is in use. 
+     *
+     * @param elem -- Id of the element in question
+     * @param parent -- Id of the parent element if the element is nested.
+	 *
+     * @return String containing the correct document object of an element
+     */
+
+	function getDocObj(elem,parent) {
+	
+	
+		if (document.layers) {
+		
+			if (parent) {
+				return "document."+parent+".document."+elem;
+			} else {
+				return "document."+elem;
+			}
+            
+		} else if (document.all) {
+		
+			return "document.all."+ elem;
+		} else if (document.getElementById) {
+		
+			//return "document.getElementById('"+elem+"')";
+			return "document."+elem;
+		}
+		
+	} // End getDocObj()
+
+    
+		    
+	function submit(fwdName, formName)
+    {
+   		
+    	frmObj =  eval(getDocObj(formName));
+    	
+    	    	
+    	if(typeof(frmObj) == "undefined" || frmObj  == null){
+				alert("Form Name '" + formName + "' is invalid!");
+				return;
+			}
+    	
+    	frmObj.action = "execute/Content";
+    	
+    	frmObj.method = 'POST';
+    	    	
+    	frmObj.fwdName.value = fwdName;
+    	    	
+    	frmObj.submit();
+    	    	
+        
+    } // submitPage()

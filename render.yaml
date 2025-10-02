@@ -1,0 +1,45 @@
+services:
+  - type: web
+    name: dental-insurance-verification
+    env: docker
+    dockerfilePath: ./Dockerfile
+    repo: https://github.com/fred1433/dnoa-portal-web
+    branch: master
+    envVars:
+      # Portal Credentials (set in Render dashboard - KEEP SECRET)
+      - key: DNOA_USERNAME
+        sync: false
+      - key: DNOA_PASSWORD
+        sync: false
+      - key: DDINS_USERNAME
+        sync: false
+      - key: DDINS_PASSWORD
+        sync: false
+      - key: DENTAQUEST_USERNAME
+        sync: false
+      - key: DENTAQUEST_PASSWORD
+        sync: false
+      - key: METLIFE_USERNAME
+        sync: false
+      - key: METLIFE_PASSWORD
+        sync: false
+      - key: CIGNA_USERNAME
+        sync: false
+      - key: CIGNA_PASSWORD
+        sync: false
+
+      # Gemini API (set in Render dashboard - KEEP SECRET)
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GEMINI_MODEL_SMART
+        value: gemini-2.5-flash
+      - key: GEMINI_MODEL_FAST
+        value: gemini-2.5-flash-lite
+
+      # App Config
+      - key: API_KEY
+        value: demo2024secure
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000

@@ -1,0 +1,1494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dental Insurance Verification Form</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #f9fafb;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            overflow: hidden;
+        }
+
+        .header {
+            background: white;
+            border-bottom: 1px solid #e5e7eb;
+            color: #1f2937;
+            padding: 30px;
+            text-align: center;
+        }
+        .header h1 { font-size: 28px; margin-bottom: 10px; }
+        .header p { opacity: 0.9; font-size: 14px; }
+
+        .form-content { padding: 30px; }
+
+        .section {
+            margin-bottom: 30px;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .section-header {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 15px 20px;
+            font-weight: 600;
+            color: #333;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        .section-header:hover { background: linear-gradient(135deg, #e8ecf3 0%, #b5c2db 100%); }
+        .section-header::after {
+            content: '▼';
+            font-size: 12px;
+            transition: transform 0.3s ease;
+        }
+        .section.collapsed .section-header::after { transform: rotate(-90deg); }
+
+        .section-content {
+            padding: 20px;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            overflow: hidden;
+        }
+        .section.collapsed .section-content { max-height: 0; padding: 0 20px; }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .form-group { display: flex; flex-direction: column; }
+        .form-group label {
+            font-size: 13px; color: #666; margin-bottom: 5px; font-weight: 500;
+        }
+        .form-group input, .form-group select, .form-group textarea {
+            padding: 10px; border: 1px solid #ddd; border-radius: 8px; font-size: 14px; transition: all 0.3s ease;
+        }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            outline: none; border-color: #10b981; box-shadow: 0 0 0 3px rgba(102,126,234,0.1);
+        }
+
+        /* Filled/empty visual states (conservés au cas où le mapping les utilise) */
+        .field-filled { position: relative; background: linear-gradient(90deg, #f0fdf4 0%, transparent 100%); border-radius: 8px; padding: 8px; margin: -8px; }
+        .field-filled input, .field-filled select, .field-filled textarea { border-color: #10b981; background: white; font-weight: 500; color: #059669; }
+        .field-filled label { color: #059669; font-weight: 600; }
+        .field-empty input, .field-empty select, .field-empty textarea { border-color: #e5e7eb; background: #fafafa; }
+
+        .fill-indicator {
+            display: inline-block; background: #10b981; color: white; width: 18px; height: 18px;
+            line-height: 18px; border-radius: 50%; font-size: 11px; text-align: center; margin-left: 6px; font-weight: bold;
+            animation: bounceIn 0.5s ease;
+        }
+        @keyframes bounceIn {
+            0% { transform: scale(0); opacity: 0; }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        @keyframes fieldFilledPulse {
+            0% { box-shadow: 0 0 0 0 rgba(34,197,94,0.4); }
+            50% { box-shadow: 0 0 0 10px rgba(34,197,94,0); }
+            100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); }
+        }
+
+        .fill-status-summary {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border: 1px solid #10b981; border-radius: 8px; padding: 12px 20px; margin-bottom: 20px;
+            display: flex; align-items: center; gap: 15px;
+        }
+        .fill-status-summary .status-icon { font-size: 24px; }
+        .fill-status-summary .status-text { flex: 1; font-weight: 500; color: #059669; }
+        .fill-status-summary .status-count {
+            background: #10b981; color: white; padding: 4px 12px; border-radius: 20px; font-size: 13px; font-weight: 600;
+        }
+
+        .procedure-table { overflow-x: auto; margin-top: 15px; }
+        table { width: 100%; border-collapse: collapse; }
+        th {
+            background: #f8f9fa; padding: 12px; text-align: left; font-size: 13px; font-weight: 600; color: #555; border-bottom: 2px solid #e0e0e0;
+        }
+        td { padding: 10px 12px; border-bottom: 1px solid #f0f0f0; font-size: 13px; }
+        tr:hover { background: #fafbfc; }
+        td input, td select { width: 100%; padding: 6px; border: 1px solid #e0e0e0; border-radius: 4px; font-size: 13px; }
+        .procedure-code { font-weight: 600; color: #10b981; }
+
+        .radio-group { display: flex; gap: 15px; }
+        .radio-group label { display: flex; align-items: center; gap: 5px; cursor: pointer; font-size: 14px; }
+        .radio-group input[type="radio"] { cursor: pointer; }
+
+        .action-buttons {
+            display: flex; gap: 15px; justify-content: center; padding: 30px; background: #f8f9fa;
+        }
+        .btn { padding: 12px 30px; border: none; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; }
+        .btn-primary { background: #10b981; color: white; }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(102,126,234,0.3); }
+        .btn-secondary { background: white; color: #10b981; border: 2px solid #10b981; }
+        .btn-secondary:hover { background: #f0f3ff; }
+
+        @media (max-width: 768px) {
+            .form-grid { grid-template-columns: 1fr; }
+            .container { border-radius: 0; }
+            .procedure-table { font-size: 12px; }
+            th, td { padding: 8px; }
+        }
+
+        .date-input { max-width: 150px; }
+        .percent-input { max-width: 80px; }
+
+        /* Special Notes styles */
+        .special-notes-table { overflow-x: auto; margin-top: 20px; }
+        .special-notes-table table { width: 100%; }
+        .special-notes-table th { width: 50%; }
+        .special-notes-table .radio-options { display: flex; gap: 10px; align-items: center; }
+        .special-notes-table .radio-options label { display: flex; align-items: center; gap: 5px; cursor: pointer; }
+        .special-notes-table input[type="text"] { width: 100%; max-width: 200px; }
+
+        /* Style for radio buttons with extracted values */
+        input[type="radio"].has-extracted-value:checked {
+            accent-color: #34d872;
+        }
+        /* Add visual indicator for the label containing extracted radio button */
+        .radio-options label:has(input.has-extracted-value:checked) {
+            color: #059669;
+            font-weight: 600;
+        }
+
+        /* ===== Print/PDF Export Styles ===== */
+        @page { size: auto; margin: 14mm; }
+
+        @media print {
+            /* --- Géométrie & look global --- */
+            body {
+                background: #fff !important;
+                line-height: 1.2;
+            }
+            .container {
+                box-shadow: none !important;
+                border-radius: 0 !important;
+            }
+            .header, .section-header {
+                background: none !important;
+                color: #000 !important;
+            }
+
+            /* --- Réduction d'espaces --- */
+            .header { padding: 8pt 10pt; }
+            .header h1 { font-size: 16pt; margin-bottom: 2pt; }
+            .header p  { font-size: 9pt;  margin: 0; }
+
+            .section {
+                /* Autoriser la coupure des sections pour éviter les pages trop "aérées" */
+                break-inside: auto;
+                page-break-inside: auto;
+                margin-bottom: 8pt;
+                border: 1px solid #e6e6e6;
+            }
+            .section-coverage {
+                break-before: page;
+                page-break-before: always;
+                margin-top: 0;
+            }
+            .section-header {
+                font-weight: 700;
+                padding: 6pt 8pt;
+                border-bottom: 1px solid #eee;
+            }
+            .section-header::after { display: none !important; }
+            .section-content {
+                padding: 6pt 8pt;
+                max-height: none !important;  /* Keep this from original */
+            }
+
+            /* --- Grilles de formulaire : 3 colonnes stables en impression --- */
+            .form-grid {
+                display: grid !important;
+                grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+                column-gap: 8pt;
+                row-gap: 6pt;
+                align-items: start;
+            }
+
+            /* --- Champs et labels compacts mais lisibles --- */
+            .form-group label {
+                font-size: 9pt;
+                margin-bottom: 2pt;
+                color: #000;
+                font-weight: 600;
+            }
+            .form-group input,
+            .form-group select,
+            .form-group textarea {
+                font-size: 9pt;
+                padding: 0 !important;      /* élimine le sur-padding des navigateurs */
+                margin: 0;
+                border: none !important;
+                background: transparent !important;
+                box-shadow: none !important;
+            }
+
+            /* Conserver la visibilité des radios/checkboxes en print */
+            input[type="radio"],
+            input[type="checkbox"] {
+                appearance: auto !important;
+                -webkit-appearance: auto !important;
+                transform: scale(0.9);
+                margin-right: 2pt;
+            }
+
+            /* --- Tableaux plus denses --- */
+            table { width: 100%; border-collapse: collapse; }
+            th, td {
+                padding: 5pt 6pt;
+                font-size: 8.5pt;
+                border-bottom: 0.5pt solid #e0e0e0;
+                vertical-align: top;
+                text-align: left;
+            }
+            th { background: #f8f9fa; font-weight: 600; }
+            thead { display: table-header-group; }  /* Répéter l'en-tête sur chaque page */
+            tfoot { display: table-footer-group; }
+            tr   { page-break-inside: avoid; }
+
+            /* Champs dans cellules de tableau */
+            td input, td select, td textarea {
+                width: 100%;
+                font-size: 8.5pt;
+                padding: 0 !important;
+                border: none !important;
+                background: transparent !important;
+            }
+            .date-input    { max-width: 72pt !important; }   /* ~1" */
+            .percent-input { max-width: 40pt !important; }
+
+            /* Radios en lignes (table "Special Notes") */
+            .radio-options { display: flex; gap: 6pt; align-items: center; }
+            .radio-options label { font-size: 8.5pt; gap: 3pt; }
+
+            /* --- Nettoyage --- */
+            .action-buttons { display: none !important; }
+            .fill-indicator {
+                width: 10pt !important;
+                height: 10pt !important;
+                line-height: 10pt !important;
+                font-size: 7pt !important;
+                padding: 0 !important;
+                margin-left: 4pt !important;
+                border-radius: 9999px !important;
+                background: #10b981 !important;
+                color: #ffffff !important;
+                animation: none !important;
+                transform: none !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+
+        /* Read-only appearance for PDF snapshot */
+        .print-value {
+            font-size: 10pt; font-weight: 500; color: #000; padding: 2pt 0;
+            border-bottom: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🦷 Dental Insurance Verification Form</h1>
+            <p>Complete patient insurance verification and benefit breakdown</p>
+        </div>
+
+        <div class="form-content">
+            <!-- Office Information -->
+            <div class="section">
+                <div class="section-header" onclick="toggleSection(this)">Office Information</div>
+                <div class="section-content">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Practice Name</label>
+                            <input type="text" placeholder="Enter practice name" />
+                        </div>
+                        <div class="form-group">
+                            <label>Provider Name</label>
+                            <input type="text" placeholder="Enter provider name" />
+                        </div>
+                        <div class="form-group">
+                            <label>Appointment Date</label>
+                            <input type="date" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Patient & Subscriber Information -->
+            <div class="section">
+                <div class="section-header" onclick="toggleSection(this)">Patient &amp; Subscriber Information</div>
+                <div class="section-content">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Patient Name</label>
+                            <input type="text" placeholder="Enter patient name" />
+                        </div>
+                        <div class="form-group">
+                            <label>Patient DOB</label>
+                            <input type="date" />
+                        </div>
+                        <div class="form-group">
+                            <label>Subscriber/Policy Holder Name</label>
+                            <input type="text" placeholder="Enter subscriber name" />
+                        </div>
+                        <div class="form-group">
+                            <label>Subscriber/Policy Holder DOB</label>
+                            <input type="date" />
+                        </div>
+                        <div class="form-group">
+                            <label>Member ID</label>
+                            <input type="text" placeholder="Enter member ID" />
+                        </div>
+                        <div class="form-group">
+                            <label>SSN</label>
+                            <input type="text" placeholder="XXX-XX-XXXX" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Insurance / Policy Information -->
+            <div class="section">
+                <div class="section-header" onclick="toggleSection(this)">Insurance / Policy Information</div>
+                <div class="section-content">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Insurance Name</label>
+                            <input type="text" placeholder="Enter insurance name" />
+                        </div>
+                        <div class="form-group">
+                            <label>Group Name / #</label>
+                            <input type="text" placeholder="Enter group name/number" />
+                        </div>
+                        <div class="form-group">
+                            <label>COB Type</label>
+                            <select>
+                                <option>Primary</option>
+                                <option>Secondary</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input type="tel" placeholder="(XXX) XXX-XXXX" />
+                        </div>
+                        <div class="form-group">
+                            <label>Payor ID</label>
+                            <input type="text" placeholder="Enter payor ID" />
+                        </div>
+                        <div class="form-group">
+                            <label>Coordination of Benefits</label>
+                            <select>
+                                <option>Yes</option>
+                                <option>No</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Other Insurance on File?</label>
+                            <select>
+                                <option>No</option>
+                                <option>Yes - Primary</option>
+                                <option>Yes - Secondary</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Claims Mailing Address</label>
+                            <textarea rows="3" placeholder="Enter mailing address"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Benefit Breakdown -->
+            <div class="section">
+                <div class="section-header" onclick="toggleSection(this)">Benefit Breakdown</div>
+                <div class="section-content">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Effective Date</label>
+                            <input type="date" />
+                        </div>
+                        <div class="form-group">
+                            <label>Annual Maximum</label>
+                            <input type="text" placeholder="$0.00" />
+                        </div>
+                        <div class="form-group">
+                            <label>Family Deductible</label>
+                            <input type="text" placeholder="$0.00" />
+                        </div>
+                        <div class="form-group">
+                            <label>Benefit Year</label>
+                            <select>
+                                <option>Calendar Year</option>
+                                <option>Benefit Year</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Remaining Maximum</label>
+                            <input type="text" placeholder="$0.00" />
+                        </div>
+                        <div class="form-group">
+                            <label>Lifetime Deductible</label>
+                            <input type="text" placeholder="$0.00" />
+                        </div>
+                        <div class="form-group">
+                            <label>Coverage Start Date</label>
+                            <input type="date" />
+                        </div>
+                        <div class="form-group">
+                            <label>Coverage End Date</label>
+                            <input type="date" />
+                        </div>
+                        <div class="form-group">
+                            <label>Individual Deductible</label>
+                            <input type="text" placeholder="$0.00" />
+                        </div>
+                        <div class="form-group">
+                            <label>Deductible Applies To</label>
+                            <input type="text" placeholder="Basic, Major, etc." />
+                        </div>
+                        <div class="form-group">
+                            <label>Co-Pay</label>
+                            <input type="text" placeholder="$0.00" />
+                        </div>
+                        <div class="form-group">
+                            <label>Network Participation</label>
+                            <select>
+                                <option>In-Network</option>
+                                <option>Out-of-Network</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>If OON, Paid As</label>
+                            <select>
+                                <option value="N/A">N/A</option>
+                                <option value="UCR">UCR</option>
+                                <option value="MAC">MAC</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Assignment of Benefits Accepted?</label>
+                            <select>
+                                <option>Yes</option>
+                                <option>No</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Fee Schedule Used</label>
+                            <input type="text" placeholder="Enter fee schedule" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Coverage by Category -->
+            <div class="section section-coverage">
+                <div class="section-header" onclick="toggleSection(this)">Coverage by Category</div>
+                <div class="section-content">
+                    <!-- Coverage Percentages -->
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Preventive / Diagnostic (% Covered)</label>
+                            <input type="text" placeholder="100%" />
+                        </div>
+                        <div class="form-group">
+                            <label>Basic Services (% Covered)</label>
+                            <input type="text" placeholder="80%" />
+                        </div>
+                        <div class="form-group">
+                            <label>Major Services (% Covered)</label>
+                            <input type="text" placeholder="50%" />
+                        </div>
+                        <div class="form-group">
+                            <label>Preventive Wait Period</label>
+                            <input type="text" placeholder="None" />
+                        </div>
+                        <div class="form-group">
+                            <label>Basic Wait Period</label>
+                            <input type="text" placeholder="6 months" />
+                        </div>
+                        <div class="form-group">
+                            <label>Major Wait Period</label>
+                            <input type="text" placeholder="12 months" />
+                        </div>
+                    </div>
+
+                    <!-- Special Notes Table -->
+                    <div class="procedure-table special-notes-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Coverage Questions</th>
+                                    <th>Response</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Is there a Waiting Period?</td>
+                                    <td>
+                                        <div class="radio-options">
+                                            <label><input type="radio" name="waiting-period" value="yes" /> Yes</label>
+                                            <label><input type="radio" name="waiting-period" value="no" /> No</label>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Missing Tooth Clause?</td>
+                                    <td>
+                                        <div class="radio-options">
+                                            <label><input type="radio" name="missing-tooth" value="yes" /> Yes</label>
+                                            <label><input type="radio" name="missing-tooth" value="no" /> No</label>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Work in Progress Covered?</td>
+                                    <td>
+                                        <div class="radio-options">
+                                            <label><input type="radio" name="work-progress" value="yes" /> Yes</label>
+                                            <label><input type="radio" name="work-progress" value="no" /> No</label>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Can Pano be taken on same day as FMX?</td>
+                                    <td>
+                                        <div class="radio-options">
+                                            <label><input type="radio" name="pano-fmx" value="yes" /> Yes</label>
+                                            <label><input type="radio" name="pano-fmx" value="no" /> No</label>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Is SRP covered under Basic or Major?</td>
+                                    <td>
+                                        <div class="radio-options">
+                                            <label><input type="radio" name="srp-category" value="basic" /> Basic</label>
+                                            <label><input type="radio" name="srp-category" value="major" /> Major</label>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Is Endo covered under Basic or Major?</td>
+                                    <td>
+                                        <div class="radio-options">
+                                            <label><input type="radio" name="endo-category" value="basic" /> Basic</label>
+                                            <label><input type="radio" name="endo-category" value="major" /> Major</label>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Is Ext covered under Basic or Major?</td>
+                                    <td>
+                                        <div class="radio-options">
+                                            <label><input type="radio" name="ext-category" value="basic" /> Basic</label>
+                                            <label><input type="radio" name="ext-category" value="major" /> Major</label>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Are D7210/D7953 Billed To Medical First?</td>
+                                    <td>
+                                        <div class="radio-options">
+                                            <label><input type="radio" name="medical-first" value="yes" /> Yes</label>
+                                            <label><input type="radio" name="medical-first" value="no" /> No</label>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Is D9232 covered?</td>
+                                    <td>
+                                        <div class="radio-options">
+                                            <label><input type="radio" name="d9232-covered" value="yes" /> Yes</label>
+                                            <label><input type="radio" name="d9232-covered" value="no" /> No</label>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Until what age are sealants D1351 covered?</td>
+                                    <td><input type="text" placeholder="Enter age limit" /></td>
+                                </tr>
+                                <tr>
+                                    <td>Does Limited share frequency with other exams?</td>
+                                    <td>
+                                        <div class="radio-options">
+                                            <label><input type="radio" name="limited-share" value="yes" /> Yes</label>
+                                            <label><input type="radio" name="limited-share" value="no" /> No</label>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Does Perio Maintenance share frequency with prophy?</td>
+                                    <td>
+                                        <div class="radio-options">
+                                            <label><input type="radio" name="perio-share" value="yes" /> Yes</label>
+                                            <label><input type="radio" name="perio-share" value="no" /> No</label>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Time between SRP and Perio Maintenance?</td>
+                                    <td><input type="text" placeholder="Enter time period" /></td>
+                                </tr>
+                                <tr>
+                                    <td>Is composite fillings downgraded to amalgam?</td>
+                                    <td>
+                                        <div class="radio-options">
+                                            <label><input type="radio" name="composite-downgrade" value="yes" /> Yes</label>
+                                            <label><input type="radio" name="composite-downgrade" value="no" /> No</label>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Is D0140 allowed on the same day?</td>
+                                    <td>
+                                        <div class="radio-options">
+                                            <label><input type="radio" name="d0140-same-day" value="yes" /> Yes</label>
+                                            <label><input type="radio" name="d0140-same-day" value="no" /> No</label>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Is there a waiting period after SRP?</td>
+                                    <td>
+                                        <div class="radio-options">
+                                            <label><input type="radio" name="srp-waiting" value="yes" /> Yes</label>
+                                            <label><input type="radio" name="srp-waiting" value="no" /> No</label>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Is core buildup paid on the day of crown prep?</td>
+                                    <td>
+                                        <div class="radio-options">
+                                            <label><input type="radio" name="core-buildup-day" value="yes" /> Yes</label>
+                                            <label><input type="radio" name="core-buildup-day" value="no" /> No</label>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Is Crown/Bridge paid on day of Prep or Seat?</td>
+                                    <td>
+                                        <div class="radio-options">
+                                            <label><input type="radio" name="crown-payment" value="prep" /> Prep</label>
+                                            <label><input type="radio" name="crown-payment" value="seat" /> Seat</label>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Exams / Diagnostics -->
+            <div class="section">
+                <div class="section-header" onclick="toggleSection(this)">Exams / Diagnostics</div>
+                <div class="section-content">
+                    <div class="procedure-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Procedure Code</th>
+                                    <th>Frequency</th>
+                                    <th>Limitations</th>
+                                    <th>Last DOS/History</th>
+                                    <th>Notes</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="procedure-code">D0120</span> – Periodic Oral Evaluation</td>
+                                    <td><input type="text" placeholder="2 per year" /></td>
+                                    <td><input type="text" placeholder="6 month interval" /></td>
+                                    <td><input type="date" class="date-input" /></td>
+                                    <td><input type="text" placeholder="Notes" /></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D0140</span> – Limited Oral Evaluation</td>
+                                    <td><input type="text" placeholder="As needed" /></td>
+                                    <td><input type="text" placeholder="Problem focused" /></td>
+                                    <td><input type="date" class="date-input" /></td>
+                                    <td><input type="text" placeholder="Notes" /></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D0145</span> – Oral Evaluation &lt;3 Years</td>
+                                    <td><input type="text" placeholder="2 per year" /></td>
+                                    <td><input type="text" placeholder="Under 3 years" /></td>
+                                    <td><input type="date" class="date-input" /></td>
+                                    <td><input type="text" placeholder="Notes" /></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D0150</span> – Comprehensive Oral Evaluation</td>
+                                    <td><input type="text" placeholder="1 per 3 years" /></td>
+                                    <td><input type="text" placeholder="New patient" /></td>
+                                    <td><input type="date" class="date-input" /></td>
+                                    <td><input type="text" placeholder="Notes" /></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D0180</span> – Comprehensive Periodontal Evaluation</td>
+                                    <td><input type="text" placeholder="1 per year" /></td>
+                                    <td><input type="text" placeholder="Perio patient" /></td>
+                                    <td><input type="date" class="date-input" /></td>
+                                    <td><input type="text" placeholder="Notes" /></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Radiographs / Imaging -->
+            <div class="section">
+                <div class="section-header" onclick="toggleSection(this)">Radiographs / Imaging</div>
+                <div class="section-content">
+                    <div class="procedure-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Procedure Code</th>
+                                    <th>Frequency</th>
+                                    <th>Limitations</th>
+                                    <th>Last DOS/History</th>
+                                    <th>Notes</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="procedure-code">D0210</span> – Intraoral Complete Series (FMX)</td>
+                                    <td><input type="text" placeholder="1 per 3 years" /></td>
+                                    <td><input type="text" placeholder="" /></td>
+                                    <td><input type="date" class="date-input" /></td>
+                                    <td><input type="text" placeholder="Notes" /></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D0220</span> – Intraoral Periapical First Film</td>
+                                    <td><input type="text" placeholder="As needed" /></td>
+                                    <td><input type="text" placeholder="" /></td>
+                                    <td><input type="date" class="date-input" /></td>
+                                    <td><input type="text" placeholder="Notes" /></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D0230</span> – Intraoral Periapical Each Additional</td>
+                                    <td><input type="text" placeholder="As needed" /></td>
+                                    <td><input type="text" placeholder="" /></td>
+                                    <td><input type="date" class="date-input" /></td>
+                                    <td><input type="text" placeholder="Notes" /></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D0272/D0274</span> – Bitewing – Two Films</td>
+                                    <td><input type="text" placeholder="2 per year" /></td>
+                                    <td><input type="text" placeholder="6 month interval" /></td>
+                                    <td><input type="date" class="date-input" /></td>
+                                    <td><input type="text" placeholder="Notes" /></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D0277</span> – Vertical Bitewings (7–8 films)</td>
+                                    <td><input type="text" placeholder="1 per year" /></td>
+                                    <td><input type="text" placeholder="" /></td>
+                                    <td><input type="date" class="date-input" /></td>
+                                    <td><input type="text" placeholder="Notes" /></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D0330</span> – Panoramic Radiograph</td>
+                                    <td><input type="text" placeholder="1 per 3 years" /></td>
+                                    <td><input type="text" placeholder="" /></td>
+                                    <td><input type="date" class="date-input" /></td>
+                                    <td><input type="text" placeholder="Notes" /></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D0365/D0367</span> – Cone Beam CT</td>
+                                    <td><input type="text" placeholder="As needed" /></td>
+                                    <td><input type="text" placeholder="Medical necessity" /></td>
+                                    <td><input type="date" class="date-input" /></td>
+                                    <td><input type="text" placeholder="Notes" /></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Preventive -->
+            <div class="section">
+                <div class="section-header" onclick="toggleSection(this)">Preventive</div>
+                <div class="section-content">
+                    <div class="procedure-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Procedure Code</th>
+                                    <th>Frequency</th>
+                                    <th>Limitations</th>
+                                    <th>Last DOS/History</th>
+                                    <th>Notes</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="procedure-code">D1110/D1120</span> – Prophylaxis</td>
+                                    <td><input type="text" placeholder="2 per year" /></td>
+                                    <td><input type="text" placeholder="6 month interval" /></td>
+                                    <td><input type="date" class="date-input" /></td>
+                                    <td><input type="text" placeholder="Notes" /></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D1206/D1208</span> – Fluoride Varnish</td>
+                                    <td><input type="text" placeholder="2 per year" /></td>
+                                    <td><input type="text" placeholder="Under 18" /></td>
+                                    <td><input type="date" class="date-input" /></td>
+                                    <td><input type="text" placeholder="Notes" /></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D1351</span> – Sealant – Per Tooth</td>
+                                    <td><input type="text" placeholder="1 per tooth" /></td>
+                                    <td><input type="text" placeholder="Permanent molars" /></td>
+                                    <td><input type="date" class="date-input" /></td>
+                                    <td><input type="text" placeholder="Notes" /></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D1352</span> – Preventive Resin Restoration</td>
+                                    <td><input type="text" placeholder="1 per tooth" /></td>
+                                    <td><input type="text" placeholder="" /></td>
+                                    <td><input type="date" class="date-input" /></td>
+                                    <td><input type="text" placeholder="Notes" /></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D1353</span> – Sealant Repair</td>
+                                    <td><input type="text" placeholder="As needed" /></td>
+                                    <td><input type="text" placeholder="" /></td>
+                                    <td><input type="date" class="date-input" /></td>
+                                    <td><input type="text" placeholder="Notes" /></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Restorative (Fillings) -->
+            <div class="section">
+                <div class="section-header" onclick="toggleSection(this)">Restorative (Fillings)</div>
+                <div class="section-content">
+                    <div class="procedure-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Procedure Code</th>
+                                    <th>Frequency</th>
+                                    <th>Limitations</th>
+                                    <th>Last DOS/History</th>
+                                    <th>Notes</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="procedure-code">D2140-D2161</span> – Amalgam</td>
+                                    <td><input type="text" placeholder="1 per 2 years" /></td>
+                                    <td><input type="text" placeholder="Same surface" /></td>
+                                    <td><input type="date" class="date-input" /></td>
+                                    <td><input type="text" placeholder="Notes" /></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D2330-D2335</span> – Resin Composite – Anterior</td>
+                                    <td><input type="text" placeholder="1 per 2 years" /></td>
+                                    <td><input type="text" placeholder="Same surface" /></td>
+                                    <td><input type="date" class="date-input" /></td>
+                                    <td><input type="text" placeholder="Notes" /></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D2391-D2394</span> – Resin Composite – Posterior</td>
+                                    <td><input type="text" placeholder="1 per 2 years" /></td>
+                                    <td><input type="text" placeholder="Same surface" /></td>
+                                    <td><input type="date" class="date-input" /></td>
+                                    <td><input type="text" placeholder="Notes" /></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Endodontics -->
+            <div class="section">
+                <div class="section-header" onclick="toggleSection(this)">Endodontics (Root Canal Therapy)</div>
+                <div class="section-content">
+                    <div class="procedure-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Procedure Code</th>
+                                    <th>Frequency</th>
+                                    <th>Limitations</th>
+                                    <th>Last DOS/History</th>
+                                    <th>Notes</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="procedure-code">D3310-D3330</span> – Root Canal</td>
+                                    <td><input type="text" placeholder="1 per lifetime" /></td>
+                                    <td><input type="text" placeholder="Per tooth" /></td>
+                                    <td><input type="date" class="date-input" /></td>
+                                    <td><input type="text" placeholder="Notes" /></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D3346-D3348</span> – Retreat</td>
+                                    <td><input type="text" placeholder="1 per lifetime" /></td>
+                                    <td><input type="text" placeholder="After 2 years" /></td>
+                                    <td><input type="date" class="date-input" /></td>
+                                    <td><input type="text" placeholder="Notes" /></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D3351-D3353</span> – Apexification/Recalcification</td>
+                                    <td><input type="text" placeholder="As needed" /></td>
+                                    <td><input type="text" placeholder="" /></td>
+                                    <td><input type="date" class="date-input" /></td>
+                                    <td><input type="text" placeholder="Notes" /></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D3410-D3425</span> – Apicoectomy</td>
+                                    <td><input type="text" placeholder="1 per lifetime" /></td>
+                                    <td><input type="text" placeholder="Per tooth" /></td>
+                                    <td><input type="date" class="date-input" /></td>
+                                    <td><input type="text" placeholder="Notes" /></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D3220</span> – Pulpotomy Primary Teeth</td>
+                                    <td><input type="text" placeholder="1 per tooth" /></td>
+                                    <td><input type="text" placeholder="Primary teeth" /></td>
+                                    <td><input type="date" class="date-input" /></td>
+                                    <td><input type="text" placeholder="Notes" /></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D3221</span> – Pulpal Debridement</td>
+                                    <td><input type="text" placeholder="1 per tooth" /></td>
+                                    <td><input type="text" placeholder="" /></td>
+                                    <td><input type="date" class="date-input" /></td>
+                                    <td><input type="text" placeholder="Notes" /></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div> <!-- /form-content -->
+
+        <!-- Export PDF Button -->
+        <div class="action-buttons">
+            <button type="button" class="btn btn-primary" id="exportPdfBtn">
+                📄 Export to PDF
+            </button>
+        </div>
+    </div> <!-- /container -->
+
+    <script src="/dentaquest-warning.js"></script>
+    <script type="module">
+        import { fillVerificationFormFromExtraction } from '/mapping/index.js';
+
+        function toggleSection(header) {
+            const section = header?.parentElement;
+            if (!section) return;
+            section.classList.toggle('collapsed');
+        }
+        window.toggleSection = toggleSection;
+
+        // --- PDF Export Functions ---
+        function escapeHtml(s) {
+            return s == null ? '' : String(s).replace(/[&<>"']/g, m =>
+                ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;', "'":'&#39;'}[m]));
+        }
+
+        function maskSSN(str) {
+            const digits = (str || '').replace(/\D/g, '');
+            // Keep asterisks if already masked
+            if (str === '*****' || str.includes('*')) return str;
+            return digits.length === 9 ? `***-**-${digits.slice(-4)}` : (str || '');
+        }
+
+        function syncControlValues(srcRoot, dstRoot) {
+            const src = srcRoot.querySelectorAll('input, select, textarea');
+            const dst = dstRoot.querySelectorAll('input, select, textarea');
+            dst.forEach((c, i) => {
+                const o = src[i];
+                if (!o) return;
+                if (c.type === 'radio' || c.type === 'checkbox') c.checked = o.checked;
+                else if (c.tagName === 'SELECT') c.value = o.value;
+                else c.value = o.value;
+            });
+        }
+
+        function flattenToText(container) {
+            // 1) Simple fields (.form-group)
+            container.querySelectorAll('.form-group').forEach(group => {
+                const labelEl = group.querySelector('label');
+                const ctrl = group.querySelector('input, select, textarea');
+                if (!ctrl) return;
+
+                let value = '';
+                if (ctrl.tagName === 'SELECT') {
+                    value = ctrl.selectedOptions[0]?.textContent.trim() || '';
+                } else if (ctrl.type === 'date') {
+                    value = ctrl.value || '';
+                } else {
+                    value = ctrl.value || '';
+                }
+                if (labelEl && /SSN/i.test(labelEl.textContent)) value = maskSSN(value);
+
+                const valueEl = document.createElement('div');
+                valueEl.className = 'print-value';
+                valueEl.textContent = value || '—';
+
+                ctrl.replaceWith(valueEl);
+            });
+
+            // 2) Tables: radios + inputs in cells
+            container.querySelectorAll('td').forEach(td => {
+                const radioOpts = td.querySelector('.radio-options');
+                if (radioOpts) {
+                    const chosen = radioOpts.querySelector('input[type=radio]:checked');
+                    let text = '';
+                    if (chosen) {
+                        const label = chosen.closest('label');
+                        text = (label ? label.textContent : chosen.value).trim();
+                    }
+                    td.textContent = text || '—';
+                    return;
+                }
+                const ctrl = td.querySelector('input, select, textarea');
+                if (ctrl) {
+                    let val = '';
+                    if (ctrl.tagName === 'SELECT') {
+                        val = ctrl.selectedOptions[0]?.textContent.trim() || '';
+                    } else if (ctrl.type === 'date') {
+                        val = ctrl.value || '';
+                    } else {
+                        val = ctrl.value || '';
+                    }
+                    td.textContent = val || '—';
+                }
+            });
+
+            // Expand all sections
+            container.querySelectorAll('.section').forEach(s => s.classList.remove('collapsed'));
+            // Remove embedded scripts (useless in print)
+            container.querySelectorAll('script').forEach(s => s.remove());
+        }
+
+        function buildPrintHtml(bodyContentHtml) {
+            const styles = `
+                <style>
+                    @page { size: auto; margin: 14mm; }
+                    body{ font-family: -apple-system, BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif; }
+                    .container{ box-shadow:none !important; border-radius:0; }
+                    .header h1{ font-size:18pt; margin-bottom:4px; }
+                    .header p{ font-size:10pt; }
+                    .section{ border:1px solid #e6e6e6; break-inside: avoid-page; page-break-inside: avoid; margin-bottom:12px; }
+                    .section-coverage{ break-before: page; page-break-before: always; margin-top:0; }
+                    .section-header{ font-weight:700; padding:8pt 10pt; border-bottom:1px solid #eee; background:none !important; color:#000 !important; }
+                    .section-content{ padding:10pt 12pt; }
+                    .form-group label{ font-size:9pt; color:#333; margin-bottom:2pt; font-weight: 600; }
+                    .print-value{ font-size:10pt; font-weight:500; color:#000; padding:2pt 0; border-bottom:1px solid #eee; }
+                    table{ width:100%; border-collapse:collapse; }
+                    th, td{ border-bottom:0.5pt solid #e0e0e0; padding:6pt; font-size:9pt; text-align:left; vertical-align:top; }
+                    th{ background:#f8f9fa; font-weight:600; }
+                    thead{ display:table-header-group; }
+                    tfoot{ display:table-footer-group; }
+                    .action-buttons{ display:none !important; }
+                    .fill-indicator{
+                        width:10pt; height:10pt; line-height:10pt;
+                        font-size:7pt; padding:0; margin-left:4pt;
+                        border-radius:9999px; background:#10b981; color:#fff;
+                        animation:none; transform:none;
+                    }
+                </style>`;
+            return `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Dental Insurance Verification – PDF</title>${styles}</head><body>${bodyContentHtml}</body></html>`;
+        }
+
+        function printWithCleanUrl(doPrint) {
+            const originalHref = window.location.href;
+            const cleanUrl = new URL(originalHref);
+            cleanUrl.search = '';
+            cleanUrl.hash = '';
+
+            history.replaceState(null, '', cleanUrl.toString());
+
+            const restore = () => history.replaceState(null, '', originalHref);
+            let safetyTimer;
+            const cleanup = () => {
+                restore();
+                window.removeEventListener('afterprint', cleanup);
+                if (safetyTimer) {
+                    clearTimeout(safetyTimer);
+                    safetyTimer = null;
+                }
+            };
+            window.addEventListener('afterprint', cleanup);
+
+            // Fallback in case 'afterprint' never fires (print cancelled, etc.)
+            safetyTimer = setTimeout(() => {
+                restore();
+                window.removeEventListener('afterprint', cleanup);
+                safetyTimer = null;
+            }, 5000);
+
+            try {
+                doPrint();
+            } catch (error) {
+                restore();
+                window.removeEventListener('afterprint', cleanup);
+                clearTimeout(safetyTimer);
+                throw error;
+            }
+        }
+
+        function exportFormAsPdf() {
+            // Option A: Direct print (no popup)
+            // Temporarily expand all sections
+            const sections = document.querySelectorAll('.section.collapsed');
+            sections.forEach(s => s.classList.remove('collapsed'));
+
+            // Trigger print
+            printWithCleanUrl(() => window.print());
+
+            // Restore collapsed state after a delay
+            setTimeout(() => {
+                sections.forEach(s => s.classList.add('collapsed'));
+            }, 100);
+
+            /* Option B: Popup method (commented out)
+            const src = document.querySelector('.container');
+            if (!src) return;
+
+            // 1) Clone + sync values
+            const clone = src.cloneNode(true);
+            syncControlValues(src, clone);
+
+            // 2) Flatten to read-only
+            flattenToText(clone);
+
+            // 3) Build print document
+            const html = buildPrintHtml(clone.outerHTML);
+
+            // 4) Print
+            const w = window.open('', '_blank', 'noopener,noreferrer,width=900,height=700');
+            if (!w) {
+                alert('Pop-up blocker prevents PDF export. Please allow pop-ups and try again.');
+                return;
+            }
+            w.document.open();
+            w.document.write(html);
+            w.document.close();
+            w.onload = () => {
+                // Small delay to force layout before printing
+                setTimeout(() => { w.focus(); w.print(); }, 50);
+            };
+            */
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            // Auto-fill existing functionality
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('autoFill') === 'true') {
+                const extractedDataStr = sessionStorage.getItem('extractedPatientData');
+                if (extractedDataStr) {
+                    try {
+                        const extractedData = JSON.parse(extractedDataStr);
+
+                        // Save for chat BEFORE removing from sessionStorage
+                        window.currentPatientData = extractedData;
+
+                        // Fill form
+                        fillVerificationFormFromExtraction(extractedData);
+                    } catch (error) {
+                        console.error('Error loading extracted data:', error);
+                    } finally {
+                        sessionStorage.removeItem('extractedPatientData');
+                    }
+                }
+            }
+
+            // PDF Export button
+            document.getElementById('exportPdfBtn')?.addEventListener('click', exportFormAsPdf);
+        });
+    </script>
+
+    <!-- Chat Widget -->
+    <div id="chatWidget">
+        <!-- Toggle Button (bottom right) -->
+        <button id="chatToggle" onclick="toggleChat()"
+                style="position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; border-radius: 50%; background: #10b981; border: none; box-shadow: 0 4px 12px rgba(16,185,129,0.4); cursor: pointer; z-index: 1000; display: flex; align-items: center; justify-content: center; font-size: 28px; transition: transform 0.2s;"
+                onmouseover="this.style.transform='scale(1.1)'"
+                onmouseout="this.style.transform='scale(1)'">
+            💬
+        </button>
+
+        <!-- Chat Panel (slides from right) -->
+        <div id="chatPanel"
+             style="display: none; position: fixed; bottom: 100px; right: 30px; width: 400px; max-width: 90vw; height: 600px; max-height: 80vh; background: white; border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.2); z-index: 999; flex-direction: column;">
+            <!-- Header -->
+            <div style="background: #10b981; color: white; padding: 20px; border-radius: 16px 16px 0 0; display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <div style="font-weight: 700; font-size: 18px;">💬 Ask about Coverage</div>
+                    <div id="chatPatientName" style="font-size: 13px; opacity: 0.9; margin-top: 4px;">Loading...</div>
+                </div>
+                <button onclick="toggleChat()"
+                        style="background: none; border: none; color: white; font-size: 24px; cursor: pointer; padding: 0; width: 30px; height: 30px;">×</button>
+            </div>
+
+            <!-- Messages -->
+            <div id="chatMessages"
+                 style="flex: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 15px; background: #f9fafb;">
+                <div style="text-align: center; color: #9ca3af; font-size: 14px; padding: 20px;">
+                    Ask questions about this patient's insurance coverage
+                </div>
+                <!-- Demo question suggestions -->
+                <div style="display: flex; flex-direction: column; gap: 8px; padding: 10px;">
+                    <div style="font-size: 12px; color: #6b7280; margin-bottom: 5px;">Try these questions:</div>
+                    <button onclick="askDemoQuestion('How many bitewings can the patient get per year?')"
+                            style="background: #f0fdf4; border: 1px solid #10b981; color: #059669; padding: 8px 12px; border-radius: 6px; cursor: pointer; text-align: left; font-size: 13px; transition: all 0.2s;"
+                            onmouseover="this.style.background='#dcfce7'"
+                            onmouseout="this.style.background='#f0fdf4'">
+                        💬 How many bitewings can the patient get per year?
+                    </button>
+                    <button onclick="askDemoQuestion('What is the annual maximum remaining?')"
+                            style="background: #f0fdf4; border: 1px solid #10b981; color: #059669; padding: 8px 12px; border-radius: 6px; cursor: pointer; text-align: left; font-size: 13px; transition: all 0.2s;"
+                            onmouseover="this.style.background='#dcfce7'"
+                            onmouseout="this.style.background='#f0fdf4'">
+                        💬 What is the annual maximum remaining?
+                    </button>
+                </div>
+            </div>
+
+            <!-- Input -->
+            <div style="padding: 15px; border-top: 1px solid #e5e7eb; background: white; border-radius: 0 0 16px 16px;">
+                <form onsubmit="sendChatMessage(event)" style="display: flex; gap: 10px;">
+                    <input type="text" id="chatInput" placeholder="Ask a question..."
+                           style="flex: 1; padding: 12px 16px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 14px;" required>
+                    <button type="submit" id="chatSendBtn"
+                            style="background: #10b981; color: white; border: none; padding: 12px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap;">Send</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ===== CHAT FUNCTIONALITY =====
+        let chatOpen = false;
+        let chatHistory = []; // Conversation history (max 3 exchanges)
+        const chatUrlParams = new URLSearchParams(window.location.search);
+        const chatApiKey = chatUrlParams.get('key') || '';
+
+        function toggleChat() {
+            chatOpen = !chatOpen;
+            const panel = document.getElementById('chatPanel');
+            const toggle = document.getElementById('chatToggle');
+
+            if (chatOpen) {
+                panel.style.display = 'flex';
+                toggle.textContent = '✕';
+
+                // Update patient name
+                if (window.currentPatientData) {
+                    const name = `${window.currentPatientData.patient?.firstName || ''} ${window.currentPatientData.patient?.lastName || ''}`.trim();
+                    const portal = window.currentPatientData.extraction?.portalCode || window.currentPatientData.portal || '';
+                    document.getElementById('chatPatientName').textContent = `${name} (${portal})`;
+                }
+            } else {
+                panel.style.display = 'none';
+                toggle.textContent = '💬';
+            }
+        }
+
+        // Helper for demo questions (pre-filled buttons)
+        function askDemoQuestion(question) {
+            document.getElementById('chatInput').value = question;
+            document.getElementById('chatInput').form.dispatchEvent(new Event('submit'));
+        }
+
+        async function sendChatMessage(event) {
+            event.preventDefault();
+
+            const input = document.getElementById('chatInput');
+            const question = input.value.trim();
+            if (!question) return;
+
+            const sendBtn = document.getElementById('chatSendBtn');
+            const messagesContainer = document.getElementById('chatMessages');
+
+            // Clear welcome message
+            const welcome = messagesContainer.querySelector('[style*="text-align: center"]');
+            if (welcome) welcome.remove();
+
+            // Add user message
+            const userMsg = document.createElement('div');
+            userMsg.style.cssText = 'background: #059669; color: white; padding: 12px 16px; border-radius: 12px 12px 0 12px; align-self: flex-end; max-width: 80%; word-wrap: break-word;';
+            userMsg.textContent = question;
+            messagesContainer.appendChild(userMsg);
+
+            // Clear input and disable with visual feedback
+            input.value = '';
+            input.disabled = true;
+            input.style.opacity = '0.5';
+            input.style.cursor = 'not-allowed';
+            sendBtn.disabled = true;
+            sendBtn.style.opacity = '0.6';
+            sendBtn.style.cursor = 'not-allowed';
+
+            // Scroll to bottom
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+            // Show single status message that updates (not stacking)
+            let statusMessage = null;
+            let stepTimeouts = [];
+
+            const updateStatus = (text, delay) => {
+                const timeout = setTimeout(() => {
+                    if (!statusMessage) {
+                        // Create status message first time
+                        statusMessage = document.createElement('div');
+                        statusMessage.className = 'pipeline-step';
+                        statusMessage.style.cssText = 'color: #6b7280; font-size: 13px; font-style: italic; align-self: flex-start;';
+                        messagesContainer.appendChild(statusMessage);
+                    }
+                    // Update text
+                    statusMessage.innerHTML = `${text}<span class="dots"></span>`;
+                    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+                }, delay);
+                stepTimeouts.push(timeout);
+            };
+
+            updateStatus('💡 Generating queries', 200);
+            updateStatus('⚡ Executing queries', 3500);
+            updateStatus('✍️ Formulating answer', 7000);
+
+            // CSS for animated dots (injected once)
+            if (!document.getElementById('chatAnimations')) {
+                const style = document.createElement('style');
+                style.id = 'chatAnimations';
+                style.textContent = `
+                    .dots::after {
+                        content: '';
+                        animation: dots 1.5s infinite;
+                    }
+                    @keyframes dots {
+                        0%, 20% { content: '.'; }
+                        40% { content: '..'; }
+                        60%, 100% { content: '...'; }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+
+            try {
+                // Get patient file name
+                const patientData = window.currentPatientData;
+                if (!patientData) {
+                    throw new Error('No patient data loaded. Please extract or load a patient first.');
+                }
+
+                // Reconstruct fileName from patient data
+                const firstName = patientData.patient?.firstName || 'Unknown';
+                const lastName = patientData.patient?.lastName || 'Unknown';
+                const subscriberId = patientData.patient?.subscriberId || Date.now();
+                const portalCode = patientData.extraction?.portalCode || patientData.portal || 'UNKNOWN';
+                const fileName = `${subscriberId}_${firstName}_${lastName}_${portalCode}.json`;
+
+                // Call API with conversation history
+                const response = await fetch(`/api/chat?key=${chatApiKey}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        question,
+                        fileName,
+                        history: chatHistory.slice(-3)  // Last 3 exchanges only
+                    })
+                });
+
+                const data = await response.json();
+
+                if (!data.success) {
+                    throw new Error(data.error || 'Unknown error');
+                }
+
+                // Cancel pending timeouts and remove status message
+                stepTimeouts.forEach(timeout => clearTimeout(timeout));
+                if (statusMessage) statusMessage.remove();
+
+                // Add bot response (convert basic markdown to HTML)
+                const botMsg = document.createElement('div');
+                botMsg.style.cssText = 'background: #f3f4f6; color: #1f2937; padding: 12px 16px; border-radius: 12px 12px 12px 0; align-self: flex-start; max-width: 80%; word-wrap: break-word; line-height: 1.5;';
+
+                // Simple markdown parsing
+                let html = data.answer
+                    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')  // **bold**
+                    .replace(/\n\n/g, '<br><br>')  // Double newlines
+                    .replace(/\n/g, '<br>')  // Single newlines
+                    .replace(/^\* (.+)$/gm, '• $1');  // Bullet points
+
+                botMsg.innerHTML = html;
+                messagesContainer.appendChild(botMsg);
+
+                // Save to conversation history
+                chatHistory.push({
+                    user: question,
+                    assistant: data.answer
+                });
+
+                // Add timing info (small text)
+                if (data.metadata?.timing) {
+                    const timing = document.createElement('div');
+                    timing.style.cssText = 'font-size: 11px; color: #9ca3af; align-self: flex-start; margin-top: -10px;';
+                    const seconds = (data.metadata.timing.total / 1000).toFixed(1);
+                    const queryText = data.metadata.queriesGenerated === 1 ? 'query' : 'queries';
+                    timing.textContent = `⏱️ ${seconds}s • ${data.metadata.queriesGenerated} ${queryText}`;
+                    messagesContainer.appendChild(timing);
+                }
+
+            } catch (error) {
+                // Cancel pending timeouts and remove status message
+                stepTimeouts.forEach(timeout => clearTimeout(timeout));
+                if (statusMessage) statusMessage.remove();
+
+                const errorMsg = document.createElement('div');
+                errorMsg.style.cssText = 'background: #fee2e2; color: #991b1b; padding: 12px 16px; border-radius: 12px; align-self: flex-start; max-width: 80%; word-wrap: break-word;';
+                errorMsg.textContent = `❌ Error: ${error.message}`;
+                messagesContainer.appendChild(errorMsg);
+            } finally {
+                input.disabled = false;
+                input.style.opacity = '1';
+                input.style.cursor = 'text';
+                sendBtn.disabled = false;
+                sendBtn.style.opacity = '1';
+                sendBtn.style.cursor = 'pointer';
+                sendBtn.textContent = 'Send';
+                input.focus();
+
+                // Scroll to bottom
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            }
+        }
+    </script>
+</body>
+</html>

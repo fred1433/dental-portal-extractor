@@ -1,0 +1,56 @@
+function OpenNewWindow(formName, action, winName, features, param) 
+{ 
+	var brow = '';
+
+	if (navigator.appName.indexOf('N') != -1) 
+	{
+		if (navigator.appVersion.charAt(0) == "4")
+		{
+			brow = 'N4';
+		}
+		else
+		{
+			brow = 'N6';
+		}
+	} 
+	else 
+	{
+		brow = 'IE';
+	}
+	
+	var sessionData = new RegExp("sessionData");
+
+	if (formName.length > 0) {
+		frmObj =  eval(getDocObj(formName));	
+	}
+			
+	
+	// Open a pop up window.
+	inboundEmailWindow = window.open("",winName,features);
+	inboundEmailWindow.focus();
+	// Set the action and inboundEmailData field.
+	frmObj.target = winName;
+    frmObj.action = action;
+    if (param == null || param.length <= 0 || sessionData.test(param)) 
+    {
+    	// Do not set the inboundEmailData field if the parameter
+    	//  is set to "sessionData".  The email data will be
+    	//  retrieved from the session.
+    }
+    else
+    {
+		frmObj.inboundEmailData.value = param;
+	}
+	frmObj.submit();	
+		
+	if(brow != 'N4') {
+		frmObj.target = "";		
+		frmObj.action = "";
+	}
+	
+}
+
+function CloseWindow()
+{
+	return eval(window.close());
+}

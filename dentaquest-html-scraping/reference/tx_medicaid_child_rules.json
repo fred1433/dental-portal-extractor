@@ -1,0 +1,435 @@
+{
+  "state": "TX",
+  "payer": "Medicaid",
+  "program": "Medicaid_Child_U21",
+  "meta": {
+    "last_updated": "2024-01-01",
+    "source": "Texas Medicaid Provider Manual",
+    "version": "2024.1"
+  },
+  "coverage": {
+    "annual_maximum": "Unlimited",
+    "deductible": {
+      "amount": 0,
+      "applies_to": []
+    },
+    "coverage_percentages": {
+      "preventive": 100,
+      "basic": 100,
+      "major": 100,
+      "orthodontics": 100
+    },
+    "waiting_periods": [],
+    "missing_tooth_clause": false,
+    "coordination_of_benefits": false,
+    "member_cost_share": {
+      "copay": 0,
+      "coinsurance": 0
+    }
+  },
+  "special_notes": {
+    "missing_tooth_clause": "No",
+    "waiting_period": "No",
+    "srp_category": "Basic",
+    "endo_category": "Basic",
+    "extraction_category": "Basic",
+    "sealant_age_limit": "Covered for children 6-15 years",
+    "d0140_same_day": "Limited oral evaluation covered same day as comprehensive exam if medically necessary",
+    "d7210_medical_billing": "Surgical extraction may be billed to medical for certain conditions",
+    "d9230_nitrous": "Nitrous oxide covered for patients under 21 with documented behavioral/medical needs",
+    "d9232_coverage": "Conscious sedation covered with prior authorization",
+    "d7953_coverage": "Bone replacement graft not covered",
+    "composite_downgrade": "Posterior composites covered at amalgam rate",
+    "core_build_up_same_day": "Core buildup not payable same day as crown",
+    "crown_payment_timing": "Crowns paid at seat date",
+    "limited_exam_frequency_share": "D0140 and D0170 share frequency limitation",
+    "perio_maintenance_with_prophy": "D4910 and D1110 cannot be billed same day",
+    "post_srp_waiting_period": "90 days after SRP completion for D4910",
+    "srp_to_perio_interval": "90 days minimum between SRP and perio maintenance"
+  },
+  "procedures": {
+    "D0120": {
+      "frequency": "1 per 6 months",
+      "age_range": "0-20",
+      "limitations": "Periodic oral evaluation",
+      "coverage": "100%",
+      "source": "THSteps"
+    },
+    "D0140": {
+      "frequency": "As needed",
+      "age_range": "0-20",
+      "limitations": "Limited oral evaluation - problem focused",
+      "coverage": "100%",
+      "source": "THSteps"
+    },
+    "D0150": {
+      "frequency": "1 per 36 months",
+      "age_range": "0-20",
+      "limitations": "Comprehensive oral evaluation - new or established patient",
+      "coverage": "100%",
+      "source": "THSteps"
+    },
+    "D0210": {
+      "frequency": "1 set per 36 months",
+      "age_range": "0-20",
+      "limitations": "Complete series including bitewings",
+      "coverage": "100%",
+      "source": "THSteps"
+    },
+    "D0220": {
+      "frequency": "As needed",
+      "age_range": "0-20",
+      "limitations": "First periapical film",
+      "coverage": "100%",
+      "source": "THSteps"
+    },
+    "D0230": {
+      "frequency": "As needed",
+      "age_range": "0-20",
+      "limitations": "Additional periapical films",
+      "coverage": "100%",
+      "source": "THSteps"
+    },
+    "D0270": {
+      "frequency": "1 per 6 months",
+      "age_range": "0-20",
+      "limitations": "Bitewing - single film",
+      "coverage": "100%",
+      "source": "THSteps"
+    },
+    "D0272": {
+      "frequency": "1 per 6 months",
+      "age_range": "0-20",
+      "limitations": "Bitewings - two films",
+      "coverage": "100%",
+      "source": "THSteps"
+    },
+    "D0274": {
+      "frequency": "1 per 6 months",
+      "age_range": "0-20",
+      "limitations": "Bitewings - four films",
+      "coverage": "100%",
+      "source": "THSteps"
+    },
+    "D0330": {
+      "frequency": "1 per 60 months",
+      "age_range": "0-20",
+      "limitations": "Panoramic film",
+      "coverage": "100%",
+      "source": "THSteps"
+    },
+    "D1110": {
+      "frequency": "1 per 6 months",
+      "age_range": "0-20",
+      "limitations": "Prophylaxis - adult",
+      "coverage": "100%",
+      "source": "THSteps"
+    },
+    "D1120": {
+      "frequency": "1 per 6 months",
+      "age_range": "0-12",
+      "limitations": "Prophylaxis - child",
+      "coverage": "100%",
+      "source": "THSteps"
+    },
+    "D1206": {
+      "frequency": "1 per 6 months",
+      "age_range": "0-20",
+      "limitations": "Topical fluoride varnish",
+      "coverage": "100%",
+      "source": "THSteps"
+    },
+    "D1208": {
+      "frequency": "1 per 6 months",
+      "age_range": "0-20",
+      "limitations": "Topical application of fluoride",
+      "coverage": "100%",
+      "source": "THSteps"
+    },
+    "D1351": {
+      "frequency": "1 per tooth per lifetime",
+      "age_range": "6-15",
+      "limitations": "Sealant - per tooth",
+      "coverage": "100%",
+      "source": "THSteps"
+    },
+    "D1352": {
+      "frequency": "As needed",
+      "age_range": "0-20",
+      "limitations": "Preventive resin restoration",
+      "coverage": "100%",
+      "source": "THSteps"
+    },
+    "D1510": {
+      "frequency": "1 per 60 months",
+      "age_range": "0-20",
+      "limitations": "Space maintainer - fixed unilateral",
+      "coverage": "100%",
+      "source": "THSteps"
+    },
+    "D2140": {
+      "frequency": "1 per tooth per 24 months",
+      "age_range": "0-20",
+      "limitations": "Amalgam - one surface",
+      "coverage": "100%",
+      "source": "THSteps"
+    },
+    "D2150": {
+      "frequency": "1 per tooth per 24 months",
+      "age_range": "0-20",
+      "limitations": "Amalgam - two surfaces",
+      "coverage": "100%",
+      "source": "THSteps"
+    },
+    "D2160": {
+      "frequency": "1 per tooth per 24 months",
+      "age_range": "0-20",
+      "limitations": "Amalgam - three surfaces",
+      "coverage": "100%",
+      "source": "THSteps"
+    },
+    "D2161": {
+      "frequency": "1 per tooth per 24 months",
+      "age_range": "0-20",
+      "limitations": "Amalgam - four or more surfaces",
+      "coverage": "100%",
+      "source": "THSteps"
+    },
+    "D2330": {
+      "frequency": "1 per tooth per 24 months",
+      "age_range": "0-20",
+      "limitations": "Resin composite - one surface, anterior",
+      "coverage": "100%",
+      "source": "THSteps"
+    },
+    "D2331": {
+      "frequency": "1 per tooth per 24 months",
+      "age_range": "0-20",
+      "limitations": "Resin composite - two surfaces, anterior",
+      "coverage": "100%",
+      "source": "THSteps"
+    },
+    "D2332": {
+      "frequency": "1 per tooth per 24 months",
+      "age_range": "0-20",
+      "limitations": "Resin composite - three surfaces, anterior",
+      "coverage": "100%",
+      "source": "THSteps"
+    },
+    "D2335": {
+      "frequency": "1 per tooth per 24 months",
+      "age_range": "0-20",
+      "limitations": "Resin composite - four or more surfaces, anterior",
+      "coverage": "100%",
+      "source": "THSteps"
+    },
+    "D2391": {
+      "frequency": "1 per tooth per 24 months",
+      "age_range": "0-20",
+      "limitations": "Resin composite - one surface, posterior (paid at amalgam rate)",
+      "coverage": "100%",
+      "source": "THSteps"
+    },
+    "D2392": {
+      "frequency": "1 per tooth per 24 months",
+      "age_range": "0-20",
+      "limitations": "Resin composite - two surfaces, posterior (paid at amalgam rate)",
+      "coverage": "100%",
+      "source": "THSteps"
+    },
+    "D2393": {
+      "frequency": "1 per tooth per 24 months",
+      "age_range": "0-20",
+      "limitations": "Resin composite - three surfaces, posterior (paid at amalgam rate)",
+      "coverage": "100%",
+      "source": "THSteps"
+    },
+    "D2394": {
+      "frequency": "1 per tooth per 24 months",
+      "age_range": "0-20",
+      "limitations": "Resin composite - four or more surfaces, posterior (paid at amalgam rate)",
+      "coverage": "100%",
+      "source": "THSteps"
+    },
+    "D2930": {
+      "frequency": "1 per tooth per lifetime",
+      "age_range": "0-20",
+      "limitations": "Prefabricated stainless steel crown - primary tooth",
+      "coverage": "100%",
+      "source": "THSteps"
+    },
+    "D2931": {
+      "frequency": "1 per tooth per lifetime",
+      "age_range": "0-20",
+      "limitations": "Prefabricated stainless steel crown - permanent tooth",
+      "coverage": "100%",
+      "source": "THSteps"
+    },
+    "D3220": {
+      "frequency": "1 per tooth per lifetime",
+      "age_range": "0-20",
+      "limitations": "Therapeutic pulpotomy",
+      "coverage": "100%",
+      "source": "THSteps"
+    },
+    "D3310": {
+      "frequency": "1 per tooth per lifetime",
+      "age_range": "0-20",
+      "limitations": "Root canal - anterior",
+      "coverage": "100%",
+      "source": "THSteps"
+    },
+    "D3320": {
+      "frequency": "1 per tooth per lifetime",
+      "age_range": "0-20",
+      "limitations": "Root canal - bicuspid",
+      "coverage": "100%",
+      "source": "THSteps"
+    },
+    "D3330": {
+      "frequency": "1 per tooth per lifetime",
+      "age_range": "0-20",
+      "limitations": "Root canal - molar",
+      "coverage": "100%",
+      "source": "THSteps"
+    },
+    "D4210": {
+      "frequency": "1 per quadrant per 24 months",
+      "age_range": "0-20",
+      "limitations": "Gingivectomy - per quadrant",
+      "coverage": "100%",
+      "source": "THSteps"
+    },
+    "D4341": {
+      "frequency": "1 per quadrant per 24 months",
+      "age_range": "0-20",
+      "limitations": "Scaling and root planing - per quadrant",
+      "coverage": "100%",
+      "source": "THSteps"
+    },
+    "D4910": {
+      "frequency": "1 per 3 months after SRP",
+      "age_range": "0-20",
+      "limitations": "Periodontal maintenance",
+      "coverage": "100%",
+      "source": "THSteps"
+    },
+    "D5140": {
+      "frequency": "1 per arch per 60 months",
+      "age_range": "0-20",
+      "limitations": "Immediate denture - maxillary",
+      "coverage": "100%",
+      "source": "THSteps"
+    },
+    "D5211": {
+      "frequency": "1 per arch per 60 months",
+      "age_range": "0-20",
+      "limitations": "Complete denture - maxillary",
+      "coverage": "100%",
+      "source": "THSteps"
+    },
+    "D5212": {
+      "frequency": "1 per arch per 60 months",
+      "age_range": "0-20",
+      "limitations": "Complete denture - mandibular",
+      "coverage": "100%",
+      "source": "THSteps"
+    },
+    "D5213": {
+      "frequency": "1 per arch per 60 months",
+      "age_range": "0-20",
+      "limitations": "Partial denture - maxillary",
+      "coverage": "100%",
+      "source": "THSteps"
+    },
+    "D5214": {
+      "frequency": "1 per arch per 60 months",
+      "age_range": "0-20",
+      "limitations": "Partial denture - mandibular",
+      "coverage": "100%",
+      "source": "THSteps"
+    },
+    "D7140": {
+      "frequency": "As needed",
+      "age_range": "0-20",
+      "limitations": "Extraction - erupted tooth",
+      "coverage": "100%",
+      "source": "THSteps"
+    },
+    "D7210": {
+      "frequency": "As needed",
+      "age_range": "0-20",
+      "limitations": "Surgical extraction",
+      "coverage": "100%",
+      "source": "THSteps"
+    },
+    "D7220": {
+      "frequency": "As needed",
+      "age_range": "0-20",
+      "limitations": "Removal of impacted tooth - soft tissue",
+      "coverage": "100%",
+      "source": "THSteps"
+    },
+    "D7230": {
+      "frequency": "As needed",
+      "age_range": "0-20",
+      "limitations": "Removal of impacted tooth - partially bony",
+      "coverage": "100%",
+      "source": "THSteps"
+    },
+    "D7240": {
+      "frequency": "As needed",
+      "age_range": "0-20",
+      "limitations": "Removal of impacted tooth - completely bony",
+      "coverage": "100%",
+      "source": "THSteps"
+    },
+    "D8010": {
+      "frequency": "1 per lifetime",
+      "age_range": "0-20",
+      "limitations": "Limited orthodontic treatment - primary dentition",
+      "coverage": "100%",
+      "additional_requirements": "Prior authorization required",
+      "source": "THSteps"
+    },
+    "D8020": {
+      "frequency": "1 per lifetime",
+      "age_range": "0-20",
+      "limitations": "Limited orthodontic treatment - transitional dentition",
+      "coverage": "100%",
+      "additional_requirements": "Prior authorization required",
+      "source": "THSteps"
+    },
+    "D8030": {
+      "frequency": "1 per lifetime",
+      "age_range": "0-20",
+      "limitations": "Limited orthodontic treatment - adolescent dentition",
+      "coverage": "100%",
+      "additional_requirements": "Prior authorization required",
+      "source": "THSteps"
+    },
+    "D9110": {
+      "frequency": "As needed",
+      "age_range": "0-20",
+      "limitations": "Palliative treatment",
+      "coverage": "100%",
+      "source": "THSteps"
+    },
+    "D9230": {
+      "frequency": "As needed with documentation",
+      "age_range": "0-20",
+      "limitations": "Nitrous oxide",
+      "coverage": "100%",
+      "additional_requirements": "Documentation of behavioral/medical need",
+      "source": "THSteps"
+    },
+    "D9248": {
+      "frequency": "As needed with prior auth",
+      "age_range": "0-20",
+      "limitations": "Non-intravenous conscious sedation",
+      "coverage": "100%",
+      "additional_requirements": "Prior authorization required",
+      "source": "THSteps"
+    }
+  }
+}

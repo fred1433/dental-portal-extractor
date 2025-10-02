@@ -1,0 +1,644 @@
+{
+  "patient": {
+    "firstName": "Cason",
+    "lastName": "Wright",
+    "subscriberId": "710875473",
+    "dateOfBirth": "03/29/2016"
+  },
+  "extractionDate": "2025-09-27T18:00:29.416Z",
+  "portal": "DentaQuest",
+  "serviceHistory": [
+    {
+      "date": "08/07/2025",
+      "code": "D2930",
+      "description": "B/\n\t\t\t      \t\t\t\t\t\tUR/\n\t\t\t      \t\t\t\t\t\tUA/\n\t\t\t      \t\t\t\t\t\t-",
+      "provider": "Office"
+    },
+    {
+      "date": "08/07/2025",
+      "code": "D1510",
+      "description": "LR/\n\t\t\t      \t\t\t\t\t\tLR/\n\t\t\t      \t\t\t\t\t\tLA/\n\t\t\t      \t\t\t\t\t\t-",
+      "provider": "Office"
+    },
+    {
+      "date": "08/07/2025",
+      "code": "D1351",
+      "description": "3/\n\t\t\t      \t\t\t\t\t\tUR/\n\t\t\t      \t\t\t\t\t\tUA/\n\t\t\t      \t\t\t\t\t\tOL",
+      "provider": "Office"
+    },
+    {
+      "date": "08/07/2025",
+      "code": "D2930",
+      "description": "A/\n\t\t\t      \t\t\t\t\t\tUR/\n\t\t\t      \t\t\t\t\t\tUA/\n\t\t\t      \t\t\t\t\t\t-",
+      "provider": "Office"
+    },
+    {
+      "date": "08/07/2025",
+      "code": "D7140",
+      "description": "C/\n\t\t\t      \t\t\t\t\t\tUR/\n\t\t\t      \t\t\t\t\t\tUA/\n\t\t\t      \t\t\t\t\t\t-",
+      "provider": "Office"
+    },
+    {
+      "date": "08/07/2025",
+      "code": "D1351",
+      "description": "30/\n\t\t\t      \t\t\t\t\t\tLR/\n\t\t\t      \t\t\t\t\t\tLA/\n\t\t\t      \t\t\t\t\t\tOB",
+      "provider": "Office"
+    },
+    {
+      "date": "08/07/2025",
+      "code": "D7140",
+      "description": "S/\n\t\t\t      \t\t\t\t\t\tLR/\n\t\t\t      \t\t\t\t\t\tLA/\n\t\t\t      \t\t\t\t\t\t-",
+      "provider": "Office"
+    },
+    {
+      "date": "08/07/2025",
+      "code": "D2930",
+      "description": "T/\n\t\t\t      \t\t\t\t\t\tLR/\n\t\t\t      \t\t\t\t\t\tLA/\n\t\t\t      \t\t\t\t\t\t-",
+      "provider": "Office"
+    },
+    {
+      "date": "08/07/2025",
+      "code": "D9230",
+      "description": "-/-/-/-",
+      "provider": "Office"
+    },
+    {
+      "date": "08/07/2025",
+      "code": "D1330",
+      "description": "-/-/-/-",
+      "provider": "Office"
+    },
+    {
+      "date": "08/07/2025",
+      "code": "D2930",
+      "description": "B/\n\t\t\t      \t\t\t\t\t\tUR/\n\t\t\t      \t\t\t\t\t\tUA/\n\t\t\t      \t\t\t\t\t\t-",
+      "provider": "Office"
+    },
+    {
+      "date": "08/07/2025",
+      "code": "D1510",
+      "description": "LR/\n\t\t\t      \t\t\t\t\t\tLR/\n\t\t\t      \t\t\t\t\t\tLA/\n\t\t\t      \t\t\t\t\t\t-",
+      "provider": "Office"
+    },
+    {
+      "date": "08/07/2025",
+      "code": "D1351",
+      "description": "3/\n\t\t\t      \t\t\t\t\t\tUR/\n\t\t\t      \t\t\t\t\t\tUA/\n\t\t\t      \t\t\t\t\t\tOL",
+      "provider": "Office"
+    },
+    {
+      "date": "08/07/2025",
+      "code": "D2930",
+      "description": "A/\n\t\t\t      \t\t\t\t\t\tUR/\n\t\t\t      \t\t\t\t\t\tUA/\n\t\t\t      \t\t\t\t\t\t-",
+      "provider": "Office"
+    },
+    {
+      "date": "08/07/2025",
+      "code": "D7140",
+      "description": "C/\n\t\t\t      \t\t\t\t\t\tUR/\n\t\t\t      \t\t\t\t\t\tUA/\n\t\t\t      \t\t\t\t\t\t-",
+      "provider": "Office"
+    },
+    {
+      "date": "08/07/2025",
+      "code": "D1351",
+      "description": "30/\n\t\t\t      \t\t\t\t\t\tLR/\n\t\t\t      \t\t\t\t\t\tLA/\n\t\t\t      \t\t\t\t\t\tOB",
+      "provider": "Office"
+    },
+    {
+      "date": "08/07/2025",
+      "code": "D7140",
+      "description": "S/\n\t\t\t      \t\t\t\t\t\tLR/\n\t\t\t      \t\t\t\t\t\tLA/\n\t\t\t      \t\t\t\t\t\t-",
+      "provider": "Office"
+    },
+    {
+      "date": "08/07/2025",
+      "code": "D2930",
+      "description": "T/\n\t\t\t      \t\t\t\t\t\tLR/\n\t\t\t      \t\t\t\t\t\tLA/\n\t\t\t      \t\t\t\t\t\t-",
+      "provider": "Office"
+    },
+    {
+      "date": "08/07/2025",
+      "code": "D9230",
+      "description": "-/-/-/-",
+      "provider": "Office"
+    },
+    {
+      "date": "08/07/2025",
+      "code": "D1330",
+      "description": "-/-/-/-",
+      "provider": "Office"
+    },
+    {
+      "date": "11/05/2018",
+      "code": "D1206",
+      "description": "-/-/-/-",
+      "provider": "Federally Qualified Health Center"
+    },
+    {
+      "date": "11/05/2018",
+      "code": "D1120",
+      "description": "-/-/-/-",
+      "provider": "Federally Qualified Health Center"
+    },
+    {
+      "date": "11/05/2018",
+      "code": "D0999",
+      "description": "-/-/-/-",
+      "provider": "Federally Qualified Health Center"
+    },
+    {
+      "date": "08/17/2017",
+      "code": "D0145",
+      "description": "-/-/-/-",
+      "provider": "Office"
+    },
+    {
+      "date": "08/17/2017",
+      "code": "D0602",
+      "description": "-/-/-/-",
+      "provider": "Office"
+    },
+    {
+      "date": "01/10/2017",
+      "code": "D0602",
+      "description": "-/-/-/-",
+      "provider": "Office"
+    },
+    {
+      "date": "01/10/2017",
+      "code": "D0145",
+      "description": "-/-/-/-",
+      "provider": "Office"
+    },
+    {
+      "date": "10/04/2016",
+      "code": "D0145",
+      "description": "-/-/-/-",
+      "provider": "Office"
+    },
+    {
+      "date": "10/04/2016",
+      "code": "D0602",
+      "description": "-/-/-/-",
+      "provider": "Office"
+    }
+  ],
+  "eligibilityHistory": [
+    {
+      "Benefit Plan": "TX HHSC Medicaid Dental Services",
+      "Member Number": "710875473",
+      "Client Name": "TX Medicaid Child (Under 21)",
+      "Client Number": "7003042001",
+      "Benefit Effective Date": "05/01/2025",
+      "Termination Date": ""
+    }
+  ],
+  "claims": [
+    {
+      "number": "202523039516900",
+      "serviceDate": "08/07/2025",
+      "provider": "Lopez, Velina",
+      "location": "3018 Ridge RdROCKWALL",
+      "status": "Finalized",
+      "billed": 894.81,
+      "paid": 857.95
+    },
+    {
+      "number": "202516530011900",
+      "serviceDate": "06/12/2025",
+      "provider": "Lopez, Velina",
+      "location": "3018 Ridge RdROCKWALL",
+      "status": "Finalized",
+      "billed": 150.06,
+      "paid": 143.4
+    }
+  ],
+  "claimsDetails": [
+    {
+      "claimNumber": "202523039516900",
+      "totalBilled": 894.81,
+      "totalPatientPay": 0,
+      "payment": 857.95,
+      "services": [
+        {
+          "date": "08/07/2025",
+          "procedureCode": "D9230",
+          "tooth": "//-/      ",
+          "quantity": "1",
+          "status": "Paid",
+          "billed": "$42.00",
+          "patientPay": "$0.00",
+          "paid": "$39.16"
+        },
+        {
+          "date": "08/07/2025",
+          "procedureCode": "D1510",
+          "tooth": "LR/LR/LA/      ",
+          "quantity": "1",
+          "status": "Paid",
+          "billed": "$160.00",
+          "patientPay": "$0.00",
+          "paid": "$156.80"
+        },
+        {
+          "date": "08/07/2025",
+          "procedureCode": "D2930",
+          "tooth": "A/UR/UA/      ",
+          "quantity": "1",
+          "status": "Paid",
+          "billed": "$156.06",
+          "patientPay": "$0.00",
+          "paid": "$149.12"
+        },
+        {
+          "date": "08/07/2025",
+          "procedureCode": "D2930",
+          "tooth": "B/UR/UA/      ",
+          "quantity": "1",
+          "status": "Paid",
+          "billed": "$156.06",
+          "patientPay": "$0.00",
+          "paid": "$149.12"
+        },
+        {
+          "date": "08/07/2025",
+          "procedureCode": "D7140",
+          "tooth": "C/UR/UA/      ",
+          "quantity": "1",
+          "status": "Paid",
+          "billed": "$71.79",
+          "patientPay": "$0.00",
+          "paid": "$68.79"
+        },
+        {
+          "date": "08/07/2025",
+          "procedureCode": "D7140",
+          "tooth": "S/LR/LA/      ",
+          "quantity": "1",
+          "status": "Paid",
+          "billed": "$71.79",
+          "patientPay": "$0.00",
+          "paid": "$68.79"
+        },
+        {
+          "date": "08/07/2025",
+          "procedureCode": "D2930",
+          "tooth": "T/LR/LA/      ",
+          "quantity": "1",
+          "status": "Paid",
+          "billed": "$156.06",
+          "patientPay": "$0.00",
+          "paid": "$149.12"
+        },
+        {
+          "date": "08/07/2025",
+          "procedureCode": "D1330",
+          "tooth": "//-/      ",
+          "quantity": "1",
+          "status": "Paid",
+          "billed": "$15.29",
+          "patientPay": "$0.00",
+          "paid": "$15.29"
+        },
+        {
+          "date": "08/07/2025",
+          "procedureCode": "D1351",
+          "tooth": "3/UR/UA/OL    ",
+          "quantity": "1",
+          "status": "Paid",
+          "billed": "$32.88",
+          "patientPay": "$0.00",
+          "paid": "$30.88"
+        },
+        {
+          "date": "08/07/2025",
+          "procedureCode": "D1351",
+          "tooth": "30/LR/LA/OB    ",
+          "quantity": "1",
+          "status": "Paid",
+          "billed": "$32.88",
+          "patientPay": "$0.00",
+          "paid": "$30.88"
+        }
+      ]
+    },
+    {
+      "claimNumber": "202516530011900",
+      "totalBilled": 150.06,
+      "totalPatientPay": 0,
+      "payment": 143.4,
+      "services": [
+        {
+          "date": "06/12/2025",
+          "procedureCode": "D0120",
+          "tooth": "//-/      ",
+          "quantity": "1",
+          "status": "Paid",
+          "billed": "$29.44",
+          "patientPay": "$0.00",
+          "paid": "$28.85"
+        },
+        {
+          "date": "06/12/2025",
+          "procedureCode": "D1120",
+          "tooth": "//-/      ",
+          "quantity": "1",
+          "status": "Paid",
+          "billed": "$37.50",
+          "patientPay": "$0.00",
+          "paid": "$36.75"
+        },
+        {
+          "date": "06/12/2025",
+          "procedureCode": "D1206",
+          "tooth": "//-/      ",
+          "quantity": "1",
+          "status": "Paid",
+          "billed": "$22.95",
+          "patientPay": "$0.00",
+          "paid": "$19.95"
+        },
+        {
+          "date": "06/12/2025",
+          "procedureCode": "D0272",
+          "tooth": "//-/      ",
+          "quantity": "1",
+          "status": "Paid",
+          "billed": "$23.86",
+          "patientPay": "$0.00",
+          "paid": "$22.27"
+        },
+        {
+          "date": "06/12/2025",
+          "procedureCode": "D0603",
+          "tooth": "//-/      ",
+          "quantity": "1",
+          "status": "Paid",
+          "billed": "$0.01",
+          "patientPay": "$0.00",
+          "paid": "$0.00"
+        },
+        {
+          "date": "06/12/2025",
+          "procedureCode": "D0220",
+          "tooth": "8//-/      ",
+          "quantity": "1",
+          "status": "Paid",
+          "billed": "$12.82",
+          "patientPay": "$0.00",
+          "paid": "$12.56"
+        },
+        {
+          "date": "06/12/2025",
+          "procedureCode": "D0230",
+          "tooth": "10//-/      ",
+          "quantity": "1",
+          "status": "Paid",
+          "billed": "$11.74",
+          "patientPay": "$0.00",
+          "paid": "$11.51"
+        },
+        {
+          "date": "06/12/2025",
+          "procedureCode": "D0230",
+          "tooth": "24//-/      ",
+          "quantity": "1",
+          "status": "Paid",
+          "billed": "$11.74",
+          "patientPay": "$0.00",
+          "paid": "$11.51"
+        }
+      ]
+    }
+  ],
+  "overview": "Primary Care ProviderProvider:Jennifer ChouOffice:The Smiley ToothService Location:804 Gilmer St\nSte B, SULPHUR SPRINGS, TX75482Provider Effective Date:09/18/2025Provider Termination Date:09/30/2025Other CoverageThis member does not have other coverages.Loading",
+  "summary": {
+    "totalBilled": 1044.87,
+    "totalPaid": 1001.35,
+    "patientResponsibility": 0,
+    "isEligible": true,
+    "patientName": "Cason Wright",
+    "memberId": "710875473",
+    "totalClaims": 2,
+    "totalServices": 29,
+    "cdtCodes": [
+      {
+        "code": "D2930",
+        "description": "B/\n\t\t\t      \t\t\t\t\t\tUR/\n\t\t\t      \t\t\t\t\t\tUA/\n\t\t\t      \t\t\t\t\t\t-",
+        "date": "08/07/2025",
+        "provider": "Office"
+      },
+      {
+        "code": "D1510",
+        "description": "LR/\n\t\t\t      \t\t\t\t\t\tLR/\n\t\t\t      \t\t\t\t\t\tLA/\n\t\t\t      \t\t\t\t\t\t-",
+        "date": "08/07/2025",
+        "provider": "Office"
+      },
+      {
+        "code": "D1351",
+        "description": "3/\n\t\t\t      \t\t\t\t\t\tUR/\n\t\t\t      \t\t\t\t\t\tUA/\n\t\t\t      \t\t\t\t\t\tOL",
+        "date": "08/07/2025",
+        "provider": "Office"
+      },
+      {
+        "code": "D2930",
+        "description": "A/\n\t\t\t      \t\t\t\t\t\tUR/\n\t\t\t      \t\t\t\t\t\tUA/\n\t\t\t      \t\t\t\t\t\t-",
+        "date": "08/07/2025",
+        "provider": "Office"
+      },
+      {
+        "code": "D7140",
+        "description": "C/\n\t\t\t      \t\t\t\t\t\tUR/\n\t\t\t      \t\t\t\t\t\tUA/\n\t\t\t      \t\t\t\t\t\t-",
+        "date": "08/07/2025",
+        "provider": "Office"
+      },
+      {
+        "code": "D1351",
+        "description": "30/\n\t\t\t      \t\t\t\t\t\tLR/\n\t\t\t      \t\t\t\t\t\tLA/\n\t\t\t      \t\t\t\t\t\tOB",
+        "date": "08/07/2025",
+        "provider": "Office"
+      },
+      {
+        "code": "D7140",
+        "description": "S/\n\t\t\t      \t\t\t\t\t\tLR/\n\t\t\t      \t\t\t\t\t\tLA/\n\t\t\t      \t\t\t\t\t\t-",
+        "date": "08/07/2025",
+        "provider": "Office"
+      },
+      {
+        "code": "D2930",
+        "description": "T/\n\t\t\t      \t\t\t\t\t\tLR/\n\t\t\t      \t\t\t\t\t\tLA/\n\t\t\t      \t\t\t\t\t\t-",
+        "date": "08/07/2025",
+        "provider": "Office"
+      },
+      {
+        "code": "D9230",
+        "description": "-/-/-/-",
+        "date": "08/07/2025",
+        "provider": "Office"
+      },
+      {
+        "code": "D1330",
+        "description": "-/-/-/-",
+        "date": "08/07/2025",
+        "provider": "Office"
+      },
+      {
+        "code": "D2930",
+        "description": "B/\n\t\t\t      \t\t\t\t\t\tUR/\n\t\t\t      \t\t\t\t\t\tUA/\n\t\t\t      \t\t\t\t\t\t-",
+        "date": "08/07/2025",
+        "provider": "Office"
+      },
+      {
+        "code": "D1510",
+        "description": "LR/\n\t\t\t      \t\t\t\t\t\tLR/\n\t\t\t      \t\t\t\t\t\tLA/\n\t\t\t      \t\t\t\t\t\t-",
+        "date": "08/07/2025",
+        "provider": "Office"
+      },
+      {
+        "code": "D1351",
+        "description": "3/\n\t\t\t      \t\t\t\t\t\tUR/\n\t\t\t      \t\t\t\t\t\tUA/\n\t\t\t      \t\t\t\t\t\tOL",
+        "date": "08/07/2025",
+        "provider": "Office"
+      },
+      {
+        "code": "D2930",
+        "description": "A/\n\t\t\t      \t\t\t\t\t\tUR/\n\t\t\t      \t\t\t\t\t\tUA/\n\t\t\t      \t\t\t\t\t\t-",
+        "date": "08/07/2025",
+        "provider": "Office"
+      },
+      {
+        "code": "D7140",
+        "description": "C/\n\t\t\t      \t\t\t\t\t\tUR/\n\t\t\t      \t\t\t\t\t\tUA/\n\t\t\t      \t\t\t\t\t\t-",
+        "date": "08/07/2025",
+        "provider": "Office"
+      },
+      {
+        "code": "D1351",
+        "description": "30/\n\t\t\t      \t\t\t\t\t\tLR/\n\t\t\t      \t\t\t\t\t\tLA/\n\t\t\t      \t\t\t\t\t\tOB",
+        "date": "08/07/2025",
+        "provider": "Office"
+      },
+      {
+        "code": "D7140",
+        "description": "S/\n\t\t\t      \t\t\t\t\t\tLR/\n\t\t\t      \t\t\t\t\t\tLA/\n\t\t\t      \t\t\t\t\t\t-",
+        "date": "08/07/2025",
+        "provider": "Office"
+      },
+      {
+        "code": "D2930",
+        "description": "T/\n\t\t\t      \t\t\t\t\t\tLR/\n\t\t\t      \t\t\t\t\t\tLA/\n\t\t\t      \t\t\t\t\t\t-",
+        "date": "08/07/2025",
+        "provider": "Office"
+      },
+      {
+        "code": "D9230",
+        "description": "-/-/-/-",
+        "date": "08/07/2025",
+        "provider": "Office"
+      },
+      {
+        "code": "D1330",
+        "description": "-/-/-/-",
+        "date": "08/07/2025",
+        "provider": "Office"
+      },
+      {
+        "code": "D1206",
+        "description": "-/-/-/-",
+        "date": "11/05/2018",
+        "provider": "Federally Qualified Health Center"
+      },
+      {
+        "code": "D1120",
+        "description": "-/-/-/-",
+        "date": "11/05/2018",
+        "provider": "Federally Qualified Health Center"
+      },
+      {
+        "code": "D0999",
+        "description": "-/-/-/-",
+        "date": "11/05/2018",
+        "provider": "Federally Qualified Health Center"
+      },
+      {
+        "code": "D0145",
+        "description": "-/-/-/-",
+        "date": "08/17/2017",
+        "provider": "Office"
+      },
+      {
+        "code": "D0602",
+        "description": "-/-/-/-",
+        "date": "08/17/2017",
+        "provider": "Office"
+      },
+      {
+        "code": "D0602",
+        "description": "-/-/-/-",
+        "date": "01/10/2017",
+        "provider": "Office"
+      },
+      {
+        "code": "D0145",
+        "description": "-/-/-/-",
+        "date": "01/10/2017",
+        "provider": "Office"
+      },
+      {
+        "code": "D0145",
+        "description": "-/-/-/-",
+        "date": "10/04/2016",
+        "provider": "Office"
+      },
+      {
+        "code": "D0602",
+        "description": "-/-/-/-",
+        "date": "10/04/2016",
+        "provider": "Office"
+      },
+      {
+        "code": "D0120",
+        "description": "Tooth //-/      ",
+        "date": "06/12/2025",
+        "billed": "$29.44"
+      },
+      {
+        "code": "D1120",
+        "description": "Tooth //-/      ",
+        "date": "06/12/2025",
+        "billed": "$37.50"
+      },
+      {
+        "code": "D1206",
+        "description": "Tooth //-/      ",
+        "date": "06/12/2025",
+        "billed": "$22.95"
+      },
+      {
+        "code": "D0272",
+        "description": "Tooth //-/      ",
+        "date": "06/12/2025",
+        "billed": "$23.86"
+      },
+      {
+        "code": "D0603",
+        "description": "Tooth //-/      ",
+        "date": "06/12/2025",
+        "billed": "$0.01"
+      },
+      {
+        "code": "D0220",
+        "description": "Tooth 8//-/      ",
+        "date": "06/12/2025",
+        "billed": "$12.82"
+      },
+      {
+        "code": "D0230",
+        "description": "Tooth 10//-/      ",
+        "date": "06/12/2025",
+        "billed": "$11.74"
+      }
+    ],
+    "totalCDTCodes": 36
+  }
+}

@@ -1,0 +1,374 @@
+{
+  "cookies": [
+    {
+      "name": "connect.sid",
+      "value": "s%3A98OSpREnf1t-W3ocydQfMEq8IU2I37N-.8xxFYU6ACWVVkV8rtCmNO6fh0%2BgwBf5tTIqU4k4VxFw",
+      "domain": "dentalprovider.metlife.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "bm_sv",
+      "value": "F4296CE9E803B27AF0D5B9418BF29057~YAAQ7zfFFw3gE0KZAQAArDjDdx2McpeDh5KePPFU+BoVtXbzwYDsq01iQeFuQ90g9ZbcJah7AL31hrxW2h5ekHPTsw/DbJAp6uKCOo1qFNu40pXT1ee71dZchPIUakWSTvu4c1rtrvw2V2g6bUsyHwjuinFFeOahxcHUbTEIz++XGZ00uVDeiWLjoj/z84LkalKJcSYZknzPTZIEbSxyd+rC8B2Gx8d2PZhrJXKfS0R30zMdYtWcw4g+k2Fsd26d3A==~1",
+      "domain": ".metlife.com",
+      "path": "/",
+      "expires": 1758658106.849186,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "demdex",
+      "value": "34713885069535598321704276366856586304",
+      "domain": ".demdex.net",
+      "path": "/",
+      "expires": 1774202908.647549,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "kndctr_DD8D65EC5717A8FA7F000101_AdobeOrg_cluster",
+      "value": "va6",
+      "domain": ".metlife.com",
+      "path": "/",
+      "expires": 1758652835,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "kndctr_DD8D65EC5717A8FA7F000101_AdobeOrg_identity",
+      "value": "CiYzNTEwNTM3MzIzODAwNzA5NTg5MTY3NDc2NzU4ODgwNjYxNTY5M1ISCIr_jL6XMxABGAEqA1ZBNjAA8AGK_4y-lzM=",
+      "domain": ".metlife.com",
+      "path": "/",
+      "expires": 1792778908,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "AMCV_DD8D65EC5717A8FA7F000101%40AdobeOrg",
+      "value": "MCMID|35105373238007095891674767588806615693",
+      "domain": ".metlife.com",
+      "path": "/",
+      "expires": 1792346908,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "kampyle_userid",
+      "value": "99c6-3b86-f7e9-fbe1-cf84-f50c-2b9d-63cb",
+      "domain": "dentalprovider.metlife.com",
+      "path": "/",
+      "expires": 1790186909,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "idwUUID",
+      "value": "fa08a8e9-04bf-4564-993e-d3e7b7472b68",
+      "domain": "federate.sso.metlife.com",
+      "path": "/",
+      "expires": 1758737315,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "thx_guid",
+      "value": "44e7c99be5d937646a4ac7c877d96445",
+      "domain": "content.maxconnector.com",
+      "path": "/",
+      "expires": 1793210916.896534,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "tmx_guid",
+      "value": "AAyKpVqgwRtM8FF-r7G4QvKr1Xvl_c1GRWRzlFPv-CfSvPJ8gI12KxdiWvGohVfebgMoBe2wxKoZjItqZoAba5rtOAL5DA",
+      "domain": "content.maxconnector.com",
+      "path": "/",
+      "expires": 1793210916.896577,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "appId",
+      "value": "US:DentalProvider_Parent:1750",
+      "domain": "federate.sso.metlife.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "thx_global_guid",
+      "value": "fb3a126134194ec58a563ed1743022dd",
+      "domain": "h.online-metrix.net",
+      "path": "/",
+      "expires": 1793210918.505744,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "PF",
+      "value": "No4D5Ecpn7JQGPNsGtnERr6qFFZFe5DLmnbZ7Rl8fs5p",
+      "domain": "federate.sso.metlife.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "PA.MetLife_US_MD",
+      "value": "eyJ6aXAiOiJERUYiLCJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2Iiwia2lkIjoiNEdrNjNrVG1fbkJ2SW1GUkFZMF9GV0ZpTkxJIiwicGkuc3JpIjoiSEN5S3h1NXRWSGVxTktRRzIzT0daZ1NDLXU4LmRYTXRaV0Z6ZEMweS4wdUlyIn0..dYwoHxPtiSdOWCJOuKLivQ.4EJNxOIkiDSBbaECEUYFsurugvva5d2mkYuh2rQLfjEVTtHxW8EYShzzIbJeSUxQTdLnQGltg-n-z6nh5lRKiXCwaVMTmYHF4C6w4G82bBENHsMQaFSr-LrtxBrXS7E31SE_BbyTgbcGzUX2GVeXU-vhSprQHgtzgbl_EzvxOwSpMRBLMaf9BfPJ71AqFa_2WfSoBiflu42MEtJgJjQmyrXO5q76driGT2F9gJzMR1lXbMLV4uCgZnMK9bhwmweDCsTfjq3Ovmky6t4S_deUj08aKoJ48bMziassKlLGwt_Rzbn6bPOCyaQX95fT2W6b9Ja4RNYefAgVWjJ6qRIuDkmQGg9afHBMi-qhs2fF68-bzh68Bgp_sdZeBzetYjB5Q1kaKcCA3lqQoZOjUhOWp0iFXKdZGtVTb70TxXp_ktUfH8xGF7Hf-m6R2aKn06K_fFoXvy5h97ltebL5RVF-cN32b97t4OJfDWcjCwE9-6Dp7Z2DPNbwC5Y73tBYQlD_6kRiNqVfzWqqivRO-yzC7Xuf-gBGXPSmK5ajAWWHcLnd7pGgKjxbnVmHF0FtloHBBPtd5zSQaX5Tr1hXU-EPyMsPGLuZOMnl2tzs7qnG5nmPbjzr9nW6fWgqbl2yVJlhgxfSWFRJ3u5PZsOymhP4jx4w-cggku7z6J1Khif_TFEhaZSEn98NKvvAcSQXPzDoqXXct63e4cqlY2eJsHPyBF7GvR0Do4V_fafDiLWzrKNw6DyOf-pGp1zWgA_HoJi0OTOwqKeT4a6O_voNAuU8a_ZHYpKfBfs19eAd8oN_kqcjm3lr-uoMbs9rpLABEra2G-pL_jJra1xUPsqprvpqEDdf-0YhbtXH1yJaXxM3-C7fL3CtEOzKkllZ3ZnI9peJv6WCEyfrA8OvXdM1bzDgHiCsiyezSQpfnCsVqvgN29V6Aevng-grre0XKLk0884XUoo9_pU1LBxyzWqd-pl76GavrHy1KyGLo2jZFKevM6HHmAarkSoUmlJ1_3CTKf53z3Pi1PmYW67mgXheUnLP2JmuvctBoqv1QcxHYzGO_VkJ5DGOGQCcWWUNMsetuq0JrK5na57Ss13qtfs71dDgU0XpuK9oGG4lEIDKRj8cpt4hbmRgGO5be7B1nILDKtJD4HTrdZXreGWCRX9hzlEV6Q.WL8d8YmFCYBn_5kAN2nUPg",
+      "domain": "dentalprovider.metlife.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "ADRUM",
+      "value": "s~1758650925403&r~aHR0cHMlM0ElMkYlMkZmZWRlcmF0ZS5zc28ubWV0bGlmZS5jb20lMkZhcyUyRk9SMDREYnVGY2olMkZyZXN1bWUlMkZhcyUyRmF1dGhvcml6YXRpb24ucGluZw==",
+      "domain": ".metlife.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "PA.MetLife_US_MD",
+      "value": "eyJ6aXAiOiJERUYiLCJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2Iiwia2lkIjoiNEdrNjNrVG1fbkJ2SW1GUkFZMF9GV0ZpTkxJIiwicGkuc3JpIjoiSEN5S3h1NXRWSGVxTktRRzIzT0daZ1NDLXU4LmRYTXRaV0Z6ZEMweS4wdUlyIn0..6RLqHcl8Ekbdj7sFhRoqjA.3DQATfjEoXajBfRLICpGpAM63p72QJ4SB9NtT8nDPZr_y5WpiXtaryxsL1PblA1aCnG4CtJz_36UbyZML95GaoT-mg9IaMNyq7gtwNcOmdk52RTaMvtN9GwofFzhACMwQHDqMQYNirN6C3VEe1VXqe4xI9Lc-uai57l_enRTtVb-UhVP-g4V0xpLoOAJXkglVXElXzntiLmIK7MPlba6iaU3OQo30dKrX2h5Ubv3nX68yqCdqF-FjsaO1SMC3nxBPNjzvt1UkNG82y6Cci4xyhW__XeVMcyHk6IFDgJLw-z8Gh8wnnjuvgz8Jfq7ner6beZE77uXNayBAxKNVS9DiR-TqGUDIq_eaA476UpRKUe22xd17XgvOvIJeUU7XAaSh9SXftm6SZUqk7exAEFPWOHEGSRsLTWCaU8V0bzupuEeZ3b1TDmixg6I9Vsny6kl99_79hujcsKR0av9ffz1SmYVHtosdBbttz39NDYi3wEVb6b_UHD3D0UoS-MsEC6RFMOdyBPdCFNSpolCG7c06msYCbMl6plqlOIcqgml6v_eN41lfFKkxeQMdKeCujH8HXA0wc1WUtgjo7Cv0tnFlumGKMPDcc3N0OlzCGxjiw-1bVm2D24ggffbdbM_IwPDnU-ZsNO15I292vZn4g_I5G7TE4NX-poAkHrwuBkHQSQ8qIv4nA1NbivB5AfvjILH4eCuczQQtt8GFLsPc-b8GREEofuqUFFAz5JjoyiboCuccap9Sbbd5YpqsHI_5NBoJASR_0eZQIJ_WMUnK5CZtVnn9k32Hbzp5jzO-UFjBWOVnxNwdLOAP1y-5tAa-oZdvpdStj6VKWbO1zm_qFCOaTBjNTOoQfG6LsPsWWCmwmu9yWIUDItCYJEG7SK8wTc0zIk_BYkL24WRxI_VzW_ykU86oRbdbvc30dSPoZzKkywsf39xQVhY08mgWjHFRQ_YDOCqZ8bfv4unuyNxfpnHG1dhe7T-DppLPhrbpLZU3PEWYJmlxXIKCQw7h3GtKPTjGwqOdm_5XbBz4fUv0NPl3y7AIHRLHTWz2CeduV8mjwJ990OC4qkKGxN5ktNaP4yQYsxG1CG1Q259bKYkVSD5uHhTAJJierQIXXJoLrmEyUjQMWbKhdSwPFpLREf5BvxcSINbX7-KlAF9DYSTMS0A6w.aIqANHx7nFL1NSi0uMsxfA",
+      "domain": "metdental.metlife.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "SameSite",
+      "value": "None",
+      "domain": "metdental.metlife.com",
+      "path": "/",
+      "expires": 1758651063.480439,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "JSESSIONID",
+      "value": "0000pLjUeuU_NpWpJDup_05k3V9:ustry1basv00f2l",
+      "domain": "metdental.metlife.com",
+      "path": "/",
+      "expires": 1758652753.649153,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "PA_S.MetLife_US_MD",
+      "value": "AQIBdg",
+      "domain": "metdental.metlife.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "PA_S",
+      "value": "AQIBdQ",
+      "domain": "metdental.metlife.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "AuthTimeStamp",
+      "value": "MTc1ODY1MTAwOTU2Mg==",
+      "domain": "metdental.metlife.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "ADRUM_BTa",
+      "value": "R:0|g:3e435eac-0307-4ca0-9b29-53cfda27ccf6|n:metlife-prod_22055f9d-d866-4009-bcb9-85c992b82955",
+      "domain": "metdental.metlife.com",
+      "path": "/",
+      "expires": 1758651063.480414,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "ADRUM_BTs",
+      "value": "R:0|s:f",
+      "domain": "metdental.metlife.com",
+      "path": "/",
+      "expires": 1758651063.48048,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "ADRUM_BT1",
+      "value": "R:0|i:609641|d:1",
+      "domain": "metdental.metlife.com",
+      "path": "/",
+      "expires": 1758651063.480499,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "s_gpv",
+      "value": "dentalprovider.metlife.com/presignin",
+      "domain": "dentalprovider.metlife.com",
+      "path": "/",
+      "expires": 1758652835,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "ak_bmsc",
+      "value": "054E2EED9FBEA4610310AED40BCBA8C4~000000000000000000000000000000~YAAQ7zfFF8Z2FEKZAQAAiS3Fdx2iS4eVg1zh5tBjXd+h/UMvLjSlq1m/lYY5WK0sqcx21YXo9MGAOypYhHlLCjC746jS3yBgKGLBC4CjjhJ8kcomwmkBHb8Qw5alDUygV/Z2fjPkGLH0JyVvMnFUnKDC8PJcCD83okmVGigGC623o/0qBUGEBAVJr+mPS5Zf/8ZgmS4X/hnzozq+MmMOqnH5jS+T+yMkYr1sAy8iMswTuyec1MszCPeHKsKwxIipvB9E4U/v+zn0zIlH5yrEuYBRjyF3261mZlTFGl0nuxHzZa8WBJ7btWibXyTFDmOCz+IvvinId/Sy2ImNW24uL+jFDJ+bddB2jPo2LeNzjUjGn4GJoc1GapwheiQZ5sNbAIzv/cK9606EW/2TzIbaDWburCAB7QFGiFOZcNBbrSzZuT78yxNaPmXqTq19bbRGFt7+/2xK3pTkgXfdfh7BaVf7YH16HhYqtK3B6H7GV1LtQdAFUWtZzK1r01sUqA==",
+      "domain": ".metlife.com",
+      "path": "/",
+      "expires": 1758658105.080614,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "kampyleUserSession",
+      "value": "1758651036118",
+      "domain": "dentalprovider.metlife.com",
+      "path": "/",
+      "expires": 1790187036,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "kampyleUserSessionsCount",
+      "value": "3",
+      "domain": "dentalprovider.metlife.com",
+      "path": "/",
+      "expires": 1790187036,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "kampyleUserPercentile",
+      "value": "5.627096887181626",
+      "domain": "dentalprovider.metlife.com",
+      "path": "/",
+      "expires": 1790187036,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "kampyleSessionPageCounter",
+      "value": "1",
+      "domain": "dentalprovider.metlife.com",
+      "path": "/",
+      "expires": 1790187036,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    }
+  ],
+  "origins": [
+    {
+      "origin": "https://dentalprovider.metlife.com",
+      "localStorage": [
+        {
+          "name": "kampyleUserSessionsCount",
+          "value": "3"
+        },
+        {
+          "name": "kampyleSessionPageCounter",
+          "value": "1"
+        },
+        {
+          "name": "kampyle_userid",
+          "value": "99c6-3b86-f7e9-fbe1-cf84-f50c-2b9d-63cb"
+        },
+        {
+          "name": "kampyleUserPercentile",
+          "value": "5.627096887181626"
+        },
+        {
+          "name": "kampyleUserSession",
+          "value": "1758651036118"
+        }
+      ]
+    },
+    {
+      "origin": "https://federate.sso.metlife.com",
+      "localStorage": [
+        {
+          "name": "5718FABB002E",
+          "value": "AAxLaxCO77xqHCSQ8Oqkqy2iNEWA9MjzKFC7VGkBPefUXgmkn1_aTxV3FoQoIKCQmNCQjuVB4QEjo_BtsReLLwpc0mg86w"
+        },
+        {
+          "name": "ADRUM_CLIENTINFO",
+          "value": "{\"seqId\":2,\"clientId\":\"XD_047e4c7c_c0c7_97c9_12de_29800fb691de\",\"agentId\":\"XD_047e4c7c_c0c7_97c9_12de_29800fb691de\"}"
+        },
+        {
+          "name": "ADRUM_XD_AGENT_INFO",
+          "value": "{\"ver\":\"25.5.0.4580\",\"id\":\"XD_047e4c7c_c0c7_97c9_12de_29800fb691de\",\"ttl\":1759255717986}"
+        },
+        {
+          "name": "ed73f20edbf2b73",
+          "value": "7a60d1d556e84f4791af100daca6bea4_1914170917060"
+        }
+      ]
+    },
+    {
+      "origin": "https://cdn.appdynamics.com",
+      "localStorage": [
+        {
+          "name": "ADRUM_XD_AGENT_ID",
+          "value": "XD_047e4c7c_c0c7_97c9_12de_29800fb691de"
+        }
+      ]
+    },
+    {
+      "origin": "https://content.maxconnector.com",
+      "localStorage": [
+        {
+          "name": "ed73f20edbf2b73",
+          "value": "2f0e0b748dd347919beace6d62c58420_1914170918416"
+        },
+        {
+          "name": "5718FABB002E",
+          "value": "AAzhkmjF-4Qxrvs23pTpMyxF1uwynYVd202QcbctaervMW958GW0AQyeLPnOFwRysoZ0kJ7bGBrSKT-WcTxkDMu_tLLtKA"
+        }
+      ]
+    }
+  ]
+}

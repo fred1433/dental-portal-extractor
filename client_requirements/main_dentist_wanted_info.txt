@@ -1,0 +1,87 @@
+
+1) Verification metadata & call traces
+* Verification date/time, verified by (name), verification method (portal|phone|fax|api), portal name/URL, free-form notes. [SDB][Gemini]
+* Call reference, payor representative name, system notes. [SDB] (fields "Call Reference No", "Payor Representative Name", "SystemNotes").
+
+2) Patient, subscriber & relationship
+* Patient: first name, last name, date of birth, patient account number, eligibility status and payor status. [SDB]
+* Insurance identifiers: member/insured ID. [ACE][SDB]
+* Subscriber: last name, first name, DOB, relationship to patient. [ACE][SDB]
+* Insured SSN (if present). [ACE][SDB]
+JSON paths (API extraction): patient.firstName, patient.lastName, patient.dateOfBirth, patient.subscriberId, eligibility.pkg.member.groupNumber, eligibility.pkg.member.product (plan type), eligibility.pkg.networksAllowed[], eligibility.pkg.member.effectiveDate. [Gemini]
+
+3) Payor / Plan & Network
+* Payor: Payer ID, name, mailing address, phone. [ACE][SDB]
+* Group: name and group number. [ACE][SDB]
+* Dates: effective date and term end date (if known). [ACE][SDB] (TermEndDate in SDB).
+* Calendar vs Fiscal policy. [ACE][SDB] (Contract/Calendar & Calendar or Fiscal Policy labels).
+* In/Out Network, fee schedule used, presence of OON benefits. [ACE][SDB]
+* Coordination of Benefits + type, Assignment of Benefits (AOB). [ACE][SDB]
+* Alternative Benefit / Amalgam downgrade (alternative benefit rule). [SDB]
+* Provider Name and NPI (when provided in report). [SDB]
+JSON paths (API extraction): eligibility.pkg.member.product (PPO, etc.), eligibility.pkg.networksAllowed[]. [Gemini]
+
+4) Overall financial: maximums & deductibles
+* Individual annual maximum: total, used to date, remaining. [ACE][SDB] (SDB also displays numeric "Remaining" value).
+* Deductible: individual & family, total amount and amount already met. [ACE][SDB]
+* Deductible applicable by class: All / Diagnostic-Preventive / Basic / Major. [ACE]
+JSON paths (API extraction): Loop through maxDed.maximumsInfo[] and maxDed.deductiblesInfo[] →
+* maximumsInfo[].maximumDetails.type, amountInfo.totalAmount, amountInfo.remainingAmount;
+* deductiblesInfo[].deductibleDetails.type, amountInfo.totalAmount, amountInfo.remainingAmount. [Gemini]
+
+5) Global rules / cross-cutting limitations
+* Waiting periods (Basic & Major, yes/no + detail). [ACE][SDB] (Payor Waiting Period in SDB).
+* Previous extractions covered? (Missing Tooth Clause). [ACE] + (generic placement "Missing Tooth Coverage"). [Gemini]
+* Share frequency between exams (e.g. limited exam shares with others). [ACE]
+* Prophy ↔ Perio Maintenance: frequency sharing, SRP same day as Prophy/PerioMaint (Yes/No), delay between SRP and Prophy, SRP quadrants/day, Arestin covered (Yes/No). [ACE]
+* Orthodontics: coverage (Yes/No), %, age limit, lifetime max. [ACE]
+* Occlusal guards: D9944/D9945 % + frequency + text limitations. [ACE]
+JSON paths (API extraction): "Missing Tooth" coverage via addl.additionalBenefits[] (search for header="Missing Tooth Coverage"). [Gemini]
+
+6) Benefits by CDT procedure (normalized table)
+Columns/information unit to retain per CDT code:
+* cdt_code, procedure_name, cdt_category (Diagnostic/Preventive/Restorative/Endo/OralSurgery/Prosth/Ortho/Adjunctive). [SDB]
+* Plan class (Diagnostic-Preventive / Basic / Major) — useful for applying deductible applies to. [ACE]
+* % covered, deductible applicable (Yes/No). [SDB] (columns "% Covered", "Deductible Applicable").
+* Frequency / limitations (text + structure), history (dates/occurrences). [SDB][ACE] (specific "History" per line in ACE: Exam/Prophy/Fluoride/Xray/Sealant/Filling/SRP/EXT/Crown/Bridge/BuildUp/Post&Core/Denture).
+* Age limit (e.g. sealants/fluoride), downgrade rule (e.g. posterior composite downgraded to amalgam), teeth covered, which teeth, pay on seat/prep (for crown). [ACE][SDB] (Age limit/Alt benefit in SDB).
+JSON paths (API extraction): Iterate eligibility.pkg.treatment[] -> procedureClass[] -> procedure[]:
+* code, description, network[].code, network[].coverageDetail[0].benefitCoverageLevel (percentage), network[].coverageDetail[0].deductibleExempted (deductible exempted or not),
+* limitation[].frequencyLimitationText, limitation[].benefitQuantity, limitation[].periodTypeCode (e.g. CA = calendar year, RO = rolling period),
+* limitation[].sexAgeToothCode[].minAge|maxAge. [Gemini]
+
+7) Service history (dynamic eligibility)
+* History by code with date of service, to compare against frequency limitations. [ACE] (multiple "History" fields by family), [SDB] (History column), and JSON path hist.procedures[].services[].serviceDate. [Gemini]
+
+8) Billing (claims) & submission information
+* Claims mailing address (mailing address for paper submission). [ACE]
+* Payer/Payor ID (EDI), useful for electronic submission. [ACE][SDB]
+
+9) List of CDT codes present in your two PDFs (exact union, 50 distinct codes)
+Grouped by major family (each code comes from at least one of the two files).
+Diagnostic / Imaging D0120, D0140, D0150, D0170, D0210, D0220, D0230, D0240, D0272, D0274, D0330. [ACE][SDB]
+Preventive D1110, D1120, D1206, D1208, D1351, D1354, D1516, D1517. [ACE][SDB]
+Restorative Amalgams: D2140, D2150, D2160, D2161. Composites: D2330, D2331, D2391, D2392, D2393, D2394. Stainless-steel/esthetic: D2930, D2933, D2934. [ACE][SDB]
+Periodontics D4341 (SRP), D4910 (Perio maintenance), D4381 (Arestin). [ACE]
+Endodontics D3220 (pulpotomy), D3330 (RCT molar). [ACE][SDB] (D3220 in SDB, D3330 in ACE).
+Oral Surgery D7140 (simple extraction), D7240 (surgical extraction). [ACE][SDB] (D7240 in ACE; D7140 in both).
+Prosthodontics / Crowns / Implants D2740 (ceramic crown), D2950 (build-up), D2954 (post & core), D5110, D5213, D5221 (prosthetics), D6010 (implant). [ACE]
+Adjunctive / Miscellaneous D9110 (palliative), D9230 (nitrous), D9944–D9945 (occlusal guards). [ACE][SDB] (D9110/D9230 in SDB; D9944/D9945 in ACE).
+Note: code D2750 (PFM crown) is not in either PDF, but can be added to your base if you want to cover an external "Top 20".
+
+10) Specific fields (ACE detailed) not to lose
+* Dedicated histories by family: Exam, Prophy, Fluoride, Xray, Sealant, Filling, SRP, EXT, Crown, Bridge, Build-Up, Post & Core, Denture. [ACE]
+* Teeth covered / Which teeth (exact dental perimeter). [ACE]
+* Pay on Seat / Prep (payment timing for crown coverage). [ACE]
+
+11) Specific fields (SDB detailed) not to lose
+* Eligibility Status & Patient Payor Status visible at top, and Remaining Benefit Available as number. [SDB]
+* Normalized columns per procedure: % Covered, Deductible Applicable, Frequency/Limitation, History. [SDB]
+
+12) Gemini fields/paths not to lose (for API integration)
+* Networks & plan type: eligibility.pkg.member.product, eligibility.pkg.networksAllowed[]. [Gemini]
+* Maximums/deductibles (loops): maxDed.maximumsInfo[], maxDed.deductiblesInfo[] → type, totalAmount, remainingAmount. [Gemini]
+* Benefits by procedure: eligibility.pkg.treatment[].procedureClass[].procedure[] → code, description, network[].code, network[].coverageDetail[].benefitCoverageLevel, network[].coverageDetail[].deductibleExempted, limitation[].frequencyLimitationText, limitation[].benefitQuantity, limitation[].periodTypeCode, limitation[].sexAgeToothCode[].minAge|maxAge. [Gemini]
+* Missing tooth: addl.additionalBenefits[] (header). [Gemini]
+* History: hist.procedures[].services[].serviceDate. [Gemini]
+

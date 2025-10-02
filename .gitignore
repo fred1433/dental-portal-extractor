@@ -1,0 +1,103 @@
+node_modules/
+.env
+public/app.js
+public/app.js.map
+.dnoa-session/
+.dentaquest-session/
+.metlife-session/
+.cigna-session/
+.dot-session/
+cigna/.cigna-session/
+dentaquest/.dentaquest-session/
+metlife/.metlife-session/
+dnoa/.dnoa-session/
+ddins/.ddins-session/
+dot-extractor/.dot-session/
+*.log
+*.zip
+test-*.js
+test-*.sh
+.DS_Store
+monitoring.db
+*.db
+*.backup*
+*.b64
+transfer-*.sh
+push-*.sh
+
+# DOT extractor
+dot-extractor/dot-storage.json
+dot-extractor/out/
+dot-extractor/dist/
+dot-extractor/*.json
+!dot-extractor/package.json
+!dot-extractor/tsconfig.json
+
+# TypeScript build artifacts
+dist/
+dot-session-b64.txt
+
+# DDINS session files
+.ddins-session/
+
+# Test JSON files
+*-Full.json
+*-Full-*.json
+*-Compressed.json
+*-smaller.json
+
+# Temporary test scripts
+test-*.js
+analyze-*.js
+show-*.js
+verify-*.js
+ask-gemini.js
+.env
+
+# Python environments
+gemini_env/
+venv/
+*_env/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Archives
+archive_*/
+archive_old/
+
+# Personal files
+.env
+*.db-journal
+
+# Test results
+test_results.json
+test_general_results.json
+*_results.json
+test_results_detailed.json
+comparison_results.json
+data/
+*.db
+*.db-wal
+*.db-shm
+.venv/
+demo-insurance-netlify/
+
+# UHC Chrome profile
+.uhc-chrome-profile/
+uhc_session.json
+
+# Clinic credentials
+clinic-credentials.json
+
+# Test output files
+dentaquest-html-scraping/output/*.json
+output/dentaquest_*.json
+
+# Test scripts
+test-*.js
+
+# Local Netlify folder
+.netlify
+exploration/

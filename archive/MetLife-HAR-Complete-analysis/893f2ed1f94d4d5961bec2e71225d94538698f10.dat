@@ -1,0 +1,518 @@
+
+      let firstBubbleDelayId = null;
+      let bubblesDelayId = null;
+      const container = document.getElementById('bubble-container')
+      const chatWindowPostion = 'right'
+      const calloutBubbleCloseIcn = document.getElementById(
+        'callout-bubble-close-icn'
+      )
+      let MAX_ALLOWED_WIDTH = 420
+      let calloutBubbleData = {}
+
+      let viewportWidth = window.top.innerWidth
+     
+      if (viewportWidth <= 480) { 
+        const HORIZONTAL_MARGIN = 32
+        const CHAT_WIDGET_OFFSET_WIDTH = 70
+        const mobileMaxWidth = viewportWidth - HORIZONTAL_MARGIN - CHAT_WIDGET_OFFSET_WIDTH
+        MAX_ALLOWED_WIDTH = mobileMaxWidth
+      }
+
+      const setPrimaryColor = ({ calloutBubbleProperties, properties = {} }) => {
+        const alphaInHex = ((0.1 * 255) | (1 << 8)).toString(16).slice(1)
+
+        let primaryColor = properties.primaryColor
+        let borderRadius = properties.borderRadius
+
+        // Fallback to reading from chat iframe only if accessible (cross-origin safe)
+        if (!primaryColor || !borderRadius) {
+          try {
+            const chatIframeDocument = window.top.document
+              .getElementById('netomiChatWindow')
+              .contentWindow.document
+            const root = chatIframeDocument.documentElement
+            const computedStyle = getComputedStyle(root)
+            if (!primaryColor) {
+              primaryColor = computedStyle.getPropertyValue('--widget-primary-color').trim()
+            }
+            if (!borderRadius) {
+              borderRadius = computedStyle.getPropertyValue('--radius-chat-outer-curve')
+            }
+          } catch (e) {
+            // ignore cross-origin access; rely on passed properties/defaults
+          }
+        }
+
+        if (primaryColor) {
+          document.documentElement.style.setProperty('--primary-color', primaryColor)
+          document.documentElement.style.setProperty('--primary-color-10', primaryColor + alphaInHex)
+        }
+        if (borderRadius) {
+          document.documentElement.style.setProperty('--radius-chat-outer-curve', borderRadius)
+        }
+
+        if (Object.keys(calloutBubbleProperties || {}).length) {
+          const textCSS = calloutBubbleProperties.cssProperties?.textMessage
+          const quickReplyCSS = calloutBubbleProperties.cssProperties?.quickReply
+          if (textCSS && Object.keys(textCSS || {}).length) {
+            const { color, border, background } = textCSS
+            if (color) document.documentElement.style.setProperty('--text-color', color)
+            if (border) document.documentElement.style.setProperty('--text-border', border)
+            if (background) document.documentElement.style.setProperty('--text-background-color', background)
+          }
+          if (quickReplyCSS && Object.keys(quickReplyCSS || {}).length) {
+            const { color, border, background, hoverBackground } = quickReplyCSS
+            if (color) document.documentElement.style.setProperty('--quick-reply-color', color)
+            if (border) document.documentElement.style.setProperty('--quick-reply-border', border)
+            if (hoverBackground) document.documentElement.style.setProperty('--quick-reply-hover-background-color', hoverBackground)
+            if (background) document.documentElement.style.setProperty('--quick-reply-background-color', background)
+          }
+        }
+
+        if (properties.fontFamily) {
+          document.documentElement.style.setProperty('--font-family', properties.fontFamily)
+        }
+        if (properties.fontSize) {
+          document.documentElement.style.setProperty('--font-size', properties.fontSize)
+        }
+      }
+
+      const toggleShowCB = (show = false) => {
+        container.style.display = show ? 'block' : 'none'
+        // Adjust immediately when visibility changes
+        if (show) { adjustIframeDimensions() }
+        if (show) {
+          const checkForAnimateClass = () => {
+            const quickReplies = document.getElementsByClassName('quick-reply-button')
+            const textBubbles = document.getElementsByClassName('text-message-bubble-container')
+            if ((quickReplies[quickReplies.length - 1] && quickReplies[quickReplies.length - 1].classList && quickReplies[quickReplies.length - 1]?.classList?.contains('animate')) ||
+                (quickReplies.length === 0 && (textBubbles[textBubbles.length - 1] && textBubbles[textBubbles.length - 1].classList && textBubbles[textBubbles.length - 1].classList.contains('animate')))) {
+              if (container.style.display === 'block') {
+                calloutBubbleCloseIcn.style.opacity = '1'
+                calloutBubbleCloseIcn.style.visibility = 'visible'
+              }
+              clearInterval(intervalId)
+            }
+          }
+
+          const intervalId = setInterval(() => {
+            checkForAnimateClass()
+            // Periodically adjust while animating in case sizes change
+            adjustIframeDimensions()
+          }, 500)
+        } else {
+          calloutBubbleCloseIcn.style.opacity = '0'
+          calloutBubbleCloseIcn.style.visibility = 'hidden'
+        }
+      }
+
+      const addTextBubble = (attachment) => {
+        const alignment = calloutBubbleData?.defaultPosition || 'right'
+        const alignClass = alignment + '-align'
+        const textBubbleContainer = document.createElement('div')
+        textBubbleContainer.classList.add(
+          'text-message-bubble-container',
+          alignClass,
+          'animate'
+        )
+        container.appendChild(textBubbleContainer)
+        // Adjust after inserting a text bubble
+        try { adjustIframeDimensions() } catch(_e){}
+
+        const textDivElement = document.createElement('div')
+        textDivElement.textContent = attachment.text
+        textDivElement.classList.add('text-bubble-container')
+        textBubbleContainer.appendChild(textDivElement)
+        textDivElement.onclick = () => {
+          try {
+            parent.postMessage(
+              { eventType: 'HANDLE_TEXT_BUBBLE_CLICK', data: {} },
+              '*'
+            )
+          } catch (_e) {
+            try {
+              window.top.document
+                .getElementById('netomiChatWindow')
+                .contentWindow.postMessage(
+                  { eventType: 'HANDLE_TEXT_BUBBLE_CLICK', data: {} },
+                  '*'
+                )
+            } catch (__e) {}
+          }
+          if (calloutBubbleData?.proActiveGreetings?.[0] || calloutBubbleData?.intent || false) {
+            setTimeout(() => {
+              toggleShowCB()
+            }, 0)
+          }
+        }
+      }
+
+      const addQuickReplyBubbles = (quickRepliesArr) => {
+        const alignment = calloutBubbleData?.defaultPosition || 'right'
+        const alignClass = alignment + '-align'
+        const quickReplyWrapper = document.createElement('div')
+        quickReplyWrapper.classList.add('quick-reply-wrapper', alignClass)
+        container.appendChild(quickReplyWrapper)
+
+        quickRepliesArr.forEach((reply, index) => {
+          const quickReplyContainer = document.createElement('div')
+          quickReplyContainer.classList.add('quick-reply-container')
+          quickReplyWrapper.appendChild(quickReplyContainer)
+
+          const quickReplyElement = document.createElement('div')
+          quickReplyElement.classList.add('quick-reply-button', 'animate')
+          quickReplyElement.textContent = reply?.label
+          quickReplyContainer.appendChild(quickReplyElement)
+          quickReplyElement.onclick = () => {
+            try {
+              parent.postMessage(
+                {
+                  eventType: 'HANDLE_QUICK_REPLY_BUBBLE_CLICK',
+                  data: { index }
+                },
+                '*'
+              )
+            } catch (_e) {
+              try {
+                window.top.document
+                  .getElementById('netomiChatWindow')
+                  .contentWindow.postMessage(
+                    {
+                      eventType: 'HANDLE_QUICK_REPLY_BUBBLE_CLICK',
+                      data: { index }
+                    },
+                    '*'
+                  )
+              } catch (__e) {}
+            }
+            setTimeout(() => {
+              toggleShowCB()
+            }, 0)
+          }
+        })
+        // Adjust after inserting quick reply buttons
+        try { adjustIframeDimensions() } catch(_e){}
+      }
+
+      const hideCBOnTimer = (cbConfig) => {
+        const time = cbConfig?.displayTimer
+        if (time) {
+          let timerId = null
+          timerId = setTimeout(() => {
+            toggleShowCB()
+            clearTimeout(timerId)
+          }, time)
+        }
+      }
+
+      const handleIncommingMessage = (data) => {
+        const {
+          attachments = [],
+          delayForFirstBubble,
+          delayInBetweenBubbles,
+          config
+        } = data || {}
+        const delayBetweenBubbles = delayInBetweenBubbles || 1000
+        const firstBubbleDelay = delayForFirstBubble || 3000
+        let quickRepliesArr = []
+
+        // Clear existing content and timers
+        container.innerHTML = ''
+        if (firstBubbleDelayId) clearTimeout(firstBubbleDelayId)
+        if (bubblesDelayId) clearInterval(bubblesDelayId)
+
+        attachments.forEach((attachment) => {
+          if (attachment.quickReply) {
+            quickRepliesArr.push(...(attachment?.quickReply?.options || []))
+          }
+        })
+
+        let index = 0
+        const alignment = calloutBubbleData?.defaultPosition || 'right'
+        const alignClass = alignment + '-align'
+        const calloutContainer = document.getElementById('callout-container')
+        calloutContainer.classList.add(alignClass)
+        if (alignment === 'left') {
+          document.body.style.left = 0
+        }
+          
+        firstBubbleDelayId = setTimeout(() => {
+          bubblesDelayId = setInterval(() => {
+            if (index === attachments.length) {
+              addQuickReplyBubbles(quickRepliesArr)
+              clearInterval(bubblesDelayId)
+              clearTimeout(firstBubbleDelayId)
+              setTimeout(() => {
+                calloutBubbleCloseIcn.classList.add(alignClass)
+                calloutBubbleCloseIcn.style.opacity = calloutBubbleCloseIcn.style.opacity || '1'
+                calloutBubbleCloseIcn.style.visibility = calloutBubbleCloseIcn.style.visibility || 'visible'
+                calloutContainer.classList.add('scrollable-y')
+              }, 1000)
+              hideCBOnTimer(config)
+              return
+            }
+            if (attachments[index].type === 'Text') {
+              addTextBubble(attachments[index])
+            }
+            index++
+          }, delayBetweenBubbles)
+        }, firstBubbleDelay)
+      }
+
+      window.addEventListener('message', (event) => {
+        const { data = {}, eventType } = event?.data || {}
+        const { attachments = calloutBubbleData?.attachments || [], calloutBubbleEnabled = calloutBubbleData?.calloutBubbleEnabled } = data || {}
+
+        if (!calloutBubbleEnabled || !attachments?.length) return
+
+        if (eventType === 'RENDER_CALLOUT_OPTIONS') {
+          if (Object.keys(data).length) {
+            calloutBubbleData = data
+          }
+          setPrimaryColor(data)
+          handleIncommingMessage(data)
+        } else if (eventType === 'TOGGLE_CALLOUT_BUBBLE') {
+          toggleShowCB(data?.show)
+        }
+      })
+
+      const hideCB = () => {
+        container.style.display = 'none'
+        calloutBubbleCloseIcn.style.opacity = '0'
+        calloutBubbleCloseIcn.style.visibility = 'hidden'
+        try {
+          window.top.document
+            .getElementById('netomiChatWindow')
+            .contentWindow.postMessage(
+              {
+                eventType: 'HANDLE_CALLOUT_BUBBLE_CLOSE',
+                data: {}
+              },
+              '*'
+            )
+        } catch (e) {
+          // Cross-origin: best-effort hide without notifying chat iframe
+        }
+      }
+
+      calloutBubbleCloseIcn.addEventListener('click', hideCB)
+
+      document.addEventListener('DOMContentLoaded', function () {
+        const alignment = calloutBubbleData?.defaultPosition || 'right'
+        const alignClass = alignment + '-align'
+        const calloutContainer = document.getElementById('callout-container')
+        try {
+          const isChatWidgetHidden =
+            window.top.document.getElementById('netomiChatWindow')?.style?.display === 'none'
+          if (isChatWidgetHidden) {
+            calloutContainer.style.display = 'none'
+          }
+        } catch (e) {
+          // Cross-origin: ignore, default to visible state
+        }
+      })
+
+      function adjustIframeDimensions() {
+        const body = document.body
+        const iframe = window.frameElement
+        const containerEl = document.getElementById('callout-container')
+        // Compute height robustly across content/layout scenarios
+        const bodyHeight = Math.max(
+          document.body?.scrollHeight || 0,
+          document.documentElement?.scrollHeight || 0,
+          containerEl?.scrollHeight || 0
+        )
+
+        function getMaxTextWidth(elements) {
+          const canvas = document.createElement('canvas')
+          const context = canvas.getContext('2d')
+
+          let maxTextWidth = 0
+
+         Array.from(elements).forEach((element) => {
+            const computedStyle = window.getComputedStyle(element)
+            const paddingLeft = parseFloat(computedStyle.paddingLeft) || 0;
+            const paddingRight = parseFloat(computedStyle.paddingRight) || 0;
+
+            // Construct the font string
+            const font = computedStyle.fontWeight + ' ' + computedStyle.fontSize + ' ' + computedStyle.fontFamily;
+            context.font = font
+
+            // Measure text width
+            const textWidth = context.measureText(element.textContent).width
+
+            const additionalWidth = parseFloat(computedStyle.wordSpacing) || 0
+            const lineHeight = parseFloat(computedStyle.lineHeight) || 0
+
+            const totalWidth =
+              textWidth + additionalWidth + paddingLeft + paddingRight + (lineHeight * 0.5) + 50
+
+            maxTextWidth = Math.max(maxTextWidth, totalWidth)
+          })
+
+          return Math.min(maxTextWidth, MAX_ALLOWED_WIDTH)
+        }
+
+        function getElementTotalWidth(element) {
+          const computedStyle = window.getComputedStyle(element)
+
+          const width = element.offsetWidth
+
+          // Get paddings, borders, and margins from computed style
+          const marginLeft = parseFloat(computedStyle.marginLeft)
+          const marginRight = parseFloat(computedStyle.marginRight)
+          const paddingLeft = parseFloat(computedStyle.paddingLeft)
+          const paddingRight = parseFloat(computedStyle.paddingRight)
+          const borderLeft = parseFloat(computedStyle.borderLeftWidth)
+          const borderRight = parseFloat(computedStyle.borderRightWidth)
+
+          // Total width including padding, margin, and borders
+          const totalWidth =
+            width +
+            marginLeft +
+            marginRight +
+            paddingLeft +
+            paddingRight +
+            borderLeft +
+            borderRight
+
+          return totalWidth
+        }
+
+        function getMaxWidthOfQuickReplySiblingPairs(elements) {
+          let maxPairWidth = 0
+
+          if (elements.length === 0) {
+            return 0
+          }
+
+          // If there was only one element
+          if (elements.length === 1) {
+            return getElementTotalWidth(elements[0])
+          }
+
+          // Iterate through the elements in pairs
+          for (let i = 0; i < elements.length - 1; i += 2) {
+            const firstElementWidth = getElementTotalWidth(elements[i])
+            const secondElementWidth = getElementTotalWidth(elements[i + 1])
+
+            const combinedWidth = firstElementWidth + secondElementWidth
+
+            // Update maxPairWidth if the current pair's width is greater
+            maxPairWidth = Math.max(maxPairWidth, combinedWidth)
+          }
+
+          // Handle the case where there is a single element left
+          if (elements.length % 2 !== 0) {
+            const lastElementWidth = elements[elements.length - 1].offsetWidth
+            maxPairWidth = Math.max(maxPairWidth, lastElementWidth)
+          }
+
+          return Math.min(maxPairWidth, MAX_ALLOWED_WIDTH)
+        }
+
+        if (iframe) {
+          const textMessageElements = document.getElementsByClassName(
+            'text-message-bubble-container'
+          )
+          const quickReplyElements = document.getElementsByClassName(
+            'quick-reply-button'
+          )
+          const textMaxWidth = getMaxTextWidth(textMessageElements)
+          const quickReplyWidth = getMaxWidthOfQuickReplySiblingPairs(quickReplyElements)
+          const maxIframeWidth = Math.max(textMaxWidth, quickReplyWidth)  
+          iframe.style.width = maxIframeWidth + 'px'
+          iframe.style.height = bodyHeight + 'px'
+
+          // Inform parent to resize the iframe element (cross-origin safe)
+          try {
+            parent.postMessage(
+              { eventType: 'CALLOUT_SIZE', data: { width: maxIframeWidth, height: bodyHeight } },
+              '*'
+            )
+          } catch (_e) {
+            // ignore
+          }
+
+          const handleHorizontalIframePosition = () => {
+            const alignment = calloutBubbleData?.defaultPosition || 'right'
+            try {
+              const chatIframe = window.top.document.getElementById('netomiChatWindow')
+              const chatIframeRect = chatIframe.getBoundingClientRect()
+              const chatIframeLeft = parseInt(chatIframeRect.left, 10)
+              const chatIframeWidth = parseInt(chatIframeRect.width, 10)
+
+              if (maxIframeWidth > chatIframeLeft + chatIframeWidth || alignment === 'left') {
+                iframe.style.left = chatIframeLeft + 'px'
+                iframe.style.right = 'auto'
+
+                const updateInnerContentAlignment = (classNames) => {
+                  classNames.forEach((className) => {
+                    const elements = document.getElementsByClassName(className)
+                    document.body.style.left = 0
+                  })
+                }
+
+                updateInnerContentAlignment([
+                  'text-message-bubble-container',
+                  'callout-bubble-container',
+                  'quick-reply-wrapper'
+                ])
+              }
+            } catch (e) {
+              // Cross-origin fallback: respect left alignment if requested
+              if (alignment === 'left') {
+                iframe.style.left = '0px'
+                iframe.style.right = 'auto'
+              }
+            }
+          }
+
+          handleHorizontalIframePosition()
+        }
+      }
+
+      const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+          if (mutation.addedNodes.length || mutation.removedNodes.length) {
+            adjustIframeDimensions()
+          }
+        })
+      })
+      observer.observe(document.body, { childList: true, subtree: true })
+
+      // Also adjust on window resize
+      window.addEventListener('resize', adjustIframeDimensions)
+
+      adjustIframeDimensions()
+
+      // Notify the chat iframe that the callout bubble script has fully loaded
+      ;(function notifyCalloutReady() {
+        const sendReady = () => {
+          try {
+            window.top.document
+              .getElementById('netomiChatWindow')
+              .contentWindow.postMessage(
+                { eventType: 'CALLOUT_IFRAME_READY' },
+                '*'
+              )
+          } catch (_e) {
+            // Fall back to parent if top not accessible
+            try {
+              parent.postMessage(
+                { eventType: 'CALLOUT_IFRAME_READY' },
+                '*'
+              )
+            } catch (_e2) {
+              /* ignore */
+            }
+          }
+        }
+
+        if (document.readyState === 'complete') {
+          // Defer slightly to ensure layout/CSS applied
+          setTimeout(sendReady, 0)
+        } else {
+          window.addEventListener('load', () => sendReady(), { once: true })
+        }
+      })()

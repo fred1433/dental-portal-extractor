@@ -1,0 +1,44 @@
+{
+  "patient_name": "WATSON,RANDALL TIMOTHY",
+  "current_as_of": "2025-09-30",
+  "plan_number": "0-62549-2-1712",
+  "benefit_types": {
+    "type_1_preventive": "100%",
+    "type_2_basic": "80%",
+    "type_3_major": "50%"
+  },
+  "deductible": {
+    "type": "per plan year",
+    "amount_per_period": 50.0,
+    "remaining": 50.0,
+    "family_maximum": 150.0
+  },
+  "maximum": {
+    "annual": 5000.0,
+    "carryover": null,
+    "remaining": 4835.0
+  },
+  "orthodontics": {
+    "benefits_percentage": 50,
+    "deductible": "N/A",
+    "lifetime_maximum": 1000.0,
+    "remaining": 1000.0
+  },
+  "next_eligible": {
+    "routine_exam": "2025-09-30",
+    "comprehensive_exam": "2025-09-30",
+    "periapicals": "2025-09-30",
+    "bitewings": "2025-09-30",
+    "fullmouth": "2028-09-16",
+    "prophylaxis_cleanings": "2025-09-30",
+    "fluoride": "Not Covered",
+    "sealant": "Not Covered",
+    "periodontal_maintenance": "2025-09-30",
+    "root_planing_scaling": {
+      "top_right": "2025-09-30",
+      "top_left": "2025-09-30",
+      "lower_right": "2025-09-30",
+      "lower_left": "2025-09-30"
+    }
+  }
+}

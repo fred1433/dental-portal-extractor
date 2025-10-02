@@ -1,0 +1,1647 @@
+{
+  "patient": {
+    "firstName": "Cason",
+    "lastName": "Wright",
+    "subscriberId": "710875473",
+    "dateOfBirth": "03/29/2016",
+    "name": "CASON WRIGHT",
+    "relationship": "Subscriber",
+    "dob": "03/29/2016",
+    "gender": "M",
+    "primaryAddress": "3201 KARI LN APT 1011, GREENVILLE, TX 75402",
+    "workPhone": "(903) 441-6494",
+    "faxNumber": "-",
+    "primaryHomePhone": "(903) 441-6494",
+    "plan": "TX Medicaid Child (Under 21)",
+    "issuedId": "710875473",
+    "eligibilityStatus": "Member is eligible: \n                        Smiley Tooth LLLP - \n                        Jennifer Chou -\n                        The Smiley Tooth - 3018 Ridge Rd\nSte 120 - ROCKWALL -\n                        09/27/2025"
+  },
+  "extractionDate": "2025-09-27T20:08:54.354Z",
+  "portal": "DentaQuest",
+  "serviceHistory": [
+    {
+      "date": "08/07/2025",
+      "code": "D2930",
+      "description": "prefabricated stainless steel crown - primary tooth",
+      "toothSurface": "B/\n\t\t\t      \t\t\t\t\t\tUR/\n\t\t\t      \t\t\t\t\t\tUA/\n\t\t\t      \t\t\t\t\t\t-",
+      "placeOfService": "Office"
+    },
+    {
+      "date": "08/07/2025",
+      "code": "D1510",
+      "description": "space maintainer-fixed, unilateral- per quadrant",
+      "toothSurface": "LR/\n\t\t\t      \t\t\t\t\t\tLR/\n\t\t\t      \t\t\t\t\t\tLA/\n\t\t\t      \t\t\t\t\t\t-",
+      "placeOfService": "Office"
+    },
+    {
+      "date": "08/07/2025",
+      "code": "D1351",
+      "description": "sealant - per tooth",
+      "toothSurface": "3/\n\t\t\t      \t\t\t\t\t\tUR/\n\t\t\t      \t\t\t\t\t\tUA/\n\t\t\t      \t\t\t\t\t\tOL",
+      "placeOfService": "Office"
+    },
+    {
+      "date": "08/07/2025",
+      "code": "D2930",
+      "description": "prefabricated stainless steel crown - primary tooth",
+      "toothSurface": "A/\n\t\t\t      \t\t\t\t\t\tUR/\n\t\t\t      \t\t\t\t\t\tUA/\n\t\t\t      \t\t\t\t\t\t-",
+      "placeOfService": "Office"
+    },
+    {
+      "date": "08/07/2025",
+      "code": "D7140",
+      "description": "extraction, erupted tooth or exposed root (elevation and/or forceps removal)",
+      "toothSurface": "C/\n\t\t\t      \t\t\t\t\t\tUR/\n\t\t\t      \t\t\t\t\t\tUA/\n\t\t\t      \t\t\t\t\t\t-",
+      "placeOfService": "Office"
+    },
+    {
+      "date": "08/07/2025",
+      "code": "D1351",
+      "description": "sealant - per tooth",
+      "toothSurface": "30/\n\t\t\t      \t\t\t\t\t\tLR/\n\t\t\t      \t\t\t\t\t\tLA/\n\t\t\t      \t\t\t\t\t\tOB",
+      "placeOfService": "Office"
+    },
+    {
+      "date": "08/07/2025",
+      "code": "D7140",
+      "description": "extraction, erupted tooth or exposed root (elevation and/or forceps removal)",
+      "toothSurface": "S/\n\t\t\t      \t\t\t\t\t\tLR/\n\t\t\t      \t\t\t\t\t\tLA/\n\t\t\t      \t\t\t\t\t\t-",
+      "placeOfService": "Office"
+    },
+    {
+      "date": "08/07/2025",
+      "code": "D2930",
+      "description": "prefabricated stainless steel crown - primary tooth",
+      "toothSurface": "T/\n\t\t\t      \t\t\t\t\t\tLR/\n\t\t\t      \t\t\t\t\t\tLA/\n\t\t\t      \t\t\t\t\t\t-",
+      "placeOfService": "Office"
+    },
+    {
+      "date": "08/07/2025",
+      "code": "D9230",
+      "description": "inhalation of nitrous oxide/analgesia, anxiolysis",
+      "toothSurface": "-/-/-/-",
+      "placeOfService": "Office"
+    },
+    {
+      "date": "08/07/2025",
+      "code": "D1330",
+      "description": "oral hygiene instructions",
+      "toothSurface": "-/-/-/-",
+      "placeOfService": "Office"
+    },
+    {
+      "date": "08/07/2025",
+      "code": "D2930",
+      "description": "prefabricated stainless steel crown - primary tooth",
+      "toothSurface": "B/\n\t\t\t      \t\t\t\t\t\tUR/\n\t\t\t      \t\t\t\t\t\tUA/\n\t\t\t      \t\t\t\t\t\t-",
+      "placeOfService": "Office"
+    },
+    {
+      "date": "08/07/2025",
+      "code": "D1510",
+      "description": "space maintainer-fixed, unilateral- per quadrant",
+      "toothSurface": "LR/\n\t\t\t      \t\t\t\t\t\tLR/\n\t\t\t      \t\t\t\t\t\tLA/\n\t\t\t      \t\t\t\t\t\t-",
+      "placeOfService": "Office"
+    },
+    {
+      "date": "08/07/2025",
+      "code": "D1351",
+      "description": "sealant - per tooth",
+      "toothSurface": "3/\n\t\t\t      \t\t\t\t\t\tUR/\n\t\t\t      \t\t\t\t\t\tUA/\n\t\t\t      \t\t\t\t\t\tOL",
+      "placeOfService": "Office"
+    },
+    {
+      "date": "08/07/2025",
+      "code": "D2930",
+      "description": "prefabricated stainless steel crown - primary tooth",
+      "toothSurface": "A/\n\t\t\t      \t\t\t\t\t\tUR/\n\t\t\t      \t\t\t\t\t\tUA/\n\t\t\t      \t\t\t\t\t\t-",
+      "placeOfService": "Office"
+    },
+    {
+      "date": "08/07/2025",
+      "code": "D7140",
+      "description": "extraction, erupted tooth or exposed root (elevation and/or forceps removal)",
+      "toothSurface": "C/\n\t\t\t      \t\t\t\t\t\tUR/\n\t\t\t      \t\t\t\t\t\tUA/\n\t\t\t      \t\t\t\t\t\t-",
+      "placeOfService": "Office"
+    },
+    {
+      "date": "08/07/2025",
+      "code": "D1351",
+      "description": "sealant - per tooth",
+      "toothSurface": "30/\n\t\t\t      \t\t\t\t\t\tLR/\n\t\t\t      \t\t\t\t\t\tLA/\n\t\t\t      \t\t\t\t\t\tOB",
+      "placeOfService": "Office"
+    },
+    {
+      "date": "08/07/2025",
+      "code": "D7140",
+      "description": "extraction, erupted tooth or exposed root (elevation and/or forceps removal)",
+      "toothSurface": "S/\n\t\t\t      \t\t\t\t\t\tLR/\n\t\t\t      \t\t\t\t\t\tLA/\n\t\t\t      \t\t\t\t\t\t-",
+      "placeOfService": "Office"
+    },
+    {
+      "date": "08/07/2025",
+      "code": "D2930",
+      "description": "prefabricated stainless steel crown - primary tooth",
+      "toothSurface": "T/\n\t\t\t      \t\t\t\t\t\tLR/\n\t\t\t      \t\t\t\t\t\tLA/\n\t\t\t      \t\t\t\t\t\t-",
+      "placeOfService": "Office"
+    },
+    {
+      "date": "08/07/2025",
+      "code": "D9230",
+      "description": "inhalation of nitrous oxide/analgesia, anxiolysis",
+      "toothSurface": "-/-/-/-",
+      "placeOfService": "Office"
+    },
+    {
+      "date": "08/07/2025",
+      "code": "D1330",
+      "description": "oral hygiene instructions",
+      "toothSurface": "-/-/-/-",
+      "placeOfService": "Office"
+    },
+    {
+      "date": "06/12/2025",
+      "code": "D0220",
+      "description": "intraoral - periapical first radiographic image",
+      "toothSurface": "8/\n\t\t\t      \t\t\t\t\t\t-/-/-",
+      "placeOfService": "Office"
+    },
+    {
+      "date": "06/12/2025",
+      "code": "D1206",
+      "description": "topical application of fluoride varnish",
+      "toothSurface": "-/-/-/-",
+      "placeOfService": "Office"
+    },
+    {
+      "date": "06/12/2025",
+      "code": "D1120",
+      "description": "prophylaxis - child",
+      "toothSurface": "-/-/-/-",
+      "placeOfService": "Office"
+    },
+    {
+      "date": "06/12/2025",
+      "code": "D0272",
+      "description": "bitewings - two radiographic images",
+      "toothSurface": "-/-/-/-",
+      "placeOfService": "Office"
+    },
+    {
+      "date": "06/12/2025",
+      "code": "D0230",
+      "description": "intraoral - periapical each additional radiographic image",
+      "toothSurface": "24/\n\t\t\t      \t\t\t\t\t\t-/-/-",
+      "placeOfService": "Office"
+    },
+    {
+      "date": "06/12/2025",
+      "code": "D0603",
+      "description": "Caries risk assessment and documentation, with a finding of high risk",
+      "toothSurface": "-/-/-/-",
+      "placeOfService": "Office"
+    },
+    {
+      "date": "06/12/2025",
+      "code": "D0230",
+      "description": "intraoral - periapical each additional radiographic image",
+      "toothSurface": "10/\n\t\t\t      \t\t\t\t\t\t-/-/-",
+      "placeOfService": "Office"
+    },
+    {
+      "date": "06/12/2025",
+      "code": "D0120",
+      "description": "periodic oral evaluation - established patient",
+      "toothSurface": "-/-/-/-",
+      "placeOfService": "Office"
+    },
+    {
+      "date": "03/13/2019",
+      "code": "D0603",
+      "description": "Caries risk assessment and documentation, with a finding of high risk",
+      "toothSurface": "-/-/-/-",
+      "placeOfService": "Office"
+    },
+    {
+      "date": "03/13/2019",
+      "code": "D0145",
+      "description": "oral evaluation for a patient under three years of age and counseling with primary caregiver",
+      "toothSurface": "-/-/-/-",
+      "placeOfService": "Office"
+    }
+  ],
+  "eligibilityHistory": [
+    {
+      "Benefit Plan": "TX HHSC Medicaid Dental Services",
+      "Member Number": "710875473",
+      "Client Name": "TX Medicaid Child (Under 21)",
+      "Client Number": "7003042001",
+      "Benefit Effective Date": "05/01/2025",
+      "Termination Date": ""
+    }
+  ],
+  "claims": [
+    {
+      "number": "202523039516900",
+      "serviceDate": "08/07/2025",
+      "provider": "Lopez, Velina",
+      "location": "3018 Ridge RdROCKWALL",
+      "status": "Finalized",
+      "billed": 894.81,
+      "paid": 857.95
+    },
+    {
+      "number": "202516530011900",
+      "serviceDate": "06/12/2025",
+      "provider": "Lopez, Velina",
+      "location": "3018 Ridge RdROCKWALL",
+      "status": "Finalized",
+      "billed": 150.06,
+      "paid": 143.4
+    }
+  ],
+  "claimsDetails": [
+    {
+      "claimNumber": "202523039516900",
+      "memberName": "CASON WRIGHT",
+      "memberDOB": "3/29/2016",
+      "memberNumber": "710875473",
+      "plan": "TX Med Child",
+      "provider": "Velina Lopez (NPI# 1932770682)",
+      "serviceLocation": "The Smiley Tooth 3018 Ridge Rd, ROCKWALL, TX 75032",
+      "business": "Smiley Tooth LLLP (NPI# 1740685957)",
+      "placeOfService": "Office",
+      "officeReferenceNumber": "CGAAGBQ1T",
+      "totalBilled": 894.81,
+      "totalPatientPay": 0,
+      "payment": 857.95,
+      "paymentDate": "8/22/2025",
+      "checkETFNumber": "3232216126",
+      "receivedDate": "8/18/2025",
+      "finalDecisionDate": "8/19/2025",
+      "notes": "NEA#378099726",
+      "services": [
+        {
+          "date": "08/07/2025",
+          "procedureCode": "D9230",
+          "paidProcedureCode": "D9230",
+          "tooth": "//-/",
+          "quantity": "1",
+          "status": "Paid",
+          "processingPolicies": "",
+          "billed": "$42.00",
+          "patientPay": "$0.00",
+          "paid": "$39.16",
+          "icdCodes": ""
+        },
+        {
+          "date": "08/07/2025",
+          "procedureCode": "D1510",
+          "paidProcedureCode": "D1510",
+          "tooth": "LR/LR/LA/",
+          "quantity": "1",
+          "status": "Paid",
+          "processingPolicies": "",
+          "billed": "$160.00",
+          "patientPay": "$0.00",
+          "paid": "$156.80",
+          "icdCodes": ""
+        },
+        {
+          "date": "08/07/2025",
+          "procedureCode": "D2930",
+          "paidProcedureCode": "D2930",
+          "tooth": "A/UR/UA/",
+          "quantity": "1",
+          "status": "Paid",
+          "processingPolicies": "",
+          "billed": "$156.06",
+          "patientPay": "$0.00",
+          "paid": "$149.12",
+          "icdCodes": ""
+        },
+        {
+          "date": "08/07/2025",
+          "procedureCode": "D2930",
+          "paidProcedureCode": "D2930",
+          "tooth": "B/UR/UA/",
+          "quantity": "1",
+          "status": "Paid",
+          "processingPolicies": "",
+          "billed": "$156.06",
+          "patientPay": "$0.00",
+          "paid": "$149.12",
+          "icdCodes": ""
+        },
+        {
+          "date": "08/07/2025",
+          "procedureCode": "D7140",
+          "paidProcedureCode": "D7140",
+          "tooth": "C/UR/UA/",
+          "quantity": "1",
+          "status": "Paid",
+          "processingPolicies": "",
+          "billed": "$71.79",
+          "patientPay": "$0.00",
+          "paid": "$68.79",
+          "icdCodes": ""
+        },
+        {
+          "date": "08/07/2025",
+          "procedureCode": "D7140",
+          "paidProcedureCode": "D7140",
+          "tooth": "S/LR/LA/",
+          "quantity": "1",
+          "status": "Paid",
+          "processingPolicies": "",
+          "billed": "$71.79",
+          "patientPay": "$0.00",
+          "paid": "$68.79",
+          "icdCodes": ""
+        },
+        {
+          "date": "08/07/2025",
+          "procedureCode": "D2930",
+          "paidProcedureCode": "D2930",
+          "tooth": "T/LR/LA/",
+          "quantity": "1",
+          "status": "Paid",
+          "processingPolicies": "",
+          "billed": "$156.06",
+          "patientPay": "$0.00",
+          "paid": "$149.12",
+          "icdCodes": ""
+        },
+        {
+          "date": "08/07/2025",
+          "procedureCode": "D1330",
+          "paidProcedureCode": "D1330",
+          "tooth": "//-/",
+          "quantity": "1",
+          "status": "Paid",
+          "processingPolicies": "",
+          "billed": "$15.29",
+          "patientPay": "$0.00",
+          "paid": "$15.29",
+          "icdCodes": ""
+        },
+        {
+          "date": "08/07/2025",
+          "procedureCode": "D1351",
+          "paidProcedureCode": "D1351",
+          "tooth": "3/UR/UA/OL",
+          "quantity": "1",
+          "status": "Paid",
+          "processingPolicies": "",
+          "billed": "$32.88",
+          "patientPay": "$0.00",
+          "paid": "$30.88",
+          "icdCodes": ""
+        },
+        {
+          "date": "08/07/2025",
+          "procedureCode": "D1351",
+          "paidProcedureCode": "D1351",
+          "tooth": "30/LR/LA/OB",
+          "quantity": "1",
+          "status": "Paid",
+          "processingPolicies": "",
+          "billed": "$32.88",
+          "patientPay": "$0.00",
+          "paid": "$30.88",
+          "icdCodes": ""
+        }
+      ]
+    },
+    {
+      "claimNumber": "202516530011900",
+      "memberName": "CASON WRIGHT",
+      "memberDOB": "3/29/2016",
+      "memberNumber": "710875473",
+      "plan": "TX Med Child",
+      "provider": "Velina Lopez (NPI# 1932770682)",
+      "serviceLocation": "The Smiley Tooth 3018 Ridge Rd, ROCKWALL, TX 75032",
+      "business": "Smiley Tooth LLLP (NPI# 1740685957)",
+      "placeOfService": "Office",
+      "officeReferenceNumber": "CBAAF54D6",
+      "totalBilled": 150.06,
+      "totalPatientPay": 0,
+      "payment": 143.4,
+      "paymentDate": "6/20/2025",
+      "checkETFNumber": "3232197255",
+      "receivedDate": "6/14/2025",
+      "finalDecisionDate": "6/16/2025",
+      "services": [
+        {
+          "date": "06/12/2025",
+          "procedureCode": "D0120",
+          "paidProcedureCode": "D0120",
+          "tooth": "//-/",
+          "quantity": "1",
+          "status": "Paid",
+          "processingPolicies": "",
+          "billed": "$29.44",
+          "patientPay": "$0.00",
+          "paid": "$28.85",
+          "icdCodes": ""
+        },
+        {
+          "date": "06/12/2025",
+          "procedureCode": "D1120",
+          "paidProcedureCode": "D1120",
+          "tooth": "//-/",
+          "quantity": "1",
+          "status": "Paid",
+          "processingPolicies": "",
+          "billed": "$37.50",
+          "patientPay": "$0.00",
+          "paid": "$36.75",
+          "icdCodes": ""
+        },
+        {
+          "date": "06/12/2025",
+          "procedureCode": "D1206",
+          "paidProcedureCode": "D1206",
+          "tooth": "//-/",
+          "quantity": "1",
+          "status": "Paid",
+          "processingPolicies": "",
+          "billed": "$22.95",
+          "patientPay": "$0.00",
+          "paid": "$19.95",
+          "icdCodes": ""
+        },
+        {
+          "date": "06/12/2025",
+          "procedureCode": "D0272",
+          "paidProcedureCode": "D0272",
+          "tooth": "//-/",
+          "quantity": "1",
+          "status": "Paid",
+          "processingPolicies": "",
+          "billed": "$23.86",
+          "patientPay": "$0.00",
+          "paid": "$22.27",
+          "icdCodes": ""
+        },
+        {
+          "date": "06/12/2025",
+          "procedureCode": "D0603",
+          "paidProcedureCode": "D0603",
+          "tooth": "//-/",
+          "quantity": "1",
+          "status": "Paid",
+          "processingPolicies": "",
+          "billed": "$0.01",
+          "patientPay": "$0.00",
+          "paid": "$0.00",
+          "icdCodes": ""
+        },
+        {
+          "date": "06/12/2025",
+          "procedureCode": "D0220",
+          "paidProcedureCode": "D0220",
+          "tooth": "8//-/",
+          "quantity": "1",
+          "status": "Paid",
+          "processingPolicies": "",
+          "billed": "$12.82",
+          "patientPay": "$0.00",
+          "paid": "$12.56",
+          "icdCodes": ""
+        },
+        {
+          "date": "06/12/2025",
+          "procedureCode": "D0230",
+          "paidProcedureCode": "D0230",
+          "tooth": "10//-/",
+          "quantity": "1",
+          "status": "Paid",
+          "processingPolicies": "",
+          "billed": "$11.74",
+          "patientPay": "$0.00",
+          "paid": "$11.51",
+          "icdCodes": ""
+        },
+        {
+          "date": "06/12/2025",
+          "procedureCode": "D0230",
+          "paidProcedureCode": "D0230",
+          "tooth": "24//-/",
+          "quantity": "1",
+          "status": "Paid",
+          "processingPolicies": "",
+          "billed": "$11.74",
+          "patientPay": "$0.00",
+          "paid": "$11.51",
+          "icdCodes": ""
+        }
+      ]
+    }
+  ],
+  "overview": {
+    "raw": "Primary Care ProviderProvider:Jennifer ChouOffice:The Smiley ToothService Location:804 Gilmer St\nSte B, SULPHUR SPRINGS, TX75482Provider Effective Date:09/18/2025Provider Termination Date:09/30/2025Other CoverageThis member does not have other coverages.Loading",
+    "structured": {
+      "Name": "CASON WRIGHT",
+      "Relationship": "Subscriber",
+      "DOB": "03/29/2016",
+      "Gender": "M",
+      "Primary Address": "3201 KARI LN APT 1011, GREENVILLE, TX 75402",
+      "Work Phone": "(903) 441-6494",
+      "Fax Number": "-",
+      "Primary Home Phone": "(903) 441-6494",
+      "Provider": "Jennifer Chou",
+      "Office": "The Smiley Tooth",
+      "Service Location": "804 Gilmer St\nSte B, SULPHUR SPRINGS, TX75482",
+      "Provider Effective Date": "09/18/2025",
+      "Provider Termination Date": "09/30/2025",
+      "eligibilityStatus": "Member is eligible: \n                        Smiley Tooth LLLP - \n                        Jennifer Chou -\n                        The Smiley Tooth - 3018 Ridge Rd\nSte 120 - ROCKWALL -\n                        09/27/2025",
+      "plan": "TX Medicaid Child (Under 21)",
+      "issuedId": "710875473"
+    },
+    "primaryCareProvider": {
+      "Provider": "Jennifer Chou",
+      "Office": "The Smiley Tooth",
+      "Service Location": "804 Gilmer St\nSte B, SULPHUR SPRINGS, TX75482",
+      "Provider Effective Date": "09/18/2025",
+      "Provider Termination Date": "09/30/2025"
+    },
+    "otherCoverage": "This member does not have other coverages.",
+    "extractionMethod": "complete"
+  },
+  "summary": {
+    "totalBilled": 1044.87,
+    "totalPaid": 1001.35,
+    "patientResponsibility": 0,
+    "isEligible": true,
+    "patientName": "Cason Wright",
+    "memberId": "710875473",
+    "totalClaims": 2,
+    "totalServices": 30,
+    "cdtCodes": [
+      {
+        "code": "D2930",
+        "description": "prefabricated stainless steel crown - primary tooth",
+        "date": "08/07/2025",
+        "provider": "N/A"
+      },
+      {
+        "code": "D1510",
+        "description": "space maintainer-fixed, unilateral- per quadrant",
+        "date": "08/07/2025",
+        "provider": "N/A"
+      },
+      {
+        "code": "D1351",
+        "description": "sealant - per tooth",
+        "date": "08/07/2025",
+        "provider": "N/A"
+      },
+      {
+        "code": "D2930",
+        "description": "prefabricated stainless steel crown - primary tooth",
+        "date": "08/07/2025",
+        "provider": "N/A"
+      },
+      {
+        "code": "D7140",
+        "description": "extraction, erupted tooth or exposed root (elevation and/or forceps removal)",
+        "date": "08/07/2025",
+        "provider": "N/A"
+      },
+      {
+        "code": "D1351",
+        "description": "sealant - per tooth",
+        "date": "08/07/2025",
+        "provider": "N/A"
+      },
+      {
+        "code": "D7140",
+        "description": "extraction, erupted tooth or exposed root (elevation and/or forceps removal)",
+        "date": "08/07/2025",
+        "provider": "N/A"
+      },
+      {
+        "code": "D2930",
+        "description": "prefabricated stainless steel crown - primary tooth",
+        "date": "08/07/2025",
+        "provider": "N/A"
+      },
+      {
+        "code": "D9230",
+        "description": "inhalation of nitrous oxide/analgesia, anxiolysis",
+        "date": "08/07/2025",
+        "provider": "N/A"
+      },
+      {
+        "code": "D1330",
+        "description": "oral hygiene instructions",
+        "date": "08/07/2025",
+        "provider": "N/A"
+      },
+      {
+        "code": "D2930",
+        "description": "prefabricated stainless steel crown - primary tooth",
+        "date": "08/07/2025",
+        "provider": "N/A"
+      },
+      {
+        "code": "D1510",
+        "description": "space maintainer-fixed, unilateral- per quadrant",
+        "date": "08/07/2025",
+        "provider": "N/A"
+      },
+      {
+        "code": "D1351",
+        "description": "sealant - per tooth",
+        "date": "08/07/2025",
+        "provider": "N/A"
+      },
+      {
+        "code": "D2930",
+        "description": "prefabricated stainless steel crown - primary tooth",
+        "date": "08/07/2025",
+        "provider": "N/A"
+      },
+      {
+        "code": "D7140",
+        "description": "extraction, erupted tooth or exposed root (elevation and/or forceps removal)",
+        "date": "08/07/2025",
+        "provider": "N/A"
+      },
+      {
+        "code": "D1351",
+        "description": "sealant - per tooth",
+        "date": "08/07/2025",
+        "provider": "N/A"
+      },
+      {
+        "code": "D7140",
+        "description": "extraction, erupted tooth or exposed root (elevation and/or forceps removal)",
+        "date": "08/07/2025",
+        "provider": "N/A"
+      },
+      {
+        "code": "D2930",
+        "description": "prefabricated stainless steel crown - primary tooth",
+        "date": "08/07/2025",
+        "provider": "N/A"
+      },
+      {
+        "code": "D9230",
+        "description": "inhalation of nitrous oxide/analgesia, anxiolysis",
+        "date": "08/07/2025",
+        "provider": "N/A"
+      },
+      {
+        "code": "D1330",
+        "description": "oral hygiene instructions",
+        "date": "08/07/2025",
+        "provider": "N/A"
+      },
+      {
+        "code": "D0220",
+        "description": "intraoral - periapical first radiographic image",
+        "date": "06/12/2025",
+        "provider": "N/A"
+      },
+      {
+        "code": "D1206",
+        "description": "topical application of fluoride varnish",
+        "date": "06/12/2025",
+        "provider": "N/A"
+      },
+      {
+        "code": "D1120",
+        "description": "prophylaxis - child",
+        "date": "06/12/2025",
+        "provider": "N/A"
+      },
+      {
+        "code": "D0272",
+        "description": "bitewings - two radiographic images",
+        "date": "06/12/2025",
+        "provider": "N/A"
+      },
+      {
+        "code": "D0230",
+        "description": "intraoral - periapical each additional radiographic image",
+        "date": "06/12/2025",
+        "provider": "N/A"
+      },
+      {
+        "code": "D0603",
+        "description": "Caries risk assessment and documentation, with a finding of high risk",
+        "date": "06/12/2025",
+        "provider": "N/A"
+      },
+      {
+        "code": "D0230",
+        "description": "intraoral - periapical each additional radiographic image",
+        "date": "06/12/2025",
+        "provider": "N/A"
+      },
+      {
+        "code": "D0120",
+        "description": "periodic oral evaluation - established patient",
+        "date": "06/12/2025",
+        "provider": "N/A"
+      },
+      {
+        "code": "D0603",
+        "description": "Caries risk assessment and documentation, with a finding of high risk",
+        "date": "03/13/2019",
+        "provider": "N/A"
+      },
+      {
+        "code": "D0145",
+        "description": "oral evaluation for a patient under three years of age and counseling with primary caregiver",
+        "date": "03/13/2019",
+        "provider": "N/A"
+      }
+    ],
+    "totalCDTCodes": 30
+  },
+  "htmlSamples": {
+    "overview": "<div class=\"memberOverviewContainer cProv_comp_Member_Detail_Overview\" data-aura-rendered-by=\"252:0\" data-aura-class=\"cProv_comp_Member_Detail_Overview\"><!--render facet: 264:0--><br data-aura-rendered-by=\"265:0\"><h3 class=\"slds-m-bottom_medium\" data-aura-rendered-by=\"445:0\">Primary Care Provider</h3><div class=\"slds-grid slds-m-bottom_medium\" data-aura-rendered-by=\"447:0\"><div class=\"slds-col slds-size_1-of-6\" data-aura-rendered-by=\"448:0\"><dl class=\"slds-list_horizontal slds-wrap\" data-aura-rendered-by=\"449:0\"><dt title=\"Provider Name\" class=\"slds-item_label bodyText boldText slds-truncate\" data-aura-rendered-by=\"451:0\">Provider:</dt><dd title=\"Provider Name\" class=\"slds-item_detail slds-truncate\" data-aura-rendered-by=\"453:0\">Jennifer Chou</dd><dt title=\"Provider Office\" class=\"slds-item_label bodyText boldText slds-truncate\" data-aura-rendered-by=\"456:0\">Office:</dt><dd title=\"Provider Office\" class=\"slds-item_detail slds-truncate\" data-aura-rendered-by=\"458:0\">The Smiley Tooth</dd><dt title=\"Member Number\" class=\"slds-item_label bodyText boldText slds-truncate\" data-aura-rendered-by=\"460:0\">Service Location:</dt><dd title=\"Member Id Number\" class=\"slds-item_detail slds-truncate\" data-aura-rendered-by=\"462:0\">804 Gilmer St\nSte B, SULPHUR SPRINGS, TX<br data-aura-rendered-by=\"468:0\">75482</dd><dt title=\"Effective Date\" class=\"slds-item_label bodyText boldText slds-truncate\" data-aura-rendered-by=\"470:0\">Provider Effective Date:</dt><dd title=\"Effective Date\" class=\"slds-item_detail slds-truncate\" data-aura-rendered-by=\"472:0\"><span class=\"slds-item_detail slds-truncate uiOutputDate\" data-aura-rendered-by=\"475:0\" data-aura-class=\"uiOutputDate\">09/18/2025</span></dd><dt title=\"Effective Date\" class=\"slds-item_label bodyText boldText slds-truncate\" data-aura-rendered-by=\"476:0\">Provider Termination Date:</dt><dd title=\"Termination Date\" class=\"slds-item_detail slds-truncate\" data-aura-rendered-by=\"478:0\"><span class=\"slds-item_detail slds-truncate uiOutputDate\" data-aura-rendered-by=\"482:0\" data-aura-class=\"uiOutputDate\">09/30/2025</span></dd></dl></div></div><h3 data-aura-rendered-by=\"267:0\">Other Coverage</h3><h5 data-aura-rendered-by=\"270:0\">This member does not have other coverages.</h5><br data-aura-rendered-by=\"272:0\"><br data-aura-rendered-by=\"273:0\"><!--render facet: 274:0--><div class=\"slds-backdrop lighter slds-backdrop--open slds-hide\" data-aura-rendered-by=\"255:0\"><div class=\"slds-spinner_container\" data-aura-rendered-by=\"256:0\"><div role=\"status\" class=\"slds-spinner slds-spinner--medium\" data-aura-rendered-by=\"257:0\"><span class=\"slds-assistive-text\" data-aura-rendered-by=\"258:0\">Loading</span><div class=\"slds-spinner__dot-a\" data-aura-rendered-by=\"260:0\"></div><div class=\"slds-spinner__dot-b\" data-aura-rendered-by=\"261:0\"></div></div></div></div></div>",
+    "claims": "<thead data-aura-rendered-by=\"519:0\"><tr data-aura-rendered-by=\"520:0\"><th class=\"width15\" data-aura-rendered-by=\"521:0\"><span data-col=\"0\" class=\"headerText sortable sorted sortDescend inverse testScript_claimNumberSort\" data-fieldname=\"ClaimNumber\" data-aura-rendered-by=\"522:0\">Number</span></th><th class=\"width15\" data-aura-rendered-by=\"524:0\"><span data-col=\"1\" class=\"headerText sortable notSorted inverse testScript_serviceDateSort\" data-fieldname=\"ServiceDate\" data-aura-rendered-by=\"525:0\">Service Date</span></th><th class=\"width15\" data-aura-rendered-by=\"527:0\"><span data-col=\"2\" class=\"headerText sortable notSorted inverse testScript_providerSort\" data-fieldname=\"TreatingDentistLastName\" data-aura-rendered-by=\"528:0\">Provider</span></th><th class=\"width15\" data-aura-rendered-by=\"530:0\"><span data-col=\"3\" class=\"headerText sortable notSorted inverse testScript_locationSort\" data-fieldname=\"ServiceOfficeAddress1\" data-aura-rendered-by=\"531:0\">Location</span></th><th class=\"width15\" data-aura-rendered-by=\"533:0\"><span data-col=\"4\" class=\"headerText sortable notSorted inverse testScript_statusSort\" data-fieldname=\"StatusCategory\" data-aura-rendered-by=\"534:0\">Status</span></th><th class=\"width15\" data-aura-rendered-by=\"536:0\"><span data-col=\"5\" class=\"headerText sortable notSorted inverse testScript_billedSort\" data-fieldname=\"BilledAmount\" data-aura-rendered-by=\"537:0\">Billed</span></th><th class=\"width15\" data-aura-rendered-by=\"539:0\"><span data-col=\"6\" class=\"headerText sortable notSorted inverse testScript_paidSort\" data-fieldname=\"PaidAmount\" data-aura-rendered-by=\"540:0\">Paid</span></th></tr></thead><tbody data-aura-rendered-by=\"542:0\"><tr data-aura-rendered-by=\"561:0\"><td data-value=\"202523039516900\" data-label=\"Number\" class=\"slds-is-sortable width15\" data-aura-rendered-by=\"562:0\"><span class=\"bodyText dataSpace\" data-aura-rendered-by=\"563:0\"><a data-detailredirectid=\"202523039516900\" data-aura-rendered-by=\"564:0\" href=\"javascript:void(0);\">202523039516900</a></span></td><td data-value=\"2025-08-07T00:00:00.000Z\" data-label=\"Service Date\" class=\"slds-is-sortable width15\" data-aura-rendered-by=\"566:0\"><lightning-formatted-date-time class=\"bodyText dataSpace\" data-aura-rendered-by=\"567:0\">08/07/2025</lightning-formatted-date-time></td><td data-value=\"Lopez\" data-label=\"Provider\" class=\"slds-is-sortable width15\" data-aura-rendered-by=\"568:0\"><span class=\"bodyText dataSpace\" data-aura-rendered-by=\"569:0\">Lopez, Velina</span></td><td data-value=\"3018 Ridge Rd\" data-label=\"Location\" class=\"slds-is-sortable width15\" data-aura-rendered-by=\"573:0\"><span class=\"bodyText dataSpace\" data-aura-rendered-by=\"574:0\">3018 Ridge Rd<br data-aura-rendered-by=\"576:0\">ROCKWALL</span></td><td data-value=\"Finalized\" data-label=\"Status Category\" class=\"slds-is-sortable width15\" data-aura-rendered-by=\"578:0\"><span class=\"bodyText dataSpace\" data-aura-rendered-by=\"579:0\">Finalized</span></td><td data-value=\"894.81\" data-label=\"Billed Amount\" class=\"slds-is-sortable width15\" data-aura-rendered-by=\"581:0\"><lightning-formatted-number class=\"bodyText dataSpace\" data-aura-rendered-by=\"582:0\" lwc-6vmg9jd9gul-host=\"\">$894.81</lightning-formatted-number></td><td data-value=\"857.95\" data-label=\"Paid Amount\" class=\"slds-is-sortable width15\" data-aura-rendered-by=\"583:0\"><lightning-formatted-number class=\"bodyText dataSpace\" data-aura-rendered-by=\"584:0\" lwc-6vmg9jd9gul-host=\"\">$857.95</lightning-formatted-number></td></tr><tr data-aura-rendered-by=\"585:0\"><td data-value=\"202516530011900\" data-label=\"Number\" class=\"slds-is-sortable width15\" data-aura-rendered-by=\"586:0\"><span class=\"bodyText dataSpace\" data-aura-rendered-by=\"587:0\"><a data-detailredirectid=\"202516530011900\" data-aura-rendered-by=\"588:0\" href=\"javascript:void(0);\">202516530011900</a></span></td><td data-value=\"2025-06-12T00:00:00.000Z\" data-label=\"Service Date\" class=\"slds-is-sortable width15\" data-aura-rendered-by=\"590:0\"><lightning-formatted-date-time class=\"bodyText dataSpace\" data-aura-rendered-by=\"591:0\">06/12/2025</lightning-formatted-date-time></td><td data-value=\"Lopez\" data-label=\"Provider\" class=\"slds-is-sortable width15\" data-aura-rendered-by=\"592:0\"><span class=\"bodyText dataSpace\" data-aura-rendered-by=\"593:0\">Lopez, Velina</span></td><td data-value=\"3018 Ridge Rd\" data-label=\"Location\" class=\"slds-is-sortable width15\" data-aura-rendered-by=\"597:0\"><span class=\"bodyText dataSpace\" data-aura-rendered-by=\"598:0\">3018 Ridge Rd<br data-aura-rendered-by=\"600:0\">ROCKWALL</span></td><td data-value=\"Finalized\" data-label=\"Status Category\" class=\"slds-is-sortable width15\" data-aura-rendered-by=\"602:0\"><span class=\"bodyText dataSpace\" data-aura-rendered-by=\"603:0\">Finalized</span></td><td data-value=\"150.06\" data-label=\"Billed Amount\" class=\"slds-is-sortable width15\" data-aura-rendered-by=\"605:0\"><lightning-formatted-number class=\"bodyText dataSpace\" data-aura-rendered-by=\"606:0\" lwc-6vmg9jd9gul-host=\"\">$150.06</lightning-formatted-number></td><td data-value=\"143.4\" data-label=\"Paid Amount\" class=\"slds-is-sortable width15\" data-aura-rendered-by=\"607:0\"><lightning-formatted-number class=\"bodyText dataSpace\" data-aura-rendered-by=\"608:0\" lwc-6vmg9jd9gul-host=\"\">$143.40</lightning-formatted-number></td></tr></tbody>",
+    "serviceHistory": "<thead data-aura-rendered-by=\"7:268;a\"><tr data-aura-rendered-by=\"8:268;a\"><th data-col=\"0\" class=\"width15 sortable sortDescend headerText\" data-fieldname=\"ProcedureDate__c\" data-aura-rendered-by=\"9:268;a\"><span class=\"bodyText headerText\" data-aura-rendered-by=\"10:268;a\">Service Date</span></th><th data-col=\"1\" class=\"width15 sortable notSorted headerText\" data-fieldname=\"ProcedureCode__c\" data-aura-rendered-by=\"12:268;a\"><span class=\"bodyText\" data-aura-rendered-by=\"13:268;a\">Procedure Code</span></th><th data-col=\"2\" class=\"width15 headerText sortable notSorted\" data-fieldname=\"ProcedureCodeDescription__c\" data-aura-rendered-by=\"15:268;a\"><span class=\"bodyText\" data-aura-rendered-by=\"16:268;a\">Procedure Code Description</span></th><th data-col=\"3\" class=\"width15 headerText sortable notSorted\" data-fieldname=\"ToothSurfaces__c\" data-aura-rendered-by=\"18:268;a\"><span class=\"bodyText\" data-aura-rendered-by=\"19:268;a\">Tooth/Quad/Arch/Surface</span></th><th data-col=\"4\" class=\"width15 headerText sortable notSorted\" data-fieldname=\"TreatmentLocationDescription__c\" data-aura-rendered-by=\"21:268;a\"><span class=\"bodyText\" data-aura-rendered-by=\"22:268;a\">Place of Service</span></th></tr></thead><tbody data-aura-rendered-by=\"24:268;a\"><tr data-aura-rendered-by=\"26:268;a\"><td data-label=\"Procedure Date\" class=\"slds-is-sortable width15\" data-aura-rendered-by=\"27:268;a\"><span class=\"bodyText dataSpace\" data-aura-rendered-by=\"28:268;a\"><span class=\"slds-item_detail slds-truncate uiOutputDate\" data-aura-rendered-by=\"31:268;a\" data-aura-class=\"uiOutputDate\">08/07/2025</span></span></td><td data-label=\"Procedure Code\" class=\"slds-is-sortable width15\" data-aura-rendered-by=\"32:268;a\"><span class=\"bodyText dataSpace\" data-aura-rendered-by=\"33:268;a\">D2930</span></td><td data-label=\"Procedure Code Description\" class=\"slds-is-sortable width15\" data-aura-rendered-by=\"35:268;a\"><span class=\"bodyText dataSpace\" data-aura-rendered-by=\"36:268;a\">prefabricated stainless steel crown - primary tooth</span></td><td data-label=\"Tooth/Quad/Arch/Surface\" class=\"slds-is-sortable width15 bodyText dataSpace\" data-aura-rendered-by=\"38:268;a\">B/\n\t\t\t      \t\t\t\t\t\tUR/\n\t\t\t      \t\t\t\t\t\tUA/\n\t\t\t      \t\t\t\t\t\t-</td><td data-label=\"Place of Service\" class=\"width15 slds-is-sortable\" data-aura-rendered-by=\"50:268;a\"><span class=\"bodyText dataSpace\" data-aura-rendered-by=\"51:268;a\">Office</span></td></tr><tr data-aura-rendered-by=\"53:268;a\"><td data-label=\"Procedure Date\" class=\"slds-is-sortable width15\" data-aura-rendered-by=\"54:268;a\"><span class=\"bodyText dataSpace\" data-aura-rendered-by=\"55:268;a\"><span class=\"slds-item_detail slds-truncate uiOutputDate\" data-aura-rendered-by=\"58:268;a\" data-aura-class=\"uiOutputDate\">08/07/2025</span></span></td><td data-label=\"Procedure Code\" class=\"slds-is-sortable width15\" data-aura-rendered-by=\"59:268;a\"><span class=\"bodyText dataSpace\" data-aura-rendered-by=\"60:268;a\">D1510</span></td><td data-label=\"Procedure Code Description\" class=\"slds-is-sortable width15\" data-aura-rendered-by=\"62:268;a\"><span class=\"bodyText dataSpace\" data-aura-rendered-by=\"63:268;a\">space maintainer-fixed, unilateral- per quadrant</span></td><td data-label=\"Tooth/Quad/Arch/Surface\" class=\"slds-is-sortable width15 bodyText dataSpace\" data-aura-rendered-by=\"65:268;a\">LR/\n\t\t\t      \t\t\t\t\t\tLR/\n\t\t\t      \t\t\t\t\t\tLA/\n\t\t\t      \t\t\t\t\t\t-</td><td data-label=\"Place of Service\" class=\"width15 slds-is-sortable\" data-aura-rendered-by=\"77:268;a\"><span class=\"bodyText dataSpace\" data-aura-rendered-by=\"78:268;a\">Office</span></td></tr><tr data-aura-rendered-by=\"80:268;a\"><td data-label=\"Procedure Date\" class=\"slds-is-sortable width15\" data-aura-rendered-by=\"81:268;a\"><span class=\"bodyText dataSpace\" data-aura-rendered-by=\"82:268;a\"><span class=\"slds-item_detail slds-truncate uiOutputDate\" data-aura-rendered-by=\"85:268;a\" data-aura-class=\"uiOutputDate\">08/07/2025</span></span></td><td data-label=\"Procedure Code\" class=\"slds-is-sortable width15\" data-aura-rendered-by=\"86:268;a\"><span class=\"bodyText dataSpace\" data-aura-rendered-by=\"87:268;a\">D1351</span></td><td data-label=\"Procedure Code Description\" class=\"slds-is-sortable width15\" data-aura-rendered-by=\"89:268;a\"><span class=\"bodyText dataSpace\" data-aura-rendered-by=\"90:268;a\">sealant - per tooth</span></td><td data-label=\"Tooth/Quad/Arch/Surface\" class=\"slds-is-sortable width15 bodyText dataSpace\" data-aura-rendered-by=\"92:268;a\">3/\n\t\t\t      \t\t\t\t\t\tUR/\n\t\t\t      \t\t\t\t\t\tUA/\n\t\t\t      \t\t\t\t\t\tOL</td><td data-label=\"Place of Service\" class=\"width15 slds-is-sortable\" data-aura-rendered-by=\"104:268;a\"><span class=\"bodyText dataSpace\" data-aura-rendered-by=\"105:268;a\">Office</span></td></tr><tr data-aura-rendered-by=\"107:268;a\"><td data-label=\"Procedure Date\" class=\"slds-is-sortable width15\" data-aura-rendered-by=\"108:268;a\"><span class=\"bodyText dataSpace\" data-aura-rendered-by=\"109:268;a\"><span class=\"slds-item_detail slds-truncate uiOutputDate\" data-aura-rendered-by=\"112:268;a\" data-aura-class=\"uiOutputDate\">08/07/2025</span></span></td><td data-label=\"Procedure Code\" class=\"slds-is-sortable width15\" data-aura-rendered-by=\"113:268;a\"><span class=\"bodyText dataSpace\" data-aura-rendered-by=\"114:268;a\">D2930</span></td><td data-label=\"Procedure Code Description\" class=\"slds-is-sortable width15\" data-aura-rendered-by=\"116:268;a\"><span class=\"bodyText dataSpace\" data-aura-rendered-by=\"117:268;a\">prefabricated stainless steel crown - primary tooth</span></td><td data-label=\"Tooth/Quad/Arch/Surface\" class=\"slds-is-sortable width15 bodyText dataSpace\" data-aura-rendered-by=\"119:268;a\">A/\n\t\t\t      \t\t\t\t\t\tUR/\n\t\t\t      \t\t\t\t\t\tUA/\n\t\t\t      \t\t\t\t\t\t-</td><td data-label=\"Place of Service\" class=\"width15 slds-is-sortable\" data-aura-rendered-by=\"131:268;a\"><span class=\"bodyText dataSpace\" data-aura-rendered-by=\"132:268;a\">Office</span></td></tr><tr data-aura-rendered-by=\"134:268;a\"><td data-label=\"Procedure Date\" class=\"slds-is-sortable width15\" data-aura-rendered-by=\"135:268;a\"><span class=\"bodyText dataSpace\" data-aura-rendered-by=\"136:268;a\"><span class=\"slds-item_detail slds-truncate uiOutputDate\" data-aura-rendered-by=\"139:268;a\" data-aura-class=\"uiOutputDate\">08/07/2025</span></span></td><td data-label=\"Procedure Code\" class=\"slds-is-sortable width15\" data-aura-rendered-by=\"140:268;a\"><span class=\"bodyText dataSpace\" data-aura-rendered-by=\"141:268;a\">D7140</span></td><td data-label=\"Procedure Code Description\" class=\"slds-is-sortable width15\" data-aura-rendered-by=\"143:268;a\"><span class=\"bodyText dataSpace\" data-aura-rendered-by=\"144:268;a\">extraction, erupted tooth or exposed root (elevation and/or forceps removal)</span></td><td data-label=\"Tooth/Quad/Arch/Surface\" class=\"slds-is-sortable width15 bodyText dataSpace\" data-aura-rendered-by=\"146:268;a\">C/\n\t\t\t      \t\t\t\t\t\tUR/\n\t\t\t      \t\t\t\t\t\tUA/\n\t\t\t      \t\t\t\t\t\t-</td><td data-label=\"Place of Service\" class=\"width15 slds-is-sortable\" data-aura-rendered-by=\"158:268;a\"><span class=\"bodyText dataSpace\" data-aura-rendered-by=\"159:268;a\">Office</span></td></tr><tr data-aura-rendered-by=\"161:268;a\"><td data-label=\"Procedure Date\" class=\"slds-is-sortable width15\" data-aura-rendered-by=\"162:268;a\"><span class=\"bodyText dataSpace\" data-aura-rendered-by=\"163:268;a\"><span class=\"slds-item_detail slds-truncate uiOutputDate\" data-aura-rendered-by=\"166:268;a\" data-aura-class=\"uiOutputDate\">08/07/2025</span></span></td><td data-label=\"Procedure Code\" class=\"slds-is-sortable width15\" data-aura-rendered-by=\"167:268;a\"><span class=\"bodyText dataSpace\" data-aura-rendered-by=\"168:268;a\">D1351</span></td><td data-label=\"Procedure Code Description\" class=\"slds-is-sortable width15\" data-aura-rendered-by=\"170:268;a\"><span class=\"bodyText dataSpace\" data-aura-rendered-by=\"171:268;a\">sealant - per tooth</span></td><td data-label=\"Tooth/Quad/Arch/Surface\" class=\"slds-is-sortable width15 bodyText dataSpace\" data-aura-rendered-by=\"173:268;a\">30/\n\t\t\t      \t\t\t\t\t\tLR/\n\t\t\t      \t\t\t\t\t\tLA/\n\t\t\t      \t\t\t\t\t\tOB</td><td data-label=\"Place of Service\" class=\"width15 slds-is-sortable\" data-aura-rendered-by=\"185:268;a\"><span class=\"bodyText dataSpace\" data-aura-rendered-by=\"186:268;a\">Office</span></td></tr><tr data-aura-rendered-by=\"188:268;a\"><td data-label=\"Procedure Date\" class=\"slds-is-sortable width15\" data-aura-rendered-by=\"189:268;a\"><span class=\"bodyText dataSpace\" data-aura-rendered-by=\"190:268;a\"><span class=\"slds-item_detail slds-truncate uiOutputDate\" data-aura-rendered-by=\"193:268;a\" data-aura-class=\"uiOutputDate\">08/07/2025</span></span></td><td data-label=\"Procedure Code\" class=\"slds-is-sortable width15\" data-aura-rendered-by=\"194:268;a\"><span class=\"bodyText dataSpace\" data-aura-rendered-by=\"195:268;a\">D7140</span></td><td data-label=\"Procedure Code Description\" class=\"slds-is-sortable width15\" data-aura-rendered-by=\"197:268;a\"><span class=\"bodyText dataSpace\" data-aura-rendered-by=\"198:268;a\">extraction, erupted tooth or exposed root (elevation and/or forceps removal)</span></td><td data-label=\"Tooth/Quad/Arch/Surface\" class=\"slds-is-sortable width15 bodyText dataSpace\" data-aura-rendered-by=\"200:268;a\">S/\n\t\t\t      \t\t\t\t\t\tLR/\n\t\t\t      \t\t\t\t\t\tLA/\n\t\t\t      \t\t\t\t\t\t-</td><td data-label=\"Place of Service\" class=\"width15 slds-is-sortable\" data-aura-rendered-by=\"212:268;a\"><span class=\"bodyText dataSpace\" data-aura-rendered-by=\"213:268;a\">Office</span></td></tr><tr data-aura-rendered-by=\"215:268;a\"><td data-label=\"Procedure Date\" class=\"slds-is-sortable width15\" data-aura-rendered-by=\"216:268;a\"><span class=\"bodyText dataSpace\" data-aura-rendered-by=\"217:268;a\"><span class=\"slds-item_detail slds-truncate uiOutputDate\" data-aura-rendered-by=\"220:268;a\" data-aura-class=\"uiOutputDate\">08/07/2025</span></span></td><td data-label=\"Procedure Code\" class=\"slds-is-sortable width15\" data-aura-rendered-by=\"221:268;a\"><span class=\"bodyText dataSpace\" data-aura-rendered-by=\"222:268;a\">D2930</span></td><td data-label=\"Procedure Code Description\" class=\"slds-is-sortable width15\" data-aura-rendered-by=\"224:268;a\"><span class=\"bodyText dataSpace\" data-aura-rendered-by=\"225:268;a\">prefabricated stainless steel crown - primary tooth</span></td><td data-label=\"Tooth/Quad/Arch/Surface\" class=\"slds-is-sortable width15 bodyText dataSpace\" data-aura-rendered-by=\"227:268;a\">T/\n\t\t\t      \t\t\t\t\t\tLR/\n\t\t\t      \t\t\t\t\t\tLA/\n\t\t\t      \t\t\t\t\t\t-</td><td data-label=\"Place of Service\" class=\"width15 slds-is-sortable\" data-aura-rendered-by=\"239:268;a\"><span class=\"bodyText dataSpace\" data-aura-rendered-by=\"240:268;a\">Office</span></td></tr><tr data-aura-rendered-by=\"242:268;a\"><td data-label=\"Procedure Date\" class=\"slds-is-sortable width15\" data-aura-rendered-by=\"243:268;a\"><span class=\"bodyText dataSpace\" data-aura-rendered-by=\"244:268;a\"><span class=\"slds-item_detail slds-truncate uiOutputDate\" data-aura-rendered-by=\"247:268;a\" data-aura-class=\"uiOutputDate\">08/07/2025</span></span></td><td data-label=\"Procedure Code\" class=\"slds-is-sortable width15\" data-aura-rendered-by=\"248:268;a\"><span class=\"bodyText dataSpace\" data-aura-rendered-by=\"249:268;a\">D9230</span></td><td data-label=\"Procedure Code Description\" class=\"slds-is-sortable width15\" data-aura-rendered-by=\"251:268;a\"><span class=\"bodyText dataSpace\" data-aura-rendered-by=\"252:268;a\">inhalation of nitrous oxide/analgesia, anxiolysis</span></td><td data-label=\"Tooth/Quad/Arch/Surface\" class=\"slds-is-sortable width15 bodyText dataSpace\" data-aura-rendered-by=\"254:268;a\">-/-/-/-</td><td data-label=\"Place of Service\" class=\"width15 slds-is-sortable\" data-aura-rendered-by=\"263:268;a\"><span class=\"bodyText dataSpace\" data-aura-rendered-by=\"264:268;a\">Office</span></td></tr><tr data-aura-rendered-by=\"266:268;a\"><td data-label=\"Procedure Date\" class=\"slds-is-sortable width15\" data-aura-rendered-by=\"267:268;a\"><span class=\"bodyText dataSpace\" data-aura-rendered-by=\"268:268;a\"><span class=\"slds-item_detail slds-truncate uiOutputDate\" data-aura-rendered-by=\"271:268;a\" data-aura-class=\"uiOutputDate\">08/07/2025</span></span></td><td data-label=\"Procedure Code\" class=\"slds-is-sortable width15\" data-aura-rendered-by=\"272:268;a\"><span class=\"bodyText dataSpace\" data-aura-rendered-by=\"273:268;a\">D1330</span></td><td data-label=\"Procedure Code Description\" class=\"slds-is-sortable width15\" data-aura-rendered-by=\"275:268;a\"><span class=\"bodyText dataSpace\" data-aura-rendered-by=\"276:268;a\">oral hygiene instructions</span></td><td data-label=\"Tooth/Quad/Arch/Surface\" class=\"slds-is-sortable width15 bodyText dataSpace\" data-aura-rendered-by=\"278:268;a\">-/-/-/-</td><td data-label=\"Place of Service\" class=\"width15 slds-is-sortable\" data-aura-rendered-by=\"287:268;a\"><span class=\"bodyText dataSpace\" data-aura-rendered-by=\"288:268;a\">Office</span></td></tr></tbody>",
+    "eligibility": "<thead data-aura-rendered-by=\"842:0\"><tr data-aura-rendered-by=\"843:0\"><th data-tableid=\"history\" data-col=\"0\" class=\"width15 sortable headerText\" data-aura-rendered-by=\"844:0\"><span class=\"bodyText\" data-aura-rendered-by=\"845:0\">Benefit Plan</span></th><th data-tableid=\"history\" data-col=\"1\" class=\"width15 sortable headerText\" data-aura-rendered-by=\"847:0\"><span class=\"bodyText\" data-aura-rendered-by=\"848:0\">Member Number</span></th><th data-tableid=\"history\" data-col=\"2\" class=\"width15 headerText\" data-aura-rendered-by=\"850:0\"><span class=\"bodyText\" data-aura-rendered-by=\"851:0\">Client Name</span></th><th data-tableid=\"history\" data-col=\"3\" class=\"width15 headerText\" data-aura-rendered-by=\"853:0\"><span class=\"bodyText\" data-aura-rendered-by=\"854:0\">Client Number</span></th><th data-tableid=\"history\" data-col=\"4\" class=\"width10  headerText\" data-aura-rendered-by=\"856:0\"><span class=\"bodyText \" data-aura-rendered-by=\"857:0\">Benefit Effective Date</span></th><th data-tableid=\"history\" data-col=\"5\" class=\"width10  headerText\" data-aura-rendered-by=\"859:0\"><span class=\"bodyText\" data-aura-rendered-by=\"860:0\">Termination Date</span></th></tr></thead><tbody data-aura-rendered-by=\"862:0\"><tr data-aura-rendered-by=\"864:0\"><td data-value=\"TX HHSC Medicaid Dental Services\" data-label=\"Benefit Plan\" class=\"slds-is-sortable width15\" data-aura-rendered-by=\"865:0\"><span class=\"bodyText dataSpace\" data-aura-rendered-by=\"866:0\">TX HHSC Medicaid Dental Services</span></td><td data-value=\"710875473\" data-label=\"Member Number\" class=\"slds-is-sortable width15\" data-aura-rendered-by=\"868:0\"><span class=\"bodyText dataSpace\" data-aura-rendered-by=\"869:0\">710875473</span></td><td data-value=\"TX Medicaid Child (Under 21)\" data-label=\"Client Name\" class=\"slds-is-sortable width15\" data-aura-rendered-by=\"871:0\"><span class=\"bodyText dataSpace\" data-aura-rendered-by=\"872:0\">TX Medicaid Child (Under 21)</span></td><td data-value=\"7003042001\" data-label=\"Client Number\" class=\"slds-is-sortable width15\" data-aura-rendered-by=\"874:0\"><span class=\"bodyText dataSpace\" data-aura-rendered-by=\"875:0\">7003042001</span></td><td data-value=\"05/01/2025\" data-label=\"Period\" class=\"slds-is-sortable width15 bodyText dataSpace\" data-aura-rendered-by=\"877:0\"><span class=\"bodyText dataSpace uiOutputDate\" data-aura-rendered-by=\"880:0\" data-aura-class=\"uiOutputDate\">05/01/2025</span></td><td data-value=\"\" data-label=\"Period\" class=\"slds-is-sortable width15 bodyText dataSpace\" data-aura-rendered-by=\"881:0\"><span class=\"bodyText dataSpace uiOutputDate\" data-aura-rendered-by=\"884:0\" data-aura-class=\"uiOutputDate\"></span></td></tr></tbody>"
+  },
+  "pageStructures": {
+    "patientPage": {
+      "forms": [],
+      "tables": [],
+      "dataAttributes": [
+        {
+          "tag": "SPAN",
+          "dataId": null,
+          "dataKey": null,
+          "dataLabel": "Smiley Tooth LLLP - 7276",
+          "dataValue": "001f400000CMSjmAAH",
+          "text": "Smiley Tooth LLLP - 7276"
+        }
+      ],
+      "lightningComponents": [],
+      "patterns": {
+        "patientInfo": [
+          {
+            "tag": "HTML",
+            "className": "slds-no-wcag",
+            "id": "",
+            "text": "Member Detail\n\n\n\n\n(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':\nnew Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],\nj=d.createElement(s),dl=l!='dataLayer'?'&l='+l:''"
+          },
+          {
+            "tag": "TITLE",
+            "className": "",
+            "id": "",
+            "text": "Member Detail"
+          },
+          {
+            "tag": "STYLE",
+            "className": "",
+            "id": "",
+            "text": ".cProv_comp_Member_Detail_Overview.memberOverviewContainer.lighter{margin-top:44px;opacity:.2;transition:opacity .1s linear}.cProv_comp_Member_Detail_Overview.memberOverviewContainer .slds-spinner:bef"
+          },
+          {
+            "tag": "STYLE",
+            "className": "",
+            "id": "",
+            "text": ".cProv_comp_Member_Detail button[title=\"More Tabs\"]{font-size:18px!important;padding:0;width:100px;text-align:left;right:5px}.cProv_comp_Member_Detail span[interop-menuitem_menuitem]{font-size:18px}.c"
+          },
+          {
+            "tag": "STYLE",
+            "className": "",
+            "id": "",
+            "text": ".cProv_comp_Member_Info .tooltip-wrapper{position:relative;display:inline-block;white-space:normal;word-wrap:break-word;margin-left:270px;margin-top:10px;color:#ffffff}.cProv_comp_Member_Info .custom-"
+          },
+          {
+            "tag": "SCRIPT",
+            "className": "",
+            "id": "",
+            "text": "\n(function () {\n// lwcRuntimeFlags initialization\nif (!window.lwcRuntimeFlags) {\n\tObject.defineProperty(window, 'lwcRuntimeFlags', { value: Object.create(null) });\n}\nObject.assign(lwcRuntimeFlags, {\"E"
+          },
+          {
+            "tag": "DIV",
+            "className": "slds govProviderContainer cProv_theme_Government",
+            "id": "",
+            "text": "BPK TechAccount SettingsLogoutSmiley Tooth LLLP - 7276 \n                    \tSmiley Tooth LLLP - 7276Smiley Tooth LLLP - 7276MemberCheck EligibilitySaved Eligibility SearchesPanel RosterBroken Appoint"
+          },
+          {
+            "tag": "DIV",
+            "className": " bodyContainer",
+            "id": "",
+            "text": "BPK TechAccount SettingsLogoutSmiley Tooth LLLP - 7276 \n                    \tSmiley Tooth LLLP - 7276Smiley Tooth LLLP - 7276MemberCheck EligibilitySaved Eligibility SearchesPanel RosterBroken Appoint"
+          },
+          {
+            "tag": "DIV",
+            "className": "nav-Wrapper ",
+            "id": "",
+            "text": "BPK TechAccount SettingsLogoutSmiley Tooth LLLP - 7276 \n                    \tSmiley Tooth LLLP - 7276Smiley Tooth LLLP - 7276MemberCheck EligibilitySaved Eligibility SearchesPanel RosterBroken Appoint"
+          },
+          {
+            "tag": "DIV",
+            "className": "slds navClass cProv_comp_NavHeader",
+            "id": "",
+            "text": "BPK TechAccount SettingsLogoutSmiley Tooth LLLP - 7276 \n                    \tSmiley Tooth LLLP - 7276Smiley Tooth LLLP - 7276MemberCheck EligibilitySaved Eligibility SearchesPanel RosterBroken Appoint"
+          },
+          {
+            "tag": "HEADER",
+            "className": "",
+            "id": "",
+            "text": "BPK TechAccount SettingsLogoutSmiley Tooth LLLP - 7276 \n                    \tSmiley Tooth LLLP - 7276Smiley Tooth LLLP - 7276MemberCheck EligibilitySaved Eligibility SearchesPanel RosterBroken Appoint"
+          },
+          {
+            "tag": "DIV",
+            "className": "navMenu",
+            "id": "",
+            "text": "MemberCheck EligibilitySaved Eligibility SearchesPanel RosterBroken AppointmentsMember InterventionClaimsDaily Confirmation ReportClaim SearchClaim EntryClaim DraftsAuthorization & EstimateDaily Confi"
+          },
+          {
+            "tag": "DIV",
+            "className": "slds-context-bar bottomNavDiv",
+            "id": "",
+            "text": "MemberCheck EligibilitySaved Eligibility SearchesPanel RosterBroken AppointmentsMember InterventionClaimsDaily Confirmation ReportClaim SearchClaim EntryClaim DraftsAuthorization & EstimateDaily Confi"
+          },
+          {
+            "tag": "NAV",
+            "className": "slds-context-bar__secondary navBar",
+            "id": "",
+            "text": "MemberCheck EligibilitySaved Eligibility SearchesPanel RosterBroken AppointmentsMember InterventionClaimsDaily Confirmation ReportClaim SearchClaim EntryClaim DraftsAuthorization & EstimateDaily Confi"
+          },
+          {
+            "tag": "LI",
+            "className": "slds-context-bar__item slds-context-bar__dropdown-trigger ",
+            "id": "",
+            "text": "MemberCheck EligibilitySaved Eligibility SearchesPanel RosterBroken AppointmentsMember Intervention"
+          },
+          {
+            "tag": "DIV",
+            "className": "slds-context-bar__label-action dropdown ",
+            "id": "",
+            "text": "MemberCheck EligibilitySaved Eligibility SearchesPanel RosterBroken AppointmentsMember Intervention"
+          },
+          {
+            "tag": "A",
+            "className": "noDecoration slds-context-bar__label-action dropdown-toggle navBar_item",
+            "id": "dropdownMemember",
+            "text": "Member"
+          },
+          {
+            "tag": "SPAN",
+            "className": "slds-truncate header5",
+            "id": "",
+            "text": "Member"
+          },
+          {
+            "tag": "DIV",
+            "className": "slds-dropdown dropdown-menu slds-dropdown_left ",
+            "id": "",
+            "text": "Check EligibilitySaved Eligibility SearchesPanel RosterBroken AppointmentsMember Intervention"
+          },
+          {
+            "tag": "LI",
+            "className": "navDropdown-item ",
+            "id": "",
+            "text": "Member Intervention"
+          },
+          {
+            "tag": "A",
+            "className": "noDecoration",
+            "id": "",
+            "text": "Member Intervention"
+          },
+          {
+            "tag": "SPAN",
+            "className": "slds-truncate",
+            "id": "",
+            "text": "Member Intervention"
+          },
+          {
+            "tag": "DIV",
+            "className": "bodyWrapper clear ",
+            "id": "",
+            "text": "Print CASON WRIGHTEligibleMember is eligible: \n                        Smiley Tooth LLLP - \n                        Jennifer Chou -\n                        The Smiley Tooth - 3018 Ridge Rd\nSte 120 - R"
+          },
+          {
+            "tag": "DIV",
+            "className": "bodyInternalWrap",
+            "id": "",
+            "text": "Print CASON WRIGHTEligibleMember is eligible: \n                        Smiley Tooth LLLP - \n                        Jennifer Chou -\n                        The Smiley Tooth - 3018 Ridge Rd\nSte 120 - R"
+          },
+          {
+            "tag": "DIV",
+            "className": "siteforceSldsOneColLayout siteforceContentArea",
+            "id": "",
+            "text": "Print CASON WRIGHTEligibleMember is eligible: \n                        Smiley Tooth LLLP - \n                        Jennifer Chou -\n                        The Smiley Tooth - 3018 Ridge Rd\nSte 120 - R"
+          },
+          {
+            "tag": "DIV",
+            "className": "slds-col--padded contentRegion comm-layout-column",
+            "id": "",
+            "text": "Print CASON WRIGHTEligibleMember is eligible: \n                        Smiley Tooth LLLP - \n                        Jennifer Chou -\n                        The Smiley Tooth - 3018 Ridge Rd\nSte 120 - R"
+          },
+          {
+            "tag": "DIV",
+            "className": "",
+            "id": "",
+            "text": "Print CASON WRIGHTEligibleMember is eligible: \n                        Smiley Tooth LLLP - \n                        Jennifer Chou -\n                        The Smiley Tooth - 3018 Ridge Rd\nSte 120 - R"
+          },
+          {
+            "tag": "DIV",
+            "className": "ui-widget",
+            "id": "",
+            "text": "Print CASON WRIGHTEligibleMember is eligible: \n                        Smiley Tooth LLLP - \n                        Jennifer Chou -\n                        The Smiley Tooth - 3018 Ridge Rd\nSte 120 - R"
+          },
+          {
+            "tag": "DIV",
+            "className": "generalOuterDiv memberDetailContainer cProv_comp_Member_Detail",
+            "id": "",
+            "text": "Print CASON WRIGHTEligibleMember is eligible: \n                        Smiley Tooth LLLP - \n                        Jennifer Chou -\n                        The Smiley Tooth - 3018 Ridge Rd\nSte 120 - R"
+          },
+          {
+            "tag": "DIV",
+            "className": "slds-grid cProv_comp_Member_Info",
+            "id": "",
+            "text": "EligibleMember is eligible: \n                        Smiley Tooth LLLP - \n                        Jennifer Chou -\n                        The Smiley Tooth - 3018 Ridge Rd\nSte 120 - ROCKWALL -\n        "
+          },
+          {
+            "tag": "DIV",
+            "className": "slds-col",
+            "id": "",
+            "text": "EligibleMember is eligible: \n                        Smiley Tooth LLLP - \n                        Jennifer Chou -\n                        The Smiley Tooth - 3018 Ridge Rd\nSte 120 - ROCKWALL -\n        "
+          },
+          {
+            "tag": "P",
+            "className": "",
+            "id": "",
+            "text": "EligibleMember is eligible: \n                        Smiley Tooth LLLP - \n                        Jennifer Chou -\n                        The Smiley Tooth - 3018 Ridge Rd\nSte 120 - ROCKWALL -\n        "
+          },
+          {
+            "tag": "SPAN",
+            "className": "eligibilityTitle boldText",
+            "id": "",
+            "text": "Member is eligible: \n                        Smiley Tooth LLLP - \n                        Jennifer Chou -\n                        The Smiley Tooth - 3018 Ridge Rd\nSte 120 - ROCKWALL -\n                "
+          },
+          {
+            "tag": "DIV",
+            "className": "slds-grid slds-m-bottom_medium cProv_comp_Member_Info",
+            "id": "",
+            "text": "Name:CASON WRIGHTRelationship:SubscriberDOB:03/29/2016Gender:MPrimary Address:3201 KARI LN APT 1011, GREENVILLE, TX 75402Work Phone:(903) 441-6494Fax Number:\n                            -\n            "
+          },
+          {
+            "tag": "DIV",
+            "className": "slds-col slds-size_1-of-3",
+            "id": "",
+            "text": "Name:CASON WRIGHTRelationship:SubscriberDOB:03/29/2016Gender:MPrimary Address:3201 KARI LN APT 1011, GREENVILLE, TX 75402Work Phone:(903) 441-6494Fax Number:\n                            -\n            "
+          },
+          {
+            "tag": "DD",
+            "className": "slds-item_detail slds-truncate",
+            "id": "",
+            "text": "Subscriber"
+          },
+          {
+            "tag": "DIV",
+            "className": "slds-grid",
+            "id": "",
+            "text": "\n\t\t\t\t\t\t    \t\tOverview\n\t\t\t\t\t\t    \t\n\t\t\t\t\t\t    \t\tClaim and Authorization & Estimate\n\t\t\t\t\t\t    \t\tService History\n\t\t\t\t\t\t    \t\n                                    Eligibility History\n                       "
+          },
+          {
+            "tag": "DIV",
+            "className": "slds-tabs_default__content slds-show",
+            "id": "overview-tab",
+            "text": "Primary Care ProviderProvider:Jennifer ChouOffice:The Smiley ToothService Location:804 Gilmer St\nSte B, SULPHUR SPRINGS, TX75482Provider Effective Date:09/18/2025Provider Termination Date:09/30/2025Ot"
+          },
+          {
+            "tag": "H5",
+            "className": "",
+            "id": "",
+            "text": "This member does not have other coverages."
+          },
+          {
+            "tag": "SPAN",
+            "className": "",
+            "id": "sf-aria-live",
+            "text": "Member Detail"
+          }
+        ],
+        "eligibility": [
+          {
+            "tag": "HTML",
+            "className": "slds-no-wcag",
+            "id": "",
+            "text": "Member Detail\n\n\n\n\n(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':\nnew Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],\nj=d.createElement(s),dl=l!='dataLayer'?'&l='+l:''"
+          },
+          {
+            "tag": "STYLE",
+            "className": "",
+            "id": "",
+            "text": ".cProv_comp_Member_Detail button[title=\"More Tabs\"]{font-size:18px!important;padding:0;width:100px;text-align:left;right:5px}.cProv_comp_Member_Detail span[interop-menuitem_menuitem]{font-size:18px}.c"
+          },
+          {
+            "tag": "SCRIPT",
+            "className": "",
+            "id": "",
+            "text": "\n(function () {\n// lwcRuntimeFlags initialization\nif (!window.lwcRuntimeFlags) {\n\tObject.defineProperty(window, 'lwcRuntimeFlags', { value: Object.create(null) });\n}\nObject.assign(lwcRuntimeFlags, {\"E"
+          },
+          {
+            "tag": "DIV",
+            "className": "slds govProviderContainer cProv_theme_Government",
+            "id": "",
+            "text": "BPK TechAccount SettingsLogoutSmiley Tooth LLLP - 7276 \n                    \tSmiley Tooth LLLP - 7276Smiley Tooth LLLP - 7276MemberCheck EligibilitySaved Eligibility SearchesPanel RosterBroken Appoint"
+          },
+          {
+            "tag": "DIV",
+            "className": " bodyContainer",
+            "id": "",
+            "text": "BPK TechAccount SettingsLogoutSmiley Tooth LLLP - 7276 \n                    \tSmiley Tooth LLLP - 7276Smiley Tooth LLLP - 7276MemberCheck EligibilitySaved Eligibility SearchesPanel RosterBroken Appoint"
+          },
+          {
+            "tag": "DIV",
+            "className": "nav-Wrapper ",
+            "id": "",
+            "text": "BPK TechAccount SettingsLogoutSmiley Tooth LLLP - 7276 \n                    \tSmiley Tooth LLLP - 7276Smiley Tooth LLLP - 7276MemberCheck EligibilitySaved Eligibility SearchesPanel RosterBroken Appoint"
+          },
+          {
+            "tag": "DIV",
+            "className": "slds navClass cProv_comp_NavHeader",
+            "id": "",
+            "text": "BPK TechAccount SettingsLogoutSmiley Tooth LLLP - 7276 \n                    \tSmiley Tooth LLLP - 7276Smiley Tooth LLLP - 7276MemberCheck EligibilitySaved Eligibility SearchesPanel RosterBroken Appoint"
+          },
+          {
+            "tag": "HEADER",
+            "className": "",
+            "id": "",
+            "text": "BPK TechAccount SettingsLogoutSmiley Tooth LLLP - 7276 \n                    \tSmiley Tooth LLLP - 7276Smiley Tooth LLLP - 7276MemberCheck EligibilitySaved Eligibility SearchesPanel RosterBroken Appoint"
+          },
+          {
+            "tag": "DIV",
+            "className": "navMenu",
+            "id": "",
+            "text": "MemberCheck EligibilitySaved Eligibility SearchesPanel RosterBroken AppointmentsMember InterventionClaimsDaily Confirmation ReportClaim SearchClaim EntryClaim DraftsAuthorization & EstimateDaily Confi"
+          },
+          {
+            "tag": "DIV",
+            "className": "slds-context-bar bottomNavDiv",
+            "id": "",
+            "text": "MemberCheck EligibilitySaved Eligibility SearchesPanel RosterBroken AppointmentsMember InterventionClaimsDaily Confirmation ReportClaim SearchClaim EntryClaim DraftsAuthorization & EstimateDaily Confi"
+          },
+          {
+            "tag": "NAV",
+            "className": "slds-context-bar__secondary navBar",
+            "id": "",
+            "text": "MemberCheck EligibilitySaved Eligibility SearchesPanel RosterBroken AppointmentsMember InterventionClaimsDaily Confirmation ReportClaim SearchClaim EntryClaim DraftsAuthorization & EstimateDaily Confi"
+          },
+          {
+            "tag": "LI",
+            "className": "slds-context-bar__item slds-context-bar__dropdown-trigger ",
+            "id": "",
+            "text": "MemberCheck EligibilitySaved Eligibility SearchesPanel RosterBroken AppointmentsMember Intervention"
+          },
+          {
+            "tag": "DIV",
+            "className": "slds-context-bar__label-action dropdown ",
+            "id": "",
+            "text": "MemberCheck EligibilitySaved Eligibility SearchesPanel RosterBroken AppointmentsMember Intervention"
+          },
+          {
+            "tag": "DIV",
+            "className": "slds-dropdown dropdown-menu slds-dropdown_left ",
+            "id": "",
+            "text": "Check EligibilitySaved Eligibility SearchesPanel RosterBroken AppointmentsMember Intervention"
+          },
+          {
+            "tag": "LI",
+            "className": "  navDropdown-item ",
+            "id": "",
+            "text": "Check Eligibility"
+          },
+          {
+            "tag": "A",
+            "className": "noDecoration",
+            "id": "",
+            "text": "Check Eligibility"
+          },
+          {
+            "tag": "SPAN",
+            "className": "slds-truncate",
+            "id": "",
+            "text": "Check Eligibility"
+          },
+          {
+            "tag": "LI",
+            "className": "  navDropdown-item ",
+            "id": "",
+            "text": "Saved Eligibility Searches"
+          },
+          {
+            "tag": "A",
+            "className": "noDecoration",
+            "id": "",
+            "text": "Saved Eligibility Searches"
+          },
+          {
+            "tag": "SPAN",
+            "className": "slds-truncate",
+            "id": "",
+            "text": "Saved Eligibility Searches"
+          },
+          {
+            "tag": "DIV",
+            "className": "bodyWrapper clear ",
+            "id": "",
+            "text": "Print CASON WRIGHTEligibleMember is eligible: \n                        Smiley Tooth LLLP - \n                        Jennifer Chou -\n                        The Smiley Tooth - 3018 Ridge Rd\nSte 120 - R"
+          },
+          {
+            "tag": "DIV",
+            "className": "bodyInternalWrap",
+            "id": "",
+            "text": "Print CASON WRIGHTEligibleMember is eligible: \n                        Smiley Tooth LLLP - \n                        Jennifer Chou -\n                        The Smiley Tooth - 3018 Ridge Rd\nSte 120 - R"
+          },
+          {
+            "tag": "DIV",
+            "className": "siteforceSldsOneColLayout siteforceContentArea",
+            "id": "",
+            "text": "Print CASON WRIGHTEligibleMember is eligible: \n                        Smiley Tooth LLLP - \n                        Jennifer Chou -\n                        The Smiley Tooth - 3018 Ridge Rd\nSte 120 - R"
+          },
+          {
+            "tag": "DIV",
+            "className": "slds-col--padded contentRegion comm-layout-column",
+            "id": "",
+            "text": "Print CASON WRIGHTEligibleMember is eligible: \n                        Smiley Tooth LLLP - \n                        Jennifer Chou -\n                        The Smiley Tooth - 3018 Ridge Rd\nSte 120 - R"
+          },
+          {
+            "tag": "DIV",
+            "className": "",
+            "id": "",
+            "text": "Print CASON WRIGHTEligibleMember is eligible: \n                        Smiley Tooth LLLP - \n                        Jennifer Chou -\n                        The Smiley Tooth - 3018 Ridge Rd\nSte 120 - R"
+          },
+          {
+            "tag": "DIV",
+            "className": "ui-widget",
+            "id": "",
+            "text": "Print CASON WRIGHTEligibleMember is eligible: \n                        Smiley Tooth LLLP - \n                        Jennifer Chou -\n                        The Smiley Tooth - 3018 Ridge Rd\nSte 120 - R"
+          },
+          {
+            "tag": "DIV",
+            "className": "generalOuterDiv memberDetailContainer cProv_comp_Member_Detail",
+            "id": "",
+            "text": "Print CASON WRIGHTEligibleMember is eligible: \n                        Smiley Tooth LLLP - \n                        Jennifer Chou -\n                        The Smiley Tooth - 3018 Ridge Rd\nSte 120 - R"
+          },
+          {
+            "tag": "DIV",
+            "className": "slds-grid slds-m-bottom_medium cProv_comp_Member_Info",
+            "id": "",
+            "text": "Name:CASON WRIGHTRelationship:SubscriberDOB:03/29/2016Gender:MPrimary Address:3201 KARI LN APT 1011, GREENVILLE, TX 75402Work Phone:(903) 441-6494Fax Number:\n                            -\n            "
+          },
+          {
+            "tag": "DIV",
+            "className": " slds-size_1-of-3",
+            "id": "",
+            "text": "PlanTX Medicaid Child (Under 21)Issued ID710875473Coverage End Date"
+          },
+          {
+            "tag": "DIV",
+            "className": "slds-panel slds-no-wrap plan-panel",
+            "id": "",
+            "text": "PlanTX Medicaid Child (Under 21)Issued ID710875473Coverage End Date"
+          },
+          {
+            "tag": "DIV",
+            "className": "slds-form slds-form_stacked slds-grow slds-scrollable_y",
+            "id": "",
+            "text": "PlanTX Medicaid Child (Under 21)Issued ID710875473Coverage End Date"
+          },
+          {
+            "tag": "DIV",
+            "className": "slds-panel__section",
+            "id": "",
+            "text": "PlanTX Medicaid Child (Under 21)Issued ID710875473Coverage End Date"
+          },
+          {
+            "tag": "UL",
+            "className": "",
+            "id": "",
+            "text": "PlanTX Medicaid Child (Under 21)Issued ID710875473Coverage End Date"
+          },
+          {
+            "tag": "LI",
+            "className": "slds-form-element slds-hint-parent slds-col",
+            "id": "",
+            "text": "Issued ID710875473Coverage End Date"
+          },
+          {
+            "tag": "DIV",
+            "className": "slds-grid",
+            "id": "",
+            "text": "Issued ID710875473Coverage End Date"
+          },
+          {
+            "tag": "DIV",
+            "className": "slds-col",
+            "id": "",
+            "text": "Coverage End Date"
+          },
+          {
+            "tag": "H3",
+            "className": "slds-text-heading_small",
+            "id": "",
+            "text": "Coverage End Date"
+          },
+          {
+            "tag": "DIV",
+            "className": "slds-grid",
+            "id": "",
+            "text": "\n\t\t\t\t\t\t    \t\tOverview\n\t\t\t\t\t\t    \t\n\t\t\t\t\t\t    \t\tClaim and Authorization & Estimate\n\t\t\t\t\t\t    \t\tService History\n\t\t\t\t\t\t    \t\n                                    Eligibility History\n                       "
+          },
+          {
+            "tag": "UL",
+            "className": "slds-tabs_default__nav",
+            "id": "",
+            "text": "\n\t\t\t\t\t\t    \t\tOverview\n\t\t\t\t\t\t    \t\n\t\t\t\t\t\t    \t\tClaim and Authorization & Estimate\n\t\t\t\t\t\t    \t\tService History\n\t\t\t\t\t\t    \t\n                                    Eligibility History\n                       "
+          },
+          {
+            "tag": "LI",
+            "className": "slds-tabs_default__item ",
+            "id": "",
+            "text": "\n                                    Eligibility History\n                                "
+          },
+          {
+            "tag": "A",
+            "className": "slds-tabs_default__link intro",
+            "id": "eligibility-tab__item",
+            "text": "\n                                    Eligibility History\n                                "
+          },
+          {
+            "tag": "DIV",
+            "className": "slds-tabs_default__content slds-show",
+            "id": "overview-tab",
+            "text": "Primary Care ProviderProvider:Jennifer ChouOffice:The Smiley ToothService Location:804 Gilmer St\nSte B, SULPHUR SPRINGS, TX75482Provider Effective Date:09/18/2025Provider Termination Date:09/30/2025Ot"
+          },
+          {
+            "tag": "H3",
+            "className": "",
+            "id": "",
+            "text": "Other Coverage"
+          },
+          {
+            "tag": "H5",
+            "className": "",
+            "id": "",
+            "text": "This member does not have other coverages."
+          }
+        ],
+        "coverage": [
+          {
+            "tag": "HTML",
+            "className": "slds-no-wcag",
+            "id": "",
+            "text": "Member Detail\n\n\n\n\n(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':\nnew Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],\nj=d.createElement(s),dl=l!='dataLayer'?'&l='+l:''"
+          },
+          {
+            "tag": "SCRIPT",
+            "className": "",
+            "id": "",
+            "text": "\n(function () {\n// lwcRuntimeFlags initialization\nif (!window.lwcRuntimeFlags) {\n\tObject.defineProperty(window, 'lwcRuntimeFlags', { value: Object.create(null) });\n}\nObject.assign(lwcRuntimeFlags, {\"E"
+          }
+        ],
+        "history": [
+          {
+            "tag": "HTML",
+            "className": "slds-no-wcag",
+            "id": "",
+            "text": "Member Detail\n\n\n\n\n(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':\nnew Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],\nj=d.createElement(s),dl=l!='dataLayer'?'&l='+l:''"
+          },
+          {
+            "tag": "SCRIPT",
+            "className": "",
+            "id": "",
+            "text": "\n(function () {\n// lwcRuntimeFlags initialization\nif (!window.lwcRuntimeFlags) {\n\tObject.defineProperty(window, 'lwcRuntimeFlags', { value: Object.create(null) });\n}\nObject.assign(lwcRuntimeFlags, {\"E"
+          },
+          {
+            "tag": "DIV",
+            "className": "slds govProviderContainer cProv_theme_Government",
+            "id": "",
+            "text": "BPK TechAccount SettingsLogoutSmiley Tooth LLLP - 7276 \n                    \tSmiley Tooth LLLP - 7276Smiley Tooth LLLP - 7276MemberCheck EligibilitySaved Eligibility SearchesPanel RosterBroken Appoint"
+          },
+          {
+            "tag": "DIV",
+            "className": " bodyContainer",
+            "id": "",
+            "text": "BPK TechAccount SettingsLogoutSmiley Tooth LLLP - 7276 \n                    \tSmiley Tooth LLLP - 7276Smiley Tooth LLLP - 7276MemberCheck EligibilitySaved Eligibility SearchesPanel RosterBroken Appoint"
+          },
+          {
+            "tag": "DIV",
+            "className": "nav-Wrapper ",
+            "id": "",
+            "text": "BPK TechAccount SettingsLogoutSmiley Tooth LLLP - 7276 \n                    \tSmiley Tooth LLLP - 7276Smiley Tooth LLLP - 7276MemberCheck EligibilitySaved Eligibility SearchesPanel RosterBroken Appoint"
+          },
+          {
+            "tag": "DIV",
+            "className": "slds navClass cProv_comp_NavHeader",
+            "id": "",
+            "text": "BPK TechAccount SettingsLogoutSmiley Tooth LLLP - 7276 \n                    \tSmiley Tooth LLLP - 7276Smiley Tooth LLLP - 7276MemberCheck EligibilitySaved Eligibility SearchesPanel RosterBroken Appoint"
+          },
+          {
+            "tag": "HEADER",
+            "className": "",
+            "id": "",
+            "text": "BPK TechAccount SettingsLogoutSmiley Tooth LLLP - 7276 \n                    \tSmiley Tooth LLLP - 7276Smiley Tooth LLLP - 7276MemberCheck EligibilitySaved Eligibility SearchesPanel RosterBroken Appoint"
+          },
+          {
+            "tag": "DIV",
+            "className": "navMenu",
+            "id": "",
+            "text": "MemberCheck EligibilitySaved Eligibility SearchesPanel RosterBroken AppointmentsMember InterventionClaimsDaily Confirmation ReportClaim SearchClaim EntryClaim DraftsAuthorization & EstimateDaily Confi"
+          },
+          {
+            "tag": "DIV",
+            "className": "slds-context-bar bottomNavDiv",
+            "id": "",
+            "text": "MemberCheck EligibilitySaved Eligibility SearchesPanel RosterBroken AppointmentsMember InterventionClaimsDaily Confirmation ReportClaim SearchClaim EntryClaim DraftsAuthorization & EstimateDaily Confi"
+          },
+          {
+            "tag": "NAV",
+            "className": "slds-context-bar__secondary navBar",
+            "id": "",
+            "text": "MemberCheck EligibilitySaved Eligibility SearchesPanel RosterBroken AppointmentsMember InterventionClaimsDaily Confirmation ReportClaim SearchClaim EntryClaim DraftsAuthorization & EstimateDaily Confi"
+          },
+          {
+            "tag": "LI",
+            "className": "slds-context-bar__item slds-context-bar__dropdown-trigger ",
+            "id": "",
+            "text": "ClaimsDaily Confirmation ReportClaim SearchClaim EntryClaim Drafts"
+          },
+          {
+            "tag": "DIV",
+            "className": "slds-context-bar__label-action dropdown",
+            "id": "",
+            "text": "ClaimsDaily Confirmation ReportClaim SearchClaim EntryClaim Drafts"
+          },
+          {
+            "tag": "A",
+            "className": "noDecoration slds-context-bar__label-action dropdown-toggle navBar_item ",
+            "id": "dropdownClaims",
+            "text": "Claims"
+          },
+          {
+            "tag": "SPAN",
+            "className": "slds-truncate  header5",
+            "id": "",
+            "text": "Claims"
+          },
+          {
+            "tag": "DIV",
+            "className": "slds-dropdown dropdown-menu slds-dropdown_left ",
+            "id": "",
+            "text": "Daily Confirmation ReportClaim SearchClaim EntryClaim Drafts"
+          },
+          {
+            "tag": "UL",
+            "className": "slds-dropdown__list",
+            "id": "",
+            "text": "Daily Confirmation ReportClaim SearchClaim EntryClaim Drafts"
+          },
+          {
+            "tag": "LI",
+            "className": "navDropdown-item ",
+            "id": "",
+            "text": "Claim Search"
+          },
+          {
+            "tag": "A",
+            "className": "noDecoration",
+            "id": "",
+            "text": "Claim Search"
+          },
+          {
+            "tag": "SPAN",
+            "className": "slds-truncate",
+            "id": "",
+            "text": "Claim Search"
+          },
+          {
+            "tag": "LI",
+            "className": "navDropdown-item ",
+            "id": "",
+            "text": "Claim Entry"
+          },
+          {
+            "tag": "A",
+            "className": "noDecoration",
+            "id": "",
+            "text": "Claim Entry"
+          },
+          {
+            "tag": "SPAN",
+            "className": "slds-truncate",
+            "id": "",
+            "text": "Claim Entry"
+          },
+          {
+            "tag": "LI",
+            "className": "navDropdown-item ",
+            "id": "",
+            "text": "Claim Drafts"
+          },
+          {
+            "tag": "A",
+            "className": "noDecoration",
+            "id": "",
+            "text": "Claim Drafts"
+          },
+          {
+            "tag": "SPAN",
+            "className": "slds-truncate",
+            "id": "",
+            "text": "Claim Drafts"
+          },
+          {
+            "tag": "DIV",
+            "className": "bodyWrapper clear ",
+            "id": "",
+            "text": "Print CASON WRIGHTEligibleMember is eligible: \n                        Smiley Tooth LLLP - \n                        Jennifer Chou -\n                        The Smiley Tooth - 3018 Ridge Rd\nSte 120 - R"
+          },
+          {
+            "tag": "DIV",
+            "className": "bodyInternalWrap",
+            "id": "",
+            "text": "Print CASON WRIGHTEligibleMember is eligible: \n                        Smiley Tooth LLLP - \n                        Jennifer Chou -\n                        The Smiley Tooth - 3018 Ridge Rd\nSte 120 - R"
+          },
+          {
+            "tag": "DIV",
+            "className": "siteforceSldsOneColLayout siteforceContentArea",
+            "id": "",
+            "text": "Print CASON WRIGHTEligibleMember is eligible: \n                        Smiley Tooth LLLP - \n                        Jennifer Chou -\n                        The Smiley Tooth - 3018 Ridge Rd\nSte 120 - R"
+          },
+          {
+            "tag": "DIV",
+            "className": "slds-col--padded contentRegion comm-layout-column",
+            "id": "",
+            "text": "Print CASON WRIGHTEligibleMember is eligible: \n                        Smiley Tooth LLLP - \n                        Jennifer Chou -\n                        The Smiley Tooth - 3018 Ridge Rd\nSte 120 - R"
+          },
+          {
+            "tag": "DIV",
+            "className": "",
+            "id": "",
+            "text": "Print CASON WRIGHTEligibleMember is eligible: \n                        Smiley Tooth LLLP - \n                        Jennifer Chou -\n                        The Smiley Tooth - 3018 Ridge Rd\nSte 120 - R"
+          },
+          {
+            "tag": "DIV",
+            "className": "ui-widget",
+            "id": "",
+            "text": "Print CASON WRIGHTEligibleMember is eligible: \n                        Smiley Tooth LLLP - \n                        Jennifer Chou -\n                        The Smiley Tooth - 3018 Ridge Rd\nSte 120 - R"
+          },
+          {
+            "tag": "DIV",
+            "className": "generalOuterDiv memberDetailContainer cProv_comp_Member_Detail",
+            "id": "",
+            "text": "Print CASON WRIGHTEligibleMember is eligible: \n                        Smiley Tooth LLLP - \n                        Jennifer Chou -\n                        The Smiley Tooth - 3018 Ridge Rd\nSte 120 - R"
+          },
+          {
+            "tag": "DIV",
+            "className": "slds-grid cProv_comp_Member_Info",
+            "id": "",
+            "text": "EligibleMember is eligible: \n                        Smiley Tooth LLLP - \n                        Jennifer Chou -\n                        The Smiley Tooth - 3018 Ridge Rd\nSte 120 - ROCKWALL -\n        "
+          },
+          {
+            "tag": "DIV",
+            "className": "",
+            "id": "",
+            "text": "Start a ClaimStart Authorization & EstimateStart an ICT/ReferralStart Broken Appointment"
+          },
+          {
+            "tag": "DIV",
+            "className": " dropdown  ",
+            "id": "",
+            "text": "Start a ClaimStart Authorization & EstimateStart an ICT/ReferralStart Broken Appointment"
+          },
+          {
+            "tag": "DIV",
+            "className": "slds-dropdown dropdown-menu slds-dropdown_right  ",
+            "id": "",
+            "text": "Start a ClaimStart Authorization & EstimateStart an ICT/ReferralStart Broken Appointment"
+          },
+          {
+            "tag": "UL",
+            "className": "slds-dropdown__list",
+            "id": "",
+            "text": "Start a ClaimStart Authorization & EstimateStart an ICT/ReferralStart Broken Appointment"
+          },
+          {
+            "tag": "LI",
+            "className": "navDropdown-item",
+            "id": "",
+            "text": "Start a Claim"
+          },
+          {
+            "tag": "A",
+            "className": "noDecoration bodyLink testScript_opt_claim",
+            "id": "",
+            "text": "Start a Claim"
+          },
+          {
+            "tag": "DIV",
+            "className": "slds-grid",
+            "id": "",
+            "text": "\n\t\t\t\t\t\t    \t\tOverview\n\t\t\t\t\t\t    \t\n\t\t\t\t\t\t    \t\tClaim and Authorization & Estimate\n\t\t\t\t\t\t    \t\tService History\n\t\t\t\t\t\t    \t\n                                    Eligibility History\n                       "
+          },
+          {
+            "tag": "UL",
+            "className": "slds-tabs_default__nav",
+            "id": "",
+            "text": "\n\t\t\t\t\t\t    \t\tOverview\n\t\t\t\t\t\t    \t\n\t\t\t\t\t\t    \t\tClaim and Authorization & Estimate\n\t\t\t\t\t\t    \t\tService History\n\t\t\t\t\t\t    \t\n                                    Eligibility History\n                       "
+          },
+          {
+            "tag": "LI",
+            "className": "slds-tabs_default__item ",
+            "id": "",
+            "text": "\n\t\t\t\t\t\t    \t\tClaim and Authorization & Estimate"
+          },
+          {
+            "tag": "A",
+            "className": "slds-tabs_default__link intro",
+            "id": "claims-tab__item",
+            "text": "\n\t\t\t\t\t\t    \t\tClaim and Authorization & Estimate"
+          },
+          {
+            "tag": "LI",
+            "className": "slds-tabs_default__item ",
+            "id": "",
+            "text": "\n\t\t\t\t\t\t    \t\tService History\n\t\t\t\t\t\t    \t"
+          },
+          {
+            "tag": "A",
+            "className": "slds-tabs_default__link intro",
+            "id": "history-tab__item",
+            "text": "\n\t\t\t\t\t\t    \t\tService History\n\t\t\t\t\t\t    \t"
+          },
+          {
+            "tag": "LI",
+            "className": "slds-tabs_default__item ",
+            "id": "",
+            "text": "\n                                    Eligibility History\n                                "
+          },
+          {
+            "tag": "A",
+            "className": "slds-tabs_default__link intro",
+            "id": "eligibility-tab__item",
+            "text": "\n                                    Eligibility History\n                                "
+          },
+          {
+            "tag": "DIV",
+            "className": "slds-tabs_default__content slds-show",
+            "id": "overview-tab",
+            "text": "Primary Care ProviderProvider:Jennifer ChouOffice:The Smiley ToothService Location:804 Gilmer St\nSte B, SULPHUR SPRINGS, TX75482Provider Effective Date:09/18/2025Provider Termination Date:09/30/2025Ot"
+          },
+          {
+            "tag": "DIV",
+            "className": "slds-grid slds-m-bottom_medium",
+            "id": "",
+            "text": "Provider:Jennifer ChouOffice:The Smiley ToothService Location:804 Gilmer St\nSte B, SULPHUR SPRINGS, TX75482Provider Effective Date:09/18/2025Provider Termination Date:09/30/2025"
+          },
+          {
+            "tag": "DIV",
+            "className": "slds-col slds-size_1-of-6",
+            "id": "",
+            "text": "Provider:Jennifer ChouOffice:The Smiley ToothService Location:804 Gilmer St\nSte B, SULPHUR SPRINGS, TX75482Provider Effective Date:09/18/2025Provider Termination Date:09/30/2025"
+          },
+          {
+            "tag": "DT",
+            "className": "slds-item_label bodyText boldText slds-truncate",
+            "id": "",
+            "text": "Service Location:"
+          }
+        ]
+      }
+    }
+  },
+  "extractionMethods": {},
+  "patientComplete": {
+    "Name": "CASON WRIGHT",
+    "Relationship": "Subscriber",
+    "DOB": "03/29/2016",
+    "Gender": "M",
+    "Primary Address": "3201 KARI LN APT 1011, GREENVILLE, TX 75402",
+    "Work Phone": "(903) 441-6494",
+    "Fax Number": "-",
+    "Primary Home Phone": "(903) 441-6494",
+    "Provider": "Jennifer Chou",
+    "Office": "The Smiley Tooth",
+    "Service Location": "804 Gilmer St\nSte B, SULPHUR SPRINGS, TX75482",
+    "Provider Effective Date": "09/18/2025",
+    "Provider Termination Date": "09/30/2025",
+    "eligibilityStatus": "Member is eligible: \n                        Smiley Tooth LLLP - \n                        Jennifer Chou -\n                        The Smiley Tooth - 3018 Ridge Rd\nSte 120 - ROCKWALL -\n                        09/27/2025",
+    "plan": "TX Medicaid Child (Under 21)",
+    "issuedId": "710875473",
+    "primaryCareProvider": {
+      "Provider": "Jennifer Chou",
+      "Office": "The Smiley Tooth",
+      "Service Location": "804 Gilmer St\nSte B, SULPHUR SPRINGS, TX75482",
+      "Provider Effective Date": "09/18/2025",
+      "Provider Termination Date": "09/30/2025"
+    },
+    "otherCoverage": "This member does not have other coverages."
+  }
+}

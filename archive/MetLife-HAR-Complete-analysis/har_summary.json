@@ -1,0 +1,35 @@
+{
+  "total_requests": 246,
+  "timestamp": "2025-09-23T15:10:58.734590",
+  "api_endpoints": {},
+  "graphql_queries": {},
+  "domains": {
+    "dentalprovider.metlife.com": 54,
+    "assets.adobedtm.com": 9,
+    "www.metlife.com": 3,
+    "adobedc.demdex.net": 1,
+    "nebula-cdn.kampyle.com": 8,
+    "edge.adobedc.net": 8,
+    "federate.sso.metlife.com": 16,
+    "cdn.appdynamics.com": 5,
+    "content.maxconnector.com": 40,
+    "h.online-metrix.net": 4,
+    "h64.online-metrix.net": 1,
+    "716kkpe1iess5ymf3w6pkbno5y4izoutsikrj2gbbfdedcfb038f046dsac.d.aa.online-metrix.net": 1,
+    "pdx-col.eum-appdynamics.com": 1,
+    "fonts.googleapis.com": 1,
+    "metdental.metlife.com": 94
+  },
+  "cookies": [
+    "JSESSIONID",
+    "kampyleSessionPageCounter",
+    "kampyleUserSessionsCount",
+    "AuthTimeStamp",
+    "kampyleUserSession"
+  ],
+  "auth_tokens": {},
+  "interesting_entries": [],
+  "patient_related": [],
+  "eligibility_related": [],
+  "claims_related": []
+}

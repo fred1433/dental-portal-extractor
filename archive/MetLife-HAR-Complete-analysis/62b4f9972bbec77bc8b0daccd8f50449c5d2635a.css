@@ -1,0 +1,4668 @@
+html,body,table,form {
+	margin: 0;
+	padding: 0;
+	font-family: verdana, arial, helvetica, sans-serif;
+	font-size: 11px;
+	color: #000000;
+}
+
+html,body {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+table {
+	margin: 0;
+	padding: 0;
+}
+
+h1,h2,h3,h4,h5,h6,tbody,td,p,ul,ol,li {
+	font-family: verdana, arial, helvetica, sans-serif;
+	color: #000000;
+	line-height: 1.2em;
+}
+
+a {
+	BACKGROUND-COLOR: transparent;
+	COLOR: #0066cc;
+	font-family: verdana, arial, helvetica, sans-serif;
+	TEXT-DECORATION: none;
+}
+
+text {
+	font-family: verdana, arial, helvetica, sans-serif;
+	font-size: 10px;
+	color: #000000;
+}
+
+blockquote {
+	font-family: verdana, arial, helvetica, sans-serif;
+	font-size: 10px;
+	color: #000000;
+}
+
+b {
+	font-weight: bold;
+}
+
+sup {
+	font-size: 7px;
+	font-family: arial, verdana, helvetica, sans-serif;
+}
+
+input {
+	font-family: verdana, arial, helvetica, sans-serif;
+	font-size: 10px;
+	text-decoration: none;
+}
+
+select {
+	font-family: verdana, arial, helvetica, sans-serif;
+	font-size: 10px;
+	text-decoration: none;
+}
+
+img {
+	border: none;
+}
+
+.defaultText {
+	font-family: verdana, arial, helvetica, sans-serif;
+	font-size: 11px;
+}
+
+.PressReleaseBody {
+	FONT-FAMILY: verdana, arial, helvetica, sans-serif;
+	line-height: 200%;
+	FONT-SIZE: 11px
+}
+
+.globalnavigation {
+	COLOR: #ffffff;
+	FONT-FAMILY: verdana, arial, helvetica, sans-serif;
+	FONT-SIZE: 11px
+}
+
+.claimHead {
+	font-family: verdana, arial, helvetica, sans-serif;
+	font-weight: bold
+}
+
+.claim {
+	font-family: verdana, arial, helvetica, sans-serif;
+	color: #000000;
+}
+
+.MainSubTableLink2 {
+	font-family: verdana, arial, helvetica, sans-serif;
+	font-weight: normal;
+	color: #6666CC;
+	text-decoration: none
+}
+
+.MainSubTableText {
+	font-family: verdana, arial, helvetica, sans-serif;
+	font-weight: normal;
+	color: #000000;
+	text-decoration: none
+}
+
+.MainPageTitle {
+	font-family: Verdana, arial, helvetica, sans-serif;
+	font-size: 15px;
+	font-weight: bold;
+	color: #003366;
+	text-decoration: none
+}
+
+.GlossaryHeading {
+	font-family: Verdana, arial, helvetica, sans-serif;
+	font-size: 12px;
+	color: #000000;
+	font-weight: bold
+}
+
+.GlossaryText {
+	font-family: Verdana, arial, helvetica, sans-serif;
+	font-size: 11px;
+	color: #000000;
+	font-weight: normal
+}
+
+.flyoutmenu {
+	FONT-FAMILY: verdana, arial, helvetica, sans-serif;
+	FONT-SIZE: 11px;
+	FONT-WEIGHT: normal
+}
+
+.bodycopy {
+	FONT-FAMILY: verdana, arial, helvetica, sans-serif;
+	FONT-SIZE: 11px
+}
+
+.bodycopyBold {
+	COLOR: #000000;
+	FONT-FAMILY: verdana, arial, helvetica, sans-serif;
+	FONT-SIZE: 11px;
+	FONT-WEIGHT: bold
+}
+
+.bodycopysmall {
+	COLOR: #000000;
+	FONT-FAMILY: verdana, arial, helvetica, sans-serif;
+	FONT-SIZE: 9px
+}
+
+.headlineLeft {
+	COLOR: #000066;
+	FONT-FAMILY: verdana, arial, helvetica, sans-serif;
+	FONT-SIZE: 12px;
+	FONT-WEIGHT: bold
+}
+
+.txtLinks {
+	COLOR: #666666;
+	FONT-FAMILY: verdana, arial, helvetica, sans-serif;
+	FONT-SIZE: 11px
+}
+
+.formfields {
+	FONT-FAMILY: verdana, arial, helvetica, sans-serif;
+	FONT-SIZE: 11px
+}
+
+.sectionHeaders {
+	font-family: verdana, arial, helvetica, sans-serif;
+	color: #5192DB;
+	font-size: 11px;
+	text-decoration: underline;
+	font-weight: bold
+}
+
+.subsectionheaders {
+	COLOR: #660099;
+	FONT-FAMILY: verdana, arial, helvetica, sans-serif;
+	FONT-SIZE: 11px
+}
+
+.headerHome {
+	COLOR: #660099;
+	FONT-FAMILY: verdana, arial, helvetica, sans-serif;
+	FONT-SIZE: 13px;
+	FONT-WEIGHT: bold
+}
+
+.nav2level2 {
+	COLOR: #0D4585;
+	FONT-FAMILY: verdana, arial, helvetica, sans-serif;
+	FONT-SIZE: 11px;
+	FONT-WEIGHT: bold;
+	TEXT-DECORATION: none
+}
+
+.nav2level3 {
+	COLOR: #0D4585;
+	FONT-FAMILY: verdana, arial, helvetica, sans-serif;
+	FONT-SIZE: 11px;
+	FONT-WEIGHT: normal;
+	TEXT-DECORATION: none
+}
+
+.nav2level4 {
+	COLOR: #0D4585;
+	FONT-FAMILY: verdana, arial, helvetica, sans-serif;
+	FONT-SIZE: 9px;
+	FONT-WEIGHT: normal;
+	TEXT-DECORATION: none
+}
+
+.navBreadCrumb {
+	COLOR: #2668B5;
+	FONT-FAMILY: verdana, arial, helvetica, sans-serif;
+	FONT-SIZE: 10px;
+	text-decoration: underline;
+}
+
+.pageHeader {
+	COLOR: #2668B5;
+	FONT-FAMILY: verdana, arial, helvetica, sans-serif;
+	FONT-SIZE: 20px;
+	FONT-WEIGHT: bold
+}
+
+.headerToolbar {
+	COLOR: #000066;
+	FONT-FAMILY: verdana, arial, helvetica, sans-serif;
+	FONT-SIZE: 13px;
+	FONT-WEIGHT: bold
+}
+
+.pageSubHeader {
+	COLOR: #000066;
+	FONT-FAMILY: verdana, arial, helvetica, sans-serif;
+	FONT-SIZE: 15px;
+	FONT-WEIGHT: bold
+}
+
+.navTertiaryHeader {
+	COLOR: #000066;
+	FONT-FAMILY: verdana, arial, helvetica, sans-serif;
+	FONT-SIZE: 12px;
+	FONT-WEIGHT: bold
+}
+
+.footer {
+	COLOR: #666666;
+	FONT-FAMILY: arial, verdana, helvetica, sans-serif;
+	FONT-SIZE: 11px
+}
+
+.footernav01 {
+	COLOR: #666666;
+	FONT-FAMILY: arial, verdana, helvetica, sans-serif;
+	FONT-SIZE: 11px;
+	FONT-WEIGHT: normal;
+	TEXT-DECORATION: underline
+}
+
+.footernav02 {
+	COLOR: #666666;
+	FONT-FAMILY: arial, verdana, helvetica, sans-serif;
+	FONT-SIZE: 10px;
+	TEXT-DECORATION: none
+}
+
+.button3 {
+	BACKGROUND-COLOR: #ff9900;
+	BORDER-BOTTOM-COLOR: #cc6600;
+	BORDER-BOTTOM-STYLE: solid;
+	BORDER-LEFT-COLOR: #ffcc33;
+	BORDER-LEFT-STYLE: solid;
+	BORDER-RIGHT-COLOR: #cc6600;
+	BORDER-RIGHT-STYLE: solid;
+	BORDER-TOP-COLOR: #ffcc33;
+	BORDER-TOP-STYLE: solid;
+	COLOR: #000000;
+	FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif;
+	FONT-SIZE: 10px;
+	FONT-VARIANT: normal;
+	FONT-WEIGHT: 600
+}
+
+.whitelinks {
+	font-family: verdana, arial, helvetica, sans-serif;
+	color: #FFFFFF;
+	font-size: 10px;
+	text-decoration: underline;
+}
+
+.orengelinksmedium {
+	font-family: verdana, arial, helvetica, sans-serif;
+	color: #FF9900;
+	text-decoration: underline;
+	font-weight: bold;
+}
+
+.navylinks {
+	font-family: verdana, arial, helvetica, sans-serif;
+	color: #0D4585;
+	text-decoration: underline;
+}
+
+.navylinksmedium {
+	font-family: verdana, arial, helvetica, sans-serif;
+	color: #0D4585;
+	text-decoration: underline;
+}
+
+.navylinkssm {
+	font-family: verdana, arial, helvetica, sans-serif;
+	color: #0D4585;
+	text-decoration: underline;
+}
+
+.navylinkssmallest {
+	font-family: verdana, arial, helvetica, sans-serif;
+	color: #0D4585;
+	font-size: 9.5px;
+	text-decoration: underline;
+}
+
+.bluelinksmedium {
+	font-family: verdana, arial, helvetica, sans-serif;
+	color: #5192DB;
+	font-size: 11px;
+	text-decoration: underline;
+	font-weight: bold
+}
+
+.bluelinktable {
+	color: #2668B5;
+	text-decoration: underline;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+}
+
+.bluelinktablesm {
+	color: #2668B5;
+	text-decoration: underline;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+}
+
+.tabletext {
+	font-family: verdana, arial, helvetica, sans-serif;
+	line-height: 15px;
+	color: #000000;
+}
+
+.blacktextlarge {
+	font-family: verdana, arial, helvetica, sans-serif;
+	font-size: 12px;
+	color: #000000;
+}
+
+.navytext {
+	font-family: verdana, arial, helvetica, sans-serif;
+	color: #0D4585;
+}
+
+.navytextsmall {
+	font-family: verdana, arial, helvetica, sans-serif;
+	font-size: 9.5px;
+	color: #0D4585;
+}
+
+.navytextmedium {
+	font-family: verdana, arial, helvetica, sans-serif;
+	color: #0D4585;
+}
+
+.navytextmediumspace {
+	font-family: verdana, arial, helvetica, sans-serif;
+	color: #0D4585;
+	line-height: 17px;
+}
+
+.navytextb {
+	font-family: verdana, arial, helvetica, sans-serif;
+	color: #0D4585;
+	font-weight: bold
+}
+
+.bluetext {
+	font-family: verdana, arial, helvetica, sans-serif;
+	font-size: 10px;
+	color: #5192DB;
+}
+
+.bluetextmedium {
+	font-family: verdana, arial, helvetica, sans-serif;
+	color: #5192DB
+}
+
+.whitetextmedium {
+	font-family: verdana, arial, helvetica, sans-serif;
+	font-size: 11px;
+	color: #FFFFFF;
+}
+
+input.radio {
+	background: #ECF2ED;
+	color: #ECF2ED;
+}
+
+.largetext {
+	COLOR: #000000;
+	FONT-FAMILY: verdana, arial, helvetica, sans-serif;
+	FONT-SIZE: 14px;
+}
+
+.mediumtext {
+	COLOR: #000000;
+	FONT-FAMILY: verdana, arial, helvetica, sans-serif;
+	FONT-SIZE: 11px;
+}
+
+.regulartext {
+	COLOR: #000000;
+	FONT-FAMILY: verdana, arial, helvetica, sans-serif;
+	FONT-SIZE: 11px;
+}
+
+.regularlink {
+	COLOR: #000000;
+	FONT-FAMILY: verdana, arial, helvetica, sans-serif;
+	FONT-SIZE: 11px;
+	text-decoration: none;
+}
+
+.smalltext2 {
+	COLOR: #000000;
+	FONT-FAMILY: arial, verdana, helvetica, sans-serif;
+	FONT-SIZE: 8px;
+}
+
+.smalltext {
+	COLOR: #000000;
+	FONT-FAMILY: verdana, arial, helvetica, sans-serif;
+	FONT-SIZE: 9px;
+}
+
+.pageHeadersm {
+	COLOR: #0D4585;
+	FONT-FAMILY: verdana, arial, helvetica, sans-serif;
+	FONT-SIZE: 14px;
+	FONT-WEIGHT: bold
+}
+
+.pageHeadersm2 {
+	COLOR: #0D4585;
+	FONT-FAMILY: verdana, arial, helvetica, sans-serif;
+	FONT-SIZE: 12px;
+	FONT-WEIGHT: bold
+}
+
+.pageHeadersm3 {
+	COLOR: #0D4585;
+	FONT-FAMILY: verdana, arial, helvetica, sans-serif;
+	FONT-SIZE: 12px;
+	FONT-WEIGHT: bold
+}
+
+.footergray {
+	COLOR: #BBC0BC;
+	FONT-FAMILY: verdana, arial, helvetica, sans-serif;
+	FONT-SIZE: 11px
+}
+
+.footergraylink {
+	COLOR: #999999;
+	FONT-FAMILY: arial, verdana, helvetica, sans-serif;
+	FONT-SIZE: 10px;
+	TEXT-DECORATION: none
+}
+
+.orangetext {
+	COLOR: #5C9ED8;
+	FONT-FAMILY: verdana, arial, helvetica, sans-serif;
+	FONT-SIZE: 10px
+}
+
+A.bottomnew:link {
+	COLOR: #FFFFFF;
+	FONT-FAMILY: verdana;
+	FONT-SIZE: 11px;
+	TEXT-DECORATION: none
+}
+
+A.bottomnew:visited {
+	COLOR: #FFFFFF;
+	FONT-FAMILY: verdana;
+	FONT-SIZE: 11px;
+	TEXT-DECORATION: none
+}
+
+A.bottomnew:hover {
+	COLOR: #FFD93E;
+	FONT-FAMILY: verdana;
+	FONT-SIZE: 11px;
+	TEXT-DECORATION: underline
+}
+
+A.footerlinknew:link {
+	COLOR: #B6B6B6;
+	FONT-FAMILY: verdana;
+	FONT-SIZE: 10px;
+	TEXT-DECORATION: underline
+}
+
+A.footerlinknew:visited {
+	COLOR: #B6B6B6;
+	FONT-FAMILY: verdana;
+	FONT-SIZE: 10px;
+	TEXT-DECORATION: underline
+}
+
+A.footerlinknew:hover {
+	COLOR: #B6B6B6;
+	FONT-FAMILY: verdana;
+	FONT-SIZE: 10px;
+	TEXT-DECORATION: underline
+}
+
+/* added on 05.02.2005 */
+.bluelarge {
+	font-family: verdana, arial, helvetica, sans-serif;
+	font-size: 13px;
+	color: #67A4DB;
+}
+
+.bluelargest {
+	font-family: verdana, arial, helvetica, sans-serif;
+	font-size: 14px;
+	color: #4492C9;
+}
+
+.blue {
+	font-family: verdana, arial, helvetica, sans-serif;
+	color: #4492C9;
+}
+
+.orange {
+	font-family: verdana, arial, helvetica, sans-serif;
+	color: #ED7D13;
+}
+
+.gray {
+	font-family: verdana, arial, helvetica, sans-serif;
+	color: #96A59C;
+}
+
+.lightgreen {
+	font-family: verdana, arial, helvetica, sans-serif;
+	color: #A1AE14;
+}
+
+.purple {
+	font-family: verdana, arial, helvetica, sans-serif;
+	color: #A87EB6;
+}
+
+A.orangelink:link {
+	COLOR: #ED7D13;
+	FONT-FAMILY: verdana;
+	FONT-SIZE: 11px;
+	TEXT-DECORATION: none
+}
+
+A.orangelink:visited {
+	COLOR: #ED7D13;
+	FONT-FAMILY: verdana;
+	FONT-SIZE: 11px;
+	TEXT-DECORATION: none
+}
+
+A.orangelink:hover {
+	COLOR: #ED7D13;
+	FONT-FAMILY: verdana;
+	FONT-SIZE: 11px;
+	TEXT-DECORATION: underline
+}
+
+A.bluelink:link {
+	COLOR: #006AB6;
+	FONT-FAMILY: verdana;
+	FONT-SIZE: 11px;
+	TEXT-DECORATION: none
+}
+
+A.bluelink:visited {
+	COLOR: #006AB6;
+	FONT-FAMILY: verdana;
+	FONT-SIZE: 11px;
+	TEXT-DECORATION: none
+}
+
+A.bluelink:hover {
+	COLOR: #006AB6;
+	FONT-FAMILY: verdana;
+	FONT-SIZE: 11px;
+	TEXT-DECORATION: underline
+}
+
+.whitetextmedium {
+	font-family: verdana, arial, helvetica, sans-serif;
+	color: #FFFFFF;
+}
+
+/* ADDED June 2005 */
+.navydarklg {
+	font-family: verdana, arial, helvetica, sans-serif;
+	color: #606099;
+	font-size: 12px;
+}
+
+.navydark {
+	font-family: verdana, arial, helvetica, sans-serif;
+	color: #606099;
+}
+
+.whitetextlg {
+	font-family: verdana, arial, helvetica, sans-serif;
+	font-size: 12px;
+	color: #FFFFFF;
+}
+
+A.whitelinklg:link {
+	COLOR: #FFFFFF;
+	FONT-FAMILY: verdana;
+	FONT-SIZE: 12px;
+	TEXT-DECORATION: underline
+}
+
+A.whitelinklg:visited {
+	COLOR: #FFFFFF;
+	FONT-FAMILY: verdana;
+	FONT-SIZE: 12px;
+	TEXT-DECORATION: underline
+}
+
+A.whitelinklg:hover {
+	COLOR: #FFFFFF;
+	FONT-FAMILY: verdana;
+	FONT-SIZE: 12px;
+	TEXT-DECORATION: none
+}
+
+A.graylink:link {
+	COLOR: #838383;
+	FONT-FAMILY: verdana;
+	FONT-SIZE: 11px;
+	TEXT-DECORATION: none
+}
+
+A.graylink:visited {
+	COLOR: #838383;
+	FONT-FAMILY: verdana;
+	FONT-SIZE: 11px;
+	TEXT-DECORATION: none
+}
+
+A.graylink:hover {
+	COLOR: #838383;
+	FONT-FAMILY: verdana;
+	FONT-SIZE: 11px;
+	TEXT-DECORATION: underline
+}
+
+.gray2 {
+	font-family: verdana, arial, helvetica, sans-serif;
+	FONT-SIZE: 10px;
+	color: #838383;
+}
+
+.blue2 {
+	font-family: verdana, arial, helvetica, sans-serif;
+	color: #006AB6;
+}
+
+A.leftnav:link {
+	COLOR: #838383;
+	FONT-FAMILY: verdana;
+	FONT-SIZE: 11px;
+	TEXT-DECORATION: none
+}
+
+A.leftnav:visited {
+	COLOR: #838383;
+	FONT-FAMILY: verdana;
+	FONT-SIZE: 11px;
+	TEXT-DECORATION: none
+}
+
+A.leftnav:hover {
+	COLOR: #006AB6;
+	FONT-FAMILY: verdana;
+	FONT-SIZE: 11px;
+	TEXT-DECORATION: none
+}
+
+A.leftnavsel:link {
+	COLOR: #006AB6;
+	FONT-FAMILY: verdana;
+	FONT-SIZE: 11px;
+	TEXT-DECORATION: none
+}
+
+A.leftnavsel:visited {
+	COLOR: #006AB6;
+	FONT-FAMILY: verdana;
+	FONT-SIZE: 11px;
+	TEXT-DECORATION: none
+}
+
+A.leftnavsel:hover {
+	COLOR: #006AB6;
+	FONT-FAMILY: verdana;
+	FONT-SIZE: 11px;
+	TEXT-DECORATION: none
+}
+
+A.bluenew:link {
+	COLOR: #006AB6;
+	FONT-FAMILY: verdana;
+	FONT-SIZE: 11px;
+	TEXT-DECORATION: underline
+}
+
+A.bluenew:visited {
+	COLOR: #006AB6;
+	FONT-FAMILY: verdana;
+	FONT-SIZE: 11px;
+	TEXT-DECORATION: underline
+}
+
+A.bluenew:hover {
+	COLOR: #006AB6;
+	FONT-FAMILY: verdana;
+	FONT-SIZE: 11px;
+	TEXT-DECORATION: none
+}
+
+.small10 {
+	COLOR: #000000;
+	FONT-FAMILY: verdana, arial, helvetica, sans-serif;
+	FONT-SIZE: 10px;
+}
+
+A.bluelinknew:link {
+	COLOR: #006AB6;
+	FONT-FAMILY: verdana;
+	FONT-SIZE: 11px;
+	TEXT-DECORATION: none
+}
+
+A.bluelinknew:visited {
+	COLOR: #006AB6;
+	FONT-FAMILY: verdana;
+	FONT-SIZE: 11px;
+	TEXT-DECORATION: none
+}
+
+A.bluelinknew:hover {
+	COLOR: #ED7D13;
+	FONT-FAMILY: verdana;
+	FONT-SIZE: 11px;
+	TEXT-DECORATION: underline
+}
+
+.blackcopynew {
+	font-family: verdana, arial, helvetica, sans-serif;
+	color: #000000;
+	line-height: 16px;
+}
+
+.greenlg {
+	font-family: verdana, arial, helvetica, sans-serif;
+	font-size: 13px;
+	color: #679120;
+	line-height: 16px;
+}
+
+.footernew {
+	font-family: verdana, arial, helvetica, sans-serif;
+	font-size: 10px;
+	color: #B6B6B6;
+}
+
+.footer {
+	font-family: verdana, arial, helvetica, sans-serif;
+	font-size: 10px;
+	clear: both;
+}
+
+.footerContact {
+	background: #D9DFA1;
+	height: 23px;
+	margin: 0;
+	padding: 0 0 0 15px;
+	width: 740px;
+}
+
+.dhmofooterContact {
+	background: #D9DFA1;
+	height: 23px;
+	margin: 0;
+	padding: 0 0 0 15px;
+	width: 830px;
+}
+
+.oralBorder {
+	height: 5px;
+	margin: 0;
+	background-color: black;
+	font-size: 13px;
+	color: white;
+}
+
+.oralFont {
+	font-size: 10px;
+}
+
+.footerContact p {
+	font-size: 11px;
+	margin: 0;
+	padding: 4px 0 0 0;
+}
+
+.footerNotices {
+	line-height: 1.2em;
+	padding: 5px 0 15px 15px;
+}
+
+A.bottomnew:link {
+	COLOR: #FFFFFF;
+	FONT-FAMILY: verdana;
+	FONT-SIZE: 11px;
+	TEXT-DECORATION: none;
+}
+
+A.bottomnew:visited {
+	COLOR: #FFFFFF;
+	FONT-FAMILY: verdana;
+	FONT-SIZE: 11px;
+	TEXT-DECORATION: none;
+}
+
+A.bottomnew:hover {
+	COLOR: #FFD93E;
+	FONT-FAMILY: verdana;
+	FONT-SIZE: 11px;
+	TEXT-DECORATION: underline;
+}
+
+A.footerlinknew:link {
+	COLOR: #B6B6B6;
+	FONT-FAMILY: verdana;
+	FONT-SIZE: 10px;
+	TEXT-DECORATION: underline
+}
+
+A.footerlinknew:visited {
+	COLOR: #B6B6B6;
+	FONT-FAMILY: verdana;
+	FONT-SIZE: 10px;
+	TEXT-DECORATION: underline
+}
+
+A.footerlinknew:hover {
+	COLOR: #B6B6B6;
+	FONT-FAMILY: verdana;
+	FONT-SIZE: 10px;
+	TEXT-DECORATION: underline
+}
+
+A.whitelinks2:link {
+	COLOR: #FFFFFF;
+	FONT-FAMILY: verdana;
+	FONT-SIZE: 11px;
+	TEXT-DECORATION: none
+}
+
+A.whitelinks2:visited {
+	COLOR: #FFFFFF;
+	FONT-FAMILY: verdana;
+	FONT-SIZE: 11px;
+	TEXT-DECORATION: none
+}
+
+A.whitelinks2:hover {
+	COLOR: #FFD93E;
+	FONT-FAMILY: verdana;
+	FONT-SIZE: 11px;
+	TEXT-DECORATION: underline
+}
+
+A.bluelinkpp:link {
+	COLOR: #0E59A8;
+	FONT-FAMILY: verdana;
+	FONT-SIZE: 11px;
+	TEXT-DECORATION: none
+}
+
+A.bluelinkpp:visited {
+	COLOR: #0E59A8;
+	FONT-FAMILY: verdana;
+	FONT-SIZE: 11px;
+	TEXT-DECORATION: none
+}
+
+A.bluelinkpp:hover {
+	COLOR: #ED7D13;
+	FONT-FAMILY: verdana;
+	FONT-SIZE: 11px;
+	TEXT-DECORATION: underline
+}
+
+A.purebluelinkpp:link {
+	COLOR: #3333FF;
+	FONT-FAMILY: verdana;
+	FONT-SIZE: 11px;
+	TEXT-DECORATION: none
+}
+
+A.purebluelinkpp:visited {
+	COLOR: #3333FF;
+	FONT-FAMILY: verdana;
+	FONT-SIZE: 11px;
+	TEXT-DECORATION: none
+}
+
+A.blacklinkpp:link {
+	COLOR: #000000;
+	FONT-FAMILY: verdana;
+	FONT-SIZE: 11px;
+	TEXT-DECORATION: none
+}
+
+A.blacklinkpp:visited {
+	COLOR: #000000;
+	FONT-FAMILY: verdana;
+	FONT-SIZE: 11px;
+	TEXT-DECORATION: none
+}
+
+.red {
+	color: #F60000;
+}
+
+.smallcopy {
+	COLOR: #000000;
+	FONT-FAMILY: arial, verdana, helvetica, sans-serif;
+	FONT-SIZE: 10px
+}
+
+.ErrorText {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: normal;
+	color: #ff0000;
+	text-decoration: none
+}
+
+.ErrorTextBold {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	color: #ff0000;
+	text-decoration: none
+}
+
+.ErrorTextSmall {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 9.5px;
+	font-weight: normal;
+	color: #CC0000;
+	text-decoration: none
+}
+
+.loginbox {
+	border: 1px solid #A9D2F8;
+	border-top-width: 15px;
+	background-color: #DEE6DF;
+	text-align: left;
+	margin: 2px;
+	padding: 10px;
+}
+
+.greytable {
+	width: 290px;
+	background-color: #ECF2ED;
+	text-align: left;
+	margin: 2px;
+	margin-top: 4px;
+	padding: 2px;
+	padding-top: 4px;
+}
+
+.graytable {
+	width: 275px;
+	background-color: #ECF2ED;
+	text-align: left;
+	padding-top: 2px;
+	padding-left: 0px;
+	padding-bottom: 2px;
+	padding-right: 2px;
+	float: left;
+	vertical-align: top;
+}
+
+.graytable2 {
+	width: 433px;
+	background-color: #ECF2ED;
+	text-align: left;
+	float: right;
+	vertical-align: top;
+	border-left-color: #5CA0D9;
+	border-left-style: solid;
+	border-left-width: 1px;
+	padding-top: 2px;
+	padding-left: 4px;
+	padding-bottom: 2px;
+	padding-right: 0px;
+}
+
+.grayContent {
+	width: 718px;
+	background-color: #ECF2ED;
+	text-align: left;
+	padding: 4px;
+	padding-top: 20px;
+	border-color: #5CA0D9;
+	border-width: 1px;
+	border-style: solid;
+}
+
+/* Added for claimsummarydhmo page-Starts*/
+.graytable3 {
+	width: 433px;
+	background-color: #ECF2ED;
+	text-align: left;
+	float: right;
+	vertical-align: top;
+	padding-top: 20px;
+	padding-left: 4px;
+	padding-bottom: 2px;
+	padding-right: 0px;
+}
+
+.graytable4 {
+	width: 275px;
+	background-color: #ECF2ED;
+	text-align: left;
+	float: left;
+	border-right-color: #5CA0D9;
+	border-right-style: solid;
+	border-right-width: 1px;
+}
+
+/*Added for Claims Pages EFT Release Starts*/
+.graytable6 {
+	width: 325px;
+	height:602px;
+	background-color: #ECF2ED;
+	text-align: left;
+	float: left;
+	border-right-color: #5CA0D9;
+	border-right-style: solid;
+	border-right-width: 1px;
+}
+
+.graytable5 {   /*For EFT Banner in Claim Pages*/
+	width: 148px;
+	float: right;
+	border: none;
+	height: auto;
+	background-color: #FFFFFF;
+	
+}
+
+.graytable7 {
+	width: 273px;
+	background-color: #ECF2ED;
+	text-align: left;
+	float: left;
+}
+
+
+.graytable8 {
+	width: 290px;
+	background-color: #ECF2ED;
+	text-align: left;
+	float: left;
+}
+
+/*Added for Claims Pages EFT Release Ends*/
+
+/* Added for claimsummarydhmo page-Ends*/
+	/* Added for claimsummarydhmo page-Starts*/
+.grayContent1 {
+	width: 718px;
+	background-color: #ECF2ED;
+	text-align: left;
+	border-left: .1em solid #5CA0D9;
+	border-right: .1em solid #5CA0D9;
+	border-bottom: .1em solid #5CA0D9;
+}
+
+.grayContent2 {
+	position: absolute;
+	width: 718px;
+	background-color: #ECF2ED;
+	text-align: left;
+	border-left: .1em solid #5CA0D9;
+	border-right: .1em solid #5CA0D9;
+	border-bottom: .1em solid #5CA0D9;
+}
+
+/*Added for 15.3 EFT Release*/
+.grayContent3 {
+	position: absolute;
+	width: 718px;
+	background-color: #FFFFFF;
+	text-align: left;
+	
+}
+
+.grayContent4{
+	width: 718px;
+	background-color: #FFFFFF;
+	text-align: left;
+	padding: 4px;
+	padding-top: 20px;
+	
+}
+
+
+
+/* Added for claimsummarydhmo page-Ends*/
+.rightentrycolumn {
+	width: 175px;
+	float: right
+}
+
+.leftentrycolumn {
+	float: left;
+	width: 450px;
+	padding-bottom: 20px;
+}
+
+/*
+    styles for top navigation bar
+     width: 740px; added for dhmo 
+*/
+.pagecolumn {
+	float: left;
+	width: 740px;
+	padding-top: 10px;
+	font-family: verdana, arial, helvetica, sans-serif;
+	color: #000000;
+}
+
+/*
+Changing the widht to 720 
+for select a patient page dhmo subscribers.
+*/
+.pagecolumn1 {
+	float: left;
+	width: 720px;
+	padding-top: 10px;
+	font-family: verdana, arial, helvetica, sans-serif;
+	color: #000000;
+}
+
+.printerpagecolumn {
+	float: left;
+	width: 560px;
+	padding-top: 10px;
+	font-family: verdana, arial, helvetica, sans-serif;
+	color: #000000;
+}
+
+.leftcolumn {
+	float: left;
+	width: 180px;
+}
+
+.middlecolumn {
+	float: left;
+	width: 403px;
+}
+
+.middlecolumn2 {
+	float: left;
+	width: 257px;
+}
+
+.middlecolumn3 {
+	float: left;
+	width: 350px;
+}
+
+.middlecolumn4 {
+	float: left;
+	width: 700px;
+}
+
+.middlecolumn5 {
+	float: left;
+	width: 320px;
+}
+
+.middlecolumn6 {
+	float: left;
+	width: 350px;
+	position: absolute;
+	top: 171px
+}
+
+.middlecolumn7 {
+	float: left;
+	width: 286px;
+}
+.rightcolumn {
+	float: right;
+	width: 157px
+}
+
+.rightcolumn1 {
+	float: right;
+	position: absolute;
+	top: 115px;
+	left: 460px;
+	width: 279px;
+}
+
+.rightcolumn2 {
+	float: right;
+	width: 283px;
+}
+
+.rightcolumn3 {
+	float: right;
+	width: 575px
+}
+
+.rightcolumn4 {
+	float: right;
+	width: 200px
+}
+
+.rightcolumn5 {
+	float: right;
+	width: 200px
+}
+
+.rightcolumn6 {
+	float: right;
+	width: 173px
+}
+
+.rightcolumn7 {
+	float: right;
+	width: 250px;
+}
+
+.rightcolumn8 {
+	float: right;
+	width: 675px;
+}
+
+.rightcolumn9 {
+	float: right;
+	width: 330px;
+}
+
+.rightcolumn10 {
+	float: right;
+	width: 283px;
+}
+
+.rightcolumn11 {
+	float: right;
+	width: 283px;
+}
+
+.rightcolumn12 {
+	float: right;
+	width: 283px;
+	position: absolute;
+	top: 375px;
+	left: 433px
+}
+
+.rightcolumn13 {
+	float: right;
+	position: absolute;
+	top: 140px;
+	left: 460px;
+	width: 279px;
+}
+
+.rightcolumn15 {
+	float: right;
+	width: 283px;
+	position: absolute;
+	top: 387px;
+	left: 433px
+}
+
+.rightcolumn14 {
+	float: right;
+	position: relative;
+	left: 19px;
+	width: 279px;
+}
+
+.pageHeaderblack {
+	COLOR: #000000;
+	FONT-FAMILY: verdana, arial, helvetica, sans-serif;
+	FONT-SIZE: 14px;
+	FONT-WEIGHT: bold
+}
+/* Added for EFT 15.3 Release - Starts*/
+.pageHeaderblackClaimPages {
+	COLOR: #000000;
+	FONT-FAMILY: verdana, arial, helvetica, sans-serif;
+	FONT-SIZE: 14px;
+	FONT-WEIGHT: bold;
+	margin-top: 0px;
+}
+/* Added for EFT 15.3 Release - Ends*/
+
+.pageHeaderblack1 {
+	COLOR: #000000;
+	FONT-FAMILY: verdana, arial, helvetica, sans-serif;
+	FONT-SIZE: 14px;
+	FONT-WEIGHT: bold;
+	position: absolute;
+	left: 20px;
+	top: -55px
+}
+
+.pageHeaderblackMedium {
+	COLOR: #000000;
+	FONT-FAMILY: verdana, arial, helvetica, sans-serif;
+	FONT-SIZE: 13px;
+	FONT-WEIGHT: bold
+}
+
+.pageHeaderblackSmall {
+	COLOR: #000000;
+	FONT-FAMILY: verdana, arial, helvetica, sans-serif;
+	FONT-SIZE: 10px;
+	FONT-WEIGHT: bold
+}
+
+.smallcopyaccess {
+	COLOR: #000000;
+	FONT-FAMILY: arial, verdana, helvetica, sans-serif;
+	FONT-SIZE: 10px;
+	text-align: left;
+	width: 550px;
+}
+
+.empdemocolumn {
+	font-family: verdana, arial, helvetica, sans-serif;
+	color: #000000;
+	padding-top: 20px;
+}
+
+.mainContent {
+	width: 540px;
+	float: left;
+}
+
+.mainContent9 {
+	width: 437px;
+	float: left;
+}
+
+/*
+    styles for top navigation bar
+     width: 720px; added for dhmo 
+*/
+.mainContent2 {
+	width: 720px;
+	float: left;
+}
+
+.mainContent3 {
+	width: 487px;
+	float: left;
+}
+/*Added for 15.3 Release Claim Pages Re-Alignment*/
+.mainContent10 {
+	width: 420px;
+	float: left;
+}
+
+
+.mainContent4 {
+	width: 550px;
+	float: left;
+}
+
+.mainContent5 {
+	width: 720px;
+	float: left;
+}
+
+.mainContent6 {
+	width: 400px;
+	float: left;
+}
+
+.mainContent7 {
+	width: 350px;
+	float: left;
+}
+
+.mainContent8 {
+	width: 387px;
+	float: left;
+}
+
+.leftGutter {
+	padding-left: 20px;
+}
+
+.leftGutter1 {
+	padding-left: 40px;
+}
+
+.leftgutter2 {
+	padding-left: 20px;
+	position: absolute;
+	top: 155px /*Modfied for 15.3 EFT Release*/
+}
+
+.headerBox {
+	width: 720px;
+	background-color: #5CA0D9;
+	color: #5CA0D9;
+	height: 30px;
+}
+
+.titleBox {
+	width: 536px;
+	background-color: #5CA0D9;
+	text-align: left;
+	color: white;
+	margin-left: 2px;
+	margin-right: 2px;
+	margin-bottom: 0px;
+	margin-top: 20px;
+	padding: 6px;
+	font-weight: bold;
+}
+
+.errorBox {
+	width: 536px;
+	background-color: #FFFFFF;
+	color: red;
+	text-align: left;
+	margin-left: 2px;
+	margin-right: 2px;
+	margin-bottom: 2px;
+	margin-top: 0px;
+	padding: 6px;
+	border-color: #5CA0D9;
+	border-style: solid;
+	border-width: thin;
+}
+
+.faqBox {
+	width: 530px;
+	margin-left: 4px;
+	margin-right: 2px;
+	margin-bottom: 40px;
+	margin-top: 10px;
+	padding-left: 2px;
+	padding-right: 2px;
+	vertical-align: top;
+}
+
+.listBox {
+	width: 400px;
+	list-style-type: disc;
+	list-style-position: outside;
+	padding-left: 20px;
+	margin-left: 20px;
+}
+
+/*Added For TRICARE Exclusion an Limitation Link*/
+.exclusion {
+	text-align: center;
+	float: left;
+	width: 575px;
+	background-color: #FFF;
+	padding-bottom: 15px;
+}
+
+ul.pesErrors {
+	list-style-type: disc;
+	list-style-position: outside;
+	margin: 0 0 0 20px;
+	padding: 0 0 0 10px;
+}
+
+li.pesErrors {
+	color: #ff0000;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: normal;
+}
+
+ul.thankYouListBox {
+	list-style-type: disc;
+	list-style-position: outside;
+	COLOR: #000000;
+	FONT-FAMILY: verdana, arial, helvetica, sans-serif;
+	FONT-SIZE: 11px;
+	margin: 0 0 0 20px;
+	padding: 0 0 0 10px;
+}
+
+ul.orthoAgesList {
+	list-style-type: none;
+	list-style-position: outside;
+	COLOR: #000000;
+	FONT-FAMILY: verdana, arial, helvetica, sans-serif;
+	FONT-SIZE: 11px;
+	margin: 0 0 0 6px;
+	padding: 0 0 0 5px;
+}
+
+ul.planSummaryList {
+	list-style-type: disc;
+	list-style-position: outside;
+	COLOR: #000000;
+	FONT-FAMILY: verdana, arial, helvetica, sans-serif;
+	FONT-SIZE: 11px;
+	margin: 0 0 0 11px;
+	padding: 0 0 0 2px;
+}
+
+.qaBox {
+	width: 400px;
+	text-align: left;
+}
+
+.letterBox {
+	width: 20px;
+	text-align: left;
+	vertical-align: top;
+	font-weight: bold;
+	margin-right: 10px;
+	margin-left: 0px;
+}
+
+table.standardTable {
+	FONT-FAMILY: verdana, arial, helvetica, sans-serif;
+	FONT-SIZE: 10.5px;
+	background-color: white;
+	border-color: #DFE7E0;
+}
+
+table.standardTable2 {
+	FONT-FAMILY: verdana, arial, helvetica, sans-serif;
+	FONT-SIZE: 11px;
+	background-color: white;
+	border-color: #5ca0d9;
+	border-width: thin;
+	border-style: solid;
+}
+
+th.standardTable {
+	background-color: #5CA0D9;
+	color: #FFFFFF;
+	text-align: center;
+}
+
+th.standardTable2 {
+	background-color: #5CA0D9;
+	color: #FFFFFF;
+	text-align: center;
+	border-color: #5ca0d9;
+}
+
+th.innerTable2 {
+	background-color: #a9a9a9;
+	color: #FFFFFF;
+	text-align: center;
+}
+
+table.innerTable {
+	background-color: #edf3ee;
+	color: #FFFFFF;
+	text-align: left;
+}
+
+th.headingTable1 {
+	background-color: #5CA0D9;
+	color: #FFFFFF;
+	text-align: center;
+	height: 25px;
+}
+
+tr.innerTable {
+	background-color: #edf3ee;
+}
+
+tr.specialBorder {
+	border-color: #e4e8ba;
+}
+
+table.innerTable2 {
+	background-color: #a9a9a9;
+	color: #FFFFFF;
+	text-align: left;
+}
+
+th.headingTable {
+	background-color: #5CA0D9;
+	color: #FFFFFF;
+	text-align: left;
+}
+
+th.headingTable2 {
+	background-color: #e4e8ba;
+	color: black;
+	text-align: left;
+	font-weight: 100;
+}
+
+th.headingTable3 {
+	background-color: #5CA0D9;
+	color: #FFFFFF;
+	text-align: center;
+}
+
+th.headingTable4 {
+	background-color: #5CA0D9;
+	color: #FFFFFF;
+	text-align: left;
+}
+
+th.headingTable5 {
+	background-color: #5CA0D9;
+	color: #FFFFFF;
+	text-align: left;
+	width: 65px;
+}
+
+th.headingTableprinter {
+	background-color: #96c8f3;
+	color: #333;
+	text-align: left;
+}
+
+th.headingTable3printer {
+	background-color: #96c8f3;
+	color: #333;
+	text-align: center;
+}
+
+td.tableColumn {
+	text-align: right;
+	height: 18;
+	width: 50;
+}
+
+.ssnbox {
+	border: 2px solid #DEE6DF;
+	background-color: #ECF2ED;
+	width: 283px;
+	margin: 0px;
+	padding: 4px
+}
+
+.ssnbox2 {
+	background-color: #DEE6DF;
+	width: 269px; /*Fix for crossBrowser issue 15.4 Release*/
+	padding: 4px
+}
+
+.ssnbox3 {
+	background-color: #DEE6DF;
+	width: 275px;
+	padding-top: 20px;
+	height: 80px;
+	border-left: 2px solid #ECF2ED;
+	border-right: 2px solid #ECF2ED;
+}
+
+.ssnbox4 {
+	background-color: #DEE6DF;
+	width: 275px;
+	height: 80px;
+	border-left: 2px solid #ECF2ED;
+	border-right: 2px solid #ECF2ED;
+}
+
+.ssnbox5 {
+	background-color: #DEE6DF;
+	width: 269px;/*Modified for EFT 15.3 Release*/
+	padding-top: 20px;
+	border-left: 2px solid #ECF2ED;
+	border-right: 2px solid #ECF2ED;
+}
+
+.leftnav {
+	float: left;
+	width: 108px
+}
+
+.specialText {
+	FONT-FAMILY: arial, verdana, helvetica, sans-serif;
+	FONT-SIZE: 10px;
+	vertical-align: middle;
+	text-align: center;
+}
+
+.specialText2 {
+	COLOR: #5CA0D9;
+	font-weight: bold;
+}
+
+.bottomText {
+	vertical-align: bottom;
+}
+
+.rightFloat {
+	float: right;
+}
+
+.selectedheading {
+	color: #FF6600;
+	font-size: 11px;
+	font-weight: bold;
+	line-height: 14px
+}
+
+.boldlargetext {
+	COLOR: #000000;
+	FONT-FAMILY: verdana, arial, helvetica, sans-serif;
+	FONT-SIZE: 14px;
+	font-weight: bold;
+}
+
+.boldblacktextlarge {
+	font-family: verdana, arial, helvetica, sans-serif;
+	font-size: 12px;
+	color: #000000;
+	font-weight: bold;
+}
+
+.grayedoutlink {
+	COLOR: #999999;
+	FONT-FAMILY: arial, verdana, helvetica, sans-serif;
+}
+
+.planmenuOn {
+	FONT-FAMILY: Arial, Helvetica, sans-serif;
+	FONT-SIZE: 11px;
+	FONT-STYLE: normal;
+	LIST-STYLE: circle;
+	color: #000000;
+	font-weight: bold;
+}
+
+A.defaultLink:link,A.defaultLink:visited {
+	COLOR: #0E59A8;
+	TEXT-DECORATION: none;
+}
+
+A.defaultLink:hover {
+	COLOR: #ED7D13;
+	TEXT-DECORATION: underline;
+}
+
+body,html {
+	margin: 0;
+	padding: 0;
+	background: #fff;
+	color: #000;
+}
+
+body {
+	min-width: 740px;
+}
+
+.container {
+	margin: 0 auto;
+	padding: 0;
+	width: 740px;
+	float: left;
+}
+
+sup.supScript {
+	font-size: 8px;
+}
+
+.eligibilityEntryForm {
+	font-size: 8pt;
+}
+
+#ssnBoxCallout p.title {
+	text-transform: uppercase;
+	text-align: center;
+	font-size: 9pt;
+	font-weight: bold;
+	margin: 0 0 4px 0;
+	padding: 3px 4px;
+	background: #d9dfa1;
+	color: #004483;
+	border: 1px solid #a1ae14;
+}
+
+#ssnBoxCallout div.content {
+	background: #F3F6F3;
+	border: 1px solid #ccc;
+	padding-top: 0.4em;
+	padding-left: 2px;
+	padding-bottom: 0;
+	padding-right: 1px;
+	font-size: 8pt;
+}
+
+h1 {
+	color: black;
+	font-family: arial, verdana, helvetica, sans-serif;
+	font-size: 15px;
+	font-weight: bold;
+	line-height: 1.25em;
+	text-align: left;
+	padding: 0 0 6px 0;
+	margin: 0 0 8px 0;
+	border-bottom: 3px solid #d9dfa1;
+}
+
+.erahead {
+	color: black;
+	font-family: arial, verdana, helvetica, sans-serif;
+	font-size: 15px;
+	font-weight: bold;
+	line-height: 1.25em;
+	text-align: left;
+	padding: 0 0 6px 0;
+	margin: 0 0 8px 0;
+	margin-left: 10px;
+	border-bottom: 0px solid #d9dfa1;
+}
+
+h2 {
+	color: black;
+	font-family: verdana, arial, helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	text-align: left;
+	padding: 0;
+	margin: 0;
+}
+
+/* container divs */
+div.pageContainer {
+	width: 740px;
+	max-width: 740px;
+	padding: 0;
+	margin: 0;
+	float: left;
+}
+
+/*
+    styles for top navigation bar
+     width: 860px; added for dhmo 
+*/
+div.pageDhmoContainer {
+	width: 830px;
+	max-width: 830px;
+	padding: 0;
+	margin: 0;
+	float: left;
+}
+
+/*
+    styles for top navigation bar
+     width: 860px; added for dhmo  ended
+*/
+#header {
+	width: 100%;
+	float: left;
+	clear: both;
+	padding-bottom: 10px;
+}
+
+#dhmoHeader {
+	width: 100%;
+	float: left;
+}
+
+#divstyl1 {
+	margin: -9px 0 0 0;
+	padding-top: 0px;
+}
+
+#divstyl2 {
+	margin: 0 0 0 0;
+	padding-top: 1px
+}
+
+#divstyl3 {
+	margin: 0 0 0 0;
+	padding-top: 1px
+}
+
+#divstyl4 {
+	
+}
+
+#divstyl5 {
+	margin: -12px 0 0 0;
+	padding-top: 0px;
+}
+
+#divstyl6 {
+	margin: 0 0 0 0;
+	padding-top: 1px
+}
+
+#navigation {
+	float: left;
+	width: 180px;
+}
+
+#faqnavigation {
+	float: left;
+	width: 180px;
+}
+
+/*
+    styles for top navigation bar
+     width: 860px; added for dhmo  ended
+*/
+#dhmoNavigation {
+	float: left;
+	width: 210px;
+}
+
+#sidebar {
+	float: left;
+	width: 148px;
+}
+
+/*
+    styles for top navigation bar
+     width: 860px; added for dhmo 
+*/
+#dhmoSidebar {
+	float: left;
+	width: 178px;
+}
+
+/*
+    styles for top navigation bar
+     width: 860px; added for dhmo  ended
+*/
+#main {
+	float: left;
+	width: 393px;
+	margin: 0 9px 0 10px;
+}
+
+#errorPage #main {
+	width: 740px;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+}
+
+/*
+    styles for top navigation bar
+     width: 433px; added for dhmo 
+*/
+#mainDhmo {
+	float: left;
+	width: 423px;
+	margin: 0 9px 0 10px;
+}
+
+/*
+    styles for top navigation bar
+     width: 860px; added for dhmo 
+*/
+#errors {
+	margin: 0;
+	padding: 0px 0;
+}
+
+#errorsInRegistration {
+	margin: 0;
+	padding: 20px 0;
+	list-style-type: disc;
+	list-style-position: outside;
+}
+
+#errorPage #imgSorry {
+	padding: 10px 0 0 35px;
+}
+
+#footnotes {
+	clear: both;
+	margin: 0;
+	padding: 18px 0 0 5px;
+}
+
+#footnotes p {
+	margin: 0;
+	padding: 0;
+	font-size: 10px;
+	text-align: left;
+	line-height: 1.3em;
+}
+
+#footer {
+	margin-top: 2px;
+	padding-top: 25px;
+	clear: both;
+	width: 740px;
+}
+
+.foot1 {
+	position: absolute;
+	margin-top: 2px;
+	padding-top: 25px;
+	clear: both;
+	width: 740px;
+	top: 540px;
+}
+
+/*New footer Margins added for EFT 15.3 Release- Starts*/
+.foot4 {
+	position: absolute;
+	margin-top: 2px;
+	padding-top: 25px;
+	clear: both;
+	width: 740px;
+	top: 775px; /*Modified for 15.3 EFT Release*/
+	
+	
+}
+/*New footer Margins added for EFT 15.3 Release- Ends*/
+
+.foot2 {
+	position: absolute;
+	margin-top: 2px;
+	padding-top: 25px;
+	clear: both;
+	width: 740px;
+	top: 640px;
+}
+
+.foot3 {
+	position: absolute;
+	margin-top: 2px;
+	padding-top: 25px;
+	clear: both;
+	width: 740px;
+	top: 820px;
+}
+
+/*
+    styles for top navigation bar
+     width: 860px; added for dhmo 
+*/
+#ppoFooter {
+	margin-top: 2px;
+	padding-top: 25px;
+	width: 740px;
+	clear: both;
+}
+
+#dhmoFooter {
+	margin-top: 2px;
+	padding-top: 25px;
+	width: 830px;
+	clear: both;
+}
+
+/*
+    styles for top navigation bar
+     width: 860px; added for dhmo 
+*/
+#printFooter {
+	margin-top: 2px;
+	padding-top: 25px;
+	width: 560px;
+	clear: both;
+}
+
+/* end of container divs */
+.first {
+	margin-top: 0;
+}
+
+.last {
+	margin-bottom: 0;
+}
+
+.clearing {
+	height: 0;
+	clear: both;
+}
+
+/* end of container divs */
+.eligibilityEntryForm {
+	font-size: 10px;
+}
+
+.imgLeft {
+	float: left;
+}
+
+.imgRight {
+	float: right;
+}
+
+.nowrap {
+	white-space: nowrap;
+}
+
+/* default style for callout boxes */
+div.callout {
+	font-size: 11px;
+	font-weight: normal;
+	margin: 0 0 16px 0;
+	padding: 0;
+}
+
+.callout h2 {
+	margin: 0 0 2px 0;
+	padding: 3px 2px;
+	font-family: arial, verdana, helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+	text-align: center;
+	text-transform: uppercase;
+	background: #fc9;
+	color: #080;
+	border: 1px solid blue;
+}
+
+.callout h3 {
+	font-size: 11px;
+	font-weight: bold;
+	color: black;
+	margin: 0;
+	padding: 0;
+}
+
+.callout .content {
+	padding: 7px;
+	margin: 0;
+}
+
+.callout p {
+	padding: 4px 0 0 0;
+	margin: 0;
+}
+
+/*
+    styles for top navigation bar
+     width: 860px; added for dhmo 
+*/
+.pageContainer .callout .content h3,.pageContainer .callout .content p,.pageContainer .callout .content a
+	{
+	font-size: 11px;
+}
+
+/*
+    styles for top navigation bar
+     width: 860px; added for dhmo 
+*/
+.pageDhmoContainer .callout .content h3,.pageDhmoContainer .callout .content p,.pageDhmoContainer .callout .content a
+	{
+	font-size: 11px;
+}
+
+/*
+    styles for top navigation bar
+     width: 860px; added for dhmo  ended
+*/
+.buttonImg {
+	position: relative;
+	top: 3px;
+}
+
+/* Modified for EFT 15.3 Release - Starts*/
+#continuingEdCallout,#healthCareReformCallout,#fedVipCallout,.rc #directDepositCallout, #BannerEftRightRailCallout {
+	margin: 20px 0 0 0;
+	padding: 0;
+	color: #000;
+}
+/* Modified for EFT 15.3 Release - Ends*/
+
+#continuingEdCallout p,#fedVipCallout p,.rc #directDepositCallout p {
+	margin: 0;
+	padding: 6px;
+}
+
+.rc #directDepositCallout p {
+	border: none;
+}
+
+#continuingEdCallout h2,.rc #directDepositCallout h2 {
+	text-align: left;
+	font-size: inherit;
+	padding: 3px 5px;
+	background: #d9dfa1;
+	color: #004483;
+	border: 1px solid #a1ae14;
+}
+
+#fedVipCallout h2 {
+	text-align: center;
+	font-size: inherit;
+	padding: 3px 5px;
+	background: #a9d2f8;
+	color: #004483;
+	border: 1px solid #65aded;
+}
+
+.rc #directDepositCallout h2 {
+	text-align: center;
+}
+
+#continuingEdCallout .content,#fedVipCallout .content,.rc #directDepositCallout .content
+	{
+	padding: 0;
+	border: 1px solid #ccf;
+}
+
+.rc #directDepositCallout .content img {
+	
+}
+
+.rc #faqCallout h2 {
+	text-align: left;
+	text-align: center;
+	font-size: inherit;
+	padding: 3px 5px;
+	background: #d9dfa1;
+	color: #004483;
+	border: 1px solid #a1ae14;
+}
+
+#electronicClaimsCallout,#resourceCenterCallout {
+	margin: 20px 0 0 0;
+	padding: 0;
+	color: #000;
+}
+
+/* Due to refreshing issues in .jspf, moved this style to end of this document. Issue: header colour overriding with #BannerEftRightRailCallout
+#electronicClaimsCallout h2,#resourceCenterCallout h2 {
+	font-size: 12px;
+	background: #e8a202;
+	color: #fff;
+	border: 1px solid #c89000;
+}
+*/
+#electronicClaimsCallout h2 {
+	text-transform: none;
+}
+
+#electronicClaimsCallout p,#resourceCenterCallout p {
+	margin: 0;
+	padding: 4px 0;
+}
+
+#electronicClaimsCallout div.content,#resourceCenterCallout div.content,#adminLinksCallout div.content
+	{
+	border: 1px solid #ccc;
+	background: #F3F6F3;
+}
+
+#adminLinksCallout h2 {
+	font-size: 12px;
+	background: #e8a202;
+	color: #fff;
+	border: 1px solid #c89000;
+}
+
+#admin-link-confirmation {
+	border-radius: 4px;
+    width: 550px;
+    min-height: 200px;
+    padding: 20px 0 20px 20px;
+    background-color: #fff;
+    display: none;
+    
+	p {
+	    text-align: center;
+        margin: 40px 0 30px 0;
+        font-size: 16px;
+	}
+	.modal-buttons {
+		display: flex;
+		justify-content: center;
+	}
+	button {
+		border: none;
+	    padding: 15px 24px;
+	    border-radius: 8px;
+	    font-size: 16px;
+	}
+	#confirmBtn:hover, #cancelBtn:focus, #confirmBtn:focus, #cancelBtn:hover {
+		background-color: #0061A0;
+   		color: #ffffff;
+	}
+	#confirmBtn {
+		background-color: #007ABC;
+   		color: #ffffff;
+	}
+	#cancelBtn{
+		background-color: #ffffff;
+   		color: #007ABC;
+   		border: 2px solid #007ABC;
+   		margin-right: 20px;
+	}	
+	.close {
+		color: black;
+		float: right;
+		font-size: 28px;
+		cursor: pointer;
+	}
+}
+
+#electronicClaimsCallout h3,#resourceCenterCallout h3 {
+	font-weight: bold;
+	color: black;
+}
+
+#healthRisksCallout,#previserOralHealthRiskCallout {
+	margin: 20px 0 0 0;
+	padding: 0;
+	color: #000;
+}
+
+#healthRisksCallout h2,#previserOralHealthRiskCallout h2 {
+	text-align: left;
+	background: #DAA900;
+	color: #004483;
+	border: 1px solid #DAA900;
+}
+
+#healthRisksCallout h2 {
+	text-transform: none;
+}
+
+#healthRisksCallout p,#previserOralHealthRiskCallout p {
+	margin: 0;
+	padding: 4px 0;
+}
+
+#healthRisksCallout div.content,#previserOralHealthRiskCallout div.content
+	{
+	border: 1px solid #ccc;
+	background: #F3F6F3;
+}
+
+#healthRisksCallout h3,#previserOralHealthRiskCallout h3 {
+	font-weight: bold;
+	color: black;
+}
+
+#benchmarkCallout {
+	margin: 20px 0 0 0;
+	padding: 0;
+	color: #000;
+}
+
+#benchmarkCallout h2 {
+	font-size: 12px;
+	letter-spacing: 0.08em;
+	background: #e8a202;
+	color: #fff;
+	border: 1px solid #c89000;
+}
+
+#benchmarkCallout p {
+	margin: 0;
+	padding: 4px 0;
+}
+
+#benchmarkCallout div.content {
+	padding: 4px;
+	border: 1px solid #ccc;
+	background: #F3F6F3;
+}
+
+#benchmarkCallout h3 {
+	font-weight: bold;
+	color: black;
+	padding-bottom: 6px;
+}
+
+#benchmarkCallout ul {
+	margin-top: 0;
+	margin-left: 3px;
+	padding: 2px 2px 2px 0.8em;
+	list-style-image: url(../../images/black_listmarker.gif);
+}
+
+#termsOfUse {
+	margin: 0 0 0 40px;
+	padding: 20px 40px 0 0;
+	clear: both;
+}
+
+/*
+    styles for top navigation bar
+     width: 740px;
+*/
+#navHeader {
+	margin: 0;
+	padding: 0;
+	width: 740px;
+	max-width: 740px;
+	float: left;
+	background: #006ab6;
+	border-bottom: 4px solid #ffefc4;
+	clear: both;
+}
+
+#navHeader .logo,#header .icon {
+	margin: 0;
+	padding: 0;
+	float: left;
+}
+
+#navHeader .logo,#dhmoHeader .icon {
+	margin: 0;
+	padding: 0;
+	float: left;
+}
+
+#navHeader .icon {
+	margin-left: 230px;
+}
+
+/*
+    styles for top navigation bar
+     width: 860px; added for dhmo 
+*/
+#navDhmoHeader {
+	margin: 0;
+	padding: 0;
+	width: 740px;
+	max-width: 740px;
+	float: left;
+	background: #006ab6;
+	border-bottom: 0px solid #ffefc4;
+	clear: both;
+}
+
+#navDhmoHeader .logo,#header .icon {
+	margin: 0;
+	padding: 0;
+	float: left;
+}
+
+#navDhmoHeader .logo,#dhmoHeader .icon {
+	margin: 0;
+	padding: 0;
+	float: left;
+}
+
+#navDhmoHeader .icon {
+	margin-left: 230px;
+}
+
+/*
+    styles for top navigation bar
+     width: 860px; added for dhmo  ended
+*/
+#navDhmoHeader1 {
+	margin: 0;
+	padding: 0;
+	width: 740px;
+	max-width: 740px;
+	float: left;
+	background: #006ab6;
+	border-bottom: 0px solid #ffefc4;
+	clear: both;
+}
+
+#navDhmoHeader1 .logo,#header .icon {
+	margin: 0;
+	padding: 0;
+	float: left;
+}
+
+#navDhmoHeader1 .logo,#dhmoHeader .icon {
+	margin: 0;
+	padding: 0;
+	float: left;
+}
+
+#navDhmoHeader1 .icon {
+	margin-left: 230px;
+}
+
+/*
+    styles for top navigation bar
+     width: 860px; added for dhmo  ended
+*/
+#mainNav {
+	width: 100%;
+	float: left;
+	line-height: normal;
+	letter-spacing: -0.08em;
+	font-size: 11px;
+	font-family: arial, verdana, helvetica, sans-serif;
+	font-weight: bold;
+	border-top: 3px solid #0E4586;
+	border-bottom: 1px solid #fea311;
+}
+
+#navHeaderLinks {
+	margin: 0;
+	padding: 3px 13px 0 0;
+	text-align: right;
+	color: white;
+	font-size: 11px;
+}
+
+#navHeaderLinks p {
+	font-size: 11px;
+	padding: 0.7em 0 0.2em 0;
+	margin: 0;
+	color: white;
+}
+
+#navHeaderLinks a img
+{
+	padding: 0;
+	margin: 0;
+}
+#navHeaderLinks #signin,
+#navHeaderLinks #signout {
+	margin: 0 0 0 8px;
+	padding: 0;
+	height: 16px;
+	width: 66px;
+	display: block;
+    text-align: left;
+	border: none;
+	float: right;
+}
+#navHeaderLinks #signin {
+    color: #0e59a8;
+    background: #ff0;
+	background: url(../../images/p_signin_bg.gif) 0 0 no-repeat;
+}
+
+#navHeaderLinks #signout {
+    color: #39acff;
+	background: #ff0;
+	background: url(../../images/p_signout_bg.gif) 0 0 no-repeat;
+}
+#navHeaderLinks a#signin span,
+#navHeaderLinks a#signout span {
+	width: 100%;
+	font-size: 11px;
+	line-height: 16px;
+	font-family: arial, verdana, helvetica, sans-serif;
+    font-weight: bold;
+    text-align: left;
+}
+#navHeaderLinks a#signin span {
+	padding-left: 10px;
+	cursor: pointer;
+}
+#navHeaderLinks a#signout span {
+	padding-left: 3px;
+	cursor: pointer;
+}
+#navHeaderLinks a#signin:hover,
+#navHeaderLinks a#signout:hover{
+	background-position: 0 -16px;
+	cursor: pointer;
+}
+#navHeaderLinks a#signin:hover {
+    color: #0e59a8;
+}
+
+#navHeaderLinks a#signout:hover {
+    color: #9ed4fa;
+}
+
+/*
+    styles for top navHeaderLinks 
+     width: 860px; added for dhmo 
+*/
+#navDhmoHeaderLinks {
+	margin: 0;
+	padding: 3px 13px 0 0;
+	text-align: right;
+	color: white;
+	font-size: 11px;
+}
+
+#navDhmoHeaderLinks p {
+	font-size: 11px;
+	padding: 0.7em 0 0.2em 0;
+	margin: 0;
+	color: white;
+}
+
+#navDhmoHeaderLinks a img {
+	padding: 0;
+	margin: 0;
+}
+
+#navDhmoHeaderLinks #signin,#navDhmoHeaderLinks #signout {
+	margin: 0 0 0 8px;
+	padding: 0;
+	height: 16px;
+	width: 66px;
+	display: block;
+	text-align: left;
+	border: none;
+	float: right;
+}
+
+#navDhmoHeaderLinks #signin {
+	color: #0e59a8;
+	background: #ff0;
+	background: url(../../images/p_signin_bg.gif) 0 0 no-repeat;
+}
+
+#navDhmoHeaderLinks #signout {
+	color: #39acff;
+	background: #ff0;
+	background: url(../../images/p_signout_bg.gif) 0 0 no-repeat;
+}
+
+#navDhmoHeaderLinks a#signin span,#navDhmoHeaderLinks a#signout span {
+	width: 100%;
+	font-size: 11px;
+	line-height: 16px;
+	font-family: arial, verdana, helvetica, sans-serif;
+	font-weight: bold;
+	text-align: left;
+}
+
+#navDhmoHeaderLinks a#signin span {
+	padding-left: 10px;
+}
+
+#navDhmoHeaderLinks a#signout span {
+	padding-left: 5px;
+}
+
+#navDhmoHeaderLinks a#signin :hover,#navDhmoHeaderLinks a#signout :hover
+	{
+	background-position: 0 -16px;
+	cursor: pointer;
+}
+
+#navDhmoHeaderLinks a#signin :hover {
+	color: #0e59a8;
+}
+
+#navDhmoHeaderLinks a#signout :hover {
+	color: #9ed4fa;
+}
+
+/*
+    styles for top navigation bar
+     width: 860px; added for dhmo  ended
+*/
+#separator {
+	clear: both;
+	border-bottom: 1px solid #feb849;
+}
+
+#mainNav ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+#mainNav li {
+	display: inline;
+	color: white;
+	margin: 0;
+	padding: 0;
+	font-family: arial, verdana, helvetica, sans-serif;
+	font-weight: bold;
+	background: black;
+	letter-spacing: -1
+}
+
+#mainNav a {
+	float: left;
+	color: white;
+	text-decoration: none;
+	white-space: nowrap;
+	background: url(../../images/tab_right.gif) no-repeat right top;
+}
+
+#mainNav a span {
+	float: left;
+	display: block;
+	padding: 2px 0 3px 0;
+	background: url(../../images/tab_left.gif) no-repeat left top;
+}
+
+#mainNav li a {
+	font-size: 11px;
+	text-align: center;
+	height: 21px;
+}
+
+#mainNav li#nav-home a {
+	width: 98px;
+}
+
+#mainNav li#nav-eligibility a {
+	width: 158px;
+}
+
+#mainNav li#nav-viewClaims a {
+	width: 98px;
+}
+
+#mainNav li#nav-submitClaims a {
+	width: 111px;
+}
+
+#mainNav li#nav-resources a {
+	width: 127px;
+}
+
+#mainNav li#nav-continuingEd a {
+	width: 148px;
+}
+
+/* Commented Backslash Hack hides rule from IE5-Mac \*/
+#mainNav a span {
+	float: none;
+	padding-top: 3px;
+}
+
+/* End IE5-Mac hack */
+#mainNav li a:hover,#header li a:hover span {
+	background-position: right -42px;
+}
+
+#mainNav li a:hover,#dhmoHeader li a:hover span {
+	background-position: right -42px;
+}
+
+#mainNav li a:hover span {
+	color: #006AB6;
+	background-position: left -42px;
+}
+
+#mainNav li.inactiveLink a:hover,#header li.inactiveLink a:hover span {
+	background-position: right 0;
+	cursor: default;
+}
+
+#mainNav li.inactiveLink a:hover,#dhmoHeader li.inactiveLink a:hover span
+	{
+	background-position: right 0;
+	cursor: default;
+}
+
+#mainNav li.inactiveLink a:hover span {
+	color: white;
+	background-position: left 0;
+	cursor: default;
+}
+
+#mainNav.home_active #nav-home a,#mainNav.eligibility_active #nav-eligibility a,#mainNav.viewClaims_active #nav-viewClaims a,#mainNav.submitClaims_active #nav-submitClaims a,#mainNav.resources_active #nav-resources a,#mainNav.continuingEd_active #nav-continuingEd a
+	{
+	color: #006AB6;
+	background-position: right -21px;
+}
+
+#mainNav.home_active #nav-home a span,#mainNav.eligibility_active #nav-eligibility a span,#mainNav.viewClaims_active #nav-viewClaims a span,#mainNav.submitClaims_active #nav-submitClaims a span,#mainNav.resources_active #nav-resources a span,#mainNav.continuingEd_active #nav-continuingEd a span
+	{
+	background-position: left -21px;
+}
+
+#mainNav.home_active #nav-home a:hover,#mainNav.eligibility_active #nav-eligibility a:hover,#mainNav.viewClaims_active #nav-viewClaims a:hover,#mainNav.submitClaims_active #nav-submitClaims a:hover,#mainNav.resources_active #nav-resources a:hover,#mainNav.continuingEd_active #nav-continuingEd a:hover
+	{
+	cursor: default;
+}
+
+#mainNav.home_active #nav-home a:hover span,#mainNav.eligibility_active #nav-eligibility a:hover span,#mainNav.viewClaims_active #nav-viewClaims a:hover span,#mainNav.submitClaims_active #nav-submitClaims a:hover span,#mainNav.resources_active #nav-resources a:hover span,#mainNav.continuingEd_active #nav-continuingEd a:hover span
+	{
+	cursor: default;
+}
+
+.disclaimer {
+	font-size: smaller;
+}
+
+.adaTerminology {
+	width: 100%;
+	margin: 0;
+	padding: 0 0 0 13px;
+}
+
+#leavingMet #main {
+	width: 740px;
+}
+
+#leavingMet #leavingMetLinks {
+	text-align: center;
+	width: 720px;
+	padding: 20px 0 0 0;
+	margin: 0;
+}
+
+#proceduresNeedingXrays {
+	padding-bottom: 15px;
+	padding-right: 50px;
+}
+
+#proceduresNeedingXrays table {
+	width: 80%;
+	margin: 0.9em auto;
+	padding: 1px;
+	border-collapse: collapse;
+	border-bottom: 1px solid #ccc;
+}
+
+#proceduresNeedingXrays table th {
+	font-weight: bold;
+	line-height: 1.3em;
+	text-align: left;
+	padding: 3px 0 3px 0;
+	background: #e0e0ff;
+	background: white;
+	border-bottom: 1px solid #ccc;
+}
+
+#proceduresNeedingXrays table td {
+	padding: 0.2em 0.7em;
+	background: #f4f4ff;
+	background: white;
+}
+
+#proceduresNeedingXrays table td.procedureCode {
+	padding-left: 1.5em;
+	width: 40%;
+	padding-right: 0.5em;
+}
+
+span.hover {
+	border-bottom-width: 1px;
+	border-bottom-color: #000000;
+	border-bottom-style: dashed;
+}
+
+#mainNav li#nav-home_dhmo a {
+	width: 49px;
+}
+
+#mainNav li#nav-eligibility_dhmo a {
+	width: 145px;
+}
+
+#mainNav li#nav-viewClaims_dhmo a {
+	width: 80px;
+}
+
+#mainNav li#nav-claimsSubmission a {
+	width: 120px;
+}
+
+#mainNav li#nav-resources_dhmo a {
+	width: 110px;
+}
+
+#mainNav li#nav-continuingEd_dhmo a {
+	width: 130px;
+}
+
+#mainNav li#nav-dhmoProvider a {
+	width: 106px;
+}
+
+#mainNav.home_active #nav-home_dhmo a,#mainNav.eligibility_active #nav-eligibility_dhmo a,#mainNav.viewClaims_active #nav-viewClaims_dhmo a,#mainNav.submitClaims_active #nav-claimsSubmission a,#mainNav.resources_active #nav-resources_dhmo a,#mainNav.continuingEd_active #nav-continuingEd_dhmo a,#mainNav.dhmoProvider_active #nav-dhmoProvider a
+	{
+	color: #006AB6;
+	background-position: right -21px;
+}
+
+#mainNav.home_active #nav-home_dhmo a span,#mainNav.eligibility_active #nav-eligibility_dhmo a span,#mainNav.viewClaims_active #nav-viewClaims_dhmo a span,#mainNav.submitClaims_active #nav-claimsSubmission a span,#mainNav.resources_active #nav-resources_dhmo a span,#mainNav.continuingEd_active #nav-continuingEd_dhmo a span,#mainNav.dhmoProvider_active #nav-dhmoProvider a span
+	{
+	background-position: left -21px;
+}
+
+#mainNav.home_active #nav-home_dhmo a:hover,#mainNav.eligibility_active #nav-eligibility_dhmo a:hover,#mainNav.viewClaims_active #nav-viewClaims_dhmo a:hover,#mainNav.submitClaims_active #nav-claimsSubmission a:hover,#mainNav.resources_active #nav-resources_dhmo a:hover,#mainNav.continuingEd_active #nav-continuingEd_dhmo a:hover,#mainNav.dhmoProvider_active #nav-dhmoProvider a:hover
+	{
+	cursor: default;
+}
+
+#mainNav.home_active #nav-home_dhmo a:hover span,#mainNav.eligibility_active #nav-eligibility_dhmo a:hover span,#mainNav.viewClaims_active #nav-viewClaims_dhmo a:hover span,#mainNav.submitClaims_active #nav-claimsSubmission a:hover span,#mainNav.resources_active #nav-resources_dhmo a:hover span,#mainNav.continuingEd_active #nav-continuingEd_dhmo a:hover span,#mainNav.dhmoProvider_active #nav-dhmoProvider a:hover span
+	{
+	cursor: default;
+}
+
+.dropDown {
+	margin: 10;
+	border-bottom: 1px solid #0E59A8;
+	border-top: 1px solid #0E59A8;
+	border-right: 0.8px solid #0E59A8;
+	border-left: 0.8px solid #0E59A8;
+	width: 4px;
+	background-color: #edf3ee;
+}
+
+#sidebar1 {
+	float: left;
+	width: 544px;
+}
+
+/* Added for Functionality1 on 5/9/2009 ï¿½ Starts*/
+#subMenuNavDHMO {
+	width: 100%;
+	float: left;
+	line-height: normal;
+	letter-spacing: -0.08em;
+	font-size: 11px;
+	font-family: arial, verdana, helvetica, sans-serif;
+	font-weight: bold;
+	border-top: 2px solid #0E4586;
+	border-bottom: 1px solid #fea311;
+}
+
+#subMenuNavDHMO ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+#subMenuNavDHMO li {
+	display: inline;
+	color: white;
+	margin: 0;
+	padding: 0;
+	font-family: arial, verdana, helvetica, sans-serif;
+	font-weight: bold;
+	background: black;
+}
+
+#subMenuNavDHMO a {
+	float: left;
+	color: white;
+	text-decoration: none;
+	white-space: nowrap;
+	background: url(../../images/newdhmo.jpg) no-repeat right top;
+}
+
+#subMenuNavDHMO a span {
+	float: left;
+	display: block;
+	padding: 2px 0 3px 0;
+	background: url(../../images/ame_tab_left.gif) no-repeat left top;
+}
+
+#subMenuNavDHMO li a {
+	font-size: 11px;
+	text-align: center;
+	height: 21px;
+}
+
+#subMenuNavDHMO li#nav-facilityReferenceGuide a {
+	width: 170px;
+}
+
+#subMenuNavDHMO li#nav-viewDhmoClaims a {
+	width: 200px;
+}
+
+#subMenuNavDHMO li#nav-eopInquiry a {
+	width: 280px;
+}
+
+#subMenuNavDHMO li#nav-viewRoster a {
+	width: 90px;
+}
+
+/* Commented Backslash Hack hides rule from IE5-Mac \*/
+#subMenuNavDHMO a span {
+	float: none;
+	padding-top: 3px;
+}
+
+/* End IE5-Mac hack */
+#subMenuNavDHMO li a:hover,#header li a:hover span {
+	background-position: right -42px;
+}
+
+#subMenuNavDHMO li a:hover span {
+	color: #006AB6;
+	background-position: left -42px;
+}
+
+#subMenuNavDHMO li.inactiveLink a:hover,#header li.inactiveLink a:hover span
+	{
+	background-position: right 0;
+	cursor: default;
+}
+
+#subMenuNavDHMO li.inactiveLink a:hover span {
+	color: white;
+	background-position: left 0;
+	cursor: default;
+}
+
+#subMenuNavDHMO.facilityReferenceGuides_active #nav-facilityReferenceGuide a,#subMenuNavDHMO.dhmoClaims_active #nav-viewDhmoClaims a,#subMenuNavDHMO.eopInquiry_active #nav-eopInquiry a,#subMenuNavDHMO.facRoster_active #nav-viewRoster a
+	{
+	color: #006AB6;
+	background-position: right -21px;
+}
+
+#subMenuNavDHMO.facilityReferenceGuides_active #nav-facilityReferenceGuide a span,#subMenuNavDHMO.dhmoClaims_active #nav-viewDhmoClaims a span,#subMenuNavDHMO.eopInquiry_active #nav-eopInquiry a span,#subMenuNavDHMO.facRoster_active #nav-viewRoster a span
+	{
+	background-position: left -21px;
+}
+
+#subMenuNavDHMO.facilityReferenceGuides_active #nav-facilityReferenceGuide a:hover,#subMenuNavDHMO.dhmoClaims_active #nav-viewDhmoClaims a:hover,#subMenuNavDHMO.eopInquiry_active #nav-eopInquiry a:hover,#subMenuNavDHMO.facRoster_active #nav-viewRoster a:hover
+	{
+	cursor: default;
+}
+
+#subMenuNavDHMO.facilityReferenceGuides_active #nav-facilityReferenceGuide a:hover span,#subMenuNavDHMO.dhmoClaims_active #nav-viewDhmoClaims a:hover span,#subMenuNavDHMO.eopInquiry_active #nav-eopInquiry a:hover span,#subMenuNavDHMO.facRoster_active #nav-viewRoster a:hover span
+	{
+	cursor: default;
+}
+
+/* end  */ /* Added for Functionality1 on 5/9/2009 ï¿½ Ends*/
+#viewRosterCallout p.title {
+	text-align: center;
+	font-size: 9pt;
+	font-weight: bold;
+	margin: 0 0 4px 0;
+	padding: 3px 4px;
+	background: #d9dfa1;
+	color: #004483;
+	border: 1px solid #a1ae14;
+}
+
+#viewRosterCallout div.content {
+	font-family: arial;
+	background: #F3F6F3;
+	border: 1px solid #ccc;
+	font-size: 8pt;
+	padding: 0 2px 0 5px;
+	margin: 0;
+}
+
+td.roster {
+	font-family: verdana, arial, helvetica, sans-serif;
+	color: #000000;
+	background-color: white;
+}
+
+td.rosteralt {
+	font-family: verdana, arial, helvetica, sans-serif;
+	color: #000000;
+	background-color: #CCCCCC;
+}
+
+.middleContent10 {
+	float: right;
+	width: 58;
+}
+
+.middleContent11 {
+	float: right;
+	width: 80;
+}
+
+.middleContent12 {
+	float: right;
+	width: 800;
+}
+
+.leftgap {
+	padding-left: 0px;
+}
+
+#tablestyl {
+	width: 568;
+}
+
+table.referralTable {
+	font-family: verdana, arial, helvetica, sans-serif;
+	border-left: 1px solid #000000;
+	border-right: 1px solid #000000;
+	border-top: 1px solid #000000;
+	border-bottom: 1px solid #000000;
+	border-spacing: 0px;
+}
+
+td.referralTable {
+	bordercolor: #000000;
+}
+
+/* Maryland Release 11.3 */
+#marylandFormatting p {
+	font-size: 12pt;
+}
+
+.faqlink {
+	font-family: verdana, arial, helvetica, sans-serif;
+	color: #0E59A8;
+	letter-spacing: 1px;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.navLinkImg {
+	vertical-align: middle;
+}
+
+@media print {
+	.noPrint {
+		display: none;
+	}
+}
+.divClear {
+clear: both; 
+}
+.displayNone {
+display: none;
+}
+.displayInline {
+display: inline;
+}
+.passwordSuccess {
+display: none;
+color: green;
+}
+.vendorName {
+color: #A9A9A9;
+font-size: 12px;
+}
+.planDisclaimer {
+clear: left;
+line-height: 1.14em;
+position: absolute;
+width: 257px;
+left: 200px;
+top: 287px;
+top:316px\9;
+}
+.planDisclaimerDual{
+clear: left;
+line-height: 1.14em;
+position: absolute;
+width: 257px;
+left: 200px;
+top: 318px;
+top: 345px\9;
+}
+
+
+#footer .clickHereLink {
+	background-color:transparent;
+	color: #0066cc;
+	font-size: 10px;
+	font-family: verdana, arial, helvetica, sans-serif;
+	text-decoration: none;
+	line-height: 1.2em;
+}
+.provNote, x:-moz-any-link, x:default 
+{
+padding-top : 8px !important;
+_padding-top : 12px;
+}
+.provNote
+{
+padding-top : 2px;
+_padding-top : 12px;
+}
+#trace, #submitTrace {
+display:none;
+}
+.traceSearch {
+	padding-top: 185px;
+	_padding-top: 210px;
+	float: left;
+	width: 280px;
+}
+
+.traceSearch1 {
+	padding-top: 205px;
+	_padding-top: 230px;
+	float: left;
+	width: 280px;
+}
+
+.traceSearch2 {
+	padding-top: 60px;
+	_padding-top: 85px;
+	float: left;
+	width: 280px;
+}
+
+#facilityID{
+ 	width: 248px;
+}
+ 
+A.defaultUnderlineLink:link {	
+	FONT-FAMILY: verdana;
+	FONT-SIZE: 10px;
+	TEXT-DECORATION: underline
+}
+
+A.defaultUnderlineLink:visited {	
+	FONT-FAMILY: verdana;
+	FONT-SIZE: 10px;
+	TEXT-DECORATION: underline
+}
+
+A.defaultUnderlineLink:hover {	
+	FONT-FAMILY: verdana;
+	FONT-SIZE: 10px;
+	TEXT-DECORATION: underline
+}
+
+/* Added for 15.3 EFT Release -  Starts*/
+#HomeEftBanner {
+	background: #C321CE;
+	color:#FFFFFF;
+	/*height: auto;*/
+	margin: 0 0 10px;
+	font-size: 11px;
+	font-weight:bold;
+	FONT-FAMILY: verdana;
+	padding:5px;
+	width: 730px;
+	
+}
+
+#HomeEftBanner table td.efttext{
+    font-size: 11px;
+	font-weight:bold;
+	color:#FFFFFF;
+}
+
+#HomeEftBanner a.eftlink{
+FONT-FAMILY: verdana;
+color:#FFFFFF;
+text-decoration:underline; 
+}
+
+#HomeEftBanner a.eftlink:hover {
+  COLOR: #FFAA66;
+  TEXT-DECORATION: underline;
+}
+
+.graytable5 #BannerEftRightRailCallout{
+background-color: #FFFFFF;
+}
+
+#BannerEftRightRailCallout p{
+margin: 0;
+padding: 6px 0 2px 6px;
+
+}
+#BannerEftRightRailCallout h2 {
+	text-align: center;
+	font-size: inherit;
+	padding: 3px 5px;
+	background: #C321CE;
+	color: #FFFFFF;
+	border: 1px solid #BD21CE;
+}
+
+#BannerEftRightRailCallout ul{
+list-style-type:disc;
+padding: 0px 0px 0px 22px;
+margin: 0px;
+}
+
+#BannerEftRightRailCallout li{
+color:#C321CE;
+margin-top: 0.3em
+}
+
+#BannerEftRightRailCallout li span{
+color:#000000;
+}
+
+#BannerEftRightRailCallout .content{
+	padding: 0;
+	border: 1px solid #ccc;
+}
+
+#BannerEftRightRailCallout .hrline{
+border-bottom: 3px solid #C321CE;
+margin: 6px;
+}
+
+#electronicClaimsCallout h2,#resourceCenterCallout h2 {
+	font-size: 12px;
+	background: #e8a202;
+	color: #fff;
+	border: 1px solid #c89000;
+}
+
+#electronicClaimsCallout p{
+font-weight: normal;
+}
+
+.underline{
+text-decoration: underline;
+}
+
+.verifwarnheader{
+color: #CC0000;
+font-weight: bold
+}
+
+#claimSumTable td{
+padding: 8 0 0 0px;
+}
+
+#claimSumTable td.printImg{
+padding:6 0 0 0px;
+}
+
+#claimSumTable td.mixeddata{
+padding: 6 0 3 5px;
+line-height: 1.4em;
+}
+
+#claimSumTable td.mixeddata div.patientinfo{
+width: 118;
+}
+#claimSumTable td.mixeddata div.svctotals{
+width: 105;
+}
+/* Added for 18.3 New Mexico Compliance release */
+#claimSumTable td.mixeddataTrace div.traceDiv{
+width: 135;
+}
+.printclaimtable{
+margin-bottom: 5px;
+margin-top: 0px;
+}
+
+/* Added for 15.3 EFT Release -  Ends*/
+
+/* MetDental New UI Starts */
+.metBody {
+	position: relative;
+}
+
+.metPageWrapper {
+	color: #333;
+}
+.metPageWrapper p {
+	line-height: normal;
+}
+.metPageWrapper .pageHeader{
+	border-bottom: none;
+	margin-top: 10px;
+	color: #2668B5;
+} 
+
+.metPageWrapper .metRow{
+	margin-bottom: 25px;
+}
+.metPageWrapper .metClear{
+	clear:both;
+}
+.metPageWrapper .mainContent2 .metClaimInfo {
+	width: 55%;
+	float: left;
+}
+.metPageWrapper .metClaimInfo p{
+	font-size: 12px;
+	margin: 14px 0 16px;
+	line-height: 16px;
+	color: #333;
+}
+.metPageWrapper .metClaimInfo p.pageHeaderblack{
+	font-size: 14px;
+}
+.metPageWrapper .metClaimInfoRightSection {
+	width: 39%;
+	float: right;
+}
+.metPageWrapper .metClaimInfoRightSection a, .metPageWrapper .metClaimInfo a {
+	text-decoration: underline;
+}
+.metPageWrapper .metClaimInfoRightSection .metEmailAlertsHeader{
+	background: #d9dfa1;
+	border: 1px solid #a1ae14;
+	color: #004483;
+	font-weight: 700;
+    font-style: normal;
+    font-size: 11px;
+    margin: 14px 0 4px;
+    padding: 4px;
+    text-align: center;
+}
+.metPageWrapper .metClaimInfoRightSection .metEmailAlertsCnt {
+	background: #f3f6f3;
+	border: 1px solid #ccc;
+	padding: 8px 9px 20px;
+	margin-bottom: 10px;
+}
+.metPageWrapper .metEmailAlertsCnt input[type=radio]{
+	display: inline-block;
+}
+.metPageWrapper .metClaimInfoRightSection p {
+	font-weight: 400;
+    font-style: normal;
+    font-size: 11px;
+    line-height: 18px;
+    margin: 0 0 7px;
+}
+.metPageWrapper .metClaimInfoRightSection .metEmailAlertsCnt label{
+	font-weight: 700;
+    font-style: normal;
+    font-size: 11px;
+    display: block;
+    margin-bottom: 4px;
+}
+.metPageWrapper .metClaimInfoRightSection .metEmailAlertsCnt p label{
+	font-weight: 400;
+    display: inline-block;
+    margin-bottom: 4px;
+}
+.metPageWrapper input[type=text].metEmailField, 
+.metPageWrapper input[type=password].metEmailField {
+	border: 1px solid #56a5ec;
+	width: 190px;
+	height: 20px;
+	font-weight: 400;
+    font-style: normal;
+    font-size: 10px;
+    padding: 0;
+    vertical-align: top;
+}
+.metEmailField {
+	border: 1px solid #56a5ec;
+	width: 190px;
+	height: 20px;
+	font-weight: 400;
+    font-style: normal;
+    font-size: 10px;
+    padding: 0;
+    vertical-align: top;
+}
+.metPageWrapper .metTextBoxField {
+	border: 1px solid #56a5ec;
+	width: 195px;
+	height: 20px;
+	font-weight: 400;
+    font-style: normal;
+    font-size: 10px;
+    padding: 2px;
+}
+.metPageWrapper .metRight {
+	text-align: right;
+}
+.metPageWrapper a.metPrint {
+	background: url(../../images/icon-print.png) no-repeat 100% 100%;
+    color: #9daba3;
+    padding-right: 28px;
+    height: 23px;
+    display: inline-block;
+    text-decoration: none;
+    line-height: 23px;
+}
+
+.metPageWrapper .metBtn {
+	background-color: #2D6EAC;
+	color: #FFF;
+	height: 20px;
+	font-weight: bold;
+    font-style: normal;
+    font-size: 10px;
+    border: none;
+    border-radius: 5px;
+    vertical-align: top;
+}
+.metPageWrapper .metBtnRefresh {
+	background-image: url(../../images/met-refreshicon.png);
+	background-position: 89% 5px;
+	background-repeat: no-repeat;
+	padding: 0 22px 0 10px;
+	display: inline-block;
+    line-height: 19px;
+}
+.metPageWrapper a.metBtnRefresh, .metPageWrapper a.metBtnRefresh:hover {
+	text-decoration: none;
+}
+.metPageWrapper .metBtn.metBtnMedium{
+	width: 100px;
+	height: 35px;
+	font-size: 12px;
+}
+.metPageWrapper .metBtn:hover {
+	background-color: #00CCFF;
+	cursor: pointer;
+}
+.metPageWrapper .metClaimOption {
+	padding: 30px 0 20px;
+	border-bottom: 1px solid #999;
+	margin-bottom: 30px;
+}
+.metPageWrapper .metClaimOption .metClaimOptionSection {
+	width: 50%;
+	float: left;
+}
+.metPageWrapper .metClaimOption .metClaimOptionSection input[type=radio]:checked + label {
+	font-weight: 700;
+    font-style: normal;
+    font-size: 12px;
+    color: #333333;
+}
+.metPageWrapper .metMainHeader {
+	font-weight: 700;
+    font-style: normal;
+    font-size: 18px;
+    border-bottom: none;
+    margin: 15px 0 10px;
+    padding: 0;
+}
+.metPageWrapper input[type=radio] {
+	margin: 1px 0 0 2px;
+	cursor: pointer;
+}
+.metPageWrapper input[type=text] {
+	border: 1px solid #a9a9a9;
+	padding: 0;
+}
+.metPageWrapper label {
+	margin: 0 0 0 -2px;
+    vertical-align: top;
+    cursor: pointer;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 12px;
+}
+.metPageWrapper .metClaimOption .metClaimOptionSection div{
+	font-weight: 400;
+    font-style: normal;
+    font-size: 10px;
+    margin: 3px 0 0 18px;
+}
+.metPageWrapper .metClaimPanel {
+	margin-bottom: 40px;
+	position: relative;
+}
+.metPageWrapper .metClaimPanel h2{
+	font-weight: 700;
+    font-style: normal;
+    font-size: 12px;
+    margin: 0 0 13px 3px;
+}
+.metPageWrapper .metClaimPanel .metClaimSubCnt {
+	font-weight: 400;
+    font-style: normal;
+    font-size: 11px;
+    margin-left: 20px;
+}
+.metPageWrapper .metClaimPanelDetail {
+	border: 1px solid #2d6eac;
+	border-top-width: 5px;
+	padding: 20px;
+	background: #fafafa;
+}
+.metPageWrapper select{
+	border: 1px solid #a9a9a9;
+	padding: 5px 3px;
+	font-weight: 400;
+    font-style: normal;
+    font-size: 13px;
+    color: #000000;
+    height: 34px;
+}
+.metPageWrapper .metClaimPracticeType select {
+	width: 220px;
+}
+.metPageWrapper .metClaimPanel .metClaimPanelHeader {
+	position: relative;
+}
+.metPageWrapper .metHelpContainer {
+	position: relative;
+	display: inline-block;
+	vertical-align: middle;
+}
+.metPageWrapper .metHelp {
+	background: url(../../images/metHelp.gif) no-repeat;
+	width: 14px;
+	height: 14px;
+	display: inline-block;
+    /*vertical-align: top;*/
+    cursor: pointer;
+}
+.metPageWrapper .metHelpDetails {
+	position: absolute;
+	padding: 5px;
+	left: 25px;
+	top: -10px;
+	border: 1px solid #797979;
+	background: #FFF;
+	width: 310px;
+	z-index: 1;
+}
+.metPageWrapper .metHelpDetails .metHelpArrow {
+	background: url(../../images/metHelpArrow.gif);
+	width: 10px;
+	height: 18px;
+	position: absolute;
+	left: -10px;
+    top: 7px;
+}
+.metPageWrapper .metHelpDetails .metHelpArrowUp {
+	background: url(../../images/metHelpArrowUp.gif);
+	width: 18px;
+	height: 10px;
+	position: absolute;
+	left: 118px;
+    top: -10px;
+}
+.metPageWrapper .metExportOptions .metHelpDetails {
+	width: 150px;
+    text-align: left;
+    right: -15px;
+    top: 25px;
+    left: auto;
+    box-sizing: border-box;
+}
+.metPageWrapper .metTable .metHelpDetails {
+	width: 180px;
+}
+.metHelpDetails ul{
+	margin: 0;
+    padding-left: 17px;
+}
+.metPageWrapper .metHelpDetails p{
+	font-size: 9px;
+    font-weight: 400;
+    margin: 0 0 7px;
+    line-height: 14px;
+}
+.metPageWrapper .metHelpDetails p span{
+	font-weight: 700;
+}
+.metPageWrapper .metExportOptions p{
+	margin:0;
+}
+.metPageWrapper .metCustomOptions .metNoCustomizeViewText {
+	font-size: 13px;
+	font-weight: 700;
+	text-align: center;
+	padding: 25px;
+}
+
+.metPageWrapper .metRecentClaimOptionSection {
+	font-size: 13px;
+    color: #333333;
+    font-weight: 400;
+    font-style: normal;
+    margin-bottom: 10px;
+}
+.metPageWrapper .metCalender {
+	background: url(../../images/metCalendar-icon.gif);
+	width: 20px;
+	height: 20px;
+	display: inline-block !important;
+	margin: 0 !important;
+}
+.metPageWrapper .metDateClaimRange {
+	height: 80px;
+}
+.metPageWrapper input[type=password] {
+	font:small-caption;
+	font-size:16px;
+	padding: 0 5px;
+}
+.metPageWrapper .metDateClaimRange .metDateClaimRangeSection {
+    width: 150px;
+    float: left;
+    margin: 10px 0 0 20px;
+}
+.metPageWrapper .metRecentClaimPaymentDate .metDateClaimRangeSection, 
+.metPageWrapper .metRecentDeniedClaims .metDateClaimRangeSection {
+	margin: 0 20px 0 0;
+}
+.metPageWrapper .metDateClaimRange .metDateClaimRangeSection input {
+	width: 90px;
+	height: 20px;
+	vertical-align: top;
+	padding: 0 3px;
+}
+.metPageWrapper .metDateClaimRange .metDateClaimRangeSection label {
+	font-weight: 700;
+    font-style: normal;
+    font-size: 12px;
+    color: #333333;
+    margin: 0 0 5px;
+    display: block;
+}
+.metPageWrapper .metClaimPatientSearch label {
+	width: 170px;
+	font-weight: 400;
+    font-style: normal;
+    font-size: 12px;
+    height: 40px;
+    display: inline-block;
+    float: left;
+}
+
+.metPageWrapper .metClaimPatientSearch input {
+	width: 200px;
+	height: 25px;
+	 float: left;
+}
+.metPageWrapper .metClaimPatientSearch .metClaimPatientLimits {
+	margin-left: 171px;
+	font-weight: 400;
+    font-style: normal;
+    font-size: 10px;
+}
+.metPageWrapper .metClaimOfficeCode {
+	width: 44%;
+	float: left;
+}
+.metPageWrapper .metClaimOfficeCode label {
+	display: block;
+	font-weight: 700;
+    font-style: normal;
+    font-size: 12px;
+    margin-bottom: 5px;
+    cursor: default;
+}
+.metPageWrapper .metClaimOfficeCode .multiselect {
+	width: 230px;
+	text-align: left;
+	border-radius: 0;
+	border: 1px solid #AAA;
+	background: #FFF;
+}
+.metPageWrapper .btn-group.open .dropdown-toggle {
+	background: #FFF;
+    box-shadow: none;
+    outline: 1px solid #a4c6fd;
+}
+.metPageWrapper .btn-group .dropdown-toggle:focus, .metPageWrapper .btn-group .dropdown-toggle:active {
+	outline: 1px solid #a4c6fd;
+	background: #FFF;
+}
+.metPageWrapper .metClaimOfficeCode .btn b.caret {
+    right: 7px;
+    position: absolute;
+    top: 15px;
+}
+.metPageWrapper .metClaimOfficeCode ul.multiselect-container {
+	width: 100%;
+	border-radius: 0;
+}
+.metPageWrapper .metClaimOfficeCode .multiselect-container li {
+	border-bottom: 1px solid #ccc;
+}
+.metPageWrapper .metClaimOfficeCode .multiselect-container li label {
+	font-weight: 400;
+    font-style: normal;
+    padding: 8px 20px 8px 30px;
+}
+.metPageWrapper .metClaimOfficeCode .multiselect-container li label.checkbox input[type=checkbox]{
+	margin: 2px 0 0 -18px;
+}
+.metPageWrapper .metClaimOfficeCode .multiselect-container span.input-group-addon,
+.metPageWrapper .metClaimOfficeCode .multiselect-container span.input-group-btn {
+	display: none;
+}
+
+.metPageWrapper .metClaimOfficeCode .multiselect-container li.multiselect-group {
+	border-bottom: none;
+}
+.metPageWrapper .metClaimOfficeCode .multiselect-container li.multiselect-group label {
+	font-weight: 400;
+    font-style: italic;
+    font-size: 12px;
+    color: #666666;
+    padding: 10px;
+}
+.metPageWrapper .metClaimOfficeCode .multiselect-container li a {
+	white-space: normal;
+}
+.metPageWrapper .metClaimOfficeCode .multiselect-container li.multiselect-group label b {
+	font-weight: normal;
+}
+.metHide {
+	display: none;
+}
+.metPageWrapper .metErrorMsg {
+	background: #FFE8E8 url(../../images/metError.gif) no-repeat 10px 6px;
+	border: 1px solid #C30;
+	padding: 5px 30px;
+	margin: 0 0 10px;
+	font-weight: 700;
+    font-style: normal;
+    font-size: 10px;
+    max-width: 350px;
+}
+.myClaimsForm {
+	position: relative;
+}
+.metGlobalMsg {
+	position: absolute;
+	left: 0;
+	top: -15px;
+}
+
+.metPageWrapper .metEmailErrorMsg {
+	width: 99%;
+    font-size: 10px;
+    margin: 0 0 5px;
+}
+.metDateClaimTypeError, .metDateClaimInvalidError {
+	position: relative;
+	background: url(../../images/metErrorIcon.gif) no-repeat 95% 47%;
+}
+.metDateClaimTypeError input[type=text], .metDateClaimInvalidError input[type=text], .metOpenInputError input[type=text] {
+	border: 1px solid #D84343;
+}
+.metInputError {
+	display: none;
+	position: relative;
+	background: #f5e1e5;
+	border: 1px solid #d32425;
+	float: left;
+    left: 33px;
+    font-size: 10px;
+    padding: 0 10px;
+    height: 27px;
+    border-radius: 2px;
+    line-height: 25px;
+}
+.metInputErrorLeft:after, .metInputErrorLeft:before {
+	right: 100%;
+	top: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+.metInputErrorLeft:after {
+	border-color: rgba(245, 225, 229, 0);
+	border-right-color: #f5e1e5;
+	border-width: 5px;
+	margin-top: -5px;
+}
+.metInputErrorLeft:before {
+	border-color: rgba(211, 36, 37, 0);
+	border-right-color: #d32425;
+	border-width: 6px;
+	margin-top: -6px;
+}
+.metInputErrorBottom {
+    top: 10px;
+    left: 0;
+}
+.metInputErrorBottom:after, .metInputErrorBottom:before {
+	bottom: 100%;
+	left: 10%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+.metInputErrorBottom:after {
+	border-color: rgba(245, 225, 229, 0);
+	border-bottom-color: #f5e1e5;
+	border-width: 5px;
+	margin-left: -5px;
+}
+.metInputErrorBottom:before {
+	border-color: rgba(211, 36, 37, 0);
+	border-bottom-color: #d32425;
+	border-width: 6px;
+	margin-left: -6px;
+}
+
+.metDateClaimTypeError .metInputErrorBottom, .metDateClaimInvalidError  .metInputErrorBottom, .metDateClaimRangeError .metInputErrorLeft, .metOpenInputError .metInputError {
+	display: block;
+}
+.metDateClaimRangeError .metDateClaimTypeError .metInputErrorBottom {
+	display: none;
+}
+.metDateClaimRangeAndInvalidError .metDateClaimTypeError.metDateClaimInvalidError .metInputErrorBottom, .metDateClaimRangeAndInvalidError .metInputErrorLeft {
+	display: block;
+}
+
+.metDateClaimRangeAndInvalidError .metDateClaimTypeError .metInputErrorBottom {
+	display: none;
+}
+
+.metDateClaimRangeError .metDateClaimTypeError, .metDateClaimRangeError .metDateClaimInvalidError, 
+.metDateClaimRangeAndInvalidError .metDateClaimTypeError {
+	background-position: 95% 95%;
+}
+.metDateClaimRangeAndInvalidError .metDateClaimTypeError.metDateClaimInvalidError {
+	background-position: 95% 47%;
+}
+
+.metDateClaimRangeWithoutOption .metInputErrorLeft  {
+	top: 19px;
+}
+.metDateClaimRangeWithOption .metInputErrorLeft {
+	top: 29px;
+}
+.metOpenInputError  {
+	background: url(../../images/metErrorIcon.gif) no-repeat 376px 6px;
+}
+.metPageWrapper .metClaimDuplicateEntry label {
+	display: block;
+	font-weight: 700;
+	margin: 30px 0 10px;
+}
+.metPageWrapper .metClaimDuplicateEntry input{
+	margin-bottom: 20px;
+}
+.metPageWrapper .metClaimDuplicateEntry a {
+	margin: 0 20px 0 0;
+}
+.metPageWrapper .noneSelected button.multiselect.dropdown-toggle.btn.btn-default {
+    border: 1px solid #D84343;
+}
+.metPageWrapper .metCustomOptions {
+	position: relative;
+}
+.metPageWrapper .metCustomOptions a {
+	font-weight: 700;
+    font-style: normal;
+    font-size: 12px;
+}
+a.metLink {
+	text-decoration: underline;
+}
+.metCustomizeViewButton {
+	border: 1px solid #999;
+    padding: 5px 25px 5px 30px;
+    background: #FFF;
+    font-weight: 700;
+    font-style: italic;
+    cursor: pointer;
+    background: url(../../images/settings.png) no-repeat 5px 3px;
+	margin-left: 20px;
+	position: relative;
+}
+.metCustomizeViewButton span{
+	background: url(../../images/settings-arrow.png) no-repeat;
+	width: 16px;
+	height: 15px;
+	position: absolute;
+    right: 5px;
+    top: 6px;
+}
+.metCustomizeView {
+	background: #FFF;
+	padding: 10px 10px 10px 0;
+	position: absolute;
+	right: 0;
+    border: 1px solid #999;
+    top: 28px;
+    z-index: 1;
+}
+.metCustomizeView .btn.dropdown-toggle {
+	display: none;
+}
+.metCustomizeView .dropdown-menu{
+	border: none;
+	box-shadow: none;
+	position: relative;
+}
+.metCustomizeView .dropdown-menu>li>a:focus,
+.metCustomizeView .dropdown-menu>li>a:hover,
+.metCustomizeView .dropdown-menu>.active>a,
+.metCustomizeView .dropdown-menu>.active>a:focus,
+.metCustomizeView .dropdown-menu>.active>a:hover {
+	background: none;
+	color: #000;
+}
+.metCustomizeView .multiselect-container>li>a>label {
+	height: auto;
+}
+.metCustomizeView .multiselect-container>li>a>label>input[type=checkbox] {
+	margin-top: 3px;
+}
+.metCustomizeView .metCustomizeSection {
+	float: left;
+	border-left: 1px solid #999;
+	margin-bottom: 10px;
+}
+.metCustomizeSection li.multiselect-item.multiselect-all {
+    margin-left: 0;
+}
+.metCustomizeSection .multiselect-container>li {
+    padding: 0;
+    margin-left: 20px;
+}
+
+.metCustomizeView .metCustomizeSection:first-child {
+	border-left: none;
+}
+.metTable {
+	border-top: 5px solid #666;
+	padding-top: 15px;
+	margin-top: 10px;
+	position: relative;
+}
+
+.metTable table {
+	font-weight: 400;
+    font-style: normal;
+    font-size: 12px;
+    border-collapse: collapse;
+	border-spacing: 0;
+}
+.metTable table th {
+	font-weight: 700;
+    font-style: normal;
+    font-size: 12px;
+    line-height: 16px;
+    vertical-align: top;
+}
+.metTable table th, .metTable table td {
+	padding: 10px 5px;
+}
+.metTable table tr {
+	border-bottom: 1px solid #ccc;
+}
+.metSummaryTable table tr td:nth-child(2){
+	width: 105px;
+	padding-right: 10px;
+}
+.metSummaryTable table tr td:last-child>a {
+	font-weight: bold;
+    font-size: 17px;
+    text-decoration: none;
+}
+.metSummaryTable table tr td:last-child>a:hover {
+	text-decoration: none;
+}
+.metTable .shown {
+	background: #f2f2f2;
+}
+.metPdf {
+	background: url(../../images/icon-print.png) no-repeat;
+	font-weight: 400;
+    font-style: normal;
+    font-size: 12px;
+    text-transform: uppercase;
+    text-decoration: underline;
+    display: inline-block;
+    height: 22px;
+    padding-left: 27px;
+    line-height: 22px;
+}
+.metSummaryInsideTable {
+	padding: 5px 15px;
+}
+.metSummaryInsideTable td, .metSummaryInsideTable th{
+	border: 1px solid #999;
+}
+.metSummaryInsideTable thead{
+	background: #bedbf4;	
+}
+.metSummaryInsideTable p{
+	margin: 0 0 15px;
+}
+.metSummaryInsideTable .metTableInsideNote, .metTableNoteCommon p{
+	font-weight: 400;
+    font-style: normal;
+    font-size: 10px;
+    margin: 15px 0;
+    color: #333;
+}
+.metTable .dataTables_length {
+	position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.metTable .dataTables_paginate {
+	text-align: center;
+	margin: 15px 0;
+}
+
+.metTable a.paginate_button,  .metAffiliationsTable .dataTables_paginate a.paginate_button{
+	border-radius: 50%;
+	border: 1px solid #8a8a8a !important;
+	color:#000;
+	height: 24px;
+	width: 24px;
+	display:inline-block;
+	text-align: center;
+	line-height: 21px;
+	margin: 0 5px 5px;
+	cursor: pointer;
+}
+.metTable td.dataTables_empty {
+    height: 170px;
+}
+.metTable a.paginate_button.current, .metAffiliationsTable .dataTables_paginate a.paginate_button.current {
+	background: #2276bc;
+	color:#FFF !important;
+}
+.metSummaryInsideTable tfoot{
+	background-color: #f2f2f2;
+}
+.metSummaryInsideTable .metPrintEob {
+	text-align: right;
+	margin: 5px 0;
+}
+.metPrintEobLink {
+	font-weight: 400;
+    font-size: 10px;
+    text-decoration: underline;
+    background: url(../../images/print-small-icon.png) no-repeat;
+    padding-left: 15px;
+}
+.metSummaryInsideTable table tr td:nth-child(2) {
+    width: auto !important;
+}
+.metSummaryInsideTable table tr:first-child td {
+	border-top: none;
+}
+.metSummaryInsideTable table tr:last-child td {
+	border-bottom: none;
+}
+.metSummaryInsideTable .dataTable thead tr {
+	height: 0 !important;
+}
+.metTableFilterNoRecords p {
+    margin: 20px;
+    font-size: 13px;
+}
+.metTableNoteCommon {
+	margin-bottom: 40px;
+}
+.avoid-clicks {
+  pointer-events: none;
+}
+.avoid-clicks a {
+	color: #CCC;
+}
+.metThBreakLine {
+	display: block;
+	width: 80px;
+}
+.metTableProcessing {
+    height: 160px;
+    text-align: center;
+    background-size: 20%;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 14px;
+    padding: 20px 0;
+    border-bottom: 1px solid #CCC;
+}
+.metSubHeader {
+	font-weight: 700;
+    font-style: normal;
+    font-size: 14px;
+}
+.metSubContent {
+	margin: 10px 0;
+}
+.metSubContent a {
+	text-decoration: underline;
+}
+.metSubContent a.metPrintTraceEOB{
+	float: left;
+	font-weight: 400;
+    font-style: normal;
+    font-size: 12px;
+    background-position: right 2px;
+    padding: 0 20px 0 0;
+}
+.metPrintTraceExport {
+	float: right;
+	font-weight: 700;
+    font-style: normal;
+    font-size: 12px;
+}
+.metTraceContent table {
+	border-collapse: collapse;
+	width: 100%;
+}
+.metTraceContent table tr td{
+	border: 1px solid #cccccc;
+	width: 25%;
+	padding: 10px;
+	font-weight: 400;
+    font-style: normal;
+    font-size: 12px;
+}
+.metTraceContent table tr td.metTraceContentHeader{
+	background: #f2f2f2;
+	font-weight: 700;
+    font-style: normal;
+    font-size: 12px;
+}
+.metSummaryByTrace table, .metSummaryTable table, .metSummaryTable table .metPretreatmentInsideTable table {
+	width: 100% !important;
+}
+.metSummaryTable table table {
+	width: inherit !important
+}
+.metSummaryTable th{
+	text-align: left;
+}
+.metSummaryByTrace table tr td, .metSummaryByTrace table tr th{
+	text-align: left;
+	padding: 15px 5px;
+}
+.text-right {
+    text-align: right !important;
+}
+.text-center {
+	text-align: center !important;
+}
+.metAffiliationsTable {
+	position: relative;
+}
+.metAffiliationsTable table {
+	border-collapse: collapse;
+}
+.metAffiliationsTable th, .metAffiliationsTable td {
+	white-space: nowrap;
+	border: 1px solid #797979;
+	font-weight: 400;
+    font-style: normal;
+    font-size: 12px;
+}
+.metAffiliationsTable div.dataTables_wrapper {
+	margin: 0 auto;
+}
+.metAffiliationsTable thead th {
+	color: #FFF;
+	background: #8ec1ec;
+	font-weight: 700;
+    font-style: normal;
+    font-size: 12px;
+}
+.metAffiliationsTable .DTFC_Cloned thead th {
+	background: #4f9ee1;
+}
+.metAffiliationsTable table.dataTable.stripe tbody tr.odd, .metAffiliationsTable table.dataTable.display tbody tr.odd,
+.metAffiliationsTable table.dataTable.stripe tbody tr.even, .metAffiliationsTable table.dataTable.display tbody tr.even {
+	background: #FFF;
+}
+
+.metAffiliationsTable .dataTables_length {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+.metAffiliationsTable .dataTables_paginate {
+    text-align: center;
+    margin: 30px 0;
+    float: none;
+}
+.metAffiliationsTable table.dataTable thead th, .metAffiliationsTable table.dataTable thead td {
+    padding: 10px 18px;
+    border-bottom: 1px solid #111;
+}
+.metAffiliationsTable table.dataTable tbody th, .metAffiliationsTable table.dataTable tbody td {
+    padding: 8px 10px;
+}
+.metAffiliationsTable table tr td:nth-child(2) {
+    white-space: nowrap;
+}
+.metEOBWrapper {
+	margin: 30px 0;
+}
+.metEOBWrapper table.metEOBTable {
+	width: 100%;
+	margin-bottom: 15px;
+}
+.metEOBWrapper table td{
+	padding-bottom: 13px;
+	width: 25%;
+	font-weight: 400;
+    font-style: normal;
+    font-size: 12px;
+    vertical-align:top;
+}
+.metEOBWrapper table td.metEOBHeader {
+	font-weight: 700;
+    font-style: normal;
+    font-size: 12px;
+}
+.metEOBWrapper table td:nth-child(3) {
+    padding-left: 15px;
+}
+.metHeaderInBlueBorder{
+	color: #000;
+	font-size: 16px;
+	font-weight: bold;
+	line-height: 1.25em;
+	text-align: left;
+	padding: 0 0 10px 0;
+    margin: 0 0 15px 0;
+	border-bottom: 3px solid #709cd2;
+}
+.metPageWrapper .pageHeaderblack {
+	font-weight: 700;
+	font-style: normal;
+	font-size: 18px;
+}
+.metEOBClaimWrapper {
+	margin-bottom: 40px;
+}
+.metEOBClaimWrapper  table {
+	border-collapse: collapse;
+	width: 100%;
+}
+.metEOBClaimWrapper tr td, .metEOBClaimWrapper tr th{
+	padding: 15px 15px 15px 0;
+	vertical-align: top;
+}
+.metEOBClaimWrapper thead tr th {
+	border-bottom: 3px solid #CCC;
+	text-align:left;
+}
+.metEOBClaimWrapper tbody tr:last-child {
+	border-top: 3px solid #CCC;
+	border-bottom: none;
+}
+.metEOBClaimWrapper tr{
+	text-align: left;
+}
+.metEOBClaimWrapper tbody tr{
+	border-bottom: 1px solid #CCC;
+}
+.metEOBClaimWrapper tbody tr.deductibleAppliedPrevRow{
+	border-bottom: none !important;
+}
+tr.deductibleAppliedPrevRow td {
+    padding-bottom: 5px;
+}
+tr.deductibleAppliedRow td {
+    padding-top: 0;
+}
+.metEOBClaimWrapper td {
+	font-weight: 400;
+    font-size: 12px;
+}
+.metEOBClaimWrapper th, .metTableFooter td {
+	font-weight: 700;
+	font-size: 12px;
+}
+.metEOBClaimWrapper a {
+	text-decoration: underline;
+	white-space: nowrap;
+	margin-bottom: 5px;	
+}
+.metEOBNote {
+	font-weight: 400;
+    font-size: 12px;
+    margin-bottom: 25px;
+}
+.metEOBRights, .metEOBPromise {
+	font-weight: 400;
+	font-size: 13px;
+	margin-bottom: 40px;
+}
+.metEOBRights h3 {
+	font-weight: 700;
+    font-size: 16px;
+}
+.metEOBAddress {
+    font-style: italic;
+}
+.metEOBRights ul, .metEOBRights ul li{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.metEOBRights ul {
+	margin-bottom: 15px;
+}
+.metEOBPromise h4{
+	font-weight: 700;
+    font-size: 14px;
+}
+.metEOBPromise ul {
+	margin: 0 0 15px;
+	padding: 0;
+}
+.metEOBPromise ul li {
+	margin: 0 0 15px;
+	list-style-position: inside;
+}
+.metTable a.paginate_button.pageNavNone, .metAffiliationsTable a.paginate_button.pageNavNone {
+	pointer-events: none !important;
+	border-color: #ecebeb !important;
+	color: #ecebeb !important;
+}
+.customTableWithNavigation{
+	padding-bottom: 30px;
+}
+.metCustomizeViewOption {
+	position: relative;
+    display: inline-block;
+}
+#quickLinksCallout ul {
+	border-bottom: 1px solid #ccc;
+}
+td .affAvaiableBlock {
+    position: relative;
+}
+span.affAvaiableTxt {
+    visibility: hidden;
+    line-height: 1px;
+}
+img.affAvaiableImg {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin: -7px 0 0 -7px;
+}
+.metClaimAvoidPrint.details-control {
+	width: 100px !important;
+}
+.metPrintEOBHeader {
+	width: 60px !important;
+}
+.metTraceHead{
+	width: 156px !important;
+}
+.DTFC_LeftBodyWrapper, .DTFC_LeftBodyLiner {
+    height: auto !important;
+	overflow-y: auto !important;
+}
+#tableLengthDropDown {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+.closeEOB {
+	margin-right: 30px;
+}
+.filterActiveDisable {
+	display: none;
+}
+/* styles added for Overlay changes - starts*/
+.blocker {
+	position: fixed;
+	top: 0; right: 0; bottom: 0; left: 0;
+	width: 100%; height: 100%;
+	overflow: auto;
+	z-index: 5;
+	padding: 20px;
+	box-sizing: border-box;
+	background-color: rgb(0,0,0);
+	background-color: rgba(0,0,0,0.75);
+	text-align: center;
+}
+.blocker:before{
+	content: "";
+	display: inline-block;
+	height: 100%;
+	vertical-align: middle;
+	margin-right: -0.05em;
+}
+.blocker.behind {
+	background-color: transparent;
+}
+.ml-lightbox-container {
+	vertical-align: middle;
+	position: absolute;
+	z-index: 10;
+	left: 115px;
+	top: 200px;
+	min-height: 250px;
+	max-height: 80% /*650px*/;
+	max-width: 750px;
+	box-sizing: border-box;
+	width: 90%;
+	background: #f2f2f2;
+	padding: 25px 40px 30px 40px;
+	-webkit-border-radius: 0px;
+	-moz-border-radius: 0px;
+	-o-border-radius: 0px;
+	-ms-border-radius: 0px;
+	border-radius: 0px;
+	-webkit-box-shadow: 0 0 10px #000;
+	-moz-box-shadow: 0 0 10px #000;
+	-o-box-shadow: 0 0 10px #000;
+	-ms-box-shadow: 0 0 10px #000;
+	box-shadow: 0 0 10px #000;
+	text-align: left;
+	/* overflow: hidden; */
+}
+.header-small {
+	font-size: 2rem;
+	border-bottom: none;
+}
+.header-xxlarge, .header-xlarge, .header-large, .header-medium, .header-small, .header-xsmall {
+	font-family: "Georgia", serif;
+	line-height: 1.25em;
+	color: #333333;
+	margin: 35px 0 24px 0;
+	font-weight: 700;
+}
+.align-left {
+	text-align: left;
+}
+.ml-lightbox-container > div {
+	height: 100%;
+	overflow: auto;
+	padding-right: 20px;
+}
+.align-right {
+	text-align: right;
+}
+.ml-button-primary {
+	background-color: #007abc;
+	color: #fff;
+}
+.ml-button-primary{
+	box-sizing: border-box;
+	font-family: 'Noto Sans', sans-serif;
+	font-size: 14px;
+	text-transform: uppercase;
+	text-decoration: none;
+	font-weight: bold;
+	border-radius: 2px;
+	padding: 12px 14px;
+	border: 0;
+	display: inline-block;
+	outline: none;
+}
+.align-center {
+	text-align: center;
+}
+.ml-button-primary:hover, .ml-button-primary:focus, .ml-button-primary.hover, .ml-button-primary.focus {
+	background-color: #0061a0;
+}
+.ml-button-primary:hover, .ml-button-primary-dark:hover, .ml-button-secondary:hover, .ml-button-secondary-dark:hover, .hover.ml-button-primary, .hover.ml-button-primary-dark, .hover.ml-button-secondary, .hover.ml-button-secondary-dark {
+	text-decoration: underline;
+}
+.ml-link{
+	text-decoration: underline;
+	color: #007abc;
+	font-weight: bold;
+	display: inline-block;
+}
+.ml-link:hover,
+.ml-link:focus,
+.hover.ml-link{
+	text-decoration: none;
+}
+.ml-link:focus{
+	outline-color: #333;
+	text-decoration: none;
+}
+.focus.ml-link{
+	box-shadow: 0 0 4px #333, 0 0 10px #333;
+}
+a#EFTSignUpLater {
+	margin-right: 60px;
+}
+.EFT-contentTheme h1{
+	width:100% !important;
+	float:none !important;
+}
+#popupBox{
+ position: fixed;
+ top: 50%;
+ left: 50%;
+ transform: translate(-50%,-50%);
+ background-color: #fff;
+ padding: 20px;
+ border: 1px solid #ccc;
+ z-index: 100;
+ width: 350px;
+}
+
+#popupBox.hidden{
+display: none;
+}
+
+#popupBox button{
+background-color: #4CAF50;
+color: white;
+padding: 5px 10px;
+border: none;
+cursor: pointer;
+margin-left: 140px;
+margin-right: 155px;
+
+}
+/* styles added for Overlay changes - ends*/
+/* styles added for CIAM banner changes - starts*/
+#CIAMBanner {
+  display: none;
+  font-size: 9pt;
+}
+.ciam-popup-content{
+  vertical-align: middle;
+	position: absolute;
+	z-index: 10;
+	left: 115px;
+	top: 200px;
+	min-height: 250px;
+	max-height: 80%;
+	max-width: 500px;
+	box-sizing: border-box;
+	width: 90%;
+	background: #f2f2f2;
+	padding: 25px 40px 30px 40px;
+	-webkit-border-radius: 0px;
+	-moz-border-radius: 0px;
+	-o-border-radius: 0px;
+	-ms-border-radius: 0px;
+	border-radius: 0px;
+	-webkit-box-shadow: 0 0 10px #000;
+	-moz-box-shadow: 0 0 10px #000;
+	-o-box-shadow: 0 0 10px #000;
+	-ms-box-shadow: 0 0 10px #000;
+	box-shadow: 0 0 10px #000;
+	text-align: left;
+}
+.ciam-popup-content .ml-button-primary {
+	padding: 10px 25px;
+}
+/* styles added for CIAM banner changes - ends*/
+

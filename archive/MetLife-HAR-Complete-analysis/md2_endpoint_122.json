@@ -1,0 +1,11 @@
+{
+  "role": "DPPO",
+  "metaData": {
+    "serviceReferenceId": "9b2129c0-4591-4138-b663-d3357ba24f77",
+    "outcome": {
+      "statusCode": 200,
+      "message": "SUCCESS",
+      "additionalDetails": []
+    }
+  }
+}

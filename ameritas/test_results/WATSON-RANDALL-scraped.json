@@ -1,0 +1,281 @@
+{
+  "subscriber_id": "022507869",
+  "subscriber_name": "WATSON,RANDALL TIMOTHY",
+  "subscriber_dob": "02/05/1988",
+  "scrape_date": "2025-09-30T19:13:59.563219",
+  "pdfs": {
+    "patient_details": "/Users/frederic/Documents/ProjetsDev/dental-portal-extractor/ameritas/downloads/PatientDetails-WATSON-RANDALL-TIMOTHY.pdf",
+    "benefit_summary": "/Users/frederic/Documents/ProjetsDev/dental-portal-extractor/ameritas/downloads/BenefitSummary-WATSON-RANDALL.pdf"
+  },
+  "parsed_data": {
+    "patient_details": {
+      "patient_name": "WATSON,RANDALL TIMOTHY",
+      "current_as_of": "2025-09-30",
+      "plan_number": "0-62549-2-1712",
+      "benefit_types": {
+        "type_1_preventive": "100%",
+        "type_2_basic": "80%",
+        "type_3_major": "50%"
+      },
+      "deductible": {
+        "type": "per plan year",
+        "amount_per_period": 50.0,
+        "remaining": 50.0,
+        "family_maximum": 150.0
+      },
+      "maximum": {
+        "annual": 5000.0,
+        "carryover": null,
+        "remaining": 4835.0
+      },
+      "orthodontics": {
+        "benefits_percentage": 50,
+        "deductible": null,
+        "lifetime_maximum": 1000.0,
+        "remaining": 1000.0
+      },
+      "next_eligible": {
+        "routine_exam": "2025-09-30",
+        "comprehensive_exam": "2025-09-30",
+        "periapicals": "2025-09-30",
+        "bitewings": "2025-09-30",
+        "fullmouth": "2028-09-16",
+        "prophylaxis_cleanings": "2025-09-30",
+        "fluoride": "Not Covered",
+        "sealant": "Not Covered",
+        "periodontal_maintenance": "2025-09-30",
+        "root_planing_scaling": {
+          "top_right": "2025-09-30",
+          "top_left": "2025-09-30",
+          "lower_right": "2025-09-30",
+          "lower_left": "2025-09-30"
+        }
+      }
+    },
+    "benefit_summary": {
+      "plan_member": "WATSON,RANDALL TIMOTHY",
+      "plan_number": "0-62549-2",
+      "plan_sponsor": "ROYSE CITY ISD",
+      "effective_date": "2025-09-01",
+      "coverage_status": "Plan Member and Children",
+      "benefit_types": {
+        "type_1": {
+          "percentage": "100%",
+          "description": "Preventive"
+        },
+        "type_2": {
+          "percentage": "80%",
+          "description": "Basic"
+        },
+        "type_3": {
+          "percentage": "50%",
+          "description": "Major"
+        }
+      },
+      "deductible": {
+        "amount": 50,
+        "type": "Type 2, Type 3 Annual Combined",
+        "family_max": 150
+      },
+      "maximum_annual_benefit": 5000,
+      "carryover": {
+        "benefit_threshold": null,
+        "carryover_amount": null,
+        "ppo_bonus": null,
+        "max_accumulation": null
+      },
+      "orthodontics": {
+        "benefit_percentage": "50%",
+        "deductible": "There is no Ortho Deductible on this plan.",
+        "lifetime_maximum": 1000,
+        "age_restrictions": null
+      },
+      "procedures": [
+        {
+          "category": "Exams",
+          "procedure_codes": "D0120, D0145, D0150, D0180",
+          "service_name": "Comprehensive Exam",
+          "benefit_type": "Type 1 - Preventive",
+          "frequency": "1 per benefit period",
+          "additional_info": "If frequency met, will be considered at an alternate benefit of a D0120/D0145 and count towards this frequency. Coverage is limited to 2 per benefit period."
+        },
+        {
+          "category": "Exams",
+          "procedure_codes": "D0120, D0145, D0150, D0180",
+          "service_name": "Routine Exam",
+          "benefit_type": "Type 1 - Preventive",
+          "frequency": "2 per benefit period",
+          "additional_info": "Procedure D0120 will be considered for individuals age 3 and over. Procedure D0145 will be considered for individuals age 2 and under."
+        },
+        {
+          "category": "Exams",
+          "procedure_codes": "D0140, D0170",
+          "service_name": "Problem Focused Exam",
+          "benefit_type": "Type 2 - Basic",
+          "frequency": "No Frequency",
+          "additional_info": "Coverage is allowed for accidental injury only. If not due to an accident, will be considered at an alternate benefit of a D0120/D0145 and count towards this frequency."
+        },
+        {
+          "category": "Prophylaxis (Cleanings)",
+          "procedure_codes": "D1110, D1120, D4346, D4910",
+          "service_name": "Prophylaxis",
+          "benefit_type": "Type 1 - Preventive",
+          "frequency": "2 per benefit period",
+          "additional_info": "An adult prophylaxis (cleaning) is considered for individuals age 14 and over. A child prophylaxis (cleaning) is considered for individuals age 13 and under. Benefits for prophylaxis (cleaning) are not available when performed on the same date as periodontal procedures."
+        },
+        {
+          "category": "Prophylaxis (Cleanings)",
+          "procedure_codes": "D1206, D1208",
+          "service_name": "Fluoride",
+          "benefit_type": "Type 1 - Preventive",
+          "frequency": "1 per benefit period",
+          "additional_info": "To age 19."
+        },
+        {
+          "category": "Periodontal Maintenance",
+          "procedure_codes": "D1110, D1120, D4346, D4910",
+          "service_name": "Periodontal Maintenance",
+          "benefit_type": "Type 2 - Basic",
+          "frequency": "2 per benefit period",
+          "additional_info": "Benefits are not available if performed on the same date as any other periodontal service. Procedure D4910 is contingent upon evidence of full mouth active periodontal therapy. Procedure D4346 is limited to persons age 14 and over."
+        },
+        {
+          "category": "Restorative",
+          "procedure_codes": "D1351, D1353, D1354, D1355",
+          "service_name": "Sealant",
+          "benefit_type": "Type 1 - Preventive",
+          "frequency": "1 in 3 years",
+          "additional_info": "To age 17. Benefits are considered on permanent molars only. Coverage is allowed on the occlusal surface only."
+        },
+        {
+          "category": "Restorative",
+          "procedure_codes": "D2140, D2150, D2160, D2161",
+          "service_name": "Amalgam",
+          "benefit_type": "Type 2 - Basic",
+          "frequency": "1 in 6 months",
+          "additional_info": "Up to 4 surface filling considered."
+        },
+        {
+          "category": "Restorative",
+          "procedure_codes": "D2330, D2331, D2332, D2335, D2391, D2392, D2393, D2394",
+          "service_name": "Composite",
+          "benefit_type": "Type 2 - Basic",
+          "frequency": "1 in 6 months",
+          "additional_info": "Up to 4 surface filling considered. Porcelain and resin benefits are considered for anterior and bicuspid teeth only. Coverage is limited to necessary placement resulting from decay or replacement due to existing unserviceable restorations."
+        },
+        {
+          "category": "Restorative",
+          "procedure_codes": "Various Procedures",
+          "service_name": "Crowns",
+          "benefit_type": "Type 3 - Major",
+          "frequency": "1 in 5 years",
+          "additional_info": "Porcelain and resin benefits are considered for anterior and bicuspid teeth only. Frequency is waived for accidental injury."
+        },
+        {
+          "category": "Restorative",
+          "procedure_codes": "Various Procedures",
+          "service_name": "Onlays",
+          "benefit_type": "Type 3 - Major",
+          "frequency": "1 in 5 years",
+          "additional_info": "Porcelain and resin benefits are considered for anterior and bicuspid teeth only. Frequency is waived for accidental injury."
+        },
+        {
+          "category": "Restorative",
+          "procedure_codes": "Various Procedures",
+          "service_name": "Inlays",
+          "benefit_type": "Type 3 - Major",
+          "frequency": "No Frequency",
+          "additional_info": "Inlays will be considered at an alternate benefit of an amalgam/composite restoration and only when resulting from caries (tooth decay) or traumatic injury."
+        },
+        {
+          "category": "Endodontics",
+          "procedure_codes": "D3310, D3320, D3330, D3332",
+          "service_name": "Root Canals",
+          "benefit_type": "Type 2 - Basic",
+          "frequency": "No Frequency",
+          "additional_info": "Benefits are considered on permanent teeth only. Allowances include intraoperative radiographic images and cultures but exclude final restoration."
+        },
+        {
+          "category": "Endodontics",
+          "procedure_codes": "D3310, D3320, D3330, D3346, D3347, D3348",
+          "service_name": "Root Canal Retreatment",
+          "benefit_type": "Type 2 - Basic",
+          "frequency": "1 in 12 months",
+          "additional_info": "Coverage is limited to service dates more than 12 months after root canal therapy."
+        },
+        {
+          "category": "Periodontics",
+          "procedure_codes": "D4381",
+          "service_name": "Antimicrobial Agent",
+          "benefit_type": "Type 2 - Basic",
+          "frequency": "2 in 2 years",
+          "additional_info": null
+        },
+        {
+          "category": "Periodontics",
+          "procedure_codes": "D4341, D4342",
+          "service_name": "Root Planing and Scaling",
+          "benefit_type": "Type 2 - Basic",
+          "frequency": "1 in 2 years",
+          "additional_info": "All four quadrants can be performed on the same day."
+        },
+        {
+          "category": "Periodontics",
+          "procedure_codes": "D4355",
+          "service_name": "Fullmouth Debridement",
+          "benefit_type": "Type 2 - Basic",
+          "frequency": "1 in 5 years",
+          "additional_info": null
+        },
+        {
+          "category": "Oral Surgery",
+          "procedure_codes": "D7111, D7140",
+          "service_name": "Non-Surgical Extractions",
+          "benefit_type": "Type 2 - Basic",
+          "frequency": "No Frequency",
+          "additional_info": null
+        },
+        {
+          "category": "Oral Surgery",
+          "procedure_codes": "D7210, D7220, D7230, D7240, D7241, D7250, D7251",
+          "service_name": "Surgical Extractions",
+          "benefit_type": "Type 3 - Major",
+          "frequency": "No Frequency",
+          "additional_info": null
+        },
+        {
+          "category": "General Anesthesia",
+          "procedure_codes": "D9222, D9223, D9239, D9243",
+          "service_name": "General Anesthesia",
+          "benefit_type": "Type 3 - Major",
+          "frequency": "No Frequency",
+          "additional_info": "Coverage is only available with a cutting procedure. A maximum of four will be considered."
+        },
+        {
+          "category": "Removable Prosthodontics (Dentures)",
+          "procedure_codes": "Various Procedures",
+          "service_name": "Removable Prosthodontics",
+          "benefit_type": "Type 3 - Major",
+          "frequency": "1 in 5 years",
+          "additional_info": "Frequency is waived for accidental injury."
+        },
+        {
+          "category": "Implants",
+          "procedure_codes": "Various Procedures",
+          "service_name": "Implant Supported Crown",
+          "benefit_type": "Type 3 - Major",
+          "frequency": "1 in 5 years",
+          "additional_info": "Frequency is waived for accidental injury."
+        },
+        {
+          "category": "Implants",
+          "procedure_codes": "Various Procedures",
+          "service_name": "Implant Supported Retainer",
+          "benefit_type": "Type 3 - Major",
+          "frequency": "1 in 5 years",
+          "additional_info": "Frequency is waived for accidental injury."
+        }
+      ]
+    }
+  }
+}

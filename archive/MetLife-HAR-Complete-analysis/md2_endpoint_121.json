@@ -1,0 +1,13 @@
+{
+  "isAdmin": false,
+  "isTPA": false,
+  "isUser": false,
+  "metaData": {
+    "serviceReferenceId": "383a5cf8-47d8-4803-a9dd-866895a6118d",
+    "outcome": {
+      "statusCode": 200,
+      "message": "SUCCESS",
+      "additionalDetails": []
+    }
+  }
+}

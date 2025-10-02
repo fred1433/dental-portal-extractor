@@ -1,0 +1,44 @@
+{
+  "patient_name": "SCALLAN,BLAKE",
+  "current_as_of": "2025-09-30",
+  "plan_number": "0-2610-18109-1",
+  "benefit_types": {
+    "type_1_preventive": "100%",
+    "type_2_basic": "MAB",
+    "type_3_major": "MAB"
+  },
+  "deductible": {
+    "type": "per visit",
+    "amount_per_period": 25.0,
+    "remaining": 25.0,
+    "family_maximum": null
+  },
+  "maximum": {
+    "annual": 2000.0,
+    "carryover": 900.0,
+    "remaining": 2673.0
+  },
+  "orthodontics": {
+    "benefits_percentage": null,
+    "deductible": null,
+    "lifetime_maximum": null,
+    "remaining": null
+  },
+  "next_eligible": {
+    "routine_exam": "2026-01-01",
+    "comprehensive_exam": "2026-01-01",
+    "periapicals": "Not Covered",
+    "bitewings": "2026-01-01",
+    "fullmouth": "2028-04-11",
+    "prophylaxis_cleanings": "2026-01-01",
+    "fluoride": "Not Covered",
+    "sealant": "Not Covered",
+    "periodontal_maintenance": "2026-01-01",
+    "root_planing_scaling": {
+      "top_right": "2025-09-30",
+      "top_left": "2025-09-30",
+      "lower_right": "2025-09-30",
+      "lower_left": "2025-09-30"
+    }
+  }
+}
