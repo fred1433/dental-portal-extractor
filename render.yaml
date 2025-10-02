@@ -3,7 +3,7 @@ services:
     name: dental-insurance-verification
     env: docker
     dockerfilePath: ./Dockerfile
-    repo: https://github.com/fred1433/dnoa-portal-web
+    repo: https://github.com/fred1433/dental-portal-extractor
     branch: master
     envVars:
       # Portal Credentials (set in Render dashboard - KEEP SECRET)
