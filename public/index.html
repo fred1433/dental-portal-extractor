@@ -813,10 +813,17 @@
                 const response = await fetch(`/api/patients?key=${modalApiKey}`);
                 const data = await response.json();
                 allPatients = data.patients;
-                document.getElementById('existingPatientsCount').textContent =
-                    `${data.total} patient${data.total !== 1 ? 's' : ''} saved`;
+
+                // Only show count if >= 100 patients (looks more professional)
+                const countEl = document.getElementById('existingPatientsCount');
+                if (data.total >= 100) {
+                    countEl.textContent = `${data.total} patient${data.total !== 1 ? 's' : ''} saved`;
+                    countEl.style.display = 'block';
+                } else {
+                    countEl.style.display = 'none';
+                }
             } catch (error) {
-                document.getElementById('existingPatientsCount').textContent = 'Error';
+                document.getElementById('existingPatientsCount').style.display = 'none';
             }
         }
 
