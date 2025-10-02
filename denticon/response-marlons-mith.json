@@ -1,0 +1,2666 @@
+
+<!DOCTYPE html>
+<html>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title> Advanced Setup::Patient Overview</title>
+
+    <link rel="stylesheet" href="https://static-cdn.denticon.com/external/bootstrap/bootstrap-datepicker.standalone.min.css"/>
+    <link rel="stylesheet" href="https://static-cdn.denticon.com/external/bootstrap/bootstrap-select.css"/>
+    <link rel="stylesheet" href="https://static-cdn.denticon.com/external/bootstrap/bootstrap-datetimepicker.min.css"/>
+    <link rel="stylesheet" href="https://static-cdn.denticon.com/external/ui/1.12.1/jquery-ui-custom.css"/>
+    <link rel="stylesheet" href="https://static-cdn.denticon.com/external/font-awesome/4.7.0/css/font-awesome.css"/>
+    <link rel="stylesheet" href="https://static-cdn.denticon.com/external/css/jquery-steps.css"/>
+
+
+    <link href="/CSSBundles/messaging-hub-bundle-styles-v2.min.css?v=7PbBYCDa9RVLHQffD2onSNIz9W1867uvqv24wuBNQtE" rel="stylesheet" type="text/css" />
+    <link href="/CSSBundles/messaging-hub-email-bundle-styles-v2.min.css?v=xe6g4fAEgqP3bJfyt2rgKBLzgs2csIUki3ExJ6E7bcA" rel="stylesheet" type="text/css" />
+
+        <link rel="stylesheet" href="/Content/CdnLayout/toaster-v2.css?v=JDAabb1pQ1HUdDqNcL8VHWNIXVykQZ50EbYyziaeowk" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="/Content/CdnLayout/bootstrap-v2.css?v=IwLB34X2KJVOTKqnFlIL65TOOTrBV4_hRfG1zEaXxyg" rel="stylesheet" type="text/css" />
+        <link href="/Theme/Web20Blue_v3.css?v=xnM%2BJZRWQ2wudaf5BNf%2F8eNE6%2F2SGvAVOtiC7a8%2FkSc%3D&amp;v=xnM-JZRWQ2wudaf5BNf_8eNE6_2SGvAVOtiC7a8_kSc" rel="stylesheet" type="text/css" />
+            <link href="/CSSBundles/patient-overview-bundle-styles-v2.min.css?v=4C-XOzNVg1Jf1TnojxiE-qMwbDzcQIRV8eYdhzuw8eA" rel="stylesheet" type="text/css" />
+        <link href="/CSSBundles/email-patient-bundle-styles-v2.css?v=aFOp-8NK8HmpJBAkyBvIUeCWfAysLz-JgnPwaKsoqN0" rel="stylesheet" type="text/css" />
+    
+    
+    <script>
+        window.ddjskey = '2D56F91C2AD1A8EB7C6A5CA65F5567';
+    </script>
+    <script src="https://dd.denticon.com/tags.js" async></script>
+
+    <script>
+        var moneyFormat = "$";
+        if (moneyFormat == "&amp;#163;") {
+            // Pound symbol (United Kingdom Culture)
+            moneyFormat = "\u00A3";
+        } else if (moneyFormat == "&amp;#164;") {
+            // Currency symbol (Invariant Culture)
+            moneyFormat = "\u00A4";
+        }
+        var gCulture = 'en-US';
+    </script>
+</head>
+<body>
+
+    <script type="text/javascript"  src="https://static-cdn.denticon.com/external/jquery-3.3.1/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript"  src="https://static-cdn.denticon.com/external/jquery-3.3.1/jquery.numberMask.js"></script>
+    <script type="text/javascript"  src="https://static-cdn.denticon.com/external/jquery-3.3.1/jquery-ui.js"></script>
+    <script type="text/javascript"  src="https://static-cdn.denticon.com/external/jquery-3.3.1/jquery.slimscroll.js"></script>
+    <script type="text/javascript"  src="https://static-cdn.denticon.com/external/jquery-3.3.1/jquery.validate.min.js"></script>
+    <script type="text/javascript"  src="https://static-cdn.denticon.com/external/jquery-3.3.1/jquery.unobtrusive-ajax.min.js"></script>
+    <script type="text/javascript"  src="https://static-cdn.denticon.com/external/jquery-3.3.1/jquery.validate.unobtrusive.min.js"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+
+    <script type="text/javascript"  src="https://static-cdn.denticon.com/external/inputmask/inputmask.js"></script>
+    <script type="text/javascript"  src="https://static-cdn.denticon.com/external/inputmask/jquery.inputmask.js"></script>
+    <script type="text/javascript"  src="https://static-cdn.denticon.com/external/inputmask/inputmask.extensions.js"></script>
+    <script type="text/javascript"  src="https://static-cdn.denticon.com/external/inputmask/inputmask.date.extensions.js"></script>
+    <script type="text/javascript"  src="https://static-cdn.denticon.com/external/inputmask/inputmask.numeric.extensions.js"></script>
+
+
+    <script type="text/javascript"  src="https://static-cdn.denticon.com/external/bootstrap/bootstrap.min.js"></script>
+    <script type="text/javascript"  src="https://static-cdn.denticon.com/external/bootstrap/bootstrap-select.js"></script>
+    <script type="text/javascript"  src="https://static-cdn.denticon.com/external/bootstrap/popper-1.14.3.min.js"></script>
+    <script type="text/javascript"  src="https://static-cdn.denticon.com/external/bootstrap/bootbox.min.js"></script>
+
+    <script type="text/javascript"  src="https://static-cdn.denticon.com/external/multiselectbox/multiSelectBox.js"></script>
+    <script type="text/javascript"  src="https://static-cdn.denticon.com/external/multiselectbox/multiSelectBoxExtensions.js"></script>
+
+    <script type="text/javascript"  src="https://static-cdn.denticon.com/external/toastr/toastr.min.js"></script>
+    <script type="text/javascript"  src="https://static-cdn.denticon.com/external/purify/purify.js"></script>
+    <script type="text/javascript" src="https://static-cdn.denticon.com/external/crypto-js/crypto-js-4.0.0.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/signalr@2.4.1/jquery.signalR.min.js"></script>
+    <script src="https://localtest.me:8090/signalr/hubs"></script>
+
+    <script type="text/javascript" src="/js/SignalR/dist/browser/signalr.min.js?v=1"></script>
+    <script type="text/javascript" src="/CKEditor/ckeditor.js?v=la7Ci0JVLW3kTZYVsyOxS_Cecfu5izSy1T3DpXyNZ9A"></script>
+
+
+    <script type="text/javascript" src="/JSBundles/patient-overview-bundle-scripts.min.js?v=5vDU54y-2sG7AAckacNUlg26oKbbKK0cdaR_Z-o5kXU"></script>
+
+    <script type="text/javascript" src="/JSBundles/credit-card-bundle-scripts.min.js?v=VKZXUa-b4bLWtcFylxEAUSMErL61oTFmZ8-fzpVZojQ"></script>
+
+    <script type="text/javascript" src="/JSBundles/open-edge-bundle-scripts.min.js?v=yXiPpmVAaGyq6H5Knb2bJp_PlWekf4vousiAxYPy3Bw"></script>
+
+    <script type="text/javascript" src="/JSBundles/VX805-transaction-bundle-scripts.min.js?v=s4t2vHKGmQJJtWAXc2LuW1LjEzKkqX1No6_qU4XumyE"></script>
+
+    <script type="text/javascript" src="/JSBundles/email-patient-mvc-bundle-scripts.js?v=GzIUAfb0k-ZJgDjKTkkPmSsqCRAmJilTNgggVohcpiY"></script>
+
+    <script type="text/javascript" src="/JSBundles/messaging-hub-bundle-scripts.js?v=zH3_7rd_aNdJcijoPPady_iZztR1DOF7AxgcsY06QMg"></script>
+
+    <script type="text/javascript" src="/JSBundles/messaging-hub-email-bundle-scripts.js?v=Miqy8d-h6G-YeIMwWdwirdJyXrV24Voe2QJUxtMHVsM"></script>
+
+
+
+
+<section>
+    <div class="white-container patient-overview">
+        <div class="padding-bottom-5">
+            <div class="padding-5-10 padding-bottom-0 margin-0">
+                <div class="col-lg-6 col-md-6 padding-left-5 padding-right-5 pat-info-container revised-patient-overview">
+                    
+
+
+<div class="row patient-info">
+    <div class="custom-col-left padding-top-3 table-title text-uppercase">
+        <span id="labelPatInfo" title="Patient SSN: XXX-XX-0658 (Visit Edit Patient Information page to view the full SSN) Medicalid ID:" class="res-specific-text font-weight-600"
+        data-text-res-1="Patient Information" 
+        data-text-res-2="Patient Information" 
+        data-text-res-3="Patient Information"
+        data-text-res-4="Patient Information">
+            Patient Information
+        </span>
+
+
+                <a class="fa info-link custom-redirect" data-targetpage="/ASPX/Patients/AdvancedNotes.aspx?T=Pat">
+                    <img src="/Images/PatientOverview/Theme/Web20Blue/pat-notes.svg" alt="Patient notes created on: 10/02/2025 { get; set; } PT" title="Patient notes created on: 10/02/2025 PT">
+                </a>
+            <a class="fa info-link show-custom-tooltip" data-custom-tooltip-title="Emergency Contact Information" data-custom-tooltip-data="&lt;b&gt;Emergency Contact: &lt;/b&gt;Dorothy Smith&lt;br/&gt;&lt;b&gt;Emergency Phone&amp;nbsp;&amp;nbsp;: &lt;/b&gt;254-281-1815">
+                <img src="/Images/PatientOverview/emergency-contact.svg" alt="">
+            </a>
+
+            <button type="submit" class="care-credit-button-one care-credit-button-click margin-left-5 btn-primary float-right display-none" id="applyForCareCreditButton" title="Apply for CareCredit">
+                <span>Apply CC</span>
+            </button>
+            <a class="care-credit-button-one care-credit-button-click fa margin-left-5 float-right " id="carecredit-green"
+            title="CareCredit Pre-Approved "
+            >
+                <img src="/Images/CareCredit/carecredit-green1.png">
+            </a>
+            <a class="care-credit-button-one fa margin-left-5 float-right display-none" id="carecredit-blue"
+            title="CareCredit Account Found "
+            >
+                <img src="/Images/CareCredit/carecredit-blue1.png">
+            </a>
+            <a class="care-credit-button-one care-credit-button-click fa margin-left-5 float-right display-none" id="carecredit-yellow" title="CareCredit Refer to Application">
+                <img src="/Images/CareCredit/carecredit-yellow1.png">
+            </a>
+            <button type="submit" class="btn-primary float-right margin-left-5 display-none" id="careCreditButtonPullBack" title="CareCredit PullBack">
+                <i class="fa fa-calculator margin-right-5" aria-hidden="true"></i> <span>CC PB</span>
+            </button>
+    </div>
+    <div class="custom-col-right text-right margin-bottom-5 pull-right">        
+
+                <button id="btn-edit-pat" type="button" class="btn-primary custom-redirect" data-targetpage="/ASPX/Patients/AdvancedEditPatientInfo.aspx"><i class="fa fa-pencil margin-right-5" aria-hidden="true"></i> Edit </button>
+    </div>
+</div>
+
+<div class="patient-information-wrapper margin-0">
+    <div class="div-row patient-basic-details-top deep-theme-color color-white custom-patient-basic-info-style">
+        
+            <div class="col-lg-3 col-md-3 patient-image padding-left-10 padding-right-10 border-right-gray">
+                        <div class="custom-img-thumbnail">
+                                <img class="custom-redirect image-background-by-theme" data-targetpage="/ASPX/Patients/PatientImage.aspx" alt="Patient picture">
+                        </div>           
+            </div>
+            
+            <div class="col-lg-9 col-md-9 patient-basic-info">
+                        <div class="height-24">
+                            <div class="patient-name label-inner-value float-left width-70 text-ellipsis font-weight-600 custom-patname-max-width ">
+                                <input type="hidden" id="basicInfoPatName" value="Smith, Marlon " />
+                                <input type="hidden" id="basicInfoPatNickName"/>
+                                <span class="font-weight-600" title="Smith, Marlon ">
+                                    Smith, Marlon 
+                                </span>
+                            </div>
+                        </div>
+                        <div>
+                                <div class="text-ellipsis color-black float-left width-27 custom-revised-padding padding-right-15 margin-top-minus-3 font-weight-600" title="48  / Male">
+                                    48  / Male
+                                </div>
+                            <div class="inline-div text-ellipsis min-height-10 float-left width-18 custom-revised-padding padding-right-15 margin-top-minus-3">
+                                <i class="fa fa-birthday-cake" aria-hidden="true" title="Birth-Date"></i>
+                    <span class="font-weight-600" title="11/26/1976">
+                                    11/26/1976
+                                </span>
+                            </div>
+
+                <div class="inline-div float-left text-ellipsis width-25 custom-revised-padding padding-right-15">
+                    <span class="custom-padding-id">ID</span><span class="font-weight-600" title="9070654">9070654</span>
+                </div>
+                <div class="inline-div float-right text-ellipsis width-30 custom-revised-padding">
+                    <span class="padding-right-49">Next Visit</span><span class="font-weight-600" title="01/22/2026">01/22/2026</span>
+                </div>
+            </div>
+            <div>
+                <div class="text-ellipsis float-left width-45 custom-revised-padding">
+                    <span>(C)</span>
+                            <a class="info-link show-hyperlink-custom font-weight-600" id="openMessagingHub" title="Click here to open Messaging Hub">
+                                254-226-6235
+                            </a>
+                </div>
+                <div class="inline-div float-left text-ellipsis width-25 custom-revised-padding padding-right-15">
+                    <span class="custom-padding-chart">Chart</span><span class="font-weight-600" title=""></span>
+                </div>
+                <div class="inline-div float-left text-ellipsis width-30 custom-revised-padding">
+                    <span class="padding-right-38">Next Recall</span><span class="font-weight-600" title="01/27/2026">01/27/2026</span>
+                </div>
+            </div>
+            <div>
+                        <div class="inline-div text-ellipsis float-left width-70 custom-revised-padding">
+                            <i class="fa fa-email" id="email-icon" aria-hidden="true" title="Email Address"></i>
+                            <a class="text-ellipsis-Mail font-weight-600" id="openMessagingHubEmail" title="Click here to open Messaging Hub Email">
+                                <span class="__cf_email__" data-cfemail="f79a96859b9899d993849a9e839fc5c4c3b7909a969e9bd994989a">[email&#160;protected]</span>
+                            </a>
+
+                                    <i class="fa fa-valid-email" id="valid-email-icon" aria-hidden="true" title="Valid email address."></i>
+                        </div>
+
+                <div class="inline-div float-right text-ellipsis width-30 custom-revised-padding">
+                    <span class="padding-right-51">Last Visit</span><span class="font-weight-600" title="09/26/2025">09/26/2025</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="div-row border-none">
+        <div class="patient-basic-info-div col-lg-12 col-md-12">
+            <div class="div-row border-top-0 border-radius-0">
+                <div class="col-lg-3 col-md-3">
+                    <div class="label-inner">
+                        Provider
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 border-left-gray">
+                    <div class="">
+                        <div class="label-inner-value text-ellipsis font-weight-600" title="Kang, Jung (DDS)">
+                            Kang, Jung DDS
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 border-left-gray">
+                    <div class="label-inner">
+                        Referral Type
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 border-left-gray">
+                    <div class="label-inner-value text-ellipsis font-weight-600" title="Patient Referral">
+                        Patient Referral
+                    </div>
+                </div>
+            </div>
+            <div class="div-row">
+                <div class="col-lg-3 col-md-3">
+                    <div class="label-inner">
+                        Hygienist
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 border-left-gray">
+                    <div class="label-inner-value text-ellipsis font-weight-600">
+                        
+                    </div>                  
+                </div>
+                <div class="col-lg-3 col-md-3 border-left-gray">
+                    <div class="label-inner">
+                                    Referred By
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 border-left-gray">
+                    <div class="label-inner-value text-ellipsis font-weight-600">
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="div-row">
+                <div class="col-lg-3 col-md-3">
+                    <div class="label-inner">
+                        Home Office
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 border-left-gray">
+                   <div class="label-inner-value text-ellipsis font-weight-600" title="ACE Dental Of Harker Heights">
+                        ACE Dental Of Harker Heights
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 border-left-gray">
+                    <div class="label-inner">
+                                    Referred To
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 border-left-gray">
+                    <div class="label-inner-value text-ellipsis font-weight-600">
+                        
+                    </div>
+                </div>                
+            </div>
+            <div class="div-row">
+                <div class="col-lg-3 col-md-3">
+                    <div class="label-inner">
+                        First Visit
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 border-left-gray">
+                    <div class="label-inner-value text-ellipsis font-weight-600" title="06/06/2025">
+                        06/06/2025
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 border-left-gray">
+                    <div class="label-inner">
+                        Last Perio Chart
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 border-left-gray">
+                    <div class="label-inner-value text-ellipsis font-weight-600" title="06/09/2025">
+                        06/09/2025
+                    </div>
+                </div>               
+            </div>
+            <div class="div-row">
+                <div class="col-lg-3 col-md-3">
+                    <div class="label-inner">
+                        Home
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 border-left-gray">
+                    <div class="label-inner-value text-ellipsis font-weight-600" title="Not Available">
+                        
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 border-left-gray">
+                    <div class="label-inner">
+                        Contact Pref
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 border-left-gray">
+                    <div class="label-inner-value text-ellipsis font-weight-600" title="">
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="div-row">
+                <div class="col-lg-3 col-md-3">
+                    <div class="label-inner">
+                        Work
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 border-left-gray">
+                    <div class="label-inner-value text-ellipsis font-weight-600" title="Not Available">
+                        
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 border-left-gray">
+                    <div class="label-inner">
+                        <div class="res-specific-text inline-div"
+                              data-text-res-1="Fee Schedule"
+                              data-text-res-2="Fee Schedule"
+                              data-text-res-3="Fee Schedule"
+                              data-text-res-4="Fee Sched"
+                              data-res-spec-title="Fee Schedule">
+                            Fee Schedule
+                        </div>
+                        <i class="fa fa-info-circle icon-size cursor-pointer" title="Fee Schedules with active Effective Date are only available." aria-hidden="true"></i>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 border-left-gray">
+                    <div class="label-inner-value text-ellipsis font-weight-600" title="STANDARD_FEES_20180522">
+                        STANDARD_FEES_20180522
+                    </div>
+                </div>
+            </div>
+            <div class="div-row address-div">
+                <div class="col-lg-3 col-md-3 border-right-gray">
+                    <div class="label-inner">
+                        Address
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 border-right-gray">
+                    <div class="label-inner-value text-ellipsis font-weight-600" title="9604 Kensley Rose Dr">
+                        9604 Kensley Rose Dr
+                    </div>
+                    <div class="label-inner-value text-ellipsis font-weight-600" title="">
+                        
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 border-right-gray">
+                    <div class="label-inner">
+                       Type
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 border-right-gray types-height types-slimscroll ">
+                            <div class="label-inner-value text-ellipsis font-weight-600 " data-custom-tooltip-title="Patient Type" data-custom-tooltip-data="Not Available" title="Not Available">
+                                
+                            </div>
+                </div>
+            </div>
+            <div class="div-row">
+                <div class="col-lg-3 col-md-3">
+                    <div class="label-inner">
+                        City, State and Zip
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 border-left-gray">
+                    <div class="label-inner-value text-ellipsis font-weight-600" title="Killeen, TX 76542">
+                        Killeen, TX 76542
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 border-left-gray">
+                    <div class="label-inner">
+                        Preferred Language
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 border-left-gray">
+                    <div class="label-inner-value text-ellipsis font-weight-600" title="">
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="div-row border-bottom-0 border-radius-0 patient-notes">
+                <div class="col-lg-3 col-md-3 patient-basic-details-bottom notes-height border-right-gray">
+                    <div class="label-inner">
+                        Patient Note
+                    </div>                    
+                </div>
+                <div class="col-lg-9 col-md-9 patient-basic-details-bottom notes-height notes-slimscroll ">
+                    <div class="label-inner font-weight-600">
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="div-row border-bottom-0 border-radius-0 medical-alerts">
+                <div class="col-lg-3 col-md-3 patient-basic-details-bottom medical-alert-height border-right-gray"> 
+                    <div class="patient-table-title">
+                                <a tabindex="0" class="open-mh-modal" title="Click here to Add/Edit medical alerts."><b> Medical Alerts<span class="medic-alert-asterisk custom-display-none">*</span>:</b></a>
+                    </div>
+                    <div class="patient-medical-created-on">(05/28/2025 04:48 AM PT)</div>
+                    <div class="questionnaire-label" title="Patient has filled in Questionnaires. Click on Medical Alerts to get the details">Questionnaire</div>
+                </div>
+                <div class="col-lg-9 col-md-9 patient-basic-details-bottom medical-alert-height medical-alerts-slimscroll "> 
+                    <span class="patient-medical-alert font-weight-600">
+                        
+                    </span>
+                </div>
+
+             </div>
+        </div>
+    </div>   
+</div>
+
+<input type="hidden" value="PREAPPROVED" name="careCreditApprovalStatus" id="careCreditApprovalStatus" runat="server" />
+<input type="hidden" value="9/26/2025" name="careCreditApprovalDate" id="careCreditApprovalDate" runat="server" />
+<input type="hidden" value="0000000090521758849934965" name="careCreditRfId" id="careCreditRfId"/>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    var menuCareCreditRfIdAdv = '';
+    var pageCareCreditRfId = '0000000090521758849934965';
+    var careCreditMerchantIdAdv = '5348120286529052';
+    var careCreditApprovalStatus = 'PREAPPROVED';
+    var isCareCreditEnabled = 'Y';
+
+
+    var PatientOveriewCareCreditUrls = {
+        GetPatientData: '/PatientOverview/GetPatientData',
+        SaveReferenceId: '/PatientOverview/SaveReferenceId',
+        SaveCareCreditStatus: '/PatientOverview/SaveCareCreditStatus',
+        CheckCareCreditTransaction: '/PatientOverview/CheckCareCreditTransaction',
+        GetAllocation: '/PatientOverview/GetAllocation',
+        GetdefaultPayCode: '/PatientOverview/GetdefaultPayCode',
+        SaveToLedgerFIFO: '/PatientOverview/SaveToLedgerFIFO',
+        AddSystemNote: '/PatientOverview/AddSystemNote'
+    };
+</script>
+
+                </div>
+
+                <div class="col-lg-6 col-md-6  padding-left-5 padding-right-5 resp-ins-info-container revised-patient-overview">
+                    
+
+<div class="row margin-right-0">
+    <div class="col-lg-6 col-md-6 table-title text-uppercase display-flex font-weight-600">
+        <span id="labelRespInfo" title="Responsible Party SSN: XXX-XX-0658 (Visit Edit Responsible Party Information page to view the full SSN)">Responsible Party</span>
+                <a class="fa info-link custom-redirect" data-targetpage="/ASPX/Patients/AdvancedNotes.aspx?T=Fin">
+                    <img src="/Images/PatientOverview/Theme/Web20Blue/financial-notes.svg" alt="Financial notes created on: 10/01/2025 PT" title="Financial notes created on: 10/01/2025 PT">
+                </a>
+    </div>
+    <div class="col-lg-6 col-md-6 text-uppercase display-flex flex-end margin-bottom-5">        
+            <button id="btn-resp-party-edit" type="button" class="btn-primary btn-edit-responsible-party"><i class="fa fa-pencil margin-right-5" aria-hidden="true"></i> Edit </button>
+    </div>
+</div>
+
+<div class="patient-information-wrapper">
+    <div class="col-lg-12 col-md-12 padding-0">
+        <div class="div-row">
+            <div class="col-lg-3 col-md-3 width-20">
+                <div class="label-inner">
+                    Name
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 border-left-gray width-30">
+                <div class="label-inner-value text-ellipsis font-weight-600" title="Smith, Marlon ">
+                    Smith, Marlon 
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 border-left-gray width-20">
+                <div class="label-inner">
+                    Cell
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 border-left-gray width-30">
+                <div class="label-inner-value text-ellipsis font-weight-600" title="254-226-6235">
+                    254-226-6235
+                </div>
+            </div>
+        </div>
+        <div class="div-row border-top-0">
+            <div class="col-lg-3 col-md-3 width-20">
+                <div class="label-inner">
+                    Resp ID
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 border-left-gray width-30">
+                <div class="label-inner-value text-ellipsis font-weight-600" title="9069809">
+                    9069809
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 border-left-gray width-20">
+                <div class="label-inner">
+                    Email
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 border-left-gray width-30 inline-div text-ellipsis float-left">
+                            <span class="label-inner-value text-ellipsis-responsible-party-mail font-weight-600">
+                                <a class="resparty-email-modal" title="marlon.dsmith234@gmail.com, Click here to send an email" disabled>
+                                    <span class="__cf_email__" data-cfemail="b4d9d5c6d8dbda9ad0c7d9ddc0dc868780f4d3d9d5ddd89ad7dbd9">[email&#160;protected]</span>
+                                </a>
+                            </span>
+                            <i class="fa fa-valid-email" aria-hidden="true" id="valid-email-icon-responsible" title="Valid email address."></i>
+            </div>                       
+        </div>
+        <div class="div-row border-top-0">
+           <div class="col-lg-3 col-md-3 width-20">
+                <div class="label-inner">
+                    Type
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 border-left-gray width-30">
+                <div class="label-inner-value text-ellipsis font-weight-600" title="PPO">
+                    PPO
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 border-left-gray width-20">
+                <div class="label-inner">
+                    Home Office
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 border-left-gray width-30">
+                <div class="label-inner-value text-ellipsis font-weight-600" title="ACE Dental Of Harker Heights">
+                    ACE Dental Of Harker Heights
+                </div>
+            </div>            
+        </div>      
+    </div>
+</div>
+
+                    <div class="clearfix"></div>
+                    <div class="insurance-tabs">
+                        <div class="col-lg-12 col-md-12 text-uppercase row-tabs padding-left-0 padding-right-0">
+		                    <ul class="col-lg-12 col-md-12 nav nav-tabs tab-name-list padding-top-5">
+                                <li class="dental-pri-sec-tab active col-lg-4 col-md-4"><a data-toggle="tab" href="#dental-pri-sec" class="padding-left-0">DENTAL INS PRI / SEC</a></li>
+                                <li class="dental-tert-quat-tab col-lg-4 col-md-4 d-none"><a data-toggle="tab" href="#dental-tert-quat">DENTAL INS THIRD / FOURTH</a></li>
+				                <li class="medical-pri-sec-tab col-lg-4 col-md-4"><a data-toggle="tab" href="#medical-pri-sec">MEDICAL INS PRI / SEC</a></li>
+                            </ul>
+	                    </div>
+
+                        <div class="col-lg-12 col-md-12  border-bottom border-radius-5 custom-insurance-tabs-body">
+		                    <div class="tab-content">
+			                    <div id="dental-pri-sec" class="tab-pane fade in active">
+                                    
+<div class="denatl-insurance" id="pri-sec-dental-ins">
+        <div class="div-bordered col-lg-12 col-md-12 padding-0">
+            <div class="row patient-header-deatail-bg custom-insurance-header-style">
+                <div class="custom-col-20 custom-margin-right">
+                </div>
+                <div class="custom-col-40 padding-0">
+                    <div class="label-inner-value text-center">
+                        <a class="fa info-link custom-info-link insChangedWarning display-none" data-planc="DP" id="primden-inswarning" title="Status of the primary dental insurance changes.">
+                            <img class="custom-low-res-width" src="/Images/PatientOverview/exclamation-triangle.svg">
+                        </a>
+                        <a class="fa info-link display-none" id="primden-insban" title="Patient Name to Subscriber Name and/or relationship do not match.">
+                            <img class="custom-low-res-width" src="/Images/PatientOverview/insurance-ban.svg">
+                        </a>
+                        <a class="editInsLink text-bold text-white" data-page="EditDentalPrimIns.aspx" id="editPrimDentalIns" tabindex="0" title="Click here to Add/Edit Primary Insurance Information."> Primary </a>
+                        <a class="fa info-link elig-disable-no-access elig-button display-none" data-qparameter="plantype=P&instype=D" id="primden-elig-pat-overview">
+                            <i id="primden-elig-img-pat-overview" class="fa fa-exclamation-triangle height-17 custom-low-res-width" aria-hidden="true"></i>
+                        </a>
+                        <a class="fa info-link cursor-pointer display-none" id="primden-notes">
+                            <img src="/Images/PatientOverview/Theme/Web20Blue/revised-pat-notes.svg" class="show-custom-tooltip height-16 custom-low-res-width" data-custom-tooltip-title="Primary Insurance Note" data-custom-tooltip-data="">
+                        </a>
+                    </div>
+                </div>
+                <div class="custom-col-40 custom-margin-left">
+                    <div class="label-inner-value text-center">
+                        <a class="fa info-link custom-info-link insChangedWarning display-none" data-planc="DS" id="secden-inswarning" title="Status of the secondary dental insurance changes.">
+                            <img class="custom-low-res-width" src="/Images/PatientOverview/exclamation-triangle.svg">
+                        </a>
+                        <a class="fa info-link display-none" id="secden-insban" title="Patient Name to Subscriber Name and/or relationship do not match.">
+                            <img class="custom-low-res-width" src="/Images/PatientOverview/insurance-ban.svg">
+                        </a>
+                        <a class="editInsLink text-bold text-white" data-page="EditDentalSecIns.aspx" id="editSecDentalIns" tabindex="0" title="Click here to Add/Edit Secondary Insurance Information."> Secondary </a>
+                        <a class="fa info-link elig-disable-no-access elig-button display-none" data-qparameter="plantype=S&instype=D" id="secden-elig-pat-overview">
+                            <i id="secden-elig-img-pat-overview" class="fa fa-exclamation-triangle height-17 custom-low-res-width" aria-hidden="true"></i>
+                        </a>
+                        <a class="fa info-link cursor-pointer display-none" id="secden-notes">
+                            <img src="/Images/PatientOverview/Theme/Web20Blue/revised-pat-notes.svg" class="show-custom-tooltip height-16 custom-low-res-width" data-custom-tooltip-title="Secondary Insurance Note" data-custom-tooltip-data="">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="div-row">
+                <div class="custom-col-20">
+                    <div class="label-inner">
+                        Carrier Name
+                    </div>
+                </div>
+                <div class="custom-col-40 border-left-gray">
+                    <div class="label-inner-value">
+                        <a tabindex="0" id="viewPrimDentalCarrier" data-carrierid="1275" title="Click here to view carrier detail"
+                           class="custom-text-ellipsis font-weight-600"
+                           data-text-res-1="BCBS Of Tx"
+                           data-text-res-2="BCBS Of Tx"
+                           data-text-res-3="BCBS Of Tx"
+                           data-text-res-4="BCBS Of Tx"
+                           data-charlimit-res-2="35"
+                           data-charlimit-res-3="30"
+                           data-charlimit-res-4="25">
+                            BCBS Of Tx
+                        </a>
+                    </div>
+                </div>
+                <div class="custom-col-40 border-left-gray">
+                    <div class="label-inner-value">
+                        <a tabindex="0" id="viewSecDentalCarrier" data-carrierid="" title="Click here to view carrier detail"
+                           class="custom-text-ellipsis font-weight-600"
+                           data-text-res-1=""
+                           data-text-res-2=""
+                           data-text-res-3=""
+                           data-text-res-4=""
+                           data-charlimit-res-2="35"
+                           data-charlimit-res-3="30"
+                           data-charlimit-res-4="25">
+                            
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="div-row">
+                <div class="custom-col-20">
+                    <div class="label-inner">
+                        Group #
+                    </div>
+                </div>
+                <div class="custom-col-40 border-left-gray">
+                    <div class="label-inner-value text-ellipsis font-weight-600">
+                       <a data-insplanid="9821" id="viewPrimDentalIns" tabindex="0" title="Click here to View Primary Insurance Plan Information.">421769</a> 
+                    </div>
+                </div>
+                <div class="custom-col-40 border-left-gray">
+                    <div class="label-inner-value text-ellipsis font-weight-600">
+                         <a data-insplanid="0" id="viewSecDentalIns" tabindex="0" title="Click here to View Secondary Insurance Plan Information."></a>
+                    </div>
+                </div>
+            </div>
+            <div class="div-row">
+                <div class="custom-col-20">
+                    <div class="label-inner">
+                        Carrier Phone
+                    </div>
+                </div>
+                <div class="custom-col-40 border-left-gray">
+                    <div class="label-inner-value font-weight-600" title="800-521-2227">
+                        800-521-2227
+                    </div>
+                </div>
+                <div class="custom-col-40 border-left-gray">
+                    <div class="label-inner-value font-weight-600" title="">
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="div-row">
+                <div class="custom-col-20">
+                    <div class="label-inner">
+                        Subscriber (Rel.)
+                    </div>
+                </div>
+                <div class="custom-col-40 border-left-gray">
+                    <div class="label-inner-value text-ellipsis font-weight-600" title="Smith, Marlon (Self)">
+                        Smith, Marlon (Self)
+                    </div>
+                </div>
+                <div class="custom-col-40 border-left-gray">
+                    <div class="label-inner-value text-ellipsis font-weight-600" title="">
+                        
+                    </div>
+                </div>
+            </div>           
+            <div class="div-row">
+                <div class="custom-col-20">
+                    <div class="label-inner">
+                        Indi. Max (Rem.)
+                    </div>
+                </div>
+                <div class="custom-col-40 border-left-gray">
+                    <div class="label-inner-value text-ellipsis font-weight-600" title="$1,500.00 ($297.00)">
+                        $1,500.00 ($297.00)
+                    </div>
+                </div>
+                <div class="custom-col-40 border-left-gray">
+                    <div class="label-inner-value text-ellipsis font-weight-600" title="">
+                        
+                    </div>
+                </div>
+            </div>          
+            <div class="div-row">
+                <div class="custom-col-20">
+                    <div class="label-inner">
+                        Ind. Ded. (Rem.)
+                    </div>
+                </div>
+                <div class="custom-col-40 border-left-gray">
+                    <div class="label-inner-value text-ellipsis font-weight-600" title="$50.00 ($0.00)">
+                        $50.00 ($0.00)
+                    </div>
+                </div>
+                <div class="custom-col-40 border-left-gray">
+                    <div class="label-inner-value text-ellipsis font-weight-600" title="">
+                        
+                    </div>
+                </div>
+            </div>                       
+        </div>
+    </div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+
+    var curTheme = 'Web20Blue';
+    var doesInsExist = {
+        primDental: 'true',
+        secDental: 'false',
+        terDental: 'false',
+        quatDental: 'false',
+        primMedical: 'false',
+        secMedical: 'false'
+    };
+
+    patInsurancesChanged.primDental = 'false';
+    patInsurancesChanged.secDental = 'false';
+    patInsurancesChanged.terDental = 'false';
+    patInsurancesChanged.quatDental = 'false';
+    patInsurancesChanged.primMedical = 'false';
+    patInsurancesChanged.secMedical = 'false';
+
+    var insEligInfo = {
+        primDental: {
+            visible: 'True',
+            status: 'U',
+            verifiedOn: '01/01/0001 12:00 AM',
+            verifiedBy: ''
+        },
+        secDental: {
+            visible: 'False',
+            status: '',
+            verifiedOn: '',
+            verifiedBy: ''
+        },
+        terDental: {
+            status: '',
+            verifiedOn: '',
+            verifiedBy: ''
+        },
+        quatDental: {
+            status: '',
+            verifiedOn: '',
+            verifiedBy: ''
+        },
+        primMedical: {
+            status: '',
+            verifiedOn: '',
+            verifiedBy: ''
+        },
+        secMedical: {
+            status: '',
+            verifiedOn: '',
+            verifiedBy: ''
+        }
+    };
+</script>
+			                    </div>
+			                    <div id="dental-tert-quat" class="tab-pane fade">
+                                    
+<div class="denatl-insurance" id="third-fourth-dental-ins">
+        <div class="div-bordered col-lg-12 col-md-12 padding-0">
+            <div class="row patient-header-deatail-bg custom-insurance-header-style">
+                <div class="custom-col-20 custom-margin-right">
+                </div>
+                <div class="custom-col-40 padding-0">
+                    <div class="label-inner-value text-center">
+                        <a class="fa info-link custom-info-link insChangedWarning display-none" data-planc="DT" id="terden-inswarning" title="Status of the 3rd dental insurance changes.">
+                            <img class="custom-low-res-width" src="/Images/PatientOverview/exclamation-triangle.svg">
+                        </a>
+                        <a class="fa info-link display-none" id="terden-insban" title="Patient Name to Subscriber Name and/or relationship do not match.">
+                            <img class="custom-low-res-width" src="/Images/PatientOverview/insurance-ban.svg">
+                        </a>
+                        <a class="editInsLink text-bold text-white" data-page="EditDentalTerIns.aspx" id="editTerDentalIns" tabindex="0" title="Click here to Add/Edit Third Dental Insurance Information"> Third </a>
+                        <a class="fa info-link elig-button display-none" data-qparameter="plantype=T&instype=D" id="terden-elig">
+                            <i id="terden-elig-img" class="fa fa-exclamation-triangle height-17 custom-low-res-width" aria-hidden="true"></i>
+                        </a>
+                        <a class="fa info-link cursor-pointer display-none" id="terden-notes">
+                            <img src="/Images/PatientOverview/Theme/Web20Blue/revised-pat-notes.svg" class="show-custom-tooltip height-16 custom-low-res-width" data-custom-tooltip-title="3rd-Dental Insurance Note" data-custom-tooltip-data="">
+                        </a>
+                    </div>
+                </div>
+                <div class="custom-col-40 custom-margin-left" id="fourth-dental-ins">
+                    <div class="label-inner-value text-center">
+                        <a class="fa info-link custom-info-link insChangedWarning display-none" data-planc="DQ" id="quatden-inswarning" title="Status of the 4th dental insurance changes.">
+                            <img class="custom-low-res-width" src="/Images/PatientOverview/exclamation-triangle.svg">
+                        </a>
+                        <a class="fa info-link display-none" id="quarden-insban" title="Patient Name to Subscriber Name and/or relationship do not match.">
+                            <img class="custom-low-res-width" src="/Images/PatientOverview/insurance-ban.svg">
+                        </a>
+                        <a class="editInsLink text-bold text-white" data-page="EditDentalQuadIns.aspx" id="editQuatDentalIns" tabindex="0" title="Click here to Add/Edit Fourth Insurance Information."> Fourth </a>
+                        <a class="fa info-link elig-button display-none" data-qparameter="plantype=Q&instype=D" id="quatden-elig">
+                            <i id="quatden-elig-img" class="fa fa-exclamation-triangle height-17 custom-low-res-width" aria-hidden="true"></i>
+                        </a>
+                        <a class="fa info-link cursor-pointer display-none" id="quatden-notes">
+                            <img src="/Images/PatientOverview/Theme/Web20Blue/revised-pat-notes.svg" class="show-custom-tooltip height-16 custom-low-res-width" data-custom-tooltip-title="4th-Dental Insurance Note" data-custom-tooltip-data="">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="div-row">
+                <div class="custom-col-20">
+                    <div class="label-inner">
+                        Carrier Name
+                    </div>
+                </div>
+                <div class="custom-col-40 border-left-gray">
+                    <div class="label-inner-value">
+                        <a tabindex="0" id="viewTertDentalCarrier" data-carrierid="" title="Click here to view carrier detail"
+                           class="custom-text-ellipsis font-weight-600"
+                           data-text-res-1=""
+                           data-text-res-2=""
+                           data-text-res-3=""
+                           data-text-res-4=""
+                           data-charlimit-res-2="35"
+                           data-charlimit-res-3="30"
+                           data-charlimit-res-4="25">
+                            
+                        </a>
+                    </div>
+                </div>
+                <div class="custom-col-40 border-left-gray">
+                    <div class="label-inner-value">
+                        <a tabindex="0" id="viewQuatDentalCarrier" data-carrierid="" title="Click here to view carrier detail"
+                           class="custom-text-ellipsis font-weight-600"
+                           data-text-res-1=""
+                           data-text-res-2=""
+                           data-text-res-3=""
+                           data-text-res-4=""
+                           data-charlimit-res-2="35"
+                           data-charlimit-res-3="30"
+                           data-charlimit-res-4="25">
+                            
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="div-row">
+                <div class="custom-col-20">
+                    <div class="label-inner">
+                        Group #
+                    </div>
+                </div>
+                <div class="custom-col-40 border-left-gray">
+                    <div class="label-inner-value text-ellipsis font-weight-600">
+                       <a data-insplanid="0" id="viewTerDentalIns" tabindex="0" title="Click here to View Third Insurance Plan Information."></a> 
+                    </div>
+                </div>
+                <div class="custom-col-40 border-left-gray">
+                    <div class="label-inner-value text-ellipsis font-weight-600">
+                         <a data-insplanid="0" id="viewQuatDentalIns" tabindex="0" title="Click here to View Fourth Insurance Plan Information."></a>
+                    </div>
+                </div>
+            </div>
+            <div class="div-row">
+                <div class="custom-col-20">
+                    <div class="label-inner">
+                        Carrier Phone
+                    </div>
+                </div>
+                <div class="custom-col-40 border-left-gray">
+                    <div class="label-inner-value font-weight-600" title="">
+                        
+                    </div>
+                </div>
+                <div class="custom-col-40 border-left-gray">
+                    <div class="label-inner-value font-weight-600" title="">
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="div-row">
+                <div class="custom-col-20">
+                    <div class="label-inner">
+                        Subscriber (Rel.)
+                    </div>
+                </div>
+                <div class="custom-col-40 border-left-gray">
+                    <div class="label-inner-value text-ellipsis font-weight-600" title="">
+                        
+                    </div>
+                </div>
+                <div class="custom-col-40 border-left-gray">
+                    <div class="label-inner-value text-ellipsis font-weight-600" title="">
+                        
+                    </div>
+                </div>
+            </div>           
+            <div class="div-row">
+                <div class="custom-col-20">
+                    <div class="label-inner">
+                        Indi. Max (Rem.)
+                    </div>
+                </div>
+                <div class="custom-col-40 border-left-gray">
+                    <div class="label-inner-value text-ellipsis font-weight-600" title="">
+                        
+                    </div>
+                </div>
+                <div class="custom-col-40 border-left-gray">
+                    <div class="label-inner-value text-ellipsis font-weight-600" title="">
+                        
+                    </div>
+                </div>
+            </div>          
+            <div class="div-row">
+                <div class="custom-col-20">
+                    <div class="label-inner">
+                        Ind. Ded. (Rem.)
+                    </div>
+                </div>
+                <div class="custom-col-40 border-left-gray">
+                    <div class="label-inner-value text-ellipsis font-weight-600" title="">
+                        
+                    </div>
+                </div>
+                <div class="custom-col-40 border-left-gray">
+                    <div class="label-inner-value text-ellipsis font-weight-600" title="">
+                        
+                    </div>
+                </div>
+            </div>                       
+        </div>
+    </div>
+
+			                    </div>
+			                    <div id="medical-pri-sec" class="tab-pane fade">
+                                    
+<div class="medical-insurance" id="pri-sec-medical-ins">
+	<div class="row patient-header-deatail-bg custom-insurance-header-style">
+		<div class="custom-col-20 custom-margin-right">
+		</div>
+		<div class="custom-col-40">
+			<div class="label-inner-value text-center">
+				<a class="fa info-link custom-info-link insChangedWarning display-none" data-planc="MP" id="primmed-inswarning" title="Status of the primary medical insurance changes.">
+					<img class="custom-low-res-width" src="/Images/PatientOverview/exclamation-triangle.svg">
+				</a>
+				<a class="fa info-link display-none" id="primmed-insban" title="Patient Name to Subscriber Name and/or relationship do not match.">
+					<img class="custom-low-res-width" src="/Images/PatientOverview/insurance-ban.svg">
+				</a>
+				<a class="editInsLink text-bold text-white" data-page="EditMedicalPrimIns.aspx" id="editPrimMedicalIns" tabindex="0" title="Click here to Add/Edit Primary Insurance Information."> Primary </a>
+				<a class="fa info-link elig-disable-no-access elig-button display-none" data-qparameter="plantype=P&instype=D" id="primmed-elig">
+					<i id="primmed-elig-img" class="fa fa-exclamation-triangle height-17 custom-low-res-width" aria-hidden="true"></i>
+				</a>
+				<a class="fa info-link cursor-pointer display-none" id="primmed-notes">
+					<img src="/Images/PatientOverview/Theme/Web20Blue/revised-pat-notes.svg" class="show-custom-tooltip height-16 custom-low-res-width" data-custom-tooltip-title="Primary Insurance Note" data-custom-tooltip-data="">
+				</a>
+			</div>
+		</div>
+		<div class="custom-col-40 custom-margin-left">
+			<div class="label-inner-value text-center">
+				<a class="fa info-link custom-info-link insChangedWarning display-none" data-planc="MS" id="secmed-inswarning" title="Status of the secondary medical insurance changes.">
+					<img class="custom-low-res-width" src="/Images/PatientOverview/exclamation-triangle.svg">
+				</a>
+				<a class="fa info-link display-none" id="secmed-insban" title="Patient Name to Subscriber Name and/or relationship do not match.">
+					<img class="custom-low-res-width" src="/Images/PatientOverview/insurance-ban.svg">
+				</a>
+				<a class="editInsLink text-bold text-white" data-page="EditMedicalSecIns.aspx" id="editSecMedicalIns" tabindex="0" title="Click here to Add/Edit Secondary Insurance Information."> Secondary </a>
+				<a class="fa info-link elig-disable-no-access elig-button display-none" data-qparameter="plantype=S&instype=D" id="secmed-elig">
+					<i id="secmed-elig-img" class="fa fa-exclamation-triangle height-17 custom-low-res-width" aria-hidden="true"></i>
+				</a>
+				<a class="fa info-link cursor-pointer display-none" id="secmed-notes">
+					<img src="/Images/PatientOverview/Theme/Web20Blue/revised-pat-notes.svg" class="show-custom-tooltip height-16 custom-low-res-width" data-custom-tooltip-title="Secondary Insurance Note" data-custom-tooltip-data="">
+				</a>
+			</div>
+		</div>
+	</div>
+	<div class="div-row">
+		<div class="custom-col-20">
+			<div class="label-inner">
+				Carrier Name
+			</div>
+		</div>
+		<div class="custom-col-40 border-left-gray">
+			<div class="label-inner-value">
+				<a tabindex="0" id="viewPrimMedicalCarrier" data-carrierid="" title="Click here to view carrier detail"
+				   class="custom-text-ellipsis font-weight-600"
+				   data-text-res-1=""
+				   data-text-res-2=""
+				   data-text-res-3=""
+				   data-text-res-4=""
+				   data-charlimit-res-2="35"
+				   data-charlimit-res-3="30"
+				   data-charlimit-res-4="25">
+					
+				</a>
+			</div>
+		</div>
+		<div class="custom-col-40 border-left-gray">
+			<div class="label-inner-value">
+				<a tabindex="0" id="viewSecMedicalCarrier" data-carrierid="" title="Click here to view carrier detail"
+				   class="custom-text-ellipsis font-weight-600"
+				   data-text-res-1=""
+				   data-text-res-2=""
+				   data-text-res-3=""
+				   data-text-res-4=""
+				   data-charlimit-res-2="35"
+				   data-charlimit-res-3="30"
+				   data-charlimit-res-4="25">
+					
+				</a>
+			</div>
+		</div>
+	</div>
+	<div class="div-row">
+		<div class="custom-col-20">
+			<div class="label-inner">
+				Group #
+			</div>
+		</div>
+		<div class="custom-col-40 border-left-gray">
+			<div class="label-inner-value text-ellipsis font-weight-600">
+				<a data-insplanid="0" id="viewPrimMedicalIns" tabindex="0" title="Click here to View Primary Insurance Plan Information."></a>
+			</div>
+		</div>
+		<div class="custom-col-40 border-left-gray">
+			<div class="label-inner-value text-ellipsis font-weight-600">
+				<a data-insplanid="0" id="viewSecMedicalIns" tabindex="0" title="Click here to View Secondary Insurance Plan Information."></a>
+			</div>
+		</div>
+	</div>
+	<div class="div-row">
+		<div class="custom-col-20">
+			<div class="label-inner">
+				Carrier Phone
+			</div>
+		</div>
+		<div class="custom-col-40 border-left-gray">
+			<div class="label-inner-value font-weight-600" title="">
+				
+			</div>
+		</div>
+		<div class="custom-col-40 border-left-gray">
+			<div class="label-inner-value font-weight-600" title="">
+				
+			</div>
+		</div>
+	</div>
+	<div class="div-row">
+		<div class="custom-col-20">
+			<div class="label-inner">
+				Subscriber (Rel.)
+			</div>
+		</div>
+		<div class="custom-col-40 border-left-gray">
+			<div class="label-inner-value text-ellipsis font-weight-600" title="">
+				
+			</div>
+		</div>
+		<div class="custom-col-40 border-left-gray">
+			<div class="label-inner-value text-ellipsis font-weight-600" title="">
+				
+			</div>
+		</div>
+	</div>	
+	<div class="div-row">
+		<div class="custom-col-20">
+			<div class="label-inner">
+				Indi. Max (Rem.)
+			</div>
+		</div>
+		<div class="custom-col-40 border-left-gray">
+			<div class="label-inner-value text-ellipsis font-weight-600" title="">
+				
+			</div>
+		</div>
+		<div class="custom-col-40 border-left-gray">
+			<div class="label-inner-value text-ellipsis font-weight-600" title="">
+				
+			</div>
+		</div>
+	</div>
+	<div class="div-row">
+		<div class="custom-col-20">
+			<div class="label-inner">
+				Ind. Ded. (Rem.)
+			</div>
+		</div>
+		<div class="custom-col-40 border-left-gray">
+			<div class="label-inner-value text-ellipsis font-weight-600" title="">
+				
+			</div>
+		</div>
+		<div class="custom-col-40 border-left-gray">
+			<div class="label-inner-value text-ellipsis font-weight-600" title="">
+				
+			</div>
+		</div>
+	</div>	
+</div>
+			                    </div>
+		                    </div>
+	                    </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    
+<div class="row margin-right-0 padding-top-10">
+	<div class="col-lg-6 col-md-6 table-title display-flex text-uppercase margin-top-5 font-weight-600">Account Members</div>
+	<div class="col-lg-6 col-md-6 text-uppercase display-flex flex-end margin-bottom-5 custom-padding-right">
+		<span title=""
+            class="">
+			<button type="submit"  id="add-new-member" class="btn-primary text-capitalize margin-top-5">
+				<i class="fa fa-plus margin-right-5" aria-hidden="true"></i> Add New Member
+			</button>
+		</span>
+	</div>
+</div>
+
+<div class="padding-0">
+    <div class="table-head-fixed">
+        <div class="tbl-header common-table">
+            <table cellpadding="0" cellspacing="0" border="0">
+                <thead>
+                    <tr id="AccountMembersHeader">
+                        <th class="width-20 curved-left custom-revised-padding" title="Member">Member</th>
+                        <th class="width-14 custom-revised-padding" title="Age / Sex">Age / Sex</th>
+                        <th class="width-14 custom-revised-padding" title="Next Visit">Next Visit</th>
+                        <th class="width-14 custom-revised-padding" title="Next Recall">Next Recall</th>
+                        <th class="width-14 text-ellipsis custom-revised-padding" title="Schedule Recall">Sched Recall</th>
+                        <th class="width-14 custom-revised-padding" title="Last Visit">Last Visit</th>
+                        <th class="width-10 curved-right custom-revised-padding" title="Active">Active</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <div class="tbl-content common-table account-members-table curved-bottom slimscroll-border">
+            <table class="table active-row-border" cellpadding="0" cellspacing="0" border="0">
+                <tbody id="AccountMemberContents">
+                            <tr member-pat-id="9070654" id="active-row" >
+                                <td class="width-20 text-ellipsis" title="Smith, Marlon">
+                                    <a tabindex="0" class="account_member_hyperlink hyperlink" data-patid="9070654" data-rpid="9069809">
+                                        Smith, Marlon
+                                    </a>
+                                </td>
+                                <td class="text-ellipsis width-14" title="48  / M">48  / M</td>
+                                <td class="text-ellipsis width-14" title="01/22/2026">01/22/2026</td>
+                                <td class="text-ellipsis width-14" title="01/27/2026">01/27/2026</td>
+                                <td class="text-ellipsis width-14 acc-member-sched-recall" title="01/22/2026">01/22/2026</td>
+                                <td class="text-ellipsis width-14" title="09/26/2025">09/26/2025</td>
+                                <td class="text-ellipsis width-10" title="Yes">Yes</td>
+                            </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="padding-5-10 patient-overview patient-overview-tabs margin-0 revised-patient-overview">
+            <div>
+                <div class="col-lg-12 col-md-12 text-uppercase row-tabs margin-bottom-10 padding-left-5 padding-right-5">
+                    <ul class="col-lg-12 col-md-12 nav nav-tabs tab-name-list">
+                        <li class="active"><a data-toggle="tab" href="#summary" class="padding-left-0">Summary</a></li>                      
+                        <li><a data-toggle="tab" href="#balances">Balances</a></li>
+                        <li><a data-toggle="tab" href="#contract">Contracts</a></li>                        
+                    </ul>                   
+                </div>
+
+                <div class="col-lg-12 col-md-12  border-bottom border-radius-5 padding-left-5 padding-right-5">
+                    <div class="tab-content">
+                        <div id="summary" class="tab-pane fade in active">
+                            
+
+<div class="tab-content-main padding-0">
+	<div class="row summary-margin">
+		<div class="col-lg-6 col-md-6 padding-left-0 padding-right-5">						
+			
+<div class="row">
+    <div class="col-lg-3 col-md-3 table-title display-flex">
+	    <span class="pt-1 d-inline-block font-weight-600">APPOINTMENTS</span>
+	</div>
+	<div class="col-lg-9 col-md-9 display-flex flex-end">
+	    <button type="submit" id="archived-appts" class="appointments-btn btn-primary text-capitalize margin-right-5"><i class="fa fa-calendar margin-right-5" aria-hidden="true"></i> Archive Appt </button>
+            <span title=""
+                class="">
+                <button type="submit"  id="new-appt" class="appointments-btn btn-primary text-capitalize margin-right-5">
+                    <i class="fa fa-plus margin-right-5" aria-hidden="true"></i> Add New Appt
+                </button>
+            </span>
+            <button type="submit" id="view-patient-family-appts" class="appointments-btn btn-primary text-capitalize" title="View Future Family Appointments">
+                <i class="fa fa-eye margin-right-5" aria-hidden="true"></i>
+                <span class="res-specific-text" data-text-res-1="View Future Family Appt" data-text-res-2="View Future Family Appt" data-text-res-3="View Future Family Appt" data-text-res-4="View Fut Family Appt">
+                    View Future Family Appt
+                </span>
+            </button>           
+	</div>
+</div>
+<div class="tab-content-main padding-0">
+    <div class="table-head-fixed">
+        <div class="tbl-header common-table">
+            <table cellpadding="0" cellspacing="0" border="0">
+                <thead>
+                    <tr id="PatientApptsHeader">
+                        <th class="width-12 curved-top-left-right" title="Appointment Date">Appt Date</th>
+                        <th class="width-13" title="Appointment Time">Appt Time</th>
+                        <th class="width-14" title="Office">Office</th>
+                        <th class="width-12" title="Operatory">Operatory</th>
+                        <th class="width-12" title="Provider">Provider</th>
+                        <th class="width-10" title="Duration">Duration</th>
+                        <th class="width-14" title="Status">Status</th>
+                        <th class="width-12 text-ellipsis curved-top-left-right" title="Last Updated">Last Updated</th>
+                    </tr>                    
+                </thead>
+            </table>
+        </div>
+        <div class="tbl-content slimscroll-border common-table appointments-table border-bottom-with-radius">
+            <table class="table" cellpadding="0" cellspacing="0" border="0">
+                <tbody id="PatientApptsContents">
+                            <tr appt-id="9444614">
+                                <td class="width-12">
+                                    <a tabindex="0" class="apptLink" prdrID="103" apptDate="01/22/2026" appttime="03:30 PM  " apptID="9444614" officeID="102">
+                                        01/22/2026
+                                    </a>
+                                </td>
+                                <td class="width-13">
+                                    <a tabindex="0" class="apptLink" prdrID="103" apptDate="01/22/2026" appttime="03:30 PM  " apptID="9444614" officeID="102">
+                                         03:30 PM  
+                                    </a>
+                                </td>
+                                <td class="text-ellipsis width-14" title="ACE04">ACE04</td>
+                                <td class="text-ellipsis width-12" title="Op2">Op2</td>
+                                <td class="text-ellipsis width-12" title="ACE04">ACE04</td>
+                                <td class="text-ellipsis width-10" title="60">60</td>
+                                <td class="text-ellipsis width-14" title="Scheduled">Scheduled</td>                               
+                                <td class="text-ellipsis width-12" title="ELENACHAVEZ">ELENACHAVEZ</td>
+                            </tr>
+                            <tr appt-id="9466730">
+                                <td class="width-12">
+                                    <a tabindex="0" class="apptLink" prdrID="103" apptDate="10/02/2025" appttime="03:00 PM  " apptID="9466730" officeID="102">
+                                        10/02/2025
+                                    </a>
+                                </td>
+                                <td class="width-13">
+                                    <a tabindex="0" class="apptLink" prdrID="103" apptDate="10/02/2025" appttime="03:00 PM  " apptID="9466730" officeID="102">
+                                         03:00 PM  
+                                    </a>
+                                </td>
+                                <td class="text-ellipsis width-14" title="ACE04">ACE04</td>
+                                <td class="text-ellipsis width-12" title="Op1">Op1</td>
+                                <td class="text-ellipsis width-12" title="ACE04">ACE04</td>
+                                <td class="text-ellipsis width-10" title="90">90</td>
+                                <td class="text-ellipsis width-14" title="Confirmed">Confirmed</td>                               
+                                <td class="text-ellipsis width-12" title="ESMERALDA">ESMERALDA</td>
+                            </tr>
+                            <tr appt-id="9446431">
+                                <td class="width-12">
+                                    <a tabindex="0" class="apptLink" prdrID="103" apptDate="09/26/2025" appttime="02:45 PM  " apptID="9446431" officeID="102">
+                                        09/26/2025
+                                    </a>
+                                </td>
+                                <td class="width-13">
+                                    <a tabindex="0" class="apptLink" prdrID="103" apptDate="09/26/2025" appttime="02:45 PM  " apptID="9446431" officeID="102">
+                                         02:45 PM  
+                                    </a>
+                                </td>
+                                <td class="text-ellipsis width-14" title="ACE04">ACE04</td>
+                                <td class="text-ellipsis width-12" title="Op1">Op1</td>
+                                <td class="text-ellipsis width-12" title="ACE04">ACE04</td>
+                                <td class="text-ellipsis width-10" title="60">60</td>
+                                <td class="text-ellipsis width-14" title="Checked Out, Posted">Checked Out, Posted</td>                               
+                                <td class="text-ellipsis width-12" title="JUNGKANG">JUNGKANG</td>
+                            </tr>
+                            <tr appt-id="9444613">
+                                <td class="width-12">
+                                    <a tabindex="0" class="apptLink" prdrID="103" apptDate="06/17/2025" appttime="04:00 PM  " apptID="9444613" officeID="102">
+                                        06/17/2025
+                                    </a>
+                                </td>
+                                <td class="width-13">
+                                    <a tabindex="0" class="apptLink" prdrID="103" apptDate="06/17/2025" appttime="04:00 PM  " apptID="9444613" officeID="102">
+                                         04:00 PM  
+                                    </a>
+                                </td>
+                                <td class="text-ellipsis width-14" title="ACE04">ACE04</td>
+                                <td class="text-ellipsis width-12" title="Op1">Op1</td>
+                                <td class="text-ellipsis width-12" title="ACE04">ACE04</td>
+                                <td class="text-ellipsis width-10" title="60">60</td>
+                                <td class="text-ellipsis width-14" title="Checked Out, Posted">Checked Out, Posted</td>                               
+                                <td class="text-ellipsis width-12" title="JENNIFERBALLIN">JENNIFERBALLIN</td>
+                            </tr>
+                            <tr appt-id="9441978">
+                                <td class="width-12">
+                                    <a tabindex="0" class="apptLink" prdrID="103" apptDate="06/06/2025" appttime="03:00 PM  " apptID="9441978" officeID="102">
+                                        06/06/2025
+                                    </a>
+                                </td>
+                                <td class="width-13">
+                                    <a tabindex="0" class="apptLink" prdrID="103" apptDate="06/06/2025" appttime="03:00 PM  " apptID="9441978" officeID="102">
+                                         03:00 PM  
+                                    </a>
+                                </td>
+                                <td class="text-ellipsis width-14" title="ACE04">ACE04</td>
+                                <td class="text-ellipsis width-12" title="Op2">Op2</td>
+                                <td class="text-ellipsis width-12" title="ACE04">ACE04</td>
+                                <td class="text-ellipsis width-10" title="60">60</td>
+                                <td class="text-ellipsis width-14" title="Checked Out">Checked Out</td>                               
+                                <td class="text-ellipsis width-12" title="ESMERALDA">ESMERALDA</td>
+                            </tr>
+                </tbody>                
+            </table>
+        </div>
+    </div>
+</div>
+
+		</div>
+
+		<div class="col-lg-6 col-md-6 custom-summary-tab-padding">
+			<div class="row margin-right-0">
+				<div class="col-lg-6 col-md-6 table-title display-flex">
+					<span class="pt-1 d-inline-block font-weight-600">BALANCES</span>
+				</div>
+				<div class="col-lg-6 col-md-6 display-flex flex-end custom-padding-right">
+					<span title=""
+					class="">                          
+						<button type="submit"  id="ledger-btn" class="btn-primary btn-edit-office text-capitalize" onclick="redirectToLedgerScreen();">
+							<i class="fa fa-file-text-o margin-right-5"></i>Ledger
+						</button>
+					</span>
+				</div>
+			</div>
+			<div class="table-head-fixed">
+				<div class="balances-table-header tbl-header common-table">
+					<table cellpadding="0" cellspacing="0" border="0">
+						<thead>
+							<tr>
+								<th class="width-20 text-ellipsis curved-top-left-right" title="Member">Member</th>
+								<th class="width-10 text-ellipsis text-right" title="Current">Current</th>
+								<th class="width-10 text-ellipsis text-right" title="Over 30" style="padding-right:10px !important;">Over 30</th>
+								<th class="width-10 text-ellipsis text-right" title="Over 60" style="padding-right:11px !important;">Over 60</th>
+								<th class="width-10 text-ellipsis text-right" title="Over 90" style="padding-right:12px !important;">Over 90</th>
+								<th class="width-10 text-ellipsis text-right" title="Over 120" style="padding-right:13px !important;">Over 120</th>
+								<th class="width-10 text-ellipsis text-right" title="Balance" style="padding-right:14px !important;">Balance</th>
+								<th class="width-10 text-ellipsis text-right" title="Estimated Patient" style="padding-right:15px !important;">Est Pat</th>
+								<th class="width-10 text-ellipsis text-right curved-top-left-right" title="Estimated Insurance" style="padding-right:16px !important;">Est Ins</th>																		
+							</tr>
+						</thead>
+					</table>
+				</div>
+				<div class="tbl-content slimscroll-border common-table balances-table padding-right-5 border-bottom-with-radius">
+					<table class="table" cellpadding="0" cellspacing="0" border="0">
+						<tbody>
+									<tr data-patid="9069809" data-patname="Account Balance" data-isaccountbalance="True">
+										<td class="width-20 text-ellipsis" title="Account Balance">
+											<a tabindex="0" title="" class="patient_hyperlink hyperlink" data-patid="9069809" data-rpid="9069809" data-isaccountbalance="True">
+												Account Balance
+											</a>
+										</td>
+										<td class="width-10 text-right text-ellipsis" title="($4,758.64)">($4,758.64)</td>
+										<td class="width-10 text-right text-ellipsis" title="$0.00">$0.00</td>
+										<td class="width-10 text-right text-ellipsis" title="$0.00">$0.00</td>
+										<td class="width-10 text-right text-ellipsis" title="$0.00">$0.00</td>
+										<td class="width-10 text-right text-ellipsis" title="$0.00">$0.00</td>
+										<td class="width-10 text-right text-ellipsis" title="Click here to get AR Details">
+											<a class="aging-details" data-agingdetailsfor="AccBal">
+												($4,758.64)
+											</a>
+										</td>
+										<td class="width-10 text-right text-ellipsis" title="Click here to get AR Details">
+											<a class="aging-details" data-agingdetailsfor="AccPat">
+												($4,814.62)
+											</a>
+										</td>		
+										<td class="width-10 text-right text-ellipsis" title="Click here to get AR Details">
+											<a class="aging-details" data-agingdetailsfor="AccIns">
+												$55.98
+											</a>
+										</td>																				
+									</tr>
+									<tr data-patid="9070654" data-patname="Smith, Marlon " data-isaccountbalance="False">
+										<td class="width-20 text-ellipsis" title="Smith, Marlon ">
+											<a tabindex="0" title="Pat Types: &#xA;Chart #: " class="patient_hyperlink hyperlink" data-patid="9070654" data-rpid="9069809" data-isaccountbalance="False">
+												Smith, Marlon 
+											</a>
+										</td>
+										<td class="width-10 text-right text-ellipsis" title="($4,758.64)">($4,758.64)</td>
+										<td class="width-10 text-right text-ellipsis" title="$0.00">$0.00</td>
+										<td class="width-10 text-right text-ellipsis" title="$0.00">$0.00</td>
+										<td class="width-10 text-right text-ellipsis" title="$0.00">$0.00</td>
+										<td class="width-10 text-right text-ellipsis" title="$0.00">$0.00</td>
+										<td class="width-10 text-right text-ellipsis" title="Click here to get AR Details">
+											<a class="aging-details" data-agingdetailsfor="PatBal">
+												($4,758.64)
+											</a>
+										</td>
+										<td class="width-10 text-right text-ellipsis" title="Click here to get AR Details">
+											<a class="aging-details" data-agingdetailsfor="PatPat">
+												($4,814.62)
+											</a>
+										</td>		
+										<td class="width-10 text-right text-ellipsis" title="Click here to get AR Details">
+											<a class="aging-details" data-agingdetailsfor="PatIns">
+												$55.98
+											</a>
+										</td>																				
+									</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row margin-0">
+		<div class="col-lg-6 col-md-6 padding-left-0 padding-right-5">
+			<div class="row">
+	<div class="col-lg-6 col-md-6 table-title display-flex">
+		<span class="pt-1 d-inline-block font-weight-600">RECALLS
+			<i class="fa display-none">
+				<img id="NoRecallDatesImg" src="/images/PatientOverview/no-recall-record-icon.svg" title="No future recall dates" alt="No future recall dates">
+            </i>
+		</span>
+	</div>
+	<div class="col-lg-6 col-md-6 display-flex flex-end">
+		<span title=""
+			class="">
+			<button type="submit"  class="btn-primary btn-edit-recall text-capitalize"><i class="fa fa-pencil margin-right-5" aria-hidden="true"></i> Edit </button>
+		</span>
+	</div>
+</div>
+<div class="tab-content-main padding-0">
+	<div class="table-head-fixed">
+		<div class="tbl-header common-table">
+			<table cellpadding="0" cellspacing="0" border="0">
+				<thead>
+					<tr>
+						<th class="width-12 curved-top-left-right" title="Code">Code</th>
+						<th class="width-13" title="Interval">Interval</th>
+						<th class="width-15" title="Recall Date">Recall Date</th>
+						<th class="width-30" title="Reason">Reason</th>
+						<th class="width-15" title="Schedule Date">Sch Date</th>
+						<th class="width-15 curved-top-left-right" title="Schedule Time">Sch Time</th>
+					</tr>
+				</thead>
+			</table>
+		</div>
+		<div class="tbl-content slimscroll-border common-table recalls-table border-bottom-with-radius">
+			<table class="table" cellspacing="0" border="0">
+				<tbody>
+							<tr>
+								<td class="width-12 text-ellipsis" title="D0210">D0210</td>
+								<td class="width-13 text-ellipsis" title="3 Y &#x2B; 1D">3 Y &#x2B; 1D</td>
+								<td class="width-15 text-ellipsis" title="06/07/2028">06/07/2028</td>
+								<td class="width-30 text-ellipsis" title="Intraoral - Complete Series Of Radiographic Images">Intraoral - Complete Series Of Radiographic Images</td>
+								<td class="width-15 text-ellipsis" title="">- </td>
+								<td class="width-15 text-ellipsis">- </td>
+							</tr>
+							<tr>
+								<td class="width-12 text-ellipsis" title="D0330">D0330</td>
+								<td class="width-13 text-ellipsis" title="3 Y &#x2B; 1D">3 Y &#x2B; 1D</td>
+								<td class="width-15 text-ellipsis" title="06/07/2028">06/07/2028</td>
+								<td class="width-30 text-ellipsis" title="Panoramic Radiographic Image">Panoramic Radiographic Image</td>
+								<td class="width-15 text-ellipsis" title="">- </td>
+								<td class="width-15 text-ellipsis">- </td>
+							</tr>
+							<tr>
+								<td class="width-12 text-ellipsis" title="D4910">D4910</td>
+								<td class="width-13 text-ellipsis" title="4 M &#x2B; 1D">4 M &#x2B; 1D</td>
+								<td class="width-15 text-ellipsis" title="01/27/2026">01/27/2026</td>
+								<td class="width-30 text-ellipsis" title="Periodontal Maintenance">Periodontal Maintenance</td>
+								<td class="width-15 text-ellipsis" title="">- </td>
+								<td class="width-15 text-ellipsis">- </td>
+							</tr>
+							<tr>
+								<td class="width-12 text-ellipsis" title="D0120">D0120</td>
+								<td class="width-13 text-ellipsis" title="6 M &#x2B; 1D">6 M &#x2B; 1D</td>
+								<td class="width-15 text-ellipsis" title="">- </td>
+								<td class="width-30 text-ellipsis" title="Periodic Oral Evaluation">Periodic Oral Evaluation</td>
+								<td class="width-15 text-ellipsis" title="01/22/2026">01/22/2026</td>
+								<td class="width-15 text-ellipsis" title="03:30 PM  ">03:30 PM  </td>
+							</tr>
+							<tr>
+								<td class="width-12 text-ellipsis" title="D1110">D1110</td>
+								<td class="width-13 text-ellipsis" title="6 M &#x2B; 1D">6 M &#x2B; 1D</td>
+								<td class="width-15 text-ellipsis" title="">- </td>
+								<td class="width-30 text-ellipsis" title="Prophylaxis - Adult">Prophylaxis - Adult</td>
+								<td class="width-15 text-ellipsis" title="">- </td>
+								<td class="width-15 text-ellipsis">- </td>
+							</tr>
+							<tr>
+								<td class="width-12 text-ellipsis" title="D1120">D1120</td>
+								<td class="width-13 text-ellipsis" title="6 M &#x2B; 1D">6 M &#x2B; 1D</td>
+								<td class="width-15 text-ellipsis" title="">- </td>
+								<td class="width-30 text-ellipsis" title="Prophylaxis - Child">Prophylaxis - Child</td>
+								<td class="width-15 text-ellipsis" title="">- </td>
+								<td class="width-15 text-ellipsis">- </td>
+							</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+
+		</div>
+
+		<div class="col-lg-6 col-md-6 custom-summary-tab-padding">
+			<div class="row margin-0">
+				<div class="col-lg-6 col-md-6 padding-left-0 padding-right-5">
+					<div class="row">
+						<div class="col-lg-6 col-md-6 table-title">							
+							<span class="pt-1 d-inline-block font-weight-600">BILLING</span>                                                											
+						</div>
+					</div>
+					<div class="table-head-fixed">
+						<div class="tbl-header common-table">
+							<table cellpadding="0" cellspacing="0">
+								<thead>
+									<tr>
+										<th class="width-40 curved-top-left-right"></th>
+										<th class="width-30 text-right" title="Amount">Amount</th>
+										<th class="width-30 curved-top-left-right" title="Date">Date</th>
+									</tr>
+								</thead>								
+							</table>
+						</div>
+						<div class="common-table border-bottom-with-radius custom-overflow-auto">
+							<table class="table" cellpadding="0" cellspacing="0">
+								<tbody>
+									<tr>
+										<td class="text-ellipsis width-40" title="Last Pat Pay">Last Pat Pay</td>
+										<td class="text-ellipsis width-30 text-right" title="$4,069.88">$4,069.88</td>
+										<td class="text-ellipsis width-30" title="09/26/2025">09/26/2025</td>
+									</tr>
+									<tr>
+										<td class="text-ellipsis width-40" title="Last Ins Pay">Last Ins Pay</td>
+										<td class="text-ellipsis width-30 text-right" title="$227.00">$227.00</td>
+										<td class="text-ellipsis width-30" title="07/30/2025">07/30/2025</td>
+									</tr>
+									<tr>
+										<td class="text-ellipsis width-40" title="Last Statement">Last Statement</td>
+										<td class="text-ellipsis width-30 text-right" title="$0.00">$0.00</td>
+										<td class="text-ellipsis width-30" title="">- </td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>					
+				</div>
+				<div class="col-lg-6 col-md-6 custom-summary-tab-padding">
+					<div class="row margin-right-0">
+						<div class="col-lg-3 col-md-3 table-title display-flex">
+							<span class="pt-1 d-inline-block font-weight-600">CONTRACT</span>
+						</div>
+						<div class="col-lg-9 col-md-9 display-flex flex-end custom-padding-right">
+							<a id="ortho-payment-plan-icon" class="fa margin-right-5 display-none" title="Status of the Ortho contract and the current balance">
+								<img src="/images/PatientOverview/ortho-payment-plan.svg" />
+							</a>
+							<span title="Edit Ortho"
+							class="">
+
+									<button id="btn-pay-pan"  type="submit" class="btn-primary custom-btn-width margin-right-5 text-ellipsis custom-redirect" data-targetpage=/ASPX/Patients/AdvancedOrthoContract.aspx?patType=orthoPat>
+										<i class="fa fa-pencil margin-right-5"></i> EDIT ORTHO
+									</button>
+							</span>
+							<span title="Edit Regular"
+							class="">
+									<button id="btn-pay-pan"  type="submit" class="btn-primary custom-btn-width text-ellipsis custom-redirect" data-targetpage=/ASPX/Patients/AdvancedContractPlan.aspx?patType=regPat>
+										<i class="fa fa-pencil margin-right-5"></i> EDIT REGULAR
+									</button>
+
+							</span>
+						</div>
+					</div>
+					<div class="table-head-fixed">
+						<div class="tbl-header common-table">
+							<table cellpadding="0" cellspacing="0">
+								<thead>
+									<tr>
+										<th class="width-40 curved-top-left-right"></th>
+										<th class="width-30" title="Regular Patient">Reg</th>
+										<th class="width-30 curved-top-left-right" title="Ortho Patient">Ortho</th>
+                                    </tr>
+                                </thead>
+							</table>
+						</div>
+						<div class="common-table border-bottom-with-radius custom-overflow-auto">
+							<table class="table" cellpadding="0" cellspacing="0">
+								<tbody>
+									<tr>
+										<td class="text-ellipsis width-40" title="Rem. Amount">Rem. Amount</td>
+                                        <td class="text-ellipsis width-30">- </td>
+                                        <td class="text-ellipsis width-30">- </td>
+									</tr>
+                                    <tr>
+										<td class="text-ellipsis width-40" title="Rem. Payments">Rem. Payments</td>
+                                        <td class="text-ellipsis width-30">- </td>
+                                        <td class="text-ellipsis width-30">- </td>
+                                    </tr>
+                                    <tr>
+										<td class="text-ellipsis width-40" title="Next Pay Date">Next Pay Date</td>
+                                        <td class="text-ellipsis width-30">- </td>
+                                        <td class="text-ellipsis width-30">- </td>
+                                    </tr>
+                                </tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+                        </div>
+			            <div id="balances" class="tab-pane fade">
+                            
+<div class="tab-content-main">
+	<div class="balances-div padding-top-5">
+		<div class="row padding-0 margin-0">
+			<div class="col-lg-9 col-md-9 padding-0  margin-0">
+				<div class="table-head-fixed">
+					<div class="balances-table-header tbl-header common-table">
+						<table cellpadding="0" cellspacing="0" border="0">
+							<thead>
+								<tr>
+									<th class="width-14 text-ellipsis curved-top-left-right" title="Patient">Patient</th>
+									<th class="width-9 text-ellipsis text-right" title="Current">Current</th>
+									<th class="width-9 text-ellipsis text-right" title="Over 30">Over 30</th>
+									<th class="width-9 text-ellipsis text-right" title="Over 60">Over 60</th>
+									<th class="width-9 text-ellipsis text-right" title="Over 90">Over 90</th>
+									<th class="width-10 text-ellipsis text-right" title="Over 120">Over 120</th>
+									<th class="width-9 text-ellipsis text-right" title="Balance">Balance</th>
+									<th class="width-9 text-ellipsis text-right" title="Estimated Insurance">Est Ins</th>
+									<th class="width-9 text-ellipsis text-right" title="Estimated Patient">Est Pat</th>
+									<th class="width-12 text-ellipsis text-right" title="Today's Charges">Tdy Charges</th>
+									<th class="width-12 text-ellipsis text-right" title="Today's Est Ins">Tdy Est Ins</th>
+									<th class="width-12 text-ellipsis text-right" title="Today's Est Pat">Tdy Est Pat</th>
+									<th class="width-12 text-ellipsis text-right" title="Last Ins Pay">Last Ins Pay</th>
+									<th class="width-14 text-ellipsis" title="Last Ins Pay Date">Last Ins Pay Dt</th>
+									<th class="width-12 text-ellipsis text-right" title="Last Pat. Pay">Last Pat. Pay</th>
+									<th class="width-12 text-ellipsis curved-top-left-right" title="Last Pat. Date">Last Pat. Dt</th>
+								</tr>
+							</thead>
+						</table>
+					</div>
+					<div class="tbl-content slimscroll-border common-table balances-table border-bottom-with-radius">
+						<table class="table" cellpadding="0" cellspacing="0" border="0">
+							<tbody>
+										<tr data-patid="9069809" data-patname="Account Balance" data-isaccountbalance="True">
+											<td class="width-14 text-ellipsis" title="Account Balance">
+												<a tabindex="0" title="" class="patient_hyperlink hyperlink" data-patid="9069809" data-rpid="9069809" data-isaccountbalance="True">
+													Account Balance
+												</a>
+											</td>
+											<td class="width-9 text-right text-ellipsis" title="($4,758.64)">($4,758.64)</td>
+											<td class="width-9 text-right text-ellipsis" title="$0.00">$0.00</td>
+											<td class="width-9 text-right text-ellipsis" title="$0.00">$0.00</td>
+											<td class="width-9 text-right text-ellipsis" title="$0.00">$0.00</td>
+											<td class="width-10 text-right text-ellipsis" title="$0.00">$0.00</td>
+											<td class="width-9 text-right text-ellipsis" title="Click here to get AR Details">
+												<a class="aging-details" data-agingdetailsfor="AccBal">
+													($4,758.64)
+												</a>
+											</td>
+											<td class="width-9 text-right text-ellipsis" title="Click here to get AR Details">
+												<a class="aging-details" data-agingdetailsfor="AccIns">
+													$55.98
+												</a>
+											</td>
+											<td class="width-9 text-right text-ellipsis" title="Click here to get AR Details">
+												<a class="aging-details" data-agingdetailsfor="AccPat">
+													($4,814.62)
+												</a>
+											</td>
+											<td class="width-12 text-right text-ellipsis" title="$0.00">$0.00</td>
+											<td class="width-12 text-right text-ellipsis" title="$0.00">$0.00</td>
+											<td class="width-12 text-right text-ellipsis" title="$0.00">$0.00</td>
+											<td class="width-12 text-right text-ellipsis" title="$227.00">$227.00</td>
+											<td class="width-14 text-ellipsis" title="07/30/2025">07/30/2025</td>
+											<td class="width-12 text-right text-ellipsis" title="$4,069.88">$4,069.88</td>
+											<td class="width-12 text-ellipsis" title="09/26/2025">09/26/2025</td>
+										</tr>
+										<tr data-patid="9070654" data-patname="Smith, Marlon " data-isaccountbalance="False">
+											<td class="width-14 text-ellipsis" title="Smith, Marlon ">
+												<a tabindex="0" title="Pat Types: &#xA;Chart #: " class="patient_hyperlink hyperlink" data-patid="9070654" data-rpid="9069809" data-isaccountbalance="False">
+													Smith, Marlon 
+												</a>
+											</td>
+											<td class="width-9 text-right text-ellipsis" title="($4,758.64)">($4,758.64)</td>
+											<td class="width-9 text-right text-ellipsis" title="$0.00">$0.00</td>
+											<td class="width-9 text-right text-ellipsis" title="$0.00">$0.00</td>
+											<td class="width-9 text-right text-ellipsis" title="$0.00">$0.00</td>
+											<td class="width-10 text-right text-ellipsis" title="$0.00">$0.00</td>
+											<td class="width-9 text-right text-ellipsis" title="Click here to get AR Details">
+												<a class="aging-details" data-agingdetailsfor="PatBal">
+													($4,758.64)
+												</a>
+											</td>
+											<td class="width-9 text-right text-ellipsis" title="Click here to get AR Details">
+												<a class="aging-details" data-agingdetailsfor="PatIns">
+													$55.98
+												</a>
+											</td>
+											<td class="width-9 text-right text-ellipsis" title="Click here to get AR Details">
+												<a class="aging-details" data-agingdetailsfor="PatPat">
+													($4,814.62)
+												</a>
+											</td>
+											<td class="width-12 text-right text-ellipsis">- </td>
+											<td class="width-12 text-right text-ellipsis">- </td>
+											<td class="width-12 text-right text-ellipsis">- </td>
+											<td class="width-12 text-right text-ellipsis" title="$227.00">$227.00</td>
+											<td class="width-14 text-ellipsis" title="07/30/2025">07/30/2025</td>
+											<td class="width-12 text-right text-ellipsis" title="$4,069.88">$4,069.88</td>
+											<td class="width-12 text-ellipsis" title="09/26/2025">09/26/2025</td>
+										</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-3 account-info-section padding-0">
+				<div class="table-head-fixed">
+					<div class="account-info-table-header tbl-header common-table">
+						<table cellpadding="0" cellspacing="0" border="0">
+							<thead>
+								<tr>
+									<th colspan="2" class="text-ellipsis curved-top-left-right" title="Account Info">Account Info</th>
+								</tr>
+							</thead>
+						</table>
+					</div>
+					<div class="common-table account-info-table border-bottom-with-radius">
+						<table class="table" cellpadding="0" cellspacing="0" border="0">
+							<tbody>
+								<tr>
+									<td class="width-70 text-ellipsis" title="Responsible Party Type">Responsible Party Type</td>
+									<td class="width-30 text-ellipsis" title="PPO">PPO</td>
+								</tr>
+								<tr>
+									<td class="width-70 text-ellipsis" title="Last Payment Date">Last Payment Date</td>
+									<td class="width-30 text-ellipsis" title="09/26/2025">09/26/2025</td>
+								</tr>
+								<tr>
+									<td class="width-70 text-ellipsis" title="Last Statement Date">Last Statement Date</td>
+									<td class="width-30 text-ellipsis" title=""></td>
+								</tr>
+								<tr>
+									<td class="width-70 text-ellipsis table-curved-bottom-left" title="Last Payment Portal Sent">Last Payment Portal Sent</td>
+									<td class="width-30 text-ellipsis table-curved-bottom-right" title=""></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+                        </div>
+                        <div id="contract" class="tab-pane fade">
+                            
+
+<div class="tab-content-main">
+	<div class="contract-div">
+		<div class="row padding-0 margin-0">
+			<div class="col-lg-4 col-md-4 regular-pat-section padding-0 margin-0">
+				<div class="float-right">
+					<span title=""
+					class="">
+							<button id="btn-edit-regular-pat-pay-plan"  type="button" class="btn-primary btn-edit-pay-plan text-capitalize custom-redirect margin-bottom-5" data-targetpage=/ASPX/Patients/AdvancedContractPlan.aspx?patType=regPat>
+								<i class="fa fa-pencil margin-right-5"></i> Edit
+							</button>
+					</span>
+				</div>
+				<div class="table-head-fixed">
+					<div class="tbl-header common-table pay-plan-table clear-float-right">
+						<table cellpadding="0" cellspacing="0" border="0">
+							<thead>
+								<tr>
+									<th colspan="4" class="text-ellipsis curved-top-left-right" title="Regular - Patient Payment Plan">Regular - Patient Payment Plan</th>
+								</tr>
+							</thead>
+						</table>
+					</div>
+					<div class="tbl-content slimscroll-border common-table pay-plan-table border-bottom-with-radius">
+						<table class="table" cellpadding="0" cellspacing="0" border="0">
+							<tbody>
+								<tr>
+									<td class="text-ellipsis" title="Plan Amount">Plan Amount</td>
+									<td class="text-right text-righttext-ellipsis"></td>
+									<td class="text-ellipsis" title="Down Pay">Down Pay</td>
+									<td class="text-right text-ellipsis"></td>
+								</tr>
+								<tr>
+									<td class="text-ellipsis" title="Next Per. Amt">Next Per. Amt</td>
+									<td class="text-right text-righttext-ellipsis"></td>
+									<td class="text-ellipsis" title="Next Date">Next Date</td>
+									<td class="text-right text-ellipsis"></td>
+								</tr>
+								<tr>
+									<td class="text-ellipsis" title="Rem. Total Amt">Rem. Total Amt</td>
+									<td class="text-right text-righttext-ellipsis"></td>
+									<td class="text-ellipsis" title="Rem. # Of Pay">Rem. # Of Pay</td>
+									<td class="text-right text-ellipsis"></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4 col-md-4 ortho-pat-section padding-0">
+				<div class="float-right">
+					<span title=""
+					class="">
+							<button id="btn-edit-ortho-pat-pay-plan"  type="button" class="btn-primary btn-edit-pay-plan text-capitalize custom-redirect margin-bottom-5" data-targetpage=/ASPX/Patients/AdvancedOrthoContract.aspx?patType=orthoPat>
+								<i class="fa fa-pencil margin-right-5"></i> Edit
+							</button>
+
+
+					</span>
+				</div>
+				<div class="table-head-fixed">
+					<div class="tbl-header common-table pay-plan-table clear-float-right">
+						<table cellpadding="0" cellspacing="0" border="0">
+							<thead>
+								<tr>
+									<th colspan="4" class="text-ellipsis curved-top-left-right" title="Ortho - Patient Payment Plan">Ortho - Patient Payment Plan</th>
+								</tr>
+							</thead>
+						</table>
+					</div>
+					<div class="tbl-content slimscroll-border common-table pay-plan-table border-bottom-with-radius">
+						<table class="table" cellpadding="0" cellspacing="0" border="0">
+							<tbody>
+								<tr>
+									<td class="text-ellipsis" title="Plan Amount">Plan Amount</td>
+									<td class="text-right text-ellipsis"></td>
+									<td class="text-ellipsis" title="Down Pay">Down Pay</td>
+									<td class="text-right text-ellipsis"></td>
+								</tr>
+								<tr>
+									<td class="text-ellipsis" title="Next Per. Amt">Next Per. Amt</td>
+									<td class="text-right text-righttext-ellipsis"></td>
+									<td class="text-ellipsis" title="Next Date">Next Date</td>
+									<td class="text-right text-ellipsis"></td>
+								</tr>
+								<tr>
+									<td class="text-ellipsis" title="Rem. Total Amt">Rem. Total Amt</td>
+									<td class="text-right text-righttext-ellipsis"></td>
+									<td class="text-ellipsis" title="Rem. # Of Pay">Rem. # Of Pay</td>
+									<td class="text-right text-ellipsis"></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4 col-md-4 ortho-ins-section padding-0">
+				<div class="float-right">
+					<span title=""
+					class="">
+							<button id="btn-edit-ortho-ins-pay-plan"  type="button" class="btn-primary btn-edit-pay-plan text-capitalize custom-redirect margin-bottom-5" data-targetpage=/ASPX/Patients/AdvancedOrthoContract.aspx?patType=orthoIns>
+								<i class="fa fa-pencil margin-right-5"></i> Edit
+							</button>
+					</span>
+				</div>
+				<div class="table-head-fixed">
+					<div class="tbl-header common-table pay-plan-table clear-float-right">
+						<table cellpadding="0" cellspacing="0" border="0">
+							<thead>
+								<tr>
+									<th colspan="4" class="text-ellipsis curved-top-left-right" title="Ortho - Insurance Payment Plan">Ortho - Insurance Payment Plan</th>
+								</tr>
+							</thead>
+						</table>
+					</div>
+					<div class="tbl-content slimscroll-border common-table pay-plan-table border-bottom-with-radius">
+						<table class="table" cellpadding="0" cellspacing="0" border="0">
+							<tbody>
+								<tr>
+									<td class="text-ellipsis" title="Plan Amount">Plan Amount</td>
+									<td class="text-right text-ellipsis"></td>
+									<td class="text-ellipsis" title="Down Pay">Down Pay</td>
+									<td class="text-right text-ellipsis"></td>
+								</tr>
+								<tr>
+									<td class="text-ellipsis" title="Next Per. Amt">Next Per. Amt</td>
+									<td class="text-right text-righttext-ellipsis"></td>
+									<td class="text-ellipsis" title="Next Date">Next Date</td>
+									<td class="text-right text-ellipsis"></td>
+								</tr>
+								<tr>
+									<td class="text-ellipsis" title="Rem. Total Amt">Rem. Total Amt</td>
+									<td class="text-right text-righttext-ellipsis"></td>
+									<td class="text-ellipsis" title="Rem. # Of Pay">Rem. # Of Pay</td>
+									<td class="text-right text-ellipsis"></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+                        </div>			            
+                        <div id="referrals" class="tab-pane fade">
+                            
+<div class="tab-content-main padding-0" id="referralDetailsTable">
+    <div class="table-head-fixed patient-referrals-table" data-pageindex="0">
+        <div class="tbl-header common-table">
+            <table cellpadding="0" cellspacing="0" border="0">
+                <thead>
+                    <tr>
+                        <th class="width-7 curved-top-left-right" title="Referral Date">Referral Date</th>
+                        <th class="width-10" title="Referred to Office">Referred to Office</th>
+                        <th class="width-14" title="Referred to Provider/ Referral">Referred to Provider/ Referral</th>
+                        <th class="width-14" title="Referred Out Procedure Codes">Referred Out Procedure Codes</th>
+                        <th class="width-10" title="Status">Status</th>
+                        <th class="width-10" title="Referring Office">Referring Office</th>
+                        <th class="width-14" title="Referring Provider">Referring Provider</th>
+                        <th class="width-7" title="User">User</th>
+                        <th class="width-6 deleted-toggle-view" title="Deleted">Deleted</th>
+                        <th class="custom-referral-icon-width center-align" title="X-RAYS"><img class="img-xray header-color" src="/Images/PatientOverview/Theme/Web20Blue/revised-xray.svg" /></th>
+                        <th class="custom-referral-icon-width center-align" title="Referral Form"><i class="fa fa-file-o color-white referral-form-icon referral-overview-icon-size" aria-hidden="true"></i></th>
+                        <th class="width-5 center-align" title="Outgoing Referral Attachments">
+                            <i class="fa fa-upload color-white upload-icon referral-overview-icon-size" aria-hidden="true"></i>
+                        </th>
+                        <th class="width-5 center-align" title="Incoming Referral Report Attachments">
+                            <i class="fa fa-download color-white download-icon referral-overview-icon-size" aria-hidden="true"></i>
+                        </th>
+                        <th class="width-3 center-align" title="Send Referral Report">
+                            <i class="fa fa-envelope color-white action-icon referral-overview-icon-size" aria-hidden="true"></i>
+                        </th>
+                        <th class="width-7 curved-top-left-right" title="Internal/ External">Internal/ External</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <div class="tbl-content slimscroll-border common-table referrals-table border-bottom-with-radius">
+            <table class="table" cellpadding="0" cellspacing="0" border="0">
+                <tbody id="Patientreferrals">
+                            <tr>
+                                <td class="text-center">
+                                    No referral is available.
+                                </td>
+                            </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="margin-top-10 padding-0 margin-right-0 footer-container">
+            <div class="checkbox-div col-lg-4 col-md-4 col-sm-4">
+                <input type="checkbox" name="cbHideDeletedReferrals" id="cbHideDeletedReferrals">
+                <label class="ml-2 pt-1 mb-0" for="cbHideDeletedReferrals">Hide Deleted Referrals</label>
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-8 text-right">
+                <button class="btn-primary" id="previousButton" disabled>Prev. 10 Referrals</button>
+                <button class="btn-primary" id="nextButton" disabled>Next 10 Referrals</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<div id="precriptionContainer"></div>
+<div id="patientChangedInsuranceDetailsContainer"></div>
+<div id="termedInsuranceModalContainer"></div>
+<div id="baseModelContainer"></div>
+<div id="patient-referral-plan-details-modal"></div>
+<div id="orthoPaymentModalContainer"></div>
+<div id="phone-email-update"></div>
+<div id="phone-email-bypass-reason"></div>
+<div id="ledgerPostingContainer"></div>
+<div id="patient-insurance-eligibility-update-modal"></div>
+<div id="consentLetterModalViewDiv"></div>
+<div id="healthHistoryAddModal"></div>
+<div id="paymentModalContainer"></div>
+<div id="editRecallDueDateModal"></div>
+<div id="editResponsiblePartyModal"></div>
+<div id="patMedicalHistoryModalContainer"></div>
+<div id="email-patient"></div>
+<div id="consentLetterContainer"></div>
+<div id="familyApptModalContainer"></div>
+<div id="embedded-image-selection-container"></div>
+<div id="messagingHubContainer" class="messaging-hub-container"></div>
+<div id="messagingHubEmailContainer" class="messaging-hub-email-container"></div>
+
+<div id="accessDeniedModal" class="hidden">
+    <input name="__RequestVerificationToken" type="hidden" value="CfDJ8PlbbejGtTNOuXPiC8w2eK8Nz31arY8eqQ2nmHu9ZGQA-i4utUvW0Cah_8VB4KzdgY_3-t5pJbHeP1AUrqv4tl2O2TgCkgtCRv5jQnVXOk6_gDRNkxfQ6wZB9QNOE88HsqSNQ1Tbm_KPChlgMRR2zCQ" />
+<div class="modal fade common-modal" id="accessDenied" role="dialog" data-backdrop="static" data-keyboard="false">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header ui-draggable-handle">
+				<h4 class="modal-title">Access Denied</h4>
+				<button type="button" class="close close-modal close-access-denied-modal">
+					<i class="fa fa-times"></i>
+				</button>
+			</div>
+
+			<div class="modal-body border-radius-0 padding-top-10">
+				<div class="container">
+					<div class="row">
+						<div class="col-12" style="">
+							<div class="row" style="text-align:center;">
+								<h1>
+									<b>Access Denied</b>
+								</h1>
+							</div>
+							<div class="row" style="text-align:center;">
+								<br>
+								You do not have access to this part of the system.<br>
+								go back to the previous
+								page<br>
+								Or select another page from the menu above.
+								<br><br>
+								<span>
+									<b>Technical Information:</b>
+									<br>Access Right Tag : RespParty
+									<br>Full Access : True
+									<br>View Access : True
+									<br>Delete Access :False
+									<br />
+									<br />
+									<br />
+									<br> <b><font color="red">Please contact your account administrator for assistance with security rights for this screen.</font></b><br /> <span style="font-size:12px; color:red;"></span>
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="modal-footer">
+				<button type="button" class="btn-secondary close-access-denied-modal"><i class="fa fa-times margin-right-5" aria-hidden="true"></i> Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+
+<div id="divOpenEdgeModal">
+    <div class="modal common-modal" id="openEdgeModal" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog payment-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close close-modal common-btn right-float" data-dismiss="modal">
+                    <i class="fa fa-times"></i>
+                </button>
+                    <h4 class="modal-title">Open Edge Payment</h4>
+            </div>
+            <div id="modalBody" class="modal-body">
+                <form id="openEdgeForm">
+                    <div id="openEdgeDiv">
+                        <table style="width:100%;">
+                            <tr>
+                                <td colspan="2" style="text-align:left;">
+                                    <pre class="recepitLabel"></pre>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td colspan="2" class="center" style="display: none">
+                                    <input type="hidden" id="hdMachine" />
+                                    <input type="hidden" id="hdIP" />
+                                    <input type="hidden" id="hdKey" />
+                                    <input type="hidden" id="hdLabel" />
+                                    <input type="hidden" id="hdCount" />
+                                    <input type="hidden" id="hdPGID" />
+                                    <input type="hidden" id="hdOID" />
+                                    <input type="hidden" id="hdUserID" />
+                                    <input type="hidden" id="hdPATID" />
+                                    <input type="hidden" id="hdRPID" />
+                                    <input type="hidden" id="hdPort" />
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </form>
+                <div class="toothLoader loading">
+                    <!-- Place at bottom of page -->
+                </div>
+                <input type="hidden" id="hidPddsPayPaymentIntentId" />
+                <input type="hidden" id="hidPddsPayPaymentIntentClientSecret" />
+                <input type="hidden" id="hidPddsPayTerminalId" />
+                <input type="hidden" id="hidPddsPayIsCardPresentSale" />
+                <input type="hidden" id="hidPddsPayCancelNotificationDone" />
+                <input type="hidden" id="hidPddsPaySetupIntentId" />
+                <input type="hidden" id="hidPddsPayCreateSetupIntent" />
+                <input type="hidden" id="hidPddsPaySetupIntentClientSecret" />
+
+            </div>
+            <div class="modal-footer">
+                <div class="openEdge-button-set">
+                    <button type="button" id="btnOpenEdgePrint" class="btn-primary"><i class="fa fa-print margin-right-5" aria-hidden="true"></i> Print</button>
+                    <button type="button" id="btnOpenEdgePDF" class="btn-primary"><i class="fa fa-floppy-o margin-right-5" aria-hidden="true"></i> Save PDF</button>
+                    <button type="button" id="btnOpenEdgeModalClose" class="btn-secondary" data-dismiss="modal"><i class="fa fa-times margin-right-5" aria-hidden="true"></i> Close</button>
+                </div>
+            </div>
+            <div class="openEdgeMessages">
+                <div id="divOpenEdgeMessage"></div>
+                <div id="divOpenEdgeAmt"></div>
+                <div id="divOpenEdgeAlert"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    var IsPlanetDDSPayEnabled = '' === 'True'
+    var gPayLoad;
+
+    var OpenEdgeRecurringTransactionsUrls = {
+        SaveResponseLog: '/OpenEdgeRecurringTransactions/SaveResponseLog',
+        CreateSaleWithoutLedger: '/OpenEdgeRecurringTransactions/CreateSaleWithoutLedger',
+        CreateSale: '/OpenEdgeRecurringTransactions/CreateSale',
+        VoidSale: '/OpenEdgeRecurringTransactions/VoidSale',
+        ReturnSale: '/OpenEdgeRecurringTransactions/ReturnSale',
+        ReturnSaleWithoutLedger: '/OpenEdgeRecurringTransactions/ReturnSaleWithoutLedger',
+        CreateAuth: '/OpenEdgeRecurringTransactions/CreateAuth',
+        GetResultOrderID: '/OpenEdgeRecurringTransactions/GetSaleWithoutLedger'
+    };
+
+    var denticonPayUrls = {
+        CreateDenticonPayCNPSale: '/DenticonPay/CreateSale',
+        DenticonPayVoidSale: '/DenticonPay/VoidSale',
+        DenticonPayReadCard: '/DenticonPay/ReadCard',
+        DenticonPayCreateProfile: '/DenticonPay/CreateProfileWithDownPayment',
+        DenticonPayReturnSale: '/DenticonPay/ReturnSale',
+        DenticonCreateProfileSaveCard: '/DenticonPay/CreateSaveCardProfileWithPayment',
+        DenticonPayUpdateProfile: '/DenticonPay/UpdateProfile',
+        DenticonPayRecurringPaymentUsingProfile: '/DenticonPay/CreateRecurringPaymentUsingProfile'
+    }
+
+    var planetDDSPayUrls = {
+        CreatePlanetDDSPayCNPSale: '/PlanetDDSPay/CreateSale',
+        CreatePlanetDDSPayInsPayCNPSale: '/PlanetDDSPay/CreateSaleInsPayment',
+        CreatePlanetDDSPayCPSale: '/PlanetDDSPay/CreateCPSale',
+        CreatePlanetDDSPayInsPayCPSale: '/PlanetDDSPay/CreateCPSaleInsPayment',
+        GetPaymentDetails: '/PlanetDDSPay/GetPaymentDetails',
+        PlanetDDSPayReturnSale: '/PlanetDDSPay/ReturnSale',
+	    CancelPlanetDDSPayCPSale: '/PlanetDDSPay/CancelCPSale',
+        CreateRecurringSale: '/PlanetDDSPay/CreateRecurringSale',
+        CreateRecurringCPSale: '/PlanetDDSPay/CreateRecurringCPSale',
+        CancelRecurringSale: '/PlanetDDSPay/CancelRecurringSale',
+        GetSetupIntentDetails: '/PlanetDDSPay/GetSetupIntentDetails',
+        SavePaymentMethodWithCustomerLink: '/PlanetDDSPay/SavePaymentMethodWithCustomerLink',
+        DetachAndDeleteCustomerPaymentMethod: '/PlanetDDSPay/DetachAndDeleteCustomerPaymentMethod',
+        UpdateCustomerPaymentMethod: '/PlanetDDSPay/UpdateCustomerPaymentMethod',
+        CreateRecurringId: '/PlanetDDSPay/CreateRecurringId',
+        CreateSetupIntentDetails: '/PlanetDDSPay/CreateSetupIntentDetails'
+    }
+
+    var OpenEdgeTransactionsUrls = {
+        SaveToLedgerFIFO: '/OpenEdgeTransactions/SaveToLedgerFIFO',
+        SaveOpenEdgeRequestResponse: '/OpenEdgeTransactions/SaveOpenEdgeRequestResponse',
+        SaveOpenEdgeResponseRequest: '/OpenEdgeTransactions/SaveOpenEdgeResponseRequest',
+        SaveVoidToLedger: '/OpenEdgeTransactions/SaveVoidToLedger',
+        AddOpenEdgeSystemNote: '/OpenEdgeTransactions/AddOpenEdgeSystemNote',
+        AddInsurancePayment: '/OpenEdgeTransactions/AddInsurancePayment',
+        AddInsurancePaymentNew: '/OpenEdgeTransactions/AddInsurancePaymentNew',
+        DeletPayment: '/OpenEdgeTransactions/DeletPayment',
+        SaveReceiptPatNotes: '/OpenEdgeTransactions/SaveReceiptPatNotes',
+        SaveDeclineToLedger: '/OpenEdgeTransactions/SaveDeclineToLedger',
+        SaveToLedgerPROC: '/OpenEdgeTransactions/SaveToLedgerPROC',
+        SaveToLedgerPROD: '/OpenEdgeTransactions/SaveToLedgerPROD',
+        GetPreviousOrderID: '/OpenEdgeTransactions/GetPreviousOrderId'
+    }
+</script>
+
+</div>
+<div id="divVX805Modal">
+    <div class="modal fade common-modal" id="VX805Modal" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog .payment-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close close-modal common-btn right-float close-VX805-modal" data-dismiss="modal">
+                    <i class="fa fa-times"></i>
+                </button>
+                <h4 class="modal-title">VX805 Payment</h4>
+            </div>
+            <div class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <div class="VX805-button-set">
+                    <button type="button" id="btnVX805Print" class="btn-primary"><i class="fa fa-print margin-right-5" aria-hidden="true"></i> Print</button>
+                    <button type="button" id="btnVX805ModalClose" class="btn-secondary close-VX805-modal" data-dismiss="modal"><i class="fa fa-times margin-right-5" aria-hidden="true"></i> Close</button>
+                </div>
+            </div>
+            <div class="VX805Messages">
+                <div id="divVX805Message"></div>
+                <div id="divVX805Amt"></div>
+                <div id="divVX805Alert"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var VX805TransactionsUrls = {
+        GetDeviceInfo: '/VX805Transactions/GetDeviceInfo',
+        UpdateCount: '/VX805Transactions/UpdateCount',
+        AddSystemNote: '/VX805Transactions/AddSystemNote',
+        SaveAuditTrail: '/VX805Transactions/SaveAuditTrail',
+        SaveRequestResponse: '/VX805Transactions/SaveRequestResponse',
+        SaveResponseRequest: '/VX805Transactions/SaveResponseRequest',
+        DeletPayment: '/VX805Transactions/DeletPayment',
+        AddInsurancePayment: '/VX805Transactions/AddInsurancePayment',
+        AddInsurancePaymentNew: '/VX805Transactions/AddInsurancePaymentNew',
+        SaveToLedgerFIFO: '/VX805Transactions/SaveToLedgerFIFO',
+        SaveDeclineToLedger: '/VX805Transactions/SaveDeclineToLedger',
+        GetVX805ModalContent: '/VX805Transactions/GetVX805ModalContent',
+        SaveToLedgerPROC: '/VX805Transactions/SaveToLedgerPROC',
+        SaveToLedgerPROD: '/VX805Transactions/SaveToLedgerPROD'
+    }
+</script>
+</div>
+<div class="modal fade common-modal" id="CVVDetails" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close close-modal common-btn right-float" data-dismiss="modal" tabindex="14">
+                    <i class="fa fa-times"></i>
+                </button>
+                <h4 class="modal-title">Credit Card CVV Number</h4>
+            </div>
+            <div class="modal-body">
+                <div class="common-table">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td class="font-weight-600">What is the Card ID?</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td colspan="12">
+                                    Card Verification Value (CVV) provides an additional level of online fraud protection.
+                                    The number is located on your credit card and is generally three to four digits long.
+                                    See below for examples of number placement on the cards we accept.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img alt="AMEX CVV Code" src="../Images/amex_card_cvv.jpg" border="0">
+                                </td>
+                                <td class="padding-left-0">
+                                    <div class="font-weight-600">AMEX</div>
+                                    A four digit non-embossed number on the face of the card
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img alt="Dicover CVV Code" src="../Images/discover_card_cvv.jpg" border="0">
+                                </td>
+                                <td class="padding-left-0">
+                                    <div class="font-weight-600">Discover</div>
+                                    A three digit non-embossed number on the back of the card
+                                    printed within the signature panel after the account number.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img alt="Mastercard CVV Code" src="../Images/master_card_cvv.jpg" border="0">
+                                </td>
+                                <td class="padding-left-0">
+                                    <div class="font-weight-600">MasterCard</div>
+                                    A three digit non-embossed number on the back of the card
+                                    printed within the signature panel after the account number.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img alt="Visa CVV Code" src="../Images/visa_card_cvv.jpg" border="0">
+                                </td>
+                                <td class="padding-left-0">
+                                    <div class="font-weight-600">VISA</div>
+                                    A three digit non-embossed number on the back of the card
+                                    printed within the signature panel after the account number.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-secondary" data-dismiss="modal"><i class="fa fa-times margin-right-5" aria-hidden="true"></i> Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="referralReasonDetailsModalContainer">
+    <div class="modal fade common-modal" id="externalReferralIncomingReferralReasonCodeView" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header custom-movable-cursor">
+                <h4 class="modal-title">Referral Reason Code</h4>
+                <button type="button" class="close close-modal btn-cancel-referral-reason-code-details-view"><i class="fa fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="table-head-fixed">
+                    <div class="common-table tbl-header">
+                        <table cellpadding="0" cellspacing="0" border="0">
+                            <thead>
+                                <tr>
+                                    <th class="width-25">Code</th>
+                                    <th class="width-25">Specialty</th>
+                                    <th class="width-25">Description</th>
+                                    <th class="width-25">Tooth Number/Area</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <div class="common-table tbl-content">
+                        <table class="table" cellpadding="0" cellspacing="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td class="width-25 text-ellipsis" title="" id="codeRefferalReasonDetails" ></td>
+                                    <td class="width-25 text-ellipsis" title="" id="specialityRefferalReasonDetails"></td>
+                                    <td class="width-25 text-ellipsis" title="" id="descriptionRefferalReasonDetails"></td>
+                                    <td class="width-25" title="" id="toothNosRefferalReasonDetails"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="text-right">
+                    <button class="btn-secondary btn-cancel-referral-reason-code-details-view"><i class="fa fa-times margin-right-5" aria-hidden="true"></i> Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<div id="patientInsightsSliderContainer">
+</div>
+
+<div id="apteryx-Xray-view-container"></div>
+<div id="referral-attachments-modal-container"></div>
+
+
+<div id="LoadingModal" style="z-index: 9999" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="LoadingModalLabel" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div style="margin: auto;" class="loader"></div>
+                <div style="margin: auto; text-align: center;">Loading...</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Placeholder -->
+<div id="modalPlaceholder">
+
+</div>
+
+<!-- C O M M O N - MODAL : success-->
+<div class="modal fade" tabindex="-1" id="SuccessfulModal" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" role="document">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close close-modal" data-dismiss="modal" aria-label="Close"><i class="fa fa-times"></i></button>
+                <h4 class="modal-title">Successful</h4>
+            </div>
+            <div class="modal-body">
+                Selected operation has been successfully completed.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-thumbs-up margin-right-5" aria-hidden="true"></i> Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- C O M M O N - MODAL : error -->
+<div class="modal fade" id="ErrorModal" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close close-modal" data-dismiss="modal" aria-label="Close"><i class="fa fa-times"></i></button>
+                <h4 class="modal-title">Error</h4>
+            </div>
+            <div class="modal-body">
+                An error occured while loading the request.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times margin-right-5" aria-hidden="true"></i> Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- C O M M O N - MODAL : Session Expired -->
+<div class="modal fade" id="SessionExpiredModal" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close close-modal" data-dismiss="modal" aria-label="Close"><i class="fa fa-times"></i></button>
+                <h4 class="modal-title">Session Expired</h4>
+            </div>
+            <div class="modal-body">
+                Your session has expired.<br>Please close this window and login again.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times margin-right-5" aria-hidden="true"></i> Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- C O M M O N - MODAL : Access Denied -->
+<div class="modal fade" id="AccessDeniedModal" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close close-modal" data-dismiss="modal" aria-label="Close"><i class="fa fa-times"></i></button>
+                <h4 class="modal-title">Access Denied</h4>
+            </div>
+            <div class="modal-body">
+                You do not have access to this part of the system.<br>
+                go back to the previous
+                page<br>
+                Or select another page from the menu above.
+                <br><br>
+                <span>
+                    <b><font color="red">Please contact your account administrator for assistance with security rights for this screen.</font></b>
+                </span>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times margin-right-5" aria-hidden="true"></i> Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Common Tooltip for Tooth Nos -->
+<div id="tooth-nos-tooltip" hidden>
+    <div class="page-title">Tooth Nos</div>
+    <div class="padding-5-10">
+        <div class="tooth-nos-data">No Data</div>
+    </div>
+</div>
+
+<!-- Custom Tooltip -->
+<div id="custom-tooltip" hidden>
+    <div class="page-title"></div>
+    <div class="page-body cutom-tooltip-border">
+        <div class="tooltip-data"></div>
+    </div>
+</div>
+<input id="denticonRequestVerificationToken" name="denticonRequestVerificationToken" type="hidden" value="CfDJ8PlbbejGtTNOuXPiC8w2eK8Nz31arY8eqQ2nmHu9ZGQA-i4utUvW0Cah_8VB4KzdgY_3-t5pJbHeP1AUrqv4tl2O2TgCkgtCRv5jQnVXOk6_gDRNkxfQ6wZB9QNOE88HsqSNQ1Tbm_KPChlgMRR2zCQ" />
+
+<script>
+    var gPGID = '3169';
+    var gOID = '102';
+    var gUserID = 'DENTISTRYAUTO';
+    var gPGName = 'ACE Dental of Temple';
+    var gRECEPTIVE_UserEmail = 'sai.darshan@dentistryautomation.com';
+    var gRECEPTIVE_UserName = 'DentistryAuto DentistryAuto';
+    var gRECEPTIVE_UserRoleDescr = 'Front Desk';
+    
+    var hidAesSecretkey = 'bc5ad3aa270eccf02be88c7c0346db75';
+    var sharedSessionUrl = '/Authentication/SharedSession';
+    var gEnableSessionSync = 'Y';
+    var gPatientNotesCore = 'N';
+    var gPatientOverviewInCore = gEnableSessionSync == "Y" && 'N' == "Y";
+	var gMedicalHistoryCore = gEnableSessionSync == 'Y' && 'N';
+</script>
+
+<script>
+    (function (apiKey) {
+        (function (p, e, n, d, o) {
+            var v, w, x, y, z; o = p[d] = p[d] || {}; o._q = o._q || [];
+            v = ['initialize', 'identify', 'updateOptions', 'pageLoad', 'track']; for (w = 0, x = v.length; w < x; ++w)(function (m) {
+                o[m] = o[m] || function () { o._q[m === v[0] ? 'unshift' : 'push']([m].concat([].slice.call(arguments, 0))); };
+            })(v[w]);
+            y = e.createElement(n); y.async = !0; y.src = 'https://cdn.eu.pendo.io/agent/static/' + apiKey + '/pendo.js';
+            z = e.getElementsByTagName(n)[0]; z.parentNode.insertBefore(y, z);
+        })(window, document, 'script', 'pendo');
+
+        // Call this whenever information about your visitors becomes available
+        // Please use Strings, Numbers, or Bools for value types.
+        pendo.initialize({
+            visitor: {
+                id: gUserID, // Required if user is logged in
+                email: gRECEPTIVE_UserEmail,       // Recommended if using Pendo Feedback, or NPS Email
+                full_name: gRECEPTIVE_UserName,// Recommended if using Pendo Feedback
+                role: gRECEPTIVE_UserRoleDescr
+
+                // You can add any additional visitor level key-values here,
+                // as long as it's not one of the above reserved names.
+            },
+
+            account: {
+                id: gPGID, // Highly recommended
+                name:  gPGID + '-' + gPGName,       // Optional
+                is_paying: true   // Recommended if using Pendo Feedback
+                // monthly_value:// Recommended if using Pendo Feedback
+                // planLevel:    // Optional
+                // planPrice:    // Optional
+                // creationDate: // Optional
+
+                // You can add any additional account level key-values here,
+                // as long as it's not one of the above reserved names.
+            }
+        });
+    })('991dfcfb-d6d6-400a-505f-4a48589e75a8');
+
+</script>
+
+
+<script>
+    var hasAccessPatientView = "True";
+    var hasViewPatientView = "True";
+    var hasAccessReferralManagement = "False";
+    var hasViewReferralManagement = "False";
+    var planc = "";
+    var patid = "9070654";
+    var rpid = "9069809";
+    var hasOrthoPaymentData = "False";
+    var hasRegPaymentData = "False";
+    var noRecordsFound = "False";
+    var linkPatApptID = "0";
+    var linkPatApptDate = "";
+    var IsLaunchFlashAlert = "0";
+    var ContactPatType = "";
+    var themePath = '../images/PatientOverview/Theme/Web20Blue/';
+    var isOrthoPatient = "False";
+    var OpenRespPartyModal = "";
+    var ssnLabel = "SSN";
+
+    var PatientOveriewUrls = {
+        GetPatientTermedInsPlans: '/PatientOverview/GetPatientTermedInsPlans',
+        GetPatientChangedIsurances: '/PatientOverview/GetPatientChangedIsurances',
+        GetPatientChangedIsurancesDeatils: '/PatientOverview/GetPatientChangedIsurancesDeatils',
+        UpdateGetPatientChangedInsurances: '/PatientOverview/UpdateGetPatientChangedInsurances',
+        PatientImage: '../Images/PatientOverview/Theme/Web20Blue/v5_AddPatPhoto.svg',
+        getReferredProcedureDetails: '/CreateInternalReferral/GetReferredPlanDetails',
+        getReferredProcedureDetailsExternal: '/CreateExternalReferral/GetReferredPlanDetails',
+        getExternalReferralStatusDetails: '/CreateExternalReferral/GetReferredPlanStatus',
+        getExternalReferralStatusUpdateModal: '/CreateExternalReferral/GetReferralStatusUpdateModal',
+        updateExternalReferralStatus: '/CreateExternalReferral/UpdateReferralStatus',
+        getPatientReferralFileURL: '/PatientOverview/GetReferralFileURL',
+        getReferralAWSFileURLs: '/PatientOverview/GetReferralAWSFileURLs',
+        PatientReferrals: '/PatientOverview/PatientReferralsView' + '?rnd=' + Math.random() + "&",
+        ApteryxXrayView: '/ApteryxXray/SelectedXRayView',
+        FlashAlertDialog: '/FlashAlertModal/Dialog',
+        AgingDetails: '/AgingDetails/GetAgingDetailsData',
+        GetPrescriptionModalView: '/PatientOverview/GetPrescriptionModalView',
+        GetPrescriptionModalTableData: '/PatientOverview/GetPrescriptionModalTableData',
+        GetOrthoPaymentModalData: '/PatientOverview/GetOrthoPaymentModalData',
+        GetPhoneEmailUpdateModal: '/AppointmentSlider/GetPhoneEmailUpdateModal',
+        GetAppointmentsUpostedToLedger: '/LedgerPosting/GetAppointmentsUpostedToLedger',
+        GetEligibilityModalView: '/Eligibility/GetEligibilityModalView',
+        GetConsentLetterModalView: '/ConsentLetter/GetConsentLetterModal',
+        GetHealthHistoryModalView: '/SmartAssistHealthHistory/GetHealthHistoryModalInfo',
+	    GetMedicalHistoryModal: '/PatientMedicalHistory/GetMedicalHistoryModal',
+        GetPaymentModal: '/SmartAssistPayment/GetPaymentModal',
+        GetRecallModal: '/PatientOverview/GetRecallDateModalData',
+        GetResponsiblePartyModal: '/PatientOverview/GetResponsiblePartyModalData',
+        ValidateRealEmail: '/PatientOverview/ValidateRealEmail',
+        GetEmailAndPhoneBypassReasonCodesModal: '/EditPatientInfo/GetEmailAndPhoneByPassReasonCodes',
+        OpenReferralAttachmentsModal: '/InternalReferral/OpenReferralAttachmentsModal',
+        getFileURL: '/InternalReferral/GetFileURL',
+        GetFamilyApptModal: '/PatientOverview/GetPatientFamilyAppointmentModalData',
+        GetPDDSPaySavedPaymentsModal: '/PatientOverview/GetPDDSPaySavedPaymentsModal',
+        PDDSPayEditSavedCardPaymentsModel: '/PatientOverview/OpenPDDSPayAddEditSavedCardsModal',
+        GetSavedPaymentsModal: '/PatientOverview/GetSavedPaymentsModal',
+        EditSavedPaymentsModel: '/PatientOverview/OpenEditSavedCardsModal',
+        NewSavedPaymentModal: '/PatientOverview/OpenNewSavedCardsModal',
+        SaveNewCard: '/PatientOverview/SaveAddEditCard',
+        SaveEditedCard: '/PatientOverview/UpdateEditedCardInfo',
+        DeleteSavedCard: '/PatientOverview/DeleteSavedCard',
+        GetExternalIncomingReferralFileURL: '/InternalReferral/GetExternalIncomingReferralFileURL',
+        GetExternalIncomingStatusDetails: '/InternalReferral/GetExternalIncomingStatus',
+        UpdateExternalIncomingReferralStatus: '/InternalReferral/UpdateExternalIncomingReferralStatus',
+        GetExternalIncomingReferralStatusUpdateModal: '/InternalReferral/GetExternalIncomingReferralStatusUpdateModal',
+        GetPatientInisghtsSliderModal: '/DenticonInsights/GetPatientInisghtsSliderModal'
+    };
+
+    var messagingHubContentURL = '/MessagingHub/GetMessagingHubContent';
+    var messagingHubEmailContentURL = '/MessagingHubEmail/GetMessagingHubEmailContent';
+    var getMessagingHubEmail = '/MessagingHubEmail/GetSessionPatientEmail';
+
+    var paymentURLs = {
+        getDefaultPayCode: '/PatientOverview/GetdefaultPayCode'
+    }
+
+    var ApteryxXrayUrls = {
+        GenerateToken: '/ApteryxXray/GenerateToken'
+    };
+    var getEmailPatientModal = '/EmailPatient/GetEmailPatientModalData';
+
+    var gEdiVendor = 'EHG';
+    var culture = 'en-US';
+    var recallReload = '0';
+    let pageNameForBootboxCancelation = 'Patient Overview';
+    let TransactionEntrySiteFeature = 'Y';
+    let PatientDentalMedicalInsuranceSiteFeature = 'True';
+    var enableAdvancedCustomLetter = 'Y';
+    var openMessagingHubEmail = '';
+    var openMessagingHubSMS = '';
+    let retainPage = '';
+    let retainPrevUrl = 'Patients/AdvancedPatientOverview.aspx';
+    let redirectToProgNotes = '';
+    let gotoTWC = '';
+    var gEnableSessionSync = 'Y';
+    var gAdvancedChartingInCore = gEnableSessionSync == "Y" && 'N' == "Y";
+</script>
+
+    
+
+    <script>
+    siteResponsive = "Y" === 'Y';
+    </script>
+
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"988596a249dc9685","serverTiming":{"name":{"cfExtPri":true,"cfEdge":true,"cfOrigin":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}},"version":"2025.9.1","token":"b050cf13a91d4a65bbf4a7d8c921c16d"}' crossorigin="anonymous"></script>
+</body>
+</html>
+
+
+
