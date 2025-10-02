@@ -13,6 +13,7 @@ const checkLocation = require('./us-location-checker');
 const JsonQueryEngine = require('./chat/json-query-engine');
 const { generateQueries, generateAnswer } = require('./chat/gemini-client');
 const { spawn } = require('child_process');
+const { savePatient, getPatientByFileName, listPatients } = require('./db/mongodb-client');
 require('dotenv').config();
 
 // Simple rate limiter for chat (100 questions/day)
@@ -415,27 +416,15 @@ app.post('/api/extract', checkApiKey, async (req, res) => {
       data = restructuredData;
     }
 
-    // === SAVE TO FILE ===
+    // === SAVE TO MONGODB ===
     try {
-      // Save ALL patients in same directory (portal is in JSON)
-      const saveDir = path.join(__dirname, 'data', 'patients');
-      fs.mkdirSync(saveDir, { recursive: true });
+      await savePatient(data);
 
-      // Filename format: ID_FirstName_LastName_Portal.json
-      // ID first ensures uniqueness across all portals (some don't have names)
-      // Priority: subscriberID > memberId > enrolleeId > timestamp
-      const patientId = (patient.subscriberId || patient.memberId || patient.enrolleeId || Date.now()).toString().replace(/[^a-z0-9]/gi, '_');
-      const firstName = (patient.firstName || 'Unknown').replace(/[^a-z0-9]/gi, '_');
-      const lastName = (patient.lastName || 'Unknown').replace(/[^a-z0-9]/gi, '_');
-      const portalCode = portalLower.toUpperCase();
-
-      const fileName = `${patientId}_${firstName}_${lastName}_${portalCode}.json`;
-      const filePath = path.join(saveDir, fileName);
-
-      fs.writeFileSync(filePath, JSON.stringify(data, null, 2), 'utf8');
-      broadcastLog(`💾 Saved to: ${fileName}`);
+      const patientName = `${data.patient?.firstName || ''} ${data.patient?.lastName || ''}`.trim();
+      const portal = data.extraction?.portalCode || data.portal;
+      broadcastLog(`💾 Saved to MongoDB: ${patientName} (${portal})`);
     } catch (saveError) {
-      broadcastLog(`⚠️ Warning: Could not save file: ${saveError.message}`);
+      broadcastLog(`⚠️ Warning: Could not save to MongoDB: ${saveError.message}`);
       // Don't fail the request if save fails
     }
 
@@ -712,77 +701,52 @@ app.get('/api/clinics', checkApiKey, (req, res) => {
   res.json({ clinics });
 });
 
-// Get specific patient JSON file
-app.get('/api/patients/:fileName', checkApiKey, (req, res) => {
+// Get specific patient (MongoDB only)
+app.get('/api/patients/:fileName', checkApiKey, async (req, res) => {
   try {
     const { fileName } = req.params;
-    const filePath = path.join(__dirname, 'data', 'patients', fileName);
 
-    if (!fs.existsSync(filePath)) {
-      return res.status(404).json({ error: 'Patient file not found' });
+    // Get from MongoDB
+    const patient = await getPatientByFileName(fileName);
+
+    if (!patient) {
+      return res.status(404).json({ error: 'Patient not found' });
     }
 
-    const content = fs.readFileSync(filePath, 'utf8');
-    const data = JSON.parse(content);
-
-    res.json(data);
+    res.json(patient);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 });
 
-// Get list of saved patients
-app.get('/api/patients', checkApiKey, (req, res) => {
+// Get list of saved patients (MongoDB only)
+app.get('/api/patients', checkApiKey, async (req, res) => {
   try {
-    const patientsDir = path.join(__dirname, 'data', 'patients');
-    const portal = req.query.portal; // Optional filter by portal
+    const portal = req.query.portal;
 
-    if (!fs.existsSync(patientsDir)) {
-      return res.json({ patients: [] });
-    }
+    // Get from MongoDB
+    const mongoPatients = await listPatients(portal);
 
-    // Get only patient JSON files (exclude _schema.json and _structure.txt)
-    const files = fs.readdirSync(patientsDir).filter(f =>
-      f.endsWith('.json') && !f.includes('_schema')
-    );
-    const patients = [];
+    const formattedPatients = mongoPatients.map(data => {
+      const subscriberId = data.patient?.subscriberId || '';
+      const firstName = data.patient?.firstName || 'Unknown';
+      const lastName = data.patient?.lastName || 'Unknown';
+      const portalCode = data.extraction?.portalCode || data.portal || 'UNKNOWN';
+      const fileName = `${subscriberId}_${firstName}_${lastName}_${portalCode}.json`;
 
-    for (const file of files) {
-      try {
-        const filePath = path.join(patientsDir, file);
-        const content = fs.readFileSync(filePath, 'utf8');
-        const data = JSON.parse(content);
-
-        // Extract key info
-        const patient = {
-          fileName: file,
-          firstName: data.patient?.firstName || 'Unknown',
-          lastName: data.patient?.lastName || 'Unknown',
-          subscriberId: data.patient?.subscriberId || '',
-          dateOfBirth: data.patient?.dateOfBirth || '',
-          portal: data.extraction?.portalCode || data.portal || 'Unknown',
-          clinic: data.extraction?.clinic || 'Unknown',
-          extractionDate: data.extraction?.date || data.extractionDate || null
-        };
-
-        // Filter by portal if specified
-        if (!portal || patient.portal.toUpperCase() === portal.toUpperCase()) {
-          patients.push(patient);
-        }
-      } catch (err) {
-        // Skip invalid JSON files
-        console.error(`Error parsing ${file}:`, err.message);
-      }
-    }
-
-    // Sort by extraction date (most recent first)
-    patients.sort((a, b) => {
-      const dateA = a.extractionDate ? new Date(a.extractionDate) : new Date(0);
-      const dateB = b.extractionDate ? new Date(b.extractionDate) : new Date(0);
-      return dateB - dateA;
+      return {
+        fileName,
+        firstName: data.patient?.firstName || 'Unknown',
+        lastName: data.patient?.lastName || 'Unknown',
+        subscriberId: data.patient?.subscriberId || '',
+        dateOfBirth: data.patient?.dateOfBirth || '',
+        portal: data.extraction?.portalCode || data.portal || 'Unknown',
+        clinic: data.extraction?.clinic || 'Unknown',
+        extractionDate: data.extraction?.date || data.extractionDate || null
+      };
     });
 
-    res.json({ patients, total: patients.length });
+    res.json({ patients: formattedPatients, total: formattedPatients.length });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
