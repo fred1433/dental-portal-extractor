@@ -838,15 +838,19 @@ app.post('/api/chat', checkApiKey, async (req, res) => {
   const startTime = Date.now();
 
   try {
-    // 1. Load patient JSON
-    const filePath = path.join(__dirname, 'data', 'patients', fileName);
-    if (!fs.existsSync(filePath)) {
-      return res.status(404).json({ error: 'Patient file not found' });
+    // 1. Load patient JSON from MongoDB
+    const patientData = await getPatientByFileName(fileName);
+
+    if (!patientData) {
+      return res.status(404).json({ error: 'Patient not found in database' });
     }
 
-    const patientData = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+    // 2. Write temporary JSON file for Python script (Python needs a file path)
+    const tempJsonPath = path.join(__dirname, 'data', 'patients', fileName);
+    fs.mkdirSync(path.dirname(tempJsonPath), { recursive: true });
+    fs.writeFileSync(tempJsonPath, JSON.stringify(patientData, null, 2), 'utf8');
 
-    // 2. Generate structure using Python script
+    // 3. Generate structure using Python script
     const structureFile = path.join(__dirname, 'data', 'patients', `${fileName.replace('.json', '')}_structure.txt`);
 
     // Check if structure already exists
