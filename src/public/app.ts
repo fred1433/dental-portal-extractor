@@ -675,6 +675,11 @@ function displayResults(data: ExtractionResult): void {
         statusBadge.textContent = 'Success';
         statusBadge.className = 'status-badge success';
     }
+
+    // Refresh patient list if function exists (from index.html)
+    if (typeof (window as any).loadPatientCount === 'function') {
+        (window as any).loadPatientCount();
+    }
 }
 
 function displayCDTCodesFromArray(_cdtCodes: CDTCode[]): void {
