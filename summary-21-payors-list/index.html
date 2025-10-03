@@ -316,7 +316,7 @@
                 📊 US Market Share
             </div>
             <div class="tab" onclick="switchTab('texas-client')">
-                🏥 Texas Client - Oct 2025 (Top 15)
+                🏥 Texas Client - Oct 2025 (Top 20)
             </div>
         </div>
 
@@ -365,7 +365,7 @@
                     <div class="label">Total Patients</div>
                 </div>
                 <div class="stat-card">
-                    <div class="value">15</div>
+                    <div class="value">20</div>
                     <div class="label">Top Carriers</div>
                 </div>
                 <div class="stat-card">
@@ -598,7 +598,7 @@
             renderTable();
         }
 
-        // Texas Client Data - Top 15 Carriers (October 2025)
+        // Texas Client Data - Top 20 Carriers (October 2025)
         const texasClientData = [
             { carrier: 'UHC-TEXAS-MEDICAID', count: 23, percentage: '8.5%' },
             { carrier: 'United Concordia', count: 21, percentage: '7.7%' },
@@ -614,7 +614,12 @@
             { carrier: 'Delta Dental', count: 8, percentage: '3.0%' },
             { carrier: 'UNITED CONCORDIA – FEDVIP – ADV PLUS', count: 7, percentage: '2.6%' },
             { carrier: 'DELTA DENTAL PLAN (MO) PPO', count: 7, percentage: '2.6%' },
-            { carrier: 'DELTA DENTAL PLAN (CA) PPO', count: 6, percentage: '2.2%' }
+            { carrier: 'DELTA DENTAL PLAN (CA) PPO', count: 6, percentage: '2.2%' },
+            { carrier: 'Guardian', count: 6, percentage: '2.2%' },
+            { carrier: 'AMERITAS LIFE INSURANCE CORP / CONNECTION DENTAL', count: 6, percentage: '2.2%' },
+            { carrier: 'Denta Quest Chip', count: 5, percentage: '1.8%' },
+            { carrier: 'BLUE CROSS BLUE SHIELD OF TEXAS', count: 5, percentage: '1.8%' },
+            { carrier: 'BCBS Of Tx', count: 4, percentage: '1.5%' }
         ];
 
         // Map carrier to status based on automation
@@ -629,7 +634,9 @@
             if (name.includes('METLIFE') || name.includes('MET LIFE')) return 'READY WITH HTML SCRAPING';
             if (name.includes('UHC') || name.includes('UNITED HEALTH')) return 'READY WITH API';
             if (name.includes('CIGNA')) return 'READY WITH HTML SCRAPING';
-            if (name.includes('FEP') || name.includes('BLUE')) return 'COVERED BY DNOA';
+            if (name.includes('GUARDIAN')) return 'READY WITH API';
+            if (name.includes('AMERITAS')) return 'READY WITH HTML SCRAPING';
+            if (name.includes('FEP') || name.includes('BLUE') || name.includes('BCBS')) return 'COVERED BY DNOA';
             if (name.includes('ACE DENTAL')) return 'NOT STARTED';
 
             return 'NOT STARTED';
