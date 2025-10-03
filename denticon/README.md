@@ -13,7 +13,9 @@ Cette URL établit le contexte de session nécessaire sur le domaine `c1.dentico
 ## 📊 Scripts Principaux
 
 ### `c1_insurance_carrier_subscriber.js` ⭐
-✅ **Script d'assurance (c1.denticon.com)**
+✅ **Script d'assurance - Vue d'ensemble (c1.denticon.com)**
+
+Endpoint: `GetPatientEligibilityTableData`
 
 Ce script extrait :
 - **Carrier Name** (nom de l'assureur)
@@ -23,6 +25,30 @@ Ce script extrait :
 - Statistiques par assureur
 
 Résultats obtenus : **271 patients** sur **24 jours** avec **61 assureurs différents**
+
+### `c1_patient_insurance_full_details.js` ⭐⭐⭐
+✅ **Script d'assurance - Détails complets (c1.denticon.com)**
+
+Endpoint: `PatInsurance/Index`
+
+**LA DÉCOUVERTE CLÉ !** Ce script extrait TOUTES les données manquantes :
+- **Group Number** ← ESSENTIEL pour claims
+- **Payer ID** ← ESSENTIEL pour eclaims
+- **Benefits détaillés** (Deductible, Annual Max, Ortho Max)
+- Dates (Effective, Term, Anniversary)
+- Subscriber info complète
+- Employer info
+- Notes d'assurance
+- Métadonnées (Modified By, Created By, dates)
+
+**Usage :**
+```javascript
+// 1 patient
+extractPatientInsuranceFullDetails(patid, rpid)
+
+// Plusieurs patients
+extractMultiplePatientsInsurance('10/3/2025', 5)
+```
 
 ### `a1_calendar_with_enrichment.js` ⭐
 ✅ **Script calendrier + enrichissement (a1.denticon.com)**
@@ -37,13 +63,14 @@ Ce script extrait :
 
 **Note** : Le détail des patients ne fonctionne pas encore complètement, mais on espère le résoudre avec la découverte de l'URL c1
 
-## 🎯 Endpoint API Principal
+## 🎯 Endpoints API Principaux
 
+### 1. Eligibility Table Data (Vue d'ensemble)
 ```
 GET https://c1.denticon.com/EligibilityVerificationReport/GetPatientEligibilityTableData
 ```
 
-### Paramètres :
+**Paramètres :**
 - `PGID=3169` - Practice Group ID
 - `OID=102` - Office ID
 - `APPTPRDR=ALL` - Tous les providers
@@ -51,12 +78,35 @@ GET https://c1.denticon.com/EligibilityVerificationReport/GetPatientEligibilityT
 - `ELIGSTATUS=ALL` - Tous les statuts d'éligibilité
 - `_=[timestamp]` - Cache buster
 
-### Headers requis :
+**Headers requis :**
 ```javascript
 headers: {
     'X-Requested-With': 'XMLHttpRequest'
 }
 ```
+
+**Retourne :** JSON avec liste de patients (Carrier Name, Subscriber ID, patient info)
+
+### 2. Patient Insurance Details (Détails complets) ⭐
+```
+GET https://c1.denticon.com/PatInsurance/Index
+```
+
+**Paramètres :**
+- `pgid=3169` - Practice Group ID
+- `patid=9074115` - Patient ID
+- `oid=102` - Office ID
+- `rpid=9073270` - Responsible Party ID
+- `planType=D` - Type de plan (D=Dental)
+- `insType=P` - Type d'assurance (P=Primary)
+
+**Retourne :** HTML contenant :
+- Group Number
+- Payer ID
+- Benefits (Deductible, Annual Max, Ortho)
+- Dates complètes
+- Subscriber info
+- Variables JavaScript avec JSON embarqué
 
 ## 📋 Instructions Étape par Étape
 
