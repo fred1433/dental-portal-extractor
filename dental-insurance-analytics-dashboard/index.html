@@ -285,6 +285,93 @@
             font-size: 14px;
         }
 
+        /* Share Modal Styles */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            max-width: 600px;
+            width: 90%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal h2 {
+            margin-bottom: 10px;
+            color: #1e293b;
+        }
+
+        .modal p {
+            color: #64748b;
+            margin-bottom: 25px;
+        }
+
+        .share-option {
+            border: 2px solid #e0e6ed;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .share-option:hover {
+            border-color: #667eea;
+            background: #f8fafc;
+            transform: translateY(-2px);
+        }
+
+        .share-option h3 {
+            color: #1e293b;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .share-option p {
+            color: #64748b;
+            font-size: 14px;
+            margin: 0;
+        }
+
+        .btn-close {
+            background: #64748b;
+            color: white;
+            margin-top: 15px;
+        }
+
+        .btn-close:hover {
+            background: #475569;
+        }
+
+        .btn-share {
+            background: #10b981;
+            color: white;
+        }
+
+        .btn-share:hover {
+            background: #059669;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+        }
+
         @media (max-width: 768px) {
             .header h1 {
                 font-size: 1.8em;
@@ -365,8 +452,8 @@
                     <div class="label">Total Patients</div>
                 </div>
                 <div class="stat-card">
-                    <div class="value">83</div>
-                    <div class="label">All Carriers</div>
+                    <div class="value" id="texas-carrier-count">35</div>
+                    <div class="label" id="texas-carrier-label">Unique Carriers</div>
                 </div>
                 <div class="stat-card">
                     <div class="value" id="texas-automated">0</div>
@@ -376,6 +463,18 @@
                     <div class="value" id="texas-coverage">0%</div>
                     <div class="label">Patient Coverage</div>
                 </div>
+            </div>
+
+            <div id="controlButtons" style="padding: 20px 30px 0 30px; display: flex; align-items: center; gap: 15px; flex-wrap: wrap;">
+                <button id="toggleViewBtn" class="btn-primary" onclick="toggleCarrierView()" style="display: flex; align-items: center; gap: 8px;">
+                    <span id="toggleIcon">📊</span>
+                    <span id="toggleText">Show Raw Data (83 carriers)</span>
+                </button>
+                <button id="shareBtn" class="btn-share" onclick="openShareModal()" style="display: flex; align-items: center; gap: 8px;">
+                    <span>🔗</span>
+                    <span>Share Client Link</span>
+                </button>
+                <span style="color: #64748b; font-size: 14px;" id="viewDescription">Consolidated view - all duplicates merged including Delta Dental regional plans</span>
             </div>
 
             <div class="table-container">
@@ -401,18 +500,45 @@
         </div>
     </div>
 
+    <!-- Share Modal -->
+    <div id="shareModal" class="modal-overlay" onclick="closeShareModal(event)">
+        <div class="modal" onclick="event.stopPropagation()">
+            <h2>📤 Share Client Dashboard</h2>
+            <p>Choose which view to share with the client:</p>
+
+            <div style="background: #f8fafc; border-radius: 8px; padding: 15px; margin-bottom: 20px;">
+                <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; font-weight: 500; color: #1e293b;">
+                    <input type="checkbox" id="hideStatusCheckbox" style="width: 18px; height: 18px; cursor: pointer;">
+                    <span>🔒 Hide automation status column</span>
+                </label>
+                <p style="margin: 8px 0 0 28px; font-size: 13px; color: #64748b;">Hides your internal automation progress from the client</p>
+            </div>
+
+            <div class="share-option" onclick="shareLink('consolidated')">
+                <h3>📊 Strategic View (35 Carriers)</h3>
+                <p><strong>Consolidated data</strong> - All duplicates merged including Delta Dental regional plans. Best for executive overview and strategic planning.</p>
+            </div>
+
+            <div class="share-option" onclick="shareLink('raw')">
+                <h3>🔍 Operational View (83 Carriers)</h3>
+                <p><strong>Raw data</strong> - Shows all carrier variations as entered in their system. Demonstrates operational complexity and data quality challenges.</p>
+            </div>
+
+            <button class="btn-close" onclick="closeShareModal()">Cancel</button>
+        </div>
+    </div>
+
     <script>
-        // Initial data sorted by market share
+        // Initial data sorted by market share - Delta Dental consolidated
         const initialData = [
-            { name: "Delta Dental Insurance", marketShare: "~29%", status: "READY WITH API", details: "Full API with patient list and complete data extraction" },
-            { name: "Delta Dental Office Toolkit", marketShare: "Part of Delta", status: "READY WITH API", details: "API automation implemented" },
+            { name: "Delta Dental (All Regional Plans)", marketShare: "~29%", status: "READY WITH API", details: "Full API with patient list and complete data extraction across all regional Delta Dental plans (Insurance, Office Toolkit, CO, IA, IL, MN, MO, etc.)" },
             { name: "DentaQuest", marketShare: "~12%", status: "READY WITH HTML SCRAPING", details: "Playwright POC development" },
             { name: "MetLife", marketShare: "~7%", status: "READY WITH HTML SCRAPING", details: "Full patient list obtained, API automation in place" },
             { name: "UHC (UnitedHealthcare)", marketShare: "~7-9%", status: "READY WITH API", details: "Full API reverse engineering completed with session persistence" },
             { name: "Cigna", marketShare: "~6%", status: "READY WITH HTML SCRAPING", details: "Basic structure in place" },
             { name: "Aetna", marketShare: "~6%", status: "READY WITH HTML SCRAPING", details: "Implementation started" },
             { name: "United Concordia", marketShare: "~5%", status: "READY WITH HTML SCRAPING", details: "Complete network-based extraction with 831 procedures" },
-            { name: "Humana/CompBenefits", marketShare: "~3-4%", status: "NOT A PRIORITY? (NOT IN CLIENT LIST)", details: "Not a priority - not in our client list" },
+            { name: "Humana/CompBenefits", marketShare: "~3-4%", status: "NOT STARTED", details: "Pending implementation" },
             { name: "Guardian", marketShare: "~3%", status: "READY WITH API", details: "Reverse engineered with working API automation" },
             { name: "Ameritas", marketShare: "~2-3%", status: "READY WITH HTML SCRAPING", details: "PDF-based extraction with LLM parsing ($0.002/patient)" },
             { name: "Liberty Dental", marketShare: "~2-3%", status: "NOT A PRIORITY? (NOT IN CLIENT LIST)", details: "Not a priority - not in our client list" },
@@ -426,11 +552,6 @@
             { name: "The Standard", marketShare: "~0.13%", status: "NOT STARTED", details: "Pending implementation" },
             { name: "Beam Insurance", marketShare: "~0.12%", status: "NOT STARTED", details: "Pending implementation" },
             { name: "Reliance", marketShare: "~0.08%", status: "NOT STARTED", details: "Pending implementation" },
-            { name: "Delta Dental CO", marketShare: "Part of Delta?", status: "NOT STARTED", details: "Pending implementation" },
-            { name: "Delta Dental IA", marketShare: "Part of Delta?", status: "NOT STARTED", details: "Pending implementation" },
-            { name: "Delta Dental IL", marketShare: "Part of Delta?", status: "NOT STARTED", details: "Pending implementation" },
-            { name: "Delta Dental MN", marketShare: "Part of Delta?", status: "NOT STARTED", details: "Pending implementation" },
-            { name: "Delta Dental MO", marketShare: "Part of Delta?", status: "NOT STARTED", details: "Pending implementation" },
             { name: "Loomis Group", marketShare: "N/A", status: "NOT STARTED", details: "Pending implementation" }
         ];
 
@@ -598,8 +719,11 @@
             renderTable();
         }
 
-        // Ace Dental Client Data - All 83 Carriers (June-October 2025)
-        const texasClientData = [
+        // Track which view is active
+        let showConsolidatedView = true;
+
+        // Ace Dental Client Data - RAW DATA (83 carriers with duplicates)
+        const texasClientDataRaw = [
             { carrier: 'United Concordia', count: 110, percentage: '8.85%' },
             { carrier: 'MCNA - TEXAS MEDICAID', count: 88, percentage: '7.08%' },
             { carrier: 'Ace Dental', count: 80, percentage: '6.44%' },
@@ -685,36 +809,111 @@
             { carrier: 'DELTA DENTAL PLAN (CO) PPO', count: 1, percentage: '0.08%' }
         ];
 
+        // Ace Dental Client Data - CONSOLIDATED (37 carriers - ALL duplicates merged including Delta Dental)
+        const texasClientDataConsolidated = [
+            { carrier: 'Delta Dental (All Regional Plans)', count: 242, percentage: '19.47%' },
+            { carrier: 'United Concordia (All Plans)', count: 216, percentage: '17.38%' },
+            { carrier: 'UnitedHealthcare (All Plans)', count: 104, percentage: '8.37%' },
+            { carrier: 'MCNA - TEXAS MEDICAID', count: 88, percentage: '7.08%' },
+            { carrier: 'Ace Dental', count: 80, percentage: '6.44%' },
+            { carrier: 'DentaQuest (All Plans)', count: 64, percentage: '5.15%' },
+            { carrier: 'MetLife', count: 59, percentage: '4.75%' },
+            { carrier: 'Cigna (All Plans)', count: 59, percentage: '4.75%' },
+            { carrier: 'FEP Blue (Federal Employee Program)', count: 56, percentage: '4.50%' },
+            { carrier: 'Blue Cross Blue Shield of Texas', count: 52, percentage: '4.18%' },
+            { carrier: 'Aetna (All Plans)', count: 47, percentage: '3.78%' },
+            { carrier: 'Guardian', count: 36, percentage: '2.90%' },
+            { carrier: 'Humana (All Plans)', count: 26, percentage: '2.09%' },
+            { carrier: 'AMERITAS LIFE INSURANCE CORP / CONNECTION DENTAL', count: 20, percentage: '1.61%' },
+            { carrier: 'GEHA CONNECTION DENTAL FEDERAL', count: 19, percentage: '1.53%' },
+            { carrier: 'Ambetter (All Plans)', count: 15, percentage: '1.21%' },
+            { carrier: 'PRINCIPAL FINANCIAL GROUP/LIFE INSURANCE', count: 9, percentage: '0.72%' },
+            { carrier: 'BCBS Of MA', count: 9, percentage: '0.72%' },
+            { carrier: 'Freedom Life Insurance Company Of America', count: 8, percentage: '0.64%' },
+            { carrier: 'Sun Life Financial', count: 7, percentage: '0.56%' },
+            { carrier: 'Mutual Of Omaha', count: 5, percentage: '0.40%' },
+            { carrier: 'ANTHEM BLUE CROSS BLUE SHIELD', count: 4, percentage: '0.32%' },
+            { carrier: 'TMHP MEDICAID DENTAL', count: 3, percentage: '0.24%' },
+            { carrier: 'Manhattan Insurance', count: 2, percentage: '0.16%' },
+            { carrier: 'Physician Mutual', count: 2, percentage: '0.16%' },
+            { carrier: 'CS Benefits', count: 2, percentage: '0.16%' },
+            { carrier: 'Aflac Dental', count: 1, percentage: '0.08%' },
+            { carrier: 'Blue Cross Blue Shield Of Alabama', count: 1, percentage: '0.08%' },
+            { carrier: 'Blue Cross Blue Shield Of TN', count: 1, percentage: '0.08%' },
+            { carrier: 'Dental Claims Administrator (Equitable)', count: 1, percentage: '0.08%' },
+            { carrier: 'FCE Benefit Administrators Inc.', count: 1, percentage: '0.08%' },
+            { carrier: 'ITPEU Health & Welfare Fund', count: 1, percentage: '0.08%' },
+            { carrier: 'Unum Dental', count: 1, percentage: '0.08%' },
+            { carrier: 'TruAssure Insurance Co', count: 1, percentage: '0.08%' },
+            { carrier: 'Solstice', count: 1, percentage: '0.08%' }
+        ];
+
         // Map carrier to status based on automation
         function getCarrierStatus(carrierName) {
+            // Normalize: uppercase + remove spaces/hyphens for better matching
             const name = carrierName.toUpperCase();
+            const normalized = name.replace(/[\s\-]/g, '');
 
             if (name.includes('DELTA')) return 'READY WITH API';
             if (name.includes('UNITED CONCORDIA')) return 'READY WITH HTML SCRAPING';
+            if (normalized.includes('UNITEDHEALTH') || normalized.includes('UHC')) return 'READY WITH API';
             if (name.includes('MCNA')) return 'READY WITH HTML SCRAPING';
-            if (name.includes('DENTA QUEST') || name.includes('DENTAQUEST')) return 'READY WITH HTML SCRAPING';
+            if (normalized.includes('DENTAQUEST') || name.includes('DENTA QUEST')) return 'READY WITH HTML SCRAPING';
             if (name.includes('AETNA')) return 'READY WITH HTML SCRAPING';
-            if (name.includes('METLIFE') || name.includes('MET LIFE')) return 'READY WITH HTML SCRAPING';
-            if (name.includes('UHC') || name.includes('UNITED HEALTH')) return 'READY WITH API';
+            if (normalized.includes('METLIFE')) return 'READY WITH HTML SCRAPING';
             if (name.includes('CIGNA')) return 'READY WITH HTML SCRAPING';
             if (name.includes('GUARDIAN')) return 'READY WITH API';
             if (name.includes('AMERITAS')) return 'READY WITH HTML SCRAPING';
             if (name.includes('GEHA')) return 'NOT STARTED';
-            if (name.includes('FEP') || name.includes('BLUE') || name.includes('BCBS')) return 'COVERED BY DNOA';
-            if (name.includes('ACE DENTAL')) return 'NOT STARTED';
+            if (name.includes('FEP') || name.includes('BLUE CROSS') || name.includes('BCBS') || name.includes('BLUE')) return 'COVERED BY DNOA';
+            if (normalized.includes('ACEDENTAL')) return 'NOT STARTED';
             if (name.includes('AMBETTER')) return 'NOT STARTED';
-            if (name.includes('HUMANA') || name.includes('COMP BENEFITS')) return 'NOT STARTED';
+            if (name.includes('HUMANA') || normalized.includes('COMPBENEFITS')) return 'NOT STARTED';
             if (name.includes('PRINCIPAL')) return 'NOT STARTED';
-            if (name.includes('FREEDOM LIFE')) return 'NOT STARTED';
-            if (name.includes('MUTUAL OF OMAHA')) return 'NOT STARTED';
+            if (normalized.includes('FREEDOMLIFE')) return 'NOT STARTED';
+            if (normalized.includes('MUTUALOFOMAHA')) return 'NOT STARTED';
+            if (normalized.includes('SUNLIFE')) return 'NOT STARTED';
+            if (name.includes('TMHP')) return 'NOT STARTED';
+            if (name.includes('ANTHEM')) return 'COVERED BY DNOA';
 
             return 'NOT STARTED';
+        }
+
+        // Toggle between raw and consolidated views
+        function toggleCarrierView() {
+            showConsolidatedView = !showConsolidatedView;
+
+            // Update button and description
+            const toggleText = document.getElementById('toggleText');
+            const toggleIcon = document.getElementById('toggleIcon');
+            const viewDescription = document.getElementById('viewDescription');
+            const carrierCount = document.getElementById('texas-carrier-count');
+            const carrierLabel = document.getElementById('texas-carrier-label');
+
+            if (showConsolidatedView) {
+                toggleText.textContent = 'Show Raw Data (83 carriers)';
+                toggleIcon.textContent = '📊';
+                viewDescription.textContent = 'Consolidated view - all duplicates merged including Delta Dental regional plans';
+                carrierCount.textContent = '35';
+                carrierLabel.textContent = 'Unique Carriers';
+            } else {
+                toggleText.textContent = 'Show Consolidated (35 carriers)';
+                toggleIcon.textContent = '🔍';
+                viewDescription.textContent = 'Raw data - showing operational complexity with all duplicate entries';
+                carrierCount.textContent = '83';
+                carrierLabel.textContent = 'All Carriers';
+            }
+
+            renderTexasTable();
         }
 
         // Render Texas table
         function renderTexasTable() {
             const tbody = document.getElementById('texasTableBody');
             tbody.innerHTML = '';
+
+            // Use the appropriate dataset based on toggle
+            const texasClientData = showConsolidatedView ? texasClientDataConsolidated : texasClientDataRaw;
 
             let automatedCount = 0;
             let automatedPatients = 0;
@@ -755,9 +954,108 @@
             document.getElementById(tabName).classList.add('active');
         }
 
+        // Check for client view mode
+        function initializeView() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const viewMode = urlParams.get('view');
+            const dataMode = urlParams.get('data');
+            const hideStatus = urlParams.get('hideStatus');
+
+            if (viewMode === 'client') {
+                // Hide US Market tab for client view
+                const usMarketTab = document.querySelector('[onclick="switchTab(\'us-market\')"]');
+                if (usMarketTab) {
+                    usMarketTab.style.display = 'none';
+                }
+
+                // Hide toggle and share buttons - client sees locked view
+                const toggleBtn = document.getElementById('toggleViewBtn');
+                const shareBtn = document.getElementById('shareBtn');
+                if (toggleBtn) toggleBtn.style.display = 'none';
+                if (shareBtn) shareBtn.style.display = 'none';
+
+                // Switch to Ace Dental Client tab
+                switchTab('texas-client');
+
+                // Set the correct data view (raw or consolidated)
+                if (dataMode === 'raw') {
+                    showConsolidatedView = false;
+                    // Update UI to reflect raw view
+                    document.getElementById('viewDescription').textContent = 'Raw data - showing all carrier variations as entered in the system';
+                    document.getElementById('texas-carrier-count').textContent = '83';
+                    document.getElementById('texas-carrier-label').textContent = 'All Carriers';
+                    renderTexasTable();
+                } else {
+                    // Consolidated view (default for client)
+                    document.getElementById('viewDescription').textContent = 'Consolidated strategic view - duplicates merged for clear analysis';
+                }
+
+                // Hide status column if requested
+                if (hideStatus === 'true') {
+                    hideStatusColumn();
+                }
+            }
+        }
+
+        // Function to hide status column in Ace Dental table
+        function hideStatusColumn() {
+            // Use CSS to hide the status column (5th column - index 4)
+            const style = document.createElement('style');
+            style.id = 'hideStatusStyle';
+            style.textContent = `
+                #texasTableBody tr td:nth-child(5),
+                #texas-client table thead th:nth-child(5) {
+                    display: none !important;
+                }
+            `;
+            document.head.appendChild(style);
+        }
+
+        // Share modal functions
+        function openShareModal() {
+            document.getElementById('shareModal').classList.add('active');
+        }
+
+        function closeShareModal(event) {
+            if (!event || event.target === event.currentTarget) {
+                document.getElementById('shareModal').classList.remove('active');
+            }
+        }
+
+        function shareLink(viewType) {
+            const baseUrl = window.location.origin + window.location.pathname;
+            const hideStatus = document.getElementById('hideStatusCheckbox').checked;
+            let shareUrl;
+
+            if (viewType === 'consolidated') {
+                shareUrl = `${baseUrl}?view=client&data=consolidated`;
+            } else {
+                shareUrl = `${baseUrl}?view=client&data=raw`;
+            }
+
+            // Add hideStatus parameter if checkbox is checked
+            if (hideStatus) {
+                shareUrl += '&hideStatus=true';
+            }
+
+            // Copy to clipboard
+            navigator.clipboard.writeText(shareUrl).then(() => {
+                // Show success message
+                const viewName = viewType === 'consolidated' ? 'Strategic View (35 carriers)' : 'Operational View (83 carriers)';
+                const statusInfo = hideStatus ? '\n🔒 Status column hidden' : '\n✅ Status column visible';
+                alert(`✅ Link copied to clipboard!\n\n${viewName}${statusInfo}\n\n${shareUrl}\n\nShare this link with the client.`);
+                closeShareModal();
+            }).catch(err => {
+                // Fallback for older browsers
+                prompt('Copy this link:', shareUrl);
+                closeShareModal();
+            });
+        }
+
         // Initialize
         loadData();
         renderTexasTable();
+        initializeView();
     </script>
 </body>
 </html>

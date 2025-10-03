@@ -722,12 +722,29 @@ app.get('/api/patients/:fileName', checkApiKey, async (req, res) => {
 // Get list of saved patients (MongoDB only)
 app.get('/api/patients', checkApiKey, async (req, res) => {
   try {
-    const portal = req.query.portal;
+    const portal = req.query.portal; // Optional: filter by portal (DDINS, DentaQuest, etc.)
+    const clinic = req.query.clinic; // Optional: filter by clinic (sdb, ace_dental)
 
-    // Get from MongoDB
+    // Get from MongoDB (portal filter is optional - if not provided, returns ALL patients)
     const mongoPatients = await listPatients(portal);
 
-    const formattedPatients = mongoPatients.map(data => {
+    console.log(`[DEBUG] /api/patients - Found ${mongoPatients.length} patients in MongoDB (portal: ${portal || 'ALL'}, clinic filter: ${clinic || 'NONE'})`);
+
+    // Filter by clinic if provided
+    let filteredPatients = mongoPatients;
+    if (clinic) {
+      filteredPatients = mongoPatients.filter(data => {
+        const dataClinicId = (data.extraction?.clinicId || '').toLowerCase();
+        const dataClinic = (data.extraction?.clinic || '').toLowerCase();
+        const searchClinic = clinic.toLowerCase();
+
+        // Match by clinicId (e.g., "sdb") OR clinic name contains search term (e.g., "SDB Dental" contains "sdb")
+        return dataClinicId === searchClinic || dataClinic.includes(searchClinic);
+      });
+      console.log(`[DEBUG] After clinic filter: ${filteredPatients.length} patients`);
+    }
+
+    const formattedPatients = filteredPatients.map(data => {
       const subscriberId = data.patient?.subscriberId || '';
       const firstName = data.patient?.firstName || 'Unknown';
       const lastName = data.patient?.lastName || 'Unknown';
@@ -746,8 +763,10 @@ app.get('/api/patients', checkApiKey, async (req, res) => {
       };
     });
 
+    console.log(`[DEBUG] Returning ${formattedPatients.length} formatted patients`);
     res.json({ patients: formattedPatients, total: formattedPatients.length });
   } catch (error) {
+    console.error(`[ERROR] /api/patients failed:`, error);
     res.status(500).json({ error: error.message });
   }
 });

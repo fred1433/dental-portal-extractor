@@ -810,9 +810,21 @@
         // Load patients on page load
         async function loadPatientCount() {
             try {
-                const response = await fetch(`/api/patients?key=${modalApiKey}`);
+                // Get selected clinic (sdb, ace_dental, etc.)
+                const selectedClinic = document.getElementById('clinic')?.value || '';
+
+                // Build URL with optional clinic filter
+                let url = `/api/patients?key=${modalApiKey}`;
+                if (selectedClinic) {
+                    url += `&clinic=${selectedClinic}`;
+                }
+
+                console.log(`[Patient Search] Loading patients for clinic: ${selectedClinic || 'ALL'}`);
+                const response = await fetch(url);
                 const data = await response.json();
                 allPatients = data.patients;
+
+                console.log(`[Patient Search] Loaded ${data.total} patients from database`);
 
                 // Only show count if >= 100 patients (looks more professional)
                 const countEl = document.getElementById('existingPatientsCount');
@@ -820,9 +832,11 @@
                     countEl.textContent = `${data.total} patient${data.total !== 1 ? 's' : ''} saved`;
                     countEl.style.display = 'block';
                 } else {
+                    // Don't show count if less than 100 - looks unprofessional
                     countEl.style.display = 'none';
                 }
             } catch (error) {
+                console.error('[Patient Search] Error loading patients:', error);
                 document.getElementById('existingPatientsCount').style.display = 'none';
             }
         }
@@ -913,6 +927,15 @@
         // Load patient count on page load
         if (typeof window !== 'undefined') {
             window.addEventListener('load', loadPatientCount);
+
+            // Reload patients when clinic changes
+            const clinicSelect = document.getElementById('clinic');
+            if (clinicSelect) {
+                clinicSelect.addEventListener('change', () => {
+                    console.log('[Patient Search] Clinic changed, reloading patients...');
+                    loadPatientCount();
+                });
+            }
         }
     </script>
 </html>
