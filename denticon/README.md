@@ -157,10 +157,6 @@ console.log(JSON.stringify(window.octoberExport, null, 2))
 }
 ```
 
-## 🔍 Scripts de Debug (Optionnels)
-
-- `debug_eligibility.js` - Debug de l'endpoint c1 pour comprendre la structure
-- `test_eligibility_endpoint.js` - Test c1 avec affichage détaillé des 3 premiers patients
 
 ## ⚠️ Points Importants
 
