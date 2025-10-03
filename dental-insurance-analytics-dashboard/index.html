@@ -316,7 +316,7 @@
                 📊 US Market Share
             </div>
             <div class="tab" onclick="switchTab('texas-client')">
-                🏥 Texas Client - Oct 2025 (Top 20)
+                🏥 Ace Dental Client - 5 Months Jun-Oct 2025
             </div>
         </div>
 
@@ -361,12 +361,12 @@
         <div id="texas-client" class="tab-content">
             <div class="stats">
                 <div class="stat-card">
-                    <div class="value">271</div>
+                    <div class="value">1243</div>
                     <div class="label">Total Patients</div>
                 </div>
                 <div class="stat-card">
-                    <div class="value">20</div>
-                    <div class="label">Top Carriers</div>
+                    <div class="value">83</div>
+                    <div class="label">All Carriers</div>
                 </div>
                 <div class="stat-card">
                     <div class="value" id="texas-automated">0</div>
@@ -598,28 +598,91 @@
             renderTable();
         }
 
-        // Texas Client Data - Top 20 Carriers (October 2025)
+        // Ace Dental Client Data - All 83 Carriers (June-October 2025)
         const texasClientData = [
-            { carrier: 'UHC-TEXAS-MEDICAID', count: 23, percentage: '8.5%' },
-            { carrier: 'United Concordia', count: 21, percentage: '7.7%' },
-            { carrier: 'MCNA - TEXAS MEDICAID', count: 20, percentage: '7.4%' },
-            { carrier: 'UNITED CONCORDIA (COMMERCIAL ACCOUNTS)', count: 16, percentage: '5.9%' },
-            { carrier: 'Denta Quest Children', count: 14, percentage: '5.2%' },
-            { carrier: 'Ace Dental', count: 13, percentage: '4.8%' },
-            { carrier: 'AETNA (KY) PPO', count: 9, percentage: '3.3%' },
-            { carrier: 'DELTA DENTAL PLAN (AR) PPO', count: 9, percentage: '3.3%' },
-            { carrier: 'FEP Blue Dental', count: 8, percentage: '3.0%' },
-            { carrier: 'Metlife', count: 8, percentage: '3.0%' },
-            { carrier: 'MET LIFE', count: 8, percentage: '3.0%' },
-            { carrier: 'Delta Dental', count: 8, percentage: '3.0%' },
-            { carrier: 'UNITED CONCORDIA – FEDVIP – ADV PLUS', count: 7, percentage: '2.6%' },
-            { carrier: 'DELTA DENTAL PLAN (MO) PPO', count: 7, percentage: '2.6%' },
-            { carrier: 'DELTA DENTAL PLAN (CA) PPO', count: 6, percentage: '2.2%' },
-            { carrier: 'Guardian', count: 6, percentage: '2.2%' },
-            { carrier: 'AMERITAS LIFE INSURANCE CORP / CONNECTION DENTAL', count: 6, percentage: '2.2%' },
-            { carrier: 'Denta Quest Chip', count: 5, percentage: '1.8%' },
-            { carrier: 'BLUE CROSS BLUE SHIELD OF TEXAS', count: 5, percentage: '1.8%' },
-            { carrier: 'BCBS Of Tx', count: 4, percentage: '1.5%' }
+            { carrier: 'United Concordia', count: 110, percentage: '8.85%' },
+            { carrier: 'MCNA - TEXAS MEDICAID', count: 88, percentage: '7.08%' },
+            { carrier: 'Ace Dental', count: 80, percentage: '6.44%' },
+            { carrier: 'UNITED CONCORDIA (COMMERCIAL ACCOUNTS)', count: 65, percentage: '5.23%' },
+            { carrier: 'Denta Quest Children', count: 57, percentage: '4.59%' },
+            { carrier: 'United Health Care', count: 43, percentage: '3.46%' },
+            { carrier: 'UHC-TEXAS-MEDICAID', count: 42, percentage: '3.38%' },
+            { carrier: 'AETNA (KY) PPO', count: 39, percentage: '3.14%' },
+            { carrier: 'Metlife', count: 37, percentage: '2.98%' },
+            { carrier: 'Delta Dental', count: 37, percentage: '2.98%' },
+            { carrier: 'Guardian', count: 36, percentage: '2.90%' },
+            { carrier: 'DELTA DENTAL PLAN (CA) PPO', count: 34, percentage: '2.74%' },
+            { carrier: 'Delta Dental Of Ca Federal Employee', count: 32, percentage: '2.57%' },
+            { carrier: 'DELTA DENTAL PLAN (AR) PPO', count: 29, percentage: '2.33%' },
+            { carrier: 'UNITED CONCORDIA – FEDVIP – ADV PLUS', count: 29, percentage: '2.33%' },
+            { carrier: 'BCBS Of Tx', count: 28, percentage: '2.25%' },
+            { carrier: 'Cigna', count: 28, percentage: '2.25%' },
+            { carrier: 'CIGNA (PPO)', count: 26, percentage: '2.09%' },
+            { carrier: 'FEP Blue Dental', count: 25, percentage: '2.01%' },
+            { carrier: 'BLUE CROSS BLUE SHIELD OF TEXAS', count: 24, percentage: '1.93%' },
+            { carrier: 'MET LIFE', count: 22, percentage: '1.77%' },
+            { carrier: 'AMERITAS LIFE INSURANCE CORP / CONNECTION DENTAL', count: 20, percentage: '1.61%' },
+            { carrier: 'GEHA CONNECTION DENTAL FEDERAL', count: 19, percentage: '1.53%' },
+            { carrier: 'BLUE CROSS BLUE SHIELD FEP', count: 17, percentage: '1.37%' },
+            { carrier: 'DELTA DENTAL PLAN (GA) PPO', count: 16, percentage: '1.29%' },
+            { carrier: 'United Health (Dual Complete)', count: 15, percentage: '1.21%' },
+            { carrier: 'DELTA DENTAL PLAN (MO) PPO', count: 14, percentage: '1.13%' },
+            { carrier: 'FEP BLUE', count: 14, percentage: '1.13%' },
+            { carrier: 'DELTA DENTAL PLAN (IL) PPO', count: 13, percentage: '1.05%' },
+            { carrier: 'Ambetter Claims Texas', count: 13, percentage: '1.05%' },
+            { carrier: 'UNITED CONCORDIA – TRDP-DOD (FAMILY-RESERVES)', count: 12, percentage: '0.97%' },
+            { carrier: 'HUMANA DENTAL INSURANCE COMPANY', count: 10, percentage: '0.80%' },
+            { carrier: 'Humana', count: 10, percentage: '0.80%' },
+            { carrier: 'DELTA DENTAL PLAN (VA) PPO', count: 9, percentage: '0.72%' },
+            { carrier: 'BCBS Of MA', count: 9, percentage: '0.72%' },
+            { carrier: 'PRINCIPAL FINANCIAL GROUP/LIFE INSURANCE', count: 9, percentage: '0.72%' },
+            { carrier: 'Freedom Life Insurance Company Of America', count: 8, percentage: '0.64%' },
+            { carrier: 'Delta Dental Insurance Company', count: 7, percentage: '0.56%' },
+            { carrier: 'DELTA DENTAL PLAN (WA) PPO', count: 7, percentage: '0.56%' },
+            { carrier: 'Delta Dental Of IA', count: 6, percentage: '0.48%' },
+            { carrier: 'Delta Dental Of Tennessee', count: 6, percentage: '0.48%' },
+            { carrier: 'Delta Dental Of Pennsylvania', count: 5, percentage: '0.40%' },
+            { carrier: 'Cigna Dental', count: 5, percentage: '0.40%' },
+            { carrier: 'Delta Dental Of North Carolina', count: 5, percentage: '0.40%' },
+            { carrier: 'Mutual Of Omaha', count: 5, percentage: '0.40%' },
+            { carrier: 'COMP BENEFITS - A HUMANA PLAN (KY 14282)', count: 5, percentage: '0.40%' },
+            { carrier: 'Denta Quest Chip', count: 5, percentage: '0.40%' },
+            { carrier: 'Delta Dental Kansas', count: 4, percentage: '0.32%' },
+            { carrier: 'UNITED HEALTHCARE / UNIMERICA DENTAL', count: 4, percentage: '0.32%' },
+            { carrier: 'Aetna (TX) PPO', count: 4, percentage: '0.32%' },
+            { carrier: 'Sunlife', count: 4, percentage: '0.32%' },
+            { carrier: 'Aetna', count: 4, percentage: '0.32%' },
+            { carrier: 'Sun Life Financial', count: 3, percentage: '0.24%' },
+            { carrier: 'Delta Dental Of MA', count: 3, percentage: '0.24%' },
+            { carrier: 'TMHP MEDICAID DENTAL', count: 3, percentage: '0.24%' },
+            { carrier: 'DELTA DENTAL PLAN (TN) PPO', count: 3, percentage: '0.24%' },
+            { carrier: 'Delta Dental Of New Jersey', count: 2, percentage: '0.16%' },
+            { carrier: 'ANTHEM BLUE CROSS BLUE SHIELD (100)', count: 2, percentage: '0.16%' },
+            { carrier: 'Ambetter Claims', count: 2, percentage: '0.16%' },
+            { carrier: 'DELTA DENTAL PLAN (IL) Advantage', count: 2, percentage: '0.16%' },
+            { carrier: 'Manhattan Insurance', count: 2, percentage: '0.16%' },
+            { carrier: 'Physician Mutual', count: 2, percentage: '0.16%' },
+            { carrier: 'CS Benefits', count: 2, percentage: '0.16%' },
+            { carrier: 'Denta Quest Waiver 5000', count: 2, percentage: '0.16%' },
+            { carrier: 'DELTA DENTAL PLAN (AL) PPO', count: 2, percentage: '0.16%' },
+            { carrier: 'Delta Dental Of Arizona', count: 1, percentage: '0.08%' },
+            { carrier: 'Aflac Dental', count: 1, percentage: '0.08%' },
+            { carrier: 'COMP BENEFITS - A HUMANA PLAN (KY 14283)', count: 1, percentage: '0.08%' },
+            { carrier: 'Blue Cross Blue Shield Of Alabama', count: 1, percentage: '0.08%' },
+            { carrier: 'Blue Cross Blue Shield Of TN', count: 1, percentage: '0.08%' },
+            { carrier: 'Anthem BCBS', count: 1, percentage: '0.08%' },
+            { carrier: 'Delta Dental Of Kansas', count: 1, percentage: '0.08%' },
+            { carrier: 'Dental Claims Administrator (Equitable)', count: 1, percentage: '0.08%' },
+            { carrier: 'DELTA DENTAL PLAN (KY) PPO', count: 1, percentage: '0.08%' },
+            { carrier: 'FCE Benefit Administrators Inc.', count: 1, percentage: '0.08%' },
+            { carrier: 'DELTA DENTAL PLAN (WI) PPO', count: 1, percentage: '0.08%' },
+            { carrier: 'ANTHEM BLUE CROSS BLUE SHIELD (300)', count: 1, percentage: '0.08%' },
+            { carrier: 'ITPEU Health & Welfare Fund', count: 1, percentage: '0.08%' },
+            { carrier: 'Unum Dental', count: 1, percentage: '0.08%' },
+            { carrier: 'TruAssure Insurance Co', count: 1, percentage: '0.08%' },
+            { carrier: 'DELTA DENTAL PLAN (MI) PPO', count: 1, percentage: '0.08%' },
+            { carrier: 'Solstice', count: 1, percentage: '0.08%' },
+            { carrier: 'DELTA DENTAL PLAN (CO) PPO', count: 1, percentage: '0.08%' }
         ];
 
         // Map carrier to status based on automation
@@ -636,8 +699,14 @@
             if (name.includes('CIGNA')) return 'READY WITH HTML SCRAPING';
             if (name.includes('GUARDIAN')) return 'READY WITH API';
             if (name.includes('AMERITAS')) return 'READY WITH HTML SCRAPING';
+            if (name.includes('GEHA')) return 'NOT STARTED';
             if (name.includes('FEP') || name.includes('BLUE') || name.includes('BCBS')) return 'COVERED BY DNOA';
             if (name.includes('ACE DENTAL')) return 'NOT STARTED';
+            if (name.includes('AMBETTER')) return 'NOT STARTED';
+            if (name.includes('HUMANA') || name.includes('COMP BENEFITS')) return 'NOT STARTED';
+            if (name.includes('PRINCIPAL')) return 'NOT STARTED';
+            if (name.includes('FREEDOM LIFE')) return 'NOT STARTED';
+            if (name.includes('MUTUAL OF OMAHA')) return 'NOT STARTED';
 
             return 'NOT STARTED';
         }
@@ -671,7 +740,7 @@
             // Update Texas stats
             document.getElementById('texas-automated').textContent = automatedCount;
             const totalPatients = texasClientData.reduce((sum, c) => sum + c.count, 0);
-            const coverage = Math.round((automatedPatients / 271) * 100);
+            const coverage = Math.round((automatedPatients / 1243) * 100);
             document.getElementById('texas-coverage').textContent = coverage + '%';
         }
 

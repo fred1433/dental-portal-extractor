@@ -3,10 +3,10 @@
 # Netlify deployment script for the dashboard
 # Usage: ./deploy-dashboard.sh
 
-echo "🚀 Deploying dashboard to Netlify..."
+echo "🚀 Deploying Dental Insurance Analytics Dashboard to Netlify..."
 echo ""
 
-cd "$(dirname "$0")/summary-21-payors-list"
+cd "$(dirname "$0")/dental-insurance-analytics-dashboard"
 
 # Deploy to production
 netlify deploy --prod
