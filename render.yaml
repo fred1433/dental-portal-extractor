@@ -36,6 +36,10 @@ services:
       - key: GEMINI_MODEL_FAST
         value: gemini-2.5-flash-lite
 
+      # MongoDB (set in Render dashboard - KEEP SECRET)
+      - key: MONGODB_URI
+        sync: false
+
       # App Config
       - key: API_KEY
         value: demo2024secure

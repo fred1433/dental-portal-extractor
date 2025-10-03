@@ -725,10 +725,28 @@ app.get('/api/patients', checkApiKey, async (req, res) => {
     const portal = req.query.portal; // Optional: filter by portal (DDINS, DentaQuest, etc.)
     const clinic = req.query.clinic; // Optional: filter by clinic (sdb, ace_dental)
 
-    // Get from MongoDB (portal filter is optional - if not provided, returns ALL patients)
-    const mongoPatients = await listPatients(portal);
+    console.log(`[API] GET /api/patients - portal: ${portal || 'ALL'}, clinic: ${clinic || 'NONE'}`);
 
-    console.log(`[DEBUG] /api/patients - Found ${mongoPatients.length} patients in MongoDB (portal: ${portal || 'ALL'}, clinic filter: ${clinic || 'NONE'})`);
+    // Get from MongoDB with timeout protection
+    let mongoPatients = [];
+    try {
+      const timeoutPromise = new Promise((_, reject) =>
+        setTimeout(() => reject(new Error('MongoDB query timeout')), 10000)
+      );
+      const queryPromise = listPatients(portal);
+      mongoPatients = await Promise.race([queryPromise, timeoutPromise]);
+    } catch (dbError) {
+      console.error(`[ERROR] MongoDB query failed: ${dbError.message}`);
+      // Return empty list if DB fails - don't crash the whole endpoint
+      return res.json({
+        patients: [],
+        total: 0,
+        error: 'Database temporarily unavailable',
+        details: dbError.message
+      });
+    }
+
+    console.log(`[DEBUG] /api/patients - Found ${mongoPatients.length} patients in MongoDB`);
 
     // Filter by clinic if provided
     let filteredPatients = mongoPatients;

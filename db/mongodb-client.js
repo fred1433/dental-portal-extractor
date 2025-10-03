@@ -18,21 +18,32 @@ async function connect() {
   }
 
   try {
-    client = new MongoClient(MONGODB_URI);
+    console.log('🔌 Attempting MongoDB connection...');
+
+    // Add timeout options
+    client = new MongoClient(MONGODB_URI, {
+      serverSelectionTimeoutMS: 5000,  // 5 second timeout
+      connectTimeoutMS: 10000,         // 10 second connection timeout
+      socketTimeoutMS: 10000           // 10 second socket timeout
+    });
+
     await client.connect();
     db = client.db('dental-verification');
 
     console.log('✅ MongoDB connected:', db.databaseName);
 
-    // Create indexes for fast queries
-    await db.collection('patients').createIndex({ 'patient.subscriberId': 1 });
-    await db.collection('patients').createIndex({ 'extraction.portalCode': 1 });
-    await db.collection('patients').createIndex({ 'extraction.date': -1 });
+    // Create indexes for fast queries (with shorter timeout)
+    const indexOptions = { maxTimeMS: 5000 };
+    await db.collection('patients').createIndex({ 'patient.subscriberId': 1 }, indexOptions);
+    await db.collection('patients').createIndex({ 'extraction.portalCode': 1 }, indexOptions);
+    await db.collection('patients').createIndex({ 'extraction.date': -1 }, indexOptions);
 
     return db;
   } catch (error) {
     console.error('❌ MongoDB connection failed:', error.message);
+    console.error('Full error:', error);
     db = null;
+    client = null;
     return null;
   }
 }
