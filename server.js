@@ -899,7 +899,7 @@ app.post('/api/chat', checkApiKey, async (req, res) => {
       structure = await new Promise((resolve, reject) => {
         const python = spawn('python3', [
           'extract_unique_paths.py',
-          filePath
+          tempJsonPath
         ]);
 
         let output = '';
