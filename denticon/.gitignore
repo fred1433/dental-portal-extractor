@@ -1,0 +1,9 @@
+# Session Denticon (contient cookies/tokens)
+.denticon-session/
+
+# Résultats de tests (données patients)
+test-results-*.json
+
+# Scripts de test temporaires (déjà obsolètes)
+test_data_quality.js
+QUALITY_TEST_CONSOLE.js
