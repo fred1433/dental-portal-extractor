@@ -300,6 +300,96 @@ async function writePatientNote() {
         console.log(`   Notes: "${formData.fields['PatientInformation.Notes'] || 'VIDE'}"`);
         console.log(`   CSRF Token: ${formData.fields['__RequestVerificationToken'] ? 'Trouvé ✅' : '❌ NON TROUVÉ'}\n`);
 
+        // ========== ÉTAPE 6: VALIDATIONS STRICTES ==========
+        console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+        console.log('🔒 ÉTAPE 3: Validations de sécurité');
+        console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n');
+
+        const errors = [];
+
+        // Validation 1: PATID
+        const extractedPATID = formData.fields['PatientInformation.PATID'];
+        if (!extractedPATID) {
+            errors.push('❌ PATID non trouvé dans le formulaire');
+        } else if (extractedPATID !== TARGET_PATIENT.patid.toString()) {
+            errors.push(`❌ PATID ne correspond pas ! Attendu: ${TARGET_PATIENT.patid}, Reçu: ${extractedPATID}`);
+        } else {
+            console.log(`✅ PATID validé: ${extractedPATID}`);
+        }
+
+        // Validation 2: RPID
+        const extractedRPID = formData.fields['PatientInformation.RPID'];
+        if (!extractedRPID) {
+            errors.push('❌ RPID non trouvé dans le formulaire');
+        } else if (extractedRPID !== TARGET_PATIENT.rpid.toString()) {
+            errors.push(`❌ RPID ne correspond pas ! Attendu: ${TARGET_PATIENT.rpid}, Reçu: ${extractedRPID}`);
+        } else {
+            console.log(`✅ RPID validé: ${extractedRPID}`);
+        }
+
+        // Validation 3: Last Name
+        const extractedLName = formData.fields['PatientInformation.LName'];
+        if (!extractedLName) {
+            errors.push('❌ Last Name non trouvé dans le formulaire');
+        } else if (extractedLName !== TARGET_PATIENT.lastName) {
+            errors.push(`❌ Last Name ne correspond pas ! Attendu: ${TARGET_PATIENT.lastName}, Reçu: ${extractedLName}`);
+        } else {
+            console.log(`✅ Last Name validé: ${extractedLName}`);
+        }
+
+        // Validation 4: First Name
+        const extractedFName = formData.fields['PatientInformation.FName'];
+        if (!extractedFName) {
+            errors.push('❌ First Name non trouvé dans le formulaire');
+        } else if (extractedFName !== TARGET_PATIENT.firstName) {
+            errors.push(`❌ First Name ne correspond pas ! Attendu: ${TARGET_PATIENT.firstName}, Reçu: ${extractedFName}`);
+        } else {
+            console.log(`✅ First Name validé: ${extractedFName}`);
+        }
+
+        // Validation 5: Note actuelle (optionnel mais recommandé)
+        const extractedNote = formData.fields['PatientInformation.Notes'];
+        if (extractedNote !== TARGET_PATIENT.currentNote) {
+            console.log(`⚠️  Note actuelle différente de celle attendue`);
+            console.log(`   Attendu: "${TARGET_PATIENT.currentNote}"`);
+            console.log(`   Reçu: "${extractedNote}"`);
+            console.log(`   (Ceci n'est pas bloquant, la note a peut-être changé)`);
+        } else {
+            console.log(`✅ Note actuelle validée: "${extractedNote}"`);
+        }
+
+        // Validation 6: CSRF Token
+        if (!formData.fields['__RequestVerificationToken']) {
+            errors.push('❌ CSRF Token non trouvé - impossible de faire un POST sécurisé');
+        } else {
+            console.log(`✅ CSRF Token présent`);
+        }
+
+        // Validation 7: Nombre de champs minimum
+        if (formData.count < 50) {
+            errors.push(`❌ Trop peu de champs extraits (${formData.count} < 50) - formulaire incomplet ?`);
+        } else {
+            console.log(`✅ Nombre de champs suffisant: ${formData.count}`);
+        }
+
+        console.log('');
+
+        // Si des erreurs, arrêter immédiatement
+        if (errors.length > 0) {
+            console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+            console.log('❌ ERREURS DE VALIDATION DÉTECTÉES:');
+            console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n');
+            errors.forEach(err => console.log(err));
+            console.log('\n⛔ ARRÊT DU SCRIPT PAR SÉCURITÉ\n');
+            throw new Error('Validation échouée - Patient incorrect ou données manquantes');
+        }
+
+        console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+        console.log('✅ TOUTES LES VALIDATIONS RÉUSSIES !');
+        console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+        console.log('🔒 Le formulaire concerne bien le patient cible.');
+        console.log('🔒 Toutes les données critiques correspondent.\n');
+
         console.log('\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
         console.log('✅ PARSING TERMINÉ (READ-ONLY - Rien n\'a été modifié)');
         console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n');
