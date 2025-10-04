@@ -71,6 +71,76 @@ async function writePatientNote() {
         await page.goto('https://a1.denticon.com/aspx/home/advancedmypage.aspx?chk=tls');
         await page.waitForTimeout(2000);
 
+        // Vérifier si session expirée (écran "Session Timeout")
+        const hasTimeoutScreen = await page.evaluate(() => {
+            return !!document.querySelector('#redirectLogin');
+        });
+
+        if (hasTimeoutScreen) {
+            console.log('⚠️  Session expirée détectée !\n');
+            console.log('🔗 Clic sur le lien de reconnexion...\n');
+
+            await page.click('#redirectLogin');
+            await page.waitForLoadState('domcontentloaded');
+            await page.waitForTimeout(2000);
+
+            console.log('🔑 Reconnexion automatique...\n');
+
+            // Remplir le formulaire de login
+            const username = process.env.DENTICON_USERNAME;
+            const password = process.env.DENTICON_PASSWORD;
+
+            if (!username || !password) {
+                throw new Error('❌ Credentials Denticon manquants dans .env (DENTICON_USERNAME, DENTICON_PASSWORD)');
+            }
+
+            // Écran 1 : Saisir username sur www.denticon.com/login
+            await page.fill('input[name="username"]', username);
+            await page.waitForTimeout(500);
+
+            // Cliquer sur CONTINUE
+            await page.click('#btnLogin');
+            console.log('⏳ Attente du 2ème écran (password)...\n');
+            await page.waitForTimeout(3000);
+
+            // Écran 2 : Saisir password sur a1.denticon.com/aspx/home/login.aspx
+            const hasPasswordField = await page.evaluate(() => {
+                return !!document.querySelector('#txtPassword');
+            });
+
+            if (hasPasswordField) {
+                console.log('🔐 Saisie du mot de passe...\n');
+                await page.fill('#txtPassword', password);
+                await page.waitForTimeout(500);
+
+                // Cliquer sur LOGIN (aLogin qui déclenche Submit1)
+                console.log('🔑 Clic sur LOGIN...\n');
+                await page.click('#aLogin');
+            } else {
+                console.log('⚠️  Champ password non trouvé - peut-être déjà connecté ?\n');
+            }
+
+            // Attendre la redirection vers la home
+            await page.waitForTimeout(3000);
+
+            const finalUrl = page.url();
+            console.log(`📍 URL après login: ${finalUrl}\n`);
+
+            if (finalUrl.includes('advancedmypage')) {
+                console.log('✅ Reconnexion réussie !\n');
+
+                // Sauvegarder la nouvelle session
+                const sessionPath = path.join(__dirname, '.denticon-session', 'storageState.json');
+                await context.storageState({ path: sessionPath });
+                console.log('💾 Session sauvegardée\n');
+
+                // Continuer l'extraction - on réutilise la page actuelle
+                console.log('🚀 Reprise du script...\n');
+            } else {
+                throw new Error(`❌ Reconnexion échouée - URL finale: ${finalUrl}`);
+            }
+        }
+
         console.log('✅ Session valide - Connecté !\n');
 
         console.log('🔑 Extraction du token de sécurité...\n');
@@ -105,7 +175,7 @@ async function writePatientNote() {
         console.log('👤 Construction de l\'URL patient...\n');
 
         const timestamp = Math.floor(Date.now() / 1000);
-        const selectionUrl = `https://c1.denticon.com/?pgid=3169&patid=${TEST_PATIENT_ID}&oid=102&uid=DENTISTRYAUTO&rpid=${TEST_RP_ID}&ckey=cnPrm&pagename=PatientOverview&ts=${timestamp}&ShowPicture=True&referral=3&IsLaunchFlashAlert=1&t=${encodeURIComponent(securityToken)}`;
+        const selectionUrl = `https://c1.denticon.com/?pgid=3169&patid=${TARGET_PATIENT.patid}&oid=102&uid=DENTISTRYAUTO&rpid=${TARGET_PATIENT.rpid}&ckey=cnPrm&pagename=PatientOverview&ts=${timestamp}&ShowPicture=True&referral=3&IsLaunchFlashAlert=1&t=${encodeURIComponent(securityToken)}`;
 
         console.log('🔗 URL construite:');
         console.log(`   ${selectionUrl.substring(0, 100)}...\n`);
