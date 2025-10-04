@@ -40,8 +40,8 @@ async function testAppointmentsExtraction() {
 
         // Injecter et exécuter le script d'extraction
         const results = await page.evaluate(async () => {
-            const testDate = '10/2/2025';
-            const maxPatients = 3;
+            const testDate = '10/6/2025';  // Test autre date
+            const maxPatients = 10;  // Plus de patients pour évaluation qualité
 
             console.log('🎯 EXTRACTION COMPLÈTE : Calendrier + Détails');
             console.log(`📅 Date: ${testDate}`);
@@ -191,33 +191,194 @@ async function testAppointmentsExtraction() {
             }
         });
 
+        // ========== PARTIE 2: EXTRACTION c1 ==========
+        console.log('\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+        console.log('📍 PARTIE 2: Navigation vers c1 (insurance)');
+        console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n');
+
+        const c1StartTime = Date.now();
+        await page.goto('https://c1.denticon.com/aspx/home/advancedmypage.aspx?chk=tls');
+        const c1NavTime = Date.now() - c1StartTime;
+        await page.waitForTimeout(2000);
+        console.log(`✅ Sur c1.denticon.com (navigation: ${c1NavTime}ms + attente: 2000ms)\n`);
+
+        const c1FetchStart = Date.now();
+        const c1Results = await page.evaluate(async () => {
+            const testDate = '10/6/2025';
+            const fetchStart = Date.now();
+            const url = `https://c1.denticon.com/EligibilityVerificationReport/GetPatientEligibilityTableData?PGID=3169&OID=102&APPTPRDR=ALL&APTDATE=${encodeURIComponent(testDate)}&ELIGSTATUS=ALL&_=${Date.now()}`;
+
+            const response = await fetch(url, {
+                headers: { 'X-Requested-With': 'XMLHttpRequest' }
+            });
+
+            const data = await response.json();
+            const fetchTime = Date.now() - fetchStart;
+            console.log(`✅ c1 endpoint: ${data.tableData?.length || 0} patients (requête: ${fetchTime}ms)`);
+            return data.tableData || [];
+        });
+        const c1TotalTime = Date.now() - c1FetchStart;
+        console.log(`⏱️  Temps total c1 (fetch + parsing): ${c1TotalTime}ms`);
+
+        console.log(`\n📧 Données c1 extraites: ${c1Results.length} patients\n`);
+
+        // ========== PARTIE 3: FUSION a1 + c1 ==========
+        console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+        console.log('📍 PARTIE 3: Fusion a1 + c1');
+        console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n');
+
+        const merged = results.map(a1Patient => {
+            // Chercher patient correspondant dans c1
+            const c1Patient = c1Results.find(c1 => {
+                const a1LastName = a1Patient.patient_name.split(',')[0].toLowerCase();
+                return c1.PatName && c1.PatName.toLowerCase().includes(a1LastName);
+            });
+
+            return {
+                ...a1Patient,
+                // Contact
+                email: c1Patient?.Email || null,
+                cell_phone_c1: c1Patient?.CELLPHONE || null,
+                // Assurance primaire
+                primary_carrier: c1Patient?.PrimCarrName || null,
+                primary_subscriber_id: c1Patient?.PrimSUBID || null,
+                primary_subscriber_name: c1Patient?.PrimSubName || null,
+                primary_subscriber_dob: c1Patient?.PrimSubBirthDateFormatted || null,
+                primary_eligibility_status: c1Patient?.PrimEligStatus || null,
+                primary_last_verified: c1Patient?.PrimLastVerifiedOnFormatted || null,
+                primary_website: c1Patient?.PrimWEBSITE || null,
+                primary_notes: c1Patient?.PrimINSNOTES || null,
+                // Assurance secondaire
+                secondary_carrier: c1Patient?.SecCarrName || null,
+                secondary_subscriber_id: c1Patient?.SecSUBID || null,
+                secondary_subscriber_name: c1Patient?.SecSubName || null,
+                secondary_subscriber_dob: c1Patient?.SecSubBirthDateFormatted || null,
+                secondary_eligibility_status: c1Patient?.SecEligStatus || null,
+                secondary_last_verified: c1Patient?.SecLastVerifiedOnFormatted || null,
+                // Provider
+                provider_name: c1Patient?.ApptProviderName || null
+            };
+        });
+
+        console.log(`✅ ${merged.length} patients fusionnés (a1 + c1)\n`);
+
         // Afficher les résultats dans Node.js
         console.log('\n📊 RÉSULTATS FINAUX:\n');
-        console.log(`✅ ${results?.length || 0} patients extraits avec succès\n`);
+        console.log(`✅ ${merged?.length || 0} patients extraits avec succès\n`);
 
-        if (results && results.length > 0) {
+        if (merged && merged.length > 0) {
             console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
             console.log('📋 RÉSUMÉ PAR PATIENT:');
             console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n');
 
-            results.forEach((patient, i) => {
+            merged.forEach((patient, i) => {
                 console.log(`${i + 1}. ${patient.patient_name}`);
                 console.log(`   DOB: ${patient.date_of_birth}`);
-                console.log(`   Téléphone cell: ${patient.phone_cell}`);
-                console.log(`   Téléphone home: ${patient.phone_home}`);
+                console.log(`   Tel (a1): ${patient.phone_cell}`);
+                console.log(`   Email: ${patient.email || 'N/A'}`);
+                console.log(`   Provider: ${patient.provider_name || 'N/A'}`);
+                console.log(`   PRIMARY: ${patient.primary_carrier || 'N/A'} (${patient.primary_subscriber_id || 'N/A'}) [${patient.primary_eligibility_status || 'N/A'}]`);
+                if (patient.secondary_carrier) {
+                    console.log(`   SECONDARY: ${patient.secondary_carrier} (${patient.secondary_subscriber_id || 'N/A'})`);
+                }
                 console.log(`   Heure RDV: ${patient.time}`);
-                console.log(`   Procédures: ${patient.procedures_detailed.length}`);
-                console.log(`   Total: $${patient.total_amount || 0}`);
+                console.log(`   Procédures: ${patient.procedures_detailed.length} | Total: $${patient.total_amount || 0}`);
                 console.log('');
             });
 
             // Sauvegarder en JSON
             const outputFile = path.join(__dirname, 'test-results-appointments.json');
-            fs.writeFileSync(outputFile, JSON.stringify(results, null, 2));
+            fs.writeFileSync(outputFile, JSON.stringify(merged, null, 2));
             console.log(`💾 Résultats sauvegardés: ${outputFile}\n`);
         }
 
+        // ========== ÉVALUATION QUALITÉ ==========
         console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+        console.log('📊 ÉVALUATION QUALITÉ DES DONNÉES');
+        console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n');
+
+        let stats = {
+            total: merged.length,
+            // a1 (appointments)
+            with_dob: 0,
+            with_cell: 0,
+            with_home: 0,
+            with_work: 0,
+            with_any_phone: 0,
+            with_procedures: 0,
+            with_total_amount: 0,
+            // c1 (insurance)
+            with_email: 0,
+            with_carrier: 0,
+            with_subscriber_id: 0,
+            with_provider: 0,
+            with_secondary_ins: 0,
+            with_eligibility_status: 0,
+            matched_c1: 0,
+            // Complétude
+            complete_a1: 0,  // DOB + cell + procedures
+            complete_c1: 0,  // email + carrier + subscriber_id
+            complete_all: 0  // a1 + c1 complet
+        };
+
+        merged.forEach(p => {
+            // a1
+            if (p.date_of_birth) stats.with_dob++;
+            if (p.phone_cell && p.phone_cell !== 'NA' && p.phone_cell !== 'N/A') stats.with_cell++;
+            if (p.phone_home && p.phone_home !== 'NA' && p.phone_home !== 'N/A') stats.with_home++;
+            if (p.phone_work && p.phone_work !== 'NA' && p.phone_work !== 'N/A') stats.with_work++;
+            if ((p.phone_cell && p.phone_cell !== 'NA') ||
+                (p.phone_home && p.phone_home !== 'NA') ||
+                (p.phone_work && p.phone_work !== 'NA')) stats.with_any_phone++;
+            if (p.procedures_detailed && p.procedures_detailed.length > 0) stats.with_procedures++;
+            if (p.total_amount && p.total_amount > 0) stats.with_total_amount++;
+
+            // c1
+            if (p.email) stats.with_email++;
+            if (p.primary_carrier) stats.with_carrier++;
+            if (p.primary_subscriber_id) stats.with_subscriber_id++;
+            if (p.provider_name) stats.with_provider++;
+            if (p.secondary_carrier) stats.with_secondary_ins++;
+            if (p.primary_eligibility_status && p.primary_eligibility_status !== 'Unknown') stats.with_eligibility_status++;
+            if (p.email || p.primary_carrier || p.primary_subscriber_id) stats.matched_c1++;
+
+            // Complétude
+            const hasA1 = p.date_of_birth &&
+                         (p.phone_cell && p.phone_cell !== 'NA') &&
+                         p.procedures_detailed && p.procedures_detailed.length > 0;
+            const hasC1 = p.email && p.primary_carrier && p.primary_subscriber_id;
+
+            if (hasA1) stats.complete_a1++;
+            if (hasC1) stats.complete_c1++;
+            if (hasA1 && hasC1) stats.complete_all++;
+        });
+
+        const pct = (val) => ((val / stats.total) * 100).toFixed(1);
+
+        console.log('📋 DONNÉES a1 (Appointments):');
+        console.log(`   DOB               : ${stats.with_dob}/${stats.total} (${pct(stats.with_dob)}%)`);
+        console.log(`   Téléphone cell    : ${stats.with_cell}/${stats.total} (${pct(stats.with_cell)}%)`);
+        console.log(`   Téléphone home    : ${stats.with_home}/${stats.total} (${pct(stats.with_home)}%)`);
+        console.log(`   Téléphone work    : ${stats.with_work}/${stats.total} (${pct(stats.with_work)}%)`);
+        console.log(`   Au moins 1 tél    : ${stats.with_any_phone}/${stats.total} (${pct(stats.with_any_phone)}%)`);
+        console.log(`   Procédures        : ${stats.with_procedures}/${stats.total} (${pct(stats.with_procedures)}%)`);
+        console.log(`   Montant total     : ${stats.with_total_amount}/${stats.total} (${pct(stats.with_total_amount)}%)`);
+
+        console.log('\n📧 DONNÉES c1 (Insurance):');
+        console.log(`   Email                : ${stats.with_email}/${stats.total} (${pct(stats.with_email)}%)`);
+        console.log(`   Primary Carrier      : ${stats.with_carrier}/${stats.total} (${pct(stats.with_carrier)}%)`);
+        console.log(`   Primary Subscriber ID: ${stats.with_subscriber_id}/${stats.total} (${pct(stats.with_subscriber_id)}%)`);
+        console.log(`   Provider Name        : ${stats.with_provider}/${stats.total} (${pct(stats.with_provider)}%)`);
+        console.log(`   Secondary Insurance  : ${stats.with_secondary_ins}/${stats.total} (${pct(stats.with_secondary_ins)}%)`);
+        console.log(`   Eligibility Status   : ${stats.with_eligibility_status}/${stats.total} (${pct(stats.with_eligibility_status)}%)`);
+        console.log(`   Match c1 trouvé      : ${stats.matched_c1}/${stats.total} (${pct(stats.matched_c1)}%)`);
+
+        console.log('\n🎯 COMPLÉTUDE:');
+        console.log(`   a1 complet (DOB+Tel+Proc)    : ${stats.complete_a1}/${stats.total} (${pct(stats.complete_a1)}%)`);
+        console.log(`   c1 complet (Email+Carr+SubID): ${stats.complete_c1}/${stats.total} (${pct(stats.complete_c1)}%)`);
+        console.log(`   TOUT complet (a1+c1)         : ${stats.complete_all}/${stats.total} (${pct(stats.complete_all)}%)`);
+
+        console.log('\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
         console.log('✅ TEST TERMINÉ');
         console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n');
 
