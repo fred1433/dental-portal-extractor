@@ -77,6 +77,11 @@ test_general_results.json
 *_results.json
 test_results_detailed.json
 comparison_results.json
+
+# Denticon HAR files and test results
+denticon/*.har
+denticon/all-HAR-*.json
+denticon/test-results-*.json
 data/
 *.db
 *.db-wal
