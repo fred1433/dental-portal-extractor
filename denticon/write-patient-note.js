@@ -1,27 +1,58 @@
 /**
- * TEST NAVIGATION PATIENT TEST
+ * WRITE PATIENT NOTE - Script sécurisé pour écrire une URL dans la patient note
  *
- * Script READ-ONLY pour tester la navigation vers le patient test
- * PATID: 2000084 (Patient, Test)
+ * Ce script permet d'écrire une URL enrichie dans le champ "Patient Note"
+ * de manière ultra-sécurisée avec validations multiples.
  *
- * NE MODIFIE RIEN - Juste lecture et affichage
+ * IMPORTANT: Ne modifie QUE les patients test configurés ci-dessous
  */
 
 const { chromium } = require('playwright');
 const path = require('path');
 require('dotenv').config({ path: path.join(__dirname, '..', '.env') });
 
-async function testNavigateToPatient() {
-    console.log('🔍 TEST NAVIGATION PATIENT TEST\n');
+// ==================== CONFIGURATION DES PATIENTS TEST ====================
+const TEST_PATIENTS = {
+    PATIENT_TEST: {
+        name: 'Patient, Test',
+        lastName: 'Patient',
+        firstName: 'Test',
+        patid: 2000084,
+        rpid: 2000084,
+        currentNote: 'ZXYZUNIQUE123',
+        dob: '10/10/2012',
+        age: 12,
+        sex: 'F'
+    },
+    TEST_PATIENT: {
+        name: 'Test, Patient',
+        lastName: 'Test',
+        firstName: 'Patient',
+        patid: 9016996,
+        rpid: 9016207,
+        currentNote: 'test',
+        dob: '05/21/1994',
+        age: 31,
+        sex: 'F'
+    }
+};
+
+// ========== SÉLECTIONNER LE PATIENT CIBLE (MODIFIER ICI) ==========
+const TARGET_PATIENT = TEST_PATIENTS.PATIENT_TEST;  // ← Change manuellement pour tester
+const NEW_NOTE_URL = `https://example.com/patient-data/${TARGET_PATIENT.patid}`;
+
+// =======================================================================
+
+async function writePatientNote() {
+    console.log('📝 WRITE PATIENT NOTE - Script sécurisé\n');
     console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n');
 
-    // ========== IDs HARDCODÉS (Patient Test) ==========
-    const TEST_PATIENT_ID = 2000084;
-    const TEST_RP_ID = 2000084;
     console.log('🎯 Patient cible:');
-    console.log(`   PATID: ${TEST_PATIENT_ID}`);
-    console.log(`   RPID: ${TEST_RP_ID}`);
-    console.log(`   Nom: Patient, Test\n`);
+    console.log(`   Nom: ${TARGET_PATIENT.name}`);
+    console.log(`   PATID: ${TARGET_PATIENT.patid}`);
+    console.log(`   RPID: ${TARGET_PATIENT.rpid}`);
+    console.log(`   Note actuelle: "${TARGET_PATIENT.currentNote}"`);
+    console.log(`   Nouvelle URL: "${NEW_NOTE_URL}"\n`);
 
     const browser = await chromium.launch({
         headless: false,
@@ -140,8 +171,67 @@ async function testNavigateToPatient() {
             }
         }
 
+        // ========== ÉTAPE 4: Navigation vers EditPatientInfo ==========
         console.log('\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
-        console.log('✅ TEST TERMINÉ (READ-ONLY - Rien n\'a été modifié)');
+        console.log('📝 ÉTAPE 2: Navigation vers EditPatientInfo');
+        console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n');
+
+        const editUrl = `https://c1.denticon.com/EditPatientInfo/Index?patid=${TARGET_PATIENT.patid}&rpid=${TARGET_PATIENT.rpid}`;
+        console.log(`🔗 URL EditPatientInfo: ${editUrl.substring(0, 80)}...\n`);
+        console.log('🚀 Navigation vers le formulaire d\'édition...\n');
+
+        await page.goto(editUrl);
+        await page.waitForLoadState('domcontentloaded');
+        await page.waitForTimeout(2000);
+
+        // ========== ÉTAPE 5: Parser TOUS les champs du formulaire ==========
+        console.log('📊 Extraction de TOUS les champs du formulaire...\n');
+
+        const formData = await page.evaluate(() => {
+            const form = document.querySelector('form');
+            if (!form) {
+                return { error: 'Formulaire non trouvé' };
+            }
+
+            const formDataObj = new FormData(form);
+            const fields = {};
+            let count = 0;
+
+            for (const [key, value] of formDataObj.entries()) {
+                fields[key] = value;
+                count++;
+            }
+
+            // Aussi extraire le token CSRF s'il est dans un input hidden
+            const csrfInput = document.querySelector('input[name="__RequestVerificationToken"]');
+            if (csrfInput) {
+                fields['__RequestVerificationToken'] = csrfInput.value;
+            }
+
+            return {
+                success: true,
+                fields: fields,
+                count: count
+            };
+        });
+
+        if (formData.error) {
+            throw new Error(`❌ ${formData.error}`);
+        }
+
+        console.log(`✅ ${formData.count} champs extraits du formulaire\n`);
+
+        // Afficher quelques champs importants pour vérification
+        console.log('📋 Champs importants extraits:');
+        console.log(`   PATID: ${formData.fields['PatientInformation.PATID'] || '❌ NON TROUVÉ'}`);
+        console.log(`   RPID: ${formData.fields['PatientInformation.RPID'] || '❌ NON TROUVÉ'}`);
+        console.log(`   Last Name: ${formData.fields['PatientInformation.LName'] || '❌ NON TROUVÉ'}`);
+        console.log(`   First Name: ${formData.fields['PatientInformation.FName'] || '❌ NON TROUVÉ'}`);
+        console.log(`   Notes: "${formData.fields['PatientInformation.Notes'] || 'VIDE'}"`);
+        console.log(`   CSRF Token: ${formData.fields['__RequestVerificationToken'] ? 'Trouvé ✅' : '❌ NON TROUVÉ'}\n`);
+
+        console.log('\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+        console.log('✅ PARSING TERMINÉ (READ-ONLY - Rien n\'a été modifié)');
         console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n');
 
         console.log('⏸️  Le navigateur reste ouvert pour vérification visuelle.');
@@ -160,4 +250,4 @@ async function testNavigateToPatient() {
     }
 }
 
-testNavigateToPatient();
+writePatientNote();
