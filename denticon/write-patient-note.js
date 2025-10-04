@@ -390,8 +390,61 @@ async function writePatientNote() {
         console.log('🔒 Le formulaire concerne bien le patient cible.');
         console.log('🔒 Toutes les données critiques correspondent.\n');
 
+        // ========== ÉTAPE 4: Modification du champ Notes et affichage du diff ==========
         console.log('\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
-        console.log('✅ PARSING TERMINÉ (READ-ONLY - Rien n\'a été modifié)');
+        console.log('📝 ÉTAPE 4: Modification du champ Notes (simulation)');
+        console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n');
+
+        // Créer une copie des champs originaux pour comparaison
+        const originalFields = { ...formData.fields };
+
+        // Créer les nouveaux champs avec la modification
+        const modifiedFields = { ...formData.fields };
+        modifiedFields['PatientInformation.Notes'] = NEW_NOTE_URL;
+
+        // Compter les différences
+        const differences = [];
+        for (const key in originalFields) {
+            if (originalFields[key] !== modifiedFields[key]) {
+                differences.push({
+                    field: key,
+                    oldValue: originalFields[key],
+                    newValue: modifiedFields[key]
+                });
+            }
+        }
+
+        console.log(`📊 Analyse des modifications:\n`);
+        console.log(`   Total de champs dans le formulaire: ${Object.keys(formData.fields).length}`);
+        console.log(`   Nombre de champs modifiés: ${differences.length}\n`);
+
+        if (differences.length === 0) {
+            console.log('⚠️  Aucune différence détectée (la nouvelle valeur est identique à l\'ancienne)\n');
+        } else if (differences.length === 1) {
+            console.log('✅ SÉCURITÉ: Un seul champ sera modifié !\n');
+
+            console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+            console.log('📋 DIFF - Changement prévu:');
+            console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n');
+
+            const diff = differences[0];
+            console.log(`🔹 Champ: ${diff.field}`);
+            console.log(`   ❌ Ancienne valeur: "${diff.oldValue}"`);
+            console.log(`   ✅ Nouvelle valeur: "${diff.newValue}"\n`);
+
+            console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n');
+        } else {
+            console.log('⚠️  ATTENTION: Plus d\'un champ serait modifié !\n');
+            console.log('   Champs concernés:');
+            differences.forEach((diff, index) => {
+                console.log(`   ${index + 1}. ${diff.field}`);
+            });
+            console.log('\n⛔ ARRÊT PAR SÉCURITÉ - Seul le champ Notes devrait être modifié\n');
+            throw new Error('Trop de champs modifiés - arrêt de sécurité');
+        }
+
+        console.log('\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+        console.log('✅ DIFF AFFICHÉ (READ-ONLY - Rien n\'a été modifié)');
         console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n');
 
         console.log('⏸️  Le navigateur reste ouvert pour vérification visuelle.');
