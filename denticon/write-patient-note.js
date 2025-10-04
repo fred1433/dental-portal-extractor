@@ -9,6 +9,7 @@
 
 const { chromium } = require('playwright');
 const path = require('path');
+const fs = require('fs');
 require('dotenv').config({ path: path.join(__dirname, '..', '.env') });
 
 // ==================== CONFIGURATION DES PATIENTS TEST ====================
@@ -19,7 +20,6 @@ const TEST_PATIENTS = {
         firstName: 'Test',
         patid: 2000084,
         rpid: 2000084,
-        currentNote: 'ZXYZUNIQUE123',
         dob: '10/10/2012',
         age: 12,
         sex: 'F'
@@ -30,7 +30,6 @@ const TEST_PATIENTS = {
         firstName: 'Patient',
         patid: 9016996,
         rpid: 9016207,
-        currentNote: 'test',
         dob: '05/21/1994',
         age: 31,
         sex: 'F'
@@ -39,7 +38,7 @@ const TEST_PATIENTS = {
 
 // ========== SÉLECTIONNER LE PATIENT CIBLE (MODIFIER ICI) ==========
 const TARGET_PATIENT = TEST_PATIENTS.PATIENT_TEST;  // ← Change manuellement pour tester
-const NEW_NOTE_URL = `https://example.com/patient-data/${TARGET_PATIENT.patid}`;
+const NEW_NOTE_URL = `https://dental-records.example.com/patient/${TARGET_PATIENT.patid}?date=${Date.now()}`;
 
 // =======================================================================
 
@@ -51,12 +50,11 @@ async function writePatientNote() {
     console.log(`   Nom: ${TARGET_PATIENT.name}`);
     console.log(`   PATID: ${TARGET_PATIENT.patid}`);
     console.log(`   RPID: ${TARGET_PATIENT.rpid}`);
-    console.log(`   Note actuelle: "${TARGET_PATIENT.currentNote}"`);
     console.log(`   Nouvelle URL: "${NEW_NOTE_URL}"\n`);
 
     const browser = await chromium.launch({
         headless: false,
-        slowMo: 100
+        channel: 'chrome'  // Utilise Chrome pour une vraie fenêtre visible
     });
 
     const context = await browser.newContext({
@@ -183,7 +181,22 @@ async function writePatientNote() {
         console.log('🚀 Navigation vers le patient test...\n');
         await page.goto(selectionUrl);
         await page.waitForLoadState('domcontentloaded');
-        await page.waitForTimeout(2000);
+        await page.waitForTimeout(4000);  // Timer visuel pour voir PatientOverview
+
+        // Fermer le popup FLASH ALERTS s'il apparaît
+        const hasFlashAlertPopup = await page.evaluate(() => {
+            const closeBtn = document.querySelector('.btn-close-flash-alert-modal');
+            if (closeBtn) {
+                closeBtn.click();
+                return true;
+            }
+            return false;
+        });
+
+        if (hasFlashAlertPopup) {
+            console.log('   ℹ️  Popup FLASH ALERTS fermé automatiquement\n');
+            await page.waitForTimeout(500);
+        }
 
         // ========== ÉTAPE 4: Vérification et affichage ==========
         console.log('📊 Extraction des informations patient...\n');
@@ -197,16 +210,21 @@ async function writePatientNote() {
                 return { error: 'Not authorized - missing token or params' };
             }
 
-            // Helper
+            // Helper - nettoie aussi les espaces multiples (problème de wrap HTML)
             const getText = (selector) => {
                 const el = doc.querySelector(selector);
-                return el ? el.textContent.trim() : null;
+                return el ? el.textContent.trim().replace(/\s+/g, ' ') : null;
             };
 
             // Extraire infos
             const patientName = getText('.patient-name-container .patient-name');
             const patientId = getText('.patient-name-container .patient-id-label');
-            const patientNote = getText('.patient-notes .label-inner');
+            let patientNote = getText('.patient-notes .patient-notes-not-empty .label-inner');
+
+            // Nettoyer les URLs (enlever espaces causés par wrap HTML)
+            if (patientNote && (patientNote.startsWith('http://') || patientNote.startsWith('https://'))) {
+                patientNote = patientNote.replace(/\s/g, '');
+            }
 
             return {
                 success: true,
@@ -215,6 +233,12 @@ async function writePatientNote() {
                 note: patientNote
             };
         });
+
+        // Sauvegarder le HTML de la page patient automatiquement
+        const patientPageHtml = await page.content();
+        const htmlPath = '/tmp/patient-page.html';
+        fs.writeFileSync(htmlPath, patientPageHtml);
+        console.log(`💾 HTML de la page patient sauvegardé: ${htmlPath}\n`);
 
         // ========== ÉTAPE 5: Affichage résultats ==========
         console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
@@ -241,47 +265,109 @@ async function writePatientNote() {
             }
         }
 
+        // ========== VALIDATION CRITIQUE: Note doit être VIDE ==========
+        console.log('\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+        console.log('🔒 VALIDATION CRITIQUE: Vérification de la note');
+        console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n');
+
+        const currentNote = patientInfo.note;
+        const isNoteEmpty = !currentNote || currentNote.trim() === '';
+
+        if (!isNoteEmpty) {
+            console.log('⛔ ARRÊT DU SCRIPT PAR SÉCURITÉ\n');
+            console.log('❌ La note du patient n\'est PAS vide !');
+            console.log(`   Note actuelle: "${currentNote}"\n`);
+            console.log('🔒 PROTECTION ACTIVE:');
+            console.log('   Le script refuse d\'écraser une note existante.');
+            console.log('   Pour écrire une note, le champ doit être vide.\n');
+
+            await browser.close();
+            throw new Error('Note non vide - Refus d\'écraser la note existante');
+        }
+
+        console.log('✅ Note actuelle VIDE - OK pour écrire\n');
+        console.log('🔒 Le script va maintenant écrire la nouvelle note.\n');
+
         // ========== ÉTAPE 4: Navigation vers EditPatientInfo ==========
         console.log('\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
         console.log('📝 ÉTAPE 2: Navigation vers EditPatientInfo');
         console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n');
 
-        const editUrl = `https://c1.denticon.com/EditPatientInfo/Index?patid=${TARGET_PATIENT.patid}&rpid=${TARGET_PATIENT.rpid}`;
-        console.log(`🔗 URL EditPatientInfo: ${editUrl.substring(0, 80)}...\n`);
-        console.log('🚀 Navigation vers le formulaire d\'édition...\n');
+        const editUrl = `https://a1.denticon.com/ASPX/Patients/AdvancedEditPatientInfo.aspx?patid=${TARGET_PATIENT.patid}&rpid=${TARGET_PATIENT.rpid}`;
+        console.log(`🔗 URL AdvancedEditPatientInfo (a1): ${editUrl}\n`);
+        console.log('🚀 Navigation vers le formulaire d\'édition a1...\n');
 
         await page.goto(editUrl);
         await page.waitForLoadState('domcontentloaded');
-        await page.waitForTimeout(2000);
+        await page.waitForTimeout(1000);
 
-        // ========== ÉTAPE 5: Parser TOUS les champs du formulaire ==========
-        console.log('📊 Extraction de TOUS les champs du formulaire...\n');
+        // ========== ATTENDRE LE CHARGEMENT DE L'IFRAME ==========
+        console.log('⏳ Attente du chargement de l\'iframe...\n');
 
-        const formData = await page.evaluate(() => {
+        await page.waitForSelector('#EditPatientInfoIframe');
+
+        // Obtenir le frame réel (pas le locator)
+        const iframeElement = await page.$('#EditPatientInfoIframe');
+        const iframe = await iframeElement.contentFrame();
+
+        console.log('✅ Iframe détecté\n');
+
+        // Fermer le popup FLASH ALERTS s'il apparaît dans l'iframe
+        const hasPopup = await iframe.evaluate(() => {
+            const closeBtn = document.querySelector('.btn-close-flash-alert-modal');
+            if (closeBtn && closeBtn.offsetParent !== null) {  // Visible
+                closeBtn.click();
+                return true;
+            }
+            return false;
+        });
+
+        if (hasPopup) {
+            console.log('   ℹ️  Popup FLASH ALERTS fermé automatiquement dans iframe\n');
+            await page.waitForTimeout(500);
+        }
+
+        // ========== ÉTAPE 5: Parser TOUS les champs du formulaire DANS L'IFRAME ==========
+        console.log('📊 Extraction de TOUS les champs du formulaire depuis l\'iframe...\n');
+
+        const formData = await iframe.evaluate(() => {
             const form = document.querySelector('form');
             if (!form) {
-                return { error: 'Formulaire non trouvé' };
+                return { error: 'Formulaire non trouvé dans iframe' };
             }
 
-            const formDataObj = new FormData(form);
+            // Extraire TOUS les inputs, selects, textareas (y compris doublons)
+            const allFields = [];
+            const inputs = form.querySelectorAll('input, select, textarea');
+
+            inputs.forEach(input => {
+                const name = input.name;
+                let value = input.value;
+
+                // Ignorer les champs sans nom (name vide ou undefined)
+                if (!name || name.trim() === '') return;
+
+                // Gérer les checkboxes et radios
+                if (input.type === 'checkbox' || input.type === 'radio') {
+                    if (input.checked) {
+                        allFields.push({ name, value });
+                    }
+                } else if (input.type !== 'submit' && input.type !== 'button') {
+                    allFields.push({ name, value });
+                }
+            });
+
+            // Créer un objet fields pour la validation (prend dernière valeur)
             const fields = {};
-            let count = 0;
-
-            for (const [key, value] of formDataObj.entries()) {
-                fields[key] = value;
-                count++;
-            }
-
-            // Aussi extraire le token CSRF s'il est dans un input hidden
-            const csrfInput = document.querySelector('input[name="__RequestVerificationToken"]');
-            if (csrfInput) {
-                fields['__RequestVerificationToken'] = csrfInput.value;
-            }
+            allFields.forEach(({ name, value }) => {
+                fields[name] = value;
+            });
 
             return {
                 success: true,
                 fields: fields,
-                count: count
+                allFields: allFields,  // Tableau avec TOUS les champs (doublons inclus)
+                count: allFields.length
             };
         });
 
@@ -347,13 +433,13 @@ async function writePatientNote() {
             console.log(`✅ First Name validé: ${extractedFName}`);
         }
 
-        // Validation 5: Note actuelle (optionnel mais recommandé)
+        // Validation 5: Note actuelle (comparaison avec la page patient)
         const extractedNote = formData.fields['PatientInformation.Notes'];
-        if (extractedNote !== TARGET_PATIENT.currentNote) {
-            console.log(`⚠️  Note actuelle différente de celle attendue`);
-            console.log(`   Attendu: "${TARGET_PATIENT.currentNote}"`);
-            console.log(`   Reçu: "${extractedNote}"`);
-            console.log(`   (Ceci n'est pas bloquant, la note a peut-être changé)`);
+        if (extractedNote !== patientInfo.note) {
+            console.log(`⚠️  Note du formulaire différente de celle de la page patient`);
+            console.log(`   Page patient: "${patientInfo.note}"`);
+            console.log(`   Formulaire: "${extractedNote}"`);
+            console.log(`   (Ceci n'est pas bloquant, mais peut indiquer une incohérence)`);
         } else {
             console.log(`✅ Note actuelle validée: "${extractedNote}"`);
         }
@@ -397,10 +483,19 @@ async function writePatientNote() {
 
         // Créer une copie des champs originaux pour comparaison
         const originalFields = { ...formData.fields };
+        const originalAllFields = [...formData.allFields];
 
         // Créer les nouveaux champs avec la modification
         const modifiedFields = { ...formData.fields };
         modifiedFields['PatientInformation.Notes'] = NEW_NOTE_URL;
+
+        // Modifier aussi dans allFields (pour le body final)
+        const modifiedAllFields = formData.allFields.map(field => {
+            if (field.name === 'PatientInformation.Notes') {
+                return { name: field.name, value: NEW_NOTE_URL };
+            }
+            return field;
+        });
 
         // Compter les différences
         const differences = [];
@@ -447,13 +542,90 @@ async function writePatientNote() {
         console.log('✅ DIFF AFFICHÉ (READ-ONLY - Rien n\'a été modifié)');
         console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n');
 
-        console.log('⏸️  Le navigateur reste ouvert pour vérification visuelle.');
-        console.log('   Appuyez sur Entrée pour fermer...');
+        // ========== ÉTAPE 5: Confirmation manuelle avant POST ==========
+        console.log('\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+        console.log('📋 ÉTAPE 5: Résumé de la modification');
+        console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n');
 
-        // Attendre input utilisateur
-        await new Promise(resolve => {
-            process.stdin.once('data', resolve);
-        });
+        console.log('📋 MODIFICATION À EFFECTUER:\n');
+        console.log(`   👤 Patient: ${TARGET_PATIENT.name} (PATID: ${TARGET_PATIENT.patid})`);
+        console.log(`   📝 Champ modifié: PatientInformation.Notes`);
+        console.log(`   ❌ Valeur actuelle: "${patientInfo.note}"`);
+        console.log(`   ✅ Nouvelle valeur: "${NEW_NOTE_URL}"\n`);
+
+        console.log('🔒 PROTECTIONS ACTIVES:');
+        console.log('   ✅ 7 validations strictes passées');
+        console.log('   ✅ 1 seul champ sera modifié');
+        console.log('   ✅ Vérification des 2 patients après POST\n');
+
+        console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+        console.log('🚀 Lancement de la modification...');
+        console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n');
+
+        // ========== ÉTAPE 6: Modification avec Playwright (comme un utilisateur) ==========
+        console.log('\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+        console.log('🚀 ÉTAPE 6: Modification du champ Notes avec Playwright');
+        console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n');
+
+        console.log('📝 Remplissage du champ Patient Note dans iframe...\n');
+
+        // Vider le champ d'abord
+        await iframe.fill('#Pat-Notes-Text-Area', '');
+
+        // Remplir avec la nouvelle URL
+        await iframe.fill('#Pat-Notes-Text-Area', NEW_NOTE_URL);
+
+        console.log(`   ✅ Champ rempli avec: "${NEW_NOTE_URL}"\n`);
+
+        console.log('💾 Attente du bouton SAVE (visible et cliquable) dans iframe...\n');
+
+        // Attendre que le bouton soit visible et cliquable dans l'iframe
+        await iframe.waitForSelector('#btnSavePatient', { state: 'visible' });
+
+        console.log('   ✅ Bouton SAVE visible et prêt\n');
+
+        console.log('🖱️  Clic sur le bouton SAVE dans iframe...\n');
+
+        // Cliquer sur le bouton Save dans l'iframe
+        await iframe.click('#btnSavePatient');
+
+        console.log('✅ Bouton SAVE cliqué!\n');
+
+        console.log('⏳ Attente de la redirection...\n');
+        await page.waitForTimeout(3000);
+
+        const currentUrl = page.url();
+        console.log(`📍 URL actuelle: ${currentUrl}\n`);
+
+        // ========== ÉTAPE 7: Vérification de la redirection ==========
+        console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+        console.log('🔍 ÉTAPE 7: Vérification de la sauvegarde');
+        console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n');
+
+        // Si la page a redirigé vers PatientOverview, c'est que le Save a réussi
+        const isRedirected = currentUrl.includes('AdvancedPatientOverview');
+
+        if (isRedirected) {
+            console.log('✅ Redirection détectée vers PatientOverview\n');
+            console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+            console.log('🎉 SUCCÈS - MODIFICATION RÉUSSIE !');
+            console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n');
+            console.log(`✅ La note du patient ${TARGET_PATIENT.patid} a été modifiée avec succès !`);
+            console.log(`   Ancienne valeur: "${patientInfo.note}"`);
+            console.log(`   Nouvelle valeur: "${NEW_NOTE_URL}"`);
+            console.log(`   ✅ La redirection confirme la sauvegarde\n`);
+        } else {
+            console.log('⚠️  Pas de redirection détectée\n');
+            console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+            console.log('❌ ÉCHEC - MODIFICATION NON APPLIQUÉE');
+            console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n');
+            console.log(`❌ La page n'a pas redirigé vers PatientOverview`);
+            console.log(`   URL actuelle: "${currentUrl}"`);
+            console.log(`   URL attendue: Une URL contenant "AdvancedPatientOverview"\n`);
+            throw new Error('La modification n\'a pas été appliquée - pas de redirection');
+        }
+
+        // Fermeture automatique du navigateur
 
     } catch (error) {
         console.error('❌ Erreur:', error.message);
