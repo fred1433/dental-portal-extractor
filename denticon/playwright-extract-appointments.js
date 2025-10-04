@@ -101,6 +101,27 @@ async function testAppointmentsExtraction() {
         }
 
         console.log('✅ Session valide - Connecté !\n');
+
+        // ========== EXTRACTION TOKEN DE SÉCURITÉ (dès le départ !) ==========
+        console.log('🔑 Extraction du token de sécurité (depuis a1 home)...\n');
+        const securityToken = await page.evaluate(() => {
+            // Chercher dans les variables globales window
+            if (window.SecurityToken) return window.SecurityToken;
+            if (window.sessionToken) return window.sessionToken;
+            if (window.powToken) return window.powToken;
+
+            // Chercher dans les liens iframe vers c1
+            const iframes = document.querySelectorAll('iframe[src*="c1.denticon.com"]');
+            for (const iframe of iframes) {
+                const src = iframe.getAttribute('src');
+                const match = src?.match(/[?&]t=([^&]+)/);
+                if (match) return decodeURIComponent(match[1]);
+            }
+
+            return null;
+        });
+
+        console.log(`   Token: ${securityToken ? securityToken.substring(0, 20) + '... ✅' : '❌ NON TROUVÉ'}\n`);
         console.log('🚀 Exécution du script d\'extraction (depuis page d\'accueil)...\n');
 
         // Injecter et exécuter le script d'extraction
@@ -334,32 +355,7 @@ async function testAppointmentsExtraction() {
         console.log('📍 PARTIE 4: Patient Overview (Détails complets)');
         console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n');
 
-        // Revenir sur a1 pour extraire le token de sécurité
-        console.log('🔙 Retour sur a1 pour extraire le token de sécurité...\n');
-        await page.goto('https://a1.denticon.com/aspx/home/advancedmypage.aspx?chk=tls');
-        await page.waitForTimeout(1000);
-
-        // Extraire le token "t" depuis le DOM/JavaScript de a1
-        const securityToken = await page.evaluate(() => {
-            // Chercher dans les variables globales window
-            if (window.SecurityToken) return window.SecurityToken;
-            if (window.sessionToken) return window.sessionToken;
-            if (window.powToken) return window.powToken;
-
-            // Chercher dans les liens iframe vers c1
-            const iframes = document.querySelectorAll('iframe[src*="c1.denticon.com"]');
-            for (const iframe of iframes) {
-                const src = iframe.getAttribute('src');
-                const match = src?.match(/[?&]t=([^&]+)/);
-                if (match) return decodeURIComponent(match[1]);
-            }
-
-            return null;
-        });
-
-        console.log(`🔑 Token extrait: ${securityToken ? securityToken.substring(0, 20) + '...' : 'NON TROUVÉ'}\n`);
-
-        // Naviguer vers c1
+        // Naviguer vers c1 (token déjà extrait au début !)
         await page.goto('https://c1.denticon.com/aspx/home/advancedmypage.aspx?chk=tls');
         await page.waitForTimeout(2000);
         console.log('✅ Sur c1.denticon.com\n');
