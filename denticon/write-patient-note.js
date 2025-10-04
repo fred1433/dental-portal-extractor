@@ -265,29 +265,6 @@ async function writePatientNote() {
             }
         }
 
-        // ========== VALIDATION CRITIQUE: Note doit être VIDE ==========
-        console.log('\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
-        console.log('🔒 VALIDATION CRITIQUE: Vérification de la note');
-        console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n');
-
-        const currentNote = patientInfo.note;
-        const isNoteEmpty = !currentNote || currentNote.trim() === '';
-
-        if (!isNoteEmpty) {
-            console.log('⛔ ARRÊT DU SCRIPT PAR SÉCURITÉ\n');
-            console.log('❌ La note du patient n\'est PAS vide !');
-            console.log(`   Note actuelle: "${currentNote}"\n`);
-            console.log('🔒 PROTECTION ACTIVE:');
-            console.log('   Le script refuse d\'écraser une note existante.');
-            console.log('   Pour écrire une note, le champ doit être vide.\n');
-
-            await browser.close();
-            throw new Error('Note non vide - Refus d\'écraser la note existante');
-        }
-
-        console.log('✅ Note actuelle VIDE - OK pour écrire\n');
-        console.log('🔒 Le script va maintenant écrire la nouvelle note.\n');
-
         // ========== ÉTAPE 4: Navigation vers EditPatientInfo ==========
         console.log('\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
         console.log('📝 ÉTAPE 2: Navigation vers EditPatientInfo');
@@ -456,6 +433,16 @@ async function writePatientNote() {
             errors.push(`❌ Trop peu de champs extraits (${formData.count} < 50) - formulaire incomplet ?`);
         } else {
             console.log(`✅ Nombre de champs suffisant: ${formData.count}`);
+        }
+
+        // Validation 8: Note doit être VIDE (après confirmation identité patient)
+        const currentNote = patientInfo.note;
+        const isNoteEmpty = !currentNote || currentNote.trim() === '';
+
+        if (!isNoteEmpty) {
+            errors.push(`❌ La note du patient n'est PAS vide - Refus d'écraser: "${currentNote}"`);
+        } else {
+            console.log(`✅ Note actuelle VIDE - OK pour écrire`);
         }
 
         console.log('');
