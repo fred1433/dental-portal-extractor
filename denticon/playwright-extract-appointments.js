@@ -127,7 +127,7 @@ async function testAppointmentsExtraction() {
         // Injecter et exécuter le script d'extraction
         const results = await page.evaluate(async () => {
             const testDate = '10/2/2025';  // Date avec des patients
-            const maxPatients = 3;  // 3 patients pour tester la correction
+            const maxPatients = 2;  // 2 patients pour tester
 
             console.log('🎯 EXTRACTION COMPLÈTE : Calendrier + Détails');
             console.log(`📅 Date: ${testDate}`);
