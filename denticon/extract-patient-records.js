@@ -127,8 +127,8 @@ async function testAppointmentsExtraction() {
         // Injecter et exécuter le script d'extraction
         const results = await page.evaluate(async () => {
             try {
-                const testDates = ['10/1/2025', '10/2/2025', '10/3/2025', '10/6/2025'];  // 4 jours ouvrés
-                const maxPatientsTotal = 20;  // TEST: 20 patients - validation complétude données
+                const testDates = ['10/6/2025', '10/7/2025', '10/8/2025', '10/9/2025', '10/10/2025'];  // Semaine complète 6-10 oct
+                const maxPatientsTotal = 100;  // 100 patients pour stats
 
                 console.log('🎯 EXTRACTION COMPLÈTE : Calendrier + Détails');
                 console.log(`📅 Dates: ${testDates.join(', ')}`);
