@@ -366,10 +366,12 @@ async function testAppointmentsExtraction() {
         console.log('📍 PARTIE 4: Patient Overview (Détails complets)');
         console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n');
 
-        // Naviguer vers a1 (pour Patient Overview + Primary Insurance)
-        await page.goto('https://a1.denticon.com/aspx/home/advancedmypage.aspx?chk=tls');
-        await page.waitForTimeout(2000);
-        console.log('✅ Sur a1.denticon.com\n');
+        // ✨ OPTIMISATION: Suppression du retour à a1 home (inutile - session déjà active)
+        // La session a1 est maintenue même après visite de c1
+        // On va directement vers les URLs Patient Overview spécifiques
+        // await page.goto('https://a1.denticon.com/aspx/home/advancedmypage.aspx?chk=tls');
+        // await page.waitForTimeout(2000);
+        console.log('✅ Session a1 active (pas de retour home nécessaire)\n');
 
         const fullyEnriched = [];
 
