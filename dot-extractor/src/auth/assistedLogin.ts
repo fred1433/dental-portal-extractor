@@ -9,15 +9,21 @@ dotenv.config();
 /**
  * Assisted login to DOT - pre-fills username and optionally password
  * Handles the Okta authentication flow with its intermediate screens
- * 
+ *
  * @param storagePath - Path to save the session state
  * @param headless - Whether to run in headless mode (false for assisted login)
+ * @param credentials - Optional credentials (for multi-clinic support)
  */
-export async function assistedLogin(storagePath = 'dot-storage.json', headless = false) {
+export async function assistedLogin(
+  storagePath = 'dot-storage.json',
+  headless = false,
+  credentials?: { username?: string; password?: string }
+) {
   console.log('🚀 Starting DOT assisted login...');
-  
-  const username = process.env.DOT_USERNAME;
-  const password = process.env.DOT_PASSWORD;
+
+  // Accept credentials from parameter (for multi-clinic support) or fallback to env vars
+  const username = credentials?.username || process.env.DOT_USERNAME;
+  const password = credentials?.password || process.env.DOT_PASSWORD;
   const isProduction = process.env.NODE_ENV === 'production';
   
   if (!username) {

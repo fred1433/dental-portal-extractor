@@ -6,12 +6,18 @@ const SESSION_DIR = path.join(__dirname, '.dnoa-session');
 const STORAGE_STATE_FILE = path.join(SESSION_DIR, 'storageState.json');
 
 class DNOAService {
-  constructor() {
+  constructor(credentials = {}) {
     this.browser = null;
     this.context = null;
     this.page = null;
     this.isFirstRun = !fs.existsSync(SESSION_DIR);
     this.authToken = null; // Store token for bulk operations
+
+    // Accept credentials from constructor (for multi-clinic support) or fallback to env vars
+    this.credentials = {
+      username: credentials.username || process.env.DNOA_USERNAME,
+      password: credentials.password || process.env.DNOA_PASSWORD
+    };
   }
 
   async initialize(headless = true, onLog = console.log) {
@@ -99,10 +105,13 @@ class DNOAService {
     
     if (needsLogin) {
       onLog('📝 Entering credentials...');
-      
-      const username = process.env.DNOA_USERNAME;
-      const password = process.env.DNOA_PASSWORD;
-      
+
+      const { username, password } = this.credentials;
+
+      if (!username || !password) {
+        throw new Error('DNOA credentials missing');
+      }
+
       try {
         await this.page.getByRole('textbox', { name: 'User ID' }).fill(username);
         await this.page.getByRole('textbox', { name: 'Password' }).fill(password);

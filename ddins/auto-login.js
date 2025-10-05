@@ -20,15 +20,16 @@ if (!fs.existsSync(sessionDir)) {
   fs.mkdirSync(sessionDir, { recursive: true });
 }
 
-const USERNAME = process.env.DDINS_USERNAME;
-const PASSWORD = process.env.DDINS_PASSWORD;
+// Accept credentials from constructor (for multi-clinic support) or fallback to env vars
+async function autoLogin(credentials = {}) {
+  const USERNAME = credentials.username || process.env.DDINS_USERNAME;
+  const PASSWORD = credentials.password || process.env.DDINS_PASSWORD;
 
-if (!USERNAME || !PASSWORD) {
-  console.error('❌ DDINS_USERNAME and DDINS_PASSWORD environment variables are required');
-  process.exit(1);
-}
+  if (!USERNAME || !PASSWORD) {
+    console.error('❌ DDINS credentials missing');
+    throw new Error('DDINS_USERNAME and DDINS_PASSWORD are required');
+  }
 
-async function autoLogin() {
   console.log('🦷 DDINS Auto-Login Starting...');
 
   const browser = await chromium.launch({
@@ -141,5 +142,13 @@ async function autoLogin() {
   }
 }
 
-// Run the auto-login
-autoLogin().catch(console.error);
+// Export for programmatic use
+module.exports = { autoLogin };
+
+// Run the auto-login if executed directly
+if (require.main === module) {
+  autoLogin().catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });
+}

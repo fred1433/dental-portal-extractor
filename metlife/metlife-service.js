@@ -3,15 +3,15 @@ const fs = require('fs');
 const path = require('path');
 
 class MetLifeService {
-  constructor() {
+  constructor(credentials = {}) {
     this.browser = null;
     this.context = null;
     this.page = null;
-    
-    // Configuration from environment variables
+
+    // Accept credentials from constructor (for multi-clinic support) or fallback to env vars
     this.credentials = {
-      username: process.env.METLIFE_USERNAME,
-      password: process.env.METLIFE_PASSWORD
+      username: credentials.username || process.env.METLIFE_USERNAME,
+      password: credentials.password || process.env.METLIFE_PASSWORD
     }
     
     this.urls = {

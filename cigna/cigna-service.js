@@ -7,16 +7,18 @@ const SESSION_DIR = path.join(__dirname, '.cigna-session');
 const STORAGE_STATE_FILE = path.join(SESSION_DIR, 'storageState.json');
 
 class CignaService {
-  constructor() {
+  constructor(credentials = {}) {
     this.browser = null;
     this.context = null;
     this.page = null;
     this.isFirstRun = !fs.existsSync(SESSION_DIR);
     this.isLoggedIn = false;  // Track login status
 
-    // Credentials from env
-    this.username = process.env.CIGNA_USERNAME;
-    this.password = process.env.CIGNA_PASSWORD;
+    // Accept credentials from constructor (for multi-clinic support) or fallback to env vars
+    this.credentials = {
+      username: credentials.username || process.env.CIGNA_USERNAME,
+      password: credentials.password || process.env.CIGNA_PASSWORD
+    };
   }
 
   // ---------- Lifecycle ----------
@@ -209,8 +211,10 @@ class CignaService {
     }
 
     // Otherwise perform login
-    if (!this.username || !this.password) {
-      onLog('❌ CIGNA_USERNAME/CIGNA_PASSWORD not set');
+    const { username, password } = this.credentials;
+
+    if (!username || !password) {
+      onLog('❌ Cigna credentials not provided');
       throw new Error('Missing Cigna credentials');
     }
 
@@ -218,15 +222,15 @@ class CignaService {
     
     // Attendre que les champs soient visibles
     await this.page.waitForSelector('[data-test="username"]', { state: 'visible', timeout: 10000 });
-    
+
     // IMPORTANT: Cliquer d'abord sur le champ username pour l'activer
     await this.page.locator('[data-test="username"]').click();
-    await this.page.locator('[data-test="username"]').fill(this.username);
+    await this.page.locator('[data-test="username"]').fill(username);
     onLog('   ✓ Username entered');
-    
+
     // Cliquer sur le champ password pour l'activer
     await this.page.locator('[data-test="password"]').click();
-    await this.page.locator('[data-test="password"]').fill(this.password);
+    await this.page.locator('[data-test="password"]').fill(password);
     onLog('   ✓ Password entered');
     
     // Cliquer sur Log In

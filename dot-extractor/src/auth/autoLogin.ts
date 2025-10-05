@@ -9,16 +9,22 @@ dotenv.config({ path: path.join(__dirname, '../../../.env') });
 /**
  * Automated login to DOT - fully headless login with credentials
  * Handles the Okta authentication flow with its intermediate screens
- * 
+ *
  * @param storagePath - Path to save the session state
  * @param headless - Whether to run in headless mode (default true for automation)
+ * @param credentials - Optional credentials (for multi-clinic support)
  */
-export async function autoLogin(storagePath = 'dot-storage.json', headless = true) {
-  const username = process.env.DOT_USERNAME;
-  const password = process.env.DOT_PASSWORD;
-  
+export async function autoLogin(
+  storagePath = 'dot-storage.json',
+  headless = true,
+  credentials?: { username?: string; password?: string }
+) {
+  // Accept credentials from parameter (for multi-clinic support) or fallback to env vars
+  const username = credentials?.username || process.env.DOT_USERNAME;
+  const password = credentials?.password || process.env.DOT_PASSWORD;
+
   if (!username || !password) {
-    throw new Error('DOT_USERNAME and DOT_PASSWORD must be set for automated login');
+    throw new Error('DOT credentials missing: username and password are required');
   }
   
   console.log('🤖 Starting DOT automated login...');
@@ -190,18 +196,24 @@ export function isSessionValid(storagePath = 'dot-storage.json'): boolean {
 
 /**
  * Ensure valid session - check and auto-login if needed
+ *
+ * @param storagePath - Path to the session state file
+ * @param credentials - Optional credentials (for multi-clinic support)
  */
-export async function ensureValidSession(storagePath = 'dot-storage.json'): Promise<boolean> {
+export async function ensureValidSession(
+  storagePath = 'dot-storage.json',
+  credentials?: { username?: string; password?: string }
+): Promise<boolean> {
   // Check if session exists and is valid
   if (isSessionValid(storagePath)) {
     console.log('✅ Session is valid');
     return true;
   }
-  
-  // Check if we have credentials for auto-login
-  const username = process.env.DOT_USERNAME;
-  const password = process.env.DOT_PASSWORD;
-  
+
+  // Accept credentials from parameter (for multi-clinic support) or fallback to env vars
+  const username = credentials?.username || process.env.DOT_USERNAME;
+  const password = credentials?.password || process.env.DOT_PASSWORD;
+
   if (!username || !password) {
     console.log('❌ No valid session and no credentials for auto-login');
     console.log('📝 Please run one of:');
@@ -214,7 +226,7 @@ export async function ensureValidSession(storagePath = 'dot-storage.json'): Prom
   // Perform auto-login
   console.log('🔄 Session invalid or expired - performing auto-login...');
   try {
-    await autoLogin(storagePath, true); // Always headless for automation
+    await autoLogin(storagePath, true, credentials); // Always headless for automation
     return true;
   } catch (error) {
     console.error('❌ Auto-login failed:', error instanceof Error ? error.message : String(error));
