@@ -66,6 +66,7 @@ __pycache__/
 # Archives
 archive_*/
 archive_old/
+denticon/archive/
 
 # Personal files
 .env
