@@ -126,19 +126,24 @@ async function testAppointmentsExtraction() {
 
         // Injecter et exécuter le script d'extraction
         const results = await page.evaluate(async () => {
-            const testDate = '10/2/2025';  // Date avec des patients
-            const maxPatients = 20;  // Tester 20 patients
+            try {
+                const testDates = ['10/1/2025', '10/2/2025', '10/3/2025', '10/6/2025'];  // 4 jours ouvrés
+                const maxPatientsTotal = 20;  // TEST: 20 patients pour validation complétude
 
-            console.log('🎯 EXTRACTION COMPLÈTE : Calendrier + Détails');
-            console.log(`📅 Date: ${testDate}`);
-            console.log(`📊 Nombre de rendez-vous à tester: ${maxPatients}\n`);
+                console.log('🎯 EXTRACTION COMPLÈTE : Calendrier + Détails');
+                console.log(`📅 Dates: ${testDates.join(', ')}`);
+                console.log(`📊 Objectif: ${maxPatientsTotal} patients\n`);
 
-            // ========== ÉTAPE 1: Calendrier ==========
+                let allAppointments = [];
+
+            // ========== ÉTAPE 1: Calendrier (plusieurs dates) ==========
             console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
-            console.log('📍 ÉTAPE 1: Extraction du calendrier');
+            console.log('📍 ÉTAPE 1: Extraction du calendrier (4 dates)');
             console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n');
 
-            const schedUrl = `https://a1.denticon.com/aspx/appointments/getsched.aspx?sv=1&svid=&p=&o=106&date=${testDate}&q=s&cols=8&stcol=1&hipaa=f&prodview=t&quicksaveview=f&rn=${Date.now()}&stoid=&hideProviderTime=f`;
+            for (const testDate of testDates) {
+                console.log(`📅 Extraction pour le ${testDate}...`);
+                const schedUrl = `https://a1.denticon.com/aspx/appointments/getsched.aspx?sv=1&svid=&p=&o=106&date=${testDate}&q=s&cols=8&stcol=1&hipaa=f&prodview=t&quicksaveview=f&rn=${Date.now()}&stoid=&hideProviderTime=f`;
 
             try {
                 const schedResponse = await fetch(schedUrl, {
@@ -154,10 +159,9 @@ async function testAppointmentsExtraction() {
                 const doc = parser.parseFromString(html, 'text/html');
                 const appointments = doc.querySelectorAll('div.appt');
 
-                console.log(`✅ ${appointments.length} rendez-vous trouvés\n`);
+                console.log(`   ✅ ${appointments.length} rendez-vous trouvés`);
 
                 // Filtrer vrais patients
-                const realAppointments = [];
                 appointments.forEach(appt => {
                     const pid = appt.getAttribute('pid');
                     const aid = appt.getAttribute('aid');
@@ -167,20 +171,27 @@ async function testAppointmentsExtraction() {
                         !patientName.includes('READ, BLOCKS') &&
                         !patientName.includes('DR, KANG') &&
                         !patientName.includes('STAFFING')) {
-                        realAppointments.push({
+                        allAppointments.push({
                             appointment_id: aid,
                             patient_id: pid,
                             patient_name: patientName,
-                            time: appt.getAttribute('t')
+                            time: appt.getAttribute('t'),
+                            date: testDate
                         });
                     }
                 });
 
-                const toProcess = realAppointments.slice(0, maxPatients);
-                console.log(`👥 ${toProcess.length} rendez-vous de patients réels à enrichir:\n`);
-                toProcess.forEach((a, i) => console.log(`   ${i+1}. ${a.patient_name} (AID: ${a.appointment_id})`));
+            } catch (error) {
+                console.error(`   ❌ Erreur pour ${testDate}:`, error.message);
+            }
+            }
 
-                // ========== ÉTAPE 2: Enrichissement ==========
+            console.log(`\n📊 Total: ${allAppointments.length} rendez-vous sur ${testDates.length} jours`);
+
+            const toProcess = allAppointments.slice(0, maxPatientsTotal);
+            console.log(`👥 ${toProcess.length} rendez-vous à enrichir:\n`);
+
+            // ========== ÉTAPE 2: Enrichissement ==========
                 console.log('\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
                 console.log('📍 ÉTAPE 2: Enrichissement avec détails');
                 console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n');
@@ -355,10 +366,10 @@ async function testAppointmentsExtraction() {
         console.log('📍 PARTIE 4: Patient Overview (Détails complets)');
         console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n');
 
-        // Naviguer vers c1 (token déjà extrait au début !)
-        await page.goto('https://c1.denticon.com/aspx/home/advancedmypage.aspx?chk=tls');
+        // Naviguer vers a1 (pour Patient Overview + Primary Insurance)
+        await page.goto('https://a1.denticon.com/aspx/home/advancedmypage.aspx?chk=tls');
         await page.waitForTimeout(2000);
-        console.log('✅ Sur c1.denticon.com\n');
+        console.log('✅ Sur a1.denticon.com\n');
 
         const fullyEnriched = [];
 
@@ -367,82 +378,67 @@ async function testAppointmentsExtraction() {
             console.log(`\n👤 Patient ${i+1}/${merged.length}: ${patient.patient_name}`);
             console.log('   ─────────────────────────────────────');
 
-            // NOUVELLE APPROCHE : URL complète de "sélection" du patient
+            // URL de sélection du patient sur a1 (Patient Overview)
             const rpid = patient.rpid || patient.patient_id; // RPID depuis c1, sinon fallback sur patient_id
-            const timestamp = Math.floor(Date.now() / 1000);
 
-            // Construire l'URL avec TOUS les paramètres requis
-            let selectionUrl = `https://c1.denticon.com/?pgid=3169&patid=${patient.patient_id}&oid=102&uid=DENTISTRYAUTO&rpid=${rpid}&ckey=cnPrm&pagename=PatientOverview&ts=${timestamp}&ShowPicture=True&referral=3&IsLaunchFlashAlert=1`;
+            // Construire l'URL Patient Overview sur a1 (comme manuellement)
+            const selectionUrl = `https://a1.denticon.com/ASPX/Patients/AdvancedPatientOverview.aspx?patid=${patient.patient_id}&rpid=${rpid}&setfocus=true`;
 
-            // Ajouter le token de sécurité si disponible
-            if (securityToken) {
-                selectionUrl += `&t=${encodeURIComponent(securityToken)}`;
-            }
-
-            console.log(`   🔗 Sélection patient: PID=${patient.patient_id}, RPID=${rpid}, Token=${securityToken ? 'OUI' : 'NON'}`);
+            console.log(`   🔗 Sélection patient: PID=${patient.patient_id}, RPID=${rpid}`);
             await page.goto(selectionUrl);
             await page.waitForLoadState('domcontentloaded');
-            await page.waitForTimeout(1000);
+            await page.waitForTimeout(3000); // Timeout plus long pour a1
 
-            // ========== TEST ENDPOINT API GetPatientData ==========
-            console.log('   🔬 TEST: Appel de /PatientOverview/GetPatientData...');
-            const apiTestResult = await page.evaluate(async () => {
-                try {
-                    const apiUrl = '/PatientOverview/GetPatientData';
-                    const response = await fetch(apiUrl, {
-                        headers: { 'X-Requested-With': 'XMLHttpRequest' }
-                    });
+            // ========== DIAGNOSTIC: SAUVEGARDER HTML DE a1 ==========
+            if (i === 0) { // Seulement pour le premier patient
+                console.log('   📄 Sauvegarde HTML de a1 Patient Overview pour diagnostic...');
 
-                    const status = response.status;
-                    const contentType = response.headers.get('content-type') || 'unknown';
-
-                    let data = null;
-                    let dataPreview = null;
-                    let isJson = false;
-
-                    if (status === 200) {
-                        const text = await response.text();
-                        dataPreview = text.substring(0, 500);
-
-                        // Tenter de parser en JSON
-                        try {
-                            data = JSON.parse(text);
-                            isJson = true;
-                        } catch (e) {
-                            // Pas du JSON
-                        }
-                    }
-
+                const pageInfo = await page.evaluate(() => {
                     return {
-                        success: status === 200,
-                        status: status,
-                        contentType: contentType,
-                        isJson: isJson,
-                        data: data,
-                        dataPreview: dataPreview
+                        url: window.location.href,
+                        title: document.title,
+                        html: document.documentElement.outerHTML
                     };
-                } catch (error) {
-                    return { success: false, error: error.message };
-                }
-            });
+                });
 
-            console.log(`   📊 Résultat API:`);
-            console.log(`      Status: ${apiTestResult.status}`);
-            console.log(`      Content-Type: ${apiTestResult.contentType}`);
-            console.log(`      Est JSON: ${apiTestResult.isJson ? 'OUI ✅' : 'NON'}`);
-            if (apiTestResult.success) {
-                if (apiTestResult.isJson) {
-                    console.log(`      Données JSON (clés): ${apiTestResult.data ? Object.keys(apiTestResult.data).join(', ') : 'N/A'}`);
-                    console.log(`      Preview: ${JSON.stringify(apiTestResult.data).substring(0, 200)}...`);
-                } else {
-                    console.log(`      Preview HTML: ${apiTestResult.dataPreview}`);
-                }
-            } else {
-                console.log(`      ❌ Erreur: ${apiTestResult.error || 'Échec ' + apiTestResult.status}`);
+                const debugPath = path.join(__dirname, 'debug-a1-patient-overview.html');
+                fs.writeFileSync(debugPath, pageInfo.html);
+                console.log(`   ✅ HTML sauvegardé: ${debugPath}`);
+                console.log(`   📍 URL: ${pageInfo.url}`);
+                console.log(`   📋 Title: ${pageInfo.title}`);
+
+                // Screenshot aussi pour visualiser
+                const screenshotPath = path.join(__dirname, 'debug-a1-patient-overview.png');
+                await page.screenshot({ path: screenshotPath, fullPage: true });
+                console.log(`   📸 Screenshot: ${screenshotPath}\n`);
             }
-            console.log('');
 
-            const overviewData = await page.evaluate(() => {
+            // ========== ACCÈS À L'IFRAME C1 ==========
+            // La page a1 Patient Overview est un wrapper contenant un iframe c1
+            // Il faut accéder au contenu de l'iframe pour scraper les données
+
+            console.log('   🔍 Recherche de l\'iframe Patient Overview...');
+
+            // Attendre que l'iframe soit chargé
+            await page.waitForTimeout(2000); // Attendre que l'iframe se charge
+
+            // Trouver l'iframe par son ID ou URL
+            const frame = page.frame({ name: 'AdvancedPatientOverviewIFrame' }) ||
+                          page.frame({ url: /c1\.denticon\.com/ });
+
+            if (!frame) {
+                console.error('   ❌ IFRAME NON TROUVÉ! Liste des frames:');
+                const frames = page.frames();
+                frames.forEach((f, idx) => {
+                    console.log(`      Frame ${idx}: ${f.name()} - ${f.url()}`);
+                });
+                throw new Error('Iframe Patient Overview non trouvé');
+            }
+
+            console.log(`   ✅ Iframe trouvé: ${frame.url().substring(0, 80)}...`);
+
+            // Scraper Patient Overview depuis l'iframe
+            const overviewData = await frame.evaluate(() => {
                 try {
                     const doc = document; // DOM actuel au lieu de fetched HTML
 
@@ -731,20 +727,7 @@ async function testAppointmentsExtraction() {
             });
 
             if (overviewData.success) {
-                fullyEnriched.push({
-                    ...patient,
-                    ...overviewData,
-                    // Ajouter les résultats du test API
-                    api_test: {
-                        available: apiTestResult.success,
-                        is_json: apiTestResult.isJson,
-                        content_type: apiTestResult.contentType,
-                        data: apiTestResult.isJson ? apiTestResult.data : null
-                    }
-                });
-
                 console.log('   ✅ Données Patient Overview extraites:');
-                console.log(`      API GetPatientData: ${apiTestResult.success ? (apiTestResult.isJson ? '✅ JSON disponible!' : '⚠️ HTML retourné') : '❌ Non disponible'}`);
                 console.log(`      Emergency: ${overviewData.emergency_contact || 'N/A'} (${overviewData.emergency_phone || 'N/A'})`);
                 console.log(`      Adresse: ${overviewData.address_street || 'N/A'}, ${overviewData.address_city_state_zip || 'N/A'}`);
                 console.log(`      Provider: ${overviewData.provider_extended || 'N/A'}`);
@@ -754,6 +737,164 @@ async function testAppointmentsExtraction() {
                 console.log(`      Balance: ${overviewData.balance_account?.balance || 'N/A'}`);
                 console.log(`      Appointments (total): ${overviewData.appointments_all?.length || 0}`);
                 console.log(`      Recalls: ${overviewData.recalls_all?.length || 0}`);
+
+                // ========== PRIMARY INSURANCE SCRAPING ==========
+                let primaryData = null;
+                const hasInsurance = overviewData.insurance_primary_dental_carrier || patient.primary_carrier;
+
+                if (hasInsurance) {
+                    console.log('   🔍 Scraping Primary Insurance page...');
+
+                    try {
+                        // Navigation DIRECTE vers Primary Insurance
+                        const primaryUrl = 'https://a1.denticon.com/aspx/Patients/AdvancedEditPatientInsurance.aspx?planType=D&insType=P';
+                        await page.goto(primaryUrl, { waitUntil: 'networkidle' });
+
+                        // ATTENDRE que le formulaire soit chargé dynamiquement
+                        console.log('   ⏳ Attente du chargement dynamique du formulaire...');
+                        await page.waitForTimeout(3000); // Attendre que JavaScript charge les données
+
+                        // ========== DIAGNOSTIC: SAUVEGARDER HTML PRIMARY INSURANCE ==========
+                        if (i === 0) { // Seulement pour le premier patient
+                            console.log('   📄 Sauvegarde HTML Primary Insurance APRÈS attente pour diagnostic...');
+
+                            const fullPageHTML = await page.evaluate(() => {
+                                return {
+                                    url: window.location.href,
+                                    title: document.title,
+                                    html: document.documentElement.outerHTML
+                                };
+                            });
+
+                            const debugPrimaryPath = path.join(__dirname, 'debug-primary-insurance-after-wait.html');
+                            fs.writeFileSync(debugPrimaryPath, fullPageHTML.html);
+                            console.log(`   ✅ HTML Primary (after wait) sauvegardé: ${debugPrimaryPath}`);
+
+                            const screenshotPrimaryPath = path.join(__dirname, 'debug-primary-insurance-after-wait.png');
+                            await page.screenshot({ path: screenshotPrimaryPath, fullPage: true });
+                            console.log(`   📸 Screenshot Primary (after wait): ${screenshotPrimaryPath}\n`);
+                        }
+
+                        // ========== ACCÈS À L'IFRAME PRIMARY INSURANCE ==========
+                        // Exactement comme Patient Overview, Primary Insurance utilise un iframe!
+                        console.log('   🔍 Recherche de l\'iframe Primary Insurance...');
+
+                        // Lister tous les frames
+                        const allFrames = page.frames();
+                        console.log(`   📦 Total frames: ${allFrames.length}`);
+                        allFrames.forEach((f, idx) => {
+                            console.log(`      Frame ${idx}: ${f.url().substring(0, 100)}`);
+                        });
+
+                        // Trouver l'iframe qui contient le formulaire Primary Insurance
+                        // Il peut avoir une URL différente ou être un about:blank avec contenu injecté
+                        let primaryFrame = null;
+
+                        // Essayer de trouver le frame par contenu
+                        for (const frame of allFrames) {
+                            try {
+                                const hasData = await frame.evaluate(() => {
+                                    return document.body && document.body.textContent.includes('PLAN ID');
+                                });
+                                if (hasData) {
+                                    primaryFrame = frame;
+                                    console.log(`   ✅ Frame Primary trouvé (par contenu): ${frame.url().substring(0, 80)}...`);
+                                    break;
+                                }
+                            } catch (e) {
+                                // Frame inaccessible, continuer
+                            }
+                        }
+
+                        if (!primaryFrame) {
+                            console.log('   ❌ Frame Primary non trouvé');
+                            throw new Error('Primary Insurance iframe non trouvé');
+                        }
+
+                        // Scraper depuis l'iframe
+                        primaryData = await primaryFrame.evaluate(() => {
+                                const getText = (sel) => document.querySelector(sel)?.textContent?.trim() || null;
+                                const getValue = (sel) => document.querySelector(sel)?.value?.trim() || null;
+
+                                return {
+                                    // PLAN INFO
+                                    primary_plan_id: getText('#showPlanID'),
+                                    primary_group_number: getText('#showCarrierGroup') || getValue('#inputCarrierGroup'),
+
+                                    // CARRIER
+                                    primary_carrier_name: getText('#carrierName'),
+                                    primary_carrier_address1: getText('#carrierAddr1'),
+                                    primary_carrier_address2: getText('#carrierAddr2'),
+                                    primary_carrier_address3: getText('#carrierAddr3'),
+                                    primary_payer_id: getText('#payerID'),
+                                    primary_carrier_id: getText('#carrierID'),
+                                    primary_carrier_type: getText('#cType'),
+                                    primary_carrier_phone: getText('#carrierPhone'),
+
+                                    // EMPLOYER
+                                    primary_employer_name: getText('#empName'),
+                                    primary_employer_address1: getText('#empAddr1'),
+                                    primary_employer_address2: getText('#empAddr2'),
+                                    primary_employer_address3: getText('#empAddr3'),
+
+                                    // SUBSCRIBER INFORMATION
+                                    primary_subscriber_id_primary: getValue('#subIdValue'),
+                                    primary_subscriber_last_name: getValue('#subLastName'),
+                                    primary_subscriber_first_name: getValue('#subFirstName'),
+                                    primary_subscriber_dob_primary: getValue('#subBirthDate'),
+                                    primary_subscriber_sex: getValue('#subscriberSexInfoDropdown'),
+                                    primary_subscriber_address: getValue('#subAddr'),
+                                    primary_subscriber_address2: getValue('#subAddr2'),
+                                    primary_subscriber_city: getValue('#subCity'),
+                                    primary_subscriber_state: getValue('#STATE'),
+                                    primary_subscriber_zip: getValue('#ZIP'),
+                                    primary_subscriber_marital_status: getValue('#subscriberMaritalStatusInfoDropdown'),
+                                    primary_subscriber_relationship_primary: getValue('#subscriberRelationInfoDropdown'),
+                                    primary_subscriber_phone: getValue('#Number'),
+
+                                    // ELIGIBILITY
+                                    primary_effective_date_sub: getValue('#subEffectiveDate'),
+                                    primary_term_date_sub: getValue('#subTermDate'),
+                                    primary_anniversary_date: getText('#annivDate'),
+                                    primary_eligibility_status_primary: getText('#currEligibilityStat'),
+                                    primary_eligibility_verified_on: getText('#currEligibilityDateDiv'),
+                                    primary_eligibility_verified_by: getText('#currEligibilityUser'),
+
+                                    // BENEFIT INFO
+                                    primary_deductible_ind: getText('#txtIndDed'),
+                                    primary_deductible_ind_rem: getValue('#txtIndDedRem'),
+                                    primary_deductible_fam: getText('#txtFamDed'),
+                                    primary_deductible_fam_rem: getValue('#txtFamDedRem'),
+                                    primary_annual_max_ind: getText('#txtIndMax'),
+                                    primary_annual_max_ind_rem: getValue('#txtIndMaxRem'),
+                                    primary_annual_max_fam: getText('#txtFamMax'),
+                                    primary_annual_max_fam_rem: getValue('#txtFamMaxRem'),
+                                    primary_ortho_ind: getText('#txtIndOrthoMax'),
+                                    primary_ortho_ind_rem: getValue('#txtIndOrthoMaxRem')
+                                };
+                            });
+
+                        console.log('   ✅ Primary Insurance scraped:');
+                        console.log(`      Subscriber ID: ${primaryData.primary_subscriber_id_primary || 'NULL'}`);
+                        console.log(`      Subscriber DOB: ${primaryData.primary_subscriber_dob_primary || 'NULL'}`);
+                        console.log(`      Payer ID: ${primaryData.primary_payer_id || 'NULL'}`);
+                        console.log(`      Employer: ${primaryData.primary_employer_name || 'NULL'}`);
+                        console.log(`      Relationship: ${primaryData.primary_subscriber_relationship_primary || 'NULL'}`);
+
+                    } catch (error) {
+                        console.error(`   ❌ Erreur Primary scraping: ${error.message}`);
+                    }
+                } else {
+                    console.log('   ⏭️  Pas d\'assurance - skip Primary scraping');
+                }
+
+                // Fusionner TOUTES les données
+                fullyEnriched.push({
+                    ...patient,
+                    ...overviewData,
+                    ...primaryData
+                });
+
             } else {
                 console.log(`   ❌ Erreur: ${overviewData.error}`);
                 fullyEnriched.push(patient);
