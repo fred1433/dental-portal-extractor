@@ -389,7 +389,7 @@ async function testAppointmentsExtraction() {
             console.log(`   🔗 Sélection patient: PID=${patient.patient_id}, RPID=${rpid}`);
             await page.goto(selectionUrl);
             await page.waitForLoadState('domcontentloaded');
-            await page.waitForTimeout(3000); // Timeout plus long pour a1
+            // ✨ OPTIMISÉ: Supprimé waitForTimeout(3000) - waitForLoadState suffit!
 
             // ========== DIAGNOSTIC: SAUVEGARDER HTML DE a1 ==========
             if (i === 0) { // Seulement pour le premier patient
@@ -407,12 +407,12 @@ async function testAppointmentsExtraction() {
                 fs.writeFileSync(debugPath, pageInfo.html);
                 console.log(`   ✅ HTML sauvegardé: ${debugPath}`);
                 console.log(`   📍 URL: ${pageInfo.url}`);
-                console.log(`   📋 Title: ${pageInfo.title}`);
+                console.log(`   📋 Title: ${pageInfo.title}\n`);
 
-                // Screenshot aussi pour visualiser
-                const screenshotPath = path.join(__dirname, 'debug-a1-patient-overview.png');
-                await page.screenshot({ path: screenshotPath, fullPage: true });
-                console.log(`   📸 Screenshot: ${screenshotPath}\n`);
+                // ✨ OPTIMISÉ: Screenshot supprimé (diagnostic fini, gain ~1s)
+                // const screenshotPath = path.join(__dirname, 'debug-a1-patient-overview.png');
+                // await page.screenshot({ path: screenshotPath, fullPage: true });
+                // console.log(`   📸 Screenshot: ${screenshotPath}\n`);
             }
 
             // ========== ACCÈS À L'IFRAME C1 ==========
@@ -802,11 +802,12 @@ async function testAppointmentsExtraction() {
 
                             const debugPrimaryPath = path.join(__dirname, 'debug-primary-insurance-after-wait.html');
                             fs.writeFileSync(debugPrimaryPath, fullPageHTML.html);
-                            console.log(`   ✅ HTML Primary (after wait) sauvegardé: ${debugPrimaryPath}`);
+                            console.log(`   ✅ HTML Primary (after wait) sauvegardé: ${debugPrimaryPath}\n`);
 
-                            const screenshotPrimaryPath = path.join(__dirname, 'debug-primary-insurance-after-wait.png');
-                            await page.screenshot({ path: screenshotPrimaryPath, fullPage: true });
-                            console.log(`   📸 Screenshot Primary (after wait): ${screenshotPrimaryPath}\n`);
+                            // ✨ OPTIMISÉ: Screenshot supprimé (diagnostic fini, gain ~1s)
+                            // const screenshotPrimaryPath = path.join(__dirname, 'debug-primary-insurance-after-wait.png');
+                            // await page.screenshot({ path: screenshotPrimaryPath, fullPage: true });
+                            // console.log(`   📸 Screenshot Primary (after wait): ${screenshotPrimaryPath}\n`);
                         }
 
                         // ========== ACCÈS À L'IFRAME PRIMARY INSURANCE ==========
