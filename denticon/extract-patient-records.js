@@ -128,7 +128,7 @@ async function testAppointmentsExtraction() {
         const results = await page.evaluate(async () => {
             try {
                 const testDates = ['10/1/2025', '10/2/2025', '10/3/2025', '10/6/2025'];  // 4 jours ouvrés
-                const maxPatientsTotal = 20;  // TEST: 20 patients - validation DOB fix 100%
+                const maxPatientsTotal = 5;  // TEST: 5 patients - validation optimisation vitesse
 
                 console.log('🎯 EXTRACTION COMPLÈTE : Calendrier + Détails');
                 console.log(`📅 Dates: ${testDates.join(', ')}`);
@@ -419,8 +419,8 @@ async function testAppointmentsExtraction() {
 
             console.log('   🔍 Recherche de l\'iframe Patient Overview...');
 
-            // Attendre que l'iframe soit chargé
-            await page.waitForTimeout(2000); // Attendre que l'iframe se charge
+            // ✨ Optimisé: Court délai pour laisser l'iframe c1 se charger (2000ms → 800ms)
+            await page.waitForTimeout(800);
 
             // Trouver l'iframe par son ID ou URL
             const frame = page.frame({ name: 'AdvancedPatientOverviewIFrame' }) ||
@@ -436,6 +436,9 @@ async function testAppointmentsExtraction() {
             }
 
             console.log(`   ✅ Iframe trouvé: ${frame.url().substring(0, 80)}...`);
+
+            // ✨ Smart wait: Attendre que l'iframe soit complètement chargé
+            await frame.waitForLoadState('domcontentloaded');
 
             // Scraper Patient Overview depuis l'iframe
             const overviewData = await frame.evaluate(() => {
@@ -776,11 +779,12 @@ async function testAppointmentsExtraction() {
                     try {
                         // Navigation DIRECTE vers Primary Insurance
                         const primaryUrl = 'https://a1.denticon.com/aspx/Patients/AdvancedEditPatientInsurance.aspx?planType=D&insType=P';
-                        await page.goto(primaryUrl, { waitUntil: 'networkidle' });
 
-                        // ATTENDRE que le formulaire soit chargé dynamiquement
-                        console.log('   ⏳ Attente du chargement dynamique du formulaire...');
-                        await page.waitForTimeout(3000); // Attendre que JavaScript charge les données
+                        // ✨ Smart wait: domcontentloaded au lieu de networkidle (plus rapide)
+                        await page.goto(primaryUrl, { waitUntil: 'domcontentloaded' });
+
+                        // ✨ Optimisé: Court délai pour laisser l'iframe c1 se charger (3000ms → 1200ms)
+                        await page.waitForTimeout(1200);
 
                         // ========== DIAGNOSTIC: SAUVEGARDER HTML PRIMARY INSURANCE ==========
                         if (i === 0) { // Seulement pour le premier patient
@@ -838,6 +842,9 @@ async function testAppointmentsExtraction() {
                             console.log('   ❌ Frame Primary non trouvé');
                             throw new Error('Primary Insurance iframe non trouvé');
                         }
+
+                        // ✨ Smart wait: Attendre que l'iframe soit complètement chargé
+                        await primaryFrame.waitForLoadState('domcontentloaded');
 
                         // Scraper depuis l'iframe
                         primaryData = await primaryFrame.evaluate(() => {
@@ -930,8 +937,8 @@ async function testAppointmentsExtraction() {
                 fullyEnriched.push(patient);
             }
 
-            // Pause entre requêtes
-            await new Promise(resolve => setTimeout(resolve, 500));
+            // ✨ Optimisé: Pause réduite entre patients (500ms → 200ms)
+            await new Promise(resolve => setTimeout(resolve, 200));
         }
 
         console.log(`\n✅ ${fullyEnriched.length} patients avec données complètes (a1 + c1 + overview)\n`);
