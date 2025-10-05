@@ -127,8 +127,8 @@ async function testAppointmentsExtraction() {
         // Injecter et exécuter le script d'extraction
         const results = await page.evaluate(async () => {
             try {
-                const testDates = ['10/6/2025', '10/7/2025', '10/8/2025', '10/9/2025', '10/10/2025'];  // Semaine complète 6-10 oct
-                const maxPatientsTotal = 100;  // 100 patients pour stats
+                const testDates = ['10/6/2025', '10/7/2025', '10/8/2025', '10/9/2025', '10/10/2025'];  // Semaine complète
+                const maxPatientsTotal = 100;  // Tous les patients de la semaine
 
                 console.log('🎯 EXTRACTION COMPLÈTE : Calendrier + Détails');
                 console.log(`📅 Dates: ${testDates.join(', ')}`);
@@ -772,158 +772,153 @@ async function testAppointmentsExtraction() {
                 console.log(`      Recalls: ${overviewData.recalls_all?.length || 0}`);
 
                 // ========== PRIMARY INSURANCE SCRAPING ==========
+                // ✨ TOUJOURS scraper Primary Insurance (même si carrier vide sur Overview)
                 let primaryData = null;
-                const hasInsurance = overviewData.insurance_primary_dental_carrier || patient.primary_carrier;
+                console.log('   🔍 Scraping Primary Insurance page...');
 
-                if (hasInsurance) {
-                    console.log('   🔍 Scraping Primary Insurance page...');
+                try {
+                    // Navigation DIRECTE vers Primary Insurance
+                    const primaryUrl = 'https://a1.denticon.com/aspx/Patients/AdvancedEditPatientInsurance.aspx?planType=D&insType=P';
 
-                    try {
-                        // Navigation DIRECTE vers Primary Insurance
-                        const primaryUrl = 'https://a1.denticon.com/aspx/Patients/AdvancedEditPatientInsurance.aspx?planType=D&insType=P';
+                    // ✨ Smart wait: domcontentloaded au lieu de networkidle (plus rapide)
+                    await page.goto(primaryUrl, { waitUntil: 'domcontentloaded' });
 
-                        // ✨ Smart wait: domcontentloaded au lieu de networkidle (plus rapide)
-                        await page.goto(primaryUrl, { waitUntil: 'domcontentloaded' });
+                    // ✨ Optimisé: Court délai pour laisser l'iframe c1 se charger (3000ms → 1200ms)
+                    await page.waitForTimeout(1200);
 
-                        // ✨ Optimisé: Court délai pour laisser l'iframe c1 se charger (3000ms → 1200ms)
-                        await page.waitForTimeout(1200);
+                    // ========== DIAGNOSTIC: SAUVEGARDER HTML PRIMARY INSURANCE ==========
+                    if (i === 0) { // Seulement pour le premier patient
+                        console.log('   📄 Sauvegarde HTML Primary Insurance APRÈS attente pour diagnostic...');
 
-                        // ========== DIAGNOSTIC: SAUVEGARDER HTML PRIMARY INSURANCE ==========
-                        if (i === 0) { // Seulement pour le premier patient
-                            console.log('   📄 Sauvegarde HTML Primary Insurance APRÈS attente pour diagnostic...');
-
-                            const fullPageHTML = await page.evaluate(() => {
-                                return {
-                                    url: window.location.href,
-                                    title: document.title,
-                                    html: document.documentElement.outerHTML
-                                };
-                            });
-
-                            const debugPrimaryPath = path.join(__dirname, 'debug-primary-insurance-after-wait.html');
-                            fs.writeFileSync(debugPrimaryPath, fullPageHTML.html);
-                            console.log(`   ✅ HTML Primary (after wait) sauvegardé: ${debugPrimaryPath}\n`);
-
-                            // ✨ OPTIMISÉ: Screenshot supprimé (diagnostic fini, gain ~1s)
-                            // const screenshotPrimaryPath = path.join(__dirname, 'debug-primary-insurance-after-wait.png');
-                            // await page.screenshot({ path: screenshotPrimaryPath, fullPage: true });
-                            // console.log(`   📸 Screenshot Primary (after wait): ${screenshotPrimaryPath}\n`);
-                        }
-
-                        // ========== ACCÈS À L'IFRAME PRIMARY INSURANCE ==========
-                        // Exactement comme Patient Overview, Primary Insurance utilise un iframe!
-                        console.log('   🔍 Recherche de l\'iframe Primary Insurance...');
-
-                        // Lister tous les frames
-                        const allFrames = page.frames();
-                        console.log(`   📦 Total frames: ${allFrames.length}`);
-                        allFrames.forEach((f, idx) => {
-                            console.log(`      Frame ${idx}: ${f.url().substring(0, 100)}`);
+                        const fullPageHTML = await page.evaluate(() => {
+                            return {
+                                url: window.location.href,
+                                title: document.title,
+                                html: document.documentElement.outerHTML
+                            };
                         });
 
-                        // Trouver l'iframe qui contient le formulaire Primary Insurance
-                        // Il peut avoir une URL différente ou être un about:blank avec contenu injecté
-                        let primaryFrame = null;
+                        const debugPrimaryPath = path.join(__dirname, 'debug-primary-insurance-after-wait.html');
+                        fs.writeFileSync(debugPrimaryPath, fullPageHTML.html);
+                        console.log(`   ✅ HTML Primary (after wait) sauvegardé: ${debugPrimaryPath}\n`);
 
-                        // Essayer de trouver le frame par contenu
-                        for (const frame of allFrames) {
-                            try {
-                                const hasData = await frame.evaluate(() => {
-                                    return document.body && document.body.textContent.includes('PLAN ID');
-                                });
-                                if (hasData) {
-                                    primaryFrame = frame;
-                                    console.log(`   ✅ Frame Primary trouvé (par contenu): ${frame.url().substring(0, 80)}...`);
-                                    break;
-                                }
-                            } catch (e) {
-                                // Frame inaccessible, continuer
-                            }
-                        }
-
-                        if (!primaryFrame) {
-                            console.log('   ❌ Frame Primary non trouvé');
-                            throw new Error('Primary Insurance iframe non trouvé');
-                        }
-
-                        // ✨ Smart wait: Attendre que l'iframe soit complètement chargé
-                        await primaryFrame.waitForLoadState('domcontentloaded');
-
-                        // Scraper depuis l'iframe
-                        primaryData = await primaryFrame.evaluate(() => {
-                                const getText = (sel) => document.querySelector(sel)?.textContent?.trim() || null;
-                                const getValue = (sel) => document.querySelector(sel)?.value?.trim() || null;
-
-                                return {
-                                    // PLAN INFO
-                                    primary_plan_id: getText('#showPlanID'),
-                                    primary_group_number: getText('#showCarrierGroup') || getValue('#inputCarrierGroup'),
-
-                                    // CARRIER
-                                    primary_carrier_name: getText('#carrierName'),
-                                    primary_carrier_address1: getText('#carrierAddr1'),
-                                    primary_carrier_address2: getText('#carrierAddr2'),
-                                    primary_carrier_address3: getText('#carrierAddr3'),
-                                    primary_payer_id: getText('#payerID'),
-                                    primary_carrier_id: getText('#carrierID'),
-                                    primary_carrier_type: getText('#cType'),
-                                    primary_carrier_phone: getText('#carrierPhone'),
-
-                                    // EMPLOYER
-                                    primary_employer_name: getText('#empName'),
-                                    primary_employer_address1: getText('#empAddr1'),
-                                    primary_employer_address2: getText('#empAddr2'),
-                                    primary_employer_address3: getText('#empAddr3'),
-
-                                    // SUBSCRIBER INFORMATION
-                                    primary_subscriber_id_primary: getValue('#subIdValue'),
-                                    primary_subscriber_last_name: getValue('#subLastName'),
-                                    primary_subscriber_first_name: getValue('#subFirstName'),
-                                    primary_subscriber_dob_primary: getValue('#subBirthDate'),
-                                    primary_subscriber_sex: getValue('#subscriberSexInfoDropdown'),
-                                    primary_subscriber_address: getValue('#subAddr'),
-                                    primary_subscriber_address2: getValue('#subAddr2'),
-                                    primary_subscriber_city: getValue('#subCity'),
-                                    primary_subscriber_state: getValue('#STATE'),
-                                    primary_subscriber_zip: getValue('#ZIP'),
-                                    primary_subscriber_marital_status: getValue('#subscriberMaritalStatusInfoDropdown'),
-                                    primary_subscriber_relationship_primary: getValue('#subscriberRelationInfoDropdown'),
-                                    primary_subscriber_phone: getValue('#Number'),
-
-                                    // ELIGIBILITY
-                                    primary_effective_date_sub: getValue('#subEffectiveDate'),
-                                    primary_term_date_sub: getValue('#subTermDate'),
-                                    primary_anniversary_date: getText('#annivDate'),
-                                    primary_eligibility_status_primary: getText('#currEligibilityStat'),
-                                    primary_eligibility_verified_on: getText('#currEligibilityDateDiv'),
-                                    primary_eligibility_verified_by: getText('#currEligibilityUser'),
-
-                                    // BENEFIT INFO
-                                    primary_deductible_ind: getText('#txtIndDed'),
-                                    primary_deductible_ind_rem: getValue('#txtIndDedRem'),
-                                    primary_deductible_fam: getText('#txtFamDed'),
-                                    primary_deductible_fam_rem: getValue('#txtFamDedRem'),
-                                    primary_annual_max_ind: getText('#txtIndMax'),
-                                    primary_annual_max_ind_rem: getValue('#txtIndMaxRem'),
-                                    primary_annual_max_fam: getText('#txtFamMax'),
-                                    primary_annual_max_fam_rem: getValue('#txtFamMaxRem'),
-                                    primary_ortho_ind: getText('#txtIndOrthoMax'),
-                                    primary_ortho_ind_rem: getValue('#txtIndOrthoMaxRem')
-                                };
-                            });
-
-                        console.log('   ✅ Primary Insurance scraped:');
-                        console.log(`      Subscriber ID: ${primaryData.primary_subscriber_id_primary || 'NULL'}`);
-                        console.log(`      Subscriber DOB: ${primaryData.primary_subscriber_dob_primary || 'NULL'}`);
-                        console.log(`      Payer ID: ${primaryData.primary_payer_id || 'NULL'}`);
-                        console.log(`      Employer: ${primaryData.primary_employer_name || 'NULL'}`);
-                        console.log(`      Relationship: ${primaryData.primary_subscriber_relationship_primary || 'NULL'}`);
-
-                    } catch (error) {
-                        console.error(`   ❌ Erreur Primary scraping: ${error.message}`);
+                        // ✨ OPTIMISÉ: Screenshot supprimé (diagnostic fini, gain ~1s)
+                        // const screenshotPrimaryPath = path.join(__dirname, 'debug-primary-insurance-after-wait.png');
+                        // await page.screenshot({ path: screenshotPrimaryPath, fullPage: true });
+                        // console.log(`   📸 Screenshot Primary (after wait): ${screenshotPrimaryPath}\n`);
                     }
-                } else {
-                    console.log('   ⏭️  Pas d\'assurance - skip Primary scraping');
+
+                    // ========== ACCÈS À L'IFRAME PRIMARY INSURANCE ==========
+                    // Exactement comme Patient Overview, Primary Insurance utilise un iframe!
+                    console.log('   🔍 Recherche de l\'iframe Primary Insurance...');
+
+                    // Lister tous les frames
+                    const allFrames = page.frames();
+                    console.log(`   📦 Total frames: ${allFrames.length}`);
+                    allFrames.forEach((f, idx) => {
+                        console.log(`      Frame ${idx}: ${f.url().substring(0, 100)}`);
+                    });
+
+                    // Trouver l'iframe qui contient le formulaire Primary Insurance
+                    // Il peut avoir une URL différente ou être un about:blank avec contenu injecté
+                    let primaryFrame = null;
+
+                    // Essayer de trouver le frame par contenu
+                    for (const frame of allFrames) {
+                        try {
+                            const hasData = await frame.evaluate(() => {
+                                return document.body && document.body.textContent.includes('PLAN ID');
+                            });
+                            if (hasData) {
+                                primaryFrame = frame;
+                                console.log(`   ✅ Frame Primary trouvé (par contenu): ${frame.url().substring(0, 80)}...`);
+                                break;
+                            }
+                        } catch (e) {
+                            // Frame inaccessible, continuer
+                        }
+                    }
+
+                    if (!primaryFrame) {
+                        console.log('   ❌ Frame Primary non trouvé');
+                        throw new Error('Primary Insurance iframe non trouvé');
+                    }
+
+                    // ✨ Smart wait: Attendre que l'iframe soit complètement chargé
+                    await primaryFrame.waitForLoadState('domcontentloaded');
+
+                    // Scraper depuis l'iframe
+                    primaryData = await primaryFrame.evaluate(() => {
+                            const getText = (sel) => document.querySelector(sel)?.textContent?.trim() || null;
+                            const getValue = (sel) => document.querySelector(sel)?.value?.trim() || null;
+
+                            return {
+                                // PLAN INFO
+                                primary_plan_id: getText('#showPlanID'),
+                                primary_group_number: getText('#showCarrierGroup') || getValue('#inputCarrierGroup'),
+
+                                // CARRIER
+                                primary_carrier_name: getText('#carrierName'),
+                                primary_carrier_address1: getText('#carrierAddr1'),
+                                primary_carrier_address2: getText('#carrierAddr2'),
+                                primary_carrier_address3: getText('#carrierAddr3'),
+                                primary_payer_id: getText('#payerID'),
+                                primary_carrier_id: getText('#carrierID'),
+                                primary_carrier_type: getText('#cType'),
+                                primary_carrier_phone: getText('#carrierPhone'),
+
+                                // EMPLOYER
+                                primary_employer_name: getText('#empName'),
+                                primary_employer_address1: getText('#empAddr1'),
+                                primary_employer_address2: getText('#empAddr2'),
+                                primary_employer_address3: getText('#empAddr3'),
+
+                                // SUBSCRIBER INFORMATION
+                                primary_subscriber_id_primary: getValue('#subIdValue'),
+                                primary_subscriber_last_name: getValue('#subLastName'),
+                                primary_subscriber_first_name: getValue('#subFirstName'),
+                                primary_subscriber_dob_primary: getValue('#subBirthDate'),
+                                primary_subscriber_sex: getValue('#subscriberSexInfoDropdown'),
+                                primary_subscriber_address: getValue('#subAddr'),
+                                primary_subscriber_address2: getValue('#subAddr2'),
+                                primary_subscriber_city: getValue('#subCity'),
+                                primary_subscriber_state: getValue('#STATE'),
+                                primary_subscriber_zip: getValue('#ZIP'),
+                                primary_subscriber_marital_status: getValue('#subscriberMaritalStatusInfoDropdown'),
+                                primary_subscriber_relationship_primary: getValue('#subscriberRelationInfoDropdown'),
+                                primary_subscriber_phone: getValue('#Number'),
+
+                                // ELIGIBILITY
+                                primary_effective_date_sub: getValue('#subEffectiveDate'),
+                                primary_term_date_sub: getValue('#subTermDate'),
+                                primary_anniversary_date: getText('#annivDate'),
+                                primary_eligibility_status_primary: getText('#currEligibilityStat'),
+                                primary_eligibility_verified_on: getText('#currEligibilityDateDiv'),
+                                primary_eligibility_verified_by: getText('#currEligibilityUser'),
+
+                                // BENEFIT INFO
+                                primary_deductible_ind: getText('#txtIndDed'),
+                                primary_deductible_ind_rem: getValue('#txtIndDedRem'),
+                                primary_deductible_fam: getText('#txtFamDed'),
+                                primary_deductible_fam_rem: getValue('#txtFamDedRem'),
+                                primary_annual_max_ind: getText('#txtIndMax'),
+                                primary_annual_max_ind_rem: getValue('#txtIndMaxRem'),
+                                primary_annual_max_fam: getText('#txtFamMax'),
+                                primary_annual_max_fam_rem: getValue('#txtFamMaxRem'),
+                                primary_ortho_ind: getText('#txtIndOrthoMax'),
+                                primary_ortho_ind_rem: getValue('#txtIndOrthoMaxRem')
+                            };
+                        });
+
+                    console.log('   ✅ Primary Insurance scraped:');
+                    console.log(`      Subscriber ID: ${primaryData.primary_subscriber_id_primary || 'NULL'}`);
+                    console.log(`      Subscriber DOB: ${primaryData.primary_subscriber_dob_primary || 'NULL'}`);
+                    console.log(`      Payer ID: ${primaryData.primary_payer_id || 'NULL'}`);
+                    console.log(`      Employer: ${primaryData.primary_employer_name || 'NULL'}`);
+                    console.log(`      Relationship: ${primaryData.primary_subscriber_relationship_primary || 'NULL'}`);
+
+                } catch (error) {
+                    console.error(`   ❌ Erreur Primary scraping: ${error.message}`);
                 }
 
                 // Fusionner TOUTES les données
