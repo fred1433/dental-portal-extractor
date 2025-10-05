@@ -1,238 +1,113 @@
-# Denticon API Reverse Engineering - Guide Complet
+# Scripts Denticon
 
-## 🔑 LA CLÉ DU SUCCÈS (TRÈS IMPORTANT!)
+Scripts pour extraire et manipuler les données du PMS Denticon.
 
-**Avant d'exécuter n'importe quel script d'extraction, il FAUT d'abord ouvrir cette URL :**
+## 📂 Structure du projet
 
 ```
-https://c1.denticon.com/aspx/home/advancedmypage.aspx?chk=tls
+denticon/
+├── extract-insurance-full-api.js    # Extraction Sept+Oct via 3 API endpoints (rapide)
+├── extract-patient-records.js       # Extraction complète avec scraping Patient Overview
+├── write-patient-note.js            # Écriture sécurisée dans les notes patient
+├── README.md                        # Documentation
+├── data/                            # Fichiers de données (JSON, CSV)
+└── archive/                         # Scripts de debug/test archivés
 ```
 
-Cette URL établit le contexte de session nécessaire sur le domaine `c1.denticon.com` qui permet ensuite d'appeler les endpoints de l'API.
+## 🎯 Scripts principaux
 
-## 📊 Scripts Principaux
+### `extract-insurance-full-api.js`
+**Extraction rapide via 3 API endpoints** (2-3 min pour 591 patients)
 
-### `c1_insurance_carrier_subscriber.js` ⭐
-✅ **Script d'assurance - Vue d'ensemble (c1.denticon.com)**
+**Sources de données:**
+1. `a1/getsched` - Calendrier (tous les patients)
+2. `a1/GetApptDetails` - DOB, gender, phones
+3. `c1/EligibilityVerification` - Assurance, subscriber ID
 
-Endpoint: `GetPatientEligibilityTableData`
+**Données extraites:**
+- ✅ Patient ID, Nom, Prénom
+- ✅ DOB patient, Genre
+- ✅ Phones (cell, home, work)
+- ✅ Assureur, Subscriber ID, Subscriber DOB
+- ✅ Provider, Appointment date
+- ❌ Adresse/ZIP (nécessite scraping)
+- ❌ Relationship (nécessite scraping)
 
-Ce script extrait :
-- **Carrier Name** (nom de l'assureur)
-- **Subscriber ID** (numéro d'abonné)
-- Patient ID, nom, téléphone, email
-- Date de naissance, statut d'éligibilité
-- Statistiques par assureur
-
-Résultats obtenus : **271 patients** sur **24 jours** avec **61 assureurs différents**
-
-### `c1_patient_insurance_full_details.js` ⭐⭐⭐
-✅ **Script d'assurance - Détails complets (c1.denticon.com)**
-
-Endpoint: `PatInsurance/Index`
-
-**LA DÉCOUVERTE CLÉ !** Ce script extrait TOUTES les données manquantes :
-- **Group Number** ← ESSENTIEL pour claims
-- **Payer ID** ← ESSENTIEL pour eclaims
-- **Benefits détaillés** (Deductible, Annual Max, Ortho Max)
-- Dates (Effective, Term, Anniversary)
-- Subscriber info complète
-- Employer info
-- Notes d'assurance
-- Métadonnées (Modified By, Created By, dates)
-
-**Usage :**
-```javascript
-// 1 patient
-extractPatientInsuranceFullDetails(patid, rpid)
-
-// Plusieurs patients
-extractMultiplePatientsInsurance('10/3/2025', 5)
+**Usage:**
+```bash
+node extract-insurance-full-api.js
 ```
 
-### `a1_calendar_with_enrichment.js` ⭐
-✅ **Script calendrier + enrichissement (a1.denticon.com)**
+**Sortie:** `data/insurance-full-api-results.{json,csv}`
 
-Ce script extrait :
-- Liste des rendez-vous (calendrier)
-- Enrichissement avec détails complets :
-  - Date de naissance (DOB)
-  - Téléphones (work, home, cell)
-  - Procédures détaillées avec codes CDT et prix
-  - Notes de rendez-vous
+### `extract-patient-records.js`
+**Extraction complète avec scraping Patient Overview** (5-10 min)
 
-**Note** : Le détail des patients ne fonctionne pas encore complètement, mais on espère le résoudre avec la découverte de l'URL c1
+**Sources de données:**
+- 3 API endpoints (comme ci-dessus)
+- + Patient Overview scraping (Playwright)
 
-## 🎯 Endpoints API Principaux
+**Données additionnelles:**
+- ✅ Adresse complète (street, city, state, ZIP)
+- ✅ Relationship to subscriber
+- ✅ Emergency contact
+- ✅ Medical alerts, balances, recalls
 
-### 1. Eligibility Table Data (Vue d'ensemble)
-```
-GET https://c1.denticon.com/EligibilityVerificationReport/GetPatientEligibilityTableData
-```
+**⚠️ Problème actuel:**
+Erreur "You are not authorized to view this page" - permissions insuffisantes pour Patient Overview
 
-**Paramètres :**
-- `PGID=3169` - Practice Group ID
-- `OID=102` - Office ID
-- `APPTPRDR=ALL` - Tous les providers
-- `APTDATE=10/3/2025` - Date du rendez-vous (format M/D/YYYY)
-- `ELIGSTATUS=ALL` - Tous les statuts d'éligibilité
-- `_=[timestamp]` - Cache buster
-
-**Headers requis :**
-```javascript
-headers: {
-    'X-Requested-With': 'XMLHttpRequest'
-}
+**Usage:**
+```bash
+node extract-patient-records.js
 ```
 
-**Retourne :** JSON avec liste de patients (Carrier Name, Subscriber ID, patient info)
+### `write-patient-note.js`
+**Écriture sécurisée d'URLs dans notes patient**
 
-### 2. Patient Insurance Details (Détails complets) ⭐
-```
-GET https://c1.denticon.com/PatInsurance/Index
-```
+**Sécurité:** 7 validations avant écriture
+- Vérification PATID
+- Vérification RPID
+- Validation URL
+- Confirmation patient
+- etc.
 
-**Paramètres :**
-- `pgid=3169` - Practice Group ID
-- `patid=9074115` - Patient ID
-- `oid=102` - Office ID
-- `rpid=9073270` - Responsible Party ID
-- `planType=D` - Type de plan (D=Dental)
-- `insType=P` - Type d'assurance (P=Primary)
-
-**Retourne :** HTML contenant :
-- Group Number
-- Payer ID
-- Benefits (Deductible, Annual Max, Ortho)
-- Dates complètes
-- Subscriber info
-- Variables JavaScript avec JSON embarqué
-
-## 📋 Instructions Étape par Étape
-
-### 1. Préparer la Session
-```
-1. Ouvrir le navigateur
-2. Se connecter à Denticon
-3. OUVRIR : https://c1.denticon.com/aspx/home/advancedmypage.aspx?chk=tls
-4. Attendre que la page charge complètement
+**Usage:**
+```bash
+node write-patient-note.js
 ```
 
-### 2. Ouvrir la Console
-```
-F12 (Windows/Linux) ou Cmd+Option+I (Mac)
-Aller dans l'onglet "Console"
-```
+## 📊 Données disponibles
 
-### 3. Copier/Coller le Script
-```javascript
-// Pour les données d'assurance (Carrier + Subscriber ID) :
-// → Copier le contenu de c1_insurance_carrier_subscriber.js
+### Fichiers dans `data/`
+- `insurance-full-api-results.json` - 591 patients (Sept+Oct 2025)
+- `insurance-full-api-results.csv` - Même données en CSV
+- `data-quality-analysis.json` - Analyse de vérifiabilité assurance
+- `verifiable-patients.csv` - 367 patients vérifiables (62%)
 
-// Pour le calendrier avec enrichissement (DOB + Phones) :
-// → Copier le contenu de a1_calendar_with_enrichment.js
+### Statistiques clés
+- **Total patients:** 591 (Sept: 295, Oct: 296)
+- **Vérifiables:** 367 (62%) - données complètes pour assurance
+- **Sans assurance:** 159 (27%) - cash/self-pay
+- **Avec assurance mais données incomplètes:** 65 (11%)
 
-// Coller dans la console et appuyer sur Entrée
-```
+### Critères de vérifiabilité
+Un patient est **vérifiable** s'il a:
+- ✅ Prénom + Nom
+- ✅ Date de naissance (patient DOB)
+- ✅ Subscriber ID
+- ✅ Assureur (carrier)
 
-### 4. Récupérer les Données
-```javascript
-// Option 1 : Copier dans le presse-papier
-copy(JSON.stringify(window.octoberExport, null, 2))
+## 🔧 Archive
 
-// Option 2 : Télécharger comme fichier JSON
-downloadJSON(window.octoberExport, "october_2025_insurance_data.json")
+Le dossier `archive/` contient les scripts de debug/test:
+- Scripts de debug c1
+- Scripts d'analyse de données
+- Anciennes versions
+- Tests de scraping
 
-// Option 3 : Afficher dans la console
-console.log(JSON.stringify(window.octoberExport, null, 2))
-```
+## 🚀 Prochaines étapes
 
-## 🏆 Résultats Obtenus (Octobre 2025)
-
-### Statistiques Globales
-- **271 patients** avec données d'assurance
-- **61 assureurs** différents
-- **24 jours** avec rendez-vous
-
-### Top 5 Assureurs
-1. **UHC-TEXAS-MEDICAID** - 23 patients (8.5%)
-2. **United Concordia** - 21 patients (7.7%)
-3. **MCNA-TEXAS-MEDICAID** - 20 patients (7.4%)
-4. **Delta Dental** - 17 patients (6.3%)
-5. **Cigna** - 15 patients (5.5%)
-
-## 📁 Structure des Données Extraites
-
-```json
-{
-  "metadata": {
-    "extraction_date": "ISO timestamp",
-    "month": "October 2025",
-    "total_patients": 271,
-    "total_carriers": 61,
-    "days_with_appointments": 24
-  },
-
-  "carriers_summary": [
-    {
-      "carrier_name": "UHC-TEXAS-MEDICAID",
-      "carrier_id": "12345",
-      "patient_count": 23,
-      "percentage": "8.49",
-      "examples": [...]
-    }
-  ],
-
-  "patients": [
-    {
-      "date": "10/1/2025",
-      "patient_id": "123",
-      "patient_name": "DOE, JOHN",
-      "date_of_birth": "01/15/1990",
-      "phone_cell": "(555) 123-4567",
-      "email": "john@example.com",
-      "appointment_time": "10:00 AM",
-      "primary_insurance": {
-        "carrier_id": "12345",
-        "carrier_name": "Delta Dental",
-        "subscriber_id": "ABC123456",
-        "subscriber_name": "JOHN DOE",
-        "plan_id": "PLAN001",
-        "eligibility_status": "Verified",
-        "last_verified": "09/30/2025",
-        "verified_by": "System"
-      }
-    }
-  ]
-}
-```
-
-
-## ⚠️ Points Importants
-
-### Domaines
-- ✅ **c1.denticon.com** - Pour les données d'assurance/éligibilité (endpoint GetPatientEligibilityTableData)
-- ✅ **a1.denticon.com** - Pour les calendriers/rendez-vous (endpoint getsched.aspx)
-
-### Limitations
-- Ne pas faire trop de requêtes simultanées (risque de ban)
-- Respecter les pauses entre requêtes (300-500ms minimum)
-- Toujours vérifier le statut de la réponse avant de parser
-
-### Sécurité
-- ⚠️ Un endpoint POST existe (`SaveInsurancePlan`) mais **NE PAS L'UTILISER** sans mesures de sécurité
-- Lecture seule uniquement pour l'instant
-- Les tokens anti-CSRF sont présents mais pas nécessaires pour les GET
-
-## 🚀 Cas d'Usage Futurs
-
-1. **Extraction quotidienne automatisée** - Modifier le script pour date du jour
-2. **Analyse des tendances** - Comparer les assureurs mois par mois
-3. **Priorisation des intégrations** - Basé sur le volume par carrier
-4. **Vérification d'éligibilité en masse** - Avant les rendez-vous
-
-## 📝 Historique
-
-- **2025-10-02** - Découverte de l'endpoint GetPatientEligibilityTableData
-- **2025-10-02** - Extraction réussie de 271 patients d'octobre 2025
-- **2025-10-02** - Création du script d'export final structuré
+1. **Résoudre permissions Patient Overview** - Pour obtenir adresse/ZIP/relationship
+2. **Tester scraping sur 1 patient** - Vérifier autorisation
+3. **Si OK: Tester sur 50 patients** - Mesurer temps + données
+4. **Lancer extraction complète** - 591 patients avec toutes les données

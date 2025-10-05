@@ -127,7 +127,7 @@ async function testAppointmentsExtraction() {
         // Injecter et exécuter le script d'extraction
         const results = await page.evaluate(async () => {
             const testDate = '10/2/2025';  // Date avec des patients
-            const maxPatients = 2;  // 2 patients pour tester
+            const maxPatients = 20;  // Tester 20 patients
 
             console.log('🎯 EXTRACTION COMPLÈTE : Calendrier + Détails');
             console.log(`📅 Date: ${testDate}`);
@@ -384,6 +384,64 @@ async function testAppointmentsExtraction() {
             await page.waitForLoadState('domcontentloaded');
             await page.waitForTimeout(1000);
 
+            // ========== TEST ENDPOINT API GetPatientData ==========
+            console.log('   🔬 TEST: Appel de /PatientOverview/GetPatientData...');
+            const apiTestResult = await page.evaluate(async () => {
+                try {
+                    const apiUrl = '/PatientOverview/GetPatientData';
+                    const response = await fetch(apiUrl, {
+                        headers: { 'X-Requested-With': 'XMLHttpRequest' }
+                    });
+
+                    const status = response.status;
+                    const contentType = response.headers.get('content-type') || 'unknown';
+
+                    let data = null;
+                    let dataPreview = null;
+                    let isJson = false;
+
+                    if (status === 200) {
+                        const text = await response.text();
+                        dataPreview = text.substring(0, 500);
+
+                        // Tenter de parser en JSON
+                        try {
+                            data = JSON.parse(text);
+                            isJson = true;
+                        } catch (e) {
+                            // Pas du JSON
+                        }
+                    }
+
+                    return {
+                        success: status === 200,
+                        status: status,
+                        contentType: contentType,
+                        isJson: isJson,
+                        data: data,
+                        dataPreview: dataPreview
+                    };
+                } catch (error) {
+                    return { success: false, error: error.message };
+                }
+            });
+
+            console.log(`   📊 Résultat API:`);
+            console.log(`      Status: ${apiTestResult.status}`);
+            console.log(`      Content-Type: ${apiTestResult.contentType}`);
+            console.log(`      Est JSON: ${apiTestResult.isJson ? 'OUI ✅' : 'NON'}`);
+            if (apiTestResult.success) {
+                if (apiTestResult.isJson) {
+                    console.log(`      Données JSON (clés): ${apiTestResult.data ? Object.keys(apiTestResult.data).join(', ') : 'N/A'}`);
+                    console.log(`      Preview: ${JSON.stringify(apiTestResult.data).substring(0, 200)}...`);
+                } else {
+                    console.log(`      Preview HTML: ${apiTestResult.dataPreview}`);
+                }
+            } else {
+                console.log(`      ❌ Erreur: ${apiTestResult.error || 'Échec ' + apiTestResult.status}`);
+            }
+            console.log('');
+
             const overviewData = await page.evaluate(() => {
                 try {
                     const doc = document; // DOM actuel au lieu de fetched HTML
@@ -395,6 +453,8 @@ async function testAppointmentsExtraction() {
                         console.log('   📄 Body text (first 500 chars):', bodyText.substring(0, 500));
                         return { success: false, error: 'Not authorized - missing token or params' };
                     }
+
+                    // ========== HELPERS ROBUSTES (inspirés ChatGPT-5 Pro) ==========
 
                     // Helper: extraire texte d'un élément
                     const getText = (selector) => {
@@ -408,6 +468,43 @@ async function testAppointmentsExtraction() {
                         return el ? el.getAttribute(attr) : null;
                     };
 
+                    // Helper: extraire par LIBELLÉ (robuste aux changements CSS)
+                    const byLabel = (label, containerSelector = '') => {
+                        const container = containerSelector ? doc.querySelector(containerSelector) : doc;
+                        if (!container) return null;
+
+                        const labels = Array.from(container.querySelectorAll('div.label-inner'));
+                        const labelEl = labels.find(el => el.textContent.trim() === label);
+                        if (!labelEl) return null;
+
+                        // Chercher la valeur dans la colonne suivante
+                        const parentRow = labelEl.closest('.div-row');
+                        if (!parentRow) return null;
+
+                        const valueDivs = parentRow.querySelectorAll('.label-inner-value');
+                        // Trouver l'index du label
+                        const labelCols = parentRow.querySelectorAll('.label-inner');
+                        const labelIndex = Array.from(labelCols).indexOf(labelEl);
+
+                        return valueDivs[labelIndex]?.textContent.trim() || null;
+                    };
+
+                    // Helper: extraire ligne de table par libellé
+                    const byTableRow = (rowLabel, containerSelector = '') => {
+                        const container = containerSelector ? doc.querySelector(containerSelector) : doc;
+                        if (!container) return null;
+
+                        const rows = Array.from(container.querySelectorAll('table tbody tr'));
+                        const row = rows.find(tr => {
+                            const firstCell = tr.querySelector('td');
+                            return firstCell && firstCell.textContent.trim() === rowLabel;
+                        });
+
+                        if (!row) return null;
+                        const cells = Array.from(row.querySelectorAll('td'));
+                        return cells.map(cell => cell.textContent.trim());
+                    };
+
                     // EMERGENCY CONTACT (dans tooltip)
                     const emergencyTooltip = getTooltip('a[data-custom-tooltip-title="Emergency Contact Information"]');
                     let emergencyContact = null;
@@ -419,10 +516,13 @@ async function testAppointmentsExtraction() {
                         emergencyPhone = phoneMatch ? phoneMatch[1].trim() : null;
                     }
 
-                    // ADRESSE
+                    // ========== ADRESSE (corrigé - capture APT + City/State/ZIP) ==========
                     const addressRows = doc.querySelectorAll('.address-div .label-inner-value');
                     const street = addressRows[0]?.textContent.trim() || null;
-                    const cityStateZip = addressRows[2]?.textContent.trim() || null;
+                    const apt = addressRows[1]?.textContent.trim() || null; // APT 101
+
+                    // City/State/ZIP via byLabel
+                    const cityStateZip = byLabel('City, State and Zip') || null;
 
                     // PATIENT INFO EXTENDED
                     const provider = getText('.patient-basic-info-div .col-lg-3:nth-child(2) .label-inner-value');
@@ -442,24 +542,56 @@ async function testAppointmentsExtraction() {
                     const homePhone = getText('.patient-basic-info-div .div-row:nth-child(5) .col-lg-3:nth-child(2) .label-inner-value');
                     const workPhone = getText('.patient-basic-info-div .div-row:nth-child(6) .col-lg-3:nth-child(2) .label-inner-value');
 
-                    // RESPONSIBLE PARTY
-                    const rpName = getText('.patient-information-wrapper .div-row:nth-child(1) .col-lg-3:nth-child(2) .label-inner-value');
-                    const rpId = getText('.patient-information-wrapper .div-row:nth-child(2) .col-lg-3:nth-child(2) .label-inner-value');
-                    const rpType = getText('.patient-information-wrapper .div-row:nth-child(3) .col-lg-3:nth-child(2) .label-inner-value');
-                    const rpCell = getText('.patient-information-wrapper .div-row:nth-child(1) .col-lg-3:nth-child(4) .label-inner-value');
-                    const rpEmail = doc.querySelector('.patient-information-wrapper .div-row:nth-child(2) .col-lg-3:nth-child(4) a')?.textContent.trim();
+                    // ========== RESPONSIBLE PARTY (corrigé - byLabel au lieu de colonnes) ==========
+                    const rpContainer = '.resp-ins-info-container .patient-information-wrapper';
+                    const rpName = byLabel('Name', rpContainer);
+                    const rpCell = byLabel('Cell', rpContainer);
+                    const rpId = byLabel('Resp ID', rpContainer);
+                    const rpType = byLabel('Type', rpContainer);
+                    const rpHomeOffice = byLabel('Home Office', rpContainer);
+
+                    // Email (lien dans la valeur)
+                    const rpEmailContainer = doc.querySelector(rpContainer);
+                    const rpEmailLabel = Array.from(rpEmailContainer?.querySelectorAll('.label-inner') || [])
+                        .find(el => el.textContent.trim() === 'Email');
+                    const rpEmailRow = rpEmailLabel?.closest('.div-row');
+                    const rpEmail = rpEmailRow?.querySelector('a')?.textContent.trim() || null;
 
                     // INSURANCE PRIMARY DENTAL
                     const primDentalCarrier = getText('#pri-sec-dental-ins .div-row:nth-child(2) .custom-col-40:nth-child(2) a');
                     const primDentalGroup = getText('#pri-sec-dental-ins .div-row:nth-child(3) .custom-col-40:nth-child(2) a');
                     const primDentalPhone = getText('#pri-sec-dental-ins .div-row:nth-child(4) .custom-col-40:nth-child(2) .label-inner-value');
-                    const primDentalSubscriber = getText('#pri-sec-dental-ins .div-row:nth-child(5) .custom-col-40:nth-child(2) .label-inner-value');
+                    const primDentalSubscriberRaw = getText('#pri-sec-dental-ins .div-row:nth-child(5) .custom-col-40:nth-child(2) .label-inner-value');
+
+                    // Parser la relationship: "Reyes, Alex (Self)" → name + relationship
+                    let primDentalSubscriberName = primDentalSubscriberRaw;
+                    let primDentalRelationship = null;
+                    if (primDentalSubscriberRaw) {
+                        const relMatch = primDentalSubscriberRaw.match(/^(.+?)\s*\((.+?)\)\s*$/);
+                        if (relMatch) {
+                            primDentalSubscriberName = relMatch[1].trim();
+                            primDentalRelationship = relMatch[2].trim(); // Self, Spouse, Child, Dependent, etc.
+                        }
+                    }
+
                     const primDentalMax = getText('#pri-sec-dental-ins .div-row:nth-child(6) .custom-col-40:nth-child(2) .label-inner-value');
                     const primDentalDed = getText('#pri-sec-dental-ins .div-row:nth-child(7) .custom-col-40:nth-child(2) .label-inner-value');
 
                     // INSURANCE SECONDARY DENTAL
                     const secDentalCarrier = getText('#pri-sec-dental-ins .div-row:nth-child(2) .custom-col-40:nth-child(3) a');
                     const secDentalGroup = getText('#pri-sec-dental-ins .div-row:nth-child(3) .custom-col-40:nth-child(3) a');
+                    const secDentalSubscriberRaw = getText('#pri-sec-dental-ins .div-row:nth-child(5) .custom-col-40:nth-child(3) .label-inner-value');
+
+                    // Parser la relationship secondaire
+                    let secDentalSubscriberName = secDentalSubscriberRaw;
+                    let secDentalRelationship = null;
+                    if (secDentalSubscriberRaw) {
+                        const relMatch = secDentalSubscriberRaw.match(/^(.+?)\s*\((.+?)\)\s*$/);
+                        if (relMatch) {
+                            secDentalSubscriberName = relMatch[1].trim();
+                            secDentalRelationship = relMatch[2].trim();
+                        }
+                    }
 
                     // BALANCES
                     const balanceRows = doc.querySelectorAll('.balances-table tbody tr');
@@ -489,12 +621,30 @@ async function testAppointmentsExtraction() {
                         }
                     }
 
-                    // BILLING INFO
-                    const billingRows = doc.querySelectorAll('#summary .col-lg-6:nth-child(1) .common-table tbody tr');
-                    const lastPatPay = billingRows[0]?.querySelectorAll('td')[1]?.textContent.trim();
-                    const lastPatPayDate = billingRows[0]?.querySelectorAll('td')[2]?.textContent.trim();
-                    const lastInsPay = billingRows[1]?.querySelectorAll('td')[1]?.textContent.trim();
-                    const lastInsPayDate = billingRows[1]?.querySelectorAll('td')[2]?.textContent.trim();
+                    // ========== BILLING INFO (corrigé - table Billing spécifique) ==========
+                    // Trouver la section "BILLING" dans summary
+                    const billingSection = Array.from(doc.querySelectorAll('#summary .col-lg-6'))
+                        .find(section => section.textContent.includes('BILLING'));
+
+                    let lastPatPay = null, lastPatPayDate = null;
+                    let lastInsPay = null, lastInsPayDate = null;
+
+                    if (billingSection) {
+                        const billingRows = billingSection.querySelectorAll('table tbody tr');
+                        billingRows.forEach(row => {
+                            const cells = row.querySelectorAll('td');
+                            if (cells.length >= 3) {
+                                const label = cells[0].textContent.trim();
+                                if (label === 'Last Pat Pay') {
+                                    lastPatPay = cells[1].textContent.trim();
+                                    lastPatPayDate = cells[2].textContent.trim();
+                                } else if (label === 'Last Ins Pay') {
+                                    lastInsPay = cells[1].textContent.trim();
+                                    lastInsPayDate = cells[2].textContent.trim();
+                                }
+                            }
+                        });
+                    }
 
                     // APPOINTMENTS (tous)
                     const apptRows = doc.querySelectorAll('.appointments-table tbody tr');
@@ -537,6 +687,7 @@ async function testAppointmentsExtraction() {
                         emergency_contact: emergencyContact,
                         emergency_phone: emergencyPhone,
                         address_street: street,
+                        address_apt: apt,
                         address_city_state_zip: cityStateZip,
                         provider_extended: provider,
                         hygienist: hygienist,
@@ -554,14 +705,18 @@ async function testAppointmentsExtraction() {
                         responsible_party_type: rpType,
                         responsible_party_cell: rpCell,
                         responsible_party_email: rpEmail,
+                        responsible_party_home_office: rpHomeOffice,
                         insurance_primary_dental_carrier: primDentalCarrier,
                         insurance_primary_dental_group: primDentalGroup,
                         insurance_primary_dental_phone: primDentalPhone,
-                        insurance_primary_dental_subscriber: primDentalSubscriber,
+                        insurance_primary_dental_subscriber_name: primDentalSubscriberName,
+                        insurance_primary_dental_relationship: primDentalRelationship,
                         insurance_primary_dental_max: primDentalMax,
                         insurance_primary_dental_ded: primDentalDed,
                         insurance_secondary_dental_carrier: secDentalCarrier,
                         insurance_secondary_dental_group: secDentalGroup,
+                        insurance_secondary_dental_subscriber_name: secDentalSubscriberName,
+                        insurance_secondary_dental_relationship: secDentalRelationship,
                         balance_account: accountBalance,
                         last_patient_payment: lastPatPay,
                         last_patient_payment_date: lastPatPayDate,
@@ -578,10 +733,18 @@ async function testAppointmentsExtraction() {
             if (overviewData.success) {
                 fullyEnriched.push({
                     ...patient,
-                    ...overviewData
+                    ...overviewData,
+                    // Ajouter les résultats du test API
+                    api_test: {
+                        available: apiTestResult.success,
+                        is_json: apiTestResult.isJson,
+                        content_type: apiTestResult.contentType,
+                        data: apiTestResult.isJson ? apiTestResult.data : null
+                    }
                 });
 
                 console.log('   ✅ Données Patient Overview extraites:');
+                console.log(`      API GetPatientData: ${apiTestResult.success ? (apiTestResult.isJson ? '✅ JSON disponible!' : '⚠️ HTML retourné') : '❌ Non disponible'}`);
                 console.log(`      Emergency: ${overviewData.emergency_contact || 'N/A'} (${overviewData.emergency_phone || 'N/A'})`);
                 console.log(`      Adresse: ${overviewData.address_street || 'N/A'}, ${overviewData.address_city_state_zip || 'N/A'}`);
                 console.log(`      Provider: ${overviewData.provider_extended || 'N/A'}`);

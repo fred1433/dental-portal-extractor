@@ -1,0 +1,2151 @@
+{
+  "log": {
+    "version": "1.2",
+    "creator": {
+      "name": "WebInspector",
+      "version": "537.36"
+    },
+    "pages": [],
+    "entries": [
+      {
+        "_connectionId": "1179709",
+        "_initiator": {
+          "type": "script",
+          "stack": {
+            "callFrames": [
+              {
+                "functionName": "send",
+                "scriptId": "79",
+                "url": "https://static-cdn.denticon.com/external/jquery-3.3.1/jquery-3.3.1.min.js",
+                "lineNumber": 1,
+                "columnNumber": 80265
+              },
+              {
+                "functionName": "ajax",
+                "scriptId": "79",
+                "url": "https://static-cdn.denticon.com/external/jquery-3.3.1/jquery-3.3.1.min.js",
+                "lineNumber": 1,
+                "columnNumber": 77117
+              },
+              {
+                "functionName": "",
+                "scriptId": "1665",
+                "url": "https://c1.denticon.com/JSBundles/eligibility-verification-report-bundle-scripts.js?v=f8MCDVC0MDSp3bkzvP_mSq-Xn2x_jPhIQZuzQXe8kpU",
+                "lineNumber": 8272,
+                "columnNumber": 10
+              },
+              {
+                "functionName": "dispatch",
+                "scriptId": "79",
+                "url": "https://static-cdn.denticon.com/external/jquery-3.3.1/jquery-3.3.1.min.js",
+                "lineNumber": 1,
+                "columnNumber": 41771
+              },
+              {
+                "functionName": "y.handle",
+                "scriptId": "79",
+                "url": "https://static-cdn.denticon.com/external/jquery-3.3.1/jquery-3.3.1.min.js",
+                "lineNumber": 1,
+                "columnNumber": 39790
+              }
+            ]
+          }
+        },
+        "_priority": "High",
+        "_resourceType": "xhr",
+        "cache": {},
+        "connection": "443",
+        "request": {
+          "method": "GET",
+          "url": "https://c1.denticon.com/Eligibility/CheckEligibility?patid=9013912&rpid=9013206&respplanid=9017873&planType=P&_=1759490449930",
+          "httpVersion": "http/2.0",
+          "headers": [
+            {
+              "name": ":authority",
+              "value": "c1.denticon.com"
+            },
+            {
+              "name": ":method",
+              "value": "GET"
+            },
+            {
+              "name": ":path",
+              "value": "/Eligibility/CheckEligibility?patid=9013912&rpid=9013206&respplanid=9017873&planType=P&_=1759490449930"
+            },
+            {
+              "name": ":scheme",
+              "value": "https"
+            },
+            {
+              "name": "accept",
+              "value": "*/*"
+            },
+            {
+              "name": "accept-encoding",
+              "value": "gzip, deflate, br, zstd"
+            },
+            {
+              "name": "accept-language",
+              "value": "en,pt-BR;q=0.9,pt;q=0.8"
+            },
+            {
+              "name": "cache-control",
+              "value": "no-cache"
+            },
+            {
+              "name": "cookie",
+              "value": ".DenticonCore_Session_=CfDJ8PlbbejGtTNOuXPiC8w2eK8PbvdAWvh5Xhk9yEbjVcW5q5g0KulaWZkcKO8F%2FwdQc9G1OFIzPvpTsBmQp1yXaVbggd9gB7WbypahGWvmun7Gd1tx0VHpJpTZ8ZFm%2BoLWHhe1ElDlP7CK7aYKShP%2F22jPVYNugHOVqtsbkrNsylC8; .AspNetCore.Antiforgery.cdV5uW_Ejgc=CfDJ8PlbbejGtTNOuXPiC8w2eK9VjgVgo6TQ5VjMtPzegIyJNWzoQhGzzADBT493cYkgDJLn9rJPh9a7DKPqEZA9V-wAtyZkgX9WPC1qaAjCtf_8lRaJUaRToOR0xA4spWhu4IpNWJYRhDRhZXd-AQaK_FE; __stripe_mid=7b0be044-dd83-41a8-a155-40a44ecd66238e027d; redirector-production=jg7XKAC7LKozL8t%2BadMmZtxOx6dGXlkMLxy%2BJoKJoo4s7yGQ2spzZOwLULrXY83fgUKNFuSlJcL7qVrfoVIW%2FuDIzstvUdB%2BmP3ALopVR%2FUoE8NmBkXJLrytRtkEOaFnRGfP8BYsHHgap6YN9aDI%2BMDmC5Bg6A7VmRyhMCFexnOMpnNoNWmwXNSW5OVivAIcs4S4TIk4EHNSP2ptzsu5tIbgt1vsj0w7IQjKXJMtpCcQjjiyRqB6brP9GZY8FCqt1gdFR7DMhkq0YIclXUBdhUUsp7OJAPIjW7%2FXOqvgWXw%3D; PoWDns=NJrOkZ0nwsSo1TVqULlAAQ%3D%3D; CoreDns=zIFxACqa%2FUcBovB5BZHkww%3D%3D; ReportDns=e183QHYegr9ZGwO26SZOHOU080PpvpgPZzZ6uqIiBeY%3D; shared_session_prod=btu7WGgmHU6ynk7hQ2BVQKOUH6S293TwPBkbIod%2FUe8S4ZpdkPj6Sv1tpBLE7wTV; __stripe_sid=7e5a993c-0b54-4cf1-b40b-216018507b603ce31f; __cf_bm=irVLiGiIcVC2YzEn3pmrr4QkZeGnXfqC0EX0HMEB1YU-1759490537-1.0.1.1-H8QjBW3PidbxHqG7ap198xk9fyWdao56W6qIfBYpreYq.K.tNNtHrqHWM78CEhNdlXEPRJyCuHBGDjSzFy8grFpG_lNe5fU9Wrbbj0KE4b0; datadome=osQX4hoxTaZgngA9obxg2UaIpHzoNaIuxpGB7unDmFNQoEqZDDAJPUCbU0n7jPc2iesjB6uWsMp01ZYkWqRW9qbaAELD5cdgGpLPaVax43zIjPDWlWxpgEpJcUYYp9Yd"
+            },
+            {
+              "name": "pragma",
+              "value": "no-cache"
+            },
+            {
+              "name": "priority",
+              "value": "u=1, i"
+            },
+            {
+              "name": "referer",
+              "value": "https://c1.denticon.com/EligibilityVerificationReport/Index?schedulerDate=09%2F3%2F2025"
+            },
+            {
+              "name": "requestverificationtoken",
+              "value": "CfDJ8PlbbejGtTNOuXPiC8w2eK8CeUH1LN7kUGAnVvzyzsd1lvsKvDiDELy_AbS5KkCLvUhw1Zryjc4HFZlYPxy-OYZp66T4IjrDSqTkaqQVtHbyJ59NhTyXqNg56_UBQR6HPX4HG55UnZE-DE-3L8lLrBg"
+            },
+            {
+              "name": "sec-ch-ua",
+              "value": "\"Chromium\";v=\"140\", \"Not=A?Brand\";v=\"24\", \"Google Chrome\";v=\"140\""
+            },
+            {
+              "name": "sec-ch-ua-mobile",
+              "value": "?0"
+            },
+            {
+              "name": "sec-ch-ua-platform",
+              "value": "\"macOS\""
+            },
+            {
+              "name": "sec-fetch-dest",
+              "value": "empty"
+            },
+            {
+              "name": "sec-fetch-mode",
+              "value": "cors"
+            },
+            {
+              "name": "sec-fetch-site",
+              "value": "same-origin"
+            },
+            {
+              "name": "user-agent",
+              "value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+            },
+            {
+              "name": "x-requested-with",
+              "value": "XMLHttpRequest"
+            }
+          ],
+          "queryString": [
+            {
+              "name": "patid",
+              "value": "9013912"
+            },
+            {
+              "name": "rpid",
+              "value": "9013206"
+            },
+            {
+              "name": "respplanid",
+              "value": "9017873"
+            },
+            {
+              "name": "planType",
+              "value": "P"
+            },
+            {
+              "name": "_",
+              "value": "1759490449930"
+            }
+          ],
+          "cookies": [
+            {
+              "name": ".DenticonCore_Session_",
+              "value": "CfDJ8PlbbejGtTNOuXPiC8w2eK8PbvdAWvh5Xhk9yEbjVcW5q5g0KulaWZkcKO8F%2FwdQc9G1OFIzPvpTsBmQp1yXaVbggd9gB7WbypahGWvmun7Gd1tx0VHpJpTZ8ZFm%2BoLWHhe1ElDlP7CK7aYKShP%2F22jPVYNugHOVqtsbkrNsylC8",
+              "path": "/",
+              "domain": "c1.denticon.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": true,
+              "secure": true,
+              "sameSite": "None"
+            },
+            {
+              "name": ".AspNetCore.Antiforgery.cdV5uW_Ejgc",
+              "value": "CfDJ8PlbbejGtTNOuXPiC8w2eK9VjgVgo6TQ5VjMtPzegIyJNWzoQhGzzADBT493cYkgDJLn9rJPh9a7DKPqEZA9V-wAtyZkgX9WPC1qaAjCtf_8lRaJUaRToOR0xA4spWhu4IpNWJYRhDRhZXd-AQaK_FE",
+              "path": "/",
+              "domain": "c1.denticon.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": true,
+              "secure": true,
+              "sameSite": "None"
+            },
+            {
+              "name": "__stripe_mid",
+              "value": "7b0be044-dd83-41a8-a155-40a44ecd66238e027d",
+              "path": "/",
+              "domain": ".c1.denticon.com",
+              "expires": "2026-10-03T11:27:09.000Z",
+              "httpOnly": false,
+              "secure": true,
+              "sameSite": "Strict"
+            },
+            {
+              "name": "redirector-production",
+              "value": "jg7XKAC7LKozL8t%2BadMmZtxOx6dGXlkMLxy%2BJoKJoo4s7yGQ2spzZOwLULrXY83fgUKNFuSlJcL7qVrfoVIW%2FuDIzstvUdB%2BmP3ALopVR%2FUoE8NmBkXJLrytRtkEOaFnRGfP8BYsHHgap6YN9aDI%2BMDmC5Bg6A7VmRyhMCFexnOMpnNoNWmwXNSW5OVivAIcs4S4TIk4EHNSP2ptzsu5tIbgt1vsj0w7IQjKXJMtpCcQjjiyRqB6brP9GZY8FCqt1gdFR7DMhkq0YIclXUBdhUUsp7OJAPIjW7%2FXOqvgWXw%3D",
+              "path": "/",
+              "domain": ".denticon.com",
+              "expires": "2025-10-03T13:08:16.843Z",
+              "httpOnly": false,
+              "secure": true,
+              "sameSite": "Lax"
+            },
+            {
+              "name": "PoWDns",
+              "value": "NJrOkZ0nwsSo1TVqULlAAQ%3D%3D",
+              "path": "/",
+              "domain": ".denticon.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": false,
+              "secure": true,
+              "sameSite": "Lax"
+            },
+            {
+              "name": "CoreDns",
+              "value": "zIFxACqa%2FUcBovB5BZHkww%3D%3D",
+              "path": "/",
+              "domain": ".denticon.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": false,
+              "secure": true,
+              "sameSite": "Lax"
+            },
+            {
+              "name": "ReportDns",
+              "value": "e183QHYegr9ZGwO26SZOHOU080PpvpgPZzZ6uqIiBeY%3D",
+              "path": "/",
+              "domain": ".denticon.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": false,
+              "secure": true,
+              "sameSite": "Lax"
+            },
+            {
+              "name": "shared_session_prod",
+              "value": "btu7WGgmHU6ynk7hQ2BVQKOUH6S293TwPBkbIod%2FUe8S4ZpdkPj6Sv1tpBLE7wTV",
+              "path": "/",
+              "domain": ".denticon.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": false,
+              "secure": true,
+              "sameSite": "None"
+            },
+            {
+              "name": "__stripe_sid",
+              "value": "7e5a993c-0b54-4cf1-b40b-216018507b603ce31f",
+              "path": "/",
+              "domain": ".c1.denticon.com",
+              "expires": "2025-10-03T11:57:09.000Z",
+              "httpOnly": false,
+              "secure": true,
+              "sameSite": "Strict"
+            },
+            {
+              "name": "__cf_bm",
+              "value": "irVLiGiIcVC2YzEn3pmrr4QkZeGnXfqC0EX0HMEB1YU-1759490537-1.0.1.1-H8QjBW3PidbxHqG7ap198xk9fyWdao56W6qIfBYpreYq.K.tNNtHrqHWM78CEhNdlXEPRJyCuHBGDjSzFy8grFpG_lNe5fU9Wrbbj0KE4b0",
+              "path": "/",
+              "domain": ".denticon.com",
+              "expires": "2025-10-03T11:52:17.386Z",
+              "httpOnly": true,
+              "secure": true,
+              "sameSite": "None"
+            },
+            {
+              "name": "datadome",
+              "value": "osQX4hoxTaZgngA9obxg2UaIpHzoNaIuxpGB7unDmFNQoEqZDDAJPUCbU0n7jPc2iesjB6uWsMp01ZYkWqRW9qbaAELD5cdgGpLPaVax43zIjPDWlWxpgEpJcUYYp9Yd",
+              "path": "/",
+              "domain": ".denticon.com",
+              "expires": "2026-10-03T11:29:05.069Z",
+              "httpOnly": false,
+              "secure": true,
+              "sameSite": "Lax"
+            }
+          ],
+          "headersSize": -1,
+          "bodySize": 0
+        },
+        "response": {
+          "status": 200,
+          "statusText": "",
+          "httpVersion": "http/2.0",
+          "headers": [
+            {
+              "name": "accept-ch",
+              "value": "Sec-CH-UA,Sec-CH-UA-Mobile,Sec-CH-UA-Platform,Sec-CH-UA-Arch,Sec-CH-UA-Full-Version-List,Sec-CH-UA-Model,Sec-CH-Device-Memory"
+            },
+            {
+              "name": "cf-cache-status",
+              "value": "DYNAMIC"
+            },
+            {
+              "name": "cf-ray",
+              "value": "988c1a453f3ebdb3-GIG"
+            },
+            {
+              "name": "content-encoding",
+              "value": "gzip"
+            },
+            {
+              "name": "content-type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "name": "date",
+              "value": "Fri, 03 Oct 2025 11:29:43 GMT"
+            },
+            {
+              "name": "server",
+              "value": "cloudflare"
+            },
+            {
+              "name": "set-cookie",
+              "value": "datadome=N3WNkjD_ed6441odiAq5AB_PCqfAbVCWKOGcIKz34_9wmMKAd0HpAtNa3CHAkEISGWN8JlTJ49d7eeks_fvTWIZo8bchjUjwj8N9fDESTTELf0ic7sKT3epFs~nJYZbs; Max-Age=31536000; Domain=.denticon.com; Path=/; Secure; SameSite=Lax"
+            },
+            {
+              "name": "strict-transport-security",
+              "value": "max-age=2592000"
+            },
+            {
+              "name": "vary",
+              "value": "Accept-Encoding"
+            },
+            {
+              "name": "x-datadome",
+              "value": "protected"
+            },
+            {
+              "name": "x-powered-by",
+              "value": "ASP.NET"
+            }
+          ],
+          "cookies": [
+            {
+              "name": "datadome",
+              "value": "N3WNkjD_ed6441odiAq5AB_PCqfAbVCWKOGcIKz34_9wmMKAd0HpAtNa3CHAkEISGWN8JlTJ49d7eeks_fvTWIZo8bchjUjwj8N9fDESTTELf0ic7sKT3epFs~nJYZbs",
+              "path": "/",
+              "domain": ".denticon.com",
+              "expires": "2026-10-03T11:29:35.391Z",
+              "httpOnly": false,
+              "secure": true,
+              "sameSite": "Lax"
+            }
+          ],
+          "content": {
+            "size": 124,
+            "mimeType": "application/json"
+          },
+          "redirectURL": "",
+          "headersSize": -1,
+          "bodySize": -1,
+          "_transferSize": 494,
+          "_error": null,
+          "_fetchedViaServiceWorker": false
+        },
+        "serverIPAddress": "104.18.7.138",
+        "startedDateTime": "2025-10-03T11:29:35.391Z",
+        "time": 8286.399000004167,
+        "timings": {
+          "blocked": 2.1240000029467048,
+          "dns": -1,
+          "ssl": -1,
+          "connect": -1,
+          "send": 0.2290000000000001,
+          "wait": 8279.651000004927,
+          "receive": 4.394999996293336,
+          "_blocked_queueing": 0.5890000029467046,
+          "_workerStart": -1,
+          "_workerReady": -1,
+          "_workerFetchStart": -1,
+          "_workerRespondWithSettled": -1
+        }
+      },
+      {
+        "_connectionId": "1179709",
+        "_initiator": {
+          "type": "script",
+          "stack": {
+            "callFrames": [
+              {
+                "functionName": "send",
+                "scriptId": "79",
+                "url": "https://static-cdn.denticon.com/external/jquery-3.3.1/jquery-3.3.1.min.js",
+                "lineNumber": 1,
+                "columnNumber": 80265
+              },
+              {
+                "functionName": "ajax",
+                "scriptId": "79",
+                "url": "https://static-cdn.denticon.com/external/jquery-3.3.1/jquery-3.3.1.min.js",
+                "lineNumber": 1,
+                "columnNumber": 77117
+              },
+              {
+                "functionName": "LoadEligibilityVerificationItemList",
+                "scriptId": "1665",
+                "url": "https://c1.denticon.com/JSBundles/eligibility-verification-report-bundle-scripts.js?v=f8MCDVC0MDSp3bkzvP_mSq-Xn2x_jPhIQZuzQXe8kpU",
+                "lineNumber": 8498,
+                "columnNumber": 6
+              },
+              {
+                "functionName": "",
+                "scriptId": "1665",
+                "url": "https://c1.denticon.com/JSBundles/eligibility-verification-report-bundle-scripts.js?v=f8MCDVC0MDSp3bkzvP_mSq-Xn2x_jPhIQZuzQXe8kpU",
+                "lineNumber": 8140,
+                "columnNumber": 8
+              },
+              {
+                "functionName": "dispatch",
+                "scriptId": "79",
+                "url": "https://static-cdn.denticon.com/external/jquery-3.3.1/jquery-3.3.1.min.js",
+                "lineNumber": 1,
+                "columnNumber": 41771
+              },
+              {
+                "functionName": "y.handle",
+                "scriptId": "79",
+                "url": "https://static-cdn.denticon.com/external/jquery-3.3.1/jquery-3.3.1.min.js",
+                "lineNumber": 1,
+                "columnNumber": 39790
+              },
+              {
+                "functionName": "trigger",
+                "scriptId": "79",
+                "url": "https://static-cdn.denticon.com/external/jquery-3.3.1/jquery-3.3.1.min.js",
+                "lineNumber": 1,
+                "columnNumber": 69550
+              },
+              {
+                "functionName": "",
+                "scriptId": "79",
+                "url": "https://static-cdn.denticon.com/external/jquery-3.3.1/jquery-3.3.1.min.js",
+                "lineNumber": 1,
+                "columnNumber": 70145
+              },
+              {
+                "functionName": "each",
+                "scriptId": "79",
+                "url": "https://static-cdn.denticon.com/external/jquery-3.3.1/jquery-3.3.1.min.js",
+                "lineNumber": 1,
+                "columnNumber": 2572
+              },
+              {
+                "functionName": "each",
+                "scriptId": "79",
+                "url": "https://static-cdn.denticon.com/external/jquery-3.3.1/jquery-3.3.1.min.js",
+                "lineNumber": 1,
+                "columnNumber": 1239
+              },
+              {
+                "functionName": "trigger",
+                "scriptId": "79",
+                "url": "https://static-cdn.denticon.com/external/jquery-3.3.1/jquery-3.3.1.min.js",
+                "lineNumber": 1,
+                "columnNumber": 70121
+              },
+              {
+                "functionName": "success",
+                "scriptId": "1665",
+                "url": "https://c1.denticon.com/JSBundles/eligibility-verification-report-bundle-scripts.js?v=f8MCDVC0MDSp3bkzvP_mSq-Xn2x_jPhIQZuzQXe8kpU",
+                "lineNumber": 8291,
+                "columnNumber": 42
+              },
+              {
+                "functionName": "u",
+                "scriptId": "79",
+                "url": "https://static-cdn.denticon.com/external/jquery-3.3.1/jquery-3.3.1.min.js",
+                "lineNumber": 1,
+                "columnNumber": 27456
+              },
+              {
+                "functionName": "fireWith",
+                "scriptId": "79",
+                "url": "https://static-cdn.denticon.com/external/jquery-3.3.1/jquery-3.3.1.min.js",
+                "lineNumber": 1,
+                "columnNumber": 28201
+              },
+              {
+                "functionName": "k",
+                "scriptId": "79",
+                "url": "https://static-cdn.denticon.com/external/jquery-3.3.1/jquery-3.3.1.min.js",
+                "lineNumber": 1,
+                "columnNumber": 77650
+              },
+              {
+                "functionName": "",
+                "scriptId": "79",
+                "url": "https://static-cdn.denticon.com/external/jquery-3.3.1/jquery-3.3.1.min.js",
+                "lineNumber": 1,
+                "columnNumber": 79906
+              }
+            ],
+            "parent": {
+              "description": "XMLHttpRequest.send",
+              "callFrames": [
+                {
+                  "functionName": "send",
+                  "scriptId": "79",
+                  "url": "https://static-cdn.denticon.com/external/jquery-3.3.1/jquery-3.3.1.min.js",
+                  "lineNumber": 1,
+                  "columnNumber": 80265
+                },
+                {
+                  "functionName": "ajax",
+                  "scriptId": "79",
+                  "url": "https://static-cdn.denticon.com/external/jquery-3.3.1/jquery-3.3.1.min.js",
+                  "lineNumber": 1,
+                  "columnNumber": 77117
+                },
+                {
+                  "functionName": "",
+                  "scriptId": "1665",
+                  "url": "https://c1.denticon.com/JSBundles/eligibility-verification-report-bundle-scripts.js?v=f8MCDVC0MDSp3bkzvP_mSq-Xn2x_jPhIQZuzQXe8kpU",
+                  "lineNumber": 8272,
+                  "columnNumber": 10
+                },
+                {
+                  "functionName": "dispatch",
+                  "scriptId": "79",
+                  "url": "https://static-cdn.denticon.com/external/jquery-3.3.1/jquery-3.3.1.min.js",
+                  "lineNumber": 1,
+                  "columnNumber": 41771
+                },
+                {
+                  "functionName": "y.handle",
+                  "scriptId": "79",
+                  "url": "https://static-cdn.denticon.com/external/jquery-3.3.1/jquery-3.3.1.min.js",
+                  "lineNumber": 1,
+                  "columnNumber": 39790
+                }
+              ]
+            }
+          }
+        },
+        "_priority": "High",
+        "_resourceType": "xhr",
+        "cache": {},
+        "connection": "443",
+        "request": {
+          "method": "GET",
+          "url": "https://c1.denticon.com/EligibilityVerificationReport/GetPatientEligibilityTableData?PGID=3169&OID=102&APPTPRDR=ALL&APTDATE=09%2F04%2F2025&ELIGSTATUS=ALL&_=1759490449931",
+          "httpVersion": "http/2.0",
+          "headers": [
+            {
+              "name": ":authority",
+              "value": "c1.denticon.com"
+            },
+            {
+              "name": ":method",
+              "value": "GET"
+            },
+            {
+              "name": ":path",
+              "value": "/EligibilityVerificationReport/GetPatientEligibilityTableData?PGID=3169&OID=102&APPTPRDR=ALL&APTDATE=09%2F04%2F2025&ELIGSTATUS=ALL&_=1759490449931"
+            },
+            {
+              "name": ":scheme",
+              "value": "https"
+            },
+            {
+              "name": "accept",
+              "value": "*/*"
+            },
+            {
+              "name": "accept-encoding",
+              "value": "gzip, deflate, br, zstd"
+            },
+            {
+              "name": "accept-language",
+              "value": "en,pt-BR;q=0.9,pt;q=0.8"
+            },
+            {
+              "name": "cache-control",
+              "value": "no-cache"
+            },
+            {
+              "name": "cookie",
+              "value": ".DenticonCore_Session_=CfDJ8PlbbejGtTNOuXPiC8w2eK8PbvdAWvh5Xhk9yEbjVcW5q5g0KulaWZkcKO8F%2FwdQc9G1OFIzPvpTsBmQp1yXaVbggd9gB7WbypahGWvmun7Gd1tx0VHpJpTZ8ZFm%2BoLWHhe1ElDlP7CK7aYKShP%2F22jPVYNugHOVqtsbkrNsylC8; .AspNetCore.Antiforgery.cdV5uW_Ejgc=CfDJ8PlbbejGtTNOuXPiC8w2eK9VjgVgo6TQ5VjMtPzegIyJNWzoQhGzzADBT493cYkgDJLn9rJPh9a7DKPqEZA9V-wAtyZkgX9WPC1qaAjCtf_8lRaJUaRToOR0xA4spWhu4IpNWJYRhDRhZXd-AQaK_FE; __stripe_mid=7b0be044-dd83-41a8-a155-40a44ecd66238e027d; redirector-production=jg7XKAC7LKozL8t%2BadMmZtxOx6dGXlkMLxy%2BJoKJoo4s7yGQ2spzZOwLULrXY83fgUKNFuSlJcL7qVrfoVIW%2FuDIzstvUdB%2BmP3ALopVR%2FUoE8NmBkXJLrytRtkEOaFnRGfP8BYsHHgap6YN9aDI%2BMDmC5Bg6A7VmRyhMCFexnOMpnNoNWmwXNSW5OVivAIcs4S4TIk4EHNSP2ptzsu5tIbgt1vsj0w7IQjKXJMtpCcQjjiyRqB6brP9GZY8FCqt1gdFR7DMhkq0YIclXUBdhUUsp7OJAPIjW7%2FXOqvgWXw%3D; PoWDns=NJrOkZ0nwsSo1TVqULlAAQ%3D%3D; CoreDns=zIFxACqa%2FUcBovB5BZHkww%3D%3D; ReportDns=e183QHYegr9ZGwO26SZOHOU080PpvpgPZzZ6uqIiBeY%3D; shared_session_prod=btu7WGgmHU6ynk7hQ2BVQKOUH6S293TwPBkbIod%2FUe8S4ZpdkPj6Sv1tpBLE7wTV; __stripe_sid=7e5a993c-0b54-4cf1-b40b-216018507b603ce31f; __cf_bm=irVLiGiIcVC2YzEn3pmrr4QkZeGnXfqC0EX0HMEB1YU-1759490537-1.0.1.1-H8QjBW3PidbxHqG7ap198xk9fyWdao56W6qIfBYpreYq.K.tNNtHrqHWM78CEhNdlXEPRJyCuHBGDjSzFy8grFpG_lNe5fU9Wrbbj0KE4b0; datadome=N3WNkjD_ed6441odiAq5AB_PCqfAbVCWKOGcIKz34_9wmMKAd0HpAtNa3CHAkEISGWN8JlTJ49d7eeks_fvTWIZo8bchjUjwj8N9fDESTTELf0ic7sKT3epFs~nJYZbs"
+            },
+            {
+              "name": "pragma",
+              "value": "no-cache"
+            },
+            {
+              "name": "priority",
+              "value": "u=1, i"
+            },
+            {
+              "name": "referer",
+              "value": "https://c1.denticon.com/EligibilityVerificationReport/Index?schedulerDate=09%2F3%2F2025"
+            },
+            {
+              "name": "requestverificationtoken",
+              "value": "CfDJ8PlbbejGtTNOuXPiC8w2eK8CeUH1LN7kUGAnVvzyzsd1lvsKvDiDELy_AbS5KkCLvUhw1Zryjc4HFZlYPxy-OYZp66T4IjrDSqTkaqQVtHbyJ59NhTyXqNg56_UBQR6HPX4HG55UnZE-DE-3L8lLrBg"
+            },
+            {
+              "name": "sec-ch-ua",
+              "value": "\"Chromium\";v=\"140\", \"Not=A?Brand\";v=\"24\", \"Google Chrome\";v=\"140\""
+            },
+            {
+              "name": "sec-ch-ua-mobile",
+              "value": "?0"
+            },
+            {
+              "name": "sec-ch-ua-platform",
+              "value": "\"macOS\""
+            },
+            {
+              "name": "sec-fetch-dest",
+              "value": "empty"
+            },
+            {
+              "name": "sec-fetch-mode",
+              "value": "cors"
+            },
+            {
+              "name": "sec-fetch-site",
+              "value": "same-origin"
+            },
+            {
+              "name": "user-agent",
+              "value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+            },
+            {
+              "name": "x-requested-with",
+              "value": "XMLHttpRequest"
+            }
+          ],
+          "queryString": [
+            {
+              "name": "PGID",
+              "value": "3169"
+            },
+            {
+              "name": "OID",
+              "value": "102"
+            },
+            {
+              "name": "APPTPRDR",
+              "value": "ALL"
+            },
+            {
+              "name": "APTDATE",
+              "value": "09%2F04%2F2025"
+            },
+            {
+              "name": "ELIGSTATUS",
+              "value": "ALL"
+            },
+            {
+              "name": "_",
+              "value": "1759490449931"
+            }
+          ],
+          "cookies": [
+            {
+              "name": ".DenticonCore_Session_",
+              "value": "CfDJ8PlbbejGtTNOuXPiC8w2eK8PbvdAWvh5Xhk9yEbjVcW5q5g0KulaWZkcKO8F%2FwdQc9G1OFIzPvpTsBmQp1yXaVbggd9gB7WbypahGWvmun7Gd1tx0VHpJpTZ8ZFm%2BoLWHhe1ElDlP7CK7aYKShP%2F22jPVYNugHOVqtsbkrNsylC8",
+              "path": "/",
+              "domain": "c1.denticon.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": true,
+              "secure": true,
+              "sameSite": "None"
+            },
+            {
+              "name": ".AspNetCore.Antiforgery.cdV5uW_Ejgc",
+              "value": "CfDJ8PlbbejGtTNOuXPiC8w2eK9VjgVgo6TQ5VjMtPzegIyJNWzoQhGzzADBT493cYkgDJLn9rJPh9a7DKPqEZA9V-wAtyZkgX9WPC1qaAjCtf_8lRaJUaRToOR0xA4spWhu4IpNWJYRhDRhZXd-AQaK_FE",
+              "path": "/",
+              "domain": "c1.denticon.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": true,
+              "secure": true,
+              "sameSite": "None"
+            },
+            {
+              "name": "__stripe_mid",
+              "value": "7b0be044-dd83-41a8-a155-40a44ecd66238e027d",
+              "path": "/",
+              "domain": ".c1.denticon.com",
+              "expires": "2026-10-03T11:27:09.000Z",
+              "httpOnly": false,
+              "secure": true,
+              "sameSite": "Strict"
+            },
+            {
+              "name": "redirector-production",
+              "value": "jg7XKAC7LKozL8t%2BadMmZtxOx6dGXlkMLxy%2BJoKJoo4s7yGQ2spzZOwLULrXY83fgUKNFuSlJcL7qVrfoVIW%2FuDIzstvUdB%2BmP3ALopVR%2FUoE8NmBkXJLrytRtkEOaFnRGfP8BYsHHgap6YN9aDI%2BMDmC5Bg6A7VmRyhMCFexnOMpnNoNWmwXNSW5OVivAIcs4S4TIk4EHNSP2ptzsu5tIbgt1vsj0w7IQjKXJMtpCcQjjiyRqB6brP9GZY8FCqt1gdFR7DMhkq0YIclXUBdhUUsp7OJAPIjW7%2FXOqvgWXw%3D",
+              "path": "/",
+              "domain": ".denticon.com",
+              "expires": "2025-10-03T13:08:16.843Z",
+              "httpOnly": false,
+              "secure": true,
+              "sameSite": "Lax"
+            },
+            {
+              "name": "PoWDns",
+              "value": "NJrOkZ0nwsSo1TVqULlAAQ%3D%3D",
+              "path": "/",
+              "domain": ".denticon.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": false,
+              "secure": true,
+              "sameSite": "Lax"
+            },
+            {
+              "name": "CoreDns",
+              "value": "zIFxACqa%2FUcBovB5BZHkww%3D%3D",
+              "path": "/",
+              "domain": ".denticon.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": false,
+              "secure": true,
+              "sameSite": "Lax"
+            },
+            {
+              "name": "ReportDns",
+              "value": "e183QHYegr9ZGwO26SZOHOU080PpvpgPZzZ6uqIiBeY%3D",
+              "path": "/",
+              "domain": ".denticon.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": false,
+              "secure": true,
+              "sameSite": "Lax"
+            },
+            {
+              "name": "shared_session_prod",
+              "value": "btu7WGgmHU6ynk7hQ2BVQKOUH6S293TwPBkbIod%2FUe8S4ZpdkPj6Sv1tpBLE7wTV",
+              "path": "/",
+              "domain": ".denticon.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": false,
+              "secure": true,
+              "sameSite": "None"
+            },
+            {
+              "name": "__stripe_sid",
+              "value": "7e5a993c-0b54-4cf1-b40b-216018507b603ce31f",
+              "path": "/",
+              "domain": ".c1.denticon.com",
+              "expires": "2025-10-03T11:57:09.000Z",
+              "httpOnly": false,
+              "secure": true,
+              "sameSite": "Strict"
+            },
+            {
+              "name": "__cf_bm",
+              "value": "irVLiGiIcVC2YzEn3pmrr4QkZeGnXfqC0EX0HMEB1YU-1759490537-1.0.1.1-H8QjBW3PidbxHqG7ap198xk9fyWdao56W6qIfBYpreYq.K.tNNtHrqHWM78CEhNdlXEPRJyCuHBGDjSzFy8grFpG_lNe5fU9Wrbbj0KE4b0",
+              "path": "/",
+              "domain": ".denticon.com",
+              "expires": "2025-10-03T11:52:17.386Z",
+              "httpOnly": true,
+              "secure": true,
+              "sameSite": "None"
+            },
+            {
+              "name": "datadome",
+              "value": "N3WNkjD_ed6441odiAq5AB_PCqfAbVCWKOGcIKz34_9wmMKAd0HpAtNa3CHAkEISGWN8JlTJ49d7eeks_fvTWIZo8bchjUjwj8N9fDESTTELf0ic7sKT3epFs~nJYZbs",
+              "path": "/",
+              "domain": ".denticon.com",
+              "expires": "2026-10-03T11:29:43.673Z",
+              "httpOnly": false,
+              "secure": true,
+              "sameSite": "Lax"
+            }
+          ],
+          "headersSize": -1,
+          "bodySize": 0
+        },
+        "response": {
+          "status": 200,
+          "statusText": "",
+          "httpVersion": "http/2.0",
+          "headers": [
+            {
+              "name": "accept-ch",
+              "value": "Sec-CH-UA,Sec-CH-UA-Mobile,Sec-CH-UA-Platform,Sec-CH-UA-Arch,Sec-CH-UA-Full-Version-List,Sec-CH-UA-Model,Sec-CH-Device-Memory"
+            },
+            {
+              "name": "cf-cache-status",
+              "value": "DYNAMIC"
+            },
+            {
+              "name": "cf-ray",
+              "value": "988c1a790855bdb3-GIG"
+            },
+            {
+              "name": "content-encoding",
+              "value": "gzip"
+            },
+            {
+              "name": "content-type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "name": "date",
+              "value": "Fri, 03 Oct 2025 11:29:44 GMT"
+            },
+            {
+              "name": "server",
+              "value": "cloudflare"
+            },
+            {
+              "name": "set-cookie",
+              "value": "datadome=e2LXdLjynesRO4wnKnmd_BFzTT_b1phzsS9aYNfJqIyNtkPccGUvBMq1V~sKoYnEr3JhxRPs5o3ILPsVJojwfIz6SuxAl8RnKMA2dqj3GYBm40p0iz8rozAOLlIbtEw5; Max-Age=31536000; Domain=.denticon.com; Path=/; Secure; SameSite=Lax"
+            },
+            {
+              "name": "strict-transport-security",
+              "value": "max-age=2592000"
+            },
+            {
+              "name": "vary",
+              "value": "Accept-Encoding"
+            },
+            {
+              "name": "x-datadome",
+              "value": "protected"
+            },
+            {
+              "name": "x-powered-by",
+              "value": "ASP.NET"
+            }
+          ],
+          "cookies": [
+            {
+              "name": "datadome",
+              "value": "e2LXdLjynesRO4wnKnmd_BFzTT_b1phzsS9aYNfJqIyNtkPccGUvBMq1V~sKoYnEr3JhxRPs5o3ILPsVJojwfIz6SuxAl8RnKMA2dqj3GYBm40p0iz8rozAOLlIbtEw5",
+              "path": "/",
+              "domain": ".denticon.com",
+              "expires": "2026-10-03T11:29:43.685Z",
+              "httpOnly": false,
+              "secure": true,
+              "sameSite": "Lax"
+            }
+          ],
+          "content": {
+            "size": 17209,
+            "mimeType": "application/json"
+          },
+          "redirectURL": "",
+          "headersSize": -1,
+          "bodySize": -1,
+          "_transferSize": 4671,
+          "_error": null,
+          "_fetchedViaServiceWorker": false
+        },
+        "serverIPAddress": "104.18.7.138",
+        "startedDateTime": "2025-10-03T11:29:43.684Z",
+        "time": 232.57000000739936,
+        "timings": {
+          "blocked": 1.4890000058421866,
+          "dns": -1,
+          "ssl": -1,
+          "connect": -1,
+          "send": 0.4069999999999999,
+          "wait": 229.0840000017062,
+          "receive": 1.5899999998509884,
+          "_blocked_queueing": 0.7480000058421865,
+          "_workerStart": -1,
+          "_workerReady": -1,
+          "_workerFetchStart": -1,
+          "_workerRespondWithSettled": -1
+        }
+      },
+      {
+        "_connectionId": "1179709",
+        "_initiator": {
+          "type": "script",
+          "stack": {
+            "callFrames": [],
+            "parent": {
+              "description": "Image",
+              "callFrames": [
+                {
+                  "functionName": "clone",
+                  "scriptId": "79",
+                  "url": "https://static-cdn.denticon.com/external/jquery-3.3.1/jquery-3.3.1.min.js",
+                  "lineNumber": 1,
+                  "columnNumber": 47671
+                },
+                {
+                  "functionName": "",
+                  "scriptId": "79",
+                  "url": "https://static-cdn.denticon.com/external/jquery-3.3.1/jquery-3.3.1.min.js",
+                  "lineNumber": 1,
+                  "columnNumber": 49300
+                },
+                {
+                  "functionName": "",
+                  "scriptId": "79",
+                  "url": "https://static-cdn.denticon.com/external/jquery-3.3.1/jquery-3.3.1.min.js",
+                  "lineNumber": 1,
+                  "columnNumber": 1325
+                },
+                {
+                  "functionName": "map",
+                  "scriptId": "79",
+                  "url": "https://static-cdn.denticon.com/external/jquery-3.3.1/jquery-3.3.1.min.js",
+                  "lineNumber": 1,
+                  "columnNumber": 3168
+                },
+                {
+                  "functionName": "map",
+                  "scriptId": "79",
+                  "url": "https://static-cdn.denticon.com/external/jquery-3.3.1/jquery-3.3.1.min.js",
+                  "lineNumber": 1,
+                  "columnNumber": 1293
+                },
+                {
+                  "functionName": "clone",
+                  "scriptId": "79",
+                  "url": "https://static-cdn.denticon.com/external/jquery-3.3.1/jquery-3.3.1.min.js",
+                  "lineNumber": 1,
+                  "columnNumber": 49276
+                },
+                {
+                  "functionName": "Ha",
+                  "scriptId": "1665",
+                  "url": "https://c1.denticon.com/JSBundles/eligibility-verification-report-bundle-scripts.js?v=f8MCDVC0MDSp3bkzvP_mSq-Xn2x_jPhIQZuzQXe8kpU",
+                  "lineNumber": 72,
+                  "columnNumber": 409
+                },
+                {
+                  "functionName": "Z",
+                  "scriptId": "1665",
+                  "url": "https://c1.denticon.com/JSBundles/eligibility-verification-report-bundle-scripts.js?v=f8MCDVC0MDSp3bkzvP_mSq-Xn2x_jPhIQZuzQXe8kpU",
+                  "lineNumber": 24,
+                  "columnNumber": 227
+                },
+                {
+                  "functionName": "",
+                  "scriptId": "1665",
+                  "url": "https://c1.denticon.com/JSBundles/eligibility-verification-report-bundle-scripts.js?v=f8MCDVC0MDSp3bkzvP_mSq-Xn2x_jPhIQZuzQXe8kpU",
+                  "lineNumber": 137,
+                  "columnNumber": 397
+                },
+                {
+                  "functionName": "iterator",
+                  "scriptId": "1665",
+                  "url": "https://c1.denticon.com/JSBundles/eligibility-verification-report-bundle-scripts.js?v=f8MCDVC0MDSp3bkzvP_mSq-Xn2x_jPhIQZuzQXe8kpU",
+                  "lineNumber": 111,
+                  "columnNumber": 125
+                },
+                {
+                  "functionName": "",
+                  "scriptId": "1665",
+                  "url": "https://c1.denticon.com/JSBundles/eligibility-verification-report-bundle-scripts.js?v=f8MCDVC0MDSp3bkzvP_mSq-Xn2x_jPhIQZuzQXe8kpU",
+                  "lineNumber": 137,
+                  "columnNumber": 368
+                },
+                {
+                  "functionName": "",
+                  "scriptId": "1665",
+                  "url": "https://c1.denticon.com/JSBundles/eligibility-verification-report-bundle-scripts.js?v=f8MCDVC0MDSp3bkzvP_mSq-Xn2x_jPhIQZuzQXe8kpU",
+                  "lineNumber": 114,
+                  "columnNumber": 2
+                },
+                {
+                  "functionName": "",
+                  "scriptId": "1665",
+                  "url": "https://c1.denticon.com/JSBundles/eligibility-verification-report-bundle-scripts.js?v=f8MCDVC0MDSp3bkzvP_mSq-Xn2x_jPhIQZuzQXe8kpU",
+                  "lineNumber": 137,
+                  "columnNumber": 168
+                },
+                {
+                  "functionName": "",
+                  "scriptId": "1665",
+                  "url": "https://c1.denticon.com/JSBundles/eligibility-verification-report-bundle-scripts.js?v=f8MCDVC0MDSp3bkzvP_mSq-Xn2x_jPhIQZuzQXe8kpU",
+                  "lineNumber": 114,
+                  "columnNumber": 2
+                },
+                {
+                  "functionName": "",
+                  "scriptId": "1665",
+                  "url": "https://c1.denticon.com/JSBundles/eligibility-verification-report-bundle-scripts.js?v=f8MCDVC0MDSp3bkzvP_mSq-Xn2x_jPhIQZuzQXe8kpU",
+                  "lineNumber": 149,
+                  "columnNumber": 82
+                },
+                {
+                  "functionName": "iterator",
+                  "scriptId": "1665",
+                  "url": "https://c1.denticon.com/JSBundles/eligibility-verification-report-bundle-scripts.js?v=f8MCDVC0MDSp3bkzvP_mSq-Xn2x_jPhIQZuzQXe8kpU",
+                  "lineNumber": 111,
+                  "columnNumber": 125
+                },
+                {
+                  "functionName": "",
+                  "scriptId": "1665",
+                  "url": "https://c1.denticon.com/JSBundles/eligibility-verification-report-bundle-scripts.js?v=f8MCDVC0MDSp3bkzvP_mSq-Xn2x_jPhIQZuzQXe8kpU",
+                  "lineNumber": 148,
+                  "columnNumber": 316
+                },
+                {
+                  "functionName": "",
+                  "scriptId": "1665",
+                  "url": "https://c1.denticon.com/JSBundles/eligibility-verification-report-bundle-scripts.js?v=f8MCDVC0MDSp3bkzvP_mSq-Xn2x_jPhIQZuzQXe8kpU",
+                  "lineNumber": 114,
+                  "columnNumber": 2
+                },
+                {
+                  "functionName": "InitEligibilityVerificationDataTable",
+                  "scriptId": "1665",
+                  "url": "https://c1.denticon.com/JSBundles/eligibility-verification-report-bundle-scripts.js?v=f8MCDVC0MDSp3bkzvP_mSq-Xn2x_jPhIQZuzQXe8kpU",
+                  "lineNumber": 8602,
+                  "columnNumber": 49
+                },
+                {
+                  "functionName": "LoadEligibilityVerificationDataTable",
+                  "scriptId": "1665",
+                  "url": "https://c1.denticon.com/JSBundles/eligibility-verification-report-bundle-scripts.js?v=f8MCDVC0MDSp3bkzvP_mSq-Xn2x_jPhIQZuzQXe8kpU",
+                  "lineNumber": 8559,
+                  "columnNumber": 4
+                },
+                {
+                  "functionName": "success",
+                  "scriptId": "1665",
+                  "url": "https://c1.denticon.com/JSBundles/eligibility-verification-report-bundle-scripts.js?v=f8MCDVC0MDSp3bkzvP_mSq-Xn2x_jPhIQZuzQXe8kpU",
+                  "lineNumber": 8520,
+                  "columnNumber": 12
+                },
+                {
+                  "functionName": "u",
+                  "scriptId": "79",
+                  "url": "https://static-cdn.denticon.com/external/jquery-3.3.1/jquery-3.3.1.min.js",
+                  "lineNumber": 1,
+                  "columnNumber": 27456
+                },
+                {
+                  "functionName": "fireWith",
+                  "scriptId": "79",
+                  "url": "https://static-cdn.denticon.com/external/jquery-3.3.1/jquery-3.3.1.min.js",
+                  "lineNumber": 1,
+                  "columnNumber": 28201
+                },
+                {
+                  "functionName": "k",
+                  "scriptId": "79",
+                  "url": "https://static-cdn.denticon.com/external/jquery-3.3.1/jquery-3.3.1.min.js",
+                  "lineNumber": 1,
+                  "columnNumber": 77650
+                },
+                {
+                  "functionName": "",
+                  "scriptId": "79",
+                  "url": "https://static-cdn.denticon.com/external/jquery-3.3.1/jquery-3.3.1.min.js",
+                  "lineNumber": 1,
+                  "columnNumber": 79906
+                }
+              ],
+              "parent": {
+                "description": "XMLHttpRequest.send",
+                "callFrames": [
+                  {
+                    "functionName": "send",
+                    "scriptId": "79",
+                    "url": "https://static-cdn.denticon.com/external/jquery-3.3.1/jquery-3.3.1.min.js",
+                    "lineNumber": 1,
+                    "columnNumber": 80265
+                  },
+                  {
+                    "functionName": "ajax",
+                    "scriptId": "79",
+                    "url": "https://static-cdn.denticon.com/external/jquery-3.3.1/jquery-3.3.1.min.js",
+                    "lineNumber": 1,
+                    "columnNumber": 77117
+                  },
+                  {
+                    "functionName": "LoadEligibilityVerificationItemList",
+                    "scriptId": "1665",
+                    "url": "https://c1.denticon.com/JSBundles/eligibility-verification-report-bundle-scripts.js?v=f8MCDVC0MDSp3bkzvP_mSq-Xn2x_jPhIQZuzQXe8kpU",
+                    "lineNumber": 8498,
+                    "columnNumber": 6
+                  },
+                  {
+                    "functionName": "",
+                    "scriptId": "1665",
+                    "url": "https://c1.denticon.com/JSBundles/eligibility-verification-report-bundle-scripts.js?v=f8MCDVC0MDSp3bkzvP_mSq-Xn2x_jPhIQZuzQXe8kpU",
+                    "lineNumber": 8140,
+                    "columnNumber": 8
+                  },
+                  {
+                    "functionName": "dispatch",
+                    "scriptId": "79",
+                    "url": "https://static-cdn.denticon.com/external/jquery-3.3.1/jquery-3.3.1.min.js",
+                    "lineNumber": 1,
+                    "columnNumber": 41771
+                  },
+                  {
+                    "functionName": "y.handle",
+                    "scriptId": "79",
+                    "url": "https://static-cdn.denticon.com/external/jquery-3.3.1/jquery-3.3.1.min.js",
+                    "lineNumber": 1,
+                    "columnNumber": 39790
+                  },
+                  {
+                    "functionName": "trigger",
+                    "scriptId": "79",
+                    "url": "https://static-cdn.denticon.com/external/jquery-3.3.1/jquery-3.3.1.min.js",
+                    "lineNumber": 1,
+                    "columnNumber": 69550
+                  },
+                  {
+                    "functionName": "",
+                    "scriptId": "79",
+                    "url": "https://static-cdn.denticon.com/external/jquery-3.3.1/jquery-3.3.1.min.js",
+                    "lineNumber": 1,
+                    "columnNumber": 70145
+                  },
+                  {
+                    "functionName": "each",
+                    "scriptId": "79",
+                    "url": "https://static-cdn.denticon.com/external/jquery-3.3.1/jquery-3.3.1.min.js",
+                    "lineNumber": 1,
+                    "columnNumber": 2572
+                  },
+                  {
+                    "functionName": "each",
+                    "scriptId": "79",
+                    "url": "https://static-cdn.denticon.com/external/jquery-3.3.1/jquery-3.3.1.min.js",
+                    "lineNumber": 1,
+                    "columnNumber": 1239
+                  },
+                  {
+                    "functionName": "trigger",
+                    "scriptId": "79",
+                    "url": "https://static-cdn.denticon.com/external/jquery-3.3.1/jquery-3.3.1.min.js",
+                    "lineNumber": 1,
+                    "columnNumber": 70121
+                  },
+                  {
+                    "functionName": "success",
+                    "scriptId": "1665",
+                    "url": "https://c1.denticon.com/JSBundles/eligibility-verification-report-bundle-scripts.js?v=f8MCDVC0MDSp3bkzvP_mSq-Xn2x_jPhIQZuzQXe8kpU",
+                    "lineNumber": 8291,
+                    "columnNumber": 42
+                  },
+                  {
+                    "functionName": "u",
+                    "scriptId": "79",
+                    "url": "https://static-cdn.denticon.com/external/jquery-3.3.1/jquery-3.3.1.min.js",
+                    "lineNumber": 1,
+                    "columnNumber": 27456
+                  },
+                  {
+                    "functionName": "fireWith",
+                    "scriptId": "79",
+                    "url": "https://static-cdn.denticon.com/external/jquery-3.3.1/jquery-3.3.1.min.js",
+                    "lineNumber": 1,
+                    "columnNumber": 28201
+                  },
+                  {
+                    "functionName": "k",
+                    "scriptId": "79",
+                    "url": "https://static-cdn.denticon.com/external/jquery-3.3.1/jquery-3.3.1.min.js",
+                    "lineNumber": 1,
+                    "columnNumber": 77650
+                  },
+                  {
+                    "functionName": "",
+                    "scriptId": "79",
+                    "url": "https://static-cdn.denticon.com/external/jquery-3.3.1/jquery-3.3.1.min.js",
+                    "lineNumber": 1,
+                    "columnNumber": 79906
+                  }
+                ],
+                "parent": {
+                  "description": "XMLHttpRequest.send",
+                  "callFrames": [
+                    {
+                      "functionName": "send",
+                      "scriptId": "79",
+                      "url": "https://static-cdn.denticon.com/external/jquery-3.3.1/jquery-3.3.1.min.js",
+                      "lineNumber": 1,
+                      "columnNumber": 80265
+                    },
+                    {
+                      "functionName": "ajax",
+                      "scriptId": "79",
+                      "url": "https://static-cdn.denticon.com/external/jquery-3.3.1/jquery-3.3.1.min.js",
+                      "lineNumber": 1,
+                      "columnNumber": 77117
+                    },
+                    {
+                      "functionName": "",
+                      "scriptId": "1665",
+                      "url": "https://c1.denticon.com/JSBundles/eligibility-verification-report-bundle-scripts.js?v=f8MCDVC0MDSp3bkzvP_mSq-Xn2x_jPhIQZuzQXe8kpU",
+                      "lineNumber": 8272,
+                      "columnNumber": 10
+                    },
+                    {
+                      "functionName": "dispatch",
+                      "scriptId": "79",
+                      "url": "https://static-cdn.denticon.com/external/jquery-3.3.1/jquery-3.3.1.min.js",
+                      "lineNumber": 1,
+                      "columnNumber": 41771
+                    },
+                    {
+                      "functionName": "y.handle",
+                      "scriptId": "79",
+                      "url": "https://static-cdn.denticon.com/external/jquery-3.3.1/jquery-3.3.1.min.js",
+                      "lineNumber": 1,
+                      "columnNumber": 39790
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "_priority": "Low",
+        "_resourceType": "image",
+        "cache": {},
+        "connection": "443",
+        "request": {
+          "method": "GET",
+          "url": "https://c1.denticon.com/Images/IREligibilityVerificationRpt/Theme/Web20Blue/v5_sms_24_ir_elig.svg",
+          "httpVersion": "http/2.0",
+          "headers": [
+            {
+              "name": ":authority",
+              "value": "c1.denticon.com"
+            },
+            {
+              "name": ":method",
+              "value": "GET"
+            },
+            {
+              "name": ":path",
+              "value": "/Images/IREligibilityVerificationRpt/Theme/Web20Blue/v5_sms_24_ir_elig.svg"
+            },
+            {
+              "name": ":scheme",
+              "value": "https"
+            },
+            {
+              "name": "accept",
+              "value": "image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8"
+            },
+            {
+              "name": "accept-encoding",
+              "value": "gzip, deflate, br, zstd"
+            },
+            {
+              "name": "accept-language",
+              "value": "en,pt-BR;q=0.9,pt;q=0.8"
+            },
+            {
+              "name": "cache-control",
+              "value": "no-cache"
+            },
+            {
+              "name": "cookie",
+              "value": ".DenticonCore_Session_=CfDJ8PlbbejGtTNOuXPiC8w2eK8PbvdAWvh5Xhk9yEbjVcW5q5g0KulaWZkcKO8F%2FwdQc9G1OFIzPvpTsBmQp1yXaVbggd9gB7WbypahGWvmun7Gd1tx0VHpJpTZ8ZFm%2BoLWHhe1ElDlP7CK7aYKShP%2F22jPVYNugHOVqtsbkrNsylC8; .AspNetCore.Antiforgery.cdV5uW_Ejgc=CfDJ8PlbbejGtTNOuXPiC8w2eK9VjgVgo6TQ5VjMtPzegIyJNWzoQhGzzADBT493cYkgDJLn9rJPh9a7DKPqEZA9V-wAtyZkgX9WPC1qaAjCtf_8lRaJUaRToOR0xA4spWhu4IpNWJYRhDRhZXd-AQaK_FE; __stripe_mid=7b0be044-dd83-41a8-a155-40a44ecd66238e027d; redirector-production=jg7XKAC7LKozL8t%2BadMmZtxOx6dGXlkMLxy%2BJoKJoo4s7yGQ2spzZOwLULrXY83fgUKNFuSlJcL7qVrfoVIW%2FuDIzstvUdB%2BmP3ALopVR%2FUoE8NmBkXJLrytRtkEOaFnRGfP8BYsHHgap6YN9aDI%2BMDmC5Bg6A7VmRyhMCFexnOMpnNoNWmwXNSW5OVivAIcs4S4TIk4EHNSP2ptzsu5tIbgt1vsj0w7IQjKXJMtpCcQjjiyRqB6brP9GZY8FCqt1gdFR7DMhkq0YIclXUBdhUUsp7OJAPIjW7%2FXOqvgWXw%3D; PoWDns=NJrOkZ0nwsSo1TVqULlAAQ%3D%3D; CoreDns=zIFxACqa%2FUcBovB5BZHkww%3D%3D; ReportDns=e183QHYegr9ZGwO26SZOHOU080PpvpgPZzZ6uqIiBeY%3D; shared_session_prod=btu7WGgmHU6ynk7hQ2BVQKOUH6S293TwPBkbIod%2FUe8S4ZpdkPj6Sv1tpBLE7wTV; __stripe_sid=7e5a993c-0b54-4cf1-b40b-216018507b603ce31f; __cf_bm=irVLiGiIcVC2YzEn3pmrr4QkZeGnXfqC0EX0HMEB1YU-1759490537-1.0.1.1-H8QjBW3PidbxHqG7ap198xk9fyWdao56W6qIfBYpreYq.K.tNNtHrqHWM78CEhNdlXEPRJyCuHBGDjSzFy8grFpG_lNe5fU9Wrbbj0KE4b0; datadome=e2LXdLjynesRO4wnKnmd_BFzTT_b1phzsS9aYNfJqIyNtkPccGUvBMq1V~sKoYnEr3JhxRPs5o3ILPsVJojwfIz6SuxAl8RnKMA2dqj3GYBm40p0iz8rozAOLlIbtEw5"
+            },
+            {
+              "name": "pragma",
+              "value": "no-cache"
+            },
+            {
+              "name": "priority",
+              "value": "i"
+            },
+            {
+              "name": "referer",
+              "value": "https://c1.denticon.com/EligibilityVerificationReport/Index?schedulerDate=09%2F3%2F2025"
+            },
+            {
+              "name": "sec-ch-ua",
+              "value": "\"Chromium\";v=\"140\", \"Not=A?Brand\";v=\"24\", \"Google Chrome\";v=\"140\""
+            },
+            {
+              "name": "sec-ch-ua-mobile",
+              "value": "?0"
+            },
+            {
+              "name": "sec-ch-ua-platform",
+              "value": "\"macOS\""
+            },
+            {
+              "name": "sec-fetch-dest",
+              "value": "image"
+            },
+            {
+              "name": "sec-fetch-mode",
+              "value": "no-cors"
+            },
+            {
+              "name": "sec-fetch-site",
+              "value": "same-origin"
+            },
+            {
+              "name": "user-agent",
+              "value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+            }
+          ],
+          "queryString": [],
+          "cookies": [
+            {
+              "name": ".DenticonCore_Session_",
+              "value": "CfDJ8PlbbejGtTNOuXPiC8w2eK8PbvdAWvh5Xhk9yEbjVcW5q5g0KulaWZkcKO8F%2FwdQc9G1OFIzPvpTsBmQp1yXaVbggd9gB7WbypahGWvmun7Gd1tx0VHpJpTZ8ZFm%2BoLWHhe1ElDlP7CK7aYKShP%2F22jPVYNugHOVqtsbkrNsylC8",
+              "path": "/",
+              "domain": "c1.denticon.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": true,
+              "secure": true,
+              "sameSite": "None"
+            },
+            {
+              "name": ".AspNetCore.Antiforgery.cdV5uW_Ejgc",
+              "value": "CfDJ8PlbbejGtTNOuXPiC8w2eK9VjgVgo6TQ5VjMtPzegIyJNWzoQhGzzADBT493cYkgDJLn9rJPh9a7DKPqEZA9V-wAtyZkgX9WPC1qaAjCtf_8lRaJUaRToOR0xA4spWhu4IpNWJYRhDRhZXd-AQaK_FE",
+              "path": "/",
+              "domain": "c1.denticon.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": true,
+              "secure": true,
+              "sameSite": "None"
+            },
+            {
+              "name": "__stripe_mid",
+              "value": "7b0be044-dd83-41a8-a155-40a44ecd66238e027d",
+              "path": "/",
+              "domain": ".c1.denticon.com",
+              "expires": "2026-10-03T11:27:09.000Z",
+              "httpOnly": false,
+              "secure": true,
+              "sameSite": "Strict"
+            },
+            {
+              "name": "redirector-production",
+              "value": "jg7XKAC7LKozL8t%2BadMmZtxOx6dGXlkMLxy%2BJoKJoo4s7yGQ2spzZOwLULrXY83fgUKNFuSlJcL7qVrfoVIW%2FuDIzstvUdB%2BmP3ALopVR%2FUoE8NmBkXJLrytRtkEOaFnRGfP8BYsHHgap6YN9aDI%2BMDmC5Bg6A7VmRyhMCFexnOMpnNoNWmwXNSW5OVivAIcs4S4TIk4EHNSP2ptzsu5tIbgt1vsj0w7IQjKXJMtpCcQjjiyRqB6brP9GZY8FCqt1gdFR7DMhkq0YIclXUBdhUUsp7OJAPIjW7%2FXOqvgWXw%3D",
+              "path": "/",
+              "domain": ".denticon.com",
+              "expires": "2025-10-03T13:08:16.843Z",
+              "httpOnly": false,
+              "secure": true,
+              "sameSite": "Lax"
+            },
+            {
+              "name": "PoWDns",
+              "value": "NJrOkZ0nwsSo1TVqULlAAQ%3D%3D",
+              "path": "/",
+              "domain": ".denticon.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": false,
+              "secure": true,
+              "sameSite": "Lax"
+            },
+            {
+              "name": "CoreDns",
+              "value": "zIFxACqa%2FUcBovB5BZHkww%3D%3D",
+              "path": "/",
+              "domain": ".denticon.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": false,
+              "secure": true,
+              "sameSite": "Lax"
+            },
+            {
+              "name": "ReportDns",
+              "value": "e183QHYegr9ZGwO26SZOHOU080PpvpgPZzZ6uqIiBeY%3D",
+              "path": "/",
+              "domain": ".denticon.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": false,
+              "secure": true,
+              "sameSite": "Lax"
+            },
+            {
+              "name": "shared_session_prod",
+              "value": "btu7WGgmHU6ynk7hQ2BVQKOUH6S293TwPBkbIod%2FUe8S4ZpdkPj6Sv1tpBLE7wTV",
+              "path": "/",
+              "domain": ".denticon.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": false,
+              "secure": true,
+              "sameSite": "None"
+            },
+            {
+              "name": "__stripe_sid",
+              "value": "7e5a993c-0b54-4cf1-b40b-216018507b603ce31f",
+              "path": "/",
+              "domain": ".c1.denticon.com",
+              "expires": "2025-10-03T11:57:09.000Z",
+              "httpOnly": false,
+              "secure": true,
+              "sameSite": "Strict"
+            },
+            {
+              "name": "__cf_bm",
+              "value": "irVLiGiIcVC2YzEn3pmrr4QkZeGnXfqC0EX0HMEB1YU-1759490537-1.0.1.1-H8QjBW3PidbxHqG7ap198xk9fyWdao56W6qIfBYpreYq.K.tNNtHrqHWM78CEhNdlXEPRJyCuHBGDjSzFy8grFpG_lNe5fU9Wrbbj0KE4b0",
+              "path": "/",
+              "domain": ".denticon.com",
+              "expires": "2025-10-03T11:52:17.386Z",
+              "httpOnly": true,
+              "secure": true,
+              "sameSite": "None"
+            },
+            {
+              "name": "datadome",
+              "value": "e2LXdLjynesRO4wnKnmd_BFzTT_b1phzsS9aYNfJqIyNtkPccGUvBMq1V~sKoYnEr3JhxRPs5o3ILPsVJojwfIz6SuxAl8RnKMA2dqj3GYBm40p0iz8rozAOLlIbtEw5",
+              "path": "/",
+              "domain": ".denticon.com",
+              "expires": "2026-10-03T11:29:43.915Z",
+              "httpOnly": false,
+              "secure": true,
+              "sameSite": "Lax"
+            }
+          ],
+          "headersSize": -1,
+          "bodySize": 0
+        },
+        "response": {
+          "status": 200,
+          "statusText": "",
+          "httpVersion": "http/2.0",
+          "headers": [
+            {
+              "name": "age",
+              "value": "1229"
+            },
+            {
+              "name": "cache-control",
+              "value": "public, max-age=14400"
+            },
+            {
+              "name": "cf-cache-status",
+              "value": "HIT"
+            },
+            {
+              "name": "cf-ray",
+              "value": "988c1a7aec1ebdb3-GIG"
+            },
+            {
+              "name": "content-encoding",
+              "value": "gzip"
+            },
+            {
+              "name": "content-type",
+              "value": "image/svg+xml"
+            },
+            {
+              "name": "date",
+              "value": "Fri, 03 Oct 2025 11:29:44 GMT"
+            },
+            {
+              "name": "etag",
+              "value": "W/\"1dc33339b87ff91\""
+            },
+            {
+              "name": "expires",
+              "value": "Fri, 03 Oct 2025 15:29:44 GMT"
+            },
+            {
+              "name": "last-modified",
+              "value": "Thu, 02 Oct 2025 00:29:26 GMT"
+            },
+            {
+              "name": "server",
+              "value": "cloudflare"
+            },
+            {
+              "name": "strict-transport-security",
+              "value": "max-age=2592000"
+            },
+            {
+              "name": "vary",
+              "value": "Accept-Encoding"
+            },
+            {
+              "name": "x-powered-by",
+              "value": "ASP.NET"
+            }
+          ],
+          "cookies": [],
+          "content": {
+            "size": 2193,
+            "mimeType": "image/svg+xml"
+          },
+          "redirectURL": "",
+          "headersSize": -1,
+          "bodySize": -1,
+          "_transferSize": 1015,
+          "_error": null,
+          "_fetchedViaServiceWorker": false
+        },
+        "serverIPAddress": "104.18.7.138",
+        "startedDateTime": "2025-10-03T11:29:43.977Z",
+        "time": 30.98699999100063,
+        "timings": {
+          "blocked": 3.246999998030253,
+          "dns": -1,
+          "ssl": -1,
+          "connect": -1,
+          "send": 0.2649999999999997,
+          "wait": 26.74300000709668,
+          "receive": 0.7319999858736992,
+          "_blocked_queueing": 0.5099999980302528,
+          "_workerStart": -1,
+          "_workerReady": -1,
+          "_workerFetchStart": -1,
+          "_workerRespondWithSettled": -1
+        }
+      },
+      {
+        "_connectionId": "1179709",
+        "_initiator": {
+          "type": "script",
+          "stack": {
+            "callFrames": [],
+            "parent": {
+              "description": "Image",
+              "callFrames": [
+                {
+                  "functionName": "clone",
+                  "scriptId": "79",
+                  "url": "https://static-cdn.denticon.com/external/jquery-3.3.1/jquery-3.3.1.min.js",
+                  "lineNumber": 1,
+                  "columnNumber": 47671
+                },
+                {
+                  "functionName": "",
+                  "scriptId": "79",
+                  "url": "https://static-cdn.denticon.com/external/jquery-3.3.1/jquery-3.3.1.min.js",
+                  "lineNumber": 1,
+                  "columnNumber": 49300
+                },
+                {
+                  "functionName": "",
+                  "scriptId": "79",
+                  "url": "https://static-cdn.denticon.com/external/jquery-3.3.1/jquery-3.3.1.min.js",
+                  "lineNumber": 1,
+                  "columnNumber": 1325
+                },
+                {
+                  "functionName": "map",
+                  "scriptId": "79",
+                  "url": "https://static-cdn.denticon.com/external/jquery-3.3.1/jquery-3.3.1.min.js",
+                  "lineNumber": 1,
+                  "columnNumber": 3168
+                },
+                {
+                  "functionName": "map",
+                  "scriptId": "79",
+                  "url": "https://static-cdn.denticon.com/external/jquery-3.3.1/jquery-3.3.1.min.js",
+                  "lineNumber": 1,
+                  "columnNumber": 1293
+                },
+                {
+                  "functionName": "clone",
+                  "scriptId": "79",
+                  "url": "https://static-cdn.denticon.com/external/jquery-3.3.1/jquery-3.3.1.min.js",
+                  "lineNumber": 1,
+                  "columnNumber": 49276
+                },
+                {
+                  "functionName": "Ha",
+                  "scriptId": "1665",
+                  "url": "https://c1.denticon.com/JSBundles/eligibility-verification-report-bundle-scripts.js?v=f8MCDVC0MDSp3bkzvP_mSq-Xn2x_jPhIQZuzQXe8kpU",
+                  "lineNumber": 72,
+                  "columnNumber": 409
+                },
+                {
+                  "functionName": "Z",
+                  "scriptId": "1665",
+                  "url": "https://c1.denticon.com/JSBundles/eligibility-verification-report-bundle-scripts.js?v=f8MCDVC0MDSp3bkzvP_mSq-Xn2x_jPhIQZuzQXe8kpU",
+                  "lineNumber": 24,
+                  "columnNumber": 227
+                },
+                {
+                  "functionName": "",
+                  "scriptId": "1665",
+                  "url": "https://c1.denticon.com/JSBundles/eligibility-verification-report-bundle-scripts.js?v=f8MCDVC0MDSp3bkzvP_mSq-Xn2x_jPhIQZuzQXe8kpU",
+                  "lineNumber": 137,
+                  "columnNumber": 397
+                },
+                {
+                  "functionName": "iterator",
+                  "scriptId": "1665",
+                  "url": "https://c1.denticon.com/JSBundles/eligibility-verification-report-bundle-scripts.js?v=f8MCDVC0MDSp3bkzvP_mSq-Xn2x_jPhIQZuzQXe8kpU",
+                  "lineNumber": 111,
+                  "columnNumber": 125
+                },
+                {
+                  "functionName": "",
+                  "scriptId": "1665",
+                  "url": "https://c1.denticon.com/JSBundles/eligibility-verification-report-bundle-scripts.js?v=f8MCDVC0MDSp3bkzvP_mSq-Xn2x_jPhIQZuzQXe8kpU",
+                  "lineNumber": 137,
+                  "columnNumber": 368
+                },
+                {
+                  "functionName": "",
+                  "scriptId": "1665",
+                  "url": "https://c1.denticon.com/JSBundles/eligibility-verification-report-bundle-scripts.js?v=f8MCDVC0MDSp3bkzvP_mSq-Xn2x_jPhIQZuzQXe8kpU",
+                  "lineNumber": 114,
+                  "columnNumber": 2
+                },
+                {
+                  "functionName": "",
+                  "scriptId": "1665",
+                  "url": "https://c1.denticon.com/JSBundles/eligibility-verification-report-bundle-scripts.js?v=f8MCDVC0MDSp3bkzvP_mSq-Xn2x_jPhIQZuzQXe8kpU",
+                  "lineNumber": 137,
+                  "columnNumber": 168
+                },
+                {
+                  "functionName": "",
+                  "scriptId": "1665",
+                  "url": "https://c1.denticon.com/JSBundles/eligibility-verification-report-bundle-scripts.js?v=f8MCDVC0MDSp3bkzvP_mSq-Xn2x_jPhIQZuzQXe8kpU",
+                  "lineNumber": 114,
+                  "columnNumber": 2
+                },
+                {
+                  "functionName": "",
+                  "scriptId": "1665",
+                  "url": "https://c1.denticon.com/JSBundles/eligibility-verification-report-bundle-scripts.js?v=f8MCDVC0MDSp3bkzvP_mSq-Xn2x_jPhIQZuzQXe8kpU",
+                  "lineNumber": 149,
+                  "columnNumber": 82
+                },
+                {
+                  "functionName": "iterator",
+                  "scriptId": "1665",
+                  "url": "https://c1.denticon.com/JSBundles/eligibility-verification-report-bundle-scripts.js?v=f8MCDVC0MDSp3bkzvP_mSq-Xn2x_jPhIQZuzQXe8kpU",
+                  "lineNumber": 111,
+                  "columnNumber": 125
+                },
+                {
+                  "functionName": "",
+                  "scriptId": "1665",
+                  "url": "https://c1.denticon.com/JSBundles/eligibility-verification-report-bundle-scripts.js?v=f8MCDVC0MDSp3bkzvP_mSq-Xn2x_jPhIQZuzQXe8kpU",
+                  "lineNumber": 148,
+                  "columnNumber": 316
+                },
+                {
+                  "functionName": "",
+                  "scriptId": "1665",
+                  "url": "https://c1.denticon.com/JSBundles/eligibility-verification-report-bundle-scripts.js?v=f8MCDVC0MDSp3bkzvP_mSq-Xn2x_jPhIQZuzQXe8kpU",
+                  "lineNumber": 114,
+                  "columnNumber": 2
+                },
+                {
+                  "functionName": "InitEligibilityVerificationDataTable",
+                  "scriptId": "1665",
+                  "url": "https://c1.denticon.com/JSBundles/eligibility-verification-report-bundle-scripts.js?v=f8MCDVC0MDSp3bkzvP_mSq-Xn2x_jPhIQZuzQXe8kpU",
+                  "lineNumber": 8602,
+                  "columnNumber": 49
+                },
+                {
+                  "functionName": "LoadEligibilityVerificationDataTable",
+                  "scriptId": "1665",
+                  "url": "https://c1.denticon.com/JSBundles/eligibility-verification-report-bundle-scripts.js?v=f8MCDVC0MDSp3bkzvP_mSq-Xn2x_jPhIQZuzQXe8kpU",
+                  "lineNumber": 8559,
+                  "columnNumber": 4
+                },
+                {
+                  "functionName": "success",
+                  "scriptId": "1665",
+                  "url": "https://c1.denticon.com/JSBundles/eligibility-verification-report-bundle-scripts.js?v=f8MCDVC0MDSp3bkzvP_mSq-Xn2x_jPhIQZuzQXe8kpU",
+                  "lineNumber": 8520,
+                  "columnNumber": 12
+                },
+                {
+                  "functionName": "u",
+                  "scriptId": "79",
+                  "url": "https://static-cdn.denticon.com/external/jquery-3.3.1/jquery-3.3.1.min.js",
+                  "lineNumber": 1,
+                  "columnNumber": 27456
+                },
+                {
+                  "functionName": "fireWith",
+                  "scriptId": "79",
+                  "url": "https://static-cdn.denticon.com/external/jquery-3.3.1/jquery-3.3.1.min.js",
+                  "lineNumber": 1,
+                  "columnNumber": 28201
+                },
+                {
+                  "functionName": "k",
+                  "scriptId": "79",
+                  "url": "https://static-cdn.denticon.com/external/jquery-3.3.1/jquery-3.3.1.min.js",
+                  "lineNumber": 1,
+                  "columnNumber": 77650
+                },
+                {
+                  "functionName": "",
+                  "scriptId": "79",
+                  "url": "https://static-cdn.denticon.com/external/jquery-3.3.1/jquery-3.3.1.min.js",
+                  "lineNumber": 1,
+                  "columnNumber": 79906
+                }
+              ],
+              "parent": {
+                "description": "XMLHttpRequest.send",
+                "callFrames": [
+                  {
+                    "functionName": "send",
+                    "scriptId": "79",
+                    "url": "https://static-cdn.denticon.com/external/jquery-3.3.1/jquery-3.3.1.min.js",
+                    "lineNumber": 1,
+                    "columnNumber": 80265
+                  },
+                  {
+                    "functionName": "ajax",
+                    "scriptId": "79",
+                    "url": "https://static-cdn.denticon.com/external/jquery-3.3.1/jquery-3.3.1.min.js",
+                    "lineNumber": 1,
+                    "columnNumber": 77117
+                  },
+                  {
+                    "functionName": "LoadEligibilityVerificationItemList",
+                    "scriptId": "1665",
+                    "url": "https://c1.denticon.com/JSBundles/eligibility-verification-report-bundle-scripts.js?v=f8MCDVC0MDSp3bkzvP_mSq-Xn2x_jPhIQZuzQXe8kpU",
+                    "lineNumber": 8498,
+                    "columnNumber": 6
+                  },
+                  {
+                    "functionName": "",
+                    "scriptId": "1665",
+                    "url": "https://c1.denticon.com/JSBundles/eligibility-verification-report-bundle-scripts.js?v=f8MCDVC0MDSp3bkzvP_mSq-Xn2x_jPhIQZuzQXe8kpU",
+                    "lineNumber": 8140,
+                    "columnNumber": 8
+                  },
+                  {
+                    "functionName": "dispatch",
+                    "scriptId": "79",
+                    "url": "https://static-cdn.denticon.com/external/jquery-3.3.1/jquery-3.3.1.min.js",
+                    "lineNumber": 1,
+                    "columnNumber": 41771
+                  },
+                  {
+                    "functionName": "y.handle",
+                    "scriptId": "79",
+                    "url": "https://static-cdn.denticon.com/external/jquery-3.3.1/jquery-3.3.1.min.js",
+                    "lineNumber": 1,
+                    "columnNumber": 39790
+                  },
+                  {
+                    "functionName": "trigger",
+                    "scriptId": "79",
+                    "url": "https://static-cdn.denticon.com/external/jquery-3.3.1/jquery-3.3.1.min.js",
+                    "lineNumber": 1,
+                    "columnNumber": 69550
+                  },
+                  {
+                    "functionName": "",
+                    "scriptId": "79",
+                    "url": "https://static-cdn.denticon.com/external/jquery-3.3.1/jquery-3.3.1.min.js",
+                    "lineNumber": 1,
+                    "columnNumber": 70145
+                  },
+                  {
+                    "functionName": "each",
+                    "scriptId": "79",
+                    "url": "https://static-cdn.denticon.com/external/jquery-3.3.1/jquery-3.3.1.min.js",
+                    "lineNumber": 1,
+                    "columnNumber": 2572
+                  },
+                  {
+                    "functionName": "each",
+                    "scriptId": "79",
+                    "url": "https://static-cdn.denticon.com/external/jquery-3.3.1/jquery-3.3.1.min.js",
+                    "lineNumber": 1,
+                    "columnNumber": 1239
+                  },
+                  {
+                    "functionName": "trigger",
+                    "scriptId": "79",
+                    "url": "https://static-cdn.denticon.com/external/jquery-3.3.1/jquery-3.3.1.min.js",
+                    "lineNumber": 1,
+                    "columnNumber": 70121
+                  },
+                  {
+                    "functionName": "success",
+                    "scriptId": "1665",
+                    "url": "https://c1.denticon.com/JSBundles/eligibility-verification-report-bundle-scripts.js?v=f8MCDVC0MDSp3bkzvP_mSq-Xn2x_jPhIQZuzQXe8kpU",
+                    "lineNumber": 8291,
+                    "columnNumber": 42
+                  },
+                  {
+                    "functionName": "u",
+                    "scriptId": "79",
+                    "url": "https://static-cdn.denticon.com/external/jquery-3.3.1/jquery-3.3.1.min.js",
+                    "lineNumber": 1,
+                    "columnNumber": 27456
+                  },
+                  {
+                    "functionName": "fireWith",
+                    "scriptId": "79",
+                    "url": "https://static-cdn.denticon.com/external/jquery-3.3.1/jquery-3.3.1.min.js",
+                    "lineNumber": 1,
+                    "columnNumber": 28201
+                  },
+                  {
+                    "functionName": "k",
+                    "scriptId": "79",
+                    "url": "https://static-cdn.denticon.com/external/jquery-3.3.1/jquery-3.3.1.min.js",
+                    "lineNumber": 1,
+                    "columnNumber": 77650
+                  },
+                  {
+                    "functionName": "",
+                    "scriptId": "79",
+                    "url": "https://static-cdn.denticon.com/external/jquery-3.3.1/jquery-3.3.1.min.js",
+                    "lineNumber": 1,
+                    "columnNumber": 79906
+                  }
+                ],
+                "parent": {
+                  "description": "XMLHttpRequest.send",
+                  "callFrames": [
+                    {
+                      "functionName": "send",
+                      "scriptId": "79",
+                      "url": "https://static-cdn.denticon.com/external/jquery-3.3.1/jquery-3.3.1.min.js",
+                      "lineNumber": 1,
+                      "columnNumber": 80265
+                    },
+                    {
+                      "functionName": "ajax",
+                      "scriptId": "79",
+                      "url": "https://static-cdn.denticon.com/external/jquery-3.3.1/jquery-3.3.1.min.js",
+                      "lineNumber": 1,
+                      "columnNumber": 77117
+                    },
+                    {
+                      "functionName": "",
+                      "scriptId": "1665",
+                      "url": "https://c1.denticon.com/JSBundles/eligibility-verification-report-bundle-scripts.js?v=f8MCDVC0MDSp3bkzvP_mSq-Xn2x_jPhIQZuzQXe8kpU",
+                      "lineNumber": 8272,
+                      "columnNumber": 10
+                    },
+                    {
+                      "functionName": "dispatch",
+                      "scriptId": "79",
+                      "url": "https://static-cdn.denticon.com/external/jquery-3.3.1/jquery-3.3.1.min.js",
+                      "lineNumber": 1,
+                      "columnNumber": 41771
+                    },
+                    {
+                      "functionName": "y.handle",
+                      "scriptId": "79",
+                      "url": "https://static-cdn.denticon.com/external/jquery-3.3.1/jquery-3.3.1.min.js",
+                      "lineNumber": 1,
+                      "columnNumber": 39790
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "_priority": "Low",
+        "_resourceType": "image",
+        "cache": {},
+        "connection": "443",
+        "request": {
+          "method": "GET",
+          "url": "https://c1.denticon.com/Images/PatientOverview/Theme/Web20Blue/revised-pat-notes-alt.svg",
+          "httpVersion": "http/2.0",
+          "headers": [
+            {
+              "name": ":authority",
+              "value": "c1.denticon.com"
+            },
+            {
+              "name": ":method",
+              "value": "GET"
+            },
+            {
+              "name": ":path",
+              "value": "/Images/PatientOverview/Theme/Web20Blue/revised-pat-notes-alt.svg"
+            },
+            {
+              "name": ":scheme",
+              "value": "https"
+            },
+            {
+              "name": "accept",
+              "value": "image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8"
+            },
+            {
+              "name": "accept-encoding",
+              "value": "gzip, deflate, br, zstd"
+            },
+            {
+              "name": "accept-language",
+              "value": "en,pt-BR;q=0.9,pt;q=0.8"
+            },
+            {
+              "name": "cache-control",
+              "value": "no-cache"
+            },
+            {
+              "name": "cookie",
+              "value": ".DenticonCore_Session_=CfDJ8PlbbejGtTNOuXPiC8w2eK8PbvdAWvh5Xhk9yEbjVcW5q5g0KulaWZkcKO8F%2FwdQc9G1OFIzPvpTsBmQp1yXaVbggd9gB7WbypahGWvmun7Gd1tx0VHpJpTZ8ZFm%2BoLWHhe1ElDlP7CK7aYKShP%2F22jPVYNugHOVqtsbkrNsylC8; .AspNetCore.Antiforgery.cdV5uW_Ejgc=CfDJ8PlbbejGtTNOuXPiC8w2eK9VjgVgo6TQ5VjMtPzegIyJNWzoQhGzzADBT493cYkgDJLn9rJPh9a7DKPqEZA9V-wAtyZkgX9WPC1qaAjCtf_8lRaJUaRToOR0xA4spWhu4IpNWJYRhDRhZXd-AQaK_FE; __stripe_mid=7b0be044-dd83-41a8-a155-40a44ecd66238e027d; redirector-production=jg7XKAC7LKozL8t%2BadMmZtxOx6dGXlkMLxy%2BJoKJoo4s7yGQ2spzZOwLULrXY83fgUKNFuSlJcL7qVrfoVIW%2FuDIzstvUdB%2BmP3ALopVR%2FUoE8NmBkXJLrytRtkEOaFnRGfP8BYsHHgap6YN9aDI%2BMDmC5Bg6A7VmRyhMCFexnOMpnNoNWmwXNSW5OVivAIcs4S4TIk4EHNSP2ptzsu5tIbgt1vsj0w7IQjKXJMtpCcQjjiyRqB6brP9GZY8FCqt1gdFR7DMhkq0YIclXUBdhUUsp7OJAPIjW7%2FXOqvgWXw%3D; PoWDns=NJrOkZ0nwsSo1TVqULlAAQ%3D%3D; CoreDns=zIFxACqa%2FUcBovB5BZHkww%3D%3D; ReportDns=e183QHYegr9ZGwO26SZOHOU080PpvpgPZzZ6uqIiBeY%3D; shared_session_prod=btu7WGgmHU6ynk7hQ2BVQKOUH6S293TwPBkbIod%2FUe8S4ZpdkPj6Sv1tpBLE7wTV; __stripe_sid=7e5a993c-0b54-4cf1-b40b-216018507b603ce31f; __cf_bm=irVLiGiIcVC2YzEn3pmrr4QkZeGnXfqC0EX0HMEB1YU-1759490537-1.0.1.1-H8QjBW3PidbxHqG7ap198xk9fyWdao56W6qIfBYpreYq.K.tNNtHrqHWM78CEhNdlXEPRJyCuHBGDjSzFy8grFpG_lNe5fU9Wrbbj0KE4b0; datadome=e2LXdLjynesRO4wnKnmd_BFzTT_b1phzsS9aYNfJqIyNtkPccGUvBMq1V~sKoYnEr3JhxRPs5o3ILPsVJojwfIz6SuxAl8RnKMA2dqj3GYBm40p0iz8rozAOLlIbtEw5"
+            },
+            {
+              "name": "pragma",
+              "value": "no-cache"
+            },
+            {
+              "name": "priority",
+              "value": "i"
+            },
+            {
+              "name": "referer",
+              "value": "https://c1.denticon.com/EligibilityVerificationReport/Index?schedulerDate=09%2F3%2F2025"
+            },
+            {
+              "name": "sec-ch-ua",
+              "value": "\"Chromium\";v=\"140\", \"Not=A?Brand\";v=\"24\", \"Google Chrome\";v=\"140\""
+            },
+            {
+              "name": "sec-ch-ua-mobile",
+              "value": "?0"
+            },
+            {
+              "name": "sec-ch-ua-platform",
+              "value": "\"macOS\""
+            },
+            {
+              "name": "sec-fetch-dest",
+              "value": "image"
+            },
+            {
+              "name": "sec-fetch-mode",
+              "value": "no-cors"
+            },
+            {
+              "name": "sec-fetch-site",
+              "value": "same-origin"
+            },
+            {
+              "name": "user-agent",
+              "value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+            }
+          ],
+          "queryString": [],
+          "cookies": [
+            {
+              "name": ".DenticonCore_Session_",
+              "value": "CfDJ8PlbbejGtTNOuXPiC8w2eK8PbvdAWvh5Xhk9yEbjVcW5q5g0KulaWZkcKO8F%2FwdQc9G1OFIzPvpTsBmQp1yXaVbggd9gB7WbypahGWvmun7Gd1tx0VHpJpTZ8ZFm%2BoLWHhe1ElDlP7CK7aYKShP%2F22jPVYNugHOVqtsbkrNsylC8",
+              "path": "/",
+              "domain": "c1.denticon.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": true,
+              "secure": true,
+              "sameSite": "None"
+            },
+            {
+              "name": ".AspNetCore.Antiforgery.cdV5uW_Ejgc",
+              "value": "CfDJ8PlbbejGtTNOuXPiC8w2eK9VjgVgo6TQ5VjMtPzegIyJNWzoQhGzzADBT493cYkgDJLn9rJPh9a7DKPqEZA9V-wAtyZkgX9WPC1qaAjCtf_8lRaJUaRToOR0xA4spWhu4IpNWJYRhDRhZXd-AQaK_FE",
+              "path": "/",
+              "domain": "c1.denticon.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": true,
+              "secure": true,
+              "sameSite": "None"
+            },
+            {
+              "name": "__stripe_mid",
+              "value": "7b0be044-dd83-41a8-a155-40a44ecd66238e027d",
+              "path": "/",
+              "domain": ".c1.denticon.com",
+              "expires": "2026-10-03T11:27:09.000Z",
+              "httpOnly": false,
+              "secure": true,
+              "sameSite": "Strict"
+            },
+            {
+              "name": "redirector-production",
+              "value": "jg7XKAC7LKozL8t%2BadMmZtxOx6dGXlkMLxy%2BJoKJoo4s7yGQ2spzZOwLULrXY83fgUKNFuSlJcL7qVrfoVIW%2FuDIzstvUdB%2BmP3ALopVR%2FUoE8NmBkXJLrytRtkEOaFnRGfP8BYsHHgap6YN9aDI%2BMDmC5Bg6A7VmRyhMCFexnOMpnNoNWmwXNSW5OVivAIcs4S4TIk4EHNSP2ptzsu5tIbgt1vsj0w7IQjKXJMtpCcQjjiyRqB6brP9GZY8FCqt1gdFR7DMhkq0YIclXUBdhUUsp7OJAPIjW7%2FXOqvgWXw%3D",
+              "path": "/",
+              "domain": ".denticon.com",
+              "expires": "2025-10-03T13:08:16.843Z",
+              "httpOnly": false,
+              "secure": true,
+              "sameSite": "Lax"
+            },
+            {
+              "name": "PoWDns",
+              "value": "NJrOkZ0nwsSo1TVqULlAAQ%3D%3D",
+              "path": "/",
+              "domain": ".denticon.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": false,
+              "secure": true,
+              "sameSite": "Lax"
+            },
+            {
+              "name": "CoreDns",
+              "value": "zIFxACqa%2FUcBovB5BZHkww%3D%3D",
+              "path": "/",
+              "domain": ".denticon.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": false,
+              "secure": true,
+              "sameSite": "Lax"
+            },
+            {
+              "name": "ReportDns",
+              "value": "e183QHYegr9ZGwO26SZOHOU080PpvpgPZzZ6uqIiBeY%3D",
+              "path": "/",
+              "domain": ".denticon.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": false,
+              "secure": true,
+              "sameSite": "Lax"
+            },
+            {
+              "name": "shared_session_prod",
+              "value": "btu7WGgmHU6ynk7hQ2BVQKOUH6S293TwPBkbIod%2FUe8S4ZpdkPj6Sv1tpBLE7wTV",
+              "path": "/",
+              "domain": ".denticon.com",
+              "expires": "1969-12-31T23:59:59.000Z",
+              "httpOnly": false,
+              "secure": true,
+              "sameSite": "None"
+            },
+            {
+              "name": "__stripe_sid",
+              "value": "7e5a993c-0b54-4cf1-b40b-216018507b603ce31f",
+              "path": "/",
+              "domain": ".c1.denticon.com",
+              "expires": "2025-10-03T11:57:09.000Z",
+              "httpOnly": false,
+              "secure": true,
+              "sameSite": "Strict"
+            },
+            {
+              "name": "__cf_bm",
+              "value": "irVLiGiIcVC2YzEn3pmrr4QkZeGnXfqC0EX0HMEB1YU-1759490537-1.0.1.1-H8QjBW3PidbxHqG7ap198xk9fyWdao56W6qIfBYpreYq.K.tNNtHrqHWM78CEhNdlXEPRJyCuHBGDjSzFy8grFpG_lNe5fU9Wrbbj0KE4b0",
+              "path": "/",
+              "domain": ".denticon.com",
+              "expires": "2025-10-03T11:52:17.386Z",
+              "httpOnly": true,
+              "secure": true,
+              "sameSite": "None"
+            },
+            {
+              "name": "datadome",
+              "value": "e2LXdLjynesRO4wnKnmd_BFzTT_b1phzsS9aYNfJqIyNtkPccGUvBMq1V~sKoYnEr3JhxRPs5o3ILPsVJojwfIz6SuxAl8RnKMA2dqj3GYBm40p0iz8rozAOLlIbtEw5",
+              "path": "/",
+              "domain": ".denticon.com",
+              "expires": "2026-10-03T11:29:43.915Z",
+              "httpOnly": false,
+              "secure": true,
+              "sameSite": "Lax"
+            }
+          ],
+          "headersSize": -1,
+          "bodySize": 0
+        },
+        "response": {
+          "status": 200,
+          "statusText": "",
+          "httpVersion": "http/2.0",
+          "headers": [
+            {
+              "name": "age",
+              "value": "1229"
+            },
+            {
+              "name": "cache-control",
+              "value": "public, max-age=14400"
+            },
+            {
+              "name": "cf-cache-status",
+              "value": "HIT"
+            },
+            {
+              "name": "cf-ray",
+              "value": "988c1a7aec22bdb3-GIG"
+            },
+            {
+              "name": "content-encoding",
+              "value": "gzip"
+            },
+            {
+              "name": "content-type",
+              "value": "image/svg+xml"
+            },
+            {
+              "name": "date",
+              "value": "Fri, 03 Oct 2025 11:29:44 GMT"
+            },
+            {
+              "name": "etag",
+              "value": "W/\"1dc33339b87f44c\""
+            },
+            {
+              "name": "expires",
+              "value": "Fri, 03 Oct 2025 15:29:44 GMT"
+            },
+            {
+              "name": "last-modified",
+              "value": "Thu, 02 Oct 2025 00:29:26 GMT"
+            },
+            {
+              "name": "server",
+              "value": "cloudflare"
+            },
+            {
+              "name": "strict-transport-security",
+              "value": "max-age=2592000"
+            },
+            {
+              "name": "vary",
+              "value": "Accept-Encoding"
+            },
+            {
+              "name": "x-powered-by",
+              "value": "ASP.NET"
+            }
+          ],
+          "cookies": [],
+          "content": {
+            "size": 844,
+            "mimeType": "image/svg+xml"
+          },
+          "redirectURL": "",
+          "headersSize": -1,
+          "bodySize": -1,
+          "_transferSize": 514,
+          "_error": null,
+          "_fetchedViaServiceWorker": false
+        },
+        "serverIPAddress": "104.18.7.138",
+        "startedDateTime": "2025-10-03T11:29:43.977Z",
+        "time": 30.866999994032085,
+        "timings": {
+          "blocked": 3.060999992947094,
+          "dns": -1,
+          "ssl": -1,
+          "connect": -1,
+          "send": 0.18500000000000005,
+          "wait": 26.794999997940845,
+          "receive": 0.826000003144145,
+          "_blocked_queueing": 0.45199999294709414,
+          "_workerStart": -1,
+          "_workerReady": -1,
+          "_workerFetchStart": -1,
+          "_workerRespondWithSettled": -1
+        }
+      }
+    ]
+  }
+}
