@@ -128,7 +128,7 @@ async function testAppointmentsExtraction() {
         const results = await page.evaluate(async () => {
             try {
                 const testDates = ['10/1/2025', '10/2/2025', '10/3/2025', '10/6/2025'];  // 4 jours ouvrés
-                const maxPatientsTotal = 20;  // TEST: 20 patients pour validation complétude
+                const maxPatientsTotal = 20;  // TEST: 20 patients - validation DOB fix 100%
 
                 console.log('🎯 EXTRACTION COMPLÈTE : Calendrier + Détails');
                 console.log(`📅 Dates: ${testDates.join(', ')}`);
@@ -501,6 +501,32 @@ async function testAppointmentsExtraction() {
                         return cells.map(cell => cell.textContent.trim());
                     };
 
+                    // ========== PATIENT DATE OF BIRTH (en haut de la page) ==========
+                    // Format: "11 / Female 04/21/2014" ou "11/F 04/21/2014"
+                    let patientDOB = null;
+
+                    // Chercher dans la zone patient-basic-info ou patient-header
+                    const patientInfoText = doc.body.textContent;
+
+                    // Pattern 1: "Age / Gender MM/DD/YYYY"
+                    const dobMatch1 = patientInfoText.match(/\d+\s*\/\s*(?:Female|Male|F|M)\s+(\d{2}\/\d{2}\/\d{4})/);
+                    if (dobMatch1) {
+                        patientDOB = dobMatch1[1];
+                    } else {
+                        // Pattern 2: Chercher directement dans les éléments de la page
+                        // Le DOB est souvent dans un span ou div à côté du nom
+                        const infoElements = Array.from(doc.querySelectorAll('span, div'));
+                        for (const el of infoElements) {
+                            const text = el.textContent.trim();
+                            // Chercher pattern "MM/DD/YYYY" isolé
+                            const dobMatch = text.match(/^(\d{2}\/\d{2}\/\d{4})$/);
+                            if (dobMatch) {
+                                patientDOB = dobMatch[1];
+                                break;
+                            }
+                        }
+                    }
+
                     // EMERGENCY CONTACT (dans tooltip)
                     const emergencyTooltip = getTooltip('a[data-custom-tooltip-title="Emergency Contact Information"]');
                     let emergencyContact = null;
@@ -680,6 +706,7 @@ async function testAppointmentsExtraction() {
 
                     return {
                         success: true,
+                        date_of_birth_overview: patientDOB,  // DOB scraped depuis Patient Overview
                         emergency_contact: emergencyContact,
                         emergency_phone: emergencyPhone,
                         address_street: street,
@@ -728,6 +755,7 @@ async function testAppointmentsExtraction() {
 
             if (overviewData.success) {
                 console.log('   ✅ Données Patient Overview extraites:');
+                console.log(`      DOB (Overview): ${overviewData.date_of_birth_overview || 'NULL'}`);
                 console.log(`      Emergency: ${overviewData.emergency_contact || 'N/A'} (${overviewData.emergency_phone || 'N/A'})`);
                 console.log(`      Adresse: ${overviewData.address_street || 'N/A'}, ${overviewData.address_city_state_zip || 'N/A'}`);
                 console.log(`      Provider: ${overviewData.provider_extended || 'N/A'}`);
@@ -892,7 +920,9 @@ async function testAppointmentsExtraction() {
                 fullyEnriched.push({
                     ...patient,
                     ...overviewData,
-                    ...primaryData
+                    ...primaryData,
+                    // ✨ Fusion intelligente DOB: utiliser Overview DOB si Appointment DOB manquant
+                    date_of_birth: patient.date_of_birth || overviewData.date_of_birth_overview || null
                 });
 
             } else {
