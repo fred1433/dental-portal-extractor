@@ -203,10 +203,30 @@ const testData: Record<PortalType, PortalTestData> = {
         dateOfBirth: '09/17/2019'
     },
     'DDINS': {
-        firstName: 'Eleanor',
-        lastName: 'Nawab',
-        subscriberId: '125280429203',
-        dateOfBirth: '10/29/2014'
+        firstName: 'Estelle',
+        lastName: 'Mazet',
+        subscriberId: '002175461802',
+        dateOfBirth: '10/19/2011'
+    }
+};
+
+// Clinic-specific test data (overrides generic testData when clinic is selected)
+const testDataByClinic: Record<string, Partial<Record<PortalType, PortalTestData>>> = {
+    'sdb': {
+        'DDINS': {
+            firstName: 'Estelle',
+            lastName: 'Mazet',
+            subscriberId: '002175461802',
+            dateOfBirth: '10/19/2011'
+        }
+    },
+    'ace_dental': {
+        'DDINS': {
+            firstName: 'Eleanor',
+            lastName: 'Nawab',
+            subscriberId: '125280429203',
+            dateOfBirth: '10/29/2014'
+        }
     }
 };
 
@@ -241,7 +261,14 @@ async function checkVPNLocation(): Promise<void> {
 
 function fillFormWithTestData(portalValue: string): void {
     const portalKey = resolvePortalTestKey(portalValue);
-    const data = testData[portalKey];
+    const clinicId = safeGetValue('clinic');
+
+    // Try clinic-specific data first, fall back to generic testData
+    let data = testData[portalKey];
+    if (clinicId && testDataByClinic[clinicId] && testDataByClinic[clinicId][portalKey]) {
+        data = testDataByClinic[clinicId][portalKey]!;
+    }
+
     if (data) {
         safeSetValue('firstName', data.firstName);
         safeSetValue('lastName', data.lastName);
@@ -1169,27 +1196,37 @@ function initializeEventListeners(): void {
         portalSelect.addEventListener('change', (e: Event) => {
             const target = e.target as HTMLSelectElement;
             const portal = target.value as PortalType;
-            
+
             // Clear logs and previous results when switching portals
             safeSetHTML('logsContainer', '');
-            
+
             // Hide and clear results section
             const resultsSection = safeGetElement<HTMLElement>('resultsSection');
             if (resultsSection) {
                 resultsSection.classList.remove('active');
             }
-            
+
             // Clear summary grid and CDT codes
             const summaryGrid = safeGetElement<HTMLElement>('summaryGrid');
             const cdtCodesSection = safeGetElement<HTMLElement>('cdtCodesSection');
             if (summaryGrid) summaryGrid.innerHTML = '';
             if (cdtCodesSection) cdtCodesSection.innerHTML = '';
-            
+
             // Clear any error messages
             safeHide('errorMessage');
             safeSetHTML('errorMessage', '');
-            
+
             // Fill form with test data for the new portal
+            fillFormWithTestData(portal);
+        });
+    }
+
+    // Clinic change listener
+    const clinicSelect = safeGetElement<HTMLSelectElement>('clinic');
+    if (clinicSelect && isSelectElement(clinicSelect)) {
+        clinicSelect.addEventListener('change', () => {
+            const portal = safeGetValue('portal') as PortalType;
+            // Refresh test data based on new clinic selection
             fillFormWithTestData(portal);
         });
     }
