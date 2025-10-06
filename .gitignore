@@ -1,125 +1,161 @@
-node_modules/
-.env
-public/app.js
-public/app.js.map
+# ============================================
+# PROJECT-SPECIFIC (dental-portal-extractor)
+# ============================================
+
+## Session & Authentication Files
 .dnoa-session/
 .dentaquest-session/
 .metlife-session/
 .cigna-session/
 .dot-session/
+.ddins-session/
+.uhc-chrome-profile/
 cigna/.cigna-session/
 dentaquest/.dentaquest-session/
 metlife/.metlife-session/
 dnoa/.dnoa-session/
 ddins/.ddins-session/
 dot-extractor/.dot-session/
-*.log
-*.zip
+sessions/                          # Multi-clinic session storage
+*.session
+*.b64
+*session*.json
+*session*.txt
+dot-session-b64.txt
+uhc_session.json
+
+## Credentials & Secrets
+.env
+.env.*
+!.env.example
+clinic-credentials.json            # Multi-clinic credentials
+config.json
+secrets.json
+
+## Archives (specific patterns only)
+archive_*/
+archive_old/
+denticon/archive/
+exploration/
+
+## Test & Generated Files
 test-*.js
 test-*.sh
-.DS_Store
-monitoring.db
-*.db
-*.backup*
-*.b64
-transfer-*.sh
-push-*.sh
-
-# DOT extractor
-dot-extractor/dot-storage.json
-dot-extractor/out/
-dot-extractor/dist/
-dot-extractor/*.json
-!dot-extractor/package.json
-!dot-extractor/tsconfig.json
-
-# TypeScript build artifacts
-dist/
-dot-session-b64.txt
-
-# DDINS session files
-.ddins-session/
-
-# Test JSON files
-*-Full.json
-*-Full-*.json
-*-Compressed.json
-*-smaller.json
-
-# Temporary test scripts
-test-*.js
+test_*.py
 analyze-*.js
 show-*.js
 verify-*.js
 ask-gemini.js
-.env
-
-# Python environments
-gemini_env/
-venv/
-*_env/
-
-# Python cache
-__pycache__/
-*.pyc
-
-# Archives
-archive_*/
-archive_old/
-denticon/archive/
-
-# Personal files
-.env
-*.db-journal
-
-# Test results
-test_results.json
-test_general_results.json
+*-Full.json
+*-Full-*.json
+*-Compressed.json
+*-smaller.json
+test_results*.json
 *_results.json
-test_results_detailed.json
 comparison_results.json
-
-# Denticon HAR files and test results
 denticon/*.har
 denticon/all-HAR-*.json
 denticon/test-results-*.json
+*.har
+
+## Output & Data Directories
 data/
-*.db
-*.db-wal
-*.db-shm
-.venv/
-demo-insurance-netlify/
-
-# UHC Chrome profile
-.uhc-chrome-profile/
-uhc_session.json
-
-# Clinic credentials
-clinic-credentials.json
-
-# Test output files
+output/
 dentaquest-html-scraping/output/*.json
 output/dentaquest_*.json
+scrapers/data/                     # Future: Donglin's Python scrapers
+downloads/
+temp_downloads/
+temp-*/
+test_pdfs/
+test_results/
 
-# Test scripts
-test-*.js
+## DOT Extractor
+dot-extractor/dot-storage.json
+dot-extractor/out/
+dot-extractor/*.json
+!dot-extractor/package.json
+!dot-extractor/tsconfig.json
 
-# Local Netlify folder
+## Netlify
+demo-insurance-netlify/
 .netlify
-exploration/
+
+## Backup & Transfer Scripts
+*.backup*
+transfer-*.sh
+push-*.sh
 
 # ============================================
-# Python (added by Donglin)
+# NODE.JS
 # ============================================
-# Byte-compiled / optimized / DLL files
+
+## Dependencies
+node_modules/
+jspm_packages/
+
+## Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+pnpm-debug.log*
+
+## Build Outputs
+dist/
+build/
+.next
+.nuxt
+.out
+.cache/
+.parcel-cache
+
+## TypeScript
+*.tsbuildinfo
+typings/
+
+## Testing & Coverage
+coverage/
+.nyc_output
+*.lcov
+
+## Cache & Temp
+.npm
+.eslintcache
+.yarn-integrity
+*.tgz
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+.pnpm-store
+
+## Process Files
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# ============================================
+# PYTHON
+# ============================================
+
+## Bytecode
 __pycache__/
 *.py[cod]
 *$py.class
+*.pyc
 
-# C extensions
-*.so
+## Virtual Environments
+.venv/
+venv/
+env/
+ENV/
+*_env/
+gemini_env/
 
-# Distribution / packaging
+## Distribution / Packaging
 .Python
 build/
 develop-eggs/
@@ -133,216 +169,44 @@ parts/
 sdist/
 var/
 wheels/
-pip-wheel-metadata/
-share/python-wheels/
 *.egg-info/
 .installed.cfg
 *.egg
-MANIFEST
 
-# PyInstaller
-#  Usually these files are written by a python script from a template
-#  before PyInstaller builds the exe, so as to inject date/other infos into it.
-*.manifest
-*.spec
-
-# Installer logs
-pip-log.txt
-pip-delete-this-directory.txt
-
-# Unit test / coverage reports
-htmlcov/
+## Testing & Coverage
+.pytest_cache/
+.hypothesis/
 .tox/
 .nox/
 .coverage
 .coverage.*
-.cache
+htmlcov/
 nosetests.xml
 coverage.xml
 *.cover
 *.py,cover
-.hypothesis/
-.pytest_cache/
 
-# Translations
-*.mo
-*.pot
-
-# Django stuff:
-*.log
-local_settings.py
-db.sqlite3
-db.sqlite3-journal
-
-# Flask stuff:
+## Flask
 instance/
 .webassets-cache
 
-# Scrapy stuff:
-.scrapy
+# ============================================
+# DATABASES
+# ============================================
+*.db
+*.db-*
+*.sqlite
+*.sqlite3
+monitoring.db
 
-# Sphinx documentation
-docs/_build/
-
-# PyBuilder
-target/
-
-# Jupyter Notebook
-.ipynb_checkpoints
-
-# IPython
-profile_default/
-ipython_config.py
-
-# pyenv
-.python-version
-
-# pipenv
-#   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.
-#   However, in case of collaboration, if having platform-specific dependencies or dependencies
-#   having no cross-platform support, pipenv may install dependencies that don't work, or not
-#   install all needed dependencies.
-#Pipfile.lock
-
-# PEP 582; used by e.g. github.com/David-OConnor/pyflow
-__pypackages__/
-
-# Celery stuff
-celerybeat-schedule
-celerybeat.pid
-
-# SageMath parsed files
-*.sage.py
-
-# Environments
-.env
-.venv
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
-
-# Spyder project settings
-.spyderproject
-.spyproject
-
-# Rope project settings
-.ropeproject
-
-# mkdocs documentation
-/site
-
-# mypy
-.mypy_cache/
-.dmypy.json
-dmypy.json
-
-# Pyre type checker
-.pyre/
-
-# Node.js
-# Logs
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-lerna-debug.log*
-
-# Runtime data
-pids
-*.pid
-*.seed
-*.pid.lock
-
-# Directory for instrumented libs generated by jscoverage/JSCover
-lib-cov
-
-# Coverage directory used by tools like istanbul
-coverage/
-*.lcov
-
-# nyc test coverage
-.nyc_output
-
-# Grunt intermediate storage (https://gruntjs.com/creating-plugins#storing-task-files)
-.grunt
-
-# Bower dependency directory (https://bower.io/)
-bower_components
-
-# node-waf configuration
-.lock-wscript
-
-# Compiled binary addons (https://nodejs.org/api/addons.html)
-build/Release
-
-# Dependency directories
-node_modules/
-jspm_packages/
-
-# TypeScript v1 declaration files
-typings/
-
-# TypeScript cache
-*.tsbuildinfo
-
-# Optional npm cache directory
-.npm
-
-# Optional eslint cache
-.eslintcache
-
-# Microbundle cache
-.rpt2_cache/
-.rts2_cache_cjs/
-.rts2_cache_es/
-.rts2_cache_umd/
-
-# Optional REPL history
-.node_repl_history
-
-# Output of 'npm pack'
-*.tgz
-
-# Yarn Integrity file
-.yarn-integrity
-
-# dotenv environment variables file
-.env.test
-.env.production
-
-# parcel-bundler cache (https://parceljs.org/)
-.cache
-.parcel-cache
-
-# Next.js build output
-.next
-
-# Nuxt.js build / generate output
-.nuxt
-dist
-
-# Gatsby files
-.cache/
-# Comment in the public line in if your project uses Gatsby and not Next.js
-# https://nextjs.org/blog/next-9-1#public-directory-support
-# public
-
-# Storybook build outputs
-.out
-.storybook-out
-
-# Rollup.js default build output
-dist/
-
-# Uncomment this if you have a Yarn workspace file
-# .yarn/
-
-# Dependency managers
-pnpm-debug.log*
-.pnpm-store
-
-# OS generated files
+# ============================================
+# IDE & EDITORS
+# ============================================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
 .DS_Store
 .DS_Store?
 ._*
@@ -351,51 +215,11 @@ pnpm-debug.log*
 ehthumbs.db
 Thumbs.db
 
-# IDE and editor files
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-
-# Temporary files
+# ============================================
+# TEMPORARY FILES
+# ============================================
 *.tmp
 *.temp
-
-# Session and authentication files
-*.session
-*.b64
-*session*.json
-*session*.txt
-
-# Archive and backup files
-*.backup
-*.backup-*
-archive/
-temp-*/
-
-# Database files
-*.db
-*.sqlite
-*.sqlite3
-
-# Configuration files with sensitive data
-config.json
-secrets.json
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-# Download directories (common in scraping projects)
-downloads/
-temp_downloads/
-
-# PDF test files and results
-test_pdfs/
-test_results/
-
-# HAR files (HTTP Archive files)
-*.har
-
-scrapers/data/
+*.zip
+public/app.js
+public/app.js.map
