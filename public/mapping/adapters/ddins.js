@@ -5,10 +5,12 @@ function calculateAge(dateOfBirth) {
         return undefined;
     try {
         let dobDate;
+        // Handle MM/DD/YYYY format
         if (/^\d{2}\/\d{2}\/\d{4}$/.test(dateOfBirth)) {
             const [month, day, year] = dateOfBirth.split('/');
             dobDate = new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
         }
+        // Handle YYYY-MM-DD format
         else if (/^\d{4}-\d{2}-\d{2}/.test(dateOfBirth)) {
             dobDate = new Date(dateOfBirth);
         }
@@ -18,6 +20,7 @@ function calculateAge(dateOfBirth) {
         const today = new Date();
         let age = today.getFullYear() - dobDate.getFullYear();
         const monthDiff = today.getMonth() - dobDate.getMonth();
+        // Adjust if birthday hasn't occurred yet this year
         if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dobDate.getDate())) {
             age--;
         }
@@ -52,6 +55,7 @@ export function normalizeDDINS(data) {
     const productName = memberInfo.product ? `Delta Dental ${memberInfo.product}` : undefined;
     const missingTooth = memberInfo.missingToothIndicator ?? pkg.missingToothIndicator ?? null;
     const maximumRows = ensureArray(maxDed.maximumsInfo ?? maxDed.maximumsinfo);
+    // Coverage end date: try member.endDate first, then accumPeriodEndDate from maximums/deductibles
     const coverageEnd = memberInfo.endDate ??
         addl.endDate ??
         maximumRows[0]?.maximumDetails?.accumPeriodEndDate ??
@@ -135,7 +139,10 @@ export function normalizeDDINS(data) {
     });
     const rawSSN = matchingPerson?.socialSecurityNumber ?? matchingPerson?.socialsecuritynumber ?? matchingPerson?.ssn;
     const cleanedSSN = typeof rawSSN === 'string' && rawSSN.trim() ? rawSSN.trim() : undefined;
+    // Extract provider information from claims
     const providerInfo = extractProviderInfo(claims);
+    // Extract procedure limitations from treatment data
+    // Calculate patient age for age-based limitation filtering
     const patientAge = dob ? calculateAge(dob) : undefined;
     const procedureLimitations = extractProcedureLimitations(pkg.treatment, patientAge);
     return {
@@ -174,6 +181,7 @@ function combineCityStateZip(address) {
     return [pieces, zip].filter(Boolean).join(' ');
 }
 function extractProviderInfo(claims) {
+    // Get the most recent claim's provider information
     const recentClaim = claims?.[0];
     if (!recentClaim?.renderingProvider)
         return {};
@@ -181,9 +189,12 @@ function extractProviderInfo(claims) {
     const firstName = provider.firstName ?? provider.firstname ?? '';
     const middleName = provider.middleName ?? provider.middlename ?? '';
     const lastName = provider.lastName ?? provider.lastname ?? '';
+    // Build full name
     const fullName = [firstName, middleName, lastName].filter(Boolean).join(' ').trim();
+    // Extract address if available
     let address;
     let phoneFromContact;
+    // Handle both array and object format for contacts
     const contacts = provider.contacts;
     let contact = null;
     if (Array.isArray(contacts) && contacts.length > 0) {
@@ -193,6 +204,7 @@ function extractProviderInfo(claims) {
         contact = contacts;
     }
     if (contact) {
+        // Get phone from contacts table
         phoneFromContact = contact.phoneNumber ?? contact.phonenumber;
         if (contact.address) {
             const addr = contact.address;
@@ -204,7 +216,9 @@ function extractProviderInfo(claims) {
             address = parts.join(', ');
         }
     }
+    // Use phone from contacts first, then from provider
     let phoneNumber = phoneFromContact || provider.phoneNumber || provider.phonenumber;
+    // Format phone number if it's a raw number
     if (phoneNumber && /^\d{10}$/.test(phoneNumber)) {
         phoneNumber = `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3, 6)}-${phoneNumber.slice(6)}`;
     }
@@ -226,6 +240,7 @@ function extractProcedureLimitations(treatments, patientAge) {
         const treatmentCode = treatment.treatmentCode ?? treatment.treatmentcode;
         if (!treatmentCode)
             return;
+        // Look for procedure classes with limitations
         const procedureClasses = ensureArray(treatment.procedureClass ?? treatment.procedureclass);
         procedureClasses.forEach((procClass) => {
             const procedures = ensureArray(procClass.procedure);
@@ -235,14 +250,17 @@ function extractProcedureLimitations(treatments, patientAge) {
                     return;
                 const procLimitations = ensureArray(proc.limitation);
                 if (procLimitations.length > 0) {
-                    let limitation = procLimitations[0];
+                    // Filter by patient age if available
+                    let limitation = procLimitations[0]; // Default fallback
                     if (patientAge != null && procLimitations.length > 1) {
+                        // Try to find limitation matching patient age
                         const ageLimitation = procLimitations.find((lim) => {
                             const ageCode = lim.sexAgeToothCode?.[0];
                             if (!ageCode)
                                 return false;
                             const minAge = ageCode.minAge ?? 0;
                             const maxAge = ageCode.maxAge ?? 999;
+                            // maxAge=0 means "no limit", minAge=0 and maxAge=0 means "all ages"
                             if (minAge === 0 && maxAge === 0)
                                 return true;
                             return patientAge >= minAge && patientAge < maxAge;
@@ -252,9 +270,11 @@ function extractProcedureLimitations(treatments, patientAge) {
                         }
                     }
                     const frequencyText = limitation.frequencyLimitationText ?? limitation.frequencylimitationtext;
+                    // Extract frequency pattern (e.g., "2 per year", "1 per 3 years")
                     let frequency = '';
                     let interval = '';
                     if (frequencyText) {
+                        // Match patterns like "limited to X per Y"
                         const match = frequencyText.match(/(\d+)\s*(?:per|every|within)\s*(.+?)(?:\.|,|$)/i);
                         if (match) {
                             frequency = `${match[1]} per ${match[2].trim()}`;
@@ -265,6 +285,7 @@ function extractProcedureLimitations(treatments, patientAge) {
                         else {
                             frequency = frequencyText;
                         }
+                        // Extract interval if mentioned
                         const intervalMatch = frequencyText.match(/(\d+)\s*(?:month|year|day)\s*interval/i);
                         if (intervalMatch) {
                             interval = intervalMatch[0];

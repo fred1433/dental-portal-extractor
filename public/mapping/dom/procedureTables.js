@@ -45,6 +45,7 @@ export function applyProcedureHistory(normalized, raw) {
     setRadioValue('d0140-same-day', answers.d0140SameDay);
     setRadioValue('srp-waiting', answers.srpWaitingPeriod);
     setRadioValue('core-buildup-day', answers.coreBuildupSameDay);
+    // Waiting period Yes/No
     const hasWaitingPeriod = normalized.waitingPeriods && normalized.waitingPeriods.length > 0 ? 'yes' : 'no';
     setRadioValue('waiting-period', hasWaitingPeriod);
     if (answers.crownPayment) {

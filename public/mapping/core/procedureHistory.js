@@ -38,12 +38,13 @@ export function extractProcedureHistory(raw) {
         const count = entry?.numberOfServicesRendered ?? entry?.numberofservicesrendered;
         const historyDetails = ensureArray(entry?.historyDetails ?? entry?.historydetails);
         const limitation = normalizeLimitations(entry);
+        // Some responses store limitation text inside historyDetails array
         if (!limitation) {
             const detailWithText = historyDetails.find((detail) => typeof detail?.limitationText === 'string');
             if (detailWithText?.limitationText) {
                 const value = String(detailWithText.limitationText).trim();
                 if (value) {
-                    entry.__normalizedLimitation = value;
+                    entry.__normalizedLimitation = value; // store for later retrieval
                 }
             }
         }

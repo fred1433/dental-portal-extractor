@@ -20,9 +20,11 @@ export function toFormFieldMap(normalized, raw) {
         }
         return '';
     };
+    // Office/Provider Information
     if (normalized.provider) {
         map['Practice Name'] = normalized.provider.practiceName ?? '';
         map['Provider Name'] = normalized.provider.name ?? '';
+        // Phone number can come from provider or be looked up from clinic credentials
         map['Phone Number'] = normalized.provider.phoneNumber ?? '';
     }
     const patientName = normalized.member.name ?? raw.summary?.patientName;
@@ -49,6 +51,7 @@ export function toFormFieldMap(normalized, raw) {
     map['COB Type'] = 'Primary';
     map['Coordination of Benefits'] = 'Yes';
     map['Other Insurance on File?'] = 'No';
+    // Payor ID could be from provider taxId if available
     map['Payor ID'] = normalized.provider?.taxId ?? '';
     map['Claims Mailing Address'] = normalized.claimsMailingAddress ?? '';
     const effectiveDate = normalized.member.coverageStart ?? raw.summary?.planStartDate;
@@ -154,7 +157,9 @@ export function toFormFieldMap(normalized, raw) {
     if (normalized.coveragePct.major != null) {
         map['Major Services (% Covered)'] = `${normalized.coveragePct.major}%`;
     }
+    // Add waiting periods information
     if (normalized.waitingPeriods?.length > 0) {
+        // Categorize waiting periods
         const preventiveWait = findWaitingPeriod(normalized.waitingPeriods, ['PV', 'DI']);
         const basicWait = findWaitingPeriod(normalized.waitingPeriods, ['RS', 'PD', 'EN', 'OS', 'GS']);
         const majorWait = findWaitingPeriod(normalized.waitingPeriods, ['CS', 'PF', 'PR', 'OR']);
@@ -173,35 +178,46 @@ export function toFormFieldMap(normalized, raw) {
         map['Basic Wait Period'] = 'None';
         map['Major Wait Period'] = 'None';
     }
+    // Add Missing Tooth Clause to form
     if (typeof normalized.member.missingTooth === 'boolean') {
         map['Missing Tooth Clause'] = normalized.member.missingTooth ? 'Yes' : 'No';
     }
+    // Add more Special Notes answers
+    // Cast to any to allow additional fields
     const extendedMap = map;
+    // Check treatment categories for Basic/Major classification
     const treatments = raw.eligibility?.pkg?.treatment;
     if (treatments) {
         const treatmentList = Array.isArray(treatments) ? treatments : [treatments];
+        // SRP (Periodontics)
         const pdTreatment = treatmentList.find(t => t.treatmentCode === 'PD');
         if (pdTreatment?.summaryValues?.[0]?.maximumCoverage) {
             const coverage = pdTreatment.summaryValues[0].maximumCoverage;
             extendedMap['SRP Category'] = coverage >= 80 ? 'Basic' : 'Major';
         }
+        // Endodontics
         const enTreatment = treatmentList.find(t => t.treatmentCode === 'EN');
         if (enTreatment?.summaryValues?.[0]?.maximumCoverage) {
             const coverage = enTreatment.summaryValues[0].maximumCoverage;
             extendedMap['Endo Category'] = coverage >= 80 ? 'Basic' : 'Major';
         }
+        // Extractions (Oral Surgery)
         const osTreatment = treatmentList.find(t => t.treatmentCode === 'OS');
         if (osTreatment?.summaryValues?.[0]?.maximumCoverage) {
             const coverage = osTreatment.summaryValues[0].maximumCoverage;
             extendedMap['Extraction Category'] = coverage >= 80 ? 'Basic' : 'Major';
         }
+        // Orthodontics
         const orTreatment = treatmentList.find(t => t.treatmentCode === 'OR');
         extendedMap['Orthodontic Coverage'] = orTreatment ? 'Yes' : 'No';
     }
+    // Waiting period answer
     extendedMap['Waiting Period'] = normalized.waitingPeriods?.length > 0 ? 'Yes' : 'No';
+    // Add NPI from provider
     if (raw.claims?.[0]?.renderingProvider?.npi) {
         extendedMap['NPI'] = raw.claims[0].renderingProvider.npi;
     }
+    // Add provider address
     const providerAddress = raw.claims?.[0]?.renderingProvider?.contacts?.address;
     if (providerAddress) {
         const addressParts = [
@@ -214,8 +230,10 @@ export function toFormFieldMap(normalized, raw) {
             extendedMap['Provider Address'] = addressParts.join(', ');
         }
     }
+    // Add procedure history data
     const procedureHistory = extractProcedureHistory(raw);
     const procedureMap = mapProcedureHistory(procedureHistory);
+    // Merge procedure data into main map
     Object.assign(map, procedureMap);
     if (normalized.procedureLimitations) {
         const dynamicMap = map;

@@ -13,9 +13,11 @@ function extractAge(text) {
 }
 export function extractSpecialNotesAnswers(normalized, raw) {
     const answers = {};
+    // Waiting period
     answers.waitingPeriod = (normalized.waitingPeriods && normalized.waitingPeriods.length > 0) ? YES : NO;
     const specialNotes = normalized.additionalBenefits ?? {};
     const note = (key) => specialNotes[key.toLowerCase()];
+    // Missing tooth clause
     if (typeof normalized.member.missingTooth === 'boolean') {
         answers.missingToothClause = normalized.member.missingTooth ? YES : NO;
     }
@@ -24,6 +26,7 @@ export function extractSpecialNotesAnswers(normalized, raw) {
         const lower = missingToothNote.toLowerCase();
         answers.missingToothClause = lower.includes('yes') ? YES : lower.includes('no') ? NO : answers.missingToothClause;
     }
+    // Additional benefits cues
     const impactedTeethBenefit = getAdditionalBenefit(normalized, 'Removal of Impacted Teeth');
     if (impactedTeethBenefit) {
         const lower = impactedTeethBenefit.toLowerCase();
@@ -43,6 +46,7 @@ export function extractSpecialNotesAnswers(normalized, raw) {
         || getAdditionalBenefit(normalized, 'Orthodontic Age Limit')
         || getAdditionalBenefit(normalized, 'Student Contract Age Limit');
     answers.sealantAgeLimit = extractAge(sealantBenefit);
+    // Treatment categories
     const treatments = raw.eligibility?.pkg?.treatment;
     if (treatments) {
         const list = Array.isArray(treatments) ? treatments : [treatments];
@@ -68,6 +72,7 @@ export function extractSpecialNotesAnswers(normalized, raw) {
         if (os)
             answers.extractionCategory = toCategory(os) ?? 'major';
     }
+    // Procedure limitations analysis
     const limitations = normalized.procedureLimitations ?? {};
     const getLimit = (code) => {
         const entry = limitations[code];
@@ -167,6 +172,7 @@ export function extractSpecialNotesAnswers(normalized, raw) {
             answers.crownPayment = 'prep';
         }
     }
+    // Work in progress / D9232 fallbacks (search raw JSON comments)
     const benefitText = getAdditionalBenefit(normalized, 'Pregnancy Benefits') || '';
     if (!answers.workInProgress && /in progress/i.test(benefitText)) {
         answers.workInProgress = NO;

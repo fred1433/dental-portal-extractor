@@ -17,6 +17,7 @@ function attachFillIndicator(target) {
     }
 }
 function processSpecialNotesRadios(map) {
+    // Map of questions to field names in our data
     const questionMappings = {
         'missing-tooth': 'Missing Tooth Clause',
         'waiting-period': 'Waiting Period',
@@ -28,17 +29,20 @@ function processSpecialNotesRadios(map) {
         const value = map[fieldKey];
         if (!value)
             continue;
+        // Find the radio buttons ANYWHERE in document (not just .special-notes)
         const radios = document.querySelectorAll(`input[type="radio"][name="${radioName}"]`);
         radios.forEach(radio => {
             const radioEl = radio;
             const radioValue = radioEl.value.toLowerCase();
             const mappedValue = value.toLowerCase();
+            // Check if this radio should be selected
             if ((radioValue === 'yes' && mappedValue === 'yes') ||
                 (radioValue === 'no' && mappedValue === 'no') ||
                 (radioValue === 'basic' && mappedValue === 'basic') ||
                 (radioValue === 'major' && mappedValue === 'major')) {
                 radioEl.checked = true;
                 radioEl.classList.add('has-extracted-value');
+                // Add visual indicator to the parent question
                 const questionDiv = radioEl.closest('.radio-group');
                 if (questionDiv) {
                     questionDiv.classList.add('has-extracted-value');
@@ -59,32 +63,40 @@ function processSpecialNotesRadios(map) {
     }
 }
 function processProcedureTables(map) {
+    // Find all procedure tables on the page
     const tables = document.querySelectorAll('.procedure-table');
     tables.forEach(table => {
         const rows = table.querySelectorAll('tbody tr');
         rows.forEach(row => {
+            // Get the procedure code from this row
             const codeSpan = row.querySelector('.procedure-code');
             if (!codeSpan)
                 return;
             const code = codeSpan.textContent?.trim();
             if (!code)
                 return;
+            // Handle combined codes (e.g., "D0272/D0274" or "D2391-D2394")
+            // Try exact match first, then try each code separately
             let codesToTry = [code];
             if (code.includes('/')) {
+                // Slash separator: just split
                 codesToTry = [code, ...code.split('/').map(c => c.trim())];
             }
             else if (code.includes('-') && code.match(/D(\d+)-D(\d+)/)) {
+                // Hyphen separator: generate all codes in range
                 const match = code.match(/D(\d+)-D(\d+)/);
                 if (match) {
                     const start = parseInt(match[1]);
                     const end = parseInt(match[2]);
                     const generatedCodes = [];
+                    // Generate all codes in range (D2391, D2392, D2393, D2394)
                     for (let num = start; num <= end; num++) {
                         generatedCodes.push(`D${num}`);
                     }
                     codesToTry = [code, ...generatedCodes];
                 }
             }
+            // Find data from any matching code
             let lastDate, frequency, limitations, notes;
             for (const tryCode of codesToTry) {
                 lastDate = lastDate || map[`${tryCode}_last_date`];
@@ -92,8 +104,10 @@ function processProcedureTables(map) {
                 limitations = limitations || map[`${tryCode}_limitations`];
                 notes = notes || map[`${tryCode}_notes`];
             }
+            // Fill the fields in this row
             const inputs = row.querySelectorAll('input');
             if (inputs.length >= 4) {
+                // Typically: frequency, limitations, date, notes
                 if (frequency && inputs[0]) {
                     inputs[0].value = frequency;
                     inputs[0].classList.add('has-extracted-value');
@@ -110,6 +124,7 @@ function processProcedureTables(map) {
                     inputs[3].value = notes;
                     inputs[3].classList.add('has-extracted-value');
                 }
+                // Add visual indicator if any field was filled
                 if (lastDate || frequency || limitations || notes) {
                     row.classList.add('has-history-data');
                     const htmlRow = row;
@@ -127,10 +142,12 @@ export function applyFormFieldMapToDOM(map) {
     const groups = Array.from(document.querySelectorAll('.form-group'));
     const coverageItems = Array.from(document.querySelectorAll('.coverage-item'));
     const inputs = new Map();
+    // First, reset any existing filled states
     document.querySelectorAll('.fill-indicator').forEach(el => el.remove());
     groups.forEach(group => {
         group.classList.remove('field-filled', 'field-empty');
     });
+    // Process standard form groups
     for (const group of groups) {
         const labelText = group.querySelector('label')?.textContent;
         const input = group.querySelector('input, select, textarea');
@@ -138,6 +155,7 @@ export function applyFormFieldMapToDOM(map) {
             continue;
         inputs.set(normalizeLabel(labelText), { input, group });
     }
+    // Process coverage grid items (Coverage by Category section)
     for (const item of coverageItems) {
         const labelText = item.querySelector('label')?.textContent;
         const input = item.querySelector('input, select');
@@ -145,7 +163,9 @@ export function applyFormFieldMapToDOM(map) {
             continue;
         inputs.set(normalizeLabel(labelText), { input, group: item });
     }
+    // Process procedure tables for history data
     processProcedureTables(map);
+    // Process Special Notes radio buttons
     processSpecialNotesRadios(map);
     for (const [key, value] of Object.entries(map)) {
         const normalizedKey = normalizeLabel(key);
@@ -153,22 +173,27 @@ export function applyFormFieldMapToDOM(map) {
         if (!item)
             continue;
         const { input, group } = item;
+        // Check if value exists
         const stringValue = String(value).trim();
         const valueExists = value != null && stringValue !== '';
+        // Check if value is meaningful (not default/placeholder values)
         const isMeaningfulValue = valueExists &&
             stringValue !== '$0.00' &&
             stringValue !== 'N/A';
         if (valueExists) {
+            // Always set the value (even if N/A or $0.00)
             if (input instanceof HTMLInputElement || input instanceof HTMLTextAreaElement) {
                 input.value = value;
             }
             else if (input instanceof HTMLSelectElement) {
                 input.value = value;
             }
+            // Always trigger events (needed for select to display properly)
             input.dispatchEvent(new Event('input', { bubbles: true }));
             input.dispatchEvent(new Event('change', { bubbles: true }));
         }
         if (isMeaningfulValue) {
+            // Add visual indicators only for meaningful values
             group.classList.add('field-filled');
             input.classList.add('has-extracted-value');
             const label = group.querySelector('label');
@@ -178,6 +203,7 @@ export function applyFormFieldMapToDOM(map) {
             else {
                 attachFillIndicator(group);
             }
+            // Trigger animation
             group.style.animation = 'fieldFilledPulse 0.5s ease';
             setTimeout(() => {
                 group.style.animation = '';
