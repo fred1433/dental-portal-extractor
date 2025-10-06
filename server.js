@@ -265,7 +265,7 @@ app.post('/api/extract', checkApiKey, async (req, res) => {
   } else if (portalLower === 'cigna') {
     service = new CignaService(credentials);
   } else if (portalLower === 'dnoa') {
-    service = new DNOAService(credentials);
+    service = new DNOAService({ credentials, clinicId });
   } else if (portalLower === 'dot') {
     service = new DOTService(credentials);
   } else if (portalLower === 'ddins' || portalLower === 'deltadentalins') {

@@ -1,16 +1,15 @@
 const { chromium } = require('playwright');
 const fs = require('fs');
 const path = require('path');
-
-const SESSION_DIR = path.join(__dirname, '.dnoa-session');
-const STORAGE_STATE_FILE = path.join(SESSION_DIR, 'storageState.json');
+const { loadSession, saveSession, sessionExists } = require('../session-store');
 
 class DNOAService {
-  constructor(credentials = {}) {
+  constructor({ credentials = {}, clinicId = 'default' } = {}) {
     this.browser = null;
     this.context = null;
     this.page = null;
-    this.isFirstRun = !fs.existsSync(SESSION_DIR);
+    this.clinicId = clinicId;
+    this.portalKey = 'dnoa';
     this.authToken = null; // Store token for bulk operations
 
     // Accept credentials from constructor (for multi-clinic support) or fallback to env vars
@@ -21,14 +20,7 @@ class DNOAService {
   }
 
   async initialize(headless = true, onLog = console.log) {
-    onLog('🚀 Initializing DNOA service...');
-    
-    if (this.isFirstRun) {
-      onLog('🆕 First run - Creating session directory');
-      fs.mkdirSync(SESSION_DIR, { recursive: true });
-    } else {
-      onLog('✅ Using existing session');
-    }
+    onLog(`🚀 Initializing DNOA service for clinic: ${this.clinicId}...`);
 
     // EXACT MetLife architecture: browser + newContext
     this.browser = await chromium.launch({
@@ -42,10 +34,13 @@ class DNOAService {
       timezoneId: 'America/New_York'
     };
 
-    // Load saved storage state if it exists (cookies, localStorage, etc.)
-    if (fs.existsSync(STORAGE_STATE_FILE)) {
-      contextOptions.storageState = STORAGE_STATE_FILE;
-      onLog('🍪 Loaded saved cookies and storage');
+    // Load saved storage state for this clinic if it exists
+    const sessionState = loadSession(this.clinicId, this.portalKey);
+    if (sessionState) {
+      contextOptions.storageState = sessionState;
+      onLog(`🍪 Loaded session for ${this.clinicId}/DNOA`);
+    } else {
+      onLog(`🆕 No saved session for ${this.clinicId}/DNOA - will login`);
     }
 
     // Create context from browser (MetLife style)
@@ -57,8 +52,9 @@ class DNOAService {
 
   async saveSession(onLog = console.log) {
     // Save the complete storage state (cookies, localStorage, sessionStorage)
-    await this.context.storageState({ path: STORAGE_STATE_FILE });
-    onLog('💾 Session saved (cookies + storage)');
+    const state = await this.context.storageState();
+    saveSession(this.clinicId, this.portalKey, state);
+    onLog(`💾 Session saved for ${this.clinicId}/DNOA`);
   }
 
   async ensureLoggedIn(onLog = console.log) {
