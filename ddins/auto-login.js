@@ -100,7 +100,55 @@ async function autoLogin(credentials = {}) {
     console.log('⏳ Waiting for session to stabilize...');
     await page.waitForTimeout(5000);
 
-    // CRITICAL: Save the session (cookies + localStorage)
+    // CRITICAL: Extract pt-userid and plocId from window.digitalData
+    console.log('🔍 Extracting session data from window.digitalData...');
+    let ptUserId = null;
+    let plocId = null;
+
+    try {
+      // Wait for digitalData to be available
+      await page.waitForFunction(
+        () => window.digitalData?.user?.profile?.userId !== undefined,
+        { timeout: 10000 }
+      );
+
+      const userData = await page.evaluate(() => {
+        return window.digitalData?.user?.profile || null;
+      });
+
+      if (userData) {
+        ptUserId = userData.userId;          // "AcedentalHeights"
+        plocId = userData.mtvPlocID;         // "189342314001"
+
+        console.log(`✅ Found PT-UserID: ${ptUserId}`);
+        console.log(`✅ Found plocId: ${plocId}`);
+
+        // Save to localStorage so storageState will capture them
+        await page.evaluate((data) => {
+          if (data.ptUserId) localStorage.setItem('pt-userid', data.ptUserId);
+          if (data.plocId) localStorage.setItem('mtvPlocId', data.plocId);
+        }, { ptUserId, plocId });
+
+        console.log(`💾 Saved to localStorage: pt-userid and mtvPlocId`);
+      } else {
+        console.log('⚠️  window.digitalData.user.profile not available');
+      }
+    } catch (e) {
+      console.log('⚠️  Could not extract data from window.digitalData:', e.message);
+
+      // Debug: show what's available
+      const debugInfo = await page.evaluate(() => {
+        return {
+          hasDigitalData: !!window.digitalData,
+          hasUser: !!window.digitalData?.user,
+          hasProfile: !!window.digitalData?.user?.profile,
+          localStorageKeys: Object.keys(localStorage)
+        };
+      });
+      console.log('   📋 Debug info:', JSON.stringify(debugInfo, null, 2));
+    }
+
+    // NOW save the session (cookies + localStorage including pt-userid and plocId)
     await context.storageState({ path: STORAGE_PATH });
     console.log(`💾 Session saved → ${path.relative(process.cwd(), STORAGE_PATH)}`);
 
@@ -111,22 +159,34 @@ async function autoLogin(credentials = {}) {
     );
     console.log(`   📦 Saved ${cookies.length} cookies (${sessionCookies.length} session-related)`);
 
-    // CRITICAL: Extract pt-userid from localStorage for API calls
-    try {
-      const ptUserId = await page.evaluate(() => localStorage.getItem('pt-userid'));
-      if (ptUserId) {
-        console.log(`✅ Login successful! PT-UserID: ${ptUserId}`);
+    // Verify pt-userid and plocId were saved in storageState
+    if (ptUserId || plocId) {
+      const savedState = JSON.parse(require('fs').readFileSync(STORAGE_PATH, 'utf8'));
+      const origin = savedState.origins?.find(o => o.origin === 'https://www.deltadentalins.com');
 
-        // Optionally save to .env if not already there
-        if (!process.env.DDINS_PT_USERID) {
-          console.log(`💡 Add to .env: DDINS_PT_USERID=${ptUserId}`);
-        }
-      } else {
-        console.log('✅ Login successful!');
+      if (origin) {
+        const hasPtUserId = origin.localStorage?.some(item => item.name === 'pt-userid' && item.value === ptUserId);
+        const hasPlocId = origin.localStorage?.some(item => item.name === 'mtvPlocId' && item.value === plocId);
+
+        if (hasPtUserId) console.log(`✅ PT-UserID verified in saved storageState`);
+        else console.log(`⚠️  PT-UserID NOT found in saved storageState`);
+
+        if (hasPlocId) console.log(`✅ plocId verified in saved storageState`);
+        else console.log(`⚠️  plocId NOT found in saved storageState`);
       }
-    } catch (e) {
-      console.log('✅ Login successful!');
+
+      // Suggest env var fallbacks
+      if (ptUserId && !process.env.DDINS_PT_USERID) {
+        console.log(`💡 Optional fallback: Add to .env → DDINS_PT_USERID=${ptUserId}`);
+      }
+      if (plocId && !process.env.DDINS_PLOC) {
+        console.log(`💡 Optional fallback: Add to .env → DDINS_PLOC=${plocId}`);
+      }
+    } else {
+      console.log('⚠️  No session data extracted - extraction may require fallback to env vars');
     }
+
+    console.log('✅ Login successful!');
 
   } catch (error) {
     console.error('❌ Auto-login failed:', error.message);

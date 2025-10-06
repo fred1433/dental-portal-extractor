@@ -7,13 +7,17 @@ require('dotenv').config();
 let sharedAutoLoginPromise = null;
 
 class DDINSService {
-    constructor() {
-        this.storageStatePath = process.env.DDINS_SESSION_PATH
+    constructor(options = {}) {
+        this.storageStatePath = options.storageStatePath
+            || process.env.DDINS_SESSION_PATH
             || path.join(__dirname, '.ddins-session', 'storageState.json');
         this.baseURL = 'https://www.deltadentalins.com';
         this.ptUserId = process.env.DDINS_PT_USERID || null;
         this.plocId = process.env.DDINS_PLOC || null;
         this.autoReloginAttempted = false;
+
+        // Store credentials for auto-login (multi-clinic support)
+        this.credentials = options.credentials || null;
     }
 
     isHtml(text) {
@@ -55,9 +59,24 @@ class DDINSService {
 
         sharedAutoLoginPromise = new Promise((resolve) => {
             const loginScriptPath = path.join(__dirname, 'auto-login.js');
+
+            // Build custom environment with clinic-specific credentials
+            const env = { ...process.env };
+
+            // Inject credentials if provided (for multi-clinic support)
+            if (this.credentials) {
+                if (this.credentials.username) env.DDINS_USERNAME = this.credentials.username;
+                if (this.credentials.password) env.DDINS_PASSWORD = this.credentials.password;
+            }
+
+            // Inject custom storage path if provided
+            if (this.storageStatePath) {
+                env.DDINS_SESSION_PATH = this.storageStatePath;
+            }
+
             const child = spawn('node', [loginScriptPath], {
                 cwd: __dirname,
-                env: { ...process.env },
+                env: env,  // Use customized environment
                 stdio: ['inherit', 'pipe', 'pipe']
             });
 
@@ -236,20 +255,20 @@ class DDINSService {
             }
         }
         
-        // Extract pt-userid from storageState
+        // Extract pt-userid from storageState (always reload to handle session updates)
         if (fs.existsSync(this.storageStatePath)) {
             const storageState = JSON.parse(fs.readFileSync(this.storageStatePath, 'utf8'));
-            
+
             // Find pt-userid from localStorage
             const origins = storageState.origins || [];
             for (const origin of origins) {
                 if (origin.origin === 'https://www.deltadentalins.com' && origin.localStorage) {
                     for (const item of origin.localStorage) {
-                        if (!this.ptUserId && (item.name === 'pt-userid' || item.name === 'ptUserId')) {
-                            this.ptUserId = item.value;
+                        if (item.name === 'pt-userid' || item.name === 'ptUserId') {
+                            this.ptUserId = item.value;  // Always update from storage
                         }
-                        if (!this.plocId && (item.name === 'mtvPlocId' || item.name === 'practiceLocationId')) {
-                            this.plocId = item.value;
+                        if (item.name === 'mtvPlocId' || item.name === 'practiceLocationId') {
+                            this.plocId = item.value;  // Always update from storage
                         }
                     }
                 }
