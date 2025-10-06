@@ -355,24 +355,17 @@ class DDINSService {
     }
 
     async getClaims(api, enrolleeId) {
-        try {
-            const resp = await api.get('/provider-tools/v2/api/claims', {
-                params: {
-                    practiceLocationId: this.plocId || '',
-                    timePeriod: 12,
-                    pageNumber: 1,
-                    pageSize: 50,
-                    claimTransactionType: 'All Claims'
-                },
-                headers: enrolleeId ? { enrolleeid: String(enrolleeId) } : undefined
-            });
-            return await this.parseJsonSafe(resp);
-        } catch (e) {
-            const resp = await api.post('/provider-tools/v2/api/claim/search', {
-                data: { searchTerm: enrolleeId, pageNumber: 1, pageSize: 50 }
-            });
-            return await this.parseJsonSafe(resp);
-        }
+        const resp = await api.get('/provider-tools/v2/api/claims', {
+            params: {
+                practiceLocationId: this.plocId || '',
+                timePeriod: 12,
+                pageNumber: 1,
+                pageSize: 50,
+                claimTransactionType: 'All Claims'
+            },
+            headers: enrolleeId ? { enrolleeid: String(enrolleeId) } : undefined
+        });
+        return await this.parseJsonSafe(resp);
     }
 
     async extractPatientData(patient, onLog = console.log, retryCount = 0) {
@@ -473,10 +466,28 @@ class DDINSService {
         let claims = [];
         try {
             const claimsResp = await this.getClaims(api, enrolleeId);
-            claims = Array.isArray(claimsResp?.claims) ? claimsResp.claims : 
-                     (Array.isArray(claimsResp?.data) ? claimsResp.data : 
+            claims = Array.isArray(claimsResp?.claims) ? claimsResp.claims :
+                     (Array.isArray(claimsResp?.data) ? claimsResp.data :
                      (Array.isArray(claimsResp) ? claimsResp : []));
-            onLog(`   ✓ Claims fetched (${claims.length})`);
+
+            // Transparent logging: distinguish detailed claims vs basic claims in history
+            if (claims.length === 0) {
+                // Check if basic claims exist in eligibility history
+                const histClaims = eligibility?.hist?.procedures?.flatMap(p =>
+                    p.services?.map(s => s.claimId).filter(Boolean) || []
+                ) || [];
+                const uniqueHistClaims = [...new Set(histClaims)].length;
+
+                if (uniqueHistClaims > 0) {
+                    onLog(`   ✓ Claims fetched (0 detailed)`);
+                    onLog(`   ℹ️  Note: ${uniqueHistClaims} basic claims in history (no amounts/provider)`);
+                    onLog(`   ⚠️  This may indicate wrong plocId for this patient's clinic`);
+                } else {
+                    onLog(`   ✓ Claims fetched (0)`);
+                }
+            } else {
+                onLog(`   ✓ Claims fetched (${claims.length} detailed with amounts)`);
+            }
         } catch (e) {
             onLog(`   ⚠️ Claims failed: ${e.message}`);
             if (e.code === 'HTML_RESPONSE') {

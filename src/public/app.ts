@@ -231,10 +231,10 @@ const testDataByClinic: Record<string, Partial<Record<PortalType, PortalTestData
     },
     'ace_dental': {
         'DDINS': {
-            firstName: 'Eleanor',
-            lastName: 'Nawab',
-            subscriberId: '125280429203',
-            dateOfBirth: '10/29/2014'
+            firstName: 'Karen',
+            lastName: 'Ilumin',
+            subscriberId: '121875916101',
+            dateOfBirth: '10/21/1998'
         }
     }
 };
