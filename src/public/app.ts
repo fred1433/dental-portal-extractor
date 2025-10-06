@@ -1,4 +1,13 @@
 /**
+ * ⚠️  AUTO-GENERATED FILE - DO NOT EDIT public/app.js DIRECTLY!
+ *
+ * This JavaScript file is compiled from src/public/app.ts
+ * Any changes made to public/app.js will be OVERWRITTEN by `npm run build`
+ *
+ * 📝 TO MODIFY THIS CODE: Edit src/public/app.ts (this file)
+ * 🔧 TO COMPILE: Run `npm run build`
+ * 🚫 DO NOT EDIT: public/app.js (auto-generated, in .gitignore)
+ *
  * Frontend TypeScript application for dental portal extraction
  */
 
