@@ -8,7 +8,7 @@ export function toFormFieldMap(normalized: NormalizedEligibility, raw: Extractio
   // Manual fields for ACE form
   map["Today's Date"] = new Date().toISOString().slice(0, 10);
   map["Employee's Initials"] = '';
-  map["Rep's Name"] = '';
+  map["Rep's Name"] = 'Dentistry Automation';
 
   const additionalBenefits = normalized.additionalBenefits ?? {};
 
@@ -339,6 +339,68 @@ export function toFormFieldMap(normalized: NormalizedEligibility, raw: Extractio
       if (normalized.orthodontics.lifetimeMax != null) {
         map['Ortho Lifetime Maximum'] = formatCurrency(normalized.orthodontics.lifetimeMax);
       }
+    }
+  }
+
+  // Add Coverage Questions (ACE form requirement - specific policy questions)
+  const dynamicMapForQuestions = map as Record<string, string>;
+
+  // Check if D9232 (anesthesia) is covered
+  if (normalized.procedureLimitations?.['D9232']) {
+    dynamicMapForQuestions['D9232 Coverage'] = 'Yes';
+  } else {
+    dynamicMapForQuestions['D9232 Coverage'] = 'Not covered or not found';
+  }
+
+  // Sealant age limit (already extracted via procedureLimitations)
+  if (normalized.procedureLimitations?.['D1351']?.ageLimit) {
+    dynamicMapForQuestions['Sealant Age Limit'] = `${normalized.procedureLimitations['D1351'].ageLimit} years`;
+  }
+
+  // Time between SRP and Perio Maintenance
+  const d4910Freq = normalized.procedureLimitations?.['D4910']?.frequency;
+  if (d4910Freq) {
+    // If D4910 says "4 per year" or similar, that's typically 3 months between
+    if (d4910Freq.includes('4 per year') || d4910Freq.includes('3 month')) {
+      dynamicMapForQuestions['Time Between SRP and Perio Maintenance'] = '3 months';
+    } else if (d4910Freq.includes('2 per year') || d4910Freq.includes('6 month')) {
+      dynamicMapForQuestions['Time Between SRP and Perio Maintenance'] = '6 months';
+    } else {
+      dynamicMapForQuestions['Time Between SRP and Perio Maintenance'] = d4910Freq;
+    }
+  }
+
+  // Composite downgrade detection
+  // Check if composite fillings (D2391-D2394) have limitations mentioning "amalgam" or "downgrade"
+  let compositeDowngrade = false;
+  for (const code of ['D2391', 'D2392', 'D2393', 'D2394']) {
+    const limitation = normalized.procedureLimitations?.[code];
+    if (limitation?.limitations) {
+      const limText = limitation.limitations.toLowerCase();
+      if (limText.includes('amalgam') || limText.includes('downgrade') || limText.includes('paid at') || limText.includes('alternate benefit')) {
+        compositeDowngrade = true;
+        break;
+      }
+    }
+    if (limitation?.additionalRequirements) {
+      const reqText = limitation.additionalRequirements.toLowerCase();
+      if (reqText.includes('amalgam') || reqText.includes('downgrade') || reqText.includes('paid at') || reqText.includes('alternate benefit')) {
+        compositeDowngrade = true;
+        break;
+      }
+    }
+  }
+  dynamicMapForQuestions['Composite Downgrade'] = compositeDowngrade ? 'Yes' : 'No';
+
+  // Does Perio Maintenance share frequency with prophy?
+  // This is typically "Yes" if both D1110 and D4910 have the same frequency limit
+  const d1110Freq = normalized.procedureLimitations?.['D1110']?.frequency;
+  if (d1110Freq && d4910Freq) {
+    // Simple heuristic: if they both mention "per year", they likely share
+    if (d1110Freq.includes('per year') && d4910Freq.includes('per year')) {
+      dynamicMapForQuestions['Perio Maintenance Shares Frequency'] = 'Yes';
+    } else {
+      dynamicMapForQuestions['Perio Maintenance Shares Frequency'] = 'No';
     }
   }
 

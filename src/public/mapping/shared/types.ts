@@ -206,7 +206,12 @@ export type VerificationFieldKey =
   | 'Bridge History'
   | 'Build Up History'
   | 'Post & Core History'
-  | 'Denture History';
+  | 'Denture History'
+  | 'D9232 Coverage'
+  | 'Sealant Age Limit'
+  | 'Time Between SRP and Perio Maintenance'
+  | 'Composite Downgrade'
+  | 'Perio Maintenance Shares Frequency';
 
 // Allow dynamic keys like "D0120_coverage_pct", "D0120_frequency", etc.
 export type FormFieldMap = Partial<Record<VerificationFieldKey, string>> & Record<string, string>;

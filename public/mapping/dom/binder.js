@@ -62,6 +62,61 @@ function processSpecialNotesRadios(map) {
         });
     }
 }
+function processCoverageQuestions(map) {
+    // Map Coverage Questions field names to HTML input names
+    const coverageQuestionMappings = {
+        'd9232-covered': 'D9232 Coverage',
+        'sealant-age-limit': 'Sealant Age Limit',
+        'time-srp-perio': 'Time Between SRP and Perio Maintenance',
+        'composite-downgrade': 'Composite Downgrade'
+    };
+    for (const [inputName, fieldKey] of Object.entries(coverageQuestionMappings)) {
+        const value = map[fieldKey];
+        if (!value)
+            continue;
+        // Check if it's a radio button field
+        const radios = document.querySelectorAll(`input[type="radio"][name="${inputName}"]`);
+        if (radios.length > 0) {
+            // Handle radio buttons (Yes/No)
+            radios.forEach(radio => {
+                const radioEl = radio;
+                const radioValue = radioEl.value.toLowerCase();
+                const mappedValue = String(value).toLowerCase();
+                if ((radioValue === 'yes' && mappedValue === 'yes') ||
+                    (radioValue === 'no' && mappedValue === 'no')) {
+                    radioEl.checked = true;
+                    radioEl.classList.add('has-extracted-value');
+                    // Add visual indicator
+                    const radioGroup = radioEl.closest('tr');
+                    if (radioGroup) {
+                        const htmlRow = radioGroup;
+                        htmlRow.style.animation = 'fieldFilledPulse 0.5s ease';
+                        setTimeout(() => {
+                            htmlRow.style.animation = '';
+                        }, 500);
+                    }
+                }
+            });
+        }
+        else {
+            // Handle text inputs
+            const input = document.querySelector(`input[type="text"][name="${inputName}"]`);
+            if (input) {
+                input.value = String(value);
+                input.classList.add('has-extracted-value');
+                // Add visual indicator
+                const row = input.closest('tr');
+                if (row) {
+                    const htmlRow = row;
+                    htmlRow.style.animation = 'fieldFilledPulse 0.5s ease';
+                    setTimeout(() => {
+                        htmlRow.style.animation = '';
+                    }, 500);
+                }
+            }
+        }
+    }
+}
 function processProcedureTables(map) {
     // Find all procedure tables on the page
     const tables = document.querySelectorAll('.procedure-table');
@@ -167,6 +222,8 @@ export function applyFormFieldMapToDOM(map) {
     processProcedureTables(map);
     // Process Special Notes radio buttons
     processSpecialNotesRadios(map);
+    // Process Coverage Questions (special table inputs)
+    processCoverageQuestions(map);
     for (const [key, value] of Object.entries(map)) {
         const normalizedKey = normalizeLabel(key);
         const item = inputs.get(normalizedKey);
