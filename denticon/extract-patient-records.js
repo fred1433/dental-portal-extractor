@@ -127,7 +127,7 @@ async function testAppointmentsExtraction() {
         // Injecter et exécuter le script d'extraction
         const results = await page.evaluate(async () => {
             try {
-                const testDates = ['10/7/2025', '10/8/2025', '10/9/2025', '10/10/2025'];  // Oct 7-10
+                const testDates = ['10/7/2025'];  // Karen est probablement le 10/7 (Patient 1/70)
                 const maxPatientsTotal = 100;  // Tous les patients
 
                 console.log('🎯 EXTRACTION COMPLÈTE : Calendrier + Détails');
@@ -373,11 +373,17 @@ async function testAppointmentsExtraction() {
         // await page.waitForTimeout(2000);
         console.log('✅ Session a1 active (pas de retour home nécessaire)\n');
 
+        // ✨ TEST: Filter pour Karen Ilumin uniquement (Self subscriber qui marche - 200 OK)
+        const filteredPatients = merged.filter(p =>
+            p.patient_name && p.patient_name.toUpperCase().includes('ILUMIN')
+        );
+        console.log(`🎯 FILTRÉ: ${filteredPatients.length} patient(s) (Karen uniquement)\n`);
+
         const fullyEnriched = [];
 
-        for (let i = 0; i < merged.length; i++) {
-            const patient = merged[i];
-            console.log(`\n👤 Patient ${i+1}/${merged.length}: ${patient.patient_name}`);
+        for (let i = 0; i < filteredPatients.length; i++) {
+            const patient = filteredPatients[i];
+            console.log(`\n👤 Patient ${i+1}/${filteredPatients.length}: ${patient.patient_name}`);
             console.log('   ─────────────────────────────────────');
 
             // URL de sélection du patient sur a1 (Patient Overview)
