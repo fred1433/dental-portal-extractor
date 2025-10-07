@@ -16,7 +16,7 @@ metlife/.metlife-session/
 dnoa/.dnoa-session/
 ddins/.ddins-session/
 dot-extractor/.dot-session/
-sessions/                          # Multi-clinic session storage
+sessions/                          
 *.session
 *.b64
 *session*.json
@@ -63,7 +63,7 @@ data/
 output/
 dentaquest-html-scraping/output/*.json
 output/dentaquest_*.json
-scrapers/data/                     # Future: Donglin's Python scrapers
+scrapers/data/                  
 downloads/
 temp_downloads/
 temp-*/
