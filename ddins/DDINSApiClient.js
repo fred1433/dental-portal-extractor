@@ -528,6 +528,86 @@ class DDINSService {
         // Close API context
         await api.dispose();
 
+        // ========== VALIDATION: Verify patient identity ==========
+        // DDINS accepts any fake data and echoes it back in summary fields
+        // BUT: eligibility.persons contains REAL data from DDINS database
+        // Invalid patients return: {errors: [{message: "Request failed with status code 400"}], statusCode: 400}
+
+        const inputFirstName = (patient.firstName || '').toUpperCase().trim();
+        const inputLastName = (patient.lastName || '').toUpperCase().trim();
+
+        // PRIMARY VALIDATION: Check eligibility.persons (works for ALL patients - with or without claims)
+        if (eligibility?.persons?.errors && eligibility.persons.errors.length > 0) {
+            const statusCode = eligibility.persons.statusCode;
+            const errorMsg = eligibility.persons.errors[0]?.message || 'Unknown error';
+
+            // 404 = Subscriber ID not found → REJECT (fake/invalid ID)
+            // 400 = Bad request → ACCEPT with warning (valid ID but no claims history/insufficient permissions)
+            if (statusCode === 404) {
+                onLog(`   ❌ VALIDATION FAILED: Subscriber ID not found in DDINS`);
+                onLog(`   Status: 404 - ${errorMsg}`);
+                throw new Error(`Patient validation failed: Subscriber ID not found (404). This indicates an invalid or fake subscriber ID.`);
+            } else if (statusCode === 400) {
+                onLog(`   ⚠️  WARNING: Eligibility lookup returned 400 (likely no claims history)`);
+                onLog(`   Patient data may be limited - continuing with available data...`);
+                // Don't throw - continue with what we have
+            } else {
+                // Other errors - log and continue
+                onLog(`   ⚠️  WARNING: Eligibility lookup error (${statusCode}): ${errorMsg}`);
+            }
+        }
+
+        if (eligibility?.persons?.persons?.[0]?.name) {
+            // Validate against real DDINS data from eligibility.persons
+            const realPerson = eligibility.persons.persons[0];
+            const realFirstName = (realPerson.name.firstName || '').toUpperCase().trim();
+            const realLastName = (realPerson.name.lastName || '').toUpperCase().trim();
+
+            // Check if names match (flexible: allow partial matches for compound names)
+            const firstNameMatch = realFirstName.includes(inputFirstName) ||
+                                   inputFirstName.includes(realFirstName) ||
+                                   realFirstName === inputFirstName;
+            const lastNameMatch = realLastName.includes(inputLastName) ||
+                                  inputLastName.includes(lastNameMatch) ||
+                                  realLastName === inputLastName;
+
+            if (!firstNameMatch || !lastNameMatch) {
+                onLog(`   ❌ VALIDATION FAILED: Patient name mismatch`);
+                onLog(`   Input: ${inputFirstName} ${inputLastName}`);
+                onLog(`   DDINS: ${realFirstName} ${realLastName}`);
+                throw new Error(`Patient validation failed: Name mismatch (input: "${inputFirstName} ${inputLastName}", DDINS: "${realFirstName} ${realLastName}")`);
+            }
+
+            onLog(`   ✅ Patient identity validated via eligibility.persons`);
+
+        } else if (claims.length > 0) {
+            // FALLBACK VALIDATION: Check claims data if persons unavailable
+            const claimPatient = claims[0].patient;
+            const claimFirstName = (claimPatient?.firstName || '').toUpperCase().trim();
+            const claimLastName = (claimPatient?.lastName || '').toUpperCase().trim();
+
+            // Check if names match
+            const firstNameMatch = claimFirstName.includes(inputFirstName) ||
+                                   inputFirstName.includes(claimFirstName) ||
+                                   claimFirstName === inputFirstName;
+            const lastNameMatch = claimLastName.includes(inputLastName) ||
+                                  inputLastName.includes(claimLastName) ||
+                                  claimLastName === inputLastName;
+
+            if (!firstNameMatch || !lastNameMatch) {
+                onLog(`   ❌ VALIDATION FAILED: Patient name mismatch`);
+                onLog(`   Input: ${inputFirstName} ${inputLastName}`);
+                onLog(`   Claims: ${claimFirstName} ${claimLastName}`);
+                throw new Error(`Patient validation failed: Name mismatch (input: "${inputFirstName} ${inputLastName}", claims: "${claimFirstName} ${claimLastName}")`);
+            }
+
+            onLog(`   ✅ Patient identity validated via claims`);
+
+        } else {
+            // Both unavailable - rare edge case
+            onLog(`   ⚠️  WARNING: Cannot validate patient identity (no eligibility.persons or claims data)`);
+        }
+
         // Build summary
         const totalClaims = Array.isArray(claims) ? claims.length : 0;
         
