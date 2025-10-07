@@ -825,6 +825,15 @@ async function testAppointmentsExtraction() {
                     // ✨ Smart wait: Attendre que l'iframe soit complètement chargé
                     await primaryFrame.waitForLoadState('domcontentloaded');
 
+                    // ✨ CRITICAL: Wait for subscriber birth date field to be populated
+                    // This field uses jQuery datepicker and loads dynamically
+                    try {
+                        await primaryFrame.waitForSelector('#subBirthDate', { timeout: 3000 });
+                        await primaryFrame.waitForTimeout(500); // Extra delay for datepicker initialization
+                    } catch (e) {
+                        console.log('   ⚠️ Warning: subBirthDate field not found (may be empty)');
+                    }
+
                     // Scraper depuis l'iframe
                     primaryData = await primaryFrame.evaluate(() => {
                             const getText = (sel) => document.querySelector(sel)?.textContent?.trim() || null;
