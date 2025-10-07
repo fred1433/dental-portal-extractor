@@ -198,18 +198,12 @@ def main():
     output_dir = json_file.parent
     output_dir.mkdir(exist_ok=True)
 
-    # Write full schema
-    schema_file = output_dir / f"{json_file.stem}_schema.json"
-    with open(schema_file, 'w', encoding='utf-8') as f:
-        json.dump(schema, f, indent=2)
-    print(f"📝 Full schema saved to: {schema_file.name}")
-
-    # Write readable tree
+    # Write readable tree (compact format for chatbot)
     tree_file = output_dir / f"{json_file.stem}_structure.txt"
     tree_output = format_schema_tree(schema, max_depth=10)
     with open(tree_file, 'w', encoding='utf-8') as f:
         f.write(tree_output)
-    print(f"📝 Structure tree saved to: {tree_file.name}")
+    print(f"📝 Structure saved to: {tree_file.name} ({len(tree_output.split(chr(10)))} lines)")
 
     # Preview
     print()
