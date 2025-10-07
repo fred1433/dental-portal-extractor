@@ -127,8 +127,8 @@ async function testAppointmentsExtraction() {
         // Injecter et exécuter le script d'extraction
         const results = await page.evaluate(async () => {
             try {
-                const testDates = ['10/6/2025', '10/7/2025', '10/8/2025', '10/9/2025', '10/10/2025'];  // Semaine complète
-                const maxPatientsTotal = 100;  // Tous les patients de la semaine
+                const testDates = ['10/7/2025', '10/8/2025', '10/9/2025', '10/10/2025'];  // Oct 7-10
+                const maxPatientsTotal = 100;  // Tous les patients
 
                 console.log('🎯 EXTRACTION COMPLÈTE : Calendrier + Détails');
                 console.log(`📅 Dates: ${testDates.join(', ')}`);
@@ -391,29 +391,17 @@ async function testAppointmentsExtraction() {
             await page.waitForLoadState('domcontentloaded');
             // ✨ OPTIMISÉ: Supprimé waitForTimeout(3000) - waitForLoadState suffit!
 
-            // ========== DIAGNOSTIC: SAUVEGARDER HTML DE a1 ==========
-            if (i === 0) { // Seulement pour le premier patient
-                console.log('   📄 Sauvegarde HTML de a1 Patient Overview pour diagnostic...');
-
-                const pageInfo = await page.evaluate(() => {
-                    return {
-                        url: window.location.href,
-                        title: document.title,
-                        html: document.documentElement.outerHTML
-                    };
-                });
-
-                const debugPath = path.join(__dirname, 'debug-a1-patient-overview.html');
-                fs.writeFileSync(debugPath, pageInfo.html);
-                console.log(`   ✅ HTML sauvegardé: ${debugPath}`);
-                console.log(`   📍 URL: ${pageInfo.url}`);
-                console.log(`   📋 Title: ${pageInfo.title}\n`);
-
-                // ✨ OPTIMISÉ: Screenshot supprimé (diagnostic fini, gain ~1s)
-                // const screenshotPath = path.join(__dirname, 'debug-a1-patient-overview.png');
-                // await page.screenshot({ path: screenshotPath, fullPage: true });
-                // console.log(`   📸 Screenshot: ${screenshotPath}\n`);
-            }
+            // ========== DIAGNOSTIC: DÉSACTIVÉ ==========
+            // Debug files generation disabled - no longer needed
+            // if (i === 0) {
+            //     console.log('   📄 Sauvegarde HTML de a1 Patient Overview pour diagnostic...');
+            //     const pageInfo = await page.evaluate(() => {
+            //         return { url: window.location.href, title: document.title, html: document.documentElement.outerHTML };
+            //     });
+            //     const debugPath = path.join(__dirname, 'debug-a1-patient-overview.html');
+            //     fs.writeFileSync(debugPath, pageInfo.html);
+            //     console.log(`   ✅ HTML sauvegardé: ${debugPath}`);
+            // }
 
             // ========== ACCÈS À L'IFRAME C1 ==========
             // La page a1 Patient Overview est un wrapper contenant un iframe c1
@@ -786,27 +774,17 @@ async function testAppointmentsExtraction() {
                     // ✨ Optimisé: Court délai pour laisser l'iframe c1 se charger (3000ms → 1200ms)
                     await page.waitForTimeout(1200);
 
-                    // ========== DIAGNOSTIC: SAUVEGARDER HTML PRIMARY INSURANCE ==========
-                    if (i === 0) { // Seulement pour le premier patient
-                        console.log('   📄 Sauvegarde HTML Primary Insurance APRÈS attente pour diagnostic...');
-
-                        const fullPageHTML = await page.evaluate(() => {
-                            return {
-                                url: window.location.href,
-                                title: document.title,
-                                html: document.documentElement.outerHTML
-                            };
-                        });
-
-                        const debugPrimaryPath = path.join(__dirname, 'debug-primary-insurance-after-wait.html');
-                        fs.writeFileSync(debugPrimaryPath, fullPageHTML.html);
-                        console.log(`   ✅ HTML Primary (after wait) sauvegardé: ${debugPrimaryPath}\n`);
-
-                        // ✨ OPTIMISÉ: Screenshot supprimé (diagnostic fini, gain ~1s)
-                        // const screenshotPrimaryPath = path.join(__dirname, 'debug-primary-insurance-after-wait.png');
-                        // await page.screenshot({ path: screenshotPrimaryPath, fullPage: true });
-                        // console.log(`   📸 Screenshot Primary (after wait): ${screenshotPrimaryPath}\n`);
-                    }
+                    // ========== DIAGNOSTIC: DÉSACTIVÉ ==========
+                    // Debug files generation disabled - no longer needed
+                    // if (i === 0) {
+                    //     console.log('   📄 Sauvegarde HTML Primary Insurance APRÈS attente pour diagnostic...');
+                    //     const fullPageHTML = await page.evaluate(() => {
+                    //         return { url: window.location.href, title: document.title, html: document.documentElement.outerHTML };
+                    //     });
+                    //     const debugPrimaryPath = path.join(__dirname, 'debug-primary-insurance-after-wait.html');
+                    //     fs.writeFileSync(debugPrimaryPath, fullPageHTML.html);
+                    //     console.log(`   ✅ HTML Primary (after wait) sauvegardé: ${debugPrimaryPath}\n`);
+                    // }
 
                     // ========== ACCÈS À L'IFRAME PRIMARY INSURANCE ==========
                     // Exactement comme Patient Overview, Primary Insurance utilise un iframe!
@@ -973,7 +951,7 @@ async function testAppointmentsExtraction() {
             });
 
             // Sauvegarder en JSON
-            const outputFile = path.join(__dirname, 'test-results-appointments.json');
+            const outputFile = path.join(__dirname, 'data', 'patients-oct-7-10-2025.json');
             fs.writeFileSync(outputFile, JSON.stringify(fullyEnriched, null, 2));
             console.log(`💾 Résultats sauvegardés: ${outputFile}\n`);
         }
