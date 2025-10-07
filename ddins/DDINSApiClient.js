@@ -387,6 +387,60 @@ class DDINSService {
         return await this.parseJsonSafe(resp);
     }
 
+    async getRosterInfo(api, firstName, lastName, onLog = console.log) {
+        if (!this.plocId) return null;
+
+        try {
+            const searchText = `${firstName} ${lastName}`.trim();
+            onLog(`   🔍 Looking up roster demographics: ${searchText}`);
+
+            const resp = await api.post('/provider-tools/v2/api/patient-mgnt/patient-roster', {
+                data: {
+                    mtvPlocId: this.plocId,
+                    pageNumber: 1,
+                    pageSize: 5,
+                    patientView: 'PATIENTVIEW',
+                    sortBy: 'MODIFIED_DATE',
+                    contractType: 'FFS',
+                    patientNameSearchText: searchText
+                },
+                headers: {
+                    'pt-userid': this.ptUserId,
+                    'referer': 'https://www.deltadentalins.com/provider-tools/v2/my-patients'
+                }
+            });
+
+            const data = await this.parseJsonSafe(resp);
+
+            if (data?.patients?.length > 0) {
+                const match = data.patients[0];
+                onLog(`   ✓ Roster match found: ${match.card?.groupName || '(no group name)'}`);
+                return {
+                    firstName: match.firstName,
+                    lastName: match.lastName,
+                    dateOfBirth: match.dateOfBirth,
+                    personId: match.personId,
+                    groupName: match.card?.groupName,
+                    groupNumber: match.card?.groupNumber,
+                    divisionName: match.card?.divisionName,
+                    divisionNumber: match.card?.divisionNumber,
+                    plan: match.card?.plan,
+                    subscriberType: match.card?.subscriberType,
+                    memberAccountStatus: match.card?.memberAccountStatus,
+                    memberId: match.card?.memberId,
+                    contractId: match.card?.contractId
+                };
+            }
+
+            onLog(`   ℹ️  No roster match for ${searchText}`);
+            return null;
+
+        } catch (e) {
+            onLog(`   ⚠️ Roster lookup failed (non-blocking): ${e.message}`);
+            return null;
+        }
+    }
+
     async extractPatientData(patient, onLog = console.log, retryCount = 0) {
         // Clone patient payload so we can safely mutate
         patient = patient ? { ...patient } : {};
@@ -456,6 +510,12 @@ class DDINSService {
                 throw new Error('DDINS session expired. Please run: node ddins/auto-login.js');
             }
             onLog('   ⚠️ Session check failed, continuing anyway...');
+        }
+
+        // Enrich demographics from roster (non-blocking)
+        let rosterInfo = null;
+        if (patient.firstName && patient.lastName) {
+            rosterInfo = await this.getRosterInfo(api, patient.firstName, patient.lastName, onLog);
         }
 
         // Fetch Eligibility Bundle
@@ -636,6 +696,7 @@ class DDINSService {
             selectedCoverage: selectedCoverage,
             rosterMemberId: patient.rosterMemberId || null,
             rosterContractId: patient.rosterContractId || null,
+            roster: rosterInfo,  // Demographics from patient-roster endpoint
             eligibility: eligibility,  // Raw JSON response
             claims: claims,           // Raw JSON response
             summary: {

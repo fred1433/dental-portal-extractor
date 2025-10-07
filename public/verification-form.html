@@ -331,6 +331,18 @@
                             <label>Appointment Date</label>
                             <input type="date" />
                         </div>
+                        <div class="form-group">
+                            <label>Today's Date</label>
+                            <input type="date" />
+                        </div>
+                        <div class="form-group">
+                            <label>Employee's Initials</label>
+                            <input type="text" placeholder="Enter initials" />
+                        </div>
+                        <div class="form-group">
+                            <label>Rep's Name</label>
+                            <input type="text" placeholder="Enter rep name" />
+                        </div>
                     </div>
                 </div>
             </div>
@@ -357,8 +369,16 @@
                             <input type="date" />
                         </div>
                         <div class="form-group">
+                            <label>Relationship to Patient</label>
+                            <input type="text" placeholder="Self, Child, Spouse..." />
+                        </div>
+                        <div class="form-group">
                             <label>Member ID</label>
                             <input type="text" placeholder="Enter member ID" />
+                        </div>
+                        <div class="form-group">
+                            <label>Insurance Number</label>
+                            <input type="text" placeholder="Contract ID" />
                         </div>
                         <div class="form-group">
                             <label>SSN</label>
@@ -380,6 +400,14 @@
                         <div class="form-group">
                             <label>Group Name / #</label>
                             <input type="text" placeholder="Enter group name/number" />
+                        </div>
+                        <div class="form-group">
+                            <label>Group Name</label>
+                            <input type="text" placeholder="Enter group name" />
+                        </div>
+                        <div class="form-group">
+                            <label>Group Number</label>
+                            <input type="text" placeholder="Enter group number" />
                         </div>
                         <div class="form-group">
                             <label>COB Type</label>
@@ -415,6 +443,18 @@
                             <label>Claims Mailing Address</label>
                             <textarea rows="3" placeholder="Enter mailing address"></textarea>
                         </div>
+                        <div class="form-group">
+                            <label>City</label>
+                            <input type="text" placeholder="Enter city" />
+                        </div>
+                        <div class="form-group">
+                            <label>State</label>
+                            <input type="text" placeholder="Enter state" />
+                        </div>
+                        <div class="form-group">
+                            <label>Zip Code</label>
+                            <input type="text" placeholder="Enter zip code" />
+                        </div>
                     </div>
                 </div>
             </div>
@@ -433,6 +473,14 @@
                             <input type="text" placeholder="$0.00" />
                         </div>
                         <div class="form-group">
+                            <label>Maximum Used</label>
+                            <input type="text" placeholder="$0.00" />
+                        </div>
+                        <div class="form-group">
+                            <label>Remaining Maximum</label>
+                            <input type="text" placeholder="$0.00" />
+                        </div>
+                        <div class="form-group">
                             <label>Family Deductible</label>
                             <input type="text" placeholder="$0.00" />
                         </div>
@@ -442,10 +490,6 @@
                                 <option>Calendar Year</option>
                                 <option>Benefit Year</option>
                             </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Remaining Maximum</label>
-                            <input type="text" placeholder="$0.00" />
                         </div>
                         <div class="form-group">
                             <label>Lifetime Deductible</label>
@@ -461,6 +505,10 @@
                         </div>
                         <div class="form-group">
                             <label>Individual Deductible</label>
+                            <input type="text" placeholder="$0.00" />
+                        </div>
+                        <div class="form-group">
+                            <label>Deductible Remaining</label>
                             <input type="text" placeholder="$0.00" />
                         </div>
                         <div class="form-group">
@@ -989,6 +1037,176 @@
                                 </tr>
                             </tbody>
                         </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Periodontics -->
+            <div class="section">
+                <div class="section-header" onclick="toggleSection(this)">Periodontics</div>
+                <div class="section-content">
+                    <div class="procedure-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Procedure Code</th>
+                                    <th>Frequency</th>
+                                    <th>Limitations</th>
+                                    <th>Last DOS/History</th>
+                                    <th>Notes</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="procedure-code">D4910</span> – Periodontal Maintenance</td>
+                                    <td><input type="text" placeholder="4 per year" /></td>
+                                    <td><input type="text" placeholder="3 month interval" /></td>
+                                    <td><input type="date" class="date-input" /></td>
+                                    <td><input type="text" placeholder="Notes" /></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D4341</span> – Scaling & Root Planing (SRP)</td>
+                                    <td><input type="text" placeholder="1 per quadrant" /></td>
+                                    <td><input type="text" placeholder="Per 2 years" /></td>
+                                    <td><input type="date" class="date-input" /></td>
+                                    <td><input type="text" placeholder="Notes" /></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D4381</span> – Localized Antimicrobial (Arestin)</td>
+                                    <td><input type="text" placeholder="As needed" /></td>
+                                    <td><input type="text" placeholder="With SRP" /></td>
+                                    <td><input type="date" class="date-input" /></td>
+                                    <td><input type="text" placeholder="Notes" /></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D7140</span> – Simple Extraction</td>
+                                    <td><input type="text" placeholder="As needed" /></td>
+                                    <td><input type="text" placeholder="" /></td>
+                                    <td><input type="date" class="date-input" /></td>
+                                    <td><input type="text" placeholder="Notes" /></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D7240</span> – Surgical Extraction</td>
+                                    <td><input type="text" placeholder="As needed" /></td>
+                                    <td><input type="text" placeholder="" /></td>
+                                    <td><input type="date" class="date-input" /></td>
+                                    <td><input type="text" placeholder="Notes" /></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Major Services -->
+            <div class="section">
+                <div class="section-header" onclick="toggleSection(this)">Major Services</div>
+                <div class="section-content">
+                    <div class="procedure-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Procedure Code</th>
+                                    <th>Frequency</th>
+                                    <th>Limitations</th>
+                                    <th>Last DOS/History</th>
+                                    <th>Notes</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="procedure-code">D2740</span> – Crown – Porcelain/Ceramic</td>
+                                    <td><input type="text" placeholder="1 per 5 years" /></td>
+                                    <td><input type="text" placeholder="Per tooth" /></td>
+                                    <td><input type="date" class="date-input" /></td>
+                                    <td><input type="text" placeholder="Notes" /></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D2950</span> – Core Buildup</td>
+                                    <td><input type="text" placeholder="1 per lifetime" /></td>
+                                    <td><input type="text" placeholder="Per tooth" /></td>
+                                    <td><input type="date" class="date-input" /></td>
+                                    <td><input type="text" placeholder="Notes" /></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D2954</span> – Prefabricated Post and Core</td>
+                                    <td><input type="text" placeholder="1 per lifetime" /></td>
+                                    <td><input type="text" placeholder="Per tooth" /></td>
+                                    <td><input type="date" class="date-input" /></td>
+                                    <td><input type="text" placeholder="Notes" /></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D5110</span> – Complete Denture – Upper</td>
+                                    <td><input type="text" placeholder="1 per 5 years" /></td>
+                                    <td><input type="text" placeholder="" /></td>
+                                    <td><input type="date" class="date-input" /></td>
+                                    <td><input type="text" placeholder="Notes" /></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D5221</span> – Immediate Upper Denture</td>
+                                    <td><input type="text" placeholder="1 per 5 years" /></td>
+                                    <td><input type="text" placeholder="" /></td>
+                                    <td><input type="date" class="date-input" /></td>
+                                    <td><input type="text" placeholder="Notes" /></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D5213</span> – Upper Partial Denture – Flex</td>
+                                    <td><input type="text" placeholder="1 per 5 years" /></td>
+                                    <td><input type="text" placeholder="" /></td>
+                                    <td><input type="date" class="date-input" /></td>
+                                    <td><input type="text" placeholder="Notes" /></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D6010</span> – Endosteal Implant</td>
+                                    <td><input type="text" placeholder="As needed" /></td>
+                                    <td><input type="text" placeholder="May not be covered" /></td>
+                                    <td><input type="date" class="date-input" /></td>
+                                    <td><input type="text" placeholder="Notes" /></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D9944</span> – Occlusal Guard – Hard Appliance</td>
+                                    <td><input type="text" placeholder="1 per 5 years" /></td>
+                                    <td><input type="text" placeholder="" /></td>
+                                    <td><input type="date" class="date-input" /></td>
+                                    <td><input type="text" placeholder="Notes" /></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="procedure-code">D9945</span> – Occlusal Guard – Soft Appliance</td>
+                                    <td><input type="text" placeholder="1 per 5 years" /></td>
+                                    <td><input type="text" placeholder="" /></td>
+                                    <td><input type="date" class="date-input" /></td>
+                                    <td><input type="text" placeholder="Notes" /></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Orthodontics -->
+            <div class="section">
+                <div class="section-header" onclick="toggleSection(this)">Orthodontics</div>
+                <div class="section-content">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Ortho Coverage</label>
+                            <select>
+                                <option>No</option>
+                                <option>Yes</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Ortho Coverage %</label>
+                            <input type="text" placeholder="50%" class="percent-input" />
+                        </div>
+                        <div class="form-group">
+                            <label>Ortho Age Limit</label>
+                            <input type="text" placeholder="19 years" />
+                        </div>
+                        <div class="form-group">
+                            <label>Ortho Lifetime Maximum</label>
+                            <input type="text" placeholder="$1,000.00" />
+                        </div>
                     </div>
                 </div>
             </div>

@@ -5,6 +5,11 @@ import { extractProcedureHistory, mapProcedureHistory } from './procedureHistory
 export function toFormFieldMap(normalized: NormalizedEligibility, raw: ExtractionResult): FormFieldMap {
   const map: FormFieldMap = {};
 
+  // Manual fields for ACE form
+  map["Today's Date"] = new Date().toISOString().slice(0, 10);
+  map["Employee's Initials"] = '';
+  map["Rep's Name"] = '';
+
   const additionalBenefits = normalized.additionalBenefits ?? {};
 
   const getBenefit = (header: string): string | undefined => {
@@ -42,7 +47,16 @@ export function toFormFieldMap(normalized: NormalizedEligibility, raw: Extractio
   map['Patient DOB'] = normalized.member.dob ?? formatDateValue(patientDob);
   map['Subscriber/Policy Holder Name'] = patientName ?? '';
   map['Subscriber/Policy Holder DOB'] = normalized.member.dob ?? formatDateValue(patientDob);
+
+  if (normalized.member.relationship) {
+    map['Relationship to Patient'] = normalized.member.relationship;
+  }
+
   map['Member ID'] = memberId ?? '';
+
+  if (normalized.member.insuranceNumber) {
+    map['Insurance Number'] = normalized.member.insuranceNumber;
+  }
 
   const maskedSSN = maskSSN(normalized.member.ssn);
   if (maskedSSN) {
@@ -60,14 +74,21 @@ export function toFormFieldMap(normalized: NormalizedEligibility, raw: Extractio
     .join(' / ');
   map['Group Name / #'] = groupParts;
 
+  // Also provide Group Name and Group Number separately for flexibility
+  map['Group Name'] = normalized.member.groupName ?? '';
+  map['Group Number'] = normalized.member.groupNumber ?? '';
+
   map['COB Type'] = 'Primary';
   map['Coordination of Benefits'] = 'Yes';
   map['Other Insurance on File?'] = 'No';
 
-  // Payor ID could be from provider taxId if available
-  map['Payor ID'] = normalized.provider?.taxId ?? '';
+  // Payor ID: prefer claimPayerId (e.g., 94276 for Delta) over taxId
+  map['Payor ID'] = normalized.claimPayerId ?? normalized.provider?.taxId ?? '';
 
   map['Claims Mailing Address'] = normalized.claimsMailingAddress ?? '';
+  map['City'] = normalized.claimsCity ?? '';
+  map['State'] = normalized.claimsState ?? '';
+  map['Zip Code'] = normalized.claimsZipCode ?? '';
 
   const effectiveDate = normalized.member.coverageStart ?? raw.summary?.planStartDate;
   map['Effective Date'] = effectiveDate ?? '';
@@ -80,6 +101,7 @@ export function toFormFieldMap(normalized: NormalizedEligibility, raw: Extractio
   map['Annual Maximum'] = typeof annualTotal === 'string'
     ? annualTotal
     : formatCurrency(annualTotal);
+  map['Maximum Used'] = formatCurrency(normalized.maximums.annualUsed);
   map['Remaining Maximum'] = typeof annualRemaining === 'string'
     ? annualRemaining
     : formatCurrency(annualRemaining);
@@ -92,6 +114,7 @@ export function toFormFieldMap(normalized: NormalizedEligibility, raw: Extractio
   map['Individual Deductible'] = typeof individualDeductible === 'string'
     ? individualDeductible
     : formatCurrency(individualDeductible);
+  map['Deductible Remaining'] = formatCurrency(normalized.deductibles.individual.remaining);
   map['Family Deductible'] = formatCurrency(normalized.deductibles.family.amount);
 
   if (normalized.deductibles.individual.appliesTo?.length) {
@@ -271,6 +294,17 @@ export function toFormFieldMap(normalized: NormalizedEligibility, raw: Extractio
     const dynamicMap = map as Record<string, string>;
     for (const [code, info] of Object.entries(normalized.procedureLimitations)) {
       if (!code || !info) continue;
+
+      // Add coverage % (CRITICAL for ACE form)
+      if (info.coverage) {
+        dynamicMap[`${code}_coverage_pct`] = info.coverage;
+      }
+
+      // Add age limit (for Fluoride, Sealants, etc.)
+      if (info.ageLimit) {
+        dynamicMap[`${code}_age_limit`] = `${info.ageLimit} years`;
+      }
+
       if (info.frequency) {
         dynamicMap[`${code}_frequency`] = info.frequency;
       }
@@ -288,6 +322,41 @@ export function toFormFieldMap(normalized: NormalizedEligibility, raw: Extractio
       }
     }
   }
+
+  // Add orthodontics data
+  if (normalized.orthodontics) {
+    map['Ortho Coverage'] = normalized.orthodontics.hasCoverage ? 'Yes' : 'No';
+
+    if (normalized.orthodontics.hasCoverage) {
+      if (normalized.orthodontics.coveragePct != null) {
+        map['Ortho Coverage %'] = `${normalized.orthodontics.coveragePct}%`;
+      }
+
+      if (normalized.orthodontics.ageLimit != null) {
+        map['Ortho Age Limit'] = `${normalized.orthodontics.ageLimit} years`;
+      }
+
+      if (normalized.orthodontics.lifetimeMax != null) {
+        map['Ortho Lifetime Maximum'] = formatCurrency(normalized.orthodontics.lifetimeMax);
+      }
+    }
+  }
+
+  // Add aggregated history fields (ACE form requirement - right column)
+  const getLastDate = (code: string) => (map as any)[`${code}_last_date`] || '';
+  map['Exam History'] = getLastDate('D0150') || getLastDate('D0120') || getLastDate('D0140');
+  map['Prophy History'] = getLastDate('D1110') || getLastDate('D1120');
+  map['Fluoride History'] = getLastDate('D1208') || getLastDate('D1206');
+  map['Xray History'] = getLastDate('D0210') || getLastDate('D0274') || getLastDate('D0330');
+  map['Sealant History'] = getLastDate('D1351');
+  map['Filling History'] = getLastDate('D2391') || getLastDate('D2330') || getLastDate('D2331');
+  map['SRP History'] = getLastDate('D4341');
+  map['EXT History'] = getLastDate('D7240') || getLastDate('D7140');
+  map['Crown History'] = getLastDate('D2740');
+  map['Bridge History'] = '';
+  map['Build Up History'] = getLastDate('D2950');
+  map['Post & Core History'] = getLastDate('D2954');
+  map['Denture History'] = getLastDate('D5110') || getLastDate('D5221') || getLastDate('D5213');
 
   return map;
 }

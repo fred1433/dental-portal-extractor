@@ -37,6 +37,21 @@ export interface ExtractionResult {
   eligibility?: Record<string, any> | null;
   claims?: Array<Record<string, any>> | null;
   patient?: PatientSummary | null;
+  roster?: {
+    firstName?: string;
+    lastName?: string;
+    dateOfBirth?: string;
+    personId?: string;
+    groupName?: string;
+    groupNumber?: string;
+    divisionName?: string;
+    divisionNumber?: string;
+    plan?: string;
+    subscriberType?: string;
+    memberAccountStatus?: string;
+    memberId?: string;
+    contractId?: string;
+  } | null;
 }
 
 export interface NormalizedEligibility {
@@ -44,6 +59,8 @@ export interface NormalizedEligibility {
     name?: string;
     dob?: string;
     memberId?: string;
+    relationship?: string;
+    insuranceNumber?: string;
     groupName?: string;
     groupNumber?: string;
     divisionNumber?: string;
@@ -82,6 +99,10 @@ export interface NormalizedEligibility {
     end?: string;
   }>;
   claimsMailingAddress?: string;
+  claimsCity?: string;
+  claimsState?: string;
+  claimsZipCode?: string;
+  claimPayerId?: string;
   historyByCode: Record<string, {
     firstDate?: string;
     lastDate?: string;
@@ -107,36 +128,55 @@ export interface NormalizedEligibility {
     additionalRequirements?: string;
     coverage?: string;
     source?: string;
+    ageLimit?: number;
   }>;
+  orthodontics?: {
+    hasCoverage: boolean;
+    coveragePct?: number;
+    lifetimeMax?: number;
+    ageLimit?: number;
+  };
 }
 
 export type VerificationFieldKey =
   | 'Practice Name'
   | 'Provider Name'
   | 'Appointment Date'
+  | "Today's Date"
+  | "Employee's Initials"
+  | "Rep's Name"
   | 'Patient Name'
   | 'Patient DOB'
   | 'Subscriber/Policy Holder Name'
   | 'Subscriber/Policy Holder DOB'
+  | 'Relationship to Patient'
   | 'Member ID'
+  | 'Insurance Number'
   | 'SSN'
   | 'Insurance Name'
   | 'Group Name / #'
+  | 'Group Name'
+  | 'Group Number'
   | 'COB Type'
   | 'Phone Number'
   | 'Payor ID'
   | 'Coordination of Benefits'
   | 'Other Insurance on File?'
   | 'Claims Mailing Address'
+  | 'City'
+  | 'State'
+  | 'Zip Code'
   | 'Effective Date'
   | 'Annual Maximum'
-  | 'Family Deductible'
-  | 'Benefit Year'
+  | 'Maximum Used'
   | 'Remaining Maximum'
+  | 'Family Deductible'
+  | 'Individual Deductible'
+  | 'Deductible Remaining'
+  | 'Benefit Year'
   | 'Lifetime Deductible'
   | 'Coverage Start Date'
   | 'Coverage End Date'
-  | 'Individual Deductible'
   | 'Deductible Applies To'
   | 'Co-Pay'
   | 'Network Participation'
@@ -149,6 +189,24 @@ export type VerificationFieldKey =
   | 'Missing Tooth Clause'
   | 'Preventive Wait Period'
   | 'Basic Wait Period'
-  | 'Major Wait Period';
+  | 'Major Wait Period'
+  | 'Ortho Coverage'
+  | 'Ortho Coverage %'
+  | 'Ortho Age Limit'
+  | 'Ortho Lifetime Maximum'
+  | 'Exam History'
+  | 'Prophy History'
+  | 'Fluoride History'
+  | 'Xray History'
+  | 'Sealant History'
+  | 'Filling History'
+  | 'SRP History'
+  | 'EXT History'
+  | 'Crown History'
+  | 'Bridge History'
+  | 'Build Up History'
+  | 'Post & Core History'
+  | 'Denture History';
 
-export type FormFieldMap = Partial<Record<VerificationFieldKey, string>>;
+// Allow dynamic keys like "D0120_coverage_pct", "D0120_frequency", etc.
+export type FormFieldMap = Partial<Record<VerificationFieldKey, string>> & Record<string, string>;
