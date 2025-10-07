@@ -269,7 +269,10 @@ app.post('/api/extract', checkApiKey, async (req, res) => {
   } else if (portalLower === 'dot') {
     service = new DOTService(credentials);
   } else if (portalLower === 'ddins' || portalLower === 'deltadentalins') {
-    service = new DDINSService(credentials);
+    const storageStatePath = clinicId
+      ? path.join(__dirname, 'ddins', '.ddins-session', `${clinicId}-storageState.json`)
+      : undefined; // Fallback to default if no clinicId
+    service = new DDINSService({ credentials, storageStatePath });
   } else if (portalLower === 'uhc' || portalLower === 'unitedhealthcare') {
     const UHCService = require('./UHC/uhc-extractor');
     service = new UHCService(credentials);
