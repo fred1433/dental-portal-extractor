@@ -420,6 +420,14 @@ app.post('/api/extract', checkApiKey, async (req, res) => {
       data = restructuredData;
     }
 
+    // === ADD OPTIONAL PMS APPOINTMENT DATA ===
+    if (appointmentDate || appointmentTime) {
+      data.appointment = {
+        date: appointmentDate || null,
+        time: appointmentTime || null
+      };
+    }
+
     // === SAVE TO MONGODB ===
     try {
       await savePatient(data);
@@ -439,14 +447,7 @@ app.post('/api/extract', checkApiKey, async (req, res) => {
 
     res.json({
       success: true,
-      data: {
-        ...data,
-        // Optional PMS appointment data (if available)
-        appointment: (appointmentDate || appointmentTime) ? {
-          date: appointmentDate || null,
-          time: appointmentTime || null
-        } : null
-      }
+      data
     });
     
   } catch (error) {
