@@ -2,6 +2,37 @@ import type { ExtractionResult, NormalizedEligibility } from '../shared/types.js
 import { ensureArray, parseNumber, toISODate, uniqueStrings } from '../shared/utils.js';
 import { mapCoverageByCategory } from '../shared/coverage.js';
 
+/**
+ * DDINS (Delta Dental Insurance) Portal Adapter
+ *
+ * Normalizes raw DDINS extraction data into a standardized format for the verification form.
+ *
+ * ⚠️ IMPORTANT: DATA LIMITATIONS
+ *
+ * DDINS extractions have significant limitations. **27 Master Form fields cannot be auto-filled**:
+ *
+ * 📋 POLICY RULES (18 fields - not exposed in API):
+ *  • Work in Progress Covered
+ *  • Waiting Period Details (Basic/Major)
+ *  • Teeth Covered (sealants), Quads Per Day (SRP)
+ *  • D9232 Coverage, Arestin D4381, Implants D6010
+ *  • Same-day rules (D0140, SRP, Pano/FMX)
+ *  • Payment timing (Core Buildup, Crown: Prep vs Seat)
+ *  • Crown Age Limit, Crown Downgrade, Downgrade Teeth
+ *  • D7210/D7953 Medical First, Limited Share Frequency
+ *
+ * 📊 PROCEDURE HISTORY (9 fields - only D0120/D0140/D0150 available):
+ *  • Sealant, Filling, SRP, EXT, Crown, Bridge, Build Up, Post & Core, Denture History
+ *
+ * ✅ WHAT IS AVAILABLE (8 fields):
+ *  • Maximum Used, Deductible Remaining, Lifetime Deductible
+ *  • Previous Extractions Covered (via missingToothIndicator)
+ *  • OCC Coverage %, OCC Frequency, OCC Limitations
+ *  • Co-Pay (often $0 for percentage-based plans)
+ *
+ * 📚 Full documentation: ./DDINS_LIMITATIONS.md
+ */
+
 function calculateAge(dateOfBirth: string): number | undefined {
   if (!dateOfBirth) return undefined;
 
