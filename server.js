@@ -981,6 +981,81 @@ app.post('/api/chat', checkApiKey, async (req, res) => {
   }
 });
 
+// Direct patient link - shareable URL to pre-filled verification form
+app.get('/patient/:subscriberId/:portal', checkApiKey, async (req, res) => {
+  const { subscriberId, portal } = req.params;
+
+  try {
+    // Get patient data from MongoDB using subscriberId + portal
+    const { connect } = require('./db/mongodb-client');
+    const database = await connect();
+
+    if (!database) {
+      throw new Error('Database not available');
+    }
+
+    const collection = database.collection('patients');
+    const patientData = await collection.findOne({
+      'patient.subscriberId': subscriberId,
+      'extraction.portalCode': portal.toUpperCase()
+    });
+
+    if (!patientData) {
+      return res.status(404).send(`
+        <!DOCTYPE html>
+        <html>
+          <head><title>Patient Not Found</title></head>
+          <body style="font-family: system-ui; padding: 2rem; max-width: 600px; margin: 0 auto;">
+            <h1>❌ Patient Not Found</h1>
+            <p>No data found for:</p>
+            <ul>
+              <li><strong>Subscriber ID:</strong> ${subscriberId}</li>
+              <li><strong>Portal:</strong> ${portal}</li>
+            </ul>
+            <p><a href="/?key=${req.query.key || API_KEY}">← Back to Search</a></p>
+          </body>
+        </html>
+      `);
+    }
+
+    // Create a redirect page that sets sessionStorage then redirects to verification form
+    const apiKey = req.query.key || process.env.API_KEY;
+    const redirectHtml = `
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <title>Loading Patient Data...</title>
+        <script>
+          // Store patient data in sessionStorage
+          sessionStorage.setItem('extractedPatientData', ${JSON.stringify(JSON.stringify(patientData))});
+          // Redirect to verification form with autoFill parameter
+          window.location.href = '/verification-form.html?autoFill=true&key=${apiKey}';
+        </script>
+      </head>
+      <body>
+        <p>Loading patient data...</p>
+      </body>
+      </html>
+    `;
+
+    res.send(redirectHtml);
+
+  } catch (error) {
+    console.error('Error loading patient:', error);
+    res.status(500).send(`
+      <!DOCTYPE html>
+      <html>
+        <head><title>Error</title></head>
+        <body style="font-family: system-ui; padding: 2rem;">
+          <h1>❌ Error Loading Patient</h1>
+          <p>${error.message}</p>
+          <p><a href="/?key=${req.query.key || API_KEY}">← Back to Search</a></p>
+        </body>
+      </html>
+    `);
+  }
+});
+
 // Serve the main page
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
