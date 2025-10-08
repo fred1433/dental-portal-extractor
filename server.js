@@ -1023,12 +1023,12 @@ app.get('/patient/:subscriberId/:portal', checkApiKey, async (req, res) => {
 
     // Determine which form HTML to use based on clinicId
     const clinicId = patientData.extraction?.clinicId || 'default';
-    let formFile = 'verification-form.html'; // Default/fallback
+    let formFile = 'master-verification-form.html'; // Default/fallback
 
     if (clinicId === 'ace_dental') {
-      formFile = 'verification-form-ace.html';
+      formFile = 'ace-verification-form.html';
     } else if (clinicId === 'sdb') {
-      formFile = 'verification-form-sdb.html';
+      formFile = 'sdb-verification-form.html';
     }
 
     const redirectHtml = `
