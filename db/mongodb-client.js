@@ -20,11 +20,11 @@ async function connect() {
   try {
     console.log('🔌 Attempting MongoDB connection...');
 
-    // Add timeout options
+    // Add timeout options (increased for Atlas connection from Brazil)
     client = new MongoClient(MONGODB_URI, {
-      serverSelectionTimeoutMS: 5000,  // 5 second timeout
-      connectTimeoutMS: 10000,         // 10 second connection timeout
-      socketTimeoutMS: 10000           // 10 second socket timeout
+      serverSelectionTimeoutMS: 30000,  // 30 second timeout
+      connectTimeoutMS: 30000,          // 30 second connection timeout
+      socketTimeoutMS: 60000            // 60 second socket timeout
     });
 
     await client.connect();
@@ -32,8 +32,8 @@ async function connect() {
 
     console.log('✅ MongoDB connected:', db.databaseName);
 
-    // Create indexes for fast queries (with shorter timeout)
-    const indexOptions = { maxTimeMS: 5000 };
+    // Create indexes for fast queries
+    const indexOptions = { maxTimeMS: 30000 };
     await db.collection('patients').createIndex({ 'patient.subscriberId': 1 }, indexOptions);
     await db.collection('patients').createIndex({ 'extraction.portalCode': 1 }, indexOptions);
     await db.collection('patients').createIndex({ 'extraction.date': -1 }, indexOptions);

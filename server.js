@@ -739,11 +739,11 @@ app.get('/api/patients', checkApiKey, async (req, res) => {
 
     console.log(`[API] GET /api/patients - portal: ${portal || 'ALL'}, clinic: ${clinic || 'NONE'}`);
 
-    // Get from MongoDB with timeout protection
+    // Get from MongoDB with timeout protection (increased for Atlas from Brazil)
     let mongoPatients = [];
     try {
       const timeoutPromise = new Promise((_, reject) =>
-        setTimeout(() => reject(new Error('MongoDB query timeout')), 10000)
+        setTimeout(() => reject(new Error('MongoDB query timeout')), 60000)
       );
       const queryPromise = listPatients(portal);
       mongoPatients = await Promise.race([queryPromise, timeoutPromise]);
