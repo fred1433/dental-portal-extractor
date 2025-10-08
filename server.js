@@ -1020,6 +1020,17 @@ app.get('/patient/:subscriberId/:portal', checkApiKey, async (req, res) => {
 
     // Create a redirect page that sets sessionStorage then redirects to verification form
     const apiKey = req.query.key || process.env.API_KEY;
+
+    // Determine which form HTML to use based on clinicId
+    const clinicId = patientData.extraction?.clinicId || 'default';
+    let formFile = 'verification-form.html'; // Default/fallback
+
+    if (clinicId === 'ace_dental') {
+      formFile = 'verification-form-ace.html';
+    } else if (clinicId === 'sdb') {
+      formFile = 'verification-form-sdb.html';
+    }
+
     const redirectHtml = `
       <!DOCTYPE html>
       <html>
@@ -1028,8 +1039,8 @@ app.get('/patient/:subscriberId/:portal', checkApiKey, async (req, res) => {
         <script>
           // Store patient data in sessionStorage
           sessionStorage.setItem('extractedPatientData', ${JSON.stringify(JSON.stringify(patientData))});
-          // Redirect to verification form with autoFill parameter
-          window.location.href = '/verification-form.html?autoFill=true&key=${apiKey}';
+          // Redirect to clinic-specific verification form with autoFill parameter
+          window.location.href = '/${formFile}?autoFill=true&key=${apiKey}';
         </script>
       </head>
       <body>

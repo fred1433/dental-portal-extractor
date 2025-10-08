@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ACE Dental - Insurance Verification Form</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #fff;
+            padding: 10px;
+            font-size: 10pt;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            border: 2px solid #000;
+            padding: 12px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 14pt;
+            margin-bottom: 8px;
+            border-bottom: 2px solid #000;
+            padding-bottom: 6px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 6px;
+        }
+
+        .form-row-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-bottom: 6px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-weight: bold;
+            font-size: 8pt;
+            margin-bottom: 2px;
+        }
+
+        .form-group input,
+        .form-group select {
+            padding: 3px;
+            border: none;
+            border-bottom: 1px solid #000;
+            font-size: 9pt;
+            background: transparent;
+        }
+
+        .form-group select {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="8" viewBox="0 0 12 8"><path fill="%23000" d="M0 0l6 8 6-8z"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 4px center;
+            background-size: 8px;
+            padding-right: 20px;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-bottom: 2px solid #0066cc;
+        }
+
+        .section-title {
+            font-weight: bold;
+            font-size: 10pt;
+            margin-top: 8px;
+            margin-bottom: 4px;
+            padding-bottom: 3px;
+            border-bottom: 1px solid #000;
+        }
+
+        .inline-group {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin-bottom: 5px;
+            flex-wrap: wrap;
+        }
+
+        .inline-group label {
+            font-weight: bold;
+            white-space: nowrap;
+            font-size: 8pt;
+        }
+
+        .inline-group input,
+        .inline-group select {
+            flex: 0 1 auto;
+            min-width: 100px;
+            padding: 3px;
+            border: none;
+            border-bottom: 1px solid #000;
+            font-size: 9pt;
+            background: transparent;
+        }
+
+        .inline-group select {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="8" viewBox="0 0 12 8"><path fill="%23000" d="M0 0l6 8 6-8z"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 4px center;
+            background-size: 8px;
+            padding-right: 20px;
+        }
+
+        .inline-group input:focus,
+        .inline-group select:focus {
+            outline: none;
+            border-bottom: 2px solid #0066cc;
+        }
+
+        .inline-group input[name="Fee Schedule Used"] {
+            min-width: 180px;
+        }
+
+        .inline-group input[name="Coordination of Benefits"] {
+            min-width: 80px;
+            max-width: 120px;
+        }
+
+        .inline-group.deductible-applies label input {
+            min-width: 50px;
+            max-width: 60px;
+        }
+
+        /* Ortho Coverage - special layout */
+        .ortho-line {
+            display: grid;
+            grid-template-columns: auto 100px 100px auto 120px auto 140px;
+            gap: 8px;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+
+        .ortho-line label {
+            font-weight: bold;
+            font-size: 8pt;
+        }
+
+        .ortho-line input,
+        .ortho-line select {
+            padding: 3px;
+            border: none;
+            border-bottom: 1px solid #000;
+            font-size: 9pt;
+            background: transparent;
+        }
+
+        .ortho-line select {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="8" viewBox="0 0 12 8"><path fill="%23000" d="M0 0l6 8 6-8z"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 4px center;
+            background-size: 8px;
+            padding-right: 20px;
+        }
+
+        .ortho-line input:focus,
+        .ortho-line select:focus {
+            outline: none;
+            border-bottom: 2px solid #0066cc;
+        }
+
+        /* Waiting Periods - 2 column layout */
+        .waiting-periods {
+            display: grid;
+            grid-template-columns: auto auto 100px 150px auto 100px 150px;
+            gap: 8px;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+
+        .waiting-periods label {
+            font-weight: bold;
+            font-size: 8pt;
+        }
+
+        .waiting-periods input,
+        .waiting-periods select {
+            padding: 3px;
+            border: none;
+            border-bottom: 1px solid #000;
+            font-size: 9pt;
+            background: transparent;
+        }
+
+        .waiting-periods select {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="8" viewBox="0 0 12 8"><path fill="%23000" d="M0 0l6 8 6-8z"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 4px center;
+            background-size: 8px;
+            padding-right: 20px;
+        }
+
+        .waiting-periods input:focus,
+        .waiting-periods select:focus {
+            outline: none;
+            border-bottom: 2px solid #0066cc;
+        }
+
+        /* Radio groups - better organization */
+        .radio-row {
+            display: grid;
+            grid-template-columns: auto auto auto 1fr auto auto auto;
+            gap: 12px;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+
+        .radio-row label {
+            font-weight: bold;
+            font-size: 8pt;
+        }
+
+        .radio-row label:has(input[type="radio"]) {
+            font-weight: normal;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* OCC Guards - special layout */
+        .occ-line {
+            display: grid;
+            grid-template-columns: auto 80px 120px auto 1fr;
+            gap: 8px;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+
+        .occ-line label {
+            font-weight: bold;
+            font-size: 8pt;
+        }
+
+        .occ-line input,
+        .occ-line select {
+            padding: 3px;
+            border: none;
+            border-bottom: 1px solid #000;
+            font-size: 9pt;
+            background: transparent;
+        }
+
+        .occ-line input:focus {
+            outline: none;
+            border-bottom: 2px solid #0066cc;
+        }
+
+        .checkbox-group {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 8px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 5px;
+            margin-bottom: 5px;
+        }
+
+        .services-grid label {
+            font-weight: bold;
+            font-size: 8pt;
+        }
+
+        .services-grid input {
+            padding: 2px;
+            border: none;
+            border-bottom: 1px solid #000;
+            font-size: 8pt;
+        }
+
+        /* Services section wrapper - 2 columns layout */
+        .services-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .services-column {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .services-column .section-title {
+            font-size: 11pt;
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+
+        .field-filled input {
+            background: #f0fdf4;
+            border-bottom-color: #10b981;
+            font-weight: 600;
+            color: #059669;
+        }
+
+        @media print {
+            body {
+                background: #fff;
+                padding: 0;
+            }
+            .container {
+                border: 1px solid #000;
+                padding: 8px;
+                max-width: 100%;
+            }
+            input, select { border-bottom: 1px solid #000 !important; }
+
+            /* Hide chat widget when printing */
+            #chatWidget { display: none !important; }
+
+            /* Compress even more for print */
+            h1 {
+                font-size: 12pt;
+                margin-bottom: 4px;
+                padding-bottom: 4px;
+            }
+            .section-title {
+                font-size: 9pt;
+                margin-top: 4px;
+                margin-bottom: 2px;
+            }
+            .form-row, .form-row-2 {
+                gap: 8px;
+                margin-bottom: 4px;
+            }
+            .form-group label { font-size: 7pt; }
+            .form-group input, .form-group select {
+                font-size: 8pt;
+                padding: 2px;
+            }
+            .services-grid {
+                gap: 4px;
+                margin-bottom: 3px;
+            }
+            .services-grid label { font-size: 7pt; }
+            .services-grid input { font-size: 7pt; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Insurance Verification Form</h1>
+
+        <!-- Header Information -->
+        <div class="form-row">
+            <div class="form-group">
+                <label>Today's Date:</label>
+                <input type="date" name="Today's Date" />
+            </div>
+            <div class="form-group">
+                <label>Appointment Date:</label>
+                <input type="date" name="Appointment Date" />
+            </div>
+            <div class="form-group">
+                <label>Employee's Initials:</label>
+                <input type="text" name="Employee's Initials" />
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label>Rep's Name:</label>
+                <input type="text" name="Rep's Name" />
+            </div>
+            <div class="form-group">
+                <label>Patient's Name:</label>
+                <input type="text" name="Patient Name" />
+            </div>
+            <div class="form-group">
+                <label>Patient's DOB:</label>
+                <input type="date" name="Patient DOB" />
+            </div>
+        </div>
+
+        <!-- Subscriber's Information -->
+        <div class="section-title">Subscriber's Information:</div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label>Last Name:</label>
+                <input type="text" name="Subscriber Last Name" />
+            </div>
+            <div class="form-group">
+                <label>First Name:</label>
+                <input type="text" name="Subscriber First Name" />
+            </div>
+            <div class="form-group">
+                <label>Relationship to Patient:</label>
+                <input type="text" name="Relationship to Patient" />
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label>Subs DOB:</label>
+                <input type="date" name="Subscriber DOB" />
+            </div>
+            <div class="form-group">
+                <label>SSN:</label>
+                <input type="text" name="SSN" />
+            </div>
+            <div class="form-group">
+                <label>Member ID:</label>
+                <input type="text" name="Member ID" />
+            </div>
+        </div>
+
+        <!-- Carrier Info -->
+        <div class="section-title">Carrier Info:</div>
+
+        <div class="form-group" style="margin-bottom: 10px;">
+            <label>Insurance Name:</label>
+            <input type="text" name="Insurance Name" />
+        </div>
+
+        <div class="form-group" style="margin-bottom: 10px;">
+            <label>Claims Mailing Address:</label>
+            <input type="text" name="Claims Mailing Address" />
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label>City:</label>
+                <input type="text" name="City" />
+            </div>
+            <div class="form-group">
+                <label>State:</label>
+                <input type="text" name="State" />
+            </div>
+            <div class="form-group">
+                <label>Zip Code:</label>
+                <input type="text" name="Zip Code" />
+            </div>
+        </div>
+
+        <div class="form-row-2">
+            <div class="form-group">
+                <label>Insurance Number:</label>
+                <input type="text" name="Insurance Number" />
+            </div>
+            <div class="form-group">
+                <label>Payor ID:</label>
+                <input type="text" name="Payor ID" />
+            </div>
+        </div>
+
+        <div class="inline-group">
+            <label>Fee Schedule:</label>
+            <input type="text" name="Fee Schedule Used" />
+            <select name="Network Participation">
+                <option value="">Select...</option>
+                <option value="In-Network">In Network</option>
+                <option value="Out-of-Network">Out of Network</option>
+            </select>
+            <label>Accept Assignment of benefits:</label>
+            <select name="Assignment of Benefits Accepted?">
+                <option value="">Select...</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+            <label>Coordination of Benefits:</label>
+            <input type="text" name="Coordination of Benefits" />
+        </div>
+
+        <!-- Plan Info -->
+        <div class="section-title">Plan Info:</div>
+
+        <div class="inline-group">
+            <label>Contract/Calendar:</label>
+            <input type="text" name="Benefit Year" />
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label>Group Name:</label>
+                <input type="text" name="Group Name" />
+            </div>
+            <div class="form-group">
+                <label>Group Number:</label>
+                <input type="text" name="Group Number" />
+            </div>
+            <div class="form-group">
+                <label>Effective Date:</label>
+                <input type="date" name="Effective Date" />
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label>Individual Maximum:</label>
+                <input type="text" name="Annual Maximum" />
+            </div>
+            <div class="form-group">
+                <label>Maximum Used:</label>
+                <input type="text" name="Maximum Used" />
+            </div>
+            <div class="form-group">
+                <label>Maximum Remaining:</label>
+                <input type="text" name="Remaining Maximum" />
+            </div>
+        </div>
+
+        <div class="form-row-2">
+            <div class="form-group">
+                <label>Individual Deductible:</label>
+                <input type="text" name="Individual Deductible" />
+            </div>
+            <div class="form-group">
+                <label>Deductible Remaining:</label>
+                <input type="text" name="Deductible Remaining" />
+            </div>
+        </div>
+
+        <div class="inline-group deductible-applies">
+            <label><strong>Deductible Applies to:</strong></label>
+            <label>All <input type="text" /></label>
+            <label>Diagnostic/Preventative <input type="text" /></label>
+            <label>Basic <input type="text" /></label>
+            <label>Major <input type="text" /></label>
+        </div>
+
+        <!-- Services in 2 columns for space efficiency -->
+        <div class="services-section">
+            <!-- Left Column -->
+            <div class="services-column">
+                <!-- Diagnostic/Preventative Services -->
+                <div class="section-title">Diagnostic/Preventative:</div>
+
+                <div class="services-grid" data-procedure="D0150">
+                    <label>Exam D0150/D0120:</label>
+                    <input type="text" data-coverage-category="preventive" placeholder="%" />
+                    <input type="text" name="D0150_frequency" placeholder="Freq" />
+                    <input type="text" name="Exam History" placeholder="History" />
+                </div>
+
+                <div class="services-grid" data-procedure="D1110">
+                    <label>Prophy D1110/D1120:</label>
+                    <input type="text" data-coverage-category="preventive" placeholder="%" />
+                    <input type="text" name="D1110_frequency" placeholder="Freq" />
+                    <input type="text" name="Prophy History" placeholder="History" />
+                </div>
+
+                <div class="services-grid" data-procedure="D1208">
+                    <label>Fluoride D1208:</label>
+                    <input type="text" data-coverage-category="preventive" placeholder="%" />
+                    <input type="text" name="D1208_frequency" placeholder="Freq" />
+                    <input type="text" name="Fluoride History" placeholder="History" />
+                </div>
+
+                <div class="services-grid" data-procedure="D1351">
+                    <label>Sealants D1351:</label>
+                    <input type="text" data-coverage-category="preventive" placeholder="%" />
+                    <input type="text" name="D1351_frequency" placeholder="Freq" />
+                    <input type="text" name="Sealant History" placeholder="History" />
+                </div>
+
+                <!-- Basic Services (first half) -->
+                <div class="section-title">Basic Services:</div>
+
+                <div class="services-grid" data-procedure="D4910">
+                    <label>Perio Maint D4910:</label>
+                    <input type="text" data-coverage-category="basic" placeholder="%" />
+                    <input type="text" name="D4910_frequency" placeholder="Freq" />
+                    <input type="text" placeholder="History" />
+                </div>
+
+                <div class="services-grid" data-procedure="D4341">
+                    <label>SRP's D4341:</label>
+                    <input type="text" data-coverage-category="basic" placeholder="%" />
+                    <input type="text" name="D4341_frequency" placeholder="Freq" />
+                    <input type="text" name="SRP History" placeholder="History" />
+                </div>
+
+                <div class="services-grid" data-procedure="D2391">
+                    <label>Restorative/Fillings:</label>
+                    <input type="text" data-coverage-category="basic" placeholder="%" />
+                    <input type="text" name="D2391_frequency" placeholder="Freq" />
+                    <input type="text" name="Filling History" placeholder="History" />
+                </div>
+            </div>
+
+            <!-- Right Column -->
+            <div class="services-column">
+                <!-- Basic Services (second half) -->
+                <div class="section-title">Basic Services (cont.):</div>
+
+                <div class="services-grid" data-procedure="D7140">
+                    <label>Simple Ext D7140:</label>
+                    <input type="text" data-coverage-category="basic" placeholder="%" />
+                    <div></div>
+                    <input type="text" name="EXT History" placeholder="History" />
+                </div>
+
+                <div class="services-grid" data-procedure="D7240">
+                    <label>Surgical Ext D7240:</label>
+                    <input type="text" data-coverage-category="basic" placeholder="%" />
+                    <div></div>
+                    <div></div>
+                </div>
+
+                <div class="services-grid" data-procedure="D3330">
+                    <label>Endo RCT D3330:</label>
+                    <input type="text" data-coverage-category="basic" placeholder="%" />
+                    <div></div>
+                    <div></div>
+                </div>
+
+                <!-- Major Services -->
+                <div class="section-title">Major Services:</div>
+
+                <div class="services-grid" data-procedure="D2740">
+                    <label>Crowns D2740:</label>
+                    <input type="text" data-coverage-category="major" placeholder="%" />
+                    <input type="text" name="D2740_frequency" placeholder="Freq" />
+                    <input type="text" name="Crown History" placeholder="History" />
+                </div>
+
+                <div class="services-grid" data-procedure="D2950">
+                    <label>Build up D2950:</label>
+                    <input type="text" data-coverage-category="major" placeholder="%" />
+                    <input type="text" name="D2950_frequency" placeholder="Freq" />
+                    <input type="text" name="Build Up History" placeholder="History" />
+                </div>
+
+                <div class="services-grid" data-procedure="D2954">
+                    <label>Post and Core D2954:</label>
+                    <input type="text" data-coverage-category="major" placeholder="%" />
+                    <input type="text" name="D2954_frequency" placeholder="Freq" />
+                    <input type="text" name="Post & Core History" placeholder="History" />
+                </div>
+
+                <div class="services-grid" data-procedure="D5110">
+                    <label>Dentures D5110:</label>
+                    <input type="text" data-coverage-category="major" placeholder="%" />
+                    <input type="text" name="D5110_frequency" placeholder="Freq" />
+                    <input type="text" name="Denture History" placeholder="History" />
+                </div>
+            </div>
+        </div>
+
+        <div class="inline-group">
+            <label>Implants D6010:</label>
+            <select>
+                <option value="">Select...</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+        </div>
+
+        <div class="ortho-line">
+            <label><strong>Ortho Coverage:</strong></label>
+            <select name="Ortho Coverage">
+                <option value="">Select...</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+            <input type="text" name="Ortho Coverage %" placeholder="%" />
+            <label>Age Limit:</label>
+            <input type="text" name="Ortho Age Limit" />
+            <label>Lifetime Max:</label>
+            <input type="text" name="Ortho Lifetime Maximum" />
+        </div>
+
+        <div class="inline-group">
+            <label>Previous Extractions Covered?</label>
+            <select>
+                <option value="">Select...</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+        </div>
+
+        <div class="waiting-periods">
+            <label><strong>WAITING PERIODS:</strong></label>
+            <label>Basic:</label>
+            <select>
+                <option value="">Select...</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+            <input type="text" />
+            <label>Major:</label>
+            <select>
+                <option value="">Select...</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+            <input type="text" />
+        </div>
+
+        <div class="radio-row">
+            <label>SRP'S:</label>
+            <label><input type="radio" name="srp" value="BASIC" /> BASIC</label>
+            <label><input type="radio" name="srp" value="MAJOR" /> MAJOR</label>
+            <span></span>
+            <label>SIMPLE EXT:</label>
+            <label><input type="radio" name="simple_ext" value="BASIC" /> BASIC</label>
+            <label><input type="radio" name="simple_ext" value="MAJOR" /> MAJOR</label>
+        </div>
+
+        <div class="radio-row">
+            <label>SURGICAL EXT:</label>
+            <label><input type="radio" name="surgical_ext" value="BASIC" /> BASIC</label>
+            <label><input type="radio" name="surgical_ext" value="MAJOR" /> MAJOR</label>
+            <span></span>
+            <label>ENDO:</label>
+            <label><input type="radio" name="endo" value="BASIC" /> BASIC</label>
+            <label><input type="radio" name="endo" value="MAJOR" /> MAJOR</label>
+        </div>
+
+        <div class="occ-line">
+            <label>OCC Guards D9945,D9944:</label>
+            <input type="text" placeholder="%" />
+            <input type="text" placeholder="Freq" />
+            <label>Limitations if any:</label>
+            <input type="text" />
+        </div>
+    </div>
+
+    <!-- Chat Widget -->
+    <div id="chatWidget">
+        <!-- Toggle Button (bottom right) -->
+        <button id="chatToggle" onclick="toggleChat()"
+                style="position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; border-radius: 50%; background: #10b981; border: none; box-shadow: 0 4px 12px rgba(16,185,129,0.4); cursor: pointer; z-index: 1000; display: flex; align-items: center; justify-content: center; font-size: 28px; transition: transform 0.2s;"
+                onmouseover="this.style.transform='scale(1.1)'"
+                onmouseout="this.style.transform='scale(1)'">
+            💬
+        </button>
+
+        <!-- Chat Panel (slides from right) -->
+        <div id="chatPanel"
+             style="display: none; position: fixed; bottom: 100px; right: 30px; width: 400px; max-width: 90vw; height: 600px; max-height: 80vh; background: white; border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.2); z-index: 999; flex-direction: column;">
+            <!-- Header -->
+            <div style="background: #10b981; color: white; padding: 20px; border-radius: 16px 16px 0 0; display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <div style="font-weight: 700; font-size: 18px;">💬 Ask about Coverage</div>
+                    <div id="chatPatientName" style="font-size: 13px; opacity: 0.9; margin-top: 4px;">Loading...</div>
+                </div>
+                <button onclick="toggleChat()"
+                        style="background: none; border: none; color: white; font-size: 24px; cursor: pointer; padding: 0; width: 30px; height: 30px;">×</button>
+            </div>
+
+            <!-- Messages -->
+            <div id="chatMessages"
+                 style="flex: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 15px; background: #f9fafb;">
+                <div style="text-align: center; color: #9ca3af; font-size: 14px; padding: 20px;">
+                    Ask questions about this patient's insurance coverage
+                </div>
+                <!-- Demo question suggestions -->
+                <div style="display: flex; flex-direction: column; gap: 8px; padding: 10px;">
+                    <div style="font-size: 12px; color: #6b7280; margin-bottom: 5px;">Try these questions:</div>
+                    <button onclick="askDemoQuestion('How many bitewings can the patient get per year?')"
+                            style="background: #f0fdf4; border: 1px solid #10b981; color: #059669; padding: 8px 12px; border-radius: 6px; cursor: pointer; text-align: left; font-size: 13px; transition: all 0.2s;"
+                            onmouseover="this.style.background='#dcfce7'"
+                            onmouseout="this.style.background='#f0fdf4'">
+                        💬 How many bitewings can the patient get per year?
+                    </button>
+                    <button onclick="askDemoQuestion('What is the annual maximum remaining?')"
+                            style="background: #f0fdf4; border: 1px solid #10b981; color: #059669; padding: 8px 12px; border-radius: 6px; cursor: pointer; text-align: left; font-size: 13px; transition: all 0.2s;"
+                            onmouseover="this.style.background='#dcfce7'"
+                            onmouseout="this.style.background='#f0fdf4'">
+                        💬 What is the annual maximum remaining?
+                    </button>
+                </div>
+            </div>
+
+            <!-- Input -->
+            <div style="padding: 15px; border-top: 1px solid #e5e7eb; background: white; border-radius: 0 0 16px 16px;">
+                <form onsubmit="sendChatMessage(event)" style="display: flex; gap: 10px;">
+                    <input type="text" id="chatInput" placeholder="Ask a question..."
+                           style="flex: 1; padding: 12px 16px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 14px;" required>
+                    <button type="submit" id="chatSendBtn"
+                            style="background: #10b981; color: white; border: none; padding: 12px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap;">Send</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        import { mapToVerificationForm } from '/mapping/index.js';
+
+        // ===== AUTO-FILL FUNCTIONALITY =====
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+
+            if (urlParams.get('autoFill') === 'true') {
+                const dataStr = sessionStorage.getItem('extractedPatientData');
+                if (dataStr) {
+                    try {
+                        const data = JSON.parse(dataStr);
+                        console.log('ACE Form - Patient data loaded:', data);
+
+                        // Save for chat widget
+                        window.currentPatientData = data;
+
+                        // STEP 1: Get mapping data
+                        const map = mapToVerificationForm(data);
+                        console.log('Mapping generated:', Object.keys(map).length, 'fields');
+
+                        // STEP 2: Fill all form-group fields by name attribute
+                        fillFormGroupsByName(map);
+
+                        // STEP 3: Fill ACE-specific fields (inline-group, services-grid, radios)
+                        fillACESpecificFields(map, data);
+
+                    } catch (error) {
+                        console.error('Error parsing patient data:', error);
+                    }
+                }
+            }
+        });
+
+        // Fill all .form-group fields by name attribute
+        function fillFormGroupsByName(map) {
+            console.log('Filling form-groups by name attribute...');
+            let filledCount = 0;
+
+            // Helper to fill a single field
+            const fillField = (name, value) => {
+                if (!value && value !== 0) return false;
+                const input = document.querySelector(`input[name="${name}"], select[name="${name}"], textarea[name="${name}"]`);
+                if (input) {
+                    input.value = value;
+                    const formGroup = input.closest('.form-group');
+                    if (formGroup) {
+                        formGroup.classList.add('field-filled');
+                    }
+                    filledCount++;
+                    console.log(`✓ Form-group: ${name} = ${value}`);
+                    return true;
+                }
+                return false;
+            };
+
+            // Iterate through all mapping keys
+            for (const [key, value] of Object.entries(map)) {
+                fillField(key, value);
+            }
+
+            // Special handling: Split subscriber name into First/Last
+            const subscriberName = map["Subscriber/Policy Holder Name"] || map["Patient Name"] || "";
+            if (subscriberName) {
+                const nameParts = subscriberName.trim().split(/\s+/);
+                if (nameParts.length >= 2) {
+                    fillField("Subscriber First Name", nameParts.slice(0, -1).join(' '));
+                    fillField("Subscriber Last Name", nameParts[nameParts.length - 1]);
+                }
+            }
+
+            // Map alternate names
+            fillField("Subscriber DOB", map["Subscriber/Policy Holder DOB"] || map["Patient DOB"]);
+
+            console.log(`Filled ${filledCount} form-group fields`);
+        }
+
+        // Fill ACE-specific fields (radios and special cases)
+        function fillACESpecificFields(map, rawData) {
+            console.log('Filling ACE-specific fields...');
+
+            // Fill procedure coverage percentages with fallback
+            // Try procedure-specific key (e.g., D0150_coverage_pct) first,
+            // then fallback to category (e.g., "Preventive / Diagnostic (% Covered)")
+            const fillProcedureCoverage = () => {
+                const categoryMap = {
+                    'preventive': map['Preventive / Diagnostic (% Covered)'],
+                    'basic': map['Basic Services (% Covered)'],
+                    'major': map['Major Services (% Covered)']
+                };
+
+                document.querySelectorAll('.services-grid[data-procedure]').forEach(grid => {
+                    const code = grid.getAttribute('data-procedure');
+                    const coverageInput = grid.querySelector('input[data-coverage-category]');
+                    if (!coverageInput) return;
+
+                    const category = coverageInput.getAttribute('data-coverage-category');
+
+                    // Try procedure-specific coverage first
+                    const specificCoverage = map[`${code}_coverage_pct`];
+                    const categoryCoverage = categoryMap[category];
+
+                    const coverage = specificCoverage || categoryCoverage;
+                    if (coverage) {
+                        coverageInput.value = coverage;
+                        const formGroup = coverageInput.closest('.form-group, .services-grid');
+                        if (formGroup) formGroup.classList.add('field-filled');
+                        console.log(`✓ Coverage ${code}: ${coverage} (${specificCoverage ? 'specific' : 'category'})`);
+                    }
+                });
+            };
+
+            fillProcedureCoverage();
+
+            // Radio buttons for SRP, EXT, ENDO categories
+            const setRadio = (name, value) => {
+                if (!value) return;
+                const radios = document.querySelectorAll(`input[type="radio"][name="${name}"]`);
+                radios.forEach(radio => {
+                    if (radio.value === value.toUpperCase()) {
+                        radio.checked = true;
+                        console.log(`✓ Radio: ${name} = ${value}`);
+                    }
+                });
+            };
+
+            setRadio('srp', map['SRP Category']);
+            setRadio('simple_ext', map['Extraction Category']);
+            setRadio('surgical_ext', map['Extraction Category']);
+            setRadio('endo', map['Endo Category']);
+
+            console.log('ACE-specific fields filled');
+        }
+
+        // ===== CHAT FUNCTIONALITY =====
+        let chatOpen = false;
+        let chatHistory = [];
+        const chatUrlParams = new URLSearchParams(window.location.search);
+        const chatApiKey = chatUrlParams.get('key') || '';
+
+        function toggleChat() {
+            chatOpen = !chatOpen;
+            const panel = document.getElementById('chatPanel');
+            const toggle = document.getElementById('chatToggle');
+
+            if (chatOpen) {
+                panel.style.display = 'flex';
+                toggle.textContent = '✕';
+
+                if (window.currentPatientData) {
+                    const name = `${window.currentPatientData.patient?.firstName || ''} ${window.currentPatientData.patient?.lastName || ''}`.trim();
+                    const portal = window.currentPatientData.extraction?.portalCode || window.currentPatientData.portal || '';
+                    document.getElementById('chatPatientName').textContent = `${name} (${portal})`;
+                }
+            } else {
+                panel.style.display = 'none';
+                toggle.textContent = '💬';
+            }
+        }
+        window.toggleChat = toggleChat;
+
+        function askDemoQuestion(question) {
+            document.getElementById('chatInput').value = question;
+            document.getElementById('chatInput').form.dispatchEvent(new Event('submit'));
+        }
+        window.askDemoQuestion = askDemoQuestion;
+
+        async function sendChatMessage(event) {
+            event.preventDefault();
+
+            const input = document.getElementById('chatInput');
+            const question = input.value.trim();
+            if (!question) return;
+
+            const sendBtn = document.getElementById('chatSendBtn');
+            const messagesContainer = document.getElementById('chatMessages');
+
+            const welcome = messagesContainer.querySelector('[style*="text-align: center"]');
+            if (welcome) welcome.remove();
+
+            const userMsg = document.createElement('div');
+            userMsg.style.cssText = 'background: #059669; color: white; padding: 12px 16px; border-radius: 12px 12px 0 12px; align-self: flex-end; max-width: 80%; word-wrap: break-word;';
+            userMsg.textContent = question;
+            messagesContainer.appendChild(userMsg);
+
+            input.value = '';
+            input.disabled = true;
+            input.style.opacity = '0.5';
+            sendBtn.disabled = true;
+            sendBtn.style.opacity = '0.6';
+
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+            let statusMessage = null;
+            let stepTimeouts = [];
+
+            const updateStatus = (text, delay) => {
+                const timeout = setTimeout(() => {
+                    if (!statusMessage) {
+                        statusMessage = document.createElement('div');
+                        statusMessage.className = 'pipeline-step';
+                        statusMessage.style.cssText = 'color: #6b7280; font-size: 13px; font-style: italic; align-self: flex-start;';
+                        messagesContainer.appendChild(statusMessage);
+                    }
+                    statusMessage.innerHTML = `${text}<span class="dots"></span>`;
+                    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+                }, delay);
+                stepTimeouts.push(timeout);
+            };
+
+            updateStatus('💡 Generating queries', 200);
+            updateStatus('⚡ Executing queries', 3500);
+            updateStatus('✍️ Formulating answer', 7000);
+
+            if (!document.getElementById('chatAnimations')) {
+                const style = document.createElement('style');
+                style.id = 'chatAnimations';
+                style.textContent = `
+                    .dots::after {
+                        content: '';
+                        animation: dots 1.5s infinite;
+                    }
+                    @keyframes dots {
+                        0%, 20% { content: '.'; }
+                        40% { content: '..'; }
+                        60%, 100% { content: '...'; }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+
+            try {
+                const patientData = window.currentPatientData;
+                if (!patientData) {
+                    throw new Error('No patient data loaded. Please extract or load a patient first.');
+                }
+
+                const firstName = patientData.patient?.firstName || 'Unknown';
+                const lastName = patientData.patient?.lastName || 'Unknown';
+                const subscriberId = patientData.patient?.subscriberId || Date.now();
+                const portalCode = patientData.extraction?.portalCode || patientData.portal || 'UNKNOWN';
+                const fileName = `${subscriberId}_${firstName}_${lastName}_${portalCode}.json`;
+
+                const response = await fetch(`/api/chat?key=${chatApiKey}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        question,
+                        fileName,
+                        history: chatHistory.slice(-3)
+                    })
+                });
+
+                const data = await response.json();
+
+                if (!data.success) {
+                    throw new Error(data.error || 'Unknown error');
+                }
+
+                stepTimeouts.forEach(timeout => clearTimeout(timeout));
+                if (statusMessage) statusMessage.remove();
+
+                const botMsg = document.createElement('div');
+                botMsg.style.cssText = 'background: #f3f4f6; color: #1f2937; padding: 12px 16px; border-radius: 12px 12px 12px 0; align-self: flex-start; max-width: 80%; word-wrap: break-word; line-height: 1.5;';
+
+                let html = data.answer
+                    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                    .replace(/\n\n/g, '<br><br>')
+                    .replace(/\n/g, '<br>')
+                    .replace(/^\* (.+)$/gm, '• $1');
+
+                botMsg.innerHTML = html;
+                messagesContainer.appendChild(botMsg);
+
+                chatHistory.push({
+                    user: question,
+                    assistant: data.answer
+                });
+
+                if (data.metadata?.timing) {
+                    const timing = document.createElement('div');
+                    timing.style.cssText = 'font-size: 11px; color: #9ca3af; align-self: flex-start; margin-top: -10px;';
+                    const seconds = (data.metadata.timing.total / 1000).toFixed(1);
+                    const queryText = data.metadata.queriesGenerated === 1 ? 'query' : 'queries';
+                    timing.textContent = `⏱️ ${seconds}s • ${data.metadata.queriesGenerated} ${queryText}`;
+                    messagesContainer.appendChild(timing);
+                }
+
+            } catch (error) {
+                stepTimeouts.forEach(timeout => clearTimeout(timeout));
+                if (statusMessage) statusMessage.remove();
+
+                const errorMsg = document.createElement('div');
+                errorMsg.style.cssText = 'background: #fee2e2; color: #991b1b; padding: 12px 16px; border-radius: 12px; align-self: flex-start; max-width: 80%; word-wrap: break-word;';
+                errorMsg.textContent = `❌ Error: ${error.message}`;
+                messagesContainer.appendChild(errorMsg);
+            } finally {
+                input.disabled = false;
+                input.style.opacity = '1';
+                sendBtn.disabled = false;
+                sendBtn.style.opacity = '1';
+                input.focus();
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            }
+        }
+        window.sendChatMessage = sendChatMessage;
+    </script>
+</body>
+</html>
