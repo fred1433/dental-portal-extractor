@@ -833,86 +833,111 @@
         <!-- BOX 3: Major Services -->
         <div class="section-title">Major Services:</div>
         <div class="service-box">
-            <div class="service-row">
-                <label>Crowns D2740:</label>
-                <input type="text" name="D2740_coverage" class="pct" data-coverage-category="major" placeholder="%" />
-                <input type="text" name="D2740_frequency" class="freq" placeholder="Freq" />
-                <label>Age Limit:</label>
-                <input type="text" name="Crown Age Limit" class="age-limit" placeholder="" />
-                <label style="margin-left: 150px;">Crown History:</label>
-                <input type="text" name="Crown History" class="history" placeholder="" />
-            </div>
+            <div style="display: grid; grid-template-columns: 3fr 1fr; column-gap: 10px;">
+                <!-- COLUMN 1 (Left - Services) -->
+                <div>
+                    <div class="service-row">
+                        <label>Crowns D2740:</label>
+                        <input type="text" name="D2740_coverage" class="pct" data-coverage-category="major" placeholder="%" />
+                        <input type="text" name="D2740_frequency" class="freq" placeholder="Freq" />
+                        <label>Age Limit:</label>
+                        <input type="text" name="Crown Age Limit" class="age-limit" placeholder="" />
+                    </div>
 
-            <div class="service-row">
-                <label>Downgrade?</label>
-                <select name="Crown Downgrade">
-                    <option value="">Select...</option>
-                    <option value="Yes">Yes</option>
-                    <option value="No">No</option>
-                </select>
-                <label>Which Teeth:</label>
-                <input type="text" name="Downgrade Which Teeth" class="medium" placeholder="" />
-            </div>
+                    <div class="service-row">
+                        <label>Downgrade?</label>
+                        <select name="Crown Downgrade">
+                            <option value="">Select...</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                        <label>Which Teeth:</label>
+                        <input type="text" name="Downgrade Which Teeth" class="medium" placeholder="" />
+                    </div>
 
-            <div class="service-row">
-                <label><strong>PAY ON SEAT / PREP</strong></label>
-                <label style="margin-left: 340px;">Bridge History:</label>
-                <input type="text" name="Bridge History" class="history" placeholder="" />
-            </div>
+                    <div class="service-row">
+                        <label><strong>PAY ON SEAT / PREP</strong></label>
+                    </div>
 
-            <div class="service-row">
-                <label>Build up D2950:</label>
-                <input type="text" name="D2950_coverage" class="pct" data-coverage-category="major" placeholder="%" />
-                <input type="text" name="D2950_frequency" class="freq" placeholder="Freq" />
-                <label style="margin-left: 210px;">Build Up History:</label>
-                <input type="text" name="Build Up History" class="history" placeholder="" />
-            </div>
+                    <div class="service-row">
+                        <label>Build up D2950:</label>
+                        <input type="text" name="D2950_coverage" class="pct" data-coverage-category="major" placeholder="%" />
+                        <input type="text" name="D2950_frequency" class="freq" placeholder="Freq" />
+                    </div>
 
-            <div class="service-row">
-                <label>Post and Core D2954:</label>
-                <input type="text" name="D2954_coverage" class="pct" data-coverage-category="major" placeholder="%" />
-                <input type="text" name="D2954_frequency" class="freq" placeholder="Freq" />
-            </div>
+                    <div class="service-row">
+                        <label>Post and Core D2954:</label>
+                        <input type="text" name="D2954_coverage" class="pct" data-coverage-category="major" placeholder="%" />
+                        <input type="text" name="D2954_frequency" class="freq" placeholder="Freq" />
+                    </div>
 
-            <div class="service-row">
-                <label>Dentures D5110, D5221,D5213:</label>
-                <input type="text" name="D5110_coverage" class="pct" data-coverage-category="major" placeholder="%" />
-                <input type="text" name="D5110_frequency" class="freq" placeholder="Freq" />
-                <label style="margin-left: 100px;">Post & Core History:</label>
-                <input type="text" name="Post & Core History" class="history" placeholder="" />
-            </div>
+                    <div class="service-row">
+                        <label>Dentures D5110, D5221,D5213:</label>
+                        <input type="text" name="D5110_coverage" class="pct" data-coverage-category="major" placeholder="%" />
+                        <input type="text" name="D5110_frequency" class="freq" placeholder="Freq" />
+                    </div>
 
-            <div class="service-row">
-                <label>Implants D6010:</label>
-                <select name="Implants D6010">
-                    <option value="">Select...</option>
-                    <option value="Yes">Yes</option>
-                    <option value="No">No</option>
-                </select>
-                <label style="margin-left: 310px;">Denture History:</label>
-                <input type="text" name="Denture History" class="history" placeholder="" />
-            </div>
+                    <div class="service-row">
+                        <label>Implants D6010:</label>
+                        <select name="Implants D6010">
+                            <option value="">Select...</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                    </div>
 
-            <div class="service-row">
-                <label>OCC Guards D9945,D9944:</label>
-                <input type="text" name="OCC_coverage" class="pct" placeholder="%" />
-                <input type="text" name="OCC_frequency" class="freq" placeholder="Freq" />
-                <label>Limitations if any:</label>
-                <input type="text" name="OCC Limitations" class="long" placeholder="" />
-            </div>
+                    <div class="service-row">
+                        <label>OCC Guards D9945,D9944:</label>
+                        <input type="text" name="OCC_coverage" class="pct" placeholder="%" />
+                        <input type="text" name="OCC_frequency" class="freq" placeholder="Freq" />
+                        <label>Limitations if any:</label>
+                        <input type="text" name="OCC Limitations" class="long" placeholder="" />
+                    </div>
 
-            <div class="service-row">
-                <label>Ortho Coverage:</label>
-                <select name="Ortho Coverage">
-                    <option value="">Select...</option>
-                    <option value="Yes">Yes</option>
-                    <option value="No">No</option>
-                </select>
-                <input type="text" name="Ortho Coverage %" class="pct" placeholder="%" />
-                <label>Age Limit:</label>
-                <input type="text" name="Ortho Age Limit" class="age-limit" placeholder="" />
-                <label>Lifetime Max:</label>
-                <input type="text" name="Ortho Lifetime Maximum" class="medium" placeholder="" />
+                    <div class="service-row">
+                        <label>Ortho Coverage:</label>
+                        <select name="Ortho Coverage">
+                            <option value="">Select...</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                        <input type="text" name="Ortho Coverage %" class="pct" placeholder="%" />
+                        <label>Age Limit:</label>
+                        <input type="text" name="Ortho Age Limit" class="age-limit" placeholder="" />
+                        <label>Lifetime Max:</label>
+                        <input type="text" name="Ortho Lifetime Maximum" class="medium" placeholder="" />
+                    </div>
+                </div>
+
+                <!-- COLUMN 2 (Right - History fields) -->
+                <div style="padding-left: 8px;">
+                    <div class="service-row">
+                        <label>Crown History:</label>
+                        <input type="text" name="Crown History" class="history" placeholder="" />
+                    </div>
+
+                    <div style="height: 60px;"></div>
+
+                    <div class="service-row">
+                        <label>Bridge History:</label>
+                        <input type="text" name="Bridge History" class="history" placeholder="" />
+                    </div>
+
+                    <div class="service-row">
+                        <label>Build Up History:</label>
+                        <input type="text" name="Build Up History" class="history" placeholder="" />
+                    </div>
+
+                    <div class="service-row">
+                        <label>Post & Core History:</label>
+                        <input type="text" name="Post & Core History" class="history" placeholder="" />
+                    </div>
+
+                    <div class="service-row">
+                        <label>Denture History:</label>
+                        <input type="text" name="Denture History" class="history" placeholder="" />
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -941,19 +966,27 @@
             <input type="text" name="Waiting Period Major Details" class="medium" placeholder="" />
         </div>
 
-        <div class="service-row" style="margin-top: 8px;">
-            <label><strong>SRP'S:</strong></label>
-            <label><input type="radio" name="srp" value="BASIC" /> BASIC</label>
-            <label><input type="radio" name="srp" value="MAJOR" /> MAJOR</label>
-            <label style="margin-left: 20px;"><strong>SIMPLE EXT:</strong></label>
-            <label><input type="radio" name="simple_ext" value="BASIC" /> BASIC</label>
-            <label><input type="radio" name="simple_ext" value="MAJOR" /> MAJOR</label>
-            <label style="margin-left: 20px;"><strong>SURGICAL EXT:</strong></label>
-            <label><input type="radio" name="surgical_ext" value="BASIC" /> BASIC</label>
-            <label><input type="radio" name="surgical_ext" value="MAJOR" /> MAJOR</label>
-            <label style="margin-left: 20px;"><strong>ENDO:</strong></label>
-            <label><input type="radio" name="endo" value="BASIC" /> BASIC</label>
-            <label><input type="radio" name="endo" value="MAJOR" /> MAJOR</label>
+        <div class="service-row" style="margin-top: 8px; justify-content: space-between;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <label><strong>SRP'S:</strong></label>
+                <label><input type="radio" name="srp" value="BASIC" /> BASIC</label>
+                <label><input type="radio" name="srp" value="MAJOR" /> MAJOR</label>
+            </div>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <label><strong>SIMPLE EXT:</strong></label>
+                <label><input type="radio" name="simple_ext" value="BASIC" /> BASIC</label>
+                <label><input type="radio" name="simple_ext" value="MAJOR" /> MAJOR</label>
+            </div>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <label><strong>SURGICAL EXT:</strong></label>
+                <label><input type="radio" name="surgical_ext" value="BASIC" /> BASIC</label>
+                <label><input type="radio" name="surgical_ext" value="MAJOR" /> MAJOR</label>
+            </div>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <label><strong>ENDO:</strong></label>
+                <label><input type="radio" name="endo" value="BASIC" /> BASIC</label>
+                <label><input type="radio" name="endo" value="MAJOR" /> MAJOR</label>
+            </div>
         </div>
     </div>
 
