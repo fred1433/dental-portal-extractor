@@ -522,30 +522,31 @@
                 <input type="text" name="Zip Code" style="min-width: 100px;" />
             </div>
 
-            <div class="inline-group" style="margin-bottom: 8px;">
+            <div class="inline-group">
                 <label>Insurance Number:</label>
                 <input type="text" name="Insurance Number" style="min-width: 180px;" />
                 <label>Payor ID:</label>
                 <input type="text" name="Payor ID" style="min-width: 180px;" />
             </div>
+        </div>
 
-            <div class="inline-group">
-                <label>Fee Schedule:</label>
-                <input type="text" name="Fee Schedule Used" />
-                <select name="Network Participation">
-                    <option value="">Select...</option>
-                    <option value="In-Network">In Network</option>
-                    <option value="Out-of-Network">Out of Network</option>
-                </select>
-                <label>Accept Assignment of benefits:</label>
-                <select name="Assignment of Benefits Accepted?">
-                    <option value="">Select...</option>
-                    <option value="Yes">Yes</option>
-                    <option value="No">No</option>
-                </select>
-                <label>Coordination of Benefits:</label>
-                <input type="text" name="Coordination of Benefits" />
-            </div>
+        <!-- Fee Schedule line (outside Carrier Info box) -->
+        <div class="inline-group" style="margin-bottom: 8px;">
+            <label>Fee Schedule:</label>
+            <input type="text" name="Fee Schedule Used" />
+            <select name="Network Participation">
+                <option value="">Select...</option>
+                <option value="In-Network">In Network</option>
+                <option value="Out-of-Network">Out of Network</option>
+            </select>
+            <label>Accept Assignment of benefits:</label>
+            <select name="Assignment of Benefits Accepted?">
+                <option value="">Select...</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+            <label>Coordination of Benefits:</label>
+            <input type="text" name="Coordination of Benefits" />
         </div>
 
         <!-- Plan Info -->
