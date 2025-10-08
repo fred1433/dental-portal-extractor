@@ -221,5 +221,8 @@ Thumbs.db
 *.tmp
 *.temp
 *.zip
+
+## Generated Frontend Files (TypeScript build outputs)
 public/app.js
 public/app.js.map
+public/mapping/

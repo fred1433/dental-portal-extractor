@@ -361,8 +361,12 @@
                             <input type="date" />
                         </div>
                         <div class="form-group">
-                            <label>Subscriber/Policy Holder Name</label>
-                            <input type="text" placeholder="Enter subscriber name" />
+                            <label>Subscriber First Name</label>
+                            <input type="text" placeholder="Enter subscriber first name" />
+                        </div>
+                        <div class="form-group">
+                            <label>Subscriber Last Name</label>
+                            <input type="text" placeholder="Enter subscriber last name" />
                         </div>
                         <div class="form-group">
                             <label>Subscriber/Policy Holder DOB</label>
@@ -576,8 +580,16 @@
                             <input type="text" placeholder="6 months" />
                         </div>
                         <div class="form-group">
+                            <label>Basic Wait Period Details</label>
+                            <input type="text" name="Waiting Period Basic Details" placeholder="Enter details" />
+                        </div>
+                        <div class="form-group">
                             <label>Major Wait Period</label>
                             <input type="text" placeholder="12 months" />
+                        </div>
+                        <div class="form-group">
+                            <label>Major Wait Period Details</label>
+                            <input type="text" name="Waiting Period Major Details" placeholder="Enter details" />
                         </div>
                     </div>
 
@@ -677,6 +689,10 @@
                                     <td><input type="text" name="sealant-age-limit" placeholder="Enter age limit" /></td>
                                 </tr>
                                 <tr>
+                                    <td>Teeth Covered (for sealants)</td>
+                                    <td><input type="text" name="Teeth Covered" placeholder="Enter teeth covered" /></td>
+                                </tr>
+                                <tr>
                                     <td>Does Limited share frequency with other exams?</td>
                                     <td>
                                         <div class="radio-options">
@@ -697,6 +713,28 @@
                                 <tr>
                                     <td>Time between SRP and Perio Maintenance?</td>
                                     <td><input type="text" name="time-srp-perio" placeholder="Enter time period" /></td>
+                                </tr>
+                                <tr>
+                                    <td>Quads Per day (for SRP)</td>
+                                    <td><input type="text" name="Quads Per day" placeholder="Enter number of quads" /></td>
+                                </tr>
+                                <tr>
+                                    <td>Is Arestin D4381 covered?</td>
+                                    <td>
+                                        <div class="radio-options">
+                                            <label><input type="radio" name="arestin-d4381" value="yes" /> Yes</label>
+                                            <label><input type="radio" name="arestin-d4381" value="no" /> No</label>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>SRP Same Day as Prophy/Perio Maint?</td>
+                                    <td>
+                                        <div class="radio-options">
+                                            <label><input type="radio" name="srp-same-day" value="yes" /> Yes</label>
+                                            <label><input type="radio" name="srp-same-day" value="no" /> No</label>
+                                        </div>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>Is composite fillings downgraded to amalgam?</td>
@@ -743,8 +781,116 @@
                                         </div>
                                     </td>
                                 </tr>
+                                <tr>
+                                    <td>Crown Age Limit</td>
+                                    <td><input type="text" name="Crown Age Limit" placeholder="Enter age limit" /></td>
+                                </tr>
+                                <tr>
+                                    <td>Are Crowns downgraded?</td>
+                                    <td>
+                                        <div class="radio-options">
+                                            <label><input type="radio" name="crown-downgrade" value="yes" /> Yes</label>
+                                            <label><input type="radio" name="crown-downgrade" value="no" /> No</label>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Downgrade Which Teeth?</td>
+                                    <td><input type="text" name="Downgrade Which Teeth" placeholder="Enter which teeth" /></td>
+                                </tr>
+                                <tr>
+                                    <td>Are Implants D6010 covered?</td>
+                                    <td>
+                                        <div class="radio-options">
+                                            <label><input type="radio" name="implants-d6010" value="yes" /> Yes</label>
+                                            <label><input type="radio" name="implants-d6010" value="no" /> No</label>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>OCC Guards Coverage %</td>
+                                    <td><input type="text" name="OCC Coverage %" placeholder="Enter coverage %" /></td>
+                                </tr>
+                                <tr>
+                                    <td>OCC Guards Frequency</td>
+                                    <td><input type="text" name="OCC Frequency" placeholder="Enter frequency" /></td>
+                                </tr>
+                                <tr>
+                                    <td>OCC Guards Limitations</td>
+                                    <td><input type="text" name="OCC Limitations" placeholder="Enter limitations if any" /></td>
+                                </tr>
+                                <tr>
+                                    <td>Are Previous Extractions Covered?</td>
+                                    <td>
+                                        <div class="radio-options">
+                                            <label><input type="radio" name="previous-extractions" value="yes" /> Yes</label>
+                                            <label><input type="radio" name="previous-extractions" value="no" /> No</label>
+                                        </div>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Procedure History -->
+            <div class="section">
+                <div class="section-header" onclick="toggleSection(this)">Procedure History</div>
+                <div class="section-content">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Exam History</label>
+                            <input type="text" name="Exam History" placeholder="Last date or details" />
+                        </div>
+                        <div class="form-group">
+                            <label>Prophy History</label>
+                            <input type="text" name="Prophy History" placeholder="Last date or details" />
+                        </div>
+                        <div class="form-group">
+                            <label>Fluoride History</label>
+                            <input type="text" name="Fluoride History" placeholder="Last date or details" />
+                        </div>
+                        <div class="form-group">
+                            <label>Xray History</label>
+                            <input type="text" name="Xray History" placeholder="Last date or details" />
+                        </div>
+                        <div class="form-group">
+                            <label>Sealant History</label>
+                            <input type="text" name="Sealant History" placeholder="Last date or details" />
+                        </div>
+                        <div class="form-group">
+                            <label>Filling History</label>
+                            <input type="text" name="Filling History" placeholder="Last date or details" />
+                        </div>
+                        <div class="form-group">
+                            <label>SRP History</label>
+                            <input type="text" name="SRP History" placeholder="Last date or details" />
+                        </div>
+                        <div class="form-group">
+                            <label>EXT History</label>
+                            <input type="text" name="EXT History" placeholder="Last date or details" />
+                        </div>
+                        <div class="form-group">
+                            <label>Crown History</label>
+                            <input type="text" name="Crown History" placeholder="Last date or details" />
+                        </div>
+                        <div class="form-group">
+                            <label>Bridge History</label>
+                            <input type="text" name="Bridge History" placeholder="Last date or details" />
+                        </div>
+                        <div class="form-group">
+                            <label>Build Up History</label>
+                            <input type="text" name="Build Up History" placeholder="Last date or details" />
+                        </div>
+                        <div class="form-group">
+                            <label>Post & Core History</label>
+                            <input type="text" name="Post & Core History" placeholder="Last date or details" />
+                        </div>
+                        <div class="form-group">
+                            <label>Denture History</label>
+                            <input type="text" name="Denture History" placeholder="Last date or details" />
+                        </div>
                     </div>
                 </div>
             </div>

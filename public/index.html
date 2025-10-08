@@ -518,8 +518,8 @@
                         <div style="display: flex; gap: 10px; align-items: center;">
                             <select id="clinic" name="clinic" required style="background: white; border: 2px solid #10b981; flex: 1; padding: 12px 16px; font-size: 15px; height: 48px;">
                                 <option value="">-- Select a Clinic --</option>
-                                <option value="sdb" selected>SDB Dental</option>
-                                <option value="ace_dental">Ace Dental</option>
+                                <option value="sdb">SDB Dental</option>
+                                <option value="ace_dental" selected>Ace Dental</option>
                             </select>
                             <button type="button" class="btn" onclick="openCredentialsModal()" style="white-space: nowrap; height: 48px; padding: 0 24px;">
                                 ⚙️ Manage Credentials
@@ -676,8 +676,8 @@
                 <div style="margin-bottom: 15px;">
                     <label style="font-weight: 600; color: #374151;">Select Clinic:</label>
                     <select id="modalClinicSelect" style="width: 100%; padding: 10px; margin-top: 5px; border: 2px solid #e5e7eb; border-radius: 8px;" onchange="loadClinicCredentials()">
-                        <option value="sdb">SDB Dental</option>
                         <option value="ace_dental">Ace Dental</option>
+                        <option value="sdb">SDB Dental</option>
                     </select>
                 </div>
                 <div id="credentialsForm" style="display: grid; gap: 15px;">

@@ -1,6 +1,6 @@
-import { normalizeDentaQuest } from '../adapters/dentaquest.js';
+import { normalizeDentaQuest } from '../portalAdapters/dentaquest.js';
 import type { ExtractionResult, NormalizedEligibility } from '../shared/types.js';
-import { normalizeDDINS } from '../adapters/ddins.js';
+import { normalizeDDINS } from '../portalAdapters/ddins.js';
 
 export function normalizeEligibility(data: ExtractionResult): NormalizedEligibility {
   const portal = data.portal?.toUpperCase();

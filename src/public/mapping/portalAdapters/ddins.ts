@@ -95,9 +95,11 @@ export function normalizeDDINS(data: ExtractionResult): NormalizedEligibility {
 
   const individualRow = findDeductible('individual');
   const familyRow = findDeductible('family');
+  const lifetimeRow = findDeductible('lifetime');
 
   const individualInfo = individualRow?.amountInfo ?? individualRow?.amountinfo ?? {};
   const familyInfo = familyRow?.amountInfo ?? familyRow?.amountinfo ?? {};
+  const lifetimeInfo = lifetimeRow?.amountInfo ?? lifetimeRow?.amountinfo ?? {};
 
   const individualApplies = ensureArray(individualRow?.servicesAllowed ?? individualRow?.servicesallowed).map(
     (entry: any) => entry?.treatmentTypeDescription ?? entry?.treatmenttypedescription
@@ -112,6 +114,10 @@ export function normalizeDDINS(data: ExtractionResult): NormalizedEligibility {
     family: {
       amount: parseNumber(familyInfo.totalAmount ?? familyInfo.totalamount),
       remaining: parseNumber(familyInfo.remainingAmount ?? familyInfo.remainingamount)
+    },
+    lifetime: {
+      amount: parseNumber(lifetimeInfo.totalAmount ?? lifetimeInfo.totalamount),
+      remaining: parseNumber(lifetimeInfo.remainingAmount ?? lifetimeInfo.remainingamount)
     }
   };
 

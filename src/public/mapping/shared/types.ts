@@ -86,6 +86,10 @@ export interface NormalizedEligibility {
       amount?: number;
       remaining?: number;
     };
+    lifetime: {
+      amount?: number;
+      remaining?: number;
+    };
   };
   coveragePct: {
     preventive?: number | null;

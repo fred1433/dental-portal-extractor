@@ -425,6 +425,185 @@ export function toFormFieldMap(normalized: NormalizedEligibility, raw: Extractio
   map['Post & Core History'] = getLastDate('D2954');
   map['Denture History'] = getLastDate('D5110') || getLastDate('D5221') || getLastDate('D5213');
 
+  // ===== Additional Missing Fields (Master HTML completeness) =====
+
+  // 1. Lifetime Deductible
+  map['Lifetime Deductible'] = formatCurrency(normalized.deductibles?.lifetime?.remaining);
+
+  // 2. Work in Progress Covered?
+  const wipBenefit = getBenefit('work in progress') || getBenefit('wip') || getBenefit('treatment in progress');
+  if (wipBenefit) {
+    const lower = wipBenefit.toLowerCase();
+    map['Work in Progress Covered'] = (lower.includes('covered') || lower.includes('yes')) ? 'Yes' : 'No';
+  } else {
+    // Default assumption: typically not covered unless specified
+    map['Work in Progress Covered'] = '';
+  }
+
+  // 3. Can Pano be taken on same day as FMX?
+  const d0330 = normalized.procedureLimitations?.['D0330']; // Pano
+  const d0210 = normalized.procedureLimitations?.['D0210']; // FMX
+  if (d0330?.limitations || d0210?.limitations) {
+    const combinedText = `${d0330?.limitations || ''} ${d0210?.limitations || ''}`.toLowerCase();
+    if (combinedText.includes('same day') && combinedText.includes('not')) {
+      map['Pano Same Day as FMX'] = 'No';
+    } else if (combinedText.includes('same day')) {
+      map['Pano Same Day as FMX'] = 'Yes';
+    } else {
+      map['Pano Same Day as FMX'] = '';
+    }
+  } else {
+    map['Pano Same Day as FMX'] = '';
+  }
+
+  // 4. Are D7210/D7953 Billed To Medical First?
+  const d7210 = normalized.procedureLimitations?.['D7210']; // Surgical removal of impacted tooth
+  const d7953 = normalized.procedureLimitations?.['D7953']; // Bone replacement graft
+  const medicalBillingBenefit = getBenefit('medical billing') || getBenefit('bill to medical');
+  if (medicalBillingBenefit) {
+    const lower = medicalBillingBenefit.toLowerCase();
+    map['D7210/D7953 Medical First'] = (lower.includes('yes') || lower.includes('medical first')) ? 'Yes' : 'No';
+  } else if (d7210?.limitations || d7953?.limitations) {
+    const combinedText = `${d7210?.limitations || ''} ${d7953?.limitations || ''}`.toLowerCase();
+    if (combinedText.includes('medical') && combinedText.includes('first')) {
+      map['D7210/D7953 Medical First'] = 'Yes';
+    } else {
+      map['D7210/D7953 Medical First'] = '';
+    }
+  } else {
+    map['D7210/D7953 Medical First'] = '';
+  }
+
+  // 5. Does Limited share frequency with other exams?
+  const d0140 = normalized.procedureLimitations?.['D0140']; // Limited exam
+  const d0120 = normalized.procedureLimitations?.['D0120']; // Periodic exam
+  if (d0140?.frequency && d0120?.frequency) {
+    // If both have similar frequency patterns, they likely share
+    if (d0140.frequency.includes('per year') && d0120.frequency.includes('per year')) {
+      map['Limited Share Frequency'] = 'Yes';
+    } else {
+      map['Limited Share Frequency'] = '';
+    }
+  } else if (d0140?.limitations) {
+    const limText = d0140.limitations.toLowerCase();
+    if (limText.includes('share') || limText.includes('combined')) {
+      map['Limited Share Frequency'] = 'Yes';
+    } else {
+      map['Limited Share Frequency'] = '';
+    }
+  } else {
+    map['Limited Share Frequency'] = '';
+  }
+
+  // 6. Is D0140 allowed on the same day?
+  if (d0140?.limitations) {
+    const limText = d0140.limitations.toLowerCase();
+    if (limText.includes('same day') && limText.includes('not')) {
+      map['D0140 Same Day'] = 'No';
+    } else if (limText.includes('same day')) {
+      map['D0140 Same Day'] = 'Yes';
+    } else {
+      map['D0140 Same Day'] = '';
+    }
+  } else {
+    map['D0140 Same Day'] = '';
+  }
+
+  // 7. Is there a waiting period after SRP?
+  const d4341 = normalized.procedureLimitations?.['D4341']; // SRP
+  if (d4341?.limitations) {
+    const limText = d4341.limitations.toLowerCase();
+    if (limText.includes('waiting') || limText.includes('wait')) {
+      // Try to extract the waiting period duration
+      const waitMatch = limText.match(/(\d+)\s*(month|day|week)/i);
+      if (waitMatch) {
+        map['SRP Waiting Period'] = `Yes - ${waitMatch[1]} ${waitMatch[2]}s`;
+      } else {
+        map['SRP Waiting Period'] = 'Yes';
+      }
+    } else {
+      map['SRP Waiting Period'] = '';
+    }
+  } else {
+    map['SRP Waiting Period'] = '';
+  }
+
+  // 8. Is core buildup paid on the day of crown prep?
+  const d2950 = normalized.procedureLimitations?.['D2950']; // Core buildup
+  const d2740 = normalized.procedureLimitations?.['D2740']; // Crown
+  if (d2950?.limitations) {
+    const limText = d2950.limitations.toLowerCase();
+    if (limText.includes('prep') && (limText.includes('day') || limText.includes('date'))) {
+      if (limText.includes('not') || limText.includes('seat')) {
+        map['Core Buildup Day'] = 'Seat';
+      } else {
+        map['Core Buildup Day'] = 'Prep';
+      }
+    } else {
+      map['Core Buildup Day'] = '';
+    }
+  } else {
+    map['Core Buildup Day'] = '';
+  }
+
+  // 9. Is Crown/Bridge paid on day of Prep or Seat?
+  if (d2740?.limitations) {
+    const limText = d2740.limitations.toLowerCase();
+    if (limText.includes('seat') || limText.includes('placement')) {
+      map['Crown Payment Day'] = 'Seat';
+    } else if (limText.includes('prep')) {
+      map['Crown Payment Day'] = 'Prep';
+    } else {
+      map['Crown Payment Day'] = '';
+    }
+  } else {
+    // Check in additionalBenefits
+    const crownPaymentBenefit = getBenefit('crown payment') || getBenefit('payment timing');
+    if (crownPaymentBenefit) {
+      const lower = crownPaymentBenefit.toLowerCase();
+      if (lower.includes('seat')) {
+        map['Crown Payment Day'] = 'Seat';
+      } else if (lower.includes('prep')) {
+        map['Crown Payment Day'] = 'Prep';
+      } else {
+        map['Crown Payment Day'] = '';
+      }
+    } else {
+      map['Crown Payment Day'] = '';
+    }
+  }
+
+  // Previous Extractions Covered (based on Missing Tooth Clause)
+  // missingTooth=false means extractions ARE covered (inverse logic)
+  if (normalized.member?.missingTooth === false) {
+    map['Previous Extractions Covered'] = 'Yes';
+  } else if (normalized.member?.missingTooth === true) {
+    map['Previous Extractions Covered'] = 'No';
+  } else {
+    map['Previous Extractions Covered'] = '';
+  }
+
+  // OCC Guards (D9944/D9945) - Occlusal Guards
+  const d9944 = normalized.procedureLimitations?.['D9944'];
+  const d9945 = normalized.procedureLimitations?.['D9945'];
+  const occData = d9944 || d9945; // Use whichever is available
+
+  if (occData) {
+    // Extract coverage % (e.g., "80%")
+    const coverageMatch = occData.coverage?.match(/(\d+)%?/);
+    map['OCC Coverage %'] = coverageMatch ? `${coverageMatch[1]}%` : '';
+
+    // Frequency
+    map['OCC Frequency'] = occData.frequency || '';
+
+    // Limitations
+    map['OCC Limitations'] = occData.limitations || '';
+  } else {
+    map['OCC Coverage %'] = '';
+    map['OCC Frequency'] = '';
+    map['OCC Limitations'] = '';
+  }
+
   return map;
 }
 

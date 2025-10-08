@@ -76,7 +76,15 @@ function processCoverageQuestions(map: any) {
     'd9232-covered': 'D9232 Coverage',
     'sealant-age-limit': 'Sealant Age Limit',
     'time-srp-perio': 'Time Between SRP and Perio Maintenance',
-    'composite-downgrade': 'Composite Downgrade'
+    'composite-downgrade': 'Composite Downgrade',
+    'work-progress': 'Work in Progress Covered',
+    'pano-fmx': 'Pano Same Day as FMX',
+    'medical-first': 'D7210/D7953 Medical First',
+    'limited-share': 'Limited Share Frequency',
+    'd0140-same-day': 'D0140 Same Day',
+    'srp-waiting': 'SRP Waiting Period',
+    'core-buildup-day': 'Core Buildup Day',
+    'crown-payment': 'Crown Payment Day'
   };
 
   for (const [inputName, fieldKey] of Object.entries(coverageQuestionMappings)) {
@@ -86,14 +94,16 @@ function processCoverageQuestions(map: any) {
     // Check if it's a radio button field
     const radios = document.querySelectorAll(`input[type="radio"][name="${inputName}"]`);
     if (radios.length > 0) {
-      // Handle radio buttons (Yes/No)
+      // Handle radio buttons (Yes/No, Prep/Seat, etc.)
       radios.forEach(radio => {
         const radioEl = radio as HTMLInputElement;
         const radioValue = radioEl.value.toLowerCase();
         const mappedValue = String(value).toLowerCase();
 
         if ((radioValue === 'yes' && mappedValue === 'yes') ||
-            (radioValue === 'no' && mappedValue === 'no')) {
+            (radioValue === 'no' && mappedValue === 'no') ||
+            (radioValue === 'prep' && mappedValue === 'prep') ||
+            (radioValue === 'seat' && mappedValue === 'seat')) {
           radioEl.checked = true;
           radioEl.classList.add('has-extracted-value');
 

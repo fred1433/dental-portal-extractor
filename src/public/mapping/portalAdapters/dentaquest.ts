@@ -7,7 +7,8 @@ function fallbackNormalized(): NormalizedEligibility {
     maximums: {},
     deductibles: {
       individual: {},
-      family: {}
+      family: {},
+      lifetime: {}
     },
     coveragePct: {},
     waitingPeriods: [],
@@ -393,7 +394,8 @@ export function normalizeDentaQuest(data: ExtractionResult): NormalizedEligibili
       family: {
         amount: undefined,
         remaining: undefined
-      }
+      },
+      lifetime: {}
     };
 
     fallback.coveragePct = {
@@ -467,7 +469,8 @@ export function normalizeDentaQuest(data: ExtractionResult): NormalizedEligibili
     family: {
       amount: undefined,
       remaining: undefined
-    }
+    },
+    lifetime: {}
   };
 
   const coveragePct = coverage?.coverage_percentages ?? (enrichment?.coverage?.coverage_percentages as any) ?? (summary?.coveragePercentages as any) ?? {};
