@@ -1115,8 +1115,6 @@
 
             // Iterate through all mapping keys
             for (const [key, value] of Object.entries(map)) {
-                // Skip "Fee Schedule Used" - leave empty per user request
-                if (key === "Fee Schedule Used") continue;
                 fillField(key, value);
             }
 
@@ -1188,6 +1186,32 @@
             setRadio('simple_ext', map['Extraction Category']);
             setRadio('surgical_ext', map['Extraction Category']);
             setRadio('endo', map['Endo Category']);
+
+            // Handle "Deductible Applies To" - parse single field into 4 separate inputs
+            const deductibleAppliesTo = map['Deductible Applies To'] || '';
+            if (deductibleAppliesTo && deductibleAppliesTo !== 'None') {
+                const deductibleContainer = document.querySelector('.deductible-applies');
+                if (deductibleContainer) {
+                    const labels = deductibleContainer.querySelectorAll('label');
+                    const lower = deductibleAppliesTo.toLowerCase();
+
+                    labels.forEach(label => {
+                        const text = label.textContent.toLowerCase();
+                        const input = label.querySelector('input');
+                        if (!input) return;
+
+                        // Check if this category is mentioned
+                        if ((text.includes('all') && lower.includes('all')) ||
+                            (text.includes('diagnostic') && (lower.includes('diagnostic') || lower.includes('preventive') || lower.includes('preventative'))) ||
+                            (text.includes('basic') && lower.includes('basic')) ||
+                            (text.includes('major') && lower.includes('major'))) {
+                            input.value = 'Yes';
+                            input.classList.add('field-filled');
+                            console.log(`✓ Deductible applies to: ${label.textContent.trim()} = Yes`);
+                        }
+                    });
+                }
+            }
 
             console.log('ACE-specific fields filled');
         }

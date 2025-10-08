@@ -377,6 +377,31 @@ export function toFormFieldMap(normalized, raw) {
     map['Build Up History'] = getLastDate('D2950');
     map['Post & Core History'] = getLastDate('D2954');
     map['Denture History'] = getLastDate('D5110') || getLastDate('D5221') || getLastDate('D5213');
+
+    // ACE-specific field name aliases (for compatibility with ACE compact form)
+    // Waiting periods: ACE uses different field names
+    if (map['Basic Wait Period']) {
+        map['Waiting Period Basic'] = map['Basic Wait Period'];
+    }
+    if (map['Major Wait Period']) {
+        map['Waiting Period Major'] = map['Major Wait Period'];
+    }
+
+    // Time between SRP and Perio: ACE uses shorter name
+    if (map['Time Between SRP and Perio Maintenance']) {
+        map['Time between SRP and Prophy'] = map['Time Between SRP and Perio Maintenance'];
+    }
+
+    // Composite downgrade: ACE calls it "SRP Downgrade"
+    if (map['Composite Downgrade']) {
+        map['SRP Downgrade'] = map['Composite Downgrade'];
+    }
+
+    // Perio maintenance shares frequency: ACE uses different name
+    if (map['Perio Maintenance Shares Frequency']) {
+        map['Share Freq with Prophy'] = map['Perio Maintenance Shares Frequency'];
+    }
+
     return map;
 }
 function findWaitingPeriod(waitingPeriods, codes) {
