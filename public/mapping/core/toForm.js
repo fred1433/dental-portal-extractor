@@ -6,6 +6,10 @@ export function toFormFieldMap(normalized, raw) {
     map["Today's Date"] = new Date().toISOString().slice(0, 10);
     map["Employee's Initials"] = '';
     map["Rep's Name"] = 'Dentistry Automation';
+    // Optional PMS appointment data (if available from Denticon, etc.)
+    if (raw?.appointment?.date) {
+        map["Appointment Date"] = raw.appointment.date;
+    }
     const additionalBenefits = normalized.additionalBenefits ?? {};
     const getBenefit = (header) => {
         const key = header.trim().toLowerCase();

@@ -141,7 +141,8 @@ function broadcastLog(message) {
 
 // Main extraction endpoint
 app.post('/api/extract', checkApiKey, async (req, res) => {
-  const { subscriberId, dateOfBirth, firstName, lastName, portal = 'DNOA', mode, patients, clinicId } = req.body;
+  const { subscriberId, dateOfBirth, firstName, lastName, portal = 'DNOA', mode, patients, clinicId,
+          appointmentDate, appointmentTime } = req.body;
   
   // Skip validation for bulk modes
   const isDDINSBulk = portal?.toLowerCase() === 'ddins' && mode === 'bulk';
@@ -438,7 +439,14 @@ app.post('/api/extract', checkApiKey, async (req, res) => {
 
     res.json({
       success: true,
-      data
+      data: {
+        ...data,
+        // Optional PMS appointment data (if available)
+        appointment: (appointmentDate || appointmentTime) ? {
+          date: appointmentDate || null,
+          time: appointmentTime || null
+        } : null
+      }
     });
     
   } catch (error) {

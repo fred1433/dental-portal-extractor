@@ -10,6 +10,11 @@ export function toFormFieldMap(normalized: NormalizedEligibility, raw: Extractio
   map["Employee's Initials"] = '';
   map["Rep's Name"] = 'Dentistry Automation';
 
+  // Optional PMS appointment data (if available from Denticon, etc.)
+  if ((raw as any)?.appointment?.date) {
+    map["Appointment Date"] = (raw as any).appointment.date;
+  }
+
   const additionalBenefits = normalized.additionalBenefits ?? {};
 
   const getBenefit = (header: string): string | undefined => {
