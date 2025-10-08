@@ -717,75 +717,121 @@
         <!-- BOX 2: Basic Services -->
         <div class="section-title">Basic Services:</div>
         <div class="service-box">
-            <div class="service-row">
-                <label>Perio Maint D4910:</label>
-                <input type="text" name="D4910_coverage" class="pct" data-coverage-category="basic" placeholder="%" />
-                <input type="text" name="D4910_frequency" class="freq" placeholder="Freq" />
-                <label>Restorative/Fillings: D2330,D2331,D2393,D2394</label>
-                <label style="margin-left: 40px;">Filling History:</label>
-                <input type="text" name="Filling History" class="history" placeholder="" />
-            </div>
+            <div style="display: grid; grid-template-columns: 2fr 2fr 1fr; column-gap: 5px; row-gap: 4px;">
+                <!-- COLUMN 1 (Left) -->
+                <div style="padding-right: 8px;">
+                    <div class="service-row">
+                        <label>Perio Maint D4910:</label>
+                        <input type="text" name="D4910_coverage" class="pct" data-coverage-category="basic" placeholder="%" />
+                        <input type="text" name="D4910_frequency" class="freq" placeholder="Freq" />
+                    </div>
 
-            <div class="service-row">
-                <label>Share Freq with Prophy:</label>
-                <select name="Share Freq with Prophy">
-                    <option value="">Select...</option>
-                    <option value="Yes">Yes</option>
-                    <option value="No">No</option>
-                </select>
-                <label style="margin-left: 140px;">Fillings coverage:</label>
-                <input type="text" name="D2330_coverage" class="pct" data-coverage-category="basic" placeholder="%" />
-                <input type="text" name="D2330_frequency" class="freq" placeholder="Freq" />
-            </div>
+                    <div class="service-row">
+                        <label>Share Freq with Prophy:</label>
+                        <select name="Share Freq with Prophy">
+                            <option value="">Select...</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                    </div>
 
-            <div class="service-row">
-                <label>SRP's D4341:</label>
-                <input type="text" name="D4341_coverage" class="pct" data-coverage-category="basic" placeholder="%" />
-                <input type="text" name="D4341_frequency" class="freq" placeholder="Freq" />
-                <label>Downgrade?</label>
-                <select name="SRP Downgrade">
-                    <option value="">Select...</option>
-                    <option value="Yes">Yes</option>
-                    <option value="No">No</option>
-                </select>
-                <label style="margin-left: 140px;">SRP History:</label>
-                <input type="text" name="SRP History" class="history" placeholder="" />
-            </div>
+                    <div class="service-row">
+                        <label>SRP's D4341:</label>
+                        <input type="text" name="D4341_coverage" class="pct" data-coverage-category="basic" placeholder="%" />
+                        <input type="text" name="D4341_frequency" class="freq" placeholder="Freq" />
+                    </div>
 
-            <div class="service-row">
-                <label>Quads Per day:</label>
-                <input type="text" name="Quads Per day" class="short" placeholder="" />
-                <label style="margin-left: 180px;">Simple Ext D7140:</label>
-                <input type="text" name="D7140_coverage" class="pct" data-coverage-category="basic" placeholder="%" />
-            </div>
+                    <div class="service-row">
+                        <label>Downgrade?</label>
+                        <select name="SRP Downgrade">
+                            <option value="">Select...</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                    </div>
 
-            <div class="service-row">
-                <label>Arestin D4381:</label>
-                <select name="Arestin D4381">
-                    <option value="">Select...</option>
-                    <option value="Yes">Yes</option>
-                    <option value="No">No</option>
-                </select>
-                <label style="margin-left: 130px;">Surgical Ext D7240:</label>
-                <input type="text" name="D7240_coverage" class="pct" data-coverage-category="basic" placeholder="%" />
-                <label style="margin-left: 130px;">EXT History:</label>
-                <input type="text" name="EXT History" class="history" placeholder="" />
-            </div>
+                    <div class="service-row">
+                        <label>Quads Per day:</label>
+                        <input type="text" name="Quads Per day" class="short" placeholder="" />
+                    </div>
 
-            <div class="service-row">
-                <label>SRP Same Day as Prophy/Perio Maint:</label>
-                <select name="SRP Same Day">
-                    <option value="">Select...</option>
-                    <option value="Yes">Yes</option>
-                    <option value="No">No</option>
-                </select>
-                <label>Endo RCT D3330:</label>
-                <input type="text" name="D3330_coverage" class="pct" data-coverage-category="basic" placeholder="%" />
-            </div>
+                    <div class="service-row">
+                        <label>Arestin D4381:</label>
+                        <select name="Arestin D4381">
+                            <option value="">Select...</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                    </div>
 
-            <div class="service-row">
-                <label>Time between SRP and Prophy Perio Maint:</label>
-                <input type="text" name="Time between SRP and Prophy" class="medium" placeholder="" />
+                    <div class="service-row">
+                        <label>SRP Same Day as Prophy/Perio Maint:</label>
+                        <select name="SRP Same Day">
+                            <option value="">Select...</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                    </div>
+
+                    <div class="service-row">
+                        <label>Time between SRP and Prophy Perio Maint:</label>
+                        <input type="text" name="Time between SRP and Prophy" class="medium" placeholder="" />
+                    </div>
+                </div>
+
+                <!-- COLUMN 2 (Middle) -->
+                <div style="padding: 0 8px;">
+                    <div class="service-row">
+                        <label>Restorative/Fillings: D2330,D2331,D2393,D2394</label>
+                    </div>
+
+                    <div class="service-row">
+                        <label>Fillings coverage:</label>
+                        <input type="text" name="D2330_coverage" class="pct" data-coverage-category="basic" placeholder="%" />
+                        <input type="text" name="D2330_frequency" class="freq" placeholder="Freq" />
+                    </div>
+
+                    <div style="height: 30px;"></div>
+
+                    <div class="service-row">
+                        <label>Simple Ext D7140:</label>
+                        <input type="text" name="D7140_coverage" class="pct" data-coverage-category="basic" placeholder="%" />
+                    </div>
+
+                    <div class="service-row">
+                        <label>Surgical Ext D7240:</label>
+                        <input type="text" name="D7240_coverage" class="pct" data-coverage-category="basic" placeholder="%" />
+                    </div>
+
+                    <div style="height: 30px;"></div>
+
+                    <div class="service-row">
+                        <label>Endo RCT D3330:</label>
+                        <input type="text" name="D3330_coverage" class="pct" data-coverage-category="basic" placeholder="%" />
+                    </div>
+                </div>
+
+                <!-- COLUMN 3 (Right - History fields) -->
+                <div style="padding-left: 8px;">
+                    <div class="service-row">
+                        <label>Filling History:</label>
+                        <input type="text" name="Filling History" class="history" placeholder="" />
+                    </div>
+
+                    <div style="height: 60px;"></div>
+
+                    <div class="service-row">
+                        <label>SRP History:</label>
+                        <input type="text" name="SRP History" class="history" placeholder="" />
+                    </div>
+
+                    <div style="height: 60px;"></div>
+
+                    <div class="service-row">
+                        <label>EXT History:</label>
+                        <input type="text" name="EXT History" class="history" placeholder="" />
+                    </div>
+                </div>
             </div>
         </div>
 
