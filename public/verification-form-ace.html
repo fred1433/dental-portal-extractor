@@ -15,7 +15,7 @@
         }
 
         .container {
-            max-width: 900px;
+            max-width: 1100px;
             margin: 0 auto;
             border: 2px solid #000;
             padding: 12px;
@@ -33,25 +33,28 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 10px;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
         }
 
         .form-row-2 {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 10px;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
         }
 
         .form-group {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
+            align-items: center;
+            gap: 8px;
         }
 
         .form-group label {
             font-weight: bold;
             font-size: 8pt;
-            margin-bottom: 2px;
+            white-space: nowrap;
+            min-width: fit-content;
         }
 
         .form-group input,
@@ -61,6 +64,7 @@
             border-bottom: 1px solid #000;
             font-size: 9pt;
             background: transparent;
+            flex: 1;
         }
 
         .form-group select {
@@ -282,8 +286,8 @@
 
         .services-grid {
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 5px;
+            grid-template-columns: auto 50px 180px 95px;
+            gap: 3px;
             margin-bottom: 5px;
         }
 
@@ -299,24 +303,64 @@
             font-size: 8pt;
         }
 
-        /* Services section wrapper - 2 columns layout */
-        .services-section {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin-bottom: 15px;
+        /* Service boxes - bordered sections matching PDF */
+        .service-box {
+            border: 2px solid #000;
+            padding: 8px;
+            margin-bottom: 10px;
         }
 
-        .services-column {
+        .service-box-title {
+            font-weight: bold;
+            font-size: 10pt;
+            margin-bottom: 6px;
+            padding-bottom: 2px;
+            border-bottom: 1px solid #000;
+        }
+
+        /* Service row - flexible layout for procedures */
+        .service-row {
             display: flex;
-            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 4px;
+            font-size: 9pt;
+            flex-wrap: wrap;
         }
 
-        .services-column .section-title {
-            font-size: 11pt;
-            margin-top: 5px;
-            margin-bottom: 5px;
+        .service-row label {
+            font-weight: bold;
+            white-space: nowrap;
         }
+
+        .service-row input,
+        .service-row select {
+            padding: 2px 4px;
+            border: none;
+            border-bottom: 1px solid #000;
+            font-size: 9pt;
+            background: transparent;
+        }
+
+        .service-row select {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="8" viewBox="0 0 12 8"><path fill="%23000" d="M0 0l6 8 6-8z"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 4px center;
+            background-size: 8px;
+            padding-right: 20px;
+        }
+
+        /* Input sizes */
+        .service-row input[type="text"].pct { width: 50px; }
+        .service-row input[type="text"].freq { width: 180px; }
+        .service-row input[type="text"].history { width: 110px; }
+        .service-row input[type="text"].age-limit { width: 80px; }
+        .service-row input[type="text"].medium { width: 150px; }
+        .service-row input[type="text"].long { width: 250px; }
+        .service-row input[type="text"].short { width: 60px; }
 
         /* Filled field styling - applied directly to inputs and selects */
         input.field-filled,
@@ -390,378 +434,491 @@
         <h1>Insurance Verification Form</h1>
 
         <!-- Header Information -->
-        <div class="form-row">
-            <div class="form-group">
-                <label>Today's Date:</label>
-                <input type="date" name="Today's Date" />
+        <div class="service-box">
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Today's Date:</label>
+                    <input type="date" name="Today's Date" />
+                </div>
+                <div class="form-group">
+                    <label>Appointment Date:</label>
+                    <input type="date" name="Appointment Date" />
+                </div>
+                <div class="form-group">
+                    <label>Employee's Initials:</label>
+                    <input type="text" name="Employee's Initials" />
+                </div>
             </div>
-            <div class="form-group">
-                <label>Appointment Date:</label>
-                <input type="date" name="Appointment Date" />
-            </div>
-            <div class="form-group">
-                <label>Employee's Initials:</label>
-                <input type="text" name="Employee's Initials" />
-            </div>
-        </div>
 
-        <div class="form-row">
-            <div class="form-group">
-                <label>Rep's Name:</label>
-                <input type="text" name="Rep's Name" />
-            </div>
-            <div class="form-group">
-                <label>Patient's Name:</label>
-                <input type="text" name="Patient Name" />
-            </div>
-            <div class="form-group">
-                <label>Patient's DOB:</label>
-                <input type="date" name="Patient DOB" />
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Rep's Name:</label>
+                    <input type="text" name="Rep's Name" />
+                </div>
+                <div class="form-group">
+                    <label>Patient's Name:</label>
+                    <input type="text" name="Patient Name" />
+                </div>
+                <div class="form-group">
+                    <label>Patient's DOB:</label>
+                    <input type="date" name="Patient DOB" />
+                </div>
             </div>
         </div>
 
         <!-- Subscriber's Information -->
-        <div class="section-title">Subscriber's Information:</div>
+        <div class="service-box">
+            <div class="service-box-title">Subscriber's Information:</div>
 
-        <div class="form-row">
-            <div class="form-group">
-                <label>Last Name:</label>
-                <input type="text" name="Subscriber Last Name" />
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Last Name:</label>
+                    <input type="text" name="Subscriber Last Name" />
+                </div>
+                <div class="form-group">
+                    <label>First Name:</label>
+                    <input type="text" name="Subscriber First Name" />
+                </div>
+                <div class="form-group">
+                    <label>Relationship to Patient:</label>
+                    <input type="text" name="Relationship to Patient" />
+                </div>
             </div>
-            <div class="form-group">
-                <label>First Name:</label>
-                <input type="text" name="Subscriber First Name" />
-            </div>
-            <div class="form-group">
-                <label>Relationship to Patient:</label>
-                <input type="text" name="Relationship to Patient" />
-            </div>
-        </div>
 
-        <div class="form-row">
-            <div class="form-group">
-                <label>Subs DOB:</label>
-                <input type="date" name="Subscriber DOB" />
-            </div>
-            <div class="form-group">
-                <label>SSN:</label>
-                <input type="text" name="SSN" />
-            </div>
-            <div class="form-group">
-                <label>Member ID:</label>
-                <input type="text" name="Member ID" />
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Subs DOB:</label>
+                    <input type="date" name="Subscriber DOB" />
+                </div>
+                <div class="form-group">
+                    <label>SSN:</label>
+                    <input type="text" name="SSN" />
+                </div>
+                <div class="form-group">
+                    <label>Member ID:</label>
+                    <input type="text" name="Member ID" />
+                </div>
             </div>
         </div>
 
         <!-- Carrier Info -->
-        <div class="section-title">Carrier Info:</div>
+        <div class="service-box">
+            <div class="service-box-title">Carrier Info:</div>
 
-        <div class="form-group" style="margin-bottom: 10px;">
-            <label>Insurance Name:</label>
-            <input type="text" name="Insurance Name" />
-        </div>
+            <div class="inline-group" style="margin-bottom: 8px;">
+                <label>Insurance Name:</label>
+                <input type="text" name="Insurance Name" style="flex: 1; min-width: 300px;" />
+            </div>
 
-        <div class="form-group" style="margin-bottom: 10px;">
-            <label>Claims Mailing Address:</label>
-            <input type="text" name="Claims Mailing Address" />
-        </div>
+            <div class="inline-group" style="margin-bottom: 8px;">
+                <label>Claims Mailing Address:</label>
+                <input type="text" name="Claims Mailing Address" style="flex: 1; min-width: 400px;" />
+            </div>
 
-        <div class="form-row">
-            <div class="form-group">
+            <div class="inline-group" style="margin-bottom: 8px;">
                 <label>City:</label>
-                <input type="text" name="City" />
-            </div>
-            <div class="form-group">
+                <input type="text" name="City" style="min-width: 150px;" />
                 <label>State:</label>
-                <input type="text" name="State" />
-            </div>
-            <div class="form-group">
+                <input type="text" name="State" style="min-width: 80px;" />
                 <label>Zip Code:</label>
-                <input type="text" name="Zip Code" />
+                <input type="text" name="Zip Code" style="min-width: 100px;" />
             </div>
-        </div>
 
-        <div class="form-row-2">
-            <div class="form-group">
+            <div class="inline-group" style="margin-bottom: 8px;">
                 <label>Insurance Number:</label>
-                <input type="text" name="Insurance Number" />
-            </div>
-            <div class="form-group">
+                <input type="text" name="Insurance Number" style="min-width: 180px;" />
                 <label>Payor ID:</label>
-                <input type="text" name="Payor ID" />
+                <input type="text" name="Payor ID" style="min-width: 180px;" />
             </div>
-        </div>
 
-        <div class="inline-group">
-            <label>Fee Schedule:</label>
-            <input type="text" name="Fee Schedule Used" />
-            <select name="Network Participation">
-                <option value="">Select...</option>
-                <option value="In-Network">In Network</option>
-                <option value="Out-of-Network">Out of Network</option>
-            </select>
-            <label>Accept Assignment of benefits:</label>
-            <select name="Assignment of Benefits Accepted?">
-                <option value="">Select...</option>
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
-            </select>
-            <label>Coordination of Benefits:</label>
-            <input type="text" name="Coordination of Benefits" />
+            <div class="inline-group">
+                <label>Fee Schedule:</label>
+                <input type="text" name="Fee Schedule Used" />
+                <select name="Network Participation">
+                    <option value="">Select...</option>
+                    <option value="In-Network">In Network</option>
+                    <option value="Out-of-Network">Out of Network</option>
+                </select>
+                <label>Accept Assignment of benefits:</label>
+                <select name="Assignment of Benefits Accepted?">
+                    <option value="">Select...</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+                <label>Coordination of Benefits:</label>
+                <input type="text" name="Coordination of Benefits" />
+            </div>
         </div>
 
         <!-- Plan Info -->
-        <div class="section-title">Plan Info:</div>
+        <div class="service-box">
+            <div class="service-box-title">Plan Info:</div>
 
-        <div class="inline-group">
-            <label>Contract/Calendar:</label>
-            <input type="text" name="Benefit Year" />
+            <div class="inline-group">
+                <label>Contract/Calendar:</label>
+                <input type="text" name="Benefit Year" />
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Group Name:</label>
+                    <input type="text" name="Group Name" />
+                </div>
+                <div class="form-group">
+                    <label>Group Number:</label>
+                    <input type="text" name="Group Number" />
+                </div>
+                <div class="form-group">
+                    <label>Effective Date:</label>
+                    <input type="date" name="Effective Date" />
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Individual Maximum:</label>
+                    <input type="text" name="Annual Maximum" />
+                </div>
+                <div class="form-group">
+                    <label>Maximum Used:</label>
+                    <input type="text" name="Maximum Used" />
+                </div>
+                <div class="form-group">
+                    <label>Maximum Remaining:</label>
+                    <input type="text" name="Remaining Maximum" />
+                </div>
+            </div>
+
+            <div class="form-row-2">
+                <div class="form-group">
+                    <label>Individual Deductible:</label>
+                    <input type="text" name="Individual Deductible" />
+                </div>
+                <div class="form-group">
+                    <label>Deductible Remaining:</label>
+                    <input type="text" name="Deductible Remaining" />
+                </div>
+            </div>
+
+            <div class="inline-group deductible-applies">
+                <label><strong>Deductible Applies to:</strong></label>
+                <label>All <input type="text" /></label>
+                <label>Diagnostic/Preventative <input type="text" /></label>
+                <label>Basic <input type="text" /></label>
+                <label>Major <input type="text" /></label>
+            </div>
         </div>
 
-        <div class="form-row">
-            <div class="form-group">
-                <label>Group Name:</label>
-                <input type="text" name="Group Name" />
-            </div>
-            <div class="form-group">
-                <label>Group Number:</label>
-                <input type="text" name="Group Number" />
-            </div>
-            <div class="form-group">
-                <label>Effective Date:</label>
-                <input type="date" name="Effective Date" />
-            </div>
-        </div>
+        <!-- BOX 1: Diagnostic/Preventative Services - 3 COLUMNS -->
+        <div class="service-box">
+            <div class="service-box-title">Diagnostic/Preventative Services:</div>
 
-        <div class="form-row">
-            <div class="form-group">
-                <label>Individual Maximum:</label>
-                <input type="text" name="Annual Maximum" />
-            </div>
-            <div class="form-group">
-                <label>Maximum Used:</label>
-                <input type="text" name="Maximum Used" />
-            </div>
-            <div class="form-group">
-                <label>Maximum Remaining:</label>
-                <input type="text" name="Remaining Maximum" />
-            </div>
-        </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px;">
+                <!-- COLUMN 1 (Left) -->
+                <div>
+                    <div class="service-row">
+                        <label>Exam D0150/D0120:</label>
+                        <input type="text" name="D0150_coverage" class="pct" data-coverage-category="preventive" placeholder="%" />
+                        <input type="text" name="D0150_frequency" class="freq" placeholder="Freq" />
+                    </div>
 
-        <div class="form-row-2">
-            <div class="form-group">
-                <label>Individual Deductible:</label>
-                <input type="text" name="Individual Deductible" />
-            </div>
-            <div class="form-group">
-                <label>Deductible Remaining:</label>
-                <input type="text" name="Deductible Remaining" />
-            </div>
-        </div>
+                    <div class="service-row">
+                        <label>Prophy D1110/D1120:</label>
+                        <input type="text" name="D1110_coverage" class="pct" data-coverage-category="preventive" placeholder="%" />
+                        <input type="text" name="D1110_frequency" class="freq" placeholder="Freq" />
+                    </div>
 
-        <div class="inline-group deductible-applies">
-            <label><strong>Deductible Applies to:</strong></label>
-            <label>All <input type="text" /></label>
-            <label>Diagnostic/Preventative <input type="text" /></label>
-            <label>Basic <input type="text" /></label>
-            <label>Major <input type="text" /></label>
-        </div>
+                    <div class="service-row">
+                        <label>Fluoride D1208:</label>
+                        <input type="text" name="D1208_coverage" class="pct" data-coverage-category="preventive" placeholder="%" />
+                        <input type="text" name="D1208_frequency" class="freq" placeholder="Freq" />
+                        <input type="text" name="D1208_age_limit" class="age-limit" placeholder="Age Limit" />
+                    </div>
 
-        <!-- Services in 2 columns for space efficiency -->
-        <div class="services-section">
-            <!-- Left Column -->
-            <div class="services-column">
-                <!-- Diagnostic/Preventative Services -->
-                <div class="section-title">Diagnostic/Preventative:</div>
+                    <div class="service-row">
+                        <label>Sealants D1351:</label>
+                        <input type="text" name="D1351_coverage" class="pct" data-coverage-category="preventive" placeholder="%" />
+                        <input type="text" name="D1351_frequency" class="freq" placeholder="Freq" />
+                        <input type="text" name="D1351_age_limit" class="age-limit" placeholder="Age Limit" />
+                    </div>
 
-                <div class="services-grid" data-procedure="D0150">
-                    <label>Exam D0150/D0120:</label>
-                    <input type="text" data-coverage-category="preventive" placeholder="%" />
-                    <input type="text" name="D0150_frequency" placeholder="Freq" />
-                    <input type="text" name="Exam History" placeholder="History" />
+                    <div class="service-row">
+                        <label>Teeth Covered:</label>
+                        <input type="text" name="Teeth Covered" class="long" placeholder="" />
+                    </div>
+
+                    <div class="service-row">
+                        <label>Limited Exam D0140:</label>
+                        <input type="text" name="D0140_coverage" class="pct" data-coverage-category="preventive" placeholder="%" />
+                        <input type="text" name="D0140_frequency" class="freq" placeholder="Freq" />
+                    </div>
+
+                    <div class="service-row">
+                        <label>Limited share frequency with other exams:</label>
+                        <select name="Limited Share Frequency">
+                            <option value="">Select...</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                    </div>
                 </div>
 
-                <div class="services-grid" data-procedure="D1110">
-                    <label>Prophy D1110/D1120:</label>
-                    <input type="text" data-coverage-category="preventive" placeholder="%" />
-                    <input type="text" name="D1110_frequency" placeholder="Freq" />
-                    <input type="text" name="Prophy History" placeholder="History" />
+                <!-- COLUMN 2 (Middle) -->
+                <div>
+                    <div class="service-row">
+                        <label>FMX D0210:</label>
+                        <input type="text" name="D0210_coverage" class="pct" data-coverage-category="preventive" placeholder="%" />
+                        <input type="text" name="D0210_frequency" class="freq" placeholder="Freq" />
+                    </div>
+
+                    <div class="service-row">
+                        <label>PA's D0220/D0230:</label>
+                        <input type="text" name="D0220_coverage" class="pct" data-coverage-category="preventive" placeholder="%" />
+                        <input type="text" name="D0220_frequency" class="freq" placeholder="Freq" />
+                    </div>
+
+                    <div class="service-row">
+                        <label>Bitewings D0274:</label>
+                        <input type="text" name="D0274_coverage" class="pct" data-coverage-category="preventive" placeholder="%" />
+                        <input type="text" name="D0274_frequency" class="freq" placeholder="Freq" />
+                    </div>
                 </div>
 
-                <div class="services-grid" data-procedure="D1208">
-                    <label>Fluoride D1208:</label>
-                    <input type="text" data-coverage-category="preventive" placeholder="%" />
-                    <input type="text" name="D1208_frequency" placeholder="Freq" />
-                    <input type="text" name="Fluoride History" placeholder="History" />
-                </div>
+                <!-- COLUMN 3 (Right - History fields) -->
+                <div>
+                    <div class="service-row">
+                        <label>Exam History:</label>
+                        <input type="text" name="Exam History" class="history" placeholder="" />
+                    </div>
 
-                <div class="services-grid" data-procedure="D1351">
-                    <label>Sealants D1351:</label>
-                    <input type="text" data-coverage-category="preventive" placeholder="%" />
-                    <input type="text" name="D1351_frequency" placeholder="Freq" />
-                    <input type="text" name="Sealant History" placeholder="History" />
-                </div>
+                    <div style="height: 30px;"></div>
 
-                <!-- Basic Services (first half) -->
-                <div class="section-title">Basic Services:</div>
+                    <div class="service-row">
+                        <label>Prophy History:</label>
+                        <input type="text" name="Prophy History" class="history" placeholder="" />
+                    </div>
 
-                <div class="services-grid" data-procedure="D4910">
-                    <label>Perio Maint D4910:</label>
-                    <input type="text" data-coverage-category="basic" placeholder="%" />
-                    <input type="text" name="D4910_frequency" placeholder="Freq" />
-                    <input type="text" placeholder="History" />
-                </div>
+                    <div class="service-row">
+                        <label>Fluoride History:</label>
+                        <input type="text" name="Fluoride History" class="history" placeholder="" />
+                    </div>
 
-                <div class="services-grid" data-procedure="D4341">
-                    <label>SRP's D4341:</label>
-                    <input type="text" data-coverage-category="basic" placeholder="%" />
-                    <input type="text" name="D4341_frequency" placeholder="Freq" />
-                    <input type="text" name="SRP History" placeholder="History" />
-                </div>
+                    <div class="service-row">
+                        <label>Xray History:</label>
+                        <input type="text" name="Xray History" class="history" placeholder="" />
+                    </div>
 
-                <div class="services-grid" data-procedure="D2391">
-                    <label>Restorative/Fillings:</label>
-                    <input type="text" data-coverage-category="basic" placeholder="%" />
-                    <input type="text" name="D2391_frequency" placeholder="Freq" />
-                    <input type="text" name="Filling History" placeholder="History" />
-                </div>
-            </div>
+                    <div style="height: 30px;"></div>
 
-            <!-- Right Column -->
-            <div class="services-column">
-                <!-- Basic Services (second half) -->
-                <div class="section-title">Basic Services (cont.):</div>
-
-                <div class="services-grid" data-procedure="D7140">
-                    <label>Simple Ext D7140:</label>
-                    <input type="text" data-coverage-category="basic" placeholder="%" />
-                    <div></div>
-                    <input type="text" name="EXT History" placeholder="History" />
-                </div>
-
-                <div class="services-grid" data-procedure="D7240">
-                    <label>Surgical Ext D7240:</label>
-                    <input type="text" data-coverage-category="basic" placeholder="%" />
-                    <div></div>
-                    <div></div>
-                </div>
-
-                <div class="services-grid" data-procedure="D3330">
-                    <label>Endo RCT D3330:</label>
-                    <input type="text" data-coverage-category="basic" placeholder="%" />
-                    <div></div>
-                    <div></div>
-                </div>
-
-                <!-- Major Services -->
-                <div class="section-title">Major Services:</div>
-
-                <div class="services-grid" data-procedure="D2740">
-                    <label>Crowns D2740:</label>
-                    <input type="text" data-coverage-category="major" placeholder="%" />
-                    <input type="text" name="D2740_frequency" placeholder="Freq" />
-                    <input type="text" name="Crown History" placeholder="History" />
-                </div>
-
-                <div class="services-grid" data-procedure="D2950">
-                    <label>Build up D2950:</label>
-                    <input type="text" data-coverage-category="major" placeholder="%" />
-                    <input type="text" name="D2950_frequency" placeholder="Freq" />
-                    <input type="text" name="Build Up History" placeholder="History" />
-                </div>
-
-                <div class="services-grid" data-procedure="D2954">
-                    <label>Post and Core D2954:</label>
-                    <input type="text" data-coverage-category="major" placeholder="%" />
-                    <input type="text" name="D2954_frequency" placeholder="Freq" />
-                    <input type="text" name="Post & Core History" placeholder="History" />
-                </div>
-
-                <div class="services-grid" data-procedure="D5110">
-                    <label>Dentures D5110:</label>
-                    <input type="text" data-coverage-category="major" placeholder="%" />
-                    <input type="text" name="D5110_frequency" placeholder="Freq" />
-                    <input type="text" name="Denture History" placeholder="History" />
+                    <div class="service-row">
+                        <label>Sealant History:</label>
+                        <input type="text" name="Sealant History" class="history" placeholder="" />
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="inline-group">
-            <label>Implants D6010:</label>
-            <select>
-                <option value="">Select...</option>
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
-            </select>
+        <!-- BOX 2: Basic Services -->
+        <div class="service-box">
+            <div class="service-box-title">Basic Services:</div>
+
+            <div class="service-row">
+                <label>Perio Maint D4910:</label>
+                <input type="text" name="D4910_coverage" class="pct" data-coverage-category="basic" placeholder="%" />
+                <input type="text" name="D4910_frequency" class="freq" placeholder="Freq" />
+                <label>Restorative/Fillings: D2330,D2331,D2393,D2394</label>
+                <label style="margin-left: 40px;">Filling History:</label>
+                <input type="text" name="Filling History" class="history" placeholder="" />
+            </div>
+
+            <div class="service-row">
+                <label>Share Freq with Prophy:</label>
+                <select name="Share Freq with Prophy">
+                    <option value="">Select...</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+                <label style="margin-left: 140px;">Fillings coverage:</label>
+                <input type="text" name="D2330_coverage" class="pct" data-coverage-category="basic" placeholder="%" />
+                <input type="text" name="D2330_frequency" class="freq" placeholder="Freq" />
+            </div>
+
+            <div class="service-row">
+                <label>SRP's D4341:</label>
+                <input type="text" name="D4341_coverage" class="pct" data-coverage-category="basic" placeholder="%" />
+                <input type="text" name="D4341_frequency" class="freq" placeholder="Freq" />
+                <label>Downgrade?</label>
+                <select name="SRP Downgrade">
+                    <option value="">Select...</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+                <label style="margin-left: 140px;">SRP History:</label>
+                <input type="text" name="SRP History" class="history" placeholder="" />
+            </div>
+
+            <div class="service-row">
+                <label>Quads Per day:</label>
+                <input type="text" name="Quads Per day" class="short" placeholder="" />
+                <label style="margin-left: 180px;">Simple Ext D7140:</label>
+                <input type="text" name="D7140_coverage" class="pct" data-coverage-category="basic" placeholder="%" />
+            </div>
+
+            <div class="service-row">
+                <label>Arestin D4381:</label>
+                <select name="Arestin D4381">
+                    <option value="">Select...</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+                <label style="margin-left: 130px;">Surgical Ext D7240:</label>
+                <input type="text" name="D7240_coverage" class="pct" data-coverage-category="basic" placeholder="%" />
+                <label style="margin-left: 130px;">EXT History:</label>
+                <input type="text" name="EXT History" class="history" placeholder="" />
+            </div>
+
+            <div class="service-row">
+                <label>SRP Same Day as Prophy/Perio Maint:</label>
+                <select name="SRP Same Day">
+                    <option value="">Select...</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+                <label>Endo RCT D3330:</label>
+                <input type="text" name="D3330_coverage" class="pct" data-coverage-category="basic" placeholder="%" />
+            </div>
+
+            <div class="service-row">
+                <label>Time between SRP and Prophy Perio Maint:</label>
+                <input type="text" name="Time between SRP and Prophy" class="medium" placeholder="" />
+            </div>
         </div>
 
-        <div class="ortho-line">
-            <label><strong>Ortho Coverage:</strong></label>
-            <select name="Ortho Coverage">
-                <option value="">Select...</option>
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
-            </select>
-            <input type="text" name="Ortho Coverage %" placeholder="%" />
-            <label>Age Limit:</label>
-            <input type="text" name="Ortho Age Limit" />
-            <label>Lifetime Max:</label>
-            <input type="text" name="Ortho Lifetime Maximum" />
+        <!-- BOX 3: Major Services -->
+        <div class="service-box">
+            <div class="service-box-title">Major Services:</div>
+
+            <div class="service-row">
+                <label>Crowns D2740:</label>
+                <input type="text" name="D2740_coverage" class="pct" data-coverage-category="major" placeholder="%" />
+                <input type="text" name="D2740_frequency" class="freq" placeholder="Freq" />
+                <label>Age Limit:</label>
+                <input type="text" name="Crown Age Limit" class="age-limit" placeholder="" />
+                <label style="margin-left: 150px;">Crown History:</label>
+                <input type="text" name="Crown History" class="history" placeholder="" />
+            </div>
+
+            <div class="service-row">
+                <label>Downgrade?</label>
+                <select name="Crown Downgrade">
+                    <option value="">Select...</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+                <label>Which Teeth:</label>
+                <input type="text" name="Downgrade Which Teeth" class="medium" placeholder="" />
+            </div>
+
+            <div class="service-row">
+                <label><strong>PAY ON SEAT / PREP</strong></label>
+                <label style="margin-left: 340px;">Bridge History:</label>
+                <input type="text" name="Bridge History" class="history" placeholder="" />
+            </div>
+
+            <div class="service-row">
+                <label>Build up D2950:</label>
+                <input type="text" name="D2950_coverage" class="pct" data-coverage-category="major" placeholder="%" />
+                <input type="text" name="D2950_frequency" class="freq" placeholder="Freq" />
+                <label style="margin-left: 210px;">Build Up History:</label>
+                <input type="text" name="Build Up History" class="history" placeholder="" />
+            </div>
+
+            <div class="service-row">
+                <label>Post and Core D2954:</label>
+                <input type="text" name="D2954_coverage" class="pct" data-coverage-category="major" placeholder="%" />
+                <input type="text" name="D2954_frequency" class="freq" placeholder="Freq" />
+            </div>
+
+            <div class="service-row">
+                <label>Dentures D5110, D5221,D5213:</label>
+                <input type="text" name="D5110_coverage" class="pct" data-coverage-category="major" placeholder="%" />
+                <input type="text" name="D5110_frequency" class="freq" placeholder="Freq" />
+                <label style="margin-left: 100px;">Post & Core History:</label>
+                <input type="text" name="Post & Core History" class="history" placeholder="" />
+            </div>
+
+            <div class="service-row">
+                <label>Implants D6010:</label>
+                <select name="Implants D6010">
+                    <option value="">Select...</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+                <label style="margin-left: 310px;">Denture History:</label>
+                <input type="text" name="Denture History" class="history" placeholder="" />
+            </div>
+
+            <div class="service-row">
+                <label>OCC Guards D9945,D9944:</label>
+                <input type="text" name="OCC_coverage" class="pct" placeholder="%" />
+                <input type="text" name="OCC_frequency" class="freq" placeholder="Freq" />
+                <label>Limitations if any:</label>
+                <input type="text" name="OCC Limitations" class="long" placeholder="" />
+            </div>
+
+            <div class="service-row">
+                <label>Ortho Coverage:</label>
+                <select name="Ortho Coverage">
+                    <option value="">Select...</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+                <input type="text" name="Ortho Coverage %" class="pct" placeholder="%" />
+                <label>Age Limit:</label>
+                <input type="text" name="Ortho Age Limit" class="age-limit" placeholder="" />
+                <label>Lifetime Max:</label>
+                <input type="text" name="Ortho Lifetime Maximum" class="medium" placeholder="" />
+            </div>
         </div>
 
-        <div class="inline-group">
+        <!-- Bottom section -->
+        <div class="service-row" style="margin-top: 10px;">
             <label>Previous Extractions Covered?</label>
-            <select>
+            <select name="Previous Extractions Covered">
                 <option value="">Select...</option>
                 <option value="Yes">Yes</option>
                 <option value="No">No</option>
             </select>
-        </div>
-
-        <div class="waiting-periods">
-            <label><strong>WAITING PERIODS:</strong></label>
+            <label style="margin-left: 40px;"><strong>WAITING PERIODS:</strong></label>
             <label>Basic:</label>
-            <select>
+            <select name="Waiting Period Basic">
                 <option value="">Select...</option>
                 <option value="Yes">Yes</option>
                 <option value="No">No</option>
             </select>
-            <input type="text" />
+            <input type="text" name="Waiting Period Basic Details" class="medium" placeholder="" />
             <label>Major:</label>
-            <select>
+            <select name="Waiting Period Major">
                 <option value="">Select...</option>
                 <option value="Yes">Yes</option>
                 <option value="No">No</option>
             </select>
-            <input type="text" />
+            <input type="text" name="Waiting Period Major Details" class="medium" placeholder="" />
         </div>
 
-        <div class="radio-row">
-            <label>SRP'S:</label>
+        <div class="service-row" style="margin-top: 8px;">
+            <label><strong>SRP'S:</strong></label>
             <label><input type="radio" name="srp" value="BASIC" /> BASIC</label>
             <label><input type="radio" name="srp" value="MAJOR" /> MAJOR</label>
-            <span></span>
-            <label>SIMPLE EXT:</label>
+            <label style="margin-left: 20px;"><strong>SIMPLE EXT:</strong></label>
             <label><input type="radio" name="simple_ext" value="BASIC" /> BASIC</label>
             <label><input type="radio" name="simple_ext" value="MAJOR" /> MAJOR</label>
-        </div>
-
-        <div class="radio-row">
-            <label>SURGICAL EXT:</label>
+            <label style="margin-left: 20px;"><strong>SURGICAL EXT:</strong></label>
             <label><input type="radio" name="surgical_ext" value="BASIC" /> BASIC</label>
             <label><input type="radio" name="surgical_ext" value="MAJOR" /> MAJOR</label>
-            <span></span>
-            <label>ENDO:</label>
+            <label style="margin-left: 20px;"><strong>ENDO:</strong></label>
             <label><input type="radio" name="endo" value="BASIC" /> BASIC</label>
             <label><input type="radio" name="endo" value="MAJOR" /> MAJOR</label>
-        </div>
-
-        <div class="occ-line">
-            <label>OCC Guards D9945,D9944:</label>
-            <input type="text" placeholder="%" />
-            <input type="text" placeholder="Freq" />
-            <label>Limitations if any:</label>
-            <input type="text" />
         </div>
     </div>
 
@@ -905,41 +1062,54 @@
             console.log(`Filled ${filledCount} form-group fields`);
         }
 
-        // Fill ACE-specific fields (radios and special cases)
+        // Fill ACE-specific fields (coverage fallbacks and radios)
         function fillACESpecificFields(map, rawData) {
             console.log('Filling ACE-specific fields...');
 
-            // Fill procedure coverage percentages with fallback
-            // Try procedure-specific key (e.g., D0150_coverage_pct) first,
-            // then fallback to category (e.g., "Preventive / Diagnostic (% Covered)")
-            const fillProcedureCoverage = () => {
-                const categoryMap = {
-                    'preventive': map['Preventive / Diagnostic (% Covered)'],
-                    'basic': map['Basic Services (% Covered)'],
-                    'major': map['Major Services (% Covered)']
-                };
+            // Helper to fill coverage fields with fallback to category
+            const fillCoverageField = (fieldName, procedureCode, category) => {
+                const input = document.querySelector(`input[name="${fieldName}"]`);
+                if (!input) return;
 
-                document.querySelectorAll('.services-grid[data-procedure]').forEach(grid => {
-                    const code = grid.getAttribute('data-procedure');
-                    const coverageInput = grid.querySelector('input[data-coverage-category]');
-                    if (!coverageInput) return;
+                // Try procedure-specific coverage first (from toForm.js: D0150_coverage_pct)
+                const specificCoverage = map[`${procedureCode}_coverage_pct`];
 
-                    const category = coverageInput.getAttribute('data-coverage-category');
+                // Fallback to category coverage
+                const categoryKey = category === 'preventive' ? 'Preventive / Diagnostic (% Covered)' :
+                                   category === 'basic' ? 'Basic Services (% Covered)' :
+                                   category === 'major' ? 'Major Services (% Covered)' : null;
+                const categoryCoverage = categoryKey ? map[categoryKey] : null;
 
-                    // Try procedure-specific coverage first
-                    const specificCoverage = map[`${code}_coverage_pct`];
-                    const categoryCoverage = categoryMap[category];
-
-                    const coverage = specificCoverage || categoryCoverage;
-                    if (coverage) {
-                        coverageInput.value = coverage;
-                        coverageInput.classList.add('field-filled');
-                        console.log(`✓ Coverage ${code}: ${coverage} (${specificCoverage ? 'specific' : 'category'})`);
-                    }
-                });
+                const coverage = specificCoverage || categoryCoverage;
+                if (coverage) {
+                    input.value = coverage;
+                    input.classList.add('field-filled');
+                    console.log(`✓ Coverage ${procedureCode}: ${coverage} (${specificCoverage ? 'specific' : 'category'})`);
+                }
             };
 
-            fillProcedureCoverage();
+            // Fill all coverage fields with fallback logic
+            // Preventive
+            fillCoverageField('D0150_coverage', 'D0150', 'preventive');
+            fillCoverageField('D0210_coverage', 'D0210', 'preventive');
+            fillCoverageField('D0220_coverage', 'D0220', 'preventive');
+            fillCoverageField('D0274_coverage', 'D0274', 'preventive');
+            fillCoverageField('D1110_coverage', 'D1110', 'preventive');
+            fillCoverageField('D1208_coverage', 'D1208', 'preventive');
+            fillCoverageField('D1351_coverage', 'D1351', 'preventive');
+            fillCoverageField('D0140_coverage', 'D0140', 'preventive');
+            // Basic
+            fillCoverageField('D4910_coverage', 'D4910', 'basic');
+            fillCoverageField('D2330_coverage', 'D2330', 'basic');
+            fillCoverageField('D4341_coverage', 'D4341', 'basic');
+            fillCoverageField('D7140_coverage', 'D7140', 'basic');
+            fillCoverageField('D7240_coverage', 'D7240', 'basic');
+            fillCoverageField('D3330_coverage', 'D3330', 'basic');
+            // Major
+            fillCoverageField('D2740_coverage', 'D2740', 'major');
+            fillCoverageField('D2950_coverage', 'D2950', 'major');
+            fillCoverageField('D2954_coverage', 'D2954', 'major');
+            fillCoverageField('D5110_coverage', 'D5110', 'major');
 
             // Radio buttons for SRP, EXT, ENDO categories
             const setRadio = (name, value) => {
