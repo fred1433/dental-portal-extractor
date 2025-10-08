@@ -1,4 +1,4 @@
-import { normalizeEligibility } from './core/portalDispatcher.js';
+import { normalizeEligibility } from './core/selectPortalAdapter.js';
 import { toFormFieldMap } from './core/masterMapping.js';
 import { applyFormFieldMapToDOM } from './dom/binder.js';
 import { applyProcedureHistory } from './dom/procedureTables.js';
