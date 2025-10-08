@@ -27,7 +27,8 @@ function processSpecialNotesRadios(map: any) {
     'waiting-period': 'Waiting Period',
     'srp-category': 'SRP Category',
     'endo-category': 'Endo Category',
-    'ext-category': 'Extraction Category'
+    'ext-category': 'Extraction Category',
+    'previous-extractions': 'Previous Extractions Covered'
   };
 
   for (const [radioName, fieldKey] of Object.entries(questionMappings)) {
