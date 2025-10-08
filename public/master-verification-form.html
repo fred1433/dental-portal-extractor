@@ -1429,12 +1429,13 @@
             // Auto-fill existing functionality
             const urlParams = new URLSearchParams(window.location.search);
             if (urlParams.get('autoFill') === 'true') {
-                const extractedDataStr = sessionStorage.getItem('extractedPatientData');
+                // Try localStorage first (shared between tabs), then sessionStorage (fallback)
+                const extractedDataStr = localStorage.getItem('extractedPatientData') || sessionStorage.getItem('extractedPatientData');
                 if (extractedDataStr) {
                     try {
                         const extractedData = JSON.parse(extractedDataStr);
 
-                        // Save for chat BEFORE removing from sessionStorage
+                        // Save for chat BEFORE removing from localStorage/sessionStorage
                         window.currentPatientData = extractedData;
 
                         // Fill form

@@ -873,18 +873,33 @@
                 const extractDate = patient.extractionDate ?
                     new Date(patient.extractionDate).toLocaleDateString() : 'Unknown';
 
+                const clinicName = patient.clinicId === 'ace_dental' ? 'ACE' :
+                                  patient.clinicId === 'sdb' ? 'SDB' :
+                                  patient.clinicId || 'Default';
+
                 html += `
-                    <div onclick="loadPatientDirect('${patient.fileName}')"
-                         style="padding: 12px 16px; cursor: pointer; border-bottom: 1px solid #f3f4f6; transition: background 0.2s;"
-                         onmouseover="this.style.background='#f0fdf4'"
-                         onmouseout="this.style.background='white'">
+                    <div style="padding: 12px 16px; border-bottom: 1px solid #f3f4f6;">
                         <div style="font-weight: 600; color: #1f2937; margin-bottom: 4px;">
                             ${patient.firstName} ${patient.lastName}
                         </div>
-                        <div style="font-size: 13px; color: #6b7280;">
+                        <div style="font-size: 13px; color: #6b7280; margin-bottom: 8px;">
                             ${patient.subscriberId} • ${patient.dateOfBirth} •
                             <span style="color: #059669; font-weight: 600;">${patient.portal}</span> •
                             ${extractDate}
+                        </div>
+                        <div style="display: flex; gap: 8px;">
+                            <button type="button" onclick="event.stopPropagation(); event.preventDefault(); loadPatientDirect('${patient.fileName}', false)"
+                                    style="flex: 1; padding: 6px 12px; background: #10b981; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 13px; font-weight: 500; transition: background 0.2s;"
+                                    onmouseover="this.style.background='#059669'"
+                                    onmouseout="this.style.background='#10b981'">
+                                📋 View ${clinicName} Form
+                            </button>
+                            <button type="button" onclick="event.stopPropagation(); event.preventDefault(); loadPatientDirect('${patient.fileName}', true)"
+                                    style="flex: 1; padding: 6px 12px; background: #6366f1; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 13px; font-weight: 500; transition: background 0.2s;"
+                                    onmouseover="this.style.background='#4f46e5'"
+                                    onmouseout="this.style.background='#6366f1'">
+                                🔍 View Master Form
+                            </button>
                         </div>
                     </div>
                 `;
@@ -895,7 +910,7 @@
         }
 
         // Load patient directly on click and go straight to verification form
-        async function loadPatientDirect(fileName) {
+        async function loadPatientDirect(fileName, forceMaster = false) {
             // Hide suggestions
             document.getElementById('patientSuggestions').style.display = 'none';
             document.getElementById('patientSearchInput').value = '';
@@ -904,11 +919,29 @@
                 const response = await fetch(`/api/patients/${fileName}?key=${modalApiKey}`);
                 const data = await response.json();
 
-                // Store data in sessionStorage (same as fillVerificationForm does)
-                sessionStorage.setItem('extractedPatientData', JSON.stringify(data));
+                // Store data in localStorage (shared between tabs, unlike sessionStorage)
+                localStorage.setItem('extractedPatientData', JSON.stringify(data));
 
-                // Redirect directly to verification form with autoFill parameter AND API key
-                window.location.href = `verification-form.html?autoFill=true&key=${modalApiKey}`;
+                // Determine which form to use
+                let formFile;
+
+                if (forceMaster) {
+                    // Force master form for comparison
+                    formFile = 'master-verification-form.html';
+                } else {
+                    // Use clinic-specific form
+                    const clinicId = data.extraction?.clinicId || 'default';
+                    formFile = 'master-verification-form.html'; // Default
+
+                    if (clinicId === 'ace_dental') {
+                        formFile = 'ace-verification-form.html';
+                    } else if (clinicId === 'sdb') {
+                        formFile = 'sdb-verification-form.html';
+                    }
+                }
+
+                // Open in new tab with autoFill parameter AND API key
+                window.open(`${formFile}?autoFill=true&key=${modalApiKey}`, '_blank');
 
             } catch (error) {
                 alert(`❌ Error: ${error.message}`);

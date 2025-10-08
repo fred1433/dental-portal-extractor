@@ -1062,7 +1062,8 @@
             const urlParams = new URLSearchParams(window.location.search);
 
             if (urlParams.get('autoFill') === 'true') {
-                const dataStr = sessionStorage.getItem('extractedPatientData');
+                // Try localStorage first (shared between tabs), then sessionStorage (fallback)
+                const dataStr = localStorage.getItem('extractedPatientData') || sessionStorage.getItem('extractedPatientData');
                 if (dataStr) {
                     try {
                         const data = JSON.parse(dataStr);
@@ -1118,19 +1119,6 @@
                 if (key === "Fee Schedule Used") continue;
                 fillField(key, value);
             }
-
-            // Special handling: Split subscriber name into First/Last
-            const subscriberName = map["Subscriber/Policy Holder Name"] || map["Patient Name"] || "";
-            if (subscriberName) {
-                const nameParts = subscriberName.trim().split(/\s+/);
-                if (nameParts.length >= 2) {
-                    fillField("Subscriber First Name", nameParts.slice(0, -1).join(' '));
-                    fillField("Subscriber Last Name", nameParts[nameParts.length - 1]);
-                }
-            }
-
-            // Map alternate names
-            fillField("Subscriber DOB", map["Subscriber/Policy Holder DOB"] || map["Patient DOB"]);
 
             console.log(`Filled ${filledCount} form-group fields`);
         }
