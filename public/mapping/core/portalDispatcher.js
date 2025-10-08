@@ -1,5 +1,5 @@
-import { normalizeDentaQuest } from '../adapters/dentaquest.js';
-import { normalizeDDINS } from '../adapters/ddins.js';
+import { normalizeDentaQuest } from '../portalAdapters/dentaquest.js';
+import { normalizeDDINS } from '../portalAdapters/ddins.js';
 export function normalizeEligibility(data) {
     const portal = data.portal?.toUpperCase();
     switch (portal) {
