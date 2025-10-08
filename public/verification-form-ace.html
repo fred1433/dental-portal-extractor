@@ -132,7 +132,7 @@
         }
 
         .inline-group input[name="Fee Schedule Used"] {
-            min-width: 180px;
+            min-width: 120px;
         }
 
         .inline-group input[name="Coordination of Benefits"] {
@@ -318,11 +318,27 @@
             margin-bottom: 5px;
         }
 
-        .field-filled input {
+        /* Filled field styling - applied directly to inputs and selects */
+        input.field-filled,
+        select.field-filled {
             background: #f0fdf4;
             border-bottom-color: #10b981;
             font-weight: 600;
+        }
+
+        /* Inputs get green text */
+        input.field-filled {
             color: #059669;
+        }
+
+        /* Selects keep black text for readability, just green arrow */
+        select.field-filled {
+            color: #000;
+            background-color: #f0fdf4;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="8" viewBox="0 0 12 8"><path fill="%23059669" d="M0 0l6 8 6-8z"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 4px center;
+            background-size: 8px;
         }
 
         @media print {
@@ -840,6 +856,10 @@
                     }
                 }
             }
+
+            // STEP 4: Add event listeners for manual changes
+            // This enables real-time green highlighting when user fills fields manually
+            setupFieldChangeListeners();
         });
 
         // Fill all .form-group fields by name attribute
@@ -853,10 +873,8 @@
                 const input = document.querySelector(`input[name="${name}"], select[name="${name}"], textarea[name="${name}"]`);
                 if (input) {
                     input.value = value;
-                    const formGroup = input.closest('.form-group');
-                    if (formGroup) {
-                        formGroup.classList.add('field-filled');
-                    }
+                    // Apply filled styling directly to the input/select
+                    input.classList.add('field-filled');
                     filledCount++;
                     console.log(`✓ Form-group: ${name} = ${value}`);
                     return true;
@@ -866,6 +884,8 @@
 
             // Iterate through all mapping keys
             for (const [key, value] of Object.entries(map)) {
+                // Skip "Fee Schedule Used" - leave empty per user request
+                if (key === "Fee Schedule Used") continue;
                 fillField(key, value);
             }
 
@@ -913,8 +933,7 @@
                     const coverage = specificCoverage || categoryCoverage;
                     if (coverage) {
                         coverageInput.value = coverage;
-                        const formGroup = coverageInput.closest('.form-group, .services-grid');
-                        if (formGroup) formGroup.classList.add('field-filled');
+                        coverageInput.classList.add('field-filled');
                         console.log(`✓ Coverage ${code}: ${coverage} (${specificCoverage ? 'specific' : 'category'})`);
                     }
                 });
@@ -940,6 +959,53 @@
             setRadio('endo', map['Endo Category']);
 
             console.log('ACE-specific fields filled');
+        }
+
+        // Setup event listeners for manual field changes
+        // Applies green styling when user fills fields manually
+        function setupFieldChangeListeners() {
+            console.log('Setting up field change listeners...');
+
+            // Get all inputs and selects
+            const allInputs = document.querySelectorAll('input[type="text"], input[type="date"], textarea');
+            const allSelects = document.querySelectorAll('select');
+
+            // Handler for inputs (text, date, textarea)
+            allInputs.forEach(input => {
+                input.addEventListener('input', (e) => {
+                    const value = e.target.value.trim();
+                    if (value !== '') {
+                        e.target.classList.add('field-filled');
+                    } else {
+                        e.target.classList.remove('field-filled');
+                    }
+                });
+
+                // Also trigger on blur (when user leaves field)
+                input.addEventListener('blur', (e) => {
+                    const value = e.target.value.trim();
+                    if (value !== '') {
+                        e.target.classList.add('field-filled');
+                    } else {
+                        e.target.classList.remove('field-filled');
+                    }
+                });
+            });
+
+            // Handler for selects
+            allSelects.forEach(select => {
+                select.addEventListener('change', (e) => {
+                    const value = e.target.value;
+                    // Add green styling if a real option is selected (not "Select...")
+                    if (value !== '') {
+                        e.target.classList.add('field-filled');
+                    } else {
+                        e.target.classList.remove('field-filled');
+                    }
+                });
+            });
+
+            console.log(`Added listeners to ${allInputs.length} inputs and ${allSelects.length} selects`);
         }
 
         // ===== CHAT FUNCTIONALITY =====
