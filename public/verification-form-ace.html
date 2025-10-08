@@ -354,7 +354,7 @@
         /* Input sizes */
         .service-row input[type="text"].pct { width: 50px; }
         .service-row input[type="text"].freq { width: 180px; }
-        .service-row input[type="text"].history { width: 110px; }
+        .service-row input[type="text"].history { width: 75px; }
         .service-row input[type="text"].age-limit { width: 80px; }
         .service-row input[type="text"].medium { width: 150px; }
         .service-row input[type="text"].long { width: 250px; }
@@ -548,13 +548,14 @@
         </div>
 
         <!-- Plan Info -->
-        <div class="section-title">Plan Info:</div>
-        <div class="service-box">
-            <div class="inline-group">
-                <label>Contract/Calendar:</label>
-                <input type="text" name="Benefit Year" />
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 8px; margin-bottom: 4px;">
+            <div class="section-title" style="margin: 0;">Plan Info:</div>
+            <div class="inline-group" style="margin: 0;">
+                <label style="font-size: 10pt;">Contract/Calendar:</label>
+                <input type="text" name="Benefit Year" style="min-width: 120px;" />
             </div>
-
+        </div>
+        <div class="service-box">
             <div class="form-row">
                 <div class="form-group">
                     <label>Group Name:</label>
@@ -608,9 +609,9 @@
         <!-- BOX 1: Diagnostic/Preventative Services - 3 COLUMNS -->
         <div class="section-title">Diagnostic/Preventative Services:</div>
         <div class="service-box">
-            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px;">
+            <div style="display: grid; grid-template-columns: 2.15fr 1.85fr 1fr; column-gap: 5px; row-gap: 4px;">
                 <!-- COLUMN 1 (Left) -->
-                <div>
+                <div style="padding-right: 8px;">
                     <div class="service-row">
                         <label>Exam D0150/D0120:</label>
                         <input type="text" name="D0150_coverage" class="pct" data-coverage-category="preventive" placeholder="%" />
@@ -659,7 +660,7 @@
                 </div>
 
                 <!-- COLUMN 2 (Middle) -->
-                <div>
+                <div style="padding: 0 8px;">
                     <div class="service-row">
                         <label>FMX D0210:</label>
                         <input type="text" name="D0210_coverage" class="pct" data-coverage-category="preventive" placeholder="%" />
@@ -680,7 +681,7 @@
                 </div>
 
                 <!-- COLUMN 3 (Right - History fields) -->
-                <div>
+                <div style="padding-left: 8px;">
                     <div class="service-row">
                         <label>Exam History:</label>
                         <input type="text" name="Exam History" class="history" placeholder="" />
