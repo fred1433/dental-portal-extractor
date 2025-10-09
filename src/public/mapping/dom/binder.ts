@@ -85,7 +85,10 @@ function processCoverageQuestions(map: any) {
     'd0140-same-day': 'D0140 Same Day',
     'srp-waiting': 'SRP Waiting Period',
     'core-buildup-day': 'Core Buildup Day',
-    'crown-payment': 'Crown Payment Day'
+    'crown-payment': 'Crown Payment Day',
+    'OCC Coverage %': 'OCC Coverage %',
+    'OCC Frequency': 'OCC Frequency',
+    'OCC Limitations': 'OCC Limitations'
   };
 
   for (const [inputName, fieldKey] of Object.entries(coverageQuestionMappings)) {
@@ -276,8 +279,8 @@ export function applyFormFieldMapToDOM(map: FormFieldMap) {
     const valueExists = value != null && stringValue !== '';
 
     // Check if value is meaningful (not default/placeholder values)
+    // Note: $0.00 is meaningful! It indicates "deductible met" or "maximum unused"
     const isMeaningfulValue = valueExists &&
-                              stringValue !== '$0.00' &&
                               stringValue !== 'N/A';
 
     if (valueExists) {

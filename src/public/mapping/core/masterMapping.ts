@@ -53,6 +53,27 @@ export function toFormFieldMap(normalized: NormalizedEligibility, raw: Extractio
   map['Subscriber/Policy Holder Name'] = patientName ?? '';
   map['Subscriber/Policy Holder DOB'] = normalized.member.dob ?? formatDateValue(patientDob);
 
+  // Split subscriber name into First/Last for forms that use separate fields
+  const subscriberFullName = patientName ?? '';
+  if (subscriberFullName.trim()) {
+    const nameParts = subscriberFullName.trim().split(/\s+/);
+    if (nameParts.length === 1) {
+      // Only one name provided (edge case)
+      map['Subscriber First Name'] = nameParts[0];
+      map['Subscriber Last Name'] = '';
+    } else {
+      // First word = First Name, rest = Last Name
+      map['Subscriber First Name'] = nameParts[0];
+      map['Subscriber Last Name'] = nameParts.slice(1).join(' ');
+    }
+  } else {
+    map['Subscriber First Name'] = '';
+    map['Subscriber Last Name'] = '';
+  }
+
+  // Add "Subscriber DOB" variant for ACE form compatibility
+  map['Subscriber DOB'] = normalized.member.dob ?? formatDateValue(patientDob);
+
   if (normalized.member.relationship) {
     map['Relationship to Patient'] = normalized.member.relationship;
   }

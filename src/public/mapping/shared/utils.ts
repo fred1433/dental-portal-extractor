@@ -40,7 +40,12 @@ export function toISODate(value: unknown): string {
 }
 
 export function normalizeLabel(value: string): string {
-  return value.toLowerCase().replace(/\s+/g, ' ').trim();
+  return value
+    .toLowerCase()
+    // Align labels like "Deductible Remaining:" with keys that omit the colon
+    .replace(/\s*[:：]\s*$/u, '')
+    .replace(/\s+/g, ' ')
+    .trim();
 }
 
 export function uniqueStrings(values: Array<string | undefined | null>): string[] {
