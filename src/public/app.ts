@@ -780,7 +780,7 @@ function calculatePatientBalance(claims?: Claim[]): number {
     }
 };
 
-function fillVerificationForm(): void {
+function fillVerificationForm(forceMaster: boolean = false): void {
     if (!extractedData) {
         showError('No data available to transfer');
         return;
@@ -790,14 +790,22 @@ function fillVerificationForm(): void {
     const urlParams = new URLSearchParams(window.location.search);
     const apiKey = urlParams.get('key') || 'demo2024secure';
 
-    // Determine which form to use based on clinicId
-    const clinicId = extractedData.extraction?.clinicId || safeGetValue('clinic') || 'default';
-    let formFile = 'master-verification-form.html'; // Default
+    // Determine which form to use
+    let formFile: string;
 
-    if (clinicId === 'ace_dental') {
-        formFile = 'ace-verification-form.html';
-    } else if (clinicId === 'sdb') {
-        formFile = 'sdb-verification-form.html';
+    if (forceMaster) {
+        // Force master form for comparison
+        formFile = 'master-verification-form.html';
+    } else {
+        // Use clinic-specific form based on clinicId
+        const clinicId = extractedData.extraction?.clinicId || safeGetValue('clinic') || 'default';
+        formFile = 'master-verification-form.html'; // Default
+
+        if (clinicId === 'ace_dental') {
+            formFile = 'ace-verification-form.html';
+        } else if (clinicId === 'sdb') {
+            formFile = 'sdb-verification-form.html';
+        }
     }
 
     // Store the data in sessionStorage for transfer

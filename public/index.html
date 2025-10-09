@@ -655,8 +655,13 @@
                 <h3 style="color: #374151; margin-bottom: 20px;">Extraction Results</h3>
 
                 <div class="action-buttons">
-                    <button class="btn" onclick="fillVerificationForm()">
-                        📋 Fill Verification Form
+                    <button class="btn" onclick="fillVerificationForm(false)" style="padding: 14px 24px; font-size: 15px;">
+                        📋 View Default Form
+                    </button>
+                    <button onclick="fillVerificationForm(true)" style="background: white; color: #10b981; border: 2px solid #10b981; padding: 14px 24px; border-radius: 10px; font-size: 15px; font-weight: 600; cursor: pointer; transition: all 0.2s;"
+                            onmouseover="this.style.background='#f0fdf4'; this.style.borderColor='#059669'; this.style.color='#059669'"
+                            onmouseout="this.style.background='white'; this.style.borderColor='#10b981'; this.style.color='#10b981'">
+                        🔍 View Master Form
                     </button>
                     <button onclick="viewJSONRaw()" style="background: white; border: 1px solid #e5e7eb; color: #6b7280; padding: 14px 24px; border-radius: 10px; font-size: 14px; cursor: pointer; transition: all 0.2s;">
                         🔧 View JSON Raw
