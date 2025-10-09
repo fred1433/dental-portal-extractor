@@ -1,22 +1,76 @@
-root: object { 10 keys }
-  claims: array (length: 13)
-  claims[0]: object { 14 keys }
-    claimId: string = 20252536001693
-    dateOfServiceEndDate: string = 09/09/2025
-    dateOfServiceStartDate: string = 09/09/2025
+root: object { 11 keys }
+  claims: array (length: 2)
+  claims[0]: object { 13 keys }
+    claimId: string = 20252816069635
+    dateOfServiceEndDate: string = 10/07/2025
+    dateOfServiceStartDate: string = 10/07/2025
     patient: object { 6 keys }
-      birthDate: string = 10/19/2011
-      firstName: string = Estelle
-      id: string = 002175461802
-      lastName: string = Mazet
-      personId: string = 0676010209113380
-      relationship: string = Child
+      birthDate: string = 10/21/1998
+      firstName: string = Karen
+      id: string = 121875916101
+      lastName: string = Ilumin
+      personId: string = 0575421006130089
+      relationship: string = Self (Subscriber)
     paymentSummary: object { 8 keys }
-      totalAllowedAmount: string = 145.0
-      totalApprovedAmount: string = 145.0
-      totalChargedAmount: string = 617.5
+      totalAllowedAmount: string = 386.01
+      totalApprovedAmount: string = 478.01
+      totalChargedAmount: string = 1370.01
+      totalDeductibleAmount: string = 50.0
+      totalDeltaPaidAmount: string = 300.2
+      totalNotCoveredAmount: string = 0.01
+      totalPaidByOtherPlanAmount: string = 0.0
+      totalPatientPaidAmount: string = 177.81
+    procedureCountByStatus: object { denied, fixable, nonFixable, submitted }
+      denied: string = 1
+      fixable: string = 0
+      nonFixable: string = 1
+      submitted: string = 7
+    processedDate: string = 10/08/2025
+    receivedDate: string = 10/08/2025
+    renderingProvider: object { 16 keys }
+      contacts: object { address, phoneNumber }
+        address: object { line1, city, state, zipCode }
+          city: string = Harker Heights
+          line1: string = 300 E Central Texas Expy Ste 300
+          state: string = TX
+          zipCode: string = 765483028
+        phoneNumber: string = 2542211444
+      firstName: string = Jung
+      id: string = PRV432622428
+      key: string = GRP189342314189342314001PRV432622428
+      lastName: string = Kang
+      licenceNumber: string = 39612TX
+      middleName: null
+      network: string = 2PPO
+      npi: string = 1891496493
+      participationCode: string = 20
+      participationCodeDescription: string = PPO
+      phoneNumber: null
+      practiceLocationId: string = 189342314001
+      practiceLocationName: string = Ace Dental 04 PLLC
+      practiceType: string = General Dentist
+      taxId: string = ******6390
+    statusCode: string = N
+    statusCodeDescription: string = Processing
+    statusDate: string = 10/08/2025
+    type: string = Claim
+  claims[1]: object { 13 keys }
+    claimId: string = 20243516077212
+    dateOfServiceEndDate: string = 12/13/2024
+    dateOfServiceStartDate: string = 12/13/2024
+    patient: object { 6 keys }
+      birthDate: string = 10/21/1998
+      firstName: string = Karen
+      id: string = 121875916101
+      lastName: string = Ilumin
+      personId: string = 0575421006130089
+      relationship: string = Self (Subscriber)
+    paymentSummary: object { 8 keys }
+      totalAllowedAmount: string = 115.0
+      totalApprovedAmount: string = 115.0
+      totalChargedAmount: string = 440.0
       totalDeductibleAmount: string = 0.0
-      totalDeltaPaidAmount: string = 145.0
+      totalDeltaPaidAmount: string = 115.0
       totalNotCoveredAmount: string = 0.0
       totalPaidByOtherPlanAmount: string = 0.0
       totalPatientPaidAmount: string = 0.0
@@ -24,397 +78,103 @@ root: object { 10 keys }
       denied: string = 0
       fixable: string = 0
       nonFixable: string = 0
-      submitted: string = 6
-    processedDate: string = 09/10/2025
-    receivedDate: string = 09/10/2025
+      submitted: string = 3
+    processedDate: string = 12/16/2024
+    receivedDate: string = 12/16/2024
     renderingProvider: object { 16 keys }
-      contacts: null
-      firstName: null
-      id: string = PRV978085565
-      key: null
-      lastName: null
-      licenceNumber: null
+      contacts: object { address, phoneNumber }
+        address: object { line1, city, state, zipCode }
+          city: string = Harker Heights
+          line1: string = 300 E Central Texas Expy Ste 300
+          state: string = TX
+          zipCode: string = 765483028
+        phoneNumber: string = 2542211444
+      firstName: string = Namrata
+      id: string = PRV507604947
+      key: string = GRP189342314189342314001PRV507604947
+      lastName: string = Sharma
+      licenceNumber: string = 34687TX
       middleName: null
       network: string = 2PPO
-      npi: null
+      npi: string = 1699240135
       participationCode: string = 20
       participationCodeDescription: string = PPO
       phoneNumber: null
-      practiceLocationId: string = 107313380005
-      practiceLocationName: null
-      practiceType: null
-      taxId: string = ******4771
-    serviceLines: array (length: 7)
-    serviceLines[0]: object { 26 keys }
-      accountsPayableCode: string = 3C
-      amount: object { 10 keys }
-        allowedAmount: string = 28.0
-        chargedAmount: number = 97.5
-        coinsuranceAmount: string = 0.0
-        contractBenefitLevel: string = 100%
-        copayAmount: string = 0.0
-        deductibleAmount: string = 0.0
-        interestPaidAmount: string = 0.0
-        notCoveredAmount: string = 0.0
-        paidByOtherPlanAmount: string = 0.0
-        patientPaidAmount: string = 0.0
-      areaOfCavity: null
-      areaOfCavityDescription: null
-      deniedCode: null
-      deniedCodeDescription: null
-      diagnosticCodes: null
-      diagnosticCodesDescriptions: null
-      explanationCodes: array (length: 0)
-      lineId: string = 1
-      paymentSentDate: string = 09/17/2025
-      procedureCode: string = D0120
-      procedureCodeDescription: string = Periodic oral evaluation - established patient
-      procedureCodeShortDescription: null
-      processedDate: string = 09/10/2025
-      sequenceNumber: string = 0
-      serviceDate: string = 09/09/2025
-      serviceQuantity: string = 1
-      statusCode: string = 120
-      statusCodeDescription: string = System approved
-      statusDate: string = 09/14/2025
-      statusIndicator: string = P
-      statusIndicatorDescription: string = Paid
-      toothCode: null
-      toothCodeDescription: null
-      toothSurfaces: null
-    serviceLines[1]: object { 26 keys }
-      accountsPayableCode: null
-      amount: object { 10 keys }
-        allowedAmount: string = 0.0
-        chargedAmount: number = 162
-        coinsuranceAmount: string = 0.0
-        contractBenefitLevel: string = 100%
-        copayAmount: string = 0.0
-        deductibleAmount: string = 0.0
-        interestPaidAmount: string = 0.0
-        notCoveredAmount: string = 0.0
-        paidByOtherPlanAmount: string = 0.0
-        patientPaidAmount: string = 0.0
-      areaOfCavity: null
-      areaOfCavityDescription: null
-      deniedCode: null
-      deniedCodeDescription: null
-      diagnosticCodes: null
-      diagnosticCodesDescriptions: null
-      explanationCodes: array (length: 1)
-      explanationCodes[0]: object { sequenceNumber, code, description, type, overrideStatus }
-        code: string = FLE
-        description: string = According to the enrollee's program, this service is a covered benefit only if the patient meets the...
-        overrideStatus: string = O-Overrideable
-        sequenceNumber: string = 1
-        type: string = U-User Defined EX code
-      lineId: string = 2
-      paymentSentDate: string = 01/01/0001
-      procedureCode: string = D1110
-      procedureCodeDescription: string = Prophylaxis (cleaning) - adult
-      procedureCodeShortDescription: null
-      processedDate: string = 01/01/0001
-      sequenceNumber: string = 0
-      serviceDate: string = 09/09/2025
-      serviceQuantity: string = 1
-      statusCode: string = 115
-      statusCodeDescription: string = This line is ignored because of Coding Audit Software recommendations or in Righ
-      statusDate: string = 09/10/2025
-      statusIndicator: string = I
-      statusIndicatorDescription: string = Ignored
-      toothCode: null
-      toothCodeDescription: null
-      toothSurfaces: null
-    serviceLines[2]: object { 26 keys }
-      accountsPayableCode: string = 3C
-      amount: object { 10 keys }
-        allowedAmount: string = 19.0
-        chargedAmount: number = 82
-        coinsuranceAmount: string = 0.0
-        contractBenefitLevel: string = 100%
-        copayAmount: string = 0.0
-        deductibleAmount: string = 0.0
-        interestPaidAmount: string = 0.0
-        notCoveredAmount: string = 0.0
-        paidByOtherPlanAmount: string = 0.0
-        patientPaidAmount: string = 0.0
-      areaOfCavity: null
-      areaOfCavityDescription: null
-      deniedCode: null
-      deniedCodeDescription: null
-      diagnosticCodes: null
-      diagnosticCodesDescriptions: null
-      explanationCodes: array (length: 0)
-      lineId: string = 3
-      paymentSentDate: string = 09/17/2025
-      procedureCode: string = D1206
-      procedureCodeDescription: string = Topical application of fluoride varnish
-      procedureCodeShortDescription: null
-      processedDate: string = 09/10/2025
-      sequenceNumber: string = 0
-      serviceDate: string = 09/09/2025
-      serviceQuantity: string = 1
-      statusCode: string = 120
-      statusCodeDescription: string = System approved
-      statusDate: string = 09/14/2025
-      statusIndicator: string = P
-      statusIndicatorDescription: string = Paid
-      toothCode: null
-      toothCodeDescription: null
-      toothSurfaces: null
+      practiceLocationId: string = 189342314001
+      practiceLocationName: string = Ace Dental 04 PLLC
+      practiceType: string = General Dentist
+      taxId: string = ******6390
     statusCode: string = Y
     statusCodeDescription: string = Processed
-    statusDate: string = 09/14/2025
-    type: string = Claim
-  claims[1]: object { 14 keys }
-    claimId: string = 202509107386728
-    dateOfServiceEndDate: string = 09/06/2025
-    dateOfServiceStartDate: string = 09/06/2025
-    patient: object { 6 keys }
-      birthDate: string = 10/19/2011
-      firstName: string = Estelle
-      id: string = 002175461802
-      lastName: string = Mazet
-      personId: string = 0676010209113380
-      relationship: string = Child
-    paymentSummary: object { 8 keys }
-      totalAllowedAmount: string = 1894.25
-      totalApprovedAmount: string = 1894.25
-      totalChargedAmount: string = 1894.25
-      totalDeductibleAmount: string = 0.0
-      totalDeltaPaidAmount: string = 26.13
-      totalNotCoveredAmount: string = 920.99
-      totalPaidByOtherPlanAmount: string = 0.0
-      totalPatientPaidAmount: string = 1868.12
-    procedureCountByStatus: object { denied, fixable, nonFixable, submitted }
-      denied: string = 0
-      fixable: string = 0
-      nonFixable: string = 0
-      submitted: string = 1
-    processedDate: string = 09/10/2025
-    receivedDate: string = 09/10/2025
-    renderingProvider: object { 16 keys }
-      contacts: null
-      firstName: null
-      id: string = PRV395994877
-      key: null
-      lastName: null
-      licenceNumber: null
-      middleName: null
-      network: string = 2PPO
-      npi: null
-      participationCode: string = 20
-      participationCodeDescription: string = PPO
-      phoneNumber: null
-      practiceLocationId: string = 107313380005
-      practiceLocationName: null
-      practiceType: null
-      taxId: string = ******4771
-    serviceLines: array (length: 1)
-    serviceLines[0]: object { 26 keys }
-      accountsPayableCode: string = 3C
-      amount: object { 10 keys }
-        allowedAmount: string = 1894.25
-        chargedAmount: number = 1894.25
-        coinsuranceAmount: string = 947.13
-        contractBenefitLevel: string = 50%
-        copayAmount: string = 0.0
-        deductibleAmount: string = 0.0
-        interestPaidAmount: string = 0.0
-        notCoveredAmount: string = 920.99
-        paidByOtherPlanAmount: string = 0.0
-        patientPaidAmount: string = 1868.12
-      areaOfCavity: null
-      areaOfCavityDescription: null
-      deniedCode: string = 745
-      deniedCodeDescription: string = The patient's lifetime benefit for this treatment has been reached. You may use our online provider ...
-      diagnosticCodes: null
-      diagnosticCodesDescriptions: null
-      explanationCodes: array (length: 0)
-      lineId: string = 1
-      paymentSentDate: string = 09/17/2025
-      procedureCode: string = D8670
-      procedureCodeDescription: string = Periodic orthodontic treatment visit
-      procedureCodeShortDescription: null
-      processedDate: string = 09/10/2025
-      sequenceNumber: string = 0
-      serviceDate: string = 09/06/2025
-      serviceQuantity: string = 1
-      statusCode: string = 120
-      statusCodeDescription: string = System approved
-      statusDate: string = 09/14/2025
-      statusIndicator: string = P
-      statusIndicatorDescription: string = Paid
-      toothCode: null
-      toothCodeDescription: null
-      toothSurfaces: null
-    statusCode: string = Y
-    statusCodeDescription: string = Processed
-    statusDate: string = 09/14/2025
-    type: string = Claim
-  claims[2]: object { 14 keys }
-    claimId: string = 202508069488054
-    dateOfServiceEndDate: string = 08/06/2025
-    dateOfServiceStartDate: string = 08/06/2025
-    patient: object { 6 keys }
-      birthDate: string = 10/19/2011
-      firstName: string = Estelle
-      id: string = 002175461802
-      lastName: string = Mazet
-      personId: string = 0676010209113380
-      relationship: string = Child
-    paymentSummary: object { 8 keys }
-      totalAllowedAmount: string = 112.0
-      totalApprovedAmount: string = 112.0
-      totalChargedAmount: string = 112.0
-      totalDeductibleAmount: string = 0.0
-      totalDeltaPaidAmount: string = 56.0
-      totalNotCoveredAmount: string = 0.0
-      totalPaidByOtherPlanAmount: string = 0.0
-      totalPatientPaidAmount: string = 56.0
-    procedureCountByStatus: object { denied, fixable, nonFixable, submitted }
-      denied: string = 0
-      fixable: string = 0
-      nonFixable: string = 0
-      submitted: string = 1
-    processedDate: string = 08/06/2025
-    receivedDate: string = 08/06/2025
-    renderingProvider: object { 16 keys }
-      contacts: null
-      firstName: null
-      id: string = PRV395994877
-      key: null
-      lastName: null
-      licenceNumber: null
-      middleName: null
-      network: string = 2PPO
-      npi: null
-      participationCode: string = 20
-      participationCodeDescription: string = PPO
-      phoneNumber: null
-      practiceLocationId: string = 107313380005
-      practiceLocationName: null
-      practiceType: null
-      taxId: string = ******4771
-    serviceLines: array (length: 1)
-    serviceLines[0]: object { 26 keys }
-      accountsPayableCode: string = 3C
-      amount: object { 10 keys }
-        allowedAmount: string = 112.0
-        chargedAmount: number = 112
-        coinsuranceAmount: string = 56.0
-        contractBenefitLevel: string = 50%
-        copayAmount: string = 0.0
-        deductibleAmount: string = 0.0
-        interestPaidAmount: string = 0.0
-        notCoveredAmount: string = 0.0
-        paidByOtherPlanAmount: string = 0.0
-        patientPaidAmount: string = 56.0
-      areaOfCavity: null
-      areaOfCavityDescription: null
-      deniedCode: null
-      deniedCodeDescription: null
-      diagnosticCodes: null
-      diagnosticCodesDescriptions: null
-      explanationCodes: array (length: 0)
-      lineId: string = 1
-      paymentSentDate: string = 08/13/2025
-      procedureCode: string = D8670
-      procedureCodeDescription: string = Periodic orthodontic treatment visit
-      procedureCodeShortDescription: null
-      processedDate: string = 08/06/2025
-      sequenceNumber: string = 0
-      serviceDate: string = 08/06/2025
-      serviceQuantity: string = 1
-      statusCode: string = 120
-      statusCodeDescription: string = System approved
-      statusDate: string = 08/10/2025
-      statusIndicator: string = P
-      statusIndicatorDescription: string = Paid
-      toothCode: null
-      toothCodeDescription: null
-      toothSurfaces: null
-    statusCode: string = Y
-    statusCodeDescription: string = Processed
-    statusDate: string = 08/10/2025
+    statusDate: string = 12/20/2024
     type: string = Claim
   eligibility: object { 7 keys }
     addl: object { groupNumber, divisionNumber, benefitPackageId, additionalBenefits }
-      additionalBenefits: array (length: 12)
+      additionalBenefits: array (length: 11)
       additionalBenefits[0]: object { header, text }
         header: string = Basis of Payment
         text: string = PPO Providers (DPO in the state of Texas) are reimbursed at the PPO schedule and Premier Providers a...
       additionalBenefits[1]: object { header, text }
         header: string = Child Contract Age Limit
-        text: string = Children are eligible to receive coverage until the end of the month that they turn 26.
+        text: string = Children are eligible to receive coverage until the day they turn 26.
       additionalBenefits[2]: object { header, text }
         header: string = Student Contract Age Limit
-        text: string = Students are eligible to receive coverage until the end of the month that they turn 26.
-      benefitPackageId: string = PDN09013
-      divisionNumber: string = 20001
-      groupNumber: string = 03199
+        text: string = Students are eligible to receive coverage until the day they turn 26.
+      benefitPackageId: string = PDN07595
+      divisionNumber: string = 00011
+      groupNumber: string = 03750
     hist: object { criteria, personId, enrollees, procedures }
       criteria: object { enrolleeId }
-        enrolleeId: string = 002175461802
+        enrolleeId: string = 121875916101
       enrollees: object { ids }
         ids: array (length: 1)
-        ids[0]: string = 002175461802
-      personId: string = 0676010209113380
-      procedures: array (length: 18)
+        ids[0]: string = 121875916101
+      personId: string = 0575421006130089
+      procedures: array (length: 12)
       procedures[0]: object { 6 keys }
         code: string = D0120
         description: string = Periodic oral evaluation - established patient
-        firstServiceDate: string = 05/06/2016
-        lastServiceDate: string = 09/09/2025
-        numberOfServicesRendered: string = 19
-        services: array (length: 19)
+        firstServiceDate: string = 07/26/2022
+        lastServiceDate: string = 12/13/2024
+        numberOfServicesRendered: string = 5
+        services: array (length: 5)
         services[0]: object { claimId, serviceDate, statusCode, statusCodeDescription }
-          claimId: string = 20162353410048
-          serviceDate: string = 05/06/2016
+          claimId: string = 20222106096255
+          serviceDate: string = 07/26/2022
           statusCode: string = 120
           statusCodeDescription: string = System approved
         services[1]: object { claimId, serviceDate, statusCode, statusCodeDescription }
-          claimId: string = 20171953401484
-          serviceDate: string = 11/11/2016
+          claimId: string = 20230306109938
+          serviceDate: string = 01/26/2023
           statusCode: string = 120
           statusCodeDescription: string = System approved
         services[2]: object { claimId, serviceDate, statusCode, statusCodeDescription }
-          claimId: string = 20171396100702
-          serviceDate: string = 05/19/2017
+          claimId: string = 20232106002872
+          serviceDate: string = 07/27/2023
           statusCode: string = 120
           statusCodeDescription: string = System approved
       procedures[1]: object { 6 keys }
         code: string = D0140
         description: string = Limited oral evaluation - problem focused
-        firstServiceDate: string = 06/21/2016
-        lastServiceDate: string = 03/24/2025
-        numberOfServicesRendered: string = 2
-        services: array (length: 2)
+        firstServiceDate: string = 09/15/2023
+        lastServiceDate: string = 09/15/2023
+        numberOfServicesRendered: string = 1
+        services: array (length: 1)
         services[0]: object { claimId, serviceDate, statusCode, statusCodeDescription }
-          claimId: string = 20162353410049
-          serviceDate: string = 06/21/2016
-          statusCode: string = 120
-          statusCodeDescription: string = System approved
-        services[1]: object { claimId, serviceDate, statusCode, statusCodeDescription }
-          claimId: string = 20251206068271
-          serviceDate: string = 03/24/2025
+          claimId: string = 20232686112099
+          serviceDate: string = 09/15/2023
           statusCode: string = 120
           statusCodeDescription: string = System approved
       procedures[2]: object { 6 keys }
         code: string = D0150
         description: string = Comprehensive oral evaluation - new or established patient
-        firstServiceDate: string = 04/23/2015
-        lastServiceDate: string = 10/30/2015
-        numberOfServicesRendered: string = 2
-        services: array (length: 2)
+        firstServiceDate: string = 01/03/2022
+        lastServiceDate: string = 01/03/2022
+        numberOfServicesRendered: string = 1
+        services: array (length: 1)
         services[0]: object { claimId, serviceDate, statusCode, statusCodeDescription }
-          claimId: string = 20151136080204
-          serviceDate: string = 04/23/2015
-          statusCode: string = 120
-          statusCodeDescription: string = System approved
-        services[1]: object { claimId, serviceDate, statusCode, statusCodeDescription }
-          claimId: string = 20153036083863
-          serviceDate: string = 10/30/2015
+          claimId: string = 20220403004539
+          serviceDate: string = 01/03/2022
           statusCode: string = 120
           statusCodeDescription: string = System approved
     mails: object { criteria, addresses }
@@ -425,22 +185,23 @@ root: object { 10 keys }
         claimPayerId: string = 94276
         company: string = Delta Dental Insurance Company
         contractHolderId: string = DDIC
-        contractId: string = 0021754618
-        divisionNumber: string = 20001
-        enrolleeId: string = 002175461802
-        groupNumber: string = 03199
+        contractId: string = 1218759161
+        divisionNumber: string = 00011
+        enrolleeId: string = 121875916101
+        groupNumber: string = 03750
         groupTypeId: string = GROUP
         state: string = GA
         zipCode: string = 30023-1809
       criteria: object { enrolleeId }
-        enrolleeId: string = 002175461802
+        enrolleeId: string = 121875916101
     maxDed: object { memberInfo, maximumsInfo, deductiblesInfo }
-      deductiblesInfo: array (length: 2)
+      deductiblesInfo: array (length: 3)
       deductiblesInfo[0]: object { deductibleDetails, servicesAllowed, amountInfo }
-        amountInfo: object { totalAmount, totalUsedAmount, remainingAmount, usedDentalAmount, usedMedicalAmount }
-          remainingAmount: number = 150
+        amountInfo: object { 6 keys }
+          lastCounterUsedDate: string = 2025-10-07
+          remainingAmount: number = 100
           totalAmount: number = 150
-          totalUsedAmount: number = 0
+          totalUsedAmount: number = 50
           usedDentalAmount: number = 0
           usedMedicalAmount: number = 0
         deductibleDetails: object { 7 keys }
@@ -451,20 +212,10 @@ root: object { 10 keys }
           deductibleKeyword: string = TKDCY50150
           highAgeRange: number = True
           type: string = Calendar Family Deductible
-        servicesAllowed: array (length: 9)
+        servicesAllowed: array (length: 8)
         servicesAllowed[0]: object { treatmentTypeCode, treatmentTypeDescription, networksApplicable, procedureCodesAllowed }
-          networksApplicable: string = ##NP,##PMR
-          procedureCodesAllowed: array (length: 1)
-          procedureCodesAllowed[0]: object { code, description, suppressionIndicator, iVRSuppressionIndicator }
-            code: string = D2960
-            description: string = Labial veneer (resin laminate) - direct
-            iVRSuppressionIndicator: number = True
-            suppressionIndicator: number = False
-          treatmentTypeCode: string = CS
-          treatmentTypeDescription: string = Other Restorative Services
-        servicesAllowed[1]: object { treatmentTypeCode, treatmentTypeDescription, networksApplicable, procedureCodesAllowed }
-          networksApplicable: string = ##NP,##PMR
-          procedureCodesAllowed: array (length: 5)
+          networksApplicable: string = ##NP,##PMR,##PPO
+          procedureCodesAllowed: array (length: 9)
           procedureCodesAllowed[0]: object { code, description, suppressionIndicator, iVRSuppressionIndicator }
             code: string = D0364
             description: string = Cone beam CT capture and interpretation with limited field of view - less than one whole jaw
@@ -482,8 +233,8 @@ root: object { 10 keys }
             suppressionIndicator: number = False
           treatmentTypeCode: string = DI
           treatmentTypeDescription: string = Diagnostic
-        servicesAllowed[2]: object { treatmentTypeCode, treatmentTypeDescription, networksApplicable, procedureCodesAllowed }
-          networksApplicable: string = ##NP,##PMR
+        servicesAllowed[1]: object { treatmentTypeCode, treatmentTypeDescription, networksApplicable, procedureCodesAllowed }
+          networksApplicable: string = ##NP,##PMR,##PPO
           procedureCodesAllowed: array (length: 31)
           procedureCodesAllowed[0]: object { code, description, suppressionIndicator, iVRSuppressionIndicator }
             code: string = D3110
@@ -502,11 +253,32 @@ root: object { 10 keys }
             suppressionIndicator: number = False
           treatmentTypeCode: string = EN
           treatmentTypeDescription: string = Endodontics
+        servicesAllowed[2]: object { treatmentTypeCode, treatmentTypeDescription, networksApplicable, procedureCodesAllowed }
+          networksApplicable: string = ##NP,##PMR,##PPO
+          procedureCodesAllowed: array (length: 12)
+          procedureCodesAllowed[0]: object { code, description, suppressionIndicator, iVRSuppressionIndicator }
+            code: string = D9110
+            description: string = Palliative treatment of dental pain - per visit
+            iVRSuppressionIndicator: number = False
+            suppressionIndicator: number = False
+          procedureCodesAllowed[1]: object { code, description, suppressionIndicator, iVRSuppressionIndicator }
+            code: string = D9120
+            description: string = Fixed partial denture sectioning
+            iVRSuppressionIndicator: number = True
+            suppressionIndicator: number = False
+          procedureCodesAllowed[2]: object { code, description, suppressionIndicator, iVRSuppressionIndicator }
+            code: string = D9222
+            description: string = Deep sedation/general anesthesia - first 15 minutes
+            iVRSuppressionIndicator: number = False
+            suppressionIndicator: number = False
+          treatmentTypeCode: string = GS
+          treatmentTypeDescription: string = Adjunctive General Services
       deductiblesInfo[1]: object { deductibleDetails, servicesAllowed, amountInfo }
-        amountInfo: object { totalAmount, totalUsedAmount, remainingAmount, usedDentalAmount, usedMedicalAmount }
-          remainingAmount: number = 50
+        amountInfo: object { 6 keys }
+          lastCounterUsedDate: string = 2025-10-07
+          remainingAmount: number = 0
           totalAmount: number = 50
-          totalUsedAmount: number = 0
+          totalUsedAmount: number = 50
           usedDentalAmount: number = 0
           usedMedicalAmount: number = 0
         deductibleDetails: object { 7 keys }
@@ -517,20 +289,10 @@ root: object { 10 keys }
           deductibleKeyword: string = TKDCY50150
           highAgeRange: number = True
           type: string = Calendar Individual Deductible
-        servicesAllowed: array (length: 9)
+        servicesAllowed: array (length: 8)
         servicesAllowed[0]: object { treatmentTypeCode, treatmentTypeDescription, networksApplicable, procedureCodesAllowed }
-          networksApplicable: string = ##NP,##PMR
-          procedureCodesAllowed: array (length: 1)
-          procedureCodesAllowed[0]: object { code, description, suppressionIndicator, iVRSuppressionIndicator }
-            code: string = D2960
-            description: string = Labial veneer (resin laminate) - direct
-            iVRSuppressionIndicator: number = True
-            suppressionIndicator: number = False
-          treatmentTypeCode: string = CS
-          treatmentTypeDescription: string = Other Restorative Services
-        servicesAllowed[1]: object { treatmentTypeCode, treatmentTypeDescription, networksApplicable, procedureCodesAllowed }
-          networksApplicable: string = ##NP,##PMR
-          procedureCodesAllowed: array (length: 5)
+          networksApplicable: string = ##NP,##PMR,##PPO
+          procedureCodesAllowed: array (length: 9)
           procedureCodesAllowed[0]: object { code, description, suppressionIndicator, iVRSuppressionIndicator }
             code: string = D0364
             description: string = Cone beam CT capture and interpretation with limited field of view - less than one whole jaw
@@ -548,75 +310,7 @@ root: object { 10 keys }
             suppressionIndicator: number = False
           treatmentTypeCode: string = DI
           treatmentTypeDescription: string = Diagnostic
-        servicesAllowed[2]: object { treatmentTypeCode, treatmentTypeDescription, networksApplicable, procedureCodesAllowed }
-          networksApplicable: string = ##NP,##PMR
-          procedureCodesAllowed: array (length: 31)
-          procedureCodesAllowed[0]: object { code, description, suppressionIndicator, iVRSuppressionIndicator }
-            code: string = D3110
-            description: string = Pulp cap - direct (excluding final restoration)
-            iVRSuppressionIndicator: number = True
-            suppressionIndicator: number = False
-          procedureCodesAllowed[1]: object { code, description, suppressionIndicator, iVRSuppressionIndicator }
-            code: string = D3220
-            description: string = Therapeutic pulpotomy (excluding final restoration) - removal of pulp coronal to the dentinocemental...
-            iVRSuppressionIndicator: number = True
-            suppressionIndicator: number = False
-          procedureCodesAllowed[2]: object { code, description, suppressionIndicator, iVRSuppressionIndicator }
-            code: string = D3221
-            description: string = Pulpal debridement, primary and permanent teeth
-            iVRSuppressionIndicator: number = True
-            suppressionIndicator: number = False
-          treatmentTypeCode: string = EN
-          treatmentTypeDescription: string = Endodontics
-      maximumsInfo: array (length: 2)
-      maximumsInfo[0]: object { maximumDetails, servicesAllowed, amountInfo }
-        amountInfo: object { 6 keys }
-          lastCounterUsedDate: string = 2025-04-28
-          remainingAmount: number = 432
-          totalAmount: number = 1000
-          totalUsedAmount: number = 568
-          usedDentalAmount: number = 0
-          usedMedicalAmount: number = 0
-        maximumDetails: object { 7 keys }
-          accumPeriodEndDate: string = 2025-12-31
-          accumPeriodStartDate: string = 2025-01-01
-          calendarOrContractClassification: string = CALENDAR
-          highAgeRange: number = True
-          maximumCounterId: string = CALYRMXN
-          maximumKeyword: string = LTCYMX1000
-          type: string = Calendar Individual Maximum
-        servicesAllowed: array (length: 9)
-        servicesAllowed[0]: object { treatmentTypeCode, treatmentTypeDescription, networksApplicable, procedureCodesAllowed }
-          networksApplicable: string = ##NP,##PMR,##PPO
-          procedureCodesAllowed: array (length: 1)
-          procedureCodesAllowed[0]: object { code, description, suppressionIndicator, iVRSuppressionIndicator }
-            code: string = D2960
-            description: string = Labial veneer (resin laminate) - direct
-            iVRSuppressionIndicator: number = True
-            suppressionIndicator: number = False
-          treatmentTypeCode: string = CS
-          treatmentTypeDescription: string = Other Restorative Services
         servicesAllowed[1]: object { treatmentTypeCode, treatmentTypeDescription, networksApplicable, procedureCodesAllowed }
-          networksApplicable: string = ##NP,##PMR,##PPO
-          procedureCodesAllowed: array (length: 5)
-          procedureCodesAllowed[0]: object { code, description, suppressionIndicator, iVRSuppressionIndicator }
-            code: string = D0364
-            description: string = Cone beam CT capture and interpretation with limited field of view - less than one whole jaw
-            iVRSuppressionIndicator: number = True
-            suppressionIndicator: number = False
-          procedureCodesAllowed[1]: object { code, description, suppressionIndicator, iVRSuppressionIndicator }
-            code: string = D0365
-            description: string = Cone beam CT capture and interpretation with field of view of one full dental arch - mandible
-            iVRSuppressionIndicator: number = True
-            suppressionIndicator: number = False
-          procedureCodesAllowed[2]: object { code, description, suppressionIndicator, iVRSuppressionIndicator }
-            code: string = D0366
-            description: string = Cone beam CT capture and interpretation with field of view of one full dental arch - maxilla, with o...
-            iVRSuppressionIndicator: number = True
-            suppressionIndicator: number = False
-          treatmentTypeCode: string = DI
-          treatmentTypeDescription: string = Diagnostic
-        servicesAllowed[2]: object { treatmentTypeCode, treatmentTypeDescription, networksApplicable, procedureCodesAllowed }
           networksApplicable: string = ##NP,##PMR,##PPO
           procedureCodesAllowed: array (length: 31)
           procedureCodesAllowed[0]: object { code, description, suppressionIndicator, iVRSuppressionIndicator }
@@ -636,24 +330,43 @@ root: object { 10 keys }
             suppressionIndicator: number = False
           treatmentTypeCode: string = EN
           treatmentTypeDescription: string = Endodontics
-      maximumsInfo[1]: object { maximumDetails, servicesAllowed, amountInfo }
-        amountInfo: object { 6 keys }
-          lastCounterUsedDate: string = 2025-09-06
-          remainingAmount: number = 0
-          totalAmount: number = 1000
-          totalUsedAmount: number = 1000
+        servicesAllowed[2]: object { treatmentTypeCode, treatmentTypeDescription, networksApplicable, procedureCodesAllowed }
+          networksApplicable: string = ##NP,##PMR,##PPO
+          procedureCodesAllowed: array (length: 12)
+          procedureCodesAllowed[0]: object { code, description, suppressionIndicator, iVRSuppressionIndicator }
+            code: string = D9110
+            description: string = Palliative treatment of dental pain - per visit
+            iVRSuppressionIndicator: number = False
+            suppressionIndicator: number = False
+          procedureCodesAllowed[1]: object { code, description, suppressionIndicator, iVRSuppressionIndicator }
+            code: string = D9120
+            description: string = Fixed partial denture sectioning
+            iVRSuppressionIndicator: number = True
+            suppressionIndicator: number = False
+          procedureCodesAllowed[2]: object { code, description, suppressionIndicator, iVRSuppressionIndicator }
+            code: string = D9222
+            description: string = Deep sedation/general anesthesia - first 15 minutes
+            iVRSuppressionIndicator: number = False
+            suppressionIndicator: number = False
+          treatmentTypeCode: string = GS
+          treatmentTypeDescription: string = Adjunctive General Services
+      deductiblesInfo[2]: object { deductibleDetails, servicesAllowed, amountInfo }
+        amountInfo: object { totalAmount, totalUsedAmount, remainingAmount, usedDentalAmount, usedMedicalAmount }
+          remainingAmount: number = 50
+          totalAmount: number = 50
+          totalUsedAmount: number = 0
           usedDentalAmount: number = 0
           usedMedicalAmount: number = 0
-        maximumDetails: object { type, calendarOrContractClassification, maximumKeyword, maximumCounterId, highAgeRange }
+        deductibleDetails: object { type, calendarOrContractClassification, deductibleKeyword, deductibleCounterId, highAgeRange }
           calendarOrContractClassification: string = LIFETIME
+          deductibleCounterId: string = MBLFDEDN
+          deductibleKeyword: string = TKDLFIOR50
           highAgeRange: number = False
-          maximumCounterId: string = LFTORMXN
-          maximumKeyword: string = LTLFOR1000
-          type: string = Lifetime Individual Maximum
-        servicesAllowed: array (length: 2)
+          type: string = Lifetime Individual Deductible
+        servicesAllowed: array (length: 1)
         servicesAllowed[0]: object { treatmentTypeCode, treatmentTypeDescription, networksApplicable, procedureCodesAllowed }
           networksApplicable: string = ##NP,##PMR,##PPO
-          procedureCodesAllowed: array (length: 16)
+          procedureCodesAllowed: array (length: 17)
           procedureCodesAllowed[0]: object { code, description, suppressionIndicator, iVRSuppressionIndicator }
             code: string = D7283
             description: string = Placement of device to facilitate eruption of impacted tooth
@@ -671,36 +384,207 @@ root: object { 10 keys }
             suppressionIndicator: number = False
           treatmentTypeCode: string = OR
           treatmentTypeDescription: string = Orthodontics
-        servicesAllowed[1]: object { treatmentTypeCode, treatmentTypeDescription, networksApplicable, procedureCodesAllowed }
+      maximumsInfo: array (length: 5)
+      maximumsInfo[0]: object { maximumDetails, servicesAllowed, amountInfo }
+        amountInfo: object { totalAmount, totalUsedAmount, remainingAmount, usedDentalAmount, usedMedicalAmount }
+          remainingAmount: number = 200
+          totalAmount: number = 200
+          totalUsedAmount: number = 0
+          usedDentalAmount: number = 0
+          usedMedicalAmount: number = 0
+        maximumDetails: object { 7 keys }
+          accumPeriodEndDate: string = 2025-12-31
+          accumPeriodStartDate: string = 2025-01-01
+          calendarOrContractClassification: string = CALENDAR
+          highAgeRange: number = False
+          maximumCounterId: string = CALGSMXN
+          maximumKeyword: string = LTCYGSR200
+          type: string = Calendar Individual Maximum
+        servicesAllowed: array (length: 1)
+        servicesAllowed[0]: object { treatmentTypeCode, treatmentTypeDescription, networksApplicable, procedureCodesAllowed }
           networksApplicable: string = ##NP,##PMR,##PPO
           procedureCodesAllowed: array (length: 3)
           procedureCodesAllowed[0]: object { code, description, suppressionIndicator, iVRSuppressionIndicator }
-            code: string = D7280
-            description: string = Exposure of an unerupted tooth
-            iVRSuppressionIndicator: number = True
+            code: string = D9944
+            description: string = Occlusal guard - hard appliance, full arch
+            iVRSuppressionIndicator: number = False
             suppressionIndicator: number = False
           procedureCodesAllowed[1]: object { code, description, suppressionIndicator, iVRSuppressionIndicator }
-            code: string = D7290
-            description: string = Surgical repositioning of teeth
+            code: string = D9945
+            description: string = Occlusal guard - soft appliance, full arch
             iVRSuppressionIndicator: number = True
             suppressionIndicator: number = False
           procedureCodesAllowed[2]: object { code, description, suppressionIndicator, iVRSuppressionIndicator }
-            code: string = D7291
-            description: string = Transseptal fiberotomy/supra crestal fiberotomy, by report
+            code: string = D9946
+            description: string = Occlusal guard - hard appliance, partial arch
             iVRSuppressionIndicator: number = True
             suppressionIndicator: number = False
-          treatmentTypeCode: string = OS
-          treatmentTypeDescription: string = Oral & Maxillofacial Surgery
+          treatmentTypeCode: string = GS
+          treatmentTypeDescription: string = Adjunctive General Services
+      maximumsInfo[1]: object { maximumDetails, servicesAllowed, amountInfo }
+        amountInfo: object { 6 keys }
+          lastCounterUsedDate: string = 2025-10-07
+          remainingAmount: number = 699.8
+          totalAmount: number = 1000
+          totalUsedAmount: number = 300.2
+          usedDentalAmount: number = 0
+          usedMedicalAmount: number = 0
+        maximumDetails: object { 7 keys }
+          accumPeriodEndDate: string = 2025-12-31
+          accumPeriodStartDate: string = 2025-01-01
+          calendarOrContractClassification: string = CALENDAR
+          highAgeRange: number = True
+          maximumCounterId: string = CALYRMXN
+          maximumKeyword: string = LTCYMX1000
+          type: string = Calendar Individual Maximum
+        servicesAllowed: array (length: 9)
+        servicesAllowed[0]: object { treatmentTypeCode, treatmentTypeDescription, networksApplicable, procedureCodesAllowed }
+          networksApplicable: string = ##NP,##PMR
+          procedureCodesAllowed: array (length: 35)
+          procedureCodesAllowed[0]: object { code, description, suppressionIndicator, iVRSuppressionIndicator }
+            code: string = D0120
+            description: string = Periodic oral evaluation - established patient
+            iVRSuppressionIndicator: number = False
+            suppressionIndicator: number = False
+          procedureCodesAllowed[1]: object { code, description, suppressionIndicator, iVRSuppressionIndicator }
+            code: string = D0140
+            description: string = Limited oral evaluation - problem focused
+            iVRSuppressionIndicator: number = False
+            suppressionIndicator: number = False
+          procedureCodesAllowed[2]: object { code, description, suppressionIndicator, iVRSuppressionIndicator }
+            code: string = D0145
+            description: string = Oral evaluation for a patient under three years of age and counseling with primary caregiver
+            iVRSuppressionIndicator: number = True
+            suppressionIndicator: number = False
+          treatmentTypeCode: string = DI
+          treatmentTypeDescription: string = Diagnostic
+        servicesAllowed[1]: object { treatmentTypeCode, treatmentTypeDescription, networksApplicable, procedureCodesAllowed }
+          networksApplicable: string = ##NP,##PMR
+          procedureCodesAllowed: array (length: 31)
+          procedureCodesAllowed[0]: object { code, description, suppressionIndicator, iVRSuppressionIndicator }
+            code: string = D3110
+            description: string = Pulp cap - direct (excluding final restoration)
+            iVRSuppressionIndicator: number = True
+            suppressionIndicator: number = False
+          procedureCodesAllowed[1]: object { code, description, suppressionIndicator, iVRSuppressionIndicator }
+            code: string = D3220
+            description: string = Therapeutic pulpotomy (excluding final restoration) - removal of pulp coronal to the dentinocemental...
+            iVRSuppressionIndicator: number = True
+            suppressionIndicator: number = False
+          procedureCodesAllowed[2]: object { code, description, suppressionIndicator, iVRSuppressionIndicator }
+            code: string = D3221
+            description: string = Pulpal debridement, primary and permanent teeth
+            iVRSuppressionIndicator: number = True
+            suppressionIndicator: number = False
+          treatmentTypeCode: string = EN
+          treatmentTypeDescription: string = Endodontics
+        servicesAllowed[2]: object { treatmentTypeCode, treatmentTypeDescription, networksApplicable, procedureCodesAllowed }
+          networksApplicable: string = ##NP,##PMR
+          procedureCodesAllowed: array (length: 10)
+          procedureCodesAllowed[0]: object { code, description, suppressionIndicator, iVRSuppressionIndicator }
+            code: string = D9110
+            description: string = Palliative treatment of dental pain - per visit
+            iVRSuppressionIndicator: number = False
+            suppressionIndicator: number = False
+          procedureCodesAllowed[1]: object { code, description, suppressionIndicator, iVRSuppressionIndicator }
+            code: string = D9120
+            description: string = Fixed partial denture sectioning
+            iVRSuppressionIndicator: number = True
+            suppressionIndicator: number = False
+          procedureCodesAllowed[2]: object { code, description, suppressionIndicator, iVRSuppressionIndicator }
+            code: string = D9222
+            description: string = Deep sedation/general anesthesia - first 15 minutes
+            iVRSuppressionIndicator: number = False
+            suppressionIndicator: number = False
+          treatmentTypeCode: string = GS
+          treatmentTypeDescription: string = Adjunctive General Services
+      maximumsInfo[2]: object { maximumDetails, servicesAllowed, amountInfo }
+        amountInfo: object { 6 keys }
+          lastCounterUsedDate: string = 2025-10-07
+          remainingAmount: number = 1199.8
+          totalAmount: number = 1500
+          totalUsedAmount: number = 300.2
+          usedDentalAmount: number = 0
+          usedMedicalAmount: number = 0
+        maximumDetails: object { 7 keys }
+          accumPeriodEndDate: string = 2025-12-31
+          accumPeriodStartDate: string = 2025-01-01
+          calendarOrContractClassification: string = CALENDAR
+          highAgeRange: number = True
+          maximumCounterId: string = CALYRMXN
+          maximumKeyword: string = LTCYMX1500
+          type: string = Calendar Individual Maximum
+        servicesAllowed: array (length: 9)
+        servicesAllowed[0]: object { treatmentTypeCode, treatmentTypeDescription, networksApplicable, procedureCodesAllowed }
+          networksApplicable: string = ##PPO
+          procedureCodesAllowed: array (length: 35)
+          procedureCodesAllowed[0]: object { code, description, suppressionIndicator, iVRSuppressionIndicator }
+            code: string = D0120
+            description: string = Periodic oral evaluation - established patient
+            iVRSuppressionIndicator: number = False
+            suppressionIndicator: number = False
+          procedureCodesAllowed[1]: object { code, description, suppressionIndicator, iVRSuppressionIndicator }
+            code: string = D0140
+            description: string = Limited oral evaluation - problem focused
+            iVRSuppressionIndicator: number = False
+            suppressionIndicator: number = False
+          procedureCodesAllowed[2]: object { code, description, suppressionIndicator, iVRSuppressionIndicator }
+            code: string = D0145
+            description: string = Oral evaluation for a patient under three years of age and counseling with primary caregiver
+            iVRSuppressionIndicator: number = True
+            suppressionIndicator: number = False
+          treatmentTypeCode: string = DI
+          treatmentTypeDescription: string = Diagnostic
+        servicesAllowed[1]: object { treatmentTypeCode, treatmentTypeDescription, networksApplicable, procedureCodesAllowed }
+          networksApplicable: string = ##PPO
+          procedureCodesAllowed: array (length: 31)
+          procedureCodesAllowed[0]: object { code, description, suppressionIndicator, iVRSuppressionIndicator }
+            code: string = D3110
+            description: string = Pulp cap - direct (excluding final restoration)
+            iVRSuppressionIndicator: number = True
+            suppressionIndicator: number = False
+          procedureCodesAllowed[1]: object { code, description, suppressionIndicator, iVRSuppressionIndicator }
+            code: string = D3220
+            description: string = Therapeutic pulpotomy (excluding final restoration) - removal of pulp coronal to the dentinocemental...
+            iVRSuppressionIndicator: number = True
+            suppressionIndicator: number = False
+          procedureCodesAllowed[2]: object { code, description, suppressionIndicator, iVRSuppressionIndicator }
+            code: string = D3221
+            description: string = Pulpal debridement, primary and permanent teeth
+            iVRSuppressionIndicator: number = True
+            suppressionIndicator: number = False
+          treatmentTypeCode: string = EN
+          treatmentTypeDescription: string = Endodontics
+        servicesAllowed[2]: object { treatmentTypeCode, treatmentTypeDescription, networksApplicable, procedureCodesAllowed }
+          networksApplicable: string = ##PPO
+          procedureCodesAllowed: array (length: 10)
+          procedureCodesAllowed[0]: object { code, description, suppressionIndicator, iVRSuppressionIndicator }
+            code: string = D9110
+            description: string = Palliative treatment of dental pain - per visit
+            iVRSuppressionIndicator: number = False
+            suppressionIndicator: number = False
+          procedureCodesAllowed[1]: object { code, description, suppressionIndicator, iVRSuppressionIndicator }
+            code: string = D9120
+            description: string = Fixed partial denture sectioning
+            iVRSuppressionIndicator: number = True
+            suppressionIndicator: number = False
+          procedureCodesAllowed[2]: object { code, description, suppressionIndicator, iVRSuppressionIndicator }
+            code: string = D9222
+            description: string = Deep sedation/general anesthesia - first 15 minutes
+            iVRSuppressionIndicator: number = False
+            suppressionIndicator: number = False
+          treatmentTypeCode: string = GS
+          treatmentTypeDescription: string = Adjunctive General Services
       memberInfo: object { 12 keys }
-        age: string = 13
-        benefitPackageId: string = PDN09013
-        birthDate: string = 10/19/2011
-        contractId: string = 0021754618
+        age: string = 26
+        benefitPackageId: string = PDN07595
+        birthDate: string = 10/21/1998
+        contractId: string = 1218759161
         defaultNetwork: string = ##PPO
-        divisionNumber: string = 20001
-        enrolleeId: string = 002175461802
-        groupNumber: string = 03199
-        memberName: string = Estelle Mazet
+        divisionNumber: string = 00011
+        enrolleeId: string = 121875916101
+        groupNumber: string = 03750
+        memberName: string = Karen Ilumin
         networksAllowed: array (length: 3)
         networksAllowed[0]: object { code, description }
           code: string = ##PPO
@@ -713,42 +597,42 @@ root: object { 10 keys }
           description: string = Non-Delta Dental Dentist
         oopmDetails: object { flag }
           flag: number = False
-        personId: string = 0676010209113380
+        personId: string = 0575421006130089
     persons: object { persons }
       persons: array (length: 1)
       persons[0]: object { 8 keys }
-        birthDate: string = 10/19/2011
+        birthDate: string = 10/21/1998
         enrollees: object { ids }
           ids: array (length: 1)
-          ids[0]: string = 002175461802
+          ids[0]: string = 121875916101
         gender: string = Female
         name: object { firstName, lastName }
-          firstName: string = Estelle
-          lastName: string = Mazet
-        personId: string = 0676010209113380
+          firstName: string = Karen
+          lastName: string = Ilumin
+        personId: string = 0575421006130089
         primaryLanguage: string = Not Provided
         secondaryLanguage: string = Not Provided
         socialSecurityNumber: string = *****
     pkg: object { 12 keys }
       accNetwork: number = False
-      benefitPackageId: string = PDN09013
+      benefitPackageId: string = PDN07595
       cppPackage: number = False
       deltaCarePackage: number = False
       healthSpringPackage: number = False
       homeTownPackage: number = False
       incentivePackage: number = False
       member: object { 13 keys }
-        birthDate: string = 10/19/2011
-        contractId: string = 0021754618
-        divisionNumber: string = 20001
-        effectiveDate: string = 10/06/2025
-        enrolleeId: string = 002175461802
-        groupNumber: string = 03199
+        birthDate: string = 10/21/1998
+        contractId: string = 1218759161
+        divisionNumber: string = 00011
+        effectiveDate: string = 10/08/2025
+        enrolleeId: string = 121875916101
+        groupNumber: string = 03750
         groupTypeIdentifier: string = GROUP
         healthCareContractHolderIdentifier: string = DDIC
-        memberId: string = 02
-        memberName: string = Estelle Mazet
-        personId: string = 0676010209113380
+        memberId: string = 01
+        memberName: string = Karen Ilumin
+        personId: string = 0575421006130089
         product: string = PPO
         state: string = TX
       missingToothIndicator: number = False
@@ -763,127 +647,8 @@ root: object { 10 keys }
         code: string = ##NP
         description: string = Non-Delta Dental Dentist
       peoplesHealthPackage: number = False
-      treatment: array (length: 11)
+      treatment: array (length: 10)
       treatment[0]: object { treatmentCode, treatmentDescription, treatmentBusinessDescription, summaryValues, procedureClass }
-        procedureClass: array (length: 1)
-        procedureClass[0]: object { summaryCategoryCode, summaryCategoryDescription, classificationCode, classificationDescription, procedure }
-          classificationCode: string = CO
-          classificationDescription: string = Other Services
-          procedure: array (length: 1)
-          procedure[0]: object { 10 keys }
-            code: string = D2960
-            crossCheckProcedureCodes: string = D2662,D2663,D2664,D2710,D2712,D2720,D2721,D2722,D2740,D2750,D2751,D2752,D2753,D2780,D2781,D2782,D278...
-            defaultNetwork: string = ##PPO
-            description: string = Labial veneer (resin laminate) - direct
-            iVRSuppressionIndicator: number = True
-            incentiveProcedure: number = False
-            limitation: array (length: 1)
-            limitation[0]: object { 13 keys }
-              allLimitedToCounterIdentifier: string = CTLCROWNST,CTUCROWNST
-              benefitCounterIdentifier: string = LCROWNST,UCROWNST
-              benefitQuantity: number = 1
-              frequencyLimitationQualifierCode: string = T
-              frequencyLimitationText: string = Benefit is limited to one crown procedure per tooth within a 5 year period.
-              intervalNumber: number = 60
-              intervalUnitCode: string = Months
-              limitationKeywordSequenceNumber: number = 1
-              limitationSequenceNumberForProgram: number = 1
-              limitedToKeywordIdentifier: string = LTLCR1/60M,LTUCR1/60M
-              networksApplicable: string = ##NP,##PMR,##PPO
-              periodTypeCode: string = RO
-              sexAgeToothCode: array (length: 1)
-              sexAgeToothCode[0]: object { 6 keys }
-                groupToothCode: string = ##A1,##A2
-                maxAge: number = 0
-                minAge: number = 0
-                sexAgeCodeDescription: string = No
-                toothLimitation: number = True
-                toothNumberCode: string = 06,07,08,09,10,11,22,23,24,25,26,27
-            network: array (length: 3)
-            network[0]: object { 6 keys }
-              ageLimit: number = False
-              cmsnpNetworkExists: number = False
-              code: string = ##NP
-              coverageDetail: array (length: 1)
-              coverageDetail[0]: object { 12 keys }
-                adult: number = False
-                amountType: string = PERCENT
-                benefitCoverageLevel: string = 50.00
-                copayAmount: string = 0.00
-                deductibleExempted: number = False
-                groupToothCode: string = ##A1,##A2
-                maxAge: number = 0
-                maximumExempted: number = False
-                minAge: number = 0
-                outOfPocketMaximumApplies: number = False
-                sexAgeCodeDescription: string = No
-                toothNumberCode: string = 06,07,08,09,10,11,22,23,24,25,26,27
-              description: string = Non-Delta Dental Dentist
-              incentiveNetwork: number = False
-            network[1]: object { 6 keys }
-              ageLimit: number = False
-              cmsnpNetworkExists: number = False
-              code: string = ##PMR
-              coverageDetail: array (length: 1)
-              coverageDetail[0]: object { 12 keys }
-                adult: number = False
-                amountType: string = PERCENT
-                benefitCoverageLevel: string = 50.00
-                copayAmount: string = 0.00
-                deductibleExempted: number = False
-                groupToothCode: string = ##A1,##A2
-                maxAge: number = 0
-                maximumExempted: number = False
-                minAge: number = 0
-                outOfPocketMaximumApplies: number = False
-                sexAgeCodeDescription: string = No
-                toothNumberCode: string = 06,07,08,09,10,11,22,23,24,25,26,27
-              description: string = Delta Dental Premier Dentist
-              incentiveNetwork: number = False
-            network[2]: object { 6 keys }
-              ageLimit: number = False
-              cmsnpNetworkExists: number = False
-              code: string = ##PPO
-              coverageDetail: array (length: 1)
-              coverageDetail[0]: object { 12 keys }
-                adult: number = False
-                amountType: string = PERCENT
-                benefitCoverageLevel: string = 50.00
-                copayAmount: string = 0.00
-                deductibleExempted: number = False
-                groupToothCode: string = ##A1,##A2
-                maxAge: number = 0
-                maximumExempted: number = False
-                minAge: number = 0
-                outOfPocketMaximumApplies: number = False
-                sexAgeCodeDescription: string = No
-                toothNumberCode: string = 06,07,08,09,10,11,22,23,24,25,26,27
-              description: string = Delta Dental PPO Dentist
-              incentiveNetwork: number = False
-            preApprovalRequired: number = False
-            suppressionIndicator: number = False
-          summaryCategoryCode: string = CS
-          summaryCategoryDescription: string = Other Services
-        summaryValues: array (length: 3)
-        summaryValues[0]: object { minimumCoverage, maximumCoverage, networkCode, amountType }
-          amountType: string = PERCENT
-          maximumCoverage: number = 50
-          minimumCoverage: number = 50
-          networkCode: string = ##NP
-        summaryValues[1]: object { minimumCoverage, maximumCoverage, networkCode, amountType }
-          amountType: string = PERCENT
-          maximumCoverage: number = 50
-          minimumCoverage: number = 50
-          networkCode: string = ##PMR
-        summaryValues[2]: object { minimumCoverage, maximumCoverage, networkCode, amountType }
-          amountType: string = PERCENT
-          maximumCoverage: number = 50
-          minimumCoverage: number = 50
-          networkCode: string = ##PPO
-        treatmentBusinessDescription: string = Other Restorative Services
-        treatmentCode: string = CS
-        treatmentDescription: string = Other Restorative Services
-      treatment[1]: object { treatmentCode, treatmentDescription, treatmentBusinessDescription, summaryValues, procedureClass }
         procedureClass: array (length: 5)
         procedureClass[0]: object { summaryCategoryCode, summaryCategoryDescription, classificationCode, classificationDescription, procedure }
           classificationCode: string = OE
@@ -924,11 +689,11 @@ root: object { 10 keys }
               coverageDetail[0]: object { 10 keys }
                 adult: number = False
                 amountType: string = PERCENT
-                benefitCoverageLevel: string = 100.00
+                benefitCoverageLevel: string = 70.00
                 copayAmount: string = 0.00
                 deductibleExempted: number = True
                 maxAge: number = 0
-                maximumExempted: number = True
+                maximumExempted: number = False
                 minAge: number = 0
                 outOfPocketMaximumApplies: number = False
                 sexAgeCodeDescription: string = No
@@ -942,11 +707,11 @@ root: object { 10 keys }
               coverageDetail[0]: object { 10 keys }
                 adult: number = False
                 amountType: string = PERCENT
-                benefitCoverageLevel: string = 100.00
+                benefitCoverageLevel: string = 80.00
                 copayAmount: string = 0.00
                 deductibleExempted: number = True
                 maxAge: number = 0
-                maximumExempted: number = True
+                maximumExempted: number = False
                 minAge: number = 0
                 outOfPocketMaximumApplies: number = False
                 sexAgeCodeDescription: string = No
@@ -962,9 +727,9 @@ root: object { 10 keys }
                 amountType: string = PERCENT
                 benefitCoverageLevel: string = 100.00
                 copayAmount: string = 0.00
-                deductibleExempted: number = False
+                deductibleExempted: number = True
                 maxAge: number = 0
-                maximumExempted: number = True
+                maximumExempted: number = False
                 minAge: number = 0
                 outOfPocketMaximumApplies: number = False
                 sexAgeCodeDescription: string = No
@@ -1007,11 +772,11 @@ root: object { 10 keys }
               coverageDetail[0]: object { 10 keys }
                 adult: number = False
                 amountType: string = PERCENT
-                benefitCoverageLevel: string = 100.00
+                benefitCoverageLevel: string = 70.00
                 copayAmount: string = 0.00
                 deductibleExempted: number = True
                 maxAge: number = 0
-                maximumExempted: number = True
+                maximumExempted: number = False
                 minAge: number = 0
                 outOfPocketMaximumApplies: number = False
                 sexAgeCodeDescription: string = No
@@ -1025,11 +790,11 @@ root: object { 10 keys }
               coverageDetail[0]: object { 10 keys }
                 adult: number = False
                 amountType: string = PERCENT
-                benefitCoverageLevel: string = 100.00
+                benefitCoverageLevel: string = 80.00
                 copayAmount: string = 0.00
                 deductibleExempted: number = True
                 maxAge: number = 0
-                maximumExempted: number = True
+                maximumExempted: number = False
                 minAge: number = 0
                 outOfPocketMaximumApplies: number = False
                 sexAgeCodeDescription: string = No
@@ -1045,9 +810,9 @@ root: object { 10 keys }
                 amountType: string = PERCENT
                 benefitCoverageLevel: string = 100.00
                 copayAmount: string = 0.00
-                deductibleExempted: number = False
+                deductibleExempted: number = True
                 maxAge: number = 0
-                maximumExempted: number = True
+                maximumExempted: number = False
                 minAge: number = 0
                 outOfPocketMaximumApplies: number = False
                 sexAgeCodeDescription: string = No
@@ -1091,11 +856,11 @@ root: object { 10 keys }
               coverageDetail[0]: object { 11 keys }
                 adult: number = False
                 amountType: string = PERCENT
-                benefitCoverageLevel: string = 100.00
+                benefitCoverageLevel: string = 70.00
                 copayAmount: string = 0.00
                 deductibleExempted: number = True
                 maxAge: number = 3
-                maximumExempted: number = True
+                maximumExempted: number = False
                 minAge: number = 0
                 outOfPocketMaximumApplies: number = False
                 sexAgeCode: string = 05
@@ -1110,11 +875,11 @@ root: object { 10 keys }
               coverageDetail[0]: object { 11 keys }
                 adult: number = False
                 amountType: string = PERCENT
-                benefitCoverageLevel: string = 100.00
+                benefitCoverageLevel: string = 80.00
                 copayAmount: string = 0.00
                 deductibleExempted: number = True
                 maxAge: number = 3
-                maximumExempted: number = True
+                maximumExempted: number = False
                 minAge: number = 0
                 outOfPocketMaximumApplies: number = False
                 sexAgeCode: string = 05
@@ -1131,9 +896,9 @@ root: object { 10 keys }
                 amountType: string = PERCENT
                 benefitCoverageLevel: string = 100.00
                 copayAmount: string = 0.00
-                deductibleExempted: number = False
+                deductibleExempted: number = True
                 maxAge: number = 3
-                maximumExempted: number = True
+                maximumExempted: number = False
                 minAge: number = 0
                 outOfPocketMaximumApplies: number = False
                 sexAgeCode: string = 05
@@ -1150,15 +915,15 @@ root: object { 10 keys }
           procedure: array (length: 3)
           procedure[0]: object { 10 keys }
             code: string = D0340
-            crossCheckProcedureCodes: string = D0340
+            crossCheckProcedureCodes: string = D0340,D0350,D0470
             defaultNetwork: string = ##PPO
             description: string = 2D cephalometric radiographic image - acquisition, measurement and analysis
             iVRSuppressionIndicator: number = True
             incentiveProcedure: number = False
             limitation: array (length: 1)
             limitation[0]: object { 12 keys }
-              allLimitedToCounterIdentifier: string = CTCEPHFLMN
-              benefitCounterIdentifier: string = CEPHFLMN
+              allLimitedToCounterIdentifier: string = CTORTHODGC
+              benefitCounterIdentifier: string = ORTHODGC
               benefitQuantity: number = 1
               frequencyLimitationText: string = Benefit is limited to once per lifetime
               individualRelationshipCode: string = ##DP
@@ -1166,7 +931,7 @@ root: object { 10 keys }
               intervalUnitCode: string = Life
               limitationKeywordSequenceNumber: number = 1
               limitationSequenceNumberForProgram: number = 1
-              limitedToKeywordIdentifier: string = LTCPFM1/LF
+              limitedToKeywordIdentifier: string = LTORTHODGC
               networksApplicable: string = ##NP,##PMR,##PPO
               sexAgeToothCode: array (length: 1)
               sexAgeToothCode[0]: object { sexAgeCodeDescription, sexAgeCode, minAge, maxAge, toothLimitation }
@@ -1184,13 +949,13 @@ root: object { 10 keys }
               coverageDetail[0]: object { 13 keys }
                 adult: number = False
                 amountType: string = PERCENT
-                benefitCoverageLevel: string = 100.00
+                benefitCoverageLevel: string = 70.00
                 copayAmount: string = 0.00
                 deductibleExempted: number = True
                 individualRelationshipCode: string = ##DP
                 individualRelationshipCodeDescription: string = Dependents Only
                 maxAge: number = 26
-                maximumExempted: number = True
+                maximumExempted: number = False
                 minAge: number = 0
                 outOfPocketMaximumApplies: number = False
                 sexAgeCode: string = 51
@@ -1205,13 +970,13 @@ root: object { 10 keys }
               coverageDetail[0]: object { 13 keys }
                 adult: number = False
                 amountType: string = PERCENT
-                benefitCoverageLevel: string = 100.00
+                benefitCoverageLevel: string = 80.00
                 copayAmount: string = 0.00
                 deductibleExempted: number = True
                 individualRelationshipCode: string = ##DP
                 individualRelationshipCodeDescription: string = Dependents Only
                 maxAge: number = 26
-                maximumExempted: number = True
+                maximumExempted: number = False
                 minAge: number = 0
                 outOfPocketMaximumApplies: number = False
                 sexAgeCode: string = 51
@@ -1228,11 +993,11 @@ root: object { 10 keys }
                 amountType: string = PERCENT
                 benefitCoverageLevel: string = 100.00
                 copayAmount: string = 0.00
-                deductibleExempted: number = False
+                deductibleExempted: number = True
                 individualRelationshipCode: string = ##DP
                 individualRelationshipCodeDescription: string = Dependents Only
                 maxAge: number = 26
-                maximumExempted: number = True
+                maximumExempted: number = False
                 minAge: number = 0
                 outOfPocketMaximumApplies: number = False
                 sexAgeCode: string = 51
@@ -1243,15 +1008,15 @@ root: object { 10 keys }
             suppressionIndicator: number = False
           procedure[1]: object { 10 keys }
             code: string = D0350
-            crossCheckProcedureCodes: string = D0350
+            crossCheckProcedureCodes: string = D0340,D0350,D0470
             defaultNetwork: string = ##PPO
             description: string = 2D oral/facial photographic image obtained intra-orally or extra-orally
             iVRSuppressionIndicator: number = True
             incentiveProcedure: number = False
             limitation: array (length: 1)
             limitation[0]: object { 12 keys }
-              allLimitedToCounterIdentifier: string = CTORFACFMN
-              benefitCounterIdentifier: string = ORFACFMN
+              allLimitedToCounterIdentifier: string = CTORTHODGC
+              benefitCounterIdentifier: string = ORTHODGC
               benefitQuantity: number = 1
               frequencyLimitationText: string = Benefit is limited to once per lifetime
               individualRelationshipCode: string = ##DP
@@ -1259,7 +1024,7 @@ root: object { 10 keys }
               intervalUnitCode: string = Life
               limitationKeywordSequenceNumber: number = 1
               limitationSequenceNumberForProgram: number = 1
-              limitedToKeywordIdentifier: string = LTFCFM1/LF
+              limitedToKeywordIdentifier: string = LTORTHODGC
               networksApplicable: string = ##NP,##PMR,##PPO
               sexAgeToothCode: array (length: 1)
               sexAgeToothCode[0]: object { sexAgeCodeDescription, sexAgeCode, minAge, maxAge, toothLimitation }
@@ -1277,13 +1042,13 @@ root: object { 10 keys }
               coverageDetail[0]: object { 13 keys }
                 adult: number = False
                 amountType: string = PERCENT
-                benefitCoverageLevel: string = 100.00
+                benefitCoverageLevel: string = 70.00
                 copayAmount: string = 0.00
                 deductibleExempted: number = True
                 individualRelationshipCode: string = ##DP
                 individualRelationshipCodeDescription: string = Dependents Only
                 maxAge: number = 26
-                maximumExempted: number = True
+                maximumExempted: number = False
                 minAge: number = 0
                 outOfPocketMaximumApplies: number = False
                 sexAgeCode: string = 51
@@ -1298,13 +1063,13 @@ root: object { 10 keys }
               coverageDetail[0]: object { 13 keys }
                 adult: number = False
                 amountType: string = PERCENT
-                benefitCoverageLevel: string = 100.00
+                benefitCoverageLevel: string = 80.00
                 copayAmount: string = 0.00
                 deductibleExempted: number = True
                 individualRelationshipCode: string = ##DP
                 individualRelationshipCodeDescription: string = Dependents Only
                 maxAge: number = 26
-                maximumExempted: number = True
+                maximumExempted: number = False
                 minAge: number = 0
                 outOfPocketMaximumApplies: number = False
                 sexAgeCode: string = 51
@@ -1321,11 +1086,11 @@ root: object { 10 keys }
                 amountType: string = PERCENT
                 benefitCoverageLevel: string = 100.00
                 copayAmount: string = 0.00
-                deductibleExempted: number = False
+                deductibleExempted: number = True
                 individualRelationshipCode: string = ##DP
                 individualRelationshipCodeDescription: string = Dependents Only
                 maxAge: number = 26
-                maximumExempted: number = True
+                maximumExempted: number = False
                 minAge: number = 0
                 outOfPocketMaximumApplies: number = False
                 sexAgeCode: string = 51
@@ -1336,15 +1101,15 @@ root: object { 10 keys }
             suppressionIndicator: number = False
           procedure[2]: object { 10 keys }
             code: string = D0470
-            crossCheckProcedureCodes: string = D0470
+            crossCheckProcedureCodes: string = D0340,D0350,D0470
             defaultNetwork: string = ##PPO
             description: string = Diagnostic casts
             iVRSuppressionIndicator: number = True
             incentiveProcedure: number = False
             limitation: array (length: 1)
             limitation[0]: object { 12 keys }
-              allLimitedToCounterIdentifier: string = CTDIAGCASN
-              benefitCounterIdentifier: string = DIAGCASN
+              allLimitedToCounterIdentifier: string = CTORTHODGC
+              benefitCounterIdentifier: string = ORTHODGC
               benefitQuantity: number = 1
               frequencyLimitationText: string = Benefit is limited to once per lifetime
               individualRelationshipCode: string = ##DP
@@ -1352,7 +1117,7 @@ root: object { 10 keys }
               intervalUnitCode: string = Life
               limitationKeywordSequenceNumber: number = 1
               limitationSequenceNumberForProgram: number = 1
-              limitedToKeywordIdentifier: string = LTDGCS1/LF
+              limitedToKeywordIdentifier: string = LTORTHODGC
               networksApplicable: string = ##NP,##PMR,##PPO
               sexAgeToothCode: array (length: 1)
               sexAgeToothCode[0]: object { sexAgeCodeDescription, sexAgeCode, minAge, maxAge, toothLimitation }
@@ -1370,13 +1135,13 @@ root: object { 10 keys }
               coverageDetail[0]: object { 13 keys }
                 adult: number = False
                 amountType: string = PERCENT
-                benefitCoverageLevel: string = 100.00
+                benefitCoverageLevel: string = 70.00
                 copayAmount: string = 0.00
                 deductibleExempted: number = True
                 individualRelationshipCode: string = ##DP
                 individualRelationshipCodeDescription: string = Dependents Only
                 maxAge: number = 26
-                maximumExempted: number = True
+                maximumExempted: number = False
                 minAge: number = 0
                 outOfPocketMaximumApplies: number = False
                 sexAgeCode: string = 51
@@ -1391,13 +1156,13 @@ root: object { 10 keys }
               coverageDetail[0]: object { 13 keys }
                 adult: number = False
                 amountType: string = PERCENT
-                benefitCoverageLevel: string = 100.00
+                benefitCoverageLevel: string = 80.00
                 copayAmount: string = 0.00
                 deductibleExempted: number = True
                 individualRelationshipCode: string = ##DP
                 individualRelationshipCodeDescription: string = Dependents Only
                 maxAge: number = 26
-                maximumExempted: number = True
+                maximumExempted: number = False
                 minAge: number = 0
                 outOfPocketMaximumApplies: number = False
                 sexAgeCode: string = 51
@@ -1414,11 +1179,11 @@ root: object { 10 keys }
                 amountType: string = PERCENT
                 benefitCoverageLevel: string = 100.00
                 copayAmount: string = 0.00
-                deductibleExempted: number = False
+                deductibleExempted: number = True
                 individualRelationshipCode: string = ##DP
                 individualRelationshipCodeDescription: string = Dependents Only
                 maxAge: number = 26
-                maximumExempted: number = True
+                maximumExempted: number = False
                 minAge: number = 0
                 outOfPocketMaximumApplies: number = False
                 sexAgeCode: string = 51
@@ -1468,11 +1233,11 @@ root: object { 10 keys }
               coverageDetail[0]: object { 10 keys }
                 adult: number = False
                 amountType: string = PERCENT
-                benefitCoverageLevel: string = 100.00
+                benefitCoverageLevel: string = 70.00
                 copayAmount: string = 0.00
                 deductibleExempted: number = True
                 maxAge: number = 0
-                maximumExempted: number = True
+                maximumExempted: number = False
                 minAge: number = 0
                 outOfPocketMaximumApplies: number = False
                 sexAgeCodeDescription: string = No
@@ -1486,11 +1251,11 @@ root: object { 10 keys }
               coverageDetail[0]: object { 10 keys }
                 adult: number = False
                 amountType: string = PERCENT
-                benefitCoverageLevel: string = 100.00
+                benefitCoverageLevel: string = 80.00
                 copayAmount: string = 0.00
                 deductibleExempted: number = True
                 maxAge: number = 0
-                maximumExempted: number = True
+                maximumExempted: number = False
                 minAge: number = 0
                 outOfPocketMaximumApplies: number = False
                 sexAgeCodeDescription: string = No
@@ -1506,9 +1271,9 @@ root: object { 10 keys }
                 amountType: string = PERCENT
                 benefitCoverageLevel: string = 100.00
                 copayAmount: string = 0.00
-                deductibleExempted: number = False
+                deductibleExempted: number = True
                 maxAge: number = 0
-                maximumExempted: number = True
+                maximumExempted: number = False
                 minAge: number = 0
                 outOfPocketMaximumApplies: number = False
                 sexAgeCodeDescription: string = No
@@ -1551,11 +1316,11 @@ root: object { 10 keys }
               coverageDetail[0]: object { 10 keys }
                 adult: number = False
                 amountType: string = PERCENT
-                benefitCoverageLevel: string = 100.00
+                benefitCoverageLevel: string = 70.00
                 copayAmount: string = 0.00
                 deductibleExempted: number = True
                 maxAge: number = 0
-                maximumExempted: number = True
+                maximumExempted: number = False
                 minAge: number = 0
                 outOfPocketMaximumApplies: number = False
                 sexAgeCodeDescription: string = No
@@ -1569,11 +1334,11 @@ root: object { 10 keys }
               coverageDetail[0]: object { 10 keys }
                 adult: number = False
                 amountType: string = PERCENT
-                benefitCoverageLevel: string = 100.00
+                benefitCoverageLevel: string = 80.00
                 copayAmount: string = 0.00
                 deductibleExempted: number = True
                 maxAge: number = 0
-                maximumExempted: number = True
+                maximumExempted: number = False
                 minAge: number = 0
                 outOfPocketMaximumApplies: number = False
                 sexAgeCodeDescription: string = No
@@ -1589,9 +1354,9 @@ root: object { 10 keys }
                 amountType: string = PERCENT
                 benefitCoverageLevel: string = 100.00
                 copayAmount: string = 0.00
-                deductibleExempted: number = False
+                deductibleExempted: number = True
                 maxAge: number = 0
-                maximumExempted: number = True
+                maximumExempted: number = False
                 minAge: number = 0
                 outOfPocketMaximumApplies: number = False
                 sexAgeCodeDescription: string = No
@@ -1634,11 +1399,11 @@ root: object { 10 keys }
               coverageDetail[0]: object { 10 keys }
                 adult: number = False
                 amountType: string = PERCENT
-                benefitCoverageLevel: string = 100.00
+                benefitCoverageLevel: string = 70.00
                 copayAmount: string = 0.00
                 deductibleExempted: number = True
                 maxAge: number = 0
-                maximumExempted: number = True
+                maximumExempted: number = False
                 minAge: number = 0
                 outOfPocketMaximumApplies: number = False
                 sexAgeCodeDescription: string = No
@@ -1652,11 +1417,11 @@ root: object { 10 keys }
               coverageDetail[0]: object { 10 keys }
                 adult: number = False
                 amountType: string = PERCENT
-                benefitCoverageLevel: string = 100.00
+                benefitCoverageLevel: string = 80.00
                 copayAmount: string = 0.00
                 deductibleExempted: number = True
                 maxAge: number = 0
-                maximumExempted: number = True
+                maximumExempted: number = False
                 minAge: number = 0
                 outOfPocketMaximumApplies: number = False
                 sexAgeCodeDescription: string = No
@@ -1672,9 +1437,9 @@ root: object { 10 keys }
                 amountType: string = PERCENT
                 benefitCoverageLevel: string = 100.00
                 copayAmount: string = 0.00
-                deductibleExempted: number = False
+                deductibleExempted: number = True
                 maxAge: number = 0
-                maximumExempted: number = True
+                maximumExempted: number = False
                 minAge: number = 0
                 outOfPocketMaximumApplies: number = False
                 sexAgeCodeDescription: string = No
@@ -1687,13 +1452,13 @@ root: object { 10 keys }
         summaryValues: array (length: 3)
         summaryValues[0]: object { minimumCoverage, maximumCoverage, networkCode, amountType }
           amountType: string = PERCENT
-          maximumCoverage: number = 100
-          minimumCoverage: number = 50
+          maximumCoverage: number = 70
+          minimumCoverage: number = 40
           networkCode: string = ##NP
         summaryValues[1]: object { minimumCoverage, maximumCoverage, networkCode, amountType }
           amountType: string = PERCENT
-          maximumCoverage: number = 100
-          minimumCoverage: number = 50
+          maximumCoverage: number = 80
+          minimumCoverage: number = 40
           networkCode: string = ##PMR
         summaryValues[2]: object { minimumCoverage, maximumCoverage, networkCode, amountType }
           amountType: string = PERCENT
@@ -1703,7 +1468,7 @@ root: object { 10 keys }
         treatmentBusinessDescription: string = Oral Exams and X-Rays
         treatmentCode: string = DI
         treatmentDescription: string = Diagnostic
-      treatment[2]: object { treatmentCode, treatmentDescription, treatmentBusinessDescription, summaryValues, procedureClass }
+      treatment[1]: object { treatmentCode, treatmentDescription, treatmentBusinessDescription, summaryValues, procedureClass }
         procedureClass: array (length: 7)
         procedureClass[0]: object { summaryCategoryCode, summaryCategoryDescription, classificationCode, classificationDescription, procedure }
           classificationCode: string = AP
@@ -1747,7 +1512,7 @@ root: object { 10 keys }
               coverageDetail[0]: object { 12 keys }
                 adult: number = False
                 amountType: string = PERCENT
-                benefitCoverageLevel: string = 60.00
+                benefitCoverageLevel: string = 50.00
                 copayAmount: string = 0.00
                 deductibleExempted: number = False
                 groupToothCode: string = ##A1,##A2
@@ -1839,7 +1604,7 @@ root: object { 10 keys }
               coverageDetail[0]: object { 12 keys }
                 adult: number = False
                 amountType: string = PERCENT
-                benefitCoverageLevel: string = 60.00
+                benefitCoverageLevel: string = 50.00
                 copayAmount: string = 0.00
                 deductibleExempted: number = False
                 groupToothCode: string = ##BU,##BL
@@ -1931,7 +1696,7 @@ root: object { 10 keys }
               coverageDetail[0]: object { 12 keys }
                 adult: number = False
                 amountType: string = PERCENT
-                benefitCoverageLevel: string = 60.00
+                benefitCoverageLevel: string = 50.00
                 copayAmount: string = 0.00
                 deductibleExempted: number = False
                 groupToothCode: string = ##P1,##P2
@@ -2028,7 +1793,7 @@ root: object { 10 keys }
               coverageDetail[0]: object { 13 keys }
                 adult: number = False
                 amountType: string = PERCENT
-                benefitCoverageLevel: string = 60.00
+                benefitCoverageLevel: string = 50.00
                 copayAmount: string = 0.00
                 deductibleExempted: number = False
                 groupToothCode: string = ##PT
@@ -2122,7 +1887,7 @@ root: object { 10 keys }
               coverageDetail[0]: object { 13 keys }
                 adult: number = False
                 amountType: string = PERCENT
-                benefitCoverageLevel: string = 60.00
+                benefitCoverageLevel: string = 50.00
                 copayAmount: string = 0.00
                 deductibleExempted: number = False
                 groupToothCode: string = ##PT
@@ -2216,7 +1981,7 @@ root: object { 10 keys }
               coverageDetail[0]: object { 13 keys }
                 adult: number = False
                 amountType: string = PERCENT
-                benefitCoverageLevel: string = 60.00
+                benefitCoverageLevel: string = 50.00
                 copayAmount: string = 0.00
                 deductibleExempted: number = False
                 groupToothCode: string = ##PT
@@ -2317,7 +2082,7 @@ root: object { 10 keys }
               coverageDetail[0]: object { 12 keys }
                 adult: number = False
                 amountType: string = PERCENT
-                benefitCoverageLevel: string = 60.00
+                benefitCoverageLevel: string = 50.00
                 copayAmount: string = 0.00
                 deductibleExempted: number = False
                 groupToothCode: string = ##U1,##U2
@@ -2376,8 +2141,8 @@ root: object { 10 keys }
         summaryValues: array (length: 3)
         summaryValues[0]: object { minimumCoverage, maximumCoverage, networkCode, amountType }
           amountType: string = PERCENT
-          maximumCoverage: number = 60
-          minimumCoverage: number = 60
+          maximumCoverage: number = 50
+          minimumCoverage: number = 50
           networkCode: string = ##NP
         summaryValues[1]: object { minimumCoverage, maximumCoverage, networkCode, amountType }
           amountType: string = PERCENT
@@ -2392,27 +2157,679 @@ root: object { 10 keys }
         treatmentBusinessDescription: string = Root Canals
         treatmentCode: string = EN
         treatmentDescription: string = Endodontics
+      treatment[2]: object { treatmentCode, treatmentDescription, treatmentBusinessDescription, summaryValues, procedureClass }
+        procedureClass: array (length: 6)
+        procedureClass[0]: object { summaryCategoryCode, summaryCategoryDescription, classificationCode, classificationDescription, procedure }
+          classificationCode: string = AG
+          classificationDescription: string = Adjunctive General Services - Group Specific
+          procedure: array (length: 2)
+          procedure[0]: object { 10 keys }
+            code: string = D9239
+            crossCheckProcedureCodes: string = D9239,D9243
+            defaultNetwork: string = ##PPO
+            description: string = Intravenous moderate (conscious) sedation/analgesia- first 15 minutes
+            iVRSuppressionIndicator: number = True
+            incentiveProcedure: number = False
+            limitation: array (length: 1)
+            limitation[0]: object { 12 keys }
+              allLimitedToCounterIdentifier: string = CTD9243XN
+              benefitCounterIdentifier: string = D9243XN
+              benefitQuantity: number = 4
+              frequencyLimitationText: string = General anesthesia and Intravenous conscious sedation are limited to four per date of service.
+              intervalNumber: number = 1
+              intervalUnitCode: string = Days
+              limitationKeywordSequenceNumber: number = 1
+              limitationSequenceNumberForProgram: number = 1
+              limitedToKeywordIdentifier: string = LTIVSA4/SD
+              networksApplicable: string = ##NP,##PMR,##PPO
+              periodTypeCode: string = RO
+              sexAgeToothCode: array (length: 1)
+              sexAgeToothCode[0]: object { sexAgeCodeDescription, minAge, maxAge, toothLimitation }
+                maxAge: number = 0
+                minAge: number = 0
+                sexAgeCodeDescription: string = No
+                toothLimitation: number = False
+            network: array (length: 3)
+            network[0]: object { 6 keys }
+              ageLimit: number = False
+              cmsnpNetworkExists: number = False
+              code: string = ##NP
+              coverageDetail: array (length: 1)
+              coverageDetail[0]: object { 10 keys }
+                adult: number = False
+                amountType: string = PERCENT
+                benefitCoverageLevel: string = 50.00
+                copayAmount: string = 0.00
+                deductibleExempted: number = False
+                maxAge: number = 0
+                maximumExempted: number = False
+                minAge: number = 0
+                outOfPocketMaximumApplies: number = False
+                sexAgeCodeDescription: string = No
+              description: string = Non-Delta Dental Dentist
+              incentiveNetwork: number = False
+            network[1]: object { 6 keys }
+              ageLimit: number = False
+              cmsnpNetworkExists: number = False
+              code: string = ##PMR
+              coverageDetail: array (length: 1)
+              coverageDetail[0]: object { 10 keys }
+                adult: number = False
+                amountType: string = PERCENT
+                benefitCoverageLevel: string = 60.00
+                copayAmount: string = 0.00
+                deductibleExempted: number = False
+                maxAge: number = 0
+                maximumExempted: number = False
+                minAge: number = 0
+                outOfPocketMaximumApplies: number = False
+                sexAgeCodeDescription: string = No
+              description: string = Delta Dental Premier Dentist
+              incentiveNetwork: number = False
+            network[2]: object { 6 keys }
+              ageLimit: number = False
+              cmsnpNetworkExists: number = False
+              code: string = ##PPO
+              coverageDetail: array (length: 1)
+              coverageDetail[0]: object { 10 keys }
+                adult: number = False
+                amountType: string = PERCENT
+                benefitCoverageLevel: string = 80.00
+                copayAmount: string = 0.00
+                deductibleExempted: number = False
+                maxAge: number = 0
+                maximumExempted: number = False
+                minAge: number = 0
+                outOfPocketMaximumApplies: number = False
+                sexAgeCodeDescription: string = No
+              description: string = Delta Dental PPO Dentist
+              incentiveNetwork: number = False
+            preApprovalRequired: number = False
+            suppressionIndicator: number = False
+          procedure[1]: object { 10 keys }
+            code: string = D9243
+            crossCheckProcedureCodes: string = D9239,D9243
+            defaultNetwork: string = ##PPO
+            description: string = intravenous moderate (conscious) sedation/analgesia - each subsequent 15 minute increment
+            iVRSuppressionIndicator: number = True
+            incentiveProcedure: number = False
+            limitation: array (length: 1)
+            limitation[0]: object { 12 keys }
+              allLimitedToCounterIdentifier: string = CTD9243XN
+              benefitCounterIdentifier: string = D9243XN
+              benefitQuantity: number = 4
+              frequencyLimitationText: string = General anesthesia and Intravenous conscious sedation are limited to four per date of service.
+              intervalNumber: number = 1
+              intervalUnitCode: string = Days
+              limitationKeywordSequenceNumber: number = 1
+              limitationSequenceNumberForProgram: number = 1
+              limitedToKeywordIdentifier: string = LTIVSA4/SD
+              networksApplicable: string = ##NP,##PMR,##PPO
+              periodTypeCode: string = RO
+              sexAgeToothCode: array (length: 1)
+              sexAgeToothCode[0]: object { sexAgeCodeDescription, minAge, maxAge, toothLimitation }
+                maxAge: number = 0
+                minAge: number = 0
+                sexAgeCodeDescription: string = No
+                toothLimitation: number = False
+            network: array (length: 3)
+            network[0]: object { 6 keys }
+              ageLimit: number = False
+              cmsnpNetworkExists: number = False
+              code: string = ##NP
+              coverageDetail: array (length: 1)
+              coverageDetail[0]: object { 10 keys }
+                adult: number = False
+                amountType: string = PERCENT
+                benefitCoverageLevel: string = 50.00
+                copayAmount: string = 0.00
+                deductibleExempted: number = False
+                maxAge: number = 0
+                maximumExempted: number = False
+                minAge: number = 0
+                outOfPocketMaximumApplies: number = False
+                sexAgeCodeDescription: string = No
+              description: string = Non-Delta Dental Dentist
+              incentiveNetwork: number = False
+            network[1]: object { 6 keys }
+              ageLimit: number = False
+              cmsnpNetworkExists: number = False
+              code: string = ##PMR
+              coverageDetail: array (length: 1)
+              coverageDetail[0]: object { 10 keys }
+                adult: number = False
+                amountType: string = PERCENT
+                benefitCoverageLevel: string = 60.00
+                copayAmount: string = 0.00
+                deductibleExempted: number = False
+                maxAge: number = 0
+                maximumExempted: number = False
+                minAge: number = 0
+                outOfPocketMaximumApplies: number = False
+                sexAgeCodeDescription: string = No
+              description: string = Delta Dental Premier Dentist
+              incentiveNetwork: number = False
+            network[2]: object { 6 keys }
+              ageLimit: number = False
+              cmsnpNetworkExists: number = False
+              code: string = ##PPO
+              coverageDetail: array (length: 1)
+              coverageDetail[0]: object { 10 keys }
+                adult: number = False
+                amountType: string = PERCENT
+                benefitCoverageLevel: string = 80.00
+                copayAmount: string = 0.00
+                deductibleExempted: number = False
+                maxAge: number = 0
+                maximumExempted: number = False
+                minAge: number = 0
+                outOfPocketMaximumApplies: number = False
+                sexAgeCodeDescription: string = No
+              description: string = Delta Dental PPO Dentist
+              incentiveNetwork: number = False
+            preApprovalRequired: number = False
+            suppressionIndicator: number = False
+          summaryCategoryCode: string = GS
+          summaryCategoryDescription: string = Adjunctive General Services
+        procedureClass[1]: object { summaryCategoryCode, summaryCategoryDescription, classificationCode, classificationDescription, procedure }
+          classificationCode: string = AN
+          classificationDescription: string = Anesthesia
+          procedure: array (length: 2)
+          procedure[0]: object { 10 keys }
+            code: string = D9222
+            crossCheckProcedureCodes: string = D9222,D9223
+            defaultNetwork: string = ##PPO
+            description: string = Deep sedation/general anesthesia - first 15 minutes
+            iVRSuppressionIndicator: number = False
+            incentiveProcedure: number = False
+            limitation: array (length: 1)
+            limitation[0]: object { 12 keys }
+              allLimitedToCounterIdentifier: string = CTD9223N
+              benefitCounterIdentifier: string = D9223N
+              benefitQuantity: number = 4
+              frequencyLimitationText: string = General anesthesia and Intravenous conscious sedation are a benefit when submitted in conjunction wi...
+              intervalNumber: number = 1
+              intervalUnitCode: string = Days
+              limitationKeywordSequenceNumber: number = 1
+              limitationSequenceNumberForProgram: number = 1
+              limitedToKeywordIdentifier: string = LTGNIV4/SD
+              networksApplicable: string = ##NP,##PMR,##PPO
+              periodTypeCode: string = RO
+              sexAgeToothCode: array (length: 1)
+              sexAgeToothCode[0]: object { sexAgeCodeDescription, minAge, maxAge, toothLimitation }
+                maxAge: number = 0
+                minAge: number = 0
+                sexAgeCodeDescription: string = No
+                toothLimitation: number = False
+            network: array (length: 3)
+            network[0]: object { 6 keys }
+              ageLimit: number = False
+              cmsnpNetworkExists: number = False
+              code: string = ##NP
+              coverageDetail: array (length: 1)
+              coverageDetail[0]: object { 10 keys }
+                adult: number = False
+                amountType: string = PERCENT
+                benefitCoverageLevel: string = 50.00
+                copayAmount: string = 0.00
+                deductibleExempted: number = False
+                maxAge: number = 0
+                maximumExempted: number = False
+                minAge: number = 0
+                outOfPocketMaximumApplies: number = False
+                sexAgeCodeDescription: string = No
+              description: string = Non-Delta Dental Dentist
+              incentiveNetwork: number = False
+            network[1]: object { 6 keys }
+              ageLimit: number = False
+              cmsnpNetworkExists: number = False
+              code: string = ##PMR
+              coverageDetail: array (length: 1)
+              coverageDetail[0]: object { 10 keys }
+                adult: number = False
+                amountType: string = PERCENT
+                benefitCoverageLevel: string = 60.00
+                copayAmount: string = 0.00
+                deductibleExempted: number = False
+                maxAge: number = 0
+                maximumExempted: number = False
+                minAge: number = 0
+                outOfPocketMaximumApplies: number = False
+                sexAgeCodeDescription: string = No
+              description: string = Delta Dental Premier Dentist
+              incentiveNetwork: number = False
+            network[2]: object { 6 keys }
+              ageLimit: number = False
+              cmsnpNetworkExists: number = False
+              code: string = ##PPO
+              coverageDetail: array (length: 1)
+              coverageDetail[0]: object { 10 keys }
+                adult: number = False
+                amountType: string = PERCENT
+                benefitCoverageLevel: string = 80.00
+                copayAmount: string = 0.00
+                deductibleExempted: number = False
+                maxAge: number = 0
+                maximumExempted: number = False
+                minAge: number = 0
+                outOfPocketMaximumApplies: number = False
+                sexAgeCodeDescription: string = No
+              description: string = Delta Dental PPO Dentist
+              incentiveNetwork: number = False
+            preApprovalRequired: number = False
+            suppressionIndicator: number = False
+          procedure[1]: object { 10 keys }
+            code: string = D9223
+            crossCheckProcedureCodes: string = D9222,D9223
+            defaultNetwork: string = ##PPO
+            description: string = Deep sedation/general anesthesia - each subsequent 15 minute increment
+            iVRSuppressionIndicator: number = True
+            incentiveProcedure: number = False
+            limitation: array (length: 1)
+            limitation[0]: object { 12 keys }
+              allLimitedToCounterIdentifier: string = CTD9223N
+              benefitCounterIdentifier: string = D9223N
+              benefitQuantity: number = 4
+              frequencyLimitationText: string = General anesthesia and Intravenous conscious sedation are a benefit when submitted in conjunction wi...
+              intervalNumber: number = 1
+              intervalUnitCode: string = Days
+              limitationKeywordSequenceNumber: number = 1
+              limitationSequenceNumberForProgram: number = 1
+              limitedToKeywordIdentifier: string = LTGNIV4/SD
+              networksApplicable: string = ##NP,##PMR,##PPO
+              periodTypeCode: string = RO
+              sexAgeToothCode: array (length: 1)
+              sexAgeToothCode[0]: object { sexAgeCodeDescription, minAge, maxAge, toothLimitation }
+                maxAge: number = 0
+                minAge: number = 0
+                sexAgeCodeDescription: string = No
+                toothLimitation: number = False
+            network: array (length: 3)
+            network[0]: object { 6 keys }
+              ageLimit: number = False
+              cmsnpNetworkExists: number = False
+              code: string = ##NP
+              coverageDetail: array (length: 1)
+              coverageDetail[0]: object { 10 keys }
+                adult: number = False
+                amountType: string = PERCENT
+                benefitCoverageLevel: string = 50.00
+                copayAmount: string = 0.00
+                deductibleExempted: number = False
+                maxAge: number = 0
+                maximumExempted: number = False
+                minAge: number = 0
+                outOfPocketMaximumApplies: number = False
+                sexAgeCodeDescription: string = No
+              description: string = Non-Delta Dental Dentist
+              incentiveNetwork: number = False
+            network[1]: object { 6 keys }
+              ageLimit: number = False
+              cmsnpNetworkExists: number = False
+              code: string = ##PMR
+              coverageDetail: array (length: 1)
+              coverageDetail[0]: object { 10 keys }
+                adult: number = False
+                amountType: string = PERCENT
+                benefitCoverageLevel: string = 60.00
+                copayAmount: string = 0.00
+                deductibleExempted: number = False
+                maxAge: number = 0
+                maximumExempted: number = False
+                minAge: number = 0
+                outOfPocketMaximumApplies: number = False
+                sexAgeCodeDescription: string = No
+              description: string = Delta Dental Premier Dentist
+              incentiveNetwork: number = False
+            network[2]: object { 6 keys }
+              ageLimit: number = False
+              cmsnpNetworkExists: number = False
+              code: string = ##PPO
+              coverageDetail: array (length: 1)
+              coverageDetail[0]: object { 10 keys }
+                adult: number = False
+                amountType: string = PERCENT
+                benefitCoverageLevel: string = 80.00
+                copayAmount: string = 0.00
+                deductibleExempted: number = False
+                maxAge: number = 0
+                maximumExempted: number = False
+                minAge: number = 0
+                outOfPocketMaximumApplies: number = False
+                sexAgeCodeDescription: string = No
+              description: string = Delta Dental PPO Dentist
+              incentiveNetwork: number = False
+            preApprovalRequired: number = False
+            suppressionIndicator: number = False
+          summaryCategoryCode: string = GS
+          summaryCategoryDescription: string = Adjunctive General Services
+        procedureClass[2]: object { summaryCategoryCode, summaryCategoryDescription, classificationCode, classificationDescription, procedure }
+          classificationCode: string = AO
+          classificationDescription: string = Adjunctive General Services - Other Services
+          procedure: array (length: 5)
+          procedure[0]: object { 10 keys }
+            code: string = D9942
+            crossCheckProcedureCodes: string = D9942
+            defaultNetwork: string = ##PPO
+            description: string = Repair and/or reline of occlusal guard
+            iVRSuppressionIndicator: number = True
+            incentiveProcedure: number = False
+            limitation: array (length: 2)
+            limitation[0]: object { 12 keys }
+              allLimitedToCounterIdentifier: string = CTOCLGRRN
+              benefitCounterIdentifier: string = OCLGRRN
+              benefitQuantity: number = 1
+              frequencyLimitationText: string = Benefit is limited to once within a 12 month period
+              intervalNumber: number = 12
+              intervalUnitCode: string = Months
+              limitationKeywordSequenceNumber: number = 1
+              limitationSequenceNumberForProgram: number = 1
+              limitedToKeywordIdentifier: string = LTOCGR1/12
+              networksApplicable: string = ##NP,##PMR
+              periodTypeCode: string = RO
+              sexAgeToothCode: array (length: 1)
+              sexAgeToothCode[0]: object { sexAgeCodeDescription, minAge, maxAge, toothLimitation }
+                maxAge: number = 0
+                minAge: number = 0
+                sexAgeCodeDescription: string = No
+                toothLimitation: number = False
+            limitation[1]: object { 12 keys }
+              allLimitedToCounterIdentifier: string = CTOCLGRRN
+              benefitCounterIdentifier: string = OCLGRRN
+              benefitQuantity: number = 1
+              frequencyLimitationText: string = Benefit is limited to once within a 24 month period
+              intervalNumber: number = 24
+              intervalUnitCode: string = Months
+              limitationKeywordSequenceNumber: number = 2
+              limitationSequenceNumberForProgram: number = 1
+              limitedToKeywordIdentifier: string = LTOCGR1/24
+              networksApplicable: string = ##PPO
+              periodTypeCode: string = RO
+              sexAgeToothCode: array (length: 1)
+              sexAgeToothCode[0]: object { sexAgeCodeDescription, minAge, maxAge, toothLimitation }
+                maxAge: number = 0
+                minAge: number = 0
+                sexAgeCodeDescription: string = No
+                toothLimitation: number = False
+            network: array (length: 3)
+            network[0]: object { 6 keys }
+              ageLimit: number = False
+              cmsnpNetworkExists: number = False
+              code: string = ##NP
+              coverageDetail: array (length: 1)
+              coverageDetail[0]: object { 10 keys }
+                adult: number = False
+                amountType: string = PERCENT
+                benefitCoverageLevel: string = 50.00
+                copayAmount: string = 0.00
+                deductibleExempted: number = False
+                maxAge: number = 0
+                maximumExempted: number = False
+                minAge: number = 0
+                outOfPocketMaximumApplies: number = False
+                sexAgeCodeDescription: string = No
+              description: string = Non-Delta Dental Dentist
+              incentiveNetwork: number = False
+            network[1]: object { 6 keys }
+              ageLimit: number = False
+              cmsnpNetworkExists: number = False
+              code: string = ##PMR
+              coverageDetail: array (length: 1)
+              coverageDetail[0]: object { 10 keys }
+                adult: number = False
+                amountType: string = PERCENT
+                benefitCoverageLevel: string = 60.00
+                copayAmount: string = 0.00
+                deductibleExempted: number = False
+                maxAge: number = 0
+                maximumExempted: number = False
+                minAge: number = 0
+                outOfPocketMaximumApplies: number = False
+                sexAgeCodeDescription: string = No
+              description: string = Delta Dental Premier Dentist
+              incentiveNetwork: number = False
+            network[2]: object { 6 keys }
+              ageLimit: number = False
+              cmsnpNetworkExists: number = False
+              code: string = ##PPO
+              coverageDetail: array (length: 1)
+              coverageDetail[0]: object { 10 keys }
+                adult: number = False
+                amountType: string = PERCENT
+                benefitCoverageLevel: string = 80.00
+                copayAmount: string = 0.00
+                deductibleExempted: number = False
+                maxAge: number = 0
+                maximumExempted: number = False
+                minAge: number = 0
+                outOfPocketMaximumApplies: number = False
+                sexAgeCodeDescription: string = No
+              description: string = Delta Dental PPO Dentist
+              incentiveNetwork: number = False
+            preApprovalRequired: number = False
+            suppressionIndicator: number = False
+          procedure[1]: object { 10 keys }
+            code: string = D9943
+            crossCheckProcedureCodes: string = D9943
+            defaultNetwork: string = ##PPO
+            description: string = Occlusal guard adjustment
+            iVRSuppressionIndicator: number = True
+            incentiveProcedure: number = False
+            limitation: array (length: 1)
+            limitation[0]: object { 12 keys }
+              allLimitedToCounterIdentifier: string = CTD9943N
+              benefitCounterIdentifier: string = D9943N
+              benefitQuantity: number = 1
+              frequencyLimitationText: string = Benefit is limited to once within a 12 month period
+              intervalNumber: number = 12
+              intervalUnitCode: string = Months
+              limitationKeywordSequenceNumber: number = 1
+              limitationSequenceNumberForProgram: number = 1
+              limitedToKeywordIdentifier: string = LTOGA1/12M
+              networksApplicable: string = ##NP,##PMR,##PPO
+              periodTypeCode: string = RO
+              sexAgeToothCode: array (length: 1)
+              sexAgeToothCode[0]: object { sexAgeCodeDescription, minAge, maxAge, toothLimitation }
+                maxAge: number = 0
+                minAge: number = 0
+                sexAgeCodeDescription: string = No
+                toothLimitation: number = False
+            network: array (length: 3)
+            network[0]: object { 6 keys }
+              ageLimit: number = False
+              cmsnpNetworkExists: number = False
+              code: string = ##NP
+              coverageDetail: array (length: 1)
+              coverageDetail[0]: object { 10 keys }
+                adult: number = False
+                amountType: string = PERCENT
+                benefitCoverageLevel: string = 50.00
+                copayAmount: string = 0.00
+                deductibleExempted: number = False
+                maxAge: number = 0
+                maximumExempted: number = False
+                minAge: number = 0
+                outOfPocketMaximumApplies: number = False
+                sexAgeCodeDescription: string = No
+              description: string = Non-Delta Dental Dentist
+              incentiveNetwork: number = False
+            network[1]: object { 6 keys }
+              ageLimit: number = False
+              cmsnpNetworkExists: number = False
+              code: string = ##PMR
+              coverageDetail: array (length: 1)
+              coverageDetail[0]: object { 10 keys }
+                adult: number = False
+                amountType: string = PERCENT
+                benefitCoverageLevel: string = 60.00
+                copayAmount: string = 0.00
+                deductibleExempted: number = False
+                maxAge: number = 0
+                maximumExempted: number = False
+                minAge: number = 0
+                outOfPocketMaximumApplies: number = False
+                sexAgeCodeDescription: string = No
+              description: string = Delta Dental Premier Dentist
+              incentiveNetwork: number = False
+            network[2]: object { 6 keys }
+              ageLimit: number = False
+              cmsnpNetworkExists: number = False
+              code: string = ##PPO
+              coverageDetail: array (length: 1)
+              coverageDetail[0]: object { 10 keys }
+                adult: number = False
+                amountType: string = PERCENT
+                benefitCoverageLevel: string = 80.00
+                copayAmount: string = 0.00
+                deductibleExempted: number = False
+                maxAge: number = 0
+                maximumExempted: number = False
+                minAge: number = 0
+                outOfPocketMaximumApplies: number = False
+                sexAgeCodeDescription: string = No
+              description: string = Delta Dental PPO Dentist
+              incentiveNetwork: number = False
+            preApprovalRequired: number = False
+            suppressionIndicator: number = False
+          procedure[2]: object { 10 keys }
+            code: string = D9944
+            crossCheckProcedureCodes: string = D9944,D9945,D9946
+            defaultNetwork: string = ##PPO
+            description: string = Occlusal guard - hard appliance, full arch
+            iVRSuppressionIndicator: number = False
+            incentiveProcedure: number = False
+            limitation: array (length: 1)
+            limitation[0]: object { 12 keys }
+              allLimitedToCounterIdentifier: string = CTOCCLGRDN
+              benefitCounterIdentifier: string = OCCLGRDN
+              benefitQuantity: number = 1
+              frequencyLimitationText: string = Benefit is limited to one occlusal guard within a 5 year period
+              intervalNumber: number = 60
+              intervalUnitCode: string = Months
+              limitationKeywordSequenceNumber: number = 1
+              limitationSequenceNumberForProgram: number = 1
+              limitedToKeywordIdentifier: string = LTOCG1/60M
+              networksApplicable: string = ##NP,##PMR,##PPO
+              periodTypeCode: string = RO
+              sexAgeToothCode: array (length: 1)
+              sexAgeToothCode[0]: object { sexAgeCodeDescription, minAge, maxAge, toothLimitation }
+                maxAge: number = 0
+                minAge: number = 0
+                sexAgeCodeDescription: string = No
+                toothLimitation: number = False
+            network: array (length: 3)
+            network[0]: object { 6 keys }
+              ageLimit: number = False
+              cmsnpNetworkExists: number = False
+              code: string = ##NP
+              coverageDetail: array (length: 1)
+              coverageDetail[0]: object { 10 keys }
+                adult: number = False
+                amountType: string = PERCENT
+                benefitCoverageLevel: string = 50.00
+                copayAmount: string = 0.00
+                deductibleExempted: number = False
+                maxAge: number = 0
+                maximumExempted: number = False
+                minAge: number = 0
+                outOfPocketMaximumApplies: number = False
+                sexAgeCodeDescription: string = No
+              description: string = Non-Delta Dental Dentist
+              incentiveNetwork: number = False
+            network[1]: object { 6 keys }
+              ageLimit: number = False
+              cmsnpNetworkExists: number = False
+              code: string = ##PMR
+              coverageDetail: array (length: 1)
+              coverageDetail[0]: object { 10 keys }
+                adult: number = False
+                amountType: string = PERCENT
+                benefitCoverageLevel: string = 60.00
+                copayAmount: string = 0.00
+                deductibleExempted: number = False
+                maxAge: number = 0
+                maximumExempted: number = False
+                minAge: number = 0
+                outOfPocketMaximumApplies: number = False
+                sexAgeCodeDescription: string = No
+              description: string = Delta Dental Premier Dentist
+              incentiveNetwork: number = False
+            network[2]: object { 6 keys }
+              ageLimit: number = False
+              cmsnpNetworkExists: number = False
+              code: string = ##PPO
+              coverageDetail: array (length: 1)
+              coverageDetail[0]: object { 10 keys }
+                adult: number = False
+                amountType: string = PERCENT
+                benefitCoverageLevel: string = 80.00
+                copayAmount: string = 0.00
+                deductibleExempted: number = False
+                maxAge: number = 0
+                maximumExempted: number = False
+                minAge: number = 0
+                outOfPocketMaximumApplies: number = False
+                sexAgeCodeDescription: string = No
+              description: string = Delta Dental PPO Dentist
+              incentiveNetwork: number = False
+            preApprovalRequired: number = False
+            suppressionIndicator: number = False
+          summaryCategoryCode: string = GS
+          summaryCategoryDescription: string = Adjunctive General Services
+        summaryValues: array (length: 3)
+        summaryValues[0]: object { minimumCoverage, maximumCoverage, networkCode, amountType }
+          amountType: string = PERCENT
+          maximumCoverage: number = 70
+          minimumCoverage: number = 40
+          networkCode: string = ##NP
+        summaryValues[1]: object { minimumCoverage, maximumCoverage, networkCode, amountType }
+          amountType: string = PERCENT
+          maximumCoverage: number = 80
+          minimumCoverage: number = 40
+          networkCode: string = ##PMR
+        summaryValues[2]: object { minimumCoverage, maximumCoverage, networkCode, amountType }
+          amountType: string = PERCENT
+          maximumCoverage: number = 100
+          minimumCoverage: number = 50
+          networkCode: string = ##PPO
+        treatmentBusinessDescription: string = Miscellaneous Services
+        treatmentCode: string = GS
+        treatmentDescription: string = Adjunctive General Services
     wait: null
   extraction: object { 7 keys }
-    clinic: string = SDB Dental
-    clinicId: string = sdb
-    date: string = 2025-10-06T18:08:01.110Z
+    clinic: string = Ace Dental Heights
+    clinicId: string = ace_dental
+    date: string = 2025-10-08T19:55:00.052Z
     mode: string = single
     portal: string = DDINS
     portalCode: string = DDINS
     version: string = 1.0
-  extractionDate: string = 2025-10-06T18:08:03.177Z
+  extractionDate: string = 2025-10-08T19:55:38.328Z
   patient: object { subscriberId, firstName, lastName, dateOfBirth }
-    dateOfBirth: string = 2011-10-19
-    firstName: string = ESTELLE
-    lastName: string = MAZET
-    subscriberId: string = 002175461802
+    dateOfBirth: string = 1998-10-21
+    firstName: string = KAREN
+    lastName: string = ILUMIN
+    subscriberId: string = 121875916101
   portal: string = DeltaDentalINS
+  roster: object { 13 keys }
+    contractId: string = 1218759161
+    dateOfBirth: string = 10/21/1998
+    divisionName: string = H-E-B, LP
+    divisionNumber: string = 00011
+    firstName: string = Karen
+    groupName: string = H-E-B, LP
+    groupNumber: string = 03750
+    lastName: string = Ilumin
+    memberAccountStatus: string = Active
+    memberId: string = 121875916101
+    personId: string = 0575421006130089
+    plan: string = Delta Dental PPO
+    subscriberType: string = Subscriber
   rosterContractId: null
   rosterMemberId: null
   selectedCoverage: null
   summary: object { patientName, memberId, totalClaims, selectedCoverage }
-    memberId: string = 002175461802
-    patientName: string = ESTELLE MAZET
+    memberId: string = 121875916101
+    patientName: string = KAREN ILUMIN
     selectedCoverage: null
-    totalClaims: number = 13
+    totalClaims: number = 2
