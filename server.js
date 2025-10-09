@@ -938,18 +938,48 @@ app.post('/api/chat', checkApiKey, async (req, res) => {
         ]);
 
         let output = '';
+        let errorOutput = '';
+
         python.stdout.on('data', data => output += data);
-        python.stderr.on('data', data => console.error('Python stderr:', data.toString()));
+        python.stderr.on('data', data => {
+          errorOutput += data.toString();
+          console.error('Python stderr:', data.toString());
+        });
 
         python.on('close', code => {
           if (code === 0 && fs.existsSync(structureFile)) {
             resolve(fs.readFileSync(structureFile, 'utf8'));
           } else {
-            reject(new Error('Failed to generate structure'));
+            // Provide detailed error information
+            const errorDetails = [];
+            errorDetails.push(`Python script failed with exit code ${code}`);
+
+            if (errorOutput) {
+              errorDetails.push(`Python error: ${errorOutput.trim()}`);
+            }
+
+            if (!fs.existsSync(structureFile)) {
+              errorDetails.push(`Structure file not created: ${structureFile}`);
+            }
+
+            if (!fs.existsSync(tempJsonPath)) {
+              errorDetails.push(`Input JSON file missing: ${tempJsonPath}`);
+            } else {
+              const fileSize = fs.statSync(tempJsonPath).size;
+              errorDetails.push(`Input JSON file exists (${fileSize} bytes)`);
+            }
+
+            errorDetails.push(`Python path: ${pythonPath}`);
+            errorDetails.push(`Working directory: ${__dirname}`);
+
+            reject(new Error(errorDetails.join(' | ')));
           }
         });
 
-        setTimeout(() => python.kill(), 60000); // 60s timeout
+        setTimeout(() => {
+          python.kill();
+          reject(new Error('Structure generation timeout (60s)'));
+        }, 60000);
       });
     }
 
