@@ -981,6 +981,101 @@ app.post('/api/chat', checkApiKey, async (req, res) => {
   }
 });
 
+// Export verification form to PDF
+app.get('/api/export-pdf/:fileName', checkApiKey, async (req, res) => {
+  const { fileName } = req.params;
+
+  try {
+    // 1. Load patient data from MongoDB
+    const patientData = await getPatientByFileName(fileName);
+
+    if (!patientData) {
+      return res.status(404).json({ error: 'Patient not found' });
+    }
+
+    console.log(`📄 Generating PDF for ${fileName}...`);
+
+    // 2. Spawn Python script with Playwright (use venv Python)
+    const pythonPath = path.join(__dirname, '.venv', 'bin', 'python3');
+    const python = spawn(pythonPath, [
+      path.join(__dirname, 'export_pdf.py'),
+      fileName,
+      API_KEY,
+      `http://localhost:${PORT}`
+    ]);
+
+    // Write patient data to stdin (script reads it)
+    python.stdin.write(JSON.stringify(patientData));
+    python.stdin.end();
+
+    let pdfPath = '';
+    let errorOutput = '';
+
+    python.stdout.on('data', data => {
+      pdfPath += data.toString();
+    });
+
+    python.stderr.on('data', data => {
+      errorOutput += data.toString();
+      console.error('PDF generation stderr:', data.toString());
+    });
+
+    python.on('close', code => {
+      if (code === 0 && pdfPath.trim()) {
+        const trimmedPath = pdfPath.trim();
+
+        // Check if file exists
+        if (!fs.existsSync(trimmedPath)) {
+          return res.status(500).json({
+            error: 'PDF file not found after generation',
+            path: trimmedPath
+          });
+        }
+
+        console.log(`✅ PDF generated: ${trimmedPath}`);
+
+        // Send PDF file to user
+        res.download(trimmedPath, fileName.replace('.json', '.pdf'), (err) => {
+          if (err) {
+            console.error('Error sending PDF:', err);
+            if (!res.headersSent) {
+              res.status(500).json({ error: 'Failed to send PDF' });
+            }
+          }
+
+          // Clean up temp file after sending
+          try {
+            fs.unlinkSync(trimmedPath);
+            console.log(`🗑️ Cleaned up temp file: ${trimmedPath}`);
+          } catch (cleanupErr) {
+            console.error('Warning: Failed to delete temp PDF:', cleanupErr.message);
+          }
+        });
+      } else {
+        console.error(`❌ PDF generation failed with code ${code}`);
+        res.status(500).json({
+          error: 'PDF generation failed',
+          exitCode: code,
+          details: errorOutput || 'No error details available'
+        });
+      }
+    });
+
+    // Timeout after 60 seconds
+    setTimeout(() => {
+      python.kill();
+      console.error('⏱️ PDF generation timeout (60s)');
+    }, 60000);
+
+  } catch (error) {
+    console.error('Export PDF error:', error);
+    res.status(500).json({
+      error: error.message,
+      stack: process.env.NODE_ENV === 'development' ? error.stack : undefined
+    });
+  }
+});
+
 // Direct patient link - shareable URL to pre-filled verification form
 app.get('/patient/:subscriberId/:portal', checkApiKey, async (req, res) => {
   const { subscriberId, portal } = req.params;
