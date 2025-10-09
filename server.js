@@ -1014,8 +1014,11 @@ app.get('/api/export-pdf/:fileName', checkApiKey, async (req, res) => {
 
     console.log(`📄 Generating PDF for ${fileName}...`);
 
-    // 2. Spawn Python script with Playwright (use venv Python)
-    const pythonPath = path.join(__dirname, '.venv', 'bin', 'python3');
+    // 2. Spawn Python script with Playwright
+    // In production (Docker), use system python3. In dev, use venv python3.
+    const venvPython = path.join(__dirname, '.venv', 'bin', 'python3');
+    const pythonPath = fs.existsSync(venvPython) ? venvPython : 'python3';
+
     const python = spawn(pythonPath, [
       path.join(__dirname, 'export_pdf.py'),
       fileName,

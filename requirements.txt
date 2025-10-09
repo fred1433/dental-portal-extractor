@@ -9,6 +9,9 @@ pandas==2.3.2
 # AI/LLM Integration
 google-generativeai==0.8.5
 
+# PDF Generation
+playwright==1.55.0
+
 # Additional dependencies (auto-installed)
 # protobuf<6.0.0
 # pydantic
