@@ -27,8 +27,7 @@ uhc_session.json
 ## Credentials & Secrets
 .env
 .env.*
-!.env.example
-clinic-credentials.json        
+!.env.example    
 config.json
 secrets.json
 

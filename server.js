@@ -48,48 +48,64 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Simple API key protection
 const API_KEY = process.env.API_KEY || 'demo2024secure';
 
-// Load clinic credentials from file
+// Load clinic credentials from environment variables
 let CLINIC_CONFIGS = {};
-const CREDENTIALS_FILE = path.join(__dirname, 'clinic-credentials.json');
 
+/**
+ * Load clinic credentials from .env file
+ * Convention: {CLINIC}_{PORTAL}_USERNAME and {CLINIC}_{PORTAL}_PASSWORD
+ * Example: SDB_DDINS_USERNAME, ACE_DENTAL_UHC_PASSWORD
+ */
 function loadClinicConfigs() {
   try {
-    if (fs.existsSync(CREDENTIALS_FILE)) {
-      const data = fs.readFileSync(CREDENTIALS_FILE, 'utf8');
-      CLINIC_CONFIGS = JSON.parse(data);
-      console.log('✅ Loaded clinic credentials from file');
-    } else {
-      // Use default from environment if no file exists
-      CLINIC_CONFIGS = {
-        'sdb': {
-          name: 'SDB Dental',
-          portals: {
-            UHC: { username: process.env.UHC_USERNAME || '', password: process.env.UHC_PASSWORD || '' },
-            DNOA: { username: process.env.DNOA_USERNAME || '', password: process.env.DNOA_PASSWORD || '' },
-            DentaQuest: { username: process.env.DENTAQUEST_USERNAME || '', password: process.env.DENTAQUEST_PASSWORD || '' },
-            MetLife: { username: process.env.METLIFE_USERNAME || '', password: process.env.METLIFE_PASSWORD || '' },
-            Cigna: { username: process.env.CIGNA_USERNAME || '', password: process.env.CIGNA_PASSWORD || '' },
-            DDINS: { username: process.env.DDINS_USERNAME || '', password: process.env.DDINS_PASSWORD || '' },
-            DOT: { username: process.env.DOT_USERNAME || '', password: process.env.DOT_PASSWORD || '' }
-          }
-        }
-      };
-      saveClinicConfigs();
-    }
+    const portals = ['DDINS', 'DNOA', 'MetLife', 'Cigna', 'DentaQuest', 'DOT', 'UHC', 'MCNA'];
+
+    CLINIC_CONFIGS = {
+      'sdb': {
+        name: 'SDB Dental',
+        portals: {}
+      },
+      'ace_dental': {
+        name: 'Ace Dental Heights',
+        portals: {}
+      }
+    };
+
+    // Load SDB credentials
+    portals.forEach(portal => {
+      const usernameKey = `SDB_${portal.toUpperCase()}_USERNAME`;
+      const passwordKey = `SDB_${portal.toUpperCase()}_PASSWORD`;
+
+      if (process.env[usernameKey] || process.env[passwordKey]) {
+        CLINIC_CONFIGS.sdb.portals[portal] = {
+          username: process.env[usernameKey] || '',
+          password: process.env[passwordKey] || ''
+        };
+      }
+    });
+
+    // Load ACE DENTAL credentials
+    portals.forEach(portal => {
+      const usernameKey = `ACE_DENTAL_${portal.toUpperCase()}_USERNAME`;
+      const passwordKey = `ACE_DENTAL_${portal.toUpperCase()}_PASSWORD`;
+
+      if (process.env[usernameKey] || process.env[passwordKey]) {
+        CLINIC_CONFIGS.ace_dental.portals[portal] = {
+          username: process.env[usernameKey] || '',
+          password: process.env[passwordKey] || ''
+        };
+      }
+    });
+
+    const sdbPortalCount = Object.keys(CLINIC_CONFIGS.sdb.portals).length;
+    const acePortalCount = Object.keys(CLINIC_CONFIGS.ace_dental.portals).length;
+
+    console.log(`✅ Loaded clinic credentials from .env`);
+    console.log(`   - SDB Dental: ${sdbPortalCount} portals configured`);
+    console.log(`   - ACE Dental: ${acePortalCount} portals configured`);
   } catch (error) {
     console.error('❌ Error loading clinic credentials:', error);
     CLINIC_CONFIGS = {};
-  }
-}
-
-function saveClinicConfigs() {
-  try {
-    fs.writeFileSync(CREDENTIALS_FILE, JSON.stringify(CLINIC_CONFIGS, null, 2));
-    console.log('✅ Saved clinic credentials to file');
-    return true;
-  } catch (error) {
-    console.error('❌ Error saving clinic credentials:', error);
-    return false;
   }
 }
 
@@ -831,35 +847,19 @@ app.get('/api/clinic/:clinicId/credentials', checkApiKey, (req, res) => {
 });
 
 // Update credentials for a clinic
+// NOTE: Credentials are now managed in .env file only
 app.post('/api/clinic/:clinicId/credentials', checkApiKey, (req, res) => {
-  const { clinicId } = req.params;
-  const { portal, username, password } = req.body;
-
-  if (!CLINIC_CONFIGS[clinicId]) {
-    return res.status(404).json({ error: 'Clinic not found' });
-  }
-
-  if (!portal) {
-    return res.status(400).json({ error: 'Portal is required' });
-  }
-
-  // Update the credentials
-  if (!CLINIC_CONFIGS[clinicId].portals[portal]) {
-    CLINIC_CONFIGS[clinicId].portals[portal] = {};
-  }
-
-  CLINIC_CONFIGS[clinicId].portals[portal].username = username || '';
-  CLINIC_CONFIGS[clinicId].portals[portal].password = password || '';
-
-  // Save to file
-  if (saveClinicConfigs()) {
-    res.json({
-      success: true,
-      message: `Credentials updated for ${CLINIC_CONFIGS[clinicId].name} - ${portal}`
-    });
-  } else {
-    res.status(500).json({ error: 'Failed to save credentials' });
-  }
+  res.status(501).json({
+    error: 'Credential updates via API are disabled',
+    message: 'Credentials must be updated directly in the .env file using the format: {CLINIC}_{PORTAL}_USERNAME and {CLINIC}_{PORTAL}_PASSWORD',
+    examples: [
+      'SDB_DDINS_USERNAME=your_username',
+      'SDB_DDINS_PASSWORD=your_password',
+      'ACE_DENTAL_UHC_USERNAME=your_username',
+      'ACE_DENTAL_UHC_PASSWORD=your_password'
+    ],
+    note: 'After updating .env, restart the server to load new credentials'
+  });
 });
 
 // Chat endpoint - Answer dentist questions using LLM + JSON queries
