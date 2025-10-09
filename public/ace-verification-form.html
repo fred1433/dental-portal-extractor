@@ -1264,6 +1264,16 @@
         function fillACESpecificFields(map, rawData) {
             console.log('Filling ACE-specific fields...');
 
+            // DEBUG: Log critical mapping values
+            console.log('[DEBUG] Critical mapping values:');
+            console.log('  - SRP Category:', map['SRP Category']);
+            console.log('  - Endo Category:', map['Endo Category']);
+            console.log('  - Extraction Category:', map['Extraction Category']);
+            console.log('  - Time Between SRP and Perio Maintenance:', map['Time Between SRP and Perio Maintenance']);
+            console.log('  - Composite Downgrade:', map['Composite Downgrade']);
+            console.log('  - Sealant Age Limit:', map['Sealant Age Limit']);
+            console.log('  - Previous Extractions Covered:', map['Previous Extractions Covered']);
+
             // Helper to fill coverage fields with fallback to category
             const fillCoverageField = (fieldName, procedureCode, category) => {
                 const input = document.querySelector(`input[name="${fieldName}"]`);
@@ -1325,6 +1335,53 @@
             setRadio('simple_ext', map['Extraction Category']);
             setRadio('surgical_ext', map['Extraction Category']);
             setRadio('endo', map['Endo Category']);
+
+            // === FILL ADDITIONAL FIELDS (Master compatibility) ===
+
+            // Helper to fill select dropdowns
+            const fillSelect = (name, value) => {
+                if (!value) return;
+                const select = document.querySelector(`select[name="${name}"]`);
+                if (select) {
+                    select.value = value;
+                    select.classList.add('field-filled');
+                    console.log(`✓ Select: ${name} = ${value}`);
+                }
+            };
+
+            // Helper to fill text inputs
+            const fillInput = (name, value) => {
+                if (!value) return;
+                const input = document.querySelector(`input[name="${name}"]`);
+                if (input) {
+                    input.value = value;
+                    input.classList.add('field-filled');
+                    console.log(`✓ Input: ${name} = ${value}`);
+                }
+            };
+
+            // 1. Time between SRP and Perio Maintenance
+            // Master key: "Time Between SRP and Perio Maintenance"
+            // ACE field: name="Time between SRP and Prophy"
+            fillInput('Time between SRP and Prophy', map['Time Between SRP and Perio Maintenance']);
+
+            // 2. Composite Downgrade (fillings)
+            // Master key: "Composite Downgrade"
+            // ACE field: name="SRP Downgrade" (misleading name in ACE form!)
+            fillSelect('SRP Downgrade', map['Composite Downgrade']);
+
+            // 3. Sealant Age Limit
+            // This should already work via D1351_age_limit from fillFormGroupsByName
+            // But we can add explicit mapping just in case
+            if (!document.querySelector('input[name="D1351_age_limit"]')?.value) {
+                fillInput('D1351_age_limit', map['Sealant Age Limit']);
+            }
+
+            // 4. Previous Extractions Covered - should already be filled by fillFormGroupsByName
+            // But explicitly check to be sure
+            if (!document.querySelector('select[name="Previous Extractions Covered"]')?.value) {
+                fillSelect('Previous Extractions Covered', map['Previous Extractions Covered']);
+            }
 
             // Handle "Deductible Applies To" - parse single field into 4 separate inputs
             const deductibleAppliesTo = map['Deductible Applies To'] || '';
