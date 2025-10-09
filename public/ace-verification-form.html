@@ -436,17 +436,6 @@
     <div class="container">
         <h1>Insurance Verification Form</h1>
 
-        <!-- Export PDF Button -->
-        <div style="text-align: center; margin-bottom: 12px;">
-            <button id="exportPdfBtn"
-                    style="background: #10b981; color: white; border: none; padding: 10px 24px; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 14px; box-shadow: 0 2px 6px rgba(16,185,129,0.3); transition: all 0.2s;"
-                    onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 4px 12px rgba(16,185,129,0.4)'"
-                    onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 2px 6px rgba(16,185,129,0.3)'"
-                    onclick="exportToPDF()">
-                📄 Export PDF
-            </button>
-        </div>
-
         <!-- Header Information -->
         <div class="service-box">
             <div class="form-row">
@@ -1004,6 +993,17 @@
                 <label><input type="radio" name="endo" value="BASIC" /> BASIC</label>
                 <label><input type="radio" name="endo" value="MAJOR" /> MAJOR</label>
             </div>
+        </div>
+
+        <!-- Export PDF Button -->
+        <div style="text-align: center; margin-top: 16px;">
+            <button id="exportPdfBtn"
+                    style="background: #10b981; color: white; border: none; padding: 10px 24px; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 14px; box-shadow: 0 2px 6px rgba(16,185,129,0.3); transition: all 0.2s;"
+                    onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 4px 12px rgba(16,185,129,0.4)'"
+                    onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 2px 6px rgba(16,185,129,0.3)'"
+                    onclick="exportToPDF()">
+                📄 Export PDF
+            </button>
         </div>
     </div>
 
