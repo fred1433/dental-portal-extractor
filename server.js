@@ -927,8 +927,12 @@ app.post('/api/chat', checkApiKey, async (req, res) => {
       structure = fs.readFileSync(structureFile, 'utf8');
     } else {
       // Generate structure
+      // In production (Docker), use system python3. In dev, use venv python3.
+      const venvPython = path.join(__dirname, '.venv', 'bin', 'python3');
+      const pythonPath = fs.existsSync(venvPython) ? venvPython : 'python3';
+
       structure = await new Promise((resolve, reject) => {
-        const python = spawn('python3', [
+        const python = spawn(pythonPath, [
           'extract_unique_paths.py',
           tempJsonPath
         ]);
