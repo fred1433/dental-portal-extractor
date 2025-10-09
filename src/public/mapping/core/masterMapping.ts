@@ -1,6 +1,7 @@
 import type { ExtractionResult, FormFieldMap, NormalizedEligibility } from '../shared/types.js';
 import { coalesce, formatCurrency } from '../shared/utils.js';
 import { extractProcedureHistory, mapProcedureHistory } from './procedureHistory.js';
+import { enrichDDINSFields } from '../portalAdapters/ddins-enrichment.js';
 
 export function toFormFieldMap(normalized: NormalizedEligibility, raw: ExtractionResult): FormFieldMap {
   const map: FormFieldMap = {};
@@ -624,6 +625,14 @@ export function toFormFieldMap(normalized: NormalizedEligibility, raw: Extractio
     map['OCC Frequency'] = '';
     map['OCC Limitations'] = '';
   }
+
+  // ===== PORTAL-SPECIFIC ENRICHMENT =====
+  // Apply portal-specific rules to fill missing fields
+  const portalCode = (raw as any).extraction?.portalCode || raw.portal;
+  if (portalCode?.toUpperCase() === 'DDINS') {
+    enrichDDINSFields(map, normalized, raw);
+  }
+  // Future portals: if (portalCode === 'METLIFE') enrichMetLifeFields(...)
 
   return map;
 }
