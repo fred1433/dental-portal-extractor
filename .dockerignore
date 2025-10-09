@@ -1,0 +1,59 @@
+# Node
+node_modules/
+npm-debug.log
+.npm/
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Git
+.git/
+.gitignore
+
+# Build outputs
+dist/
+build/
+*.log
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temp files
+tmp/
+temp/
+*.tmp
+
+# Docker
+Dockerfile
+.dockerignore
+
+# Environment files (will be set by Render)
+.env
+
+# Large data files that might exist
+extractions/
+*.sqlite
+*.db
+
+# Archive directories
+archive/
+archive_*/
+*_archive/
+
+# Data directories
+denticon/
+ddins/
+
+# Legacy/cleanup directories
+archive_sql_to_remove/
+archive_cleanup_*/
