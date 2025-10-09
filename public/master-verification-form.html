@@ -1571,21 +1571,38 @@
             */
         }
 
-        window.addEventListener('DOMContentLoaded', () => {
-            // Auto-fill existing functionality
+        window.addEventListener('DOMContentLoaded', async () => {
             const urlParams = new URLSearchParams(window.location.search);
-            if (urlParams.get('autoFill') === 'true') {
-                // Try localStorage first (shared between tabs), then sessionStorage (fallback)
+            const fileName = urlParams.get('fileName');
+            const apiKey = urlParams.get('key') || '';
+
+            // Priority 1: Load from API using fileName (SHAREABLE URL)
+            if (fileName) {
+                try {
+                    console.log(`[Master Form] Loading patient from API: ${fileName}`);
+                    const response = await fetch(`/api/patients/${fileName}?key=${apiKey}`);
+                    const extractedData = await response.json();
+
+                    // Save for chat widget
+                    window.currentPatientData = extractedData;
+
+                    // Fill form
+                    fillVerificationFormFromExtraction(extractedData);
+                    console.log(`[Master Form] ✓ Patient loaded successfully from shareable URL`);
+                } catch (error) {
+                    console.error('[Master Form] Error loading patient from API:', error);
+                    alert(`❌ Could not load patient data: ${error.message}`);
+                }
+            }
+            // Priority 2: Legacy autoFill from localStorage (BACKWARDS COMPATIBILITY)
+            else if (urlParams.get('autoFill') === 'true') {
                 const extractedDataStr = localStorage.getItem('extractedPatientData') || sessionStorage.getItem('extractedPatientData');
                 if (extractedDataStr) {
                     try {
                         const extractedData = JSON.parse(extractedDataStr);
-
-                        // Save for chat BEFORE removing from localStorage/sessionStorage
                         window.currentPatientData = extractedData;
-
-                        // Fill form
                         fillVerificationFormFromExtraction(extractedData);
+                        console.log(`[Master Form] ✓ Patient loaded from localStorage (legacy)`);
                     } catch (error) {
                         console.error('Error loading extracted data:', error);
                     } finally {

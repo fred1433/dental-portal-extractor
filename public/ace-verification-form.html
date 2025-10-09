@@ -1058,30 +1058,54 @@
         import { mapToVerificationForm } from '/mapping/index.js';
 
         // ===== AUTO-FILL FUNCTIONALITY =====
-        document.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener('DOMContentLoaded', async () => {
             const urlParams = new URLSearchParams(window.location.search);
+            const fileName = urlParams.get('fileName');
+            const apiKey = urlParams.get('key') || '';
 
-            if (urlParams.get('autoFill') === 'true') {
-                // Try localStorage first (shared between tabs), then sessionStorage (fallback)
+            // Priority 1: Load from API using fileName (SHAREABLE URL)
+            if (fileName) {
+                try {
+                    console.log(`[ACE Form] Loading patient from API: ${fileName}`);
+                    const response = await fetch(`/api/patients/${fileName}?key=${apiKey}`);
+                    const data = await response.json();
+
+                    console.log('ACE Form - Patient data loaded from API:', data);
+                    window.currentPatientData = data;
+
+                    // STEP 1: Get mapping data
+                    const map = mapToVerificationForm(data);
+                    console.log('Mapping generated:', Object.keys(map).length, 'fields');
+
+                    // STEP 2: Fill all form-group fields by name attribute
+                    fillFormGroupsByName(map);
+
+                    // STEP 3: Fill ACE-specific fields (inline-group, services-grid, radios)
+                    fillACESpecificFields(map, data);
+
+                    console.log(`[ACE Form] ✓ Patient loaded successfully from shareable URL`);
+                } catch (error) {
+                    console.error('[ACE Form] Error loading patient from API:', error);
+                    alert(`❌ Could not load patient data: ${error.message}`);
+                }
+            }
+            // Priority 2: Legacy autoFill from localStorage (BACKWARDS COMPATIBILITY)
+            else if (urlParams.get('autoFill') === 'true') {
                 const dataStr = localStorage.getItem('extractedPatientData') || sessionStorage.getItem('extractedPatientData');
                 if (dataStr) {
                     try {
                         const data = JSON.parse(dataStr);
-                        console.log('ACE Form - Patient data loaded:', data);
+                        console.log('ACE Form - Patient data loaded from localStorage (legacy):', data);
 
-                        // Save for chat widget
                         window.currentPatientData = data;
 
-                        // STEP 1: Get mapping data
                         const map = mapToVerificationForm(data);
                         console.log('Mapping generated:', Object.keys(map).length, 'fields');
 
-                        // STEP 2: Fill all form-group fields by name attribute
                         fillFormGroupsByName(map);
-
-                        // STEP 3: Fill ACE-specific fields (inline-group, services-grid, radios)
                         fillACESpecificFields(map, data);
 
+                        console.log(`[ACE Form] ✓ Patient loaded from localStorage (legacy)`);
                     } catch (error) {
                         console.error('Error parsing patient data:', error);
                     }

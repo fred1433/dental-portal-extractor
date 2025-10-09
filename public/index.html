@@ -919,9 +919,6 @@
                 const response = await fetch(`/api/patients/${fileName}?key=${modalApiKey}`);
                 const data = await response.json();
 
-                // Store data in localStorage (shared between tabs, unlike sessionStorage)
-                localStorage.setItem('extractedPatientData', JSON.stringify(data));
-
                 // Determine which form to use
                 let formFile;
 
@@ -940,8 +937,8 @@
                     }
                 }
 
-                // Open in new tab with autoFill parameter AND API key
-                window.open(`${formFile}?autoFill=true&key=${modalApiKey}`, '_blank');
+                // Open in new tab with SHAREABLE URL (fileName + API key)
+                window.open(`${formFile}?fileName=${encodeURIComponent(fileName)}&key=${modalApiKey}`, '_blank');
 
             } catch (error) {
                 alert(`❌ Error: ${error.message}`);
