@@ -52,7 +52,11 @@ archive_*/
 
 # Data directories
 denticon/
-ddins/
+
+# Exclude only data files in ddins, not the code
+ddins/*.txt
+ddins/.ddins-session/
+ddins/_archive_*
 
 # Legacy/cleanup directories
 archive_sql_to_remove/
