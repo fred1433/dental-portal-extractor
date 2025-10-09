@@ -213,8 +213,10 @@ def main():
     preview_lines = tree_output.split('\n')[:50]
     print('\n'.join(preview_lines))
 
-    if len(tree_output.split('\n')) > 50:
-        print(f"\n... and {len(tree_output.split('\n')) - 50} more lines")
+    total_lines = len(tree_output.split('\n'))
+    if total_lines > 50:
+        remaining_lines = total_lines - 50
+        print(f"\n... and {remaining_lines} more lines")
 
     print()
     print("=" * 80)
