@@ -1808,9 +1808,9 @@
                 // Simple markdown parsing
                 let html = data.answer
                     .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')  // **bold**
+                    .replace(/^\s*[\*\-]\s+(.+)$/gm, '• $1')  // Bullet points (BEFORE newlines)
                     .replace(/\n\n/g, '<br><br>')  // Double newlines
-                    .replace(/\n/g, '<br>')  // Single newlines
-                    .replace(/^\* (.+)$/gm, '• $1');  // Bullet points
+                    .replace(/\n/g, '<br>');  // Single newlines
 
                 botMsg.innerHTML = html;
                 messagesContainer.appendChild(botMsg);

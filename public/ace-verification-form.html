@@ -1396,9 +1396,9 @@
 
                 let html = data.answer
                     .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                    .replace(/^\s*[\*\-]\s+(.+)$/gm, '• $1')
                     .replace(/\n\n/g, '<br><br>')
-                    .replace(/\n/g, '<br>')
-                    .replace(/^\* (.+)$/gm, '• $1');
+                    .replace(/\n/g, '<br>');
 
                 botMsg.innerHTML = html;
                 messagesContainer.appendChild(botMsg);
