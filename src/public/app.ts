@@ -790,6 +790,14 @@ function fillVerificationForm(forceMaster: boolean = false): void {
     const urlParams = new URLSearchParams(window.location.search);
     const apiKey = urlParams.get('key') || 'demo2024secure';
 
+    // Build the fileName from extractedData
+    const patient = extractedData.patient || {};
+    const subscriberId = patient.subscriberId || '';
+    const firstName = (patient.firstName || '').toUpperCase();
+    const lastName = (patient.lastName || '').toUpperCase();
+    const portal = extractedData.extraction?.portalCode || extractedData.portal || 'UNKNOWN';
+    const fileName = `${subscriberId}_${firstName}_${lastName}_${portal}.json`;
+
     // Determine which form to use
     let formFile: string;
 
@@ -808,11 +816,11 @@ function fillVerificationForm(forceMaster: boolean = false): void {
         }
     }
 
-    // Store the data in sessionStorage for transfer
+    // Store the data in sessionStorage for transfer (fallback method)
     sessionStorage.setItem('extractedPatientData', JSON.stringify(extractedData));
 
-    // Open verification form in new tab
-    window.open(`${formFile}?key=${apiKey}&autoFill=true`, '_blank');
+    // Open verification form with fileName parameter
+    window.open(`${formFile}?fileName=${fileName}&key=${apiKey}`, '_blank');
 }
 
 function downloadJSON(): void {
