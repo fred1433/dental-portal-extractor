@@ -58,7 +58,7 @@ let CLINIC_CONFIGS = {};
  */
 function loadClinicConfigs() {
   try {
-    const portals = ['DDINS', 'DNOA', 'MetLife', 'Cigna', 'DentaQuest', 'DOT', 'UHC', 'MCNA'];
+    const portals = ['DDINS', 'DNOA', 'MetLife', 'Cigna', 'DentaQuest', 'DOT', 'UHC', 'MCNA', 'Availity'];
 
     CLINIC_CONFIGS = {
       'sdb': {
@@ -67,6 +67,10 @@ function loadClinicConfigs() {
       },
       'ace_dental': {
         name: 'Ace Dental Heights',
+        portals: {}
+      },
+      'eagleriver': {
+        name: 'Eagle River Dental',
         portals: {}
       }
     };
@@ -97,12 +101,27 @@ function loadClinicConfigs() {
       }
     });
 
+    // Load EAGLE RIVER credentials
+    portals.forEach(portal => {
+      const usernameKey = `EAGLERIVER_${portal.toUpperCase()}_USERNAME`;
+      const passwordKey = `EAGLERIVER_${portal.toUpperCase()}_PASSWORD`;
+
+      if (process.env[usernameKey] || process.env[passwordKey]) {
+        CLINIC_CONFIGS.eagleriver.portals[portal] = {
+          username: process.env[usernameKey] || '',
+          password: process.env[passwordKey] || ''
+        };
+      }
+    });
+
     const sdbPortalCount = Object.keys(CLINIC_CONFIGS.sdb.portals).length;
     const acePortalCount = Object.keys(CLINIC_CONFIGS.ace_dental.portals).length;
+    const eagleRiverPortalCount = Object.keys(CLINIC_CONFIGS.eagleriver.portals).length;
 
     console.log(`✅ Loaded clinic credentials from .env`);
     console.log(`   - SDB Dental: ${sdbPortalCount} portals configured`);
     console.log(`   - ACE Dental: ${acePortalCount} portals configured`);
+    console.log(`   - Eagle River Dental: ${eagleRiverPortalCount} portals configured`);
   } catch (error) {
     console.error('❌ Error loading clinic credentials:', error);
     CLINIC_CONFIGS = {};
