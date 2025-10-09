@@ -786,15 +786,25 @@ function fillVerificationForm(): void {
         return;
     }
 
-    // Store the data in sessionStorage for transfer
-    sessionStorage.setItem('extractedPatientData', JSON.stringify(extractedData));
-
     // Get the API key from URL params
     const urlParams = new URLSearchParams(window.location.search);
     const apiKey = urlParams.get('key') || 'demo2024secure';
 
-    // Navigate to the verification form
-    window.location.href = `/verification-form.html?key=${apiKey}&autoFill=true`;
+    // Determine which form to use based on clinicId
+    const clinicId = extractedData.extraction?.clinicId || safeGetValue('clinic') || 'default';
+    let formFile = 'master-verification-form.html'; // Default
+
+    if (clinicId === 'ace_dental') {
+        formFile = 'ace-verification-form.html';
+    } else if (clinicId === 'sdb') {
+        formFile = 'sdb-verification-form.html';
+    }
+
+    // Store the data in sessionStorage for transfer
+    sessionStorage.setItem('extractedPatientData', JSON.stringify(extractedData));
+
+    // Open verification form in new tab
+    window.open(`${formFile}?key=${apiKey}&autoFill=true`, '_blank');
 }
 
 function downloadJSON(): void {
