@@ -10,8 +10,8 @@ Multi-portal dental insurance data extraction service.
 - **DOT** - Dental Office Toolkit (Delta Dental)
 
 ## Production URL
-- Service: https://dental-portal-extractor.onrender.com
-- Health check: https://dental-portal-extractor.onrender.com/health
+- Service: https://dverify.onrender.com
+- Health check: https://dverify.onrender.com/health
 
 ## Local Development
 ```bash
@@ -21,5 +21,5 @@ npm start
 ```
 
 ## Notes
-- GitHub repo: dnoa-portal-web (legacy name)
-- Render service: dental-portal-extractor (current name)
+- GitHub repo: dental-portal-extractor
+- Render service: dverify (short URL for "Dental Verify")

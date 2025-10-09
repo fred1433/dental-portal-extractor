@@ -635,8 +635,8 @@ if (require.main === module) {
     console.error('⚠️  L\'exécution locale peut invalider les sessions de production.');
     console.error('');
     console.error('Utilisez plutôt :');
-    console.error('  • Interface web : https://dental-portal-extractor.onrender.com/monitor?key=demo2024secure');
-    console.error('  • API : curl "https://dental-portal-extractor.onrender.com/api/monitor/test?key=demo2024secure"');
+    console.error('  • Interface web : https://dverify.onrender.com/monitor?key=demo2024secure');
+    console.error('  • API : curl "https://dverify.onrender.com/api/monitor/test?key=demo2024secure"');
     console.error('');
     console.error('Pour forcer l\'exécution locale (DANGEREUX) :');
     console.error('  ALLOW_LOCAL_MONITOR=true node monitor.js');
