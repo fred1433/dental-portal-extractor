@@ -12,7 +12,7 @@ export function toFormFieldMap(normalized: NormalizedEligibility, raw: Extractio
 
   // Optional PMS appointment data (if available from Denticon, etc.)
   if ((raw as any)?.appointment?.date) {
-    map["Appointment Date"] = (raw as any).appointment.date;
+    map["Appointment Date"] = formatDateValue((raw as any).appointment.date);
   }
 
   const additionalBenefits = normalized.additionalBenefits ?? {};
@@ -638,7 +638,8 @@ function findWaitingPeriod(waitingPeriods: any[], codes: string[]): any {
 function formatDateValue(value: string | undefined): string {
   if (!value) return '';
   if (/^\d{4}-\d{2}-\d{2}/.test(value)) return value.slice(0, 10);
-  if (/^\d{2}\/\d{2}\/\d{4}$/.test(value)) {
+  // Accept 1 or 2 digits for month/day: MM/DD/YYYY or M/D/YYYY
+  if (/^\d{1,2}\/\d{1,2}\/\d{4}$/.test(value)) {
     const [month, day, year] = value.split('/');
     return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`;
   }

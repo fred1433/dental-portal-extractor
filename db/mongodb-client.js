@@ -3,7 +3,10 @@
  */
 
 const { MongoClient } = require('mongodb');
-require('dotenv').config();
+const path = require('path');
+
+// Load .env from project root (handles being called from subdirectories)
+require('dotenv').config({ path: path.join(__dirname, '..', '.env') });
 
 const MONGODB_URI = process.env.MONGODB_URI;
 let client = null;

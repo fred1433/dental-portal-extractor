@@ -127,8 +127,8 @@ async function testAppointmentsExtraction() {
         // Injecter et exécuter le script d'extraction
         const results = await page.evaluate(async () => {
             try {
-                const testDates = ['10/7/2025'];  // Karen est probablement le 10/7 (Patient 1/70)
-                const maxPatientsTotal = 100;  // Tous les patients
+                const testDates = ['10/9/2025'];  // Stephanie Hinton le 9 octobre
+                const maxPatientsTotal = 10;  // Limité pour test rapide
 
                 console.log('🎯 EXTRACTION COMPLÈTE : Calendrier + Détails');
                 console.log(`📅 Dates: ${testDates.join(', ')}`);
@@ -301,7 +301,7 @@ async function testAppointmentsExtraction() {
 
         const c1FetchStart = Date.now();
         const c1Results = await page.evaluate(async () => {
-            const testDate = '10/2/2025';
+            const testDate = '10/9/2025';  // Même date que a1 pour fusion cohérente
             const fetchStart = Date.now();
             const url = `https://c1.denticon.com/EligibilityVerificationReport/GetPatientEligibilityTableData?PGID=3169&OID=102&APPTPRDR=ALL&APTDATE=${encodeURIComponent(testDate)}&ELIGSTATUS=ALL&_=${Date.now()}`;
 
@@ -373,11 +373,11 @@ async function testAppointmentsExtraction() {
         // await page.waitForTimeout(2000);
         console.log('✅ Session a1 active (pas de retour home nécessaire)\n');
 
-        // ✨ TEST: Filter pour Karen Ilumin uniquement (Self subscriber qui marche - 200 OK)
+        // Filtrer uniquement Stephanie Hinton pour le test
         const filteredPatients = merged.filter(p =>
-            p.patient_name && p.patient_name.toUpperCase().includes('ILUMIN')
+            p.patient_name && p.patient_name.toUpperCase().includes('HINTON')
         );
-        console.log(`🎯 FILTRÉ: ${filteredPatients.length} patient(s) (Karen uniquement)\n`);
+        console.log(`🎯 FILTRÉ: ${filteredPatients.length} patient(s) (Stephanie Hinton uniquement)\n`);
 
         const fullyEnriched = [];
 

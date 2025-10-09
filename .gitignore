@@ -46,6 +46,11 @@ analyze-*.js
 show-*.js
 verify-*.js
 ask-gemini.js
+check-*.js
+delete-*.js
+dump-*.js
+find-*.js
+list-*.js
 *-Full.json
 *-Full-*.json
 *-Compressed.json
@@ -63,12 +68,17 @@ data/
 output/
 dentaquest-html-scraping/output/*.json
 output/dentaquest_*.json
-scrapers/data/                  
+scrapers/data/
 downloads/
 temp_downloads/
 temp-*/
 test_pdfs/
 test_results/
+
+## Demo & Test HTML Files
+public/button-styles-demo.html
+public/*-demo.html
+public/test-*.html
 
 ## DOT Extractor
 dot-extractor/dot-storage.json

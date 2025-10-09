@@ -10,12 +10,14 @@
 const path = require('path');
 const fs = require('fs');
 const axios = require('axios');
+const { savePatient } = require('../db/mongodb-client');
 require('dotenv').config({ path: path.join(__dirname, '..', '.env') });
 
 // Configuration
 const API_URL = process.env.API_URL || 'http://localhost:3000';
 const API_KEY = process.env.API_KEY || 'demo2024secure';
 const CLINIC_ID = process.env.DENTICON_CLINIC_ID || 'ace_dental';
+const CLINIC_NAME = 'Ace Dental Heights'; // TODO: mapper depuis CLINIC_ID
 
 async function extractAppointmentsFromDenticon() {
     console.log('🔍 ÉTAPE 1: Extraction des rendez-vous depuis Denticon\n');
@@ -144,19 +146,13 @@ async function main() {
             return;
         }
 
-        // Filtrer uniquement les patients avec rendez-vous aujourd'hui
-        const today = new Date().toLocaleDateString('en-US');
-        const todayPatients = patientsData.filter(p => p.date === today);
-
-        console.log(`\n📅 Patients avec rendez-vous aujourd'hui: ${todayPatients.length}/${patientsData.length}\n`);
-
-        if (todayPatients.length === 0) {
-            console.log('⚠️  Aucun rendez-vous pour aujourd\'hui');
-            return;
-        }
+        // Traiter tous les patients extraits (sans filtre de date)
+        const todayPatients = patientsData;
+        console.log(`\n📅 Patients à traiter: ${todayPatients.length}\n`);
 
         // Étape 2: Pour chaque patient, enrichir avec données du payeur
         const results = [];
+        let mongoSaved = 0;
 
         console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
         console.log('📊 ENRICHISSEMENT AVEC DONNÉES ASSURANCE');
@@ -165,11 +161,61 @@ async function main() {
         for (const patient of todayPatients) {
             const insuranceData = await extractInsuranceData(patient);
 
-            results.push({
+            // Construire le document fusionné pour JSON local
+            const mergedResult = {
                 pms_data: patient,  // Données complètes depuis Denticon
                 payer_data: insuranceData,  // Données depuis le portail assurance
                 timestamp: new Date().toISOString()
-            });
+            };
+
+            results.push(mergedResult);
+
+            // === SAUVEGARDE MONGODB ===
+            // Construire le document MongoDB avec la structure correcte
+            try {
+                // Parser le nom du patient
+                const nameParts = patient.patient_name.split(',').map(s => s.trim());
+                const lastName = nameParts[0] || '';
+                const firstName = nameParts[1]?.split(' ')[0] || '';
+
+                // Formater DOB en YYYY-MM-DD
+                let formattedDOB = patient.date_of_birth;
+                if (patient.date_of_birth && patient.date_of_birth.includes('/')) {
+                    const [month, day, year] = patient.date_of_birth.split('/');
+                    formattedDOB = `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`;
+                }
+
+                // Détecter le portal depuis insuranceData ou utiliser défaut
+                const portalCode = insuranceData?.data?.extraction?.portalCode || 'DDINS';
+
+                const mongoDocument = {
+                    extraction: {
+                        clinic: CLINIC_NAME,
+                        clinicId: CLINIC_ID,
+                        portal: portalCode,
+                        portalCode: portalCode,
+                        mode: 'orchestrated',
+                        date: new Date().toISOString(),
+                        version: '1.0',
+                        sources: ['PMS', portalCode]
+                    },
+                    patient: {
+                        subscriberId: patient.primary_subscriber_id_primary || patient.primary_subscriber_id,
+                        firstName: firstName.toUpperCase(),
+                        lastName: lastName.toUpperCase(),
+                        dateOfBirth: formattedDOB
+                    },
+                    pms_data: patient,  // Toutes les données PMS
+                    payer_data: insuranceData?.data || insuranceData  // Données d'assurance
+                };
+
+                await savePatient(mongoDocument);
+                mongoSaved++;
+                console.log(`   💾 Sauvegardé dans MongoDB: ${firstName} ${lastName}`);
+
+            } catch (mongoError) {
+                console.error(`   ⚠️  Erreur MongoDB (non-bloquante): ${mongoError.message}`);
+            }
 
             // Pause entre requêtes pour éviter rate limiting
             await new Promise(resolve => setTimeout(resolve, 2000));
@@ -183,7 +229,8 @@ async function main() {
         console.log('✅ ORCHESTRATION TERMINÉE');
         console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n');
         console.log(`📝 Patients traités: ${results.length}`);
-        console.log(`💾 Fichier: ${filepath}\n`);
+        console.log(`💾 Fichier local: ${filepath}`);
+        console.log(`💾 MongoDB: ${mongoSaved}/${results.length} patients sauvegardés\n`);
 
         // Afficher résumé des extractions réussies
         const successful = results.filter(r => r.payer_data?.success).length;
